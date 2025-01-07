@@ -1,0 +1,21 @@
+{
+  "general": {
+    "fireMode": ["ntgl:auto"],
+    "rate": 5,
+    "gripType": "ntgl:mini_gun",
+    "category": "heavy",
+    "maxAmmo": 100,
+    "fireTimer": "10",
+    "reloadTime": 45,
+    "recoilAngle": 1.0,
+    "damage": 10.0,
+    "alwaysSpread": true,
+    "spread": 5.0,
+    "ammo": [
+      "gunsmithing:round7mm"
+    ]
+  },
+  "textures": {
+    "default" : "gunsmithing:gatling"
+  }
+}

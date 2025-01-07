@@ -1,0 +1,9 @@
+{
+  "visible": true,
+  "damage": 1.0,
+  "size": 0.2,
+  "speed": 3.0,
+  "life": 150,
+  "gravity": true,
+  "type": "ntgl:explosive"
+}

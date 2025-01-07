@@ -1,0 +1,35 @@
+{
+  "type": "create:mechanical_crafting",
+  "pattern": [
+    "BSLLL",
+    "BSCCL",
+    "BSPAL",
+    "BSAAL"
+  ],
+  "key": {
+    "B": {
+      "item": "gunsmithing:barrel_sturdy"
+    },
+    "L": {
+      "item": "create:brass_sheet"
+    },
+    "S": {
+      "item": "create:sturdy_sheet"
+    },
+    "C": {
+      "item": "create:cogwheel"
+    },
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "P": {
+      "item": "create:precision_mechanism"
+    }
+
+  },
+  "result": {
+    "item": "gunsmithing:gatling",
+    "count": 1
+  },
+  "acceptMirrored": false
+}
