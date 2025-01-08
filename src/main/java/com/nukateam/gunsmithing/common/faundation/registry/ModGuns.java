@@ -4,6 +4,7 @@ package com.nukateam.gunsmithing.common.faundation.registry;
 import com.nukateam.gunsmithing.Gunsmithing;
 import com.nukateam.gunsmithing.common.data.DataGen;
 import com.nukateam.gunsmithing.common.faundation.item.BaseGunItem;
+import com.nukateam.gunsmithing.common.faundation.item.GatlingItem;
 import com.nukateam.ntgl.common.foundation.item.AmmoItem;
 import com.nukateam.ntgl.common.foundation.item.GunItem;
 import net.minecraft.world.item.Item;
@@ -15,9 +16,12 @@ public class ModGuns {
 
     ///GUNS
     public static final RegistryObject<GunItem> REVOLVER = registerGun("revolver");
-    public static final RegistryObject<GunItem> PISTOL10MM = registerGun("machine_gun");
-    public static final RegistryObject<GunItem> GATLING = registerGun("gatling");
-    public static final RegistryObject<GunItem> CLASSIC10MM = registerGun("flamethrower");
+    public static final RegistryObject<GunItem> MACHINE_GUN = registerGun("machine_gun");
+    public static final RegistryObject<GunItem> FLAMER = registerGun("flamethrower");
+
+    public static final RegistryObject<GunItem> GATLING = ITEMS.register("gatling",
+            () -> new GatlingItem(new Item.Properties().stacksTo(1)));
+
 
     @DataGen
     public static final RegistryObject<Item> ROUND7MM = registerAmmo("round7mm");
