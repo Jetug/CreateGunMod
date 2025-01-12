@@ -5,6 +5,7 @@ import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.ntgl.client.animators.GunAnimator;
 import com.nukateam.ntgl.client.util.handler.ShootingHandler;
 import com.nukateam.ntgl.client.util.util.TransformUtils;
+import com.nukateam.ntgl.common.foundation.item.GunItem;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
 import mod.azure.azurelib.core.animation.AnimatableManager;
 import mod.azure.azurelib.core.animation.Animation;
@@ -54,6 +55,7 @@ public class GatlingAnimator extends GunAnimator {
 
                 RawAnimation animation = null;
                 if (isShooting && this.animationHelper.hasAnimation(barrelAnim)) {
+                    Gunsmithing.LOGGER.info(barrelAnim);
                     animation = RawAnimation.begin().then(barrelAnim, Animation.LoopType.HOLD_ON_LAST_FRAME);
                     this.animationHelper.syncAnimation(event, barrelAnim, rate);
                 }
@@ -69,17 +71,18 @@ public class GatlingAnimator extends GunAnimator {
     }
 
     public void tick(){
+        if (!(getStack().getItem() instanceof GunItem))
+            return;
         float maxRot = 360f / getBarrelAmount();
         var entity = getEntity();
         var arm = isRightHand(transformType) ? HumanoidArm.RIGHT : HumanoidArm.LEFT;
         var shootingHandler = ShootingHandler.get();
-        var partialTick = Minecraft.getInstance().getFrameTime();
         var cooldown = ShootingHandler.get().getCooldown(entity, arm);
         var rate = GunModifierHelper.getRate(getStack());
 
         var cooldownPercent = shootingHandler.getCooldownPercent(entity, convertHand(arm));
 
-        if(cooldown == 0 && doCycle){
+        if(cooldown == rate){
             cycler.cycle();
             doCycle = false;
         }
@@ -91,51 +94,4 @@ public class GatlingAnimator extends GunAnimator {
 
 //        Gunsmithing.LOGGER.info(String.valueOf(prog));
     }
-
-    public float getBarrelRot(){
-        float maxRot = 360f / getBarrelAmount();
-        var entity = getEntity();
-        var arm = isRightHand(transformType) ? HumanoidArm.RIGHT : HumanoidArm.LEFT;
-        var shootingHandler = ShootingHandler.get();
-        var partialTick = Minecraft.getInstance().getFrameTime();
-        var cooldown = ShootingHandler.get().getCooldown(entity, arm);
-        var rate = GunModifierHelper.getRate(getStack());
-
-        var cooldownPercent = shootingHandler.getCooldownPercent(entity, convertHand(arm));
-
-        float prog = cooldownPercent; //+ (1 * Minecraft.getInstance().getFrameTime());
-
-        Gunsmithing.LOGGER.info(String.valueOf(prog * maxRot));
-
-//        return prog * maxRot;
-
-        prog0 = Mth.lerp(partialTick, prog0, cooldownPercent);
-        var result =  maxRot * barrelId + maxRot * prog;
-
-//        return maxRot * prog0;
-
-        var maxAmmo = getBarrelAmount();
-
-        if (cooldown == rate) {
-            if (barrelId < maxAmmo)
-                barrelId++;
-            else
-                barrelId = 0;
-        }
-
-//        if(cooldownPercent == 0 && !doCycle){
-//            doCycle = true;
-//            cycler.cycle();
-//        }
-//        else doCycle = false;
-
-        Gunsmithing.LOGGER.info(String.valueOf(result));
-        return result;
-////
-////        var data = shootingHandler.getShootingData(arm);
-////        var fireTimer = GunModifierHelper.getFireDelay(getStack());
-    }
-
-
-
 }
