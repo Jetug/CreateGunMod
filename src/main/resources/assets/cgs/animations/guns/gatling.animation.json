@@ -14,10 +14,10 @@
 				},
 				"left_arm_anim": {
 					"rotation": {
-						"vector": [0, 7.5, 0]
+						"vector": [0, 15, 0]
 					},
 					"position": {
-						"vector": [-0.5, 2.25, 0.25]
+						"vector": [0.7, 2.25, 0.05]
 					}
 				}
 			}

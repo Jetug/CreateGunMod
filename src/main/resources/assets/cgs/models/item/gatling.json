@@ -1,5 +1,10 @@
 {
+  "credit": "Made with Blockbench",
   "parent": "builtin/entity",
+  "texture_size": [
+    512,
+    512
+  ],
   "display": {
     "thirdperson_righthand": {
       "rotation": [
@@ -33,8 +38,8 @@
     "firstperson_righthand": {
       "translation": [
         0.25,
-        3.25,
-        -0.5
+        3.75,
+        -1.75
       ]
     },
     "firstperson_lefthand": {
