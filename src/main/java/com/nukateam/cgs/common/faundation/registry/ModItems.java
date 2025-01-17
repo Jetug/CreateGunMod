@@ -28,6 +28,9 @@ public class ModItems {
     @DataGen
     public static final RegistryObject<Item> ROUND_7MM = registerAmmo("round_7mm");
 
+    @DataGen
+    public static final RegistryObject<Item> ROUND_10MM = registerAmmo("round_10mm");
+
     public static RegistryObject<Item> registerAmmo(String name) {
         return ITEMS.register(name, () -> new AmmoItem(new Item.Properties()));
     }

@@ -24,7 +24,6 @@ import static com.nukateam.ntgl.common.util.helpers.PlayerHelper.convertHand;
 
 public class GatlingAnimator extends GunAnimator {
     private final Cycler cycler = new Cycler(1, getBarrelAmount());
-    private boolean doCycle = true;
     public float prog0;
     public float prog;
     private float barrelRot;
@@ -55,7 +54,7 @@ public class GatlingAnimator extends GunAnimator {
 
                 RawAnimation animation = null;
                 if (isShooting && this.animationHelper.hasAnimation(barrelAnim)) {
-                    Gunsmithing.LOGGER.info(barrelAnim);
+//                    Gunsmithing.LOGGER.info(barrelAnim);
                     animation = RawAnimation.begin().then(barrelAnim, Animation.LoopType.HOLD_ON_LAST_FRAME);
                     this.animationHelper.syncAnimation(event, barrelAnim, rate);
                 }
@@ -79,15 +78,11 @@ public class GatlingAnimator extends GunAnimator {
         var shootingHandler = ShootingHandler.get();
         var cooldown = ShootingHandler.get().getCooldown(entity, arm);
         var rate = GunModifierHelper.getRate(getStack());
-
         var cooldownPercent = shootingHandler.getCooldownPercent(entity, convertHand(arm));
 
         if(cooldown == rate){
             cycler.cycle();
-            doCycle = false;
         }
-        else if (cooldown == rate)
-            doCycle = true;
 
         prog0 = prog;
         prog = /*(maxRot * cycler.getCurrent()) +*/ (maxRot * cooldownPercent);

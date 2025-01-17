@@ -1,0 +1,20 @@
+{
+  "general": {
+    "fireMode": ["ntgl:semi"],
+    "rate": 5,
+    "gripType": "ntgl:one_hand",
+    "category": "pistol",
+    "maxAmmo": 6,
+    "reloadTime": 40,
+    "recoilAngle": 1.0,
+    "damage": 15.0,
+    "alwaysSpread": true,
+    "spread": 5.0,
+    "ammo": [
+      "cgs:round_10mm"
+    ]
+  },
+  "textures": {
+    "default" : "cgs:revolver"
+  }
+}

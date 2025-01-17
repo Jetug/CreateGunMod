@@ -5,7 +5,7 @@
     "gripType": "ntgl:mini_gun",
     "category": "heavy",
     "maxAmmo": 100,
-    "fireTimer": "10",
+    "fireTimer": 10,
     "reloadTime": 45,
     "recoilAngle": 1.0,
     "damage": 10.0,
