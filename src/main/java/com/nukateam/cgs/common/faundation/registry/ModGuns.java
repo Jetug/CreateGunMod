@@ -18,7 +18,6 @@ public class ModGuns {
     public static final RegistryObject<GunItem> REVOLVER = registerGun("revolver");
     public static final RegistryObject<GunItem> MACHINE_GUN = registerGun("machine_gun");
     public static final RegistryObject<GunItem> FLAMER = registerGun("flamethrower");
-
     public static final RegistryObject<GunItem> GATLING = ITEMS.register("gatling",
             () -> new GatlingItem(new Item.Properties().stacksTo(1)));
 

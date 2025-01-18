@@ -1,5 +1,6 @@
 {
   "itemGroup.mod_items": "Create: Gunsmithing",
   "item.cgs.revolver": "Revolver",
-  "item.cgs.gatling": "Gatling"
+  "item.cgs.gatling": "Gatling",
+  "slot.cgs.attachment.engine": "Engine"
 }

@@ -1,21 +1,47 @@
 {
   "general": {
     "fireMode": ["ntgl:auto"],
-    "rate": 5,
+    "fireTimer": 20,
+    "fullCharge": true,
+    "rate": 1,
     "gripType": "ntgl:mini_gun",
     "category": "heavy",
     "maxAmmo": 100,
-    "fireTimer": 10,
-    "reloadTime": 45,
+    "reloadTime": 80,
+    "reloadAmount": 10,
     "recoilAngle": 1.0,
-    "damage": 10.0,
+    "recoilKick": 0.2,
+    "damage": 5.0,
     "alwaysSpread": true,
-    "spread": 5.0,
+    "spread": 6.0,
     "ammo": [
       "cgs:round_7mm"
     ]
   },
   "textures": {
     "default" : "cgs:gatling"
+  },
+  "modules": {
+    "attachmentScreen": false,
+    "zoom": {
+      "xOffset": 0.0,
+      "yOffset": 4.8,
+      "zOffset": 0.0,
+      "fovModifier": 0.7
+    },
+    "attachments": {
+      "ntgl:scope": [
+        {
+          "name": "iron_sight",
+          "item": "cgs:scope"
+        }
+      ],
+      "cgs:engine": [
+        {
+          "name": "steam_engine",
+          "item": "cgs:steam_engine"
+        }
+      ]
+    }
   }
 }

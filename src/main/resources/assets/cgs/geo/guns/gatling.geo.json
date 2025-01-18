@@ -23,7 +23,7 @@
 				{
 					"name": "right_arm_anim",
 					"parent": "gun_arm",
-					"pivot": [-8.2, 2.2, 5.9]
+					"pivot": [-8.2, 2.2, 11.9]
 				},
 				{
 					"name": "right_arm",
@@ -33,7 +33,7 @@
 					"cubes": [
 						{
 							"origin": [-10.1, -3.8, 0],
-							"size": [3.8, 17, 3.8],
+							"size": [3.8, 18, 3.8],
 							"inflate": -0.5,
 							"pivot": [-8.2, 2.2, 1.9],
 							"rotation": [0, 0, 180],
@@ -56,7 +56,7 @@
 				{
 					"name": "muzzle_flash",
 					"parent": "gun",
-					"pivot": [0, 4.81099, -18.50654],
+					"pivot": [0.07447, 3.05273, -16.46313],
 					"cubes": [
 						{
 							"origin": [-1.36104, 1.58068, -16.38377],
@@ -1511,7 +1511,7 @@
 				{
 					"name": "left_arm_anim",
 					"parent": "model",
-					"pivot": [9, 2.2, 5.5]
+					"pivot": [9, 2.2, 11.75]
 				},
 				{
 					"name": "left_arm",
@@ -1521,7 +1521,7 @@
 					"cubes": [
 						{
 							"origin": [6.3, -3.8, 0],
-							"size": [3.8, 17, 3.8],
+							"size": [3.8, 18, 3.8],
 							"inflate": -0.5,
 							"pivot": [8.2, 2.2, 1.9],
 							"rotation": [0, 0, 180],
