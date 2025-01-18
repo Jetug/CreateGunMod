@@ -17,9 +17,9 @@ public class ModItemTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Gunsmithing.MOD_ID);
 
 
-    public static final RegistryObject<CreativeModeTab> GUNS = CREATIVE_MODE_TABS.register("nuka_equip",
+    public static final RegistryObject<CreativeModeTab> GUNS = CREATIVE_MODE_TABS.register("mod_items",
             () -> builder().icon(() -> new ItemStack(ModItems.ROUND_7MM.get()))
-                    .title(Component.translatable("itemGroup.nuka_equip"))
+                    .title(Component.translatable("itemGroup.mod_items"))
                     .displayItems(ModItemTabs::getWeaponTab)
                     .build());
 

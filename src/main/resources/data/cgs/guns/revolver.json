@@ -1,20 +1,37 @@
 {
   "general": {
-    "fireMode": ["ntgl:semi"],
-    "rate": 5,
-    "gripType": "ntgl:one_hand",
-    "category": "pistol",
+    "rate": 10,
+    "gripType": "ntgl:one_handed",
     "maxAmmo": 6,
-    "reloadTime": 40,
-    "recoilAngle": 1.0,
-    "damage": 15.0,
+    "damage": 12.0,
+    "reloadTime": 50,
+    "reloadAmount": 1,
+    "recoilAngle": 7.0,
+    "recoilKick": 0.4,
+    "recoilAdsReduction": 0.15,
     "alwaysSpread": true,
-    "spread": 5.0,
+    "spread": 2.0,
     "ammo": [
       "cgs:round_10mm"
     ]
   },
   "textures": {
     "default" : "cgs:revolver"
+  },
+  "sounds": {
+    "fire": "ntgl:item.pistol10mm.fire",
+    "reload": "ntgl:item.pistol45mm.reload",
+    "cock": "ntgl:item.pistol45mm.cock",
+    "silencedFire": "ntgl:item.pistol10mm.silenced_fire",
+    "enchantedFire": "ntgl:item.pistol10mm.enchanted_fire"
+  },
+  "modules": {
+    "attachmentScreen": false,
+    "zoom": {
+      "xOffset": 0.0,
+      "yOffset": 3.2,
+      "zOffset": 0.0,
+      "fovModifier": 0.7
+    }
   }
 }
