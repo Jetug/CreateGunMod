@@ -1,13 +1,13 @@
 {
   "parent": "builtin/entity",
   "texture_size": [
-    128,
-    128
+    512,
+    512
   ],
   "display": {
     "thirdperson_righthand": {
       "translation": [
-        1,
+        0,
         0.75,
         -2
       ],
@@ -19,7 +19,7 @@
     },
     "thirdperson_lefthand": {
       "translation": [
-        1,
+        0,
         0.75,
         -2
       ],
@@ -58,7 +58,7 @@
       ],
       "translation": [
         0.75,
-        0.75,
+        -1.75,
         0
       ],
       "scale": [
@@ -87,7 +87,7 @@
       ],
       "translation": [
         -1.75,
-        1.75,
+        -0.5,
         0
       ],
       "scale": [

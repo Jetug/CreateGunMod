@@ -3,6 +3,8 @@
     "rate": 10,
     "gripType": "ntgl:one_handed",
     "maxAmmo": 6,
+    "fireTimer": 5,
+    "fullCharge": true,
     "damage": 12.0,
     "reloadTime": 50,
     "reloadAmount": 1,

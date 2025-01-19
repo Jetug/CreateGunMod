@@ -1,6 +1,7 @@
 package com.nukateam.cgs.common.faundation.registry;
 
 import com.nukateam.cgs.Gunsmithing;
+import com.nukateam.ntgl.common.util.helpers.RegistrationHelper;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -26,13 +27,19 @@ public class ModItemTabs {
 
 
     private static void getWeaponTab(ItemDisplayParameters itemDisplayParameters, Output output) {
-        registerItems(output, ModGuns.ITEMS);
+        registerGuns(output, ModGuns.ITEMS);
         registerItems(output, ModItems.ITEMS);
     }
 
     private static void registerItems(Output output, DeferredRegister<Item> register) {
         for (var entry : register.getEntries()) {
             output.accept(entry.get());
+        }
+    }
+
+    private static void registerGuns(Output output, DeferredRegister<Item> register) {
+        for (var entry : register.getEntries()) {
+            RegistrationHelper.registerGunOrDefault(output, entry.get());
         }
     }
 
