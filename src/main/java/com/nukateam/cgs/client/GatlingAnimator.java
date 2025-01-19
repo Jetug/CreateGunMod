@@ -47,22 +47,26 @@ public class GatlingAnimator extends GunAnimator {
     @Override
     protected RawAnimation getChargingAnimation(AnimationState<GunAnimator> event , ShootingData data) {
         var animation = begin();
-        var fireTimer = GunModifierHelper.getFireDelay(getStack());
-        var finalAnim = BARREL + barrelCycler.getCurrent();
-
-        if(animationHelper.hasAnimation(finalAnim)) {
-//            BARREL_CONTROLLER.stop();
-//            BARREL_CONTROLLER.setAnimation(begin().then("void", PLAY_ONCE));
-            animationHelper.syncAnimation(event, finalAnim, fireTimer);
-            animation = playGunAnim(finalAnim, HOLD_ON_LAST_FRAME);
-        }
+//        var fireTimer = GunModifierHelper.getFireDelay(getStack());
+//        var finalAnim = BARREL + barrelCycler.getCurrent();
+//
+//        if(animationHelper.hasAnimation(finalAnim)) {
+////            BARREL_CONTROLLER.stop();
+////            BARREL_CONTROLLER.setAnimation(begin().then("void", PLAY_ONCE));
+//            animationHelper.syncAnimation(event, finalAnim, fireTimer);
+//            animation = playGunAnim(finalAnim, HOLD_ON_LAST_FRAME);
+//        }
         return animation;
     }
 
     @Override
     protected AnimationController.AnimationStateHandler<GunAnimator> animateBarrels() {
         return this::getCycledAnimation;
+    }
 
+    @Override
+    protected AnimationController.AnimationStateHandler<GunAnimator> animate() {
+        return event -> PlayState.STOP;
     }
 
     private PlayState getCycledAnimation(AnimationState<GunAnimator> event) {
@@ -74,7 +78,7 @@ public class GatlingAnimator extends GunAnimator {
         var arm = isRightHand(transformType) ? HumanoidArm.RIGHT : HumanoidArm.LEFT;
         var data = shootingHandler.getShootingData(arm);
 
-        if(fireTimer > 0 && data.fireTimer > 0 && fireTimer != data.fireTimer){
+        if(fireTimer > 0 && data.fireTimer > 0){
             if (TransformUtils.isHandTransform(this.transformType) && barrelCycler != null) {
                 if(animationHelper.hasAnimation(finalAnim)) {
                     animationHelper.syncAnimation(event, finalAnim, fireTimer);
@@ -83,7 +87,6 @@ public class GatlingAnimator extends GunAnimator {
                 return event.setAndContinue(animation);
             }
         }
-
 
         return PlayState.STOP;
     }
