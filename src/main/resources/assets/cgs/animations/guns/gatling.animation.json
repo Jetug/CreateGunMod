@@ -550,7 +550,7 @@
 				}
 			}
 		},
-		"charge": {
+		"charge2": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.25,
 			"bones": {

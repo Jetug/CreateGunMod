@@ -1,11 +1,12 @@
 {
   "general": {
     "fireMode": ["ntgl:auto"],
-    "fireTimer": 5,
-    "fullCharge": true,
-    "rate": 5,
     "gripType": "ntgl:mini_gun",
     "category": "heavy",
+    "rate": 1,
+    "fireTimer": 5,
+    "fullCharge": true,
+    "oneTimeCharge": false,
     "maxAmmo": 100,
     "reloadTime": 40,
     "reloadAmount": 10,
