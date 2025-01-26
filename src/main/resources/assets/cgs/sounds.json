@@ -1,0 +1,9 @@
+{
+   "gun.gatling.fire": { "subtitle": "subtitle.nukacraft.fire", "sounds": [
+      { "name": "cgs:gun/gatling/fire/fire_02" },
+      { "name": "cgs:gun/gatling/fire/fire_03" },
+      { "name": "cgs:gun/gatling/fire/fire_04" },
+      { "name": "cgs:gun/gatling/fire/fire_05" },
+      { "name": "cgs:gun/gatling/fire/fire_01" }
+   ]}
+}

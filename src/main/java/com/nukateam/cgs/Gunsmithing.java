@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 
 
 @Mod(Gunsmithing.MOD_ID)
-public class Gunsmithing {
+public class  Gunsmithing {
     public static final String MOD_ID = "cgs";
     public static final Logger LOGGER = LogUtils.getLogger();
 
@@ -23,6 +23,7 @@ public class Gunsmithing {
         ModGuns.register(MOD_EVENT_BUS);
         ModItems.register(MOD_EVENT_BUS);
         ModItemTabs.register(MOD_EVENT_BUS);
+        ModSounds.register(MOD_EVENT_BUS);
         MinecraftForge.EVENT_BUS.register(this);
     }
 

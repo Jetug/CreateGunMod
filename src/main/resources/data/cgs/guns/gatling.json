@@ -22,6 +22,9 @@
   "textures": {
     "default" : "cgs:gatling"
   },
+  "sounds": {
+    "fire": "cgs:gun.gatling.fire"
+  },
   "modules": {
     "attachmentScreen": false,
     "zoom": {
