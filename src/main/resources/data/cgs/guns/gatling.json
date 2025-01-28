@@ -8,7 +8,7 @@
     "fullCharge": true,
     "oneTimeCharge": false,
     "maxAmmo": 100,
-    "reloadTime": 30,
+    "reloadTime": 50,
     "reloadAmount": 10,
     "recoilAngle": 1.0,
     "recoilKick": 0.2,
@@ -37,7 +37,7 @@
       "ntgl:scope": [
         {
           "name": "iron_sight",
-          "item": "cgs:scope"
+          "item": "cgs:iron_sight"
         }
       ],
       "cgs:engine": [

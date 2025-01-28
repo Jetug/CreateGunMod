@@ -3,16 +3,19 @@ package com.nukateam.cgs.common.faundation.registry;
 
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.data.DataGen;
+import com.nukateam.ntgl.common.base.holders.AttachmentType;
 import com.nukateam.ntgl.common.data.attachment.impl.Attachment;
 import com.nukateam.ntgl.common.data.attachment.impl.GenericAttachment;
 import com.nukateam.ntgl.common.foundation.item.AmmoItem;
 import com.nukateam.ntgl.common.foundation.item.attachment.AttachmentItem;
+import com.nukateam.ntgl.common.foundation.item.attachment.ScopeItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import static com.nukateam.cgs.common.faundation.registry.Attachments.SHORT_SCOPE;
 import static com.nukateam.cgs.common.faundation.registry.CgsAttachmentTypes.ENGINE;
 
 public class ModItems {
@@ -39,6 +42,10 @@ public class ModItems {
     @DataGen
     public static final RegistryObject<Item> STEAM_ENGINE = ITEMS.register("steam_engine",
         () -> new AttachmentItem<>(ENGINE, GenericAttachment.create(), new Item.Properties().stacksTo(1)));
+
+    @DataGen
+    public static final RegistryObject<Item> IRON_SIGHT = ITEMS.register("iron_sight",
+        () -> new ScopeItem(SHORT_SCOPE, new Item.Properties().stacksTo(1)));
 
     public static RegistryObject<Item> registerAmmo(String name) {
         return ITEMS.register(name, () -> new AmmoItem(new Item.Properties()));
