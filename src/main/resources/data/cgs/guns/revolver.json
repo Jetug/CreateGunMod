@@ -6,7 +6,7 @@
     "fireTimer": 5,
     "fullCharge": true,
     "damage": 12.0,
-    "reloadTime": 20,
+    "reloadTime": 40,
     "reloadAmount": 1,
     "recoilAngle": 7.0,
     "recoilKick": 0.4,
@@ -21,11 +21,7 @@
     "default" : "cgs:revolver"
   },
   "sounds": {
-    "fire": "ntgl:item.pistol10mm.fire",
-    "reload": "ntgl:item.pistol45mm.reload",
-    "cock": "ntgl:item.pistol45mm.cock",
-    "silencedFire": "ntgl:item.pistol10mm.silenced_fire",
-    "enchantedFire": "ntgl:item.pistol10mm.enchanted_fire"
+    "fire": "cgs:gun.revolver.fire"
   },
   "modules": {
     "attachmentScreen": false,

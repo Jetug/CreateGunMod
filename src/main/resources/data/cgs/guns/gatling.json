@@ -36,6 +36,9 @@
     "attachments": {
       "ntgl:scope": [
         {
+          "xOffset": 0.0,
+          "yOffset": 3.2,
+          "zOffset": 0.0,
           "name": "iron_sight",
           "item": "cgs:iron_sight"
         }

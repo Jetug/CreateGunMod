@@ -31,7 +31,13 @@ public class ModItems {
     public static final RegistryObject<Item> PRESS_FORM_7MM = registerItem("press_form_7mm");
 
     @DataGen
+    public static final RegistryObject<Item> PRESS_FORM_10MM = registerItem("press_form_10mm");
+
+    @DataGen
     public static final RegistryObject<Item> SHELL_7MM = registerItem("shell_7mm");
+
+    @DataGen
+    public static final RegistryObject<Item> SHELL_10MM = registerItem("shell_10mm");
 
     @DataGen
     public static final RegistryObject<Item> ROUND_7MM = registerAmmo("round_7mm");

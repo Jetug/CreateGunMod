@@ -5,5 +5,10 @@
       { "name": "cgs:gun/gatling/fire/fire_04" },
       { "name": "cgs:gun/gatling/fire/fire_05" },
       { "name": "cgs:gun/gatling/fire/fire_01" }
+   ]},
+   "gun.revolver.fire": { "subtitle": "subtitle.nukacraft.fire", "sounds": [
+      { "name": "cgs:gun/revolver/fire_01" },
+      { "name": "cgs:gun/revolver/fire_02" },
+      { "name": "cgs:gun/revolver/fire_03" }
    ]}
 }
