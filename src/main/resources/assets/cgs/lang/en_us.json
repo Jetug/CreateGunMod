@@ -1,6 +1,16 @@
 {
   "itemGroup.mod_items": "Create: Gunsmithing",
+  "slot.cgs.attachment.engine": "Engine",
   "item.cgs.revolver": "Revolver",
   "item.cgs.gatling": "Gatling",
-  "slot.cgs.attachment.engine": "Engine"
+  "item.cgs.barrel": "Barrel",
+  "item.cgs.barrel_sturdy": "Sturdy Barrel",
+  "item.cgs.press_form_7mm": "7mm Shell Press Form",
+  "item.cgs.press_form_10mm": "10mm Shell Press Form",
+  "item.cgs.shell_7mm": "7mm Shell",
+  "item.cgs.shell_10mm": "10mm Shell",
+  "item.cgs.round_7mm": "7mm Round",
+  "item.cgs.round_10mm": "10mm Round",
+  "item.cgs.steam_engine": "Steam Engine",
+  "item.cgs.iron_sight": "Iron Sight"
 }
