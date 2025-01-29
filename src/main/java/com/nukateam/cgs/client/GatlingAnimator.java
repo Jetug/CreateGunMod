@@ -9,10 +9,7 @@ import com.nukateam.ntgl.client.util.handler.ShootingHandler;
 import com.nukateam.ntgl.client.util.util.TransformUtils;
 import com.nukateam.ntgl.common.util.util.Cycler;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
-import mod.azure.azurelib.core.animation.Animation;
-import mod.azure.azurelib.core.animation.AnimationController;
-import mod.azure.azurelib.core.animation.AnimationState;
-import mod.azure.azurelib.core.animation.RawAnimation;
+import mod.azure.azurelib.core.animation.*;
 import mod.azure.azurelib.core.object.PlayState;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.item.ItemDisplayContext;
@@ -22,8 +19,21 @@ import static mod.azure.azurelib.core.animation.Animation.LoopType.*;
 import static mod.azure.azurelib.core.animation.RawAnimation.begin;
 
 public class GatlingAnimator extends GunAnimator {
+    public static final String HANDLE = "handle";
+    protected final AnimationController<GunAnimator> HANDLE_CONTROLLER = createController("handle_controller", animateHandle());
+
     public GatlingAnimator(ItemDisplayContext transformType, DynamicGeoItemRenderer<GunAnimator> renderer) {
         super(transformType, renderer);
+    }
+
+    protected AnimationController.AnimationStateHandler<GunAnimator> animateHandle() {
+        return (event) -> getCycledAnimation(event, HANDLE, this.barrelCycler);
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
+        super.registerControllers(controllerRegistrar);
+        controllerRegistrar.add(HANDLE_CONTROLLER);
     }
 
     @Override
