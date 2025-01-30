@@ -31,5 +31,5 @@
     "item": "cgs:gatling",
     "count": 1
   },
-  "acceptMirrored": false
+  "acceptMirrored": true
 }

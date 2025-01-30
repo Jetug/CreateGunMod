@@ -29,27 +29,43 @@ public class GatlingAnimator extends GunAnimator {
     }
 
     protected AnimationController.AnimationStateHandler<GunAnimator> animateHandle() {
-//        return (event) -> getCycledAnimation(event, HANDLE, this.barrelCycler);
-        return event -> {
-            var controller = event.getController();
-            controller.setAnimationSpeed(1);
-            var entity = getEntity();
-            var arm = getArm();
-            var isShooting = shootingHandler.isShooting(entity, arm);
+        return (event) -> {
+            var reloadHandler = ClientReloadHandler.get();
             var animation = begin();
-            var rate = GunModifierHelper.getRate(getStack());
 
-            if (isShooting) {
-                aTicks = rate * getBarrelAmount();
-                animation.then(HANDLE, LOOP);
-                animationHelper.syncAnimation(event, HANDLE, rate * getBarrelAmount());
-            }
-            else if (aTicks == 0){
-                animation.then(VOID, PLAY_ONCE);
-            }
+            if(reloadHandler.isReloading(getEntity(), getArm()))
+                animation = begin().then(VOID, PLAY_ONCE);
+            else return getCycledAnimation(event, HANDLE, this.barrelCycler);
 
             return event.setAndContinue(animation);
+
         };
+//        return event -> {
+//            var controller = event.getController();
+//            controller.setAnimationSpeed(1);
+//            var entity = getEntity();
+//            var arm = getArm();
+//            var isShooting = shootingHandler.isShooting(entity, arm);
+//            var animation = begin();
+//            var rate = GunModifierHelper.getRate(getStack());
+//
+//            if (isShooting) {
+//                aTicks = rate * getBarrelAmount();
+//                animation.then(HANDLE, LOOP);
+//                animationHelper.syncAnimation(event, HANDLE, rate * getBarrelAmount());
+//            }
+//            else if (aTicks == 0){
+//                animation.then(VOID, PLAY_ONCE);
+//            }
+//
+//            return event.setAndContinue(animation);
+//        };
+    }
+
+    @Override
+    protected RawAnimation getReloadingAnimation(AnimationState<GunAnimator> event) {
+        HANDLE_CONTROLLER.setAnimation(begin().then(VOID, PLAY_ONCE));
+        return super.getReloadingAnimation(event);
     }
 
     @Override

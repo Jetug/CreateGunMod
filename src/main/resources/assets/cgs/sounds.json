@@ -1,12 +1,21 @@
 {
-   "gun.gatling.fire": { "subtitle": "subtitle.nukacraft.fire", "sounds": [
+   "gun.gatling.fire": { "subtitle": "subtitle.ntgl.fire", "sounds": [
       { "name": "cgs:gun/gatling/fire/fire_02" },
       { "name": "cgs:gun/gatling/fire/fire_03" },
       { "name": "cgs:gun/gatling/fire/fire_04" },
       { "name": "cgs:gun/gatling/fire/fire_05" },
       { "name": "cgs:gun/gatling/fire/fire_01" }
    ]},
-   "gun.revolver.fire": { "subtitle": "subtitle.nukacraft.fire", "sounds": [
+
+   "gun.gatling.reload_mag_in": { "subtitle": "subtitle.ntgl.reload", "sounds": [
+      { "name": "cgs:gun/gatling/reload/reload_mag_in" }
+   ]},
+
+   "gun.gatling.reload_mag_out": { "subtitle": "subtitle.ntgl.reload", "sounds": [
+      { "name": "cgs:gun/gatling/reload/reload_mag_out" }
+   ]},
+
+   "gun.revolver.fire": { "subtitle": "subtitle.ntgl.fire", "sounds": [
       { "name": "cgs:gun/revolver/fire_01" },
       { "name": "cgs:gun/revolver/fire_02" },
       { "name": "cgs:gun/revolver/fire_03" }

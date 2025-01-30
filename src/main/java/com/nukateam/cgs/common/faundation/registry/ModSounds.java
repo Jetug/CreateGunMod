@@ -13,6 +13,9 @@ public class ModSounds {
     public static final DeferredRegister<SoundEvent> REGISTER = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, Gunsmithing.MOD_ID);
 
     public static final RegistryObject<SoundEvent> GATLING_FIRE = register("gun.gatling.fire");
+    public static final RegistryObject<SoundEvent> GATLING_MAG_IN = register("gun.gatling.reload_mag_in");
+    public static final RegistryObject<SoundEvent> GATLING_MAG_OUT = register("gun.gatling.reload_mag_out");
+
     public static final RegistryObject<SoundEvent> REVOLVER_FIRE = register("gun.revolver.fire");
 
     private static RegistryObject<SoundEvent> register(String key) {

@@ -23,7 +23,9 @@
     "default" : "cgs:gatling"
   },
   "sounds": {
-    "fire": "cgs:gun.gatling.fire"
+    "fire": "cgs:gun.gatling.fire",
+    "reload_mag_in": "cgs:gun.gatling.reload_mag_in",
+    "reload_mag_out": "cgs:gun.gatling.reload_mag_in"
   },
   "modules": {
     "attachmentScreen": false,
@@ -39,7 +41,7 @@
           "name": "iron_sight",
           "item": "cgs:iron_sight",
           "xOffset": 0,
-          "yOffset": 6.2,
+          "yOffset": -2,
           "zOffset": 0
         }
       ],
