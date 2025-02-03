@@ -16,6 +16,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import static com.nukateam.cgs.common.faundation.registry.Attachments.SHORT_SCOPE;
+import static com.nukateam.cgs.common.faundation.registry.Attachments.STEAM_ENGINE_MODIFIERS;
 import static com.nukateam.cgs.common.faundation.registry.CgsAttachmentTypes.ENGINE;
 
 public class ModItems {
@@ -47,7 +48,7 @@ public class ModItems {
 
     @DataGen
     public static final RegistryObject<Item> STEAM_ENGINE = ITEMS.register("steam_engine",
-        () -> new AttachmentItem<>(ENGINE, GenericAttachment.create(), new Item.Properties().stacksTo(1)));
+        () -> new AttachmentItem<>(ENGINE, GenericAttachment.create(STEAM_ENGINE_MODIFIERS), new Item.Properties().stacksTo(1)));
 
     @DataGen
     public static final RegistryObject<Item> IRON_SIGHT = ITEMS.register("iron_sight",
