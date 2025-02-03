@@ -14,7 +14,7 @@
     "recoilKick": 0.2,
     "damage": 5.0,
     "alwaysSpread": true,
-    "spread": 6.0,
+    "spread": 1.0,
     "ammo": [
       "cgs:round_7mm"
     ]
