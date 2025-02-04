@@ -55,6 +55,22 @@
           "item": "cgs:shell_7mm"
         }
       ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:shell_10mm"
+        },
+        {
+          "tag": "forge:plates/copper"
+        }
+      ],
+      "results": [
+        {
+          "item": "cgs:shell_10mm"
+        }
+      ]
     }
   ],
   "results": [

@@ -1,28 +1,28 @@
 {
   "type": "create:mechanical_crafting",
   "pattern": [
-    "BSLLL",
-    "BSCCL",
-    "BSPAL"
+    "  P ",
+    "FSTP",
+    " LBL"
   ],
   "key": {
-    "B": {
-      "item": "cgs:barrel_sturdy"
-    },
     "L": {
-      "item": "create:brass_sheet"
+      "tag": "forge:plates/brass"
     },
     "S": {
-      "item": "create:sturdy_sheet"
-    },
-    "C": {
-      "item": "create:cogwheel"
-    },
-    "A": {
-      "item": "create:andesite_alloy"
+      "item": "create:steam_engine"
     },
     "P": {
-      "item": "create:precision_mechanism"
+      "item": "create:fluid_pipe"
+    },
+    "T": {
+      "item": "create:fluid_tank"
+    },
+    "F": {
+      "item": "create:flywheel"
+    },
+    "B": {
+      "item": "create:blaze_burner"
     }
 
   },
