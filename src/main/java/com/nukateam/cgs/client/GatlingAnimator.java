@@ -21,7 +21,9 @@ import static mod.azure.azurelib.core.animation.RawAnimation.begin;
 public class GatlingAnimator extends GunAnimator {
     public static final String HANDLE = "handle";
     public static final String VOID = "void";
+    public static final String ENGINE = "engine";
     protected final AnimationController<GunAnimator> HANDLE_CONTROLLER = createController("handle_controller", animateHandle());
+    protected final AnimationController<GunAnimator> ENGINE_CONTROLLER = createController("engine_controller", animateEngine());
     protected final AnimationController<GunAnimator> GATLING_TRIGGER = createController( "gatling_trigger", event -> PlayState.CONTINUE)
             .triggerableAnim(HANDLE, begin().then(HANDLE, PLAY_ONCE))
             .triggerableAnim(VOID, begin().then(VOID, PLAY_ONCE));
@@ -72,6 +74,21 @@ public class GatlingAnimator extends GunAnimator {
 //        };
     }
 
+    protected AnimationController.AnimationStateHandler<GunAnimator> animateEngine() {
+        return (event) -> {
+            event.getController().setAnimationSpeed(1);
+            var animation = begin().then(ENGINE, LOOP);
+
+            if(shootingHandler.isShooting()) {
+                var rate = GunModifierHelper.getRate(getStack());
+                animationHelper.syncAnimation(event, ENGINE, rate * getBarrelAmount());
+            }
+
+            return event.setAndContinue(animation);
+
+        };
+    }
+
     @Override
     protected RawAnimation getReloadingAnimation(AnimationState<GunAnimator> event) {
         HANDLE_CONTROLLER.setAnimation(begin().then(VOID, PLAY_ONCE));
@@ -82,6 +99,7 @@ public class GatlingAnimator extends GunAnimator {
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         super.registerControllers(controllerRegistrar);
         controllerRegistrar.add(HANDLE_CONTROLLER);
+        controllerRegistrar.add(ENGINE_CONTROLLER);
         controllerRegistrar.add(GATLING_TRIGGER);
     }
 
