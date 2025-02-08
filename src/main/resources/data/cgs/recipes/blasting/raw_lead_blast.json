@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "experience": 2,
-  "cookingtime": 90,
-  "ingredient": {
-    "item": "cgs:raw_lead"
-  },
-  "result": "cgs:lead_ingot"
-}

@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface DataGen {
     ItemParent parent() default ItemParent.GENERATED;
-    ResourceType type() default ResourceType.ITEM;
+    ItemType type() default ItemType.ITEM;
     String path() default "";
     boolean ownDir() default false;
 }

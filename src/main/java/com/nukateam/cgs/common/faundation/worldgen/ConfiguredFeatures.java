@@ -26,7 +26,7 @@ public class ConfiguredFeatures {
 
         var overworldSapphireOres = List.of(OreConfiguration.target(stoneReplaceable,
                         ModBlocks.LEAD_ORE.get().defaultBlockState()),
-                OreConfiguration.target(deepslateReplaceables, ModBlocks.DEEPSLATE_COAL_ORE.get().defaultBlockState()));
+                OreConfiguration.target(deepslateReplaceables, ModBlocks.DEEPSLATE_LEAD_ORE.get().defaultBlockState()));
 
         register(context, OVERWORLD_LEAD_ORE_KEY, Feature.ORE, new OreConfiguration(overworldSapphireOres, 9));
     }
