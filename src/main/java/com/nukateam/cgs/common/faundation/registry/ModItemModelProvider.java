@@ -24,6 +24,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         generate(ModGuns.class);
         generate(ModItems.class);
+        generate(ModBlocks.class);
     }
 
     private void generate(Class<?> modItemsClass) {

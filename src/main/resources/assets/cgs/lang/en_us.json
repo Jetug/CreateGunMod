@@ -11,6 +11,14 @@
   "item.cgs.shell_10mm": "10mm Shell",
   "item.cgs.round_7mm": "7mm Round",
   "item.cgs.round_10mm": "10mm Round",
-  "item.cgs.steam_engine": "Steam Engine",
-  "item.cgs.iron_sight": "Iron Sight"
+  "item.cgs.steam_engine": "Gatling: Steam Engine",
+  "item.cgs.iron_sight": "Gatling: Iron Sight",
+
+
+  "item.cgs.raw_lead": "Raw Lead",
+  "item.cgs.lead_ingot": "Lead Ingot",
+  "item.cgs.lead_nugget": "Lead Nugget",
+
+  "block.cgs.lead_ore": "Lead Ore",
+  "block.cgs.deepslate_lead_ore": "Deepslate Lead Ore"
 }

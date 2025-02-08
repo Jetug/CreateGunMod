@@ -22,6 +22,10 @@ import static com.nukateam.cgs.common.faundation.registry.CgsAttachmentTypes.ENG
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Gunsmithing.MOD_ID);
 
+    @DataGen public static final RegistryObject<Item> RAW_LEAD = registerItem   ("raw_lead");
+    @DataGen public static final RegistryObject<Item> LEAD_INGOT = registerItem ("lead_ingot");
+    @DataGen public static final RegistryObject<Item> LEAD_NUGGET = registerItem("lead_nugget");
+
     @DataGen
     public static final RegistryObject<Item> BARREL = registerItem("barrel");
 

@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import com.nukateam.cgs.common.faundation.registry.*;
 import com.nukateam.cgs.common.network.PacketHandler;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -12,16 +13,16 @@ import org.slf4j.Logger;
 
 
 @Mod(Gunsmithing.MOD_ID)
-public class  Gunsmithing {
+public class Gunsmithing {
     public static final String MOD_ID = "cgs";
     public static final Logger LOGGER = LogUtils.getLogger();
+    public static final IEventBus MOD_EVENT_BUS = FMLJavaModLoadingContext.get().getModEventBus();
 
-    public Gunsmithing(FMLJavaModLoadingContext context) {
-        var MOD_EVENT_BUS = context.getModEventBus();
-
+    public Gunsmithing() {
         MOD_EVENT_BUS.addListener(this::commonSetup);
         ModGuns.register(MOD_EVENT_BUS);
         ModItems.register(MOD_EVENT_BUS);
+        ModBlocks.register(MOD_EVENT_BUS);
         ModItemTabs.register(MOD_EVENT_BUS);
         ModSounds.register(MOD_EVENT_BUS);
         MinecraftForge.EVENT_BUS.register(this);

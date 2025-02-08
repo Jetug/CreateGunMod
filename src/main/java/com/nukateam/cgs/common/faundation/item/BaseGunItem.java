@@ -4,9 +4,10 @@ import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.cgs.client.render.BaseGunRenderer;
 import com.nukateam.ntgl.common.foundation.item.GunItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.common.util.Lazy;
 
 public class BaseGunItem extends GunItem {
-    private static final BaseGunRenderer RENDERER = new BaseGunRenderer();
+    private final Lazy<BaseGunRenderer> RENDERER = Lazy.of(() -> new BaseGunRenderer());
 
     public BaseGunItem(Properties properties) {
         super(properties);
@@ -19,6 +20,6 @@ public class BaseGunItem extends GunItem {
 
     @Override
     public DynamicGeoItemRenderer getRenderer() {
-        return RENDERER;
+        return RENDERER.get();
     }
 }

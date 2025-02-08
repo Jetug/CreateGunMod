@@ -1,6 +1,23 @@
 {
   "itemGroup.mod_items": "Create: Gunsmithing",
+  "slot.cgs.attachment.engine": "Двигатель",
   "item.cgs.gatling": "Гатлинг",
   "item.cgs.revolver": "Револьвер",
-  "slot.cgs.attachment.engine": "Двигатель"
+  "item.cgs.barrel": "Ствол",
+  "item.cgs.barrel_sturdy": "Укреплённый ствол",
+  "item.cgs.press_form_7mm": "Пресс форма для 7мм гильзы",
+  "item.cgs.press_form_10mm": "Пресс форма для 10мм гильзы",
+  "item.cgs.shell_7mm": "Гильза 7мм",
+  "item.cgs.shell_10mm": "Гильза 10мм",
+  "item.cgs.round_7mm": "Патрон 7мм",
+  "item.cgs.round_10mm": "Патрон 10мм",
+  "item.cgs.steam_engine": "Гатлинг: Паравой двигатель",
+  "item.cgs.iron_sight": "Гатлинг: Прицел",
+
+  "item.cgs.raw_lead": "Рудный свинец",
+  "item.cgs.lead_ingot": "Свинцовый слиток",
+  "item.cgs.lead_nugget": "Кусочек свинца",
+
+  "block.cgs.lead_ore": "Свинцовая руда",
+  "block.cgs.deepslate_lead_ore": "Свинцовоносный глубинный сланец"
 }
