@@ -15,8 +15,6 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    private static final List<ItemLike> LEAD_SMELTABLES = List.of(ModItems.RAW_LEAD.get(),
-            ModBlocks.LEAD_ORE.get(), ModBlocks.DEEPSLATE_LEAD_ORE.get());
 
     public ModRecipeProvider(PackOutput pOutput) {
         super(pOutput);
@@ -24,21 +22,29 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> writer) {
-        buildOreRecipes(writer, );
+        buildOreRecipes(writer,
+                ModBlocks.LEAD_ORE.get(), ModBlocks.DEEPSLATE_LEAD_ORE.get(),
+                ModBlocks.LEAD_BLOCK.get(), ModBlocks.RAW_LEAD_BLOCK.get(),
+                ModItems.RAW_LEAD.get(), ModItems.LEAD_INGOT.get(), ModItems.LEAD_NUGGET.get());
     }
 
-    private static void buildOreRecipes(Consumer<FinishedRecipe> writer, ItemLike ore, ItemLike deepslateOre, ItemLike raw,
-                                        ItemLike ingot, ItemLike nugget, ItemLike block, ItemLike rawBlock) {
-        oreSmelting(writer, LEAD_SMELTABLES, RecipeCategory.MISC, ModItems.LEAD_INGOT.get(), 0.25f, 200, "lead");
-        oreBlasting(writer, LEAD_SMELTABLES, RecipeCategory.MISC, ModItems.LEAD_INGOT.get(), 0.25f, 100, "lead");
+    private static void buildOreRecipes(Consumer<FinishedRecipe> writer,
+                                        ItemLike ore, ItemLike deepslateOre,
+                                        ItemLike block, ItemLike rawBlock,
+                                        ItemLike raw, ItemLike ingot, ItemLike nugget) {
 
-        simpleBlock(writer, ModItems.RAW_LEAD.get(), ModBlocks.RAW_LEAD_BLOCK.get());
-        simpleBlock(writer, ModItems.LEAD_INGOT.get(), ModBlocks.LEAD_BLOCK.get());
-        simpleBlock(writer, ModItems.LEAD_NUGGET.get(), ModItems.LEAD_INGOT.get());
+        var smeltables = List.of(raw, ore, deepslateOre);
 
-        fromBlock(writer, ModBlocks.RAW_LEAD_BLOCK.get(), ModItems.RAW_LEAD.get());
-        fromBlock(writer, ModBlocks.LEAD_BLOCK.get(), ModItems.LEAD_INGOT.get());
-        fromBlock(writer, ModItems.LEAD_INGOT.get(), ModItems.LEAD_NUGGET.get());
+        oreSmelting(writer, smeltables, RecipeCategory.MISC, ingot, 0.25f, 200, "lead");
+        oreBlasting(writer, smeltables, RecipeCategory.MISC, ingot, 0.25f, 100, "lead");
+
+        simpleBlock(writer, raw, rawBlock);
+        simpleBlock(writer, ingot, block);
+        simpleBlock(writer, nugget, ingot);
+
+        fromBlock(writer, rawBlock, raw);
+        fromBlock(writer, block, ingot);
+        fromBlock(writer, ingot, nugget);
     }
 
     private static void fromBlock(Consumer<FinishedRecipe> writer, ItemLike ingredient, ItemLike result) {

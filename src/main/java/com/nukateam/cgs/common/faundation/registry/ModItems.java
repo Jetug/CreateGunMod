@@ -15,8 +15,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import static com.nukateam.cgs.common.faundation.registry.Attachments.SHORT_SCOPE;
-import static com.nukateam.cgs.common.faundation.registry.Attachments.STEAM_ENGINE_MODIFIERS;
+import static com.nukateam.cgs.common.faundation.registry.Attachments.*;
 import static com.nukateam.cgs.common.faundation.registry.CgsAttachmentTypes.ENGINE;
 
 public class ModItems {

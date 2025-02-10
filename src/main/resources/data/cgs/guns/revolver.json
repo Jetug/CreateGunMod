@@ -24,7 +24,7 @@
     "fire": "cgs:gun.revolver.fire"
   },
   "modules": {
-    "attachmentScreen": false,
+    "attachmentScreen": true,
     "zoom": {
       "xOffset": 0.0,
       "yOffset": 3.2,

@@ -10,11 +10,11 @@
     "maxAmmo": 100,
     "reloadTime": 50,
     "reloadAmount": 10,
-    "recoilAngle": 1.0,
-    "recoilKick": 0.2,
-    "damage": 5.0,
+    "recoilAngle": 2.0,
+    "recoilKick": 0.8,
+    "damage": 16.0,
     "alwaysSpread": true,
-    "spread": 1.0,
+    "spread": 1.5,
     "ammo": [
       "cgs:round_7mm"
     ]
@@ -28,7 +28,7 @@
     "reload_mag_out": "cgs:gun.gatling.reload_mag_in"
   },
   "modules": {
-    "attachmentScreen": false,
+    "attachmentScreen": true,
     "zoom": {
       "xOffset": 0.0,
       "yOffset": 4.8,

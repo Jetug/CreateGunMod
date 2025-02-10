@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_lead_block": {
+    "has_raw_lead": {
       "conditions": {
         "items": [
           {
             "items": [
-              "cgs:lead_block"
+              "cgs:raw_lead"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "cgs:lead_ingot"
+        "recipe": "cgs:lead_ingot_from_blasting_raw_lead"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_lead_block",
+      "has_raw_lead",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "cgs:lead_ingot"
+      "cgs:lead_ingot_from_blasting_raw_lead"
     ]
   },
   "sends_telemetry_event": false

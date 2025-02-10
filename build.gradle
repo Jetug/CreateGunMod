@@ -26,7 +26,7 @@ group = mod_group_id
 version = mod_version
 
 base {
-    archivesName = mod_id
+    archivesName = "create-gunsmithing"
 }
 
 java {

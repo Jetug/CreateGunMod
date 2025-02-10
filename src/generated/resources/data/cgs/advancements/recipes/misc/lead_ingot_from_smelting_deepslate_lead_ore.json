@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_lead_block": {
+    "has_deepslate_lead_ore": {
       "conditions": {
         "items": [
           {
             "items": [
-              "cgs:lead_block"
+              "cgs:deepslate_lead_ore"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "cgs:lead_ingot"
+        "recipe": "cgs:lead_ingot_from_smelting_deepslate_lead_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_lead_block",
+      "has_deepslate_lead_ore",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "cgs:lead_ingot"
+      "cgs:lead_ingot_from_smelting_deepslate_lead_ore"
     ]
   },
   "sends_telemetry_event": false
