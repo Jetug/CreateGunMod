@@ -2,12 +2,10 @@
 package com.nukateam.cgs.common.faundation.registry;
 
 import com.nukateam.cgs.Gunsmithing;
-import com.nukateam.cgs.common.data.DataGen;
-import com.nukateam.cgs.common.data.ItemType;
+import com.nukateam.cgs.common.data.BlockStateGen;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -22,7 +20,7 @@ import java.util.function.Supplier;
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Gunsmithing.MOD_ID);
 
-//    @DataGen(type = ItemType.BLOCK)
+    @BlockStateGen
     public static final RegistryObject<Block> LEAD_ORE = registerBlock("lead_ore",
             () -> new DropExperienceBlock(Block.Properties.of()
                     .sound(SoundType.STONE)
@@ -31,7 +29,7 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops()
                     .strength(3.0F, 3.0F)));
 
-//    @DataGen(type = ItemType.BLOCK)
+    @BlockStateGen
     public static final RegistryObject<Block> DEEPSLATE_LEAD_ORE = registerBlock("deepslate_lead_ore",
             () -> new DropExperienceBlock(Block.Properties.of()
                     .instrument(NoteBlockInstrument.BASEDRUM)
@@ -40,6 +38,7 @@ public class ModBlocks {
                     .strength(4.5F, 3.0F)
                     .sound(SoundType.DEEPSLATE)));
 
+    @BlockStateGen
     public static final RegistryObject<Block> LEAD_BLOCK = registerBlock("lead_block",
             () -> new DropExperienceBlock(Block.Properties.of()
                     .mapColor(MapColor.METAL)
@@ -48,6 +47,7 @@ public class ModBlocks {
                     .strength(3.0F, 6.0F)
                     .sound(SoundType.METAL)));
 
+    @BlockStateGen
     public static final RegistryObject<Block> RAW_LEAD_BLOCK = registerBlock("raw_lead_block",
             () -> new DropExperienceBlock(Block.Properties.of()
                     .mapColor(MapColor.RAW_IRON).instrument(NoteBlockInstrument.BASEDRUM)

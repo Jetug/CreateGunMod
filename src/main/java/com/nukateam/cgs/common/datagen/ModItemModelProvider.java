@@ -1,7 +1,7 @@
 package com.nukateam.cgs.common.datagen;
 
 import com.nukateam.cgs.Gunsmithing;
-import com.nukateam.cgs.common.data.DataGen;
+import com.nukateam.cgs.common.data.ItemModelGen;
 import com.nukateam.cgs.common.faundation.registry.ModBlocks;
 import com.nukateam.cgs.common.faundation.registry.ModGuns;
 import com.nukateam.cgs.common.faundation.registry.ModItems;
@@ -14,38 +14,26 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
-
 import java.util.HashMap;
+
+import static com.nukateam.cgs.common.datagen.util.DatagenUtils.dataGenClasses;
+import static com.nukateam.cgs.common.datagen.util.DatagenUtils.handleFields;
 
 @SuppressWarnings("unchecked")
 public class ModItemModelProvider extends ItemModelProvider {
+
     public ModItemModelProvider(PackOutput output, ExistingFileHelper exFileHelper) {
         super(output, Gunsmithing.MOD_ID, exFileHelper);
     }
 
     @Override
     protected void registerModels() {
-        generate(ModGuns.class);
-        generate(ModItems.class);
-        generate(ModBlocks.class);
-    }
-
-    private void generate(Class<?> modItemsClass) {
-        var fields = modItemsClass.getFields();
-
-        try {
-            for (var field : fields) {
-                var filedObject = field.get(null);
-
-                if (field.isAnnotationPresent(DataGen.class))
-                    handleDataGenField(filedObject, field.getAnnotation(DataGen.class));
-            }
-        } catch (Exception e) {
-            Gunsmithing.LOGGER.error(e.getMessage(), e);
+        for(var clazz : dataGenClasses){
+            handleFields(clazz, ItemModelGen.class, this::handleDataGenField);
         }
     }
 
-    private void handleDataGenField(Object obj, DataGen annotation) {
+    private void handleDataGenField(Object obj, ItemModelGen annotation) {
         if (obj instanceof RegistryObject<?>) {
             switch (annotation.type()) {
                 case ITEM -> genItems((RegistryObject<Item>) obj, annotation);
@@ -59,7 +47,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         }
     }
 
-    private void genItems(RegistryObject<Item> item, DataGen annotation) {
+    private void genItems(RegistryObject<Item> item, ItemModelGen annotation) {
         var modelFile = getModelFile(annotation.parent().getPath());
 
         switch (annotation.parent()) {
@@ -90,7 +78,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         getBuilder(block.getId().getPath()).parent(modelFile).texture("layer0", "block/" + textureBlock.getId().getPath());
     }
 
-    private ItemModelBuilder itemModel(RegistryObject<?> item, ModelFile modelFile, DataGen dataGen) {
+    private ItemModelBuilder itemModel(RegistryObject<?> item, ModelFile modelFile, ItemModelGen dataGen) {
         var path = item.getId().getPath();
 
         var texture = "item/";

@@ -1,10 +1,13 @@
 package com.nukateam.cgs.common.datagen;
 
 import com.nukateam.cgs.Gunsmithing;
+import com.nukateam.cgs.common.data.BlockStateGen;
+import com.nukateam.cgs.common.data.ItemModelGen;
 import com.nukateam.cgs.common.faundation.registry.ModBlocks;
 import net.minecraft.client.model.Model;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
@@ -14,7 +17,11 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.HashMap;
 import java.util.function.Function;
+
+import static com.nukateam.cgs.common.datagen.util.DatagenUtils.dataGenClasses;
+import static com.nukateam.cgs.common.datagen.util.DatagenUtils.handleFields;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -23,12 +30,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        blockWithItem(ModBlocks.LEAD_ORE);
-        blockWithItem(ModBlocks.DEEPSLATE_LEAD_ORE);
-
-        blockWithItem(ModBlocks.LEAD_BLOCK);
-        blockWithItem(ModBlocks.RAW_LEAD_BLOCK);
+        for(var clazz : dataGenClasses){
+            handleFields(clazz, BlockStateGen.class, this::handleDataGenField);
+        }
     }
+
+    private void handleDataGenField(Object obj, BlockStateGen annotation) {
+        if (obj instanceof RegistryObject<?> registryObject && registryObject.get() instanceof Block) {
+            blockWithItem((RegistryObject<Block>)registryObject);
+        }
+    }
+
 
     private void saplingBlock(RegistryObject<Block> blockRegistryObject) {
         simpleBlock(blockRegistryObject.get(),

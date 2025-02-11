@@ -2,10 +2,8 @@
 package com.nukateam.cgs.common.faundation.registry;
 
 import com.nukateam.cgs.Gunsmithing;
-import com.nukateam.cgs.common.data.DataGen;
 import com.nukateam.cgs.common.faundation.item.BaseGunItem;
 import com.nukateam.cgs.common.faundation.item.GatlingItem;
-import com.nukateam.ntgl.common.foundation.item.AmmoItem;
 import com.nukateam.ntgl.common.foundation.item.GunItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
