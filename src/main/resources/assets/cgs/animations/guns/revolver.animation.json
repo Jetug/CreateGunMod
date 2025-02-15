@@ -397,8 +397,8 @@
 				"1.875": {
 					"effect": "rounds_in"
 				},
-				"3.125": {
-					"effect": "reload_end"
+				"3.0833": {
+					"effect": "chamber_close"
 				}
 			}
 		},

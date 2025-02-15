@@ -20,5 +20,7 @@
   "item.cgs.lead_nugget": "Lead Nugget",
 
   "block.cgs.lead_ore": "Lead Ore",
-  "block.cgs.deepslate_lead_ore": "Deepslate Lead Ore"
+  "block.cgs.deepslate_lead_ore": "Deepslate Lead Ore",
+  "block.cgs.lead_block": "Block Of Lead",
+  "block.cgs.raw_lead_block": "Block Of Raw Lead "
 }

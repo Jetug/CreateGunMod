@@ -19,5 +19,7 @@
   "item.cgs.lead_nugget": "Кусочек свинца",
 
   "block.cgs.lead_ore": "Свинцовая руда",
-  "block.cgs.deepslate_lead_ore": "Свинцовоносный глубинный сланец"
+  "block.cgs.deepslate_lead_ore": "Свинцовоносный глубинный сланец",
+  "block.cgs.lead_block": "Блок свинца",
+  "block.cgs.raw_lead_block": "Блок рудного свинца"
 }
