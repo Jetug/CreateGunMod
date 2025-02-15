@@ -16,8 +16,21 @@
    ]},
 
    "gun.revolver.fire": { "subtitle": "subtitle.ntgl.fire", "sounds": [
-      { "name": "cgs:gun/revolver/fire_01" },
-      { "name": "cgs:gun/revolver/fire_02" },
-      { "name": "cgs:gun/revolver/fire_03" }
+      { "name": "cgs:gun/revolver/fire/fire_01" },
+      { "name": "cgs:gun/revolver/fire/fire_02" },
+      { "name": "cgs:gun/revolver/fire/fire_03" }
+   ]},
+
+   "gun.revolver.chamber_open": { "subtitle": "subtitle.ntgl.reload", "sounds": [
+      { "name": "cgs:gun/revolver/reload/chamber_open" }
+   ]},
+   "gun.revolver.chamber_close": { "subtitle": "subtitle.ntgl.reload", "sounds": [
+      { "name": "cgs:gun/revolver/reload/chamber_close" }
+   ]},
+   "gun.revolver.rounds_in": { "subtitle": "subtitle.ntgl.reload", "sounds": [
+      { "name": "cgs:gun/revolver/reload/rounds_in" }
+   ]},
+   "gun.revolver.rounds_out": { "subtitle": "subtitle.ntgl.reload", "sounds": [
+      { "name": "cgs:gun/revolver/reload/rounds_out" }
    ]}
 }

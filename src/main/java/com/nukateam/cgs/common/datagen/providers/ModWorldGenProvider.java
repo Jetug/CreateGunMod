@@ -1,6 +1,6 @@
-package com.nukateam.cgs.common.datagen;
+package com.nukateam.cgs.common.datagen.providers;
 
-import com.nukateam.cgs.Gunsmithing;
+import com.nukateam.cgs.common.datagen.DataGenConfig;
 import com.nukateam.cgs.common.faundation.worldgen.BiomeModifiers;
 import com.nukateam.cgs.common.faundation.worldgen.ConfiguredFeatures;
 import com.nukateam.cgs.common.faundation.worldgen.PlacedFeatures;
@@ -21,6 +21,6 @@ public class ModWorldGenProvider extends DatapackBuiltinEntriesProvider {
             .add(ForgeRegistries.Keys.BIOME_MODIFIERS, BiomeModifiers::bootstrap);
 
     public ModWorldGenProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries, BUILDER, Set.of(Gunsmithing.MOD_ID));
+        super(output, registries, BUILDER, Set.of(DataGenConfig.DATA_MOD_ID));
     }
 }

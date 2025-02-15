@@ -1,6 +1,7 @@
-package com.nukateam.cgs.common.datagen;
+package com.nukateam.cgs.common.datagen.providers;
 
 import com.nukateam.cgs.Gunsmithing;
+import com.nukateam.cgs.common.datagen.DataGenConfig;
 import com.nukateam.cgs.common.faundation.registry.ModBlocks;
 import com.nukateam.cgs.common.faundation.registry.ModItems;
 import net.minecraft.data.PackOutput;
@@ -61,7 +62,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("SSS")
                 .define('S', ingredient)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(writer,  Gunsmithing.MOD_ID + ":" + getItemName(result) + "_" + "from" + "_" + getItemName(ingredient));
+                .save(writer,  DataGenConfig.DATA_MOD_ID + ":" + getItemName(result) + "_" + "from" + "_" + getItemName(ingredient));
     }
 
     protected static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTIme, String pGroup) {
@@ -79,7 +80,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), pCategory, pResult,
                     pExperience, pCookingTime, pCookingSerializer)
                     .group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike))
-                    .save(pFinishedRecipeConsumer,  Gunsmithing.MOD_ID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
+                    .save(pFinishedRecipeConsumer,  DataGenConfig.DATA_MOD_ID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
         }
     }
 }

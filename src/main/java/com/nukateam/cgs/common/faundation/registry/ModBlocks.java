@@ -2,7 +2,7 @@
 package com.nukateam.cgs.common.faundation.registry;
 
 import com.nukateam.cgs.Gunsmithing;
-import com.nukateam.cgs.common.data.BlockStateGen;
+import com.nukateam.cgs.common.datagen.annotations.BlockStateGen;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;

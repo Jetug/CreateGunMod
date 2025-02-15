@@ -2,7 +2,7 @@
 package com.nukateam.cgs.common.faundation.registry;
 
 import com.nukateam.cgs.Gunsmithing;
-import com.nukateam.cgs.common.data.ItemModelGen;
+import com.nukateam.cgs.common.datagen.annotations.ItemModelGen;
 import com.nukateam.ntgl.common.data.attachment.impl.GenericAttachment;
 import com.nukateam.ntgl.common.foundation.item.AmmoItem;
 import com.nukateam.ntgl.common.foundation.item.attachment.AttachmentItem;

@@ -1,4 +1,4 @@
-package com.nukateam.cgs.common.data;
+package com.nukateam.cgs.common.datagen.annotations;
 
 public enum ItemType {
     ITEM("item"),

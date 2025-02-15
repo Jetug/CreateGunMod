@@ -1,10 +1,7 @@
-package com.nukateam.cgs.common.datagen;
+package com.nukateam.cgs.common.datagen.providers;
 
-import com.nukateam.cgs.Gunsmithing;
-import com.nukateam.cgs.common.data.ItemModelGen;
-import com.nukateam.cgs.common.faundation.registry.ModBlocks;
-import com.nukateam.cgs.common.faundation.registry.ModGuns;
-import com.nukateam.cgs.common.faundation.registry.ModItems;
+import com.nukateam.cgs.common.datagen.DataGenConfig;
+import com.nukateam.cgs.common.datagen.annotations.ItemModelGen;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -16,14 +13,13 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import java.util.HashMap;
 
-import static com.nukateam.cgs.common.datagen.util.DatagenUtils.dataGenClasses;
-import static com.nukateam.cgs.common.datagen.util.DatagenUtils.handleFields;
+import static com.nukateam.cgs.common.datagen.DataGenConfig.dataGenClasses;
+import static com.nukateam.cgs.common.datagen.DataGenUtils.handleFields;
 
 @SuppressWarnings("unchecked")
 public class ModItemModelProvider extends ItemModelProvider {
-
     public ModItemModelProvider(PackOutput output, ExistingFileHelper exFileHelper) {
-        super(output, Gunsmithing.MOD_ID, exFileHelper);
+        super(output, DataGenConfig.DATA_MOD_ID, exFileHelper);
     }
 
     @Override

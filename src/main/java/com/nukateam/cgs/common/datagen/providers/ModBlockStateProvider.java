@@ -1,37 +1,28 @@
-package com.nukateam.cgs.common.datagen;
+package com.nukateam.cgs.common.datagen.providers;
 
 import com.nukateam.cgs.Gunsmithing;
-import com.nukateam.cgs.common.data.BlockStateGen;
-import com.nukateam.cgs.common.data.ItemModelGen;
-import com.nukateam.cgs.common.faundation.registry.ModBlocks;
-import net.minecraft.client.model.Model;
+import com.nukateam.cgs.common.datagen.DataGenConfig;
+import com.nukateam.cgs.common.datagen.DataGenUtils;
+import com.nukateam.cgs.common.datagen.annotations.BlockStateGen;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.util.HashMap;
-import java.util.function.Function;
-
-import static com.nukateam.cgs.common.datagen.util.DatagenUtils.dataGenClasses;
-import static com.nukateam.cgs.common.datagen.util.DatagenUtils.handleFields;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
-        super(output, Gunsmithing.MOD_ID, exFileHelper);
+        super(output, DataGenConfig.DATA_MOD_ID, exFileHelper);
     }
 
     @Override
     protected void registerStatesAndModels() {
-        for(var clazz : dataGenClasses){
-            handleFields(clazz, BlockStateGen.class, this::handleDataGenField);
+        for(var clazz : DataGenConfig.dataGenClasses){
+            DataGenUtils.handleFields(clazz, BlockStateGen.class, this::handleDataGenField);
         }
     }
 
@@ -72,7 +63,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     private void blockItem(RegistryObject<Block> blockRegistryObject) {
-        simpleBlockItem(blockRegistryObject.get(), new ModelFile.UncheckedModelFile(Gunsmithing.MOD_ID +
+        simpleBlockItem(blockRegistryObject.get(), new ModelFile.UncheckedModelFile(DataGenConfig.DATA_MOD_ID +
                 ":block/" + ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath()));
     }
 

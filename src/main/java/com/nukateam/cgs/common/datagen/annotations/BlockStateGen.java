@@ -1,4 +1,4 @@
-package com.nukateam.cgs.common.data;
+package com.nukateam.cgs.common.datagen.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

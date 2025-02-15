@@ -6,6 +6,7 @@ import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -25,10 +26,12 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     protected void generate() {
         this.dropSelf(ModBlocks.LEAD_BLOCK.get());
         this.dropSelf(ModBlocks.RAW_LEAD_BLOCK.get());
-        this.add(ModBlocks.LEAD_ORE.get(),
-                block -> createCopperLikeOreDrops(ModBlocks.LEAD_ORE.get(), ModItems.RAW_LEAD.get()));
-        this.add(ModBlocks.DEEPSLATE_LEAD_ORE.get(),
-                block -> createCopperLikeOreDrops(ModBlocks.DEEPSLATE_LEAD_ORE.get(), ModItems.RAW_LEAD.get()));
+        this.dropItem(ModBlocks.LEAD_ORE.get(), ModItems.RAW_LEAD.get());
+        this.dropItem(ModBlocks.DEEPSLATE_LEAD_ORE.get(), ModItems.RAW_LEAD.get());
+    }
+
+    private void dropItem(Block block, Item drop) {
+        this.add(block, b -> createCopperLikeOreDrops(block, drop));
     }
 
     protected LootTable.Builder createCopperLikeOreDrops(Block pBlock, Item item) {

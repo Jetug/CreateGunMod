@@ -1,4 +1,4 @@
-package com.nukateam.cgs.common.datagen;
+package com.nukateam.cgs.common.datagen.providers;
 
 import com.nukateam.cgs.common.datagen.loot.ModBlockLootTables;
 import net.minecraft.data.PackOutput;
