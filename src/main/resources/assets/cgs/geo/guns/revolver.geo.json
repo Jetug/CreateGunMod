@@ -345,7 +345,7 @@
 				},
 				{
 					"name": "bullets",
-					"parent": "chamber",
+					"parent": "moving_upper",
 					"pivot": [0, 9.125, -1]
 				},
 				{
