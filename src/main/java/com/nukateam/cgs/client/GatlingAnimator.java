@@ -3,13 +3,21 @@ package com.nukateam.cgs.client;
 import com.nukateam.cgs.common.faundation.registry.CgsAttachmentTypes;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.GunAnimator;
+import com.nukateam.ntgl.client.audio.GunShotSound;
 import com.nukateam.ntgl.client.event.ClientHandler;
 import com.nukateam.ntgl.client.util.handler.ClientReloadHandler;
+import com.nukateam.ntgl.client.util.util.TransformUtils;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.foundation.item.GunItem;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
+import com.simibubi.create.AllSoundEvents;
+import com.simibubi.create.content.fluids.tank.FluidTankBlockEntity;
 import mod.azure.azurelib.core.animation.*;
 import mod.azure.azurelib.core.object.PlayState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemDisplayContext;
 
@@ -109,10 +117,38 @@ public class GatlingAnimator extends GunAnimator {
     }
 
     protected int aTicks = 0;
+    protected int ticks = 0;
 
     @Override
     public void tick() {
         super.tick();
+
+        this.ticks++;
+
+        var player = minecraft.player;
+        var level = minecraft.level;
+        var isShooting = shootingHandler.isShooting();
+        var isNotPaused = !minecraft.getInstance().isPaused();
+        var frequency = isShooting ? 5 : 20;
+        var volume = isShooting ? 6f : 0.6f;
+
+        if(player != null && isHasEngine()
+                && this.ticks % frequency == 0
+                && TransformUtils.isHandTransform(transformType)
+                && hasGunInHands(player)
+                && isNotPaused
+        ){
+            float pitch = 1.18f - minecraft.level.random.nextFloat() * .25f;
+
+            minecraft.level.playLocalSound(player.position().x, player.position().y, player.position().z,
+                        SoundEvents.CANDLE_EXTINGUISH, SoundSource.BLOCKS, volume, pitch, false);
+
+            AllSoundEvents.STEAM.playAt(level, player.position(), volume / 16, .8f, false);
+
+//            minecraft.getSoundManager().play(new GunShotSound(sound, SoundSource.PLAYERS,
+//                    player.position(), 1, 1, true));
+
+        }
 
 //        var entity = getEntity();
 //        var arm = getArm();
@@ -129,5 +165,14 @@ public class GatlingAnimator extends GunAnimator {
 //        else if(!isShooting){
 //            GATLING_TRIGGER.tryTriggerAnimation("void");
 //        }
+    }
+
+    private boolean hasGunInHands(LocalPlayer player) {
+        return player.getMainHandItem() == getStack() || player.getOffhandItem() == getStack();
+    }
+
+    private boolean isHasEngine() {
+        return !getStack().isEmpty()
+                && Gun.hasAttachmentEquipped(getStack(), getGunItem().getGun(), CgsAttachmentTypes.ENGINE);
     }
 }

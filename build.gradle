@@ -122,7 +122,7 @@ dependencies {
     implementation fg.deobf("curse.maven:cyanide-541676:4824162")
     implementation fg.deobf("curse.maven:playeranimator-658587:4587214")
 
-    implementation fg.deobf('com.nukateam:ntgl:1.20.1-1.6.4')
+    implementation fg.deobf('com.nukateam:ntgl:1.20.1-1.6.6')
 
     implementation fg.deobf("mezz.jei:jei-1.20.1-common-api:${jei_version}")
     implementation fg.deobf("mezz.jei:jei-1.20.1-forge-api:${jei_version}")
