@@ -34,6 +34,51 @@
       "yOffset": 3.2,
       "zOffset": 0.0,
       "fovModifier": 0.7
+    },
+    "attachments": {
+      "ntgl:scope": [
+        {
+          "name": "scope",
+          "item": "cgs:scope",
+          "xOffset": 0,
+          "yOffset": 0,
+          "zOffset": 0
+        }
+      ],
+      "ntgl:stock": [
+        {
+          "name": "stock",
+          "item": "cgs:stock"
+        }
+      ],
+      "ntgl:barrel": [
+        {
+          "name": "long_barrel",
+          "item": "cgs:long_barrel",
+          "hide": ["muzzle_sight"]
+        },
+        {
+          "name": "silencer",
+          "item": "cgs:silencer"
+        }
+      ],
+      "cgs:chamber": [
+        {
+          "name": "belt",
+          "hide": ["chamber", "bullets"],
+          "item": "cgs:round_belt"
+        }
+      ],
+      "cgs:frame": [
+        {
+          "name": "auto",
+          "bones": [
+            "piston_head",
+            "piston"
+          ],
+          "item": "cgs:auto_fire"
+        }
+      ]
     }
   }
 }

@@ -2,7 +2,7 @@
   "visible": true,
   "damage": 1.0,
   "size": 0.2,
-  "speed": 30.0,
+  "speed": 50.0,
   "life": 180,
   "gravity": true
 }

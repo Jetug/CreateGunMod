@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "cgs:item/steam_engine"
+    "layer0": "cgs:item/attachments/steam_engine"
   }
 }

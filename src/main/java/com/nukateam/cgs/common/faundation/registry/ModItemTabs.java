@@ -29,6 +29,8 @@ public class ModItemTabs {
     private static void getWeaponTab(ItemDisplayParameters itemDisplayParameters, Output output) {
         registerGuns(output, ModGuns.ITEMS);
         registerItems(output, ModItems.ITEMS);
+        registerItems(output, AttachmentItems.ITEMS);
+
     }
 
     private static void registerItems(Output output, DeferredRegister<Item> register) {
