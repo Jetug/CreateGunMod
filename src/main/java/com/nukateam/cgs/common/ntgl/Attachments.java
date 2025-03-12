@@ -38,7 +38,7 @@ public class Attachments {
     public static final IGunModifier BELT_MODIFIERS = new IGunModifier() {
         @Override
         public int modifyReloadTime(int reloadTime) {
-            return 25;
+            return 20;
         }
 
         @Override
@@ -49,6 +49,13 @@ public class Attachments {
         @Override
         public LoadingType modifyLoadingType(LoadingType loadingType) {
             return LoadingType.PER_CARTRIDGE;
+        }
+    };
+
+    public static final IGunModifier AUTO_FIRE = new IGunModifier() {
+        @Override
+        public int modifyFireDelay(int chargeTime) {
+            return 0;
         }
     };
 

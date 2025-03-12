@@ -14,7 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
 public class GatlingRenderer extends DynamicGunRenderer<GatlingAnimator> {
-    public static final DataTicket<Float> ROTATION = new DataTicket<>("rot", Float.class);
+//    public static final DataTicket<Float> ROTATION = new DataTicket<>("rot", Float.class);
 
     public GatlingRenderer() {
         super(new GatlingModel());
@@ -26,7 +26,7 @@ public class GatlingRenderer extends DynamicGunRenderer<GatlingAnimator> {
                        @Nullable VertexConsumer buffer, int packedLight) {
 
         poseStack.pushPose();
-        poseStack.translate(0, /*InputEvents.Y / 16D*/ - 6 / 16D,0);
+//        poseStack.translate(0, /*InputEvents.Y / 16D*/ - 6 / 16D,0);
         super.render(entity, stack, transformType, poseStack, bufferSource, renderType, buffer, packedLight);
         poseStack.popPose();
     }

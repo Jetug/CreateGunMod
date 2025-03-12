@@ -18,6 +18,7 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraftforge.event.TickEvent;
 
 import static com.nukateam.example.common.util.constants.Animations.*;
+import static com.nukateam.ntgl.common.util.util.GunModifierHelper.isGun;
 import static mod.azure.azurelib.core.animation.Animation.LoopType.*;
 import static mod.azure.azurelib.core.animation.RawAnimation.begin;
 
@@ -61,7 +62,8 @@ public class GatlingAnimator extends GunAnimator {
 
     @Override
     public void tick(TickEvent event) {
-        if (event.phase == TickEvent.Phase.START) {
+//        super.tick(event);
+        if (event.phase == TickEvent.Phase.START && isGun(getStack())) {
             super.tick(event);
             this.ticks++;
             this.rate = GunModifierHelper.getRate(getStack());
@@ -70,39 +72,6 @@ public class GatlingAnimator extends GunAnimator {
 
             aTicks = Math.max(aTicks - 1, 0);
         }
-    }
-
-    private void playEngineSound() {
-        if (shouldPlayEngineSound()) {
-            var player = minecraft.player;
-            var isShooting = shootingHandler.isShooting();
-            var pitch = 1.18f - minecraft.level.random.nextFloat() * .25f;
-            var volume = isShooting ? 6f : 0.6f;
-
-            assert player != null;
-            minecraft.level.playLocalSound(
-                    player.position().x,
-                    player.position().y,
-                    player.position().z,
-                    SoundEvents.CANDLE_EXTINGUISH,
-                    SoundSource.BLOCKS,
-                    volume, pitch, false);
-
-            AllSoundEvents.STEAM.playAt(minecraft.level, player.position(), volume / 16, .8f, false);
-        }
-    }
-
-    protected boolean shouldPlayEngineSound() {
-        var player = minecraft.player;
-        var isShooting = shootingHandler.isShooting();
-        var isNotPaused = !minecraft.getInstance().isPaused();
-        var frequency = isShooting ? 5 : 20;
-
-        return player != null && hasEngine()
-                && this.ticks % frequency == 0
-                && TransformUtils.isHandTransform(transformType)
-                && hasGunInHands(player)
-                && isNotPaused;
     }
 
     protected AnimationController.AnimationStateHandler<GunAnimator> animateHandle() {
@@ -137,6 +106,39 @@ public class GatlingAnimator extends GunAnimator {
             return event.setAndContinue(animation);
 
         };
+    }
+
+    private void playEngineSound() {
+        if (shouldPlayEngineSound()) {
+            var player = minecraft.player;
+            var isShooting = shootingHandler.isShooting();
+            var pitch = 1.18f - minecraft.level.random.nextFloat() * .25f;
+            var volume = isShooting ? 6f : 0.6f;
+
+            assert player != null;
+            minecraft.level.playLocalSound(
+                    player.position().x,
+                    player.position().y,
+                    player.position().z,
+                    SoundEvents.CANDLE_EXTINGUISH,
+                    SoundSource.BLOCKS,
+                    volume, pitch, false);
+
+            AllSoundEvents.STEAM.playAt(minecraft.level, player.position(), volume / 16, .8f, false);
+        }
+    }
+
+    private boolean shouldPlayEngineSound() {
+        var player = minecraft.player;
+        var isShooting = shootingHandler.isShooting();
+        var isNotPaused = !minecraft.getInstance().isPaused();
+        var frequency = isShooting ? 5 : 20;
+
+        return player != null && hasEngine()
+                && this.ticks % frequency == 0
+                && TransformUtils.isHandTransform(transformType)
+                && hasGunInHands(player)
+                && isNotPaused;
     }
 
     private boolean hasGunInHands(LocalPlayer player) {

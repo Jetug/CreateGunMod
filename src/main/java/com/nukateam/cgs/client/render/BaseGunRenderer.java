@@ -23,7 +23,7 @@ public class BaseGunRenderer extends DynamicGunRenderer<GunAnimator> {
                        @Nullable VertexConsumer buffer, int packedLight) {
 
         poseStack.pushPose();
-        poseStack.translate(0, /*InputEvents.Y / 16D*/ - 6 / 16D,0);
+//        poseStack.translate(0, /*InputEvents.Y / 16D*/ - 6 / 16D,0);
         super.render(entity, stack, transformType, poseStack, bufferSource, renderType, buffer, packedLight);
         poseStack.popPose();
     }

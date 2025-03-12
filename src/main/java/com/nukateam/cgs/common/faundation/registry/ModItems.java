@@ -44,6 +44,9 @@ public class ModItems {
     @ItemModelGen
     public static final RegistryObject<Item> ROUND_10MM = registerAmmo("round_10mm");
 
+//    @ItemModelGen
+    public static final RegistryObject<Item> BALL = registerAmmo("ball");
+
     public static RegistryObject<Item> registerAmmo(String name) {
         return ITEMS.register(name, () -> new AmmoItem(new Item.Properties()));
     }

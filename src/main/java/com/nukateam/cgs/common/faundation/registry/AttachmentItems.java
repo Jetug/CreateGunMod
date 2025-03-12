@@ -50,7 +50,7 @@ public class AttachmentItems {
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> AUTO = ITEMS.register("auto_fire",
-            () -> new AttachmentItem<>(CgsAttachmentTypes.FRAME, GenericAttachment.create(),
+            () -> new AttachmentItem<>(CgsAttachmentTypes.FRAME, GenericAttachment.create(AUTO_FIRE),
                     new Item.Properties().stacksTo(1)));
 
     public static void register(IEventBus eventBus) {
