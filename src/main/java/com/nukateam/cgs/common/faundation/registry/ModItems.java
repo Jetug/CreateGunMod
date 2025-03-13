@@ -38,14 +38,21 @@ public class ModItems {
     @ItemModelGen
     public static final RegistryObject<Item> SHELL_10MM = registerItem("shell_10mm");
 
+//    @ItemModelGen
+    public static final RegistryObject<Item> SHELL = registerItem("shotgun_shell");
+
     @ItemModelGen
     public static final RegistryObject<Item> ROUND_7MM = registerAmmo("round_7mm");
 
     @ItemModelGen
     public static final RegistryObject<Item> ROUND_10MM = registerAmmo("round_10mm");
 
-//    @ItemModelGen
+    @ItemModelGen
+    public static final RegistryObject<Item> SHOTGUN_ROUND = registerAmmo("shotgun_round");
+
     public static final RegistryObject<Item> BALL = registerAmmo("ball");
+
+    public static final RegistryObject<Item> NAIL = registerAmmo("nail");
 
     public static RegistryObject<Item> registerAmmo(String name) {
         return ITEMS.register(name, () -> new AmmoItem(new Item.Properties()));

@@ -1,0 +1,51 @@
+{
+  "general": {
+    "rate": 3,
+    "fireMode": ["ntgl:auto", "ntgl:semi"],
+    "gripType": "ntgl:two_handed",
+    "maxAmmo": 40,
+    "damage": 10.0,
+    "reloadTime": 60,
+    "recoilAngle": 2.0,
+    "recoilKick": 0.3,
+    "recoilAdsReduction": 0.20,
+    "alwaysSpread": true,
+    "spread": 1.0,
+    "ammo": [
+      "cgs:nail"
+    ]
+  },
+  "textures": {
+    "default" : "cgs:nailgun"
+  },
+  "sounds": {
+    "fire": "cgs:gun.revolver.fire",
+    "chamber_open"  : "cgs:gun.revolver.chamber_open",
+    "chamber_close" : "cgs:gun.revolver.chamber_close",
+    "rounds_in"     : "cgs:gun.revolver.rounds_in",
+    "rounds_out"    : "cgs:gun.revolver.rounds_out"
+  },
+  "modules": {
+    "attachmentScreen": true,
+    "zoom": {
+      "xOffset": 0.0,
+      "yOffset": 3.2,
+      "zOffset": 0.0,
+      "fovModifier": 0.7
+    },
+    "attachments": {
+      "ntgl:stock": [
+        {
+          "name": "stock",
+          "item": "cgs:stock"
+        }
+      ],
+      "ntgl:barrel": [
+        {
+          "name": "split_barrel",
+          "item": "cgs:split_barrel"
+        }
+      ]
+    }
+  }
+}

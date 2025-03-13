@@ -2,87 +2,77 @@
   "credit": "Made with Blockbench",
   "parent": "builtin/entity",
   "texture_size": [
-    512,
-    512
+    256,
+    256
   ],
   "display": {
     "thirdperson_righthand": {
       "translation": [
-        1.75,
-        -3,
-        -3
-      ],
-      "scale": [
-        0.81,
-        0.81,
-        0.81
+        0,
+        -0.75,
+        -5.75
       ]
     },
     "thirdperson_lefthand": {
       "translation": [
-        1.75,
-        -3,
-        -3
-      ],
-      "scale": [
-        0.81,
-        0.81,
-        0.81
+        0,
+        -0.75,
+        -5.75
       ]
     },
     "firstperson_righthand": {
-      "translation": [
-        0.25,
+      "rotation": [
         0,
-        -1.75
+        0,
+        9
+      ],
+      "translation": [
+        -0.25,
+        2.25,
+        1
       ]
     },
     "firstperson_lefthand": {
-      "translation": [
-        0.25,
+      "rotation": [
         0,
-        -1.75
+        0,
+        9
+      ],
+      "translation": [
+        -0.25,
+        2.25,
+        1
       ]
     },
     "ground": {
       "translation": [
         0,
-        4,
+        2.5,
         0
-      ],
-      "scale": [
-        0.6875,
-        0.6875,
-        0.6875
       ]
     },
     "gui": {
       "rotation": [
-        -135.88,
-        46.82,
-        149.94
+        -126.16,
+        47.79,
+        140.58
       ],
       "translation": [
+        1,
         0,
-        -1.25,
         0
       ],
       "scale": [
-        0.53125,
-        0.53125,
-        0.53125
+        0.70313,
+        0.70313,
+        0.70313
       ]
     },
     "head": {
-      "translation": [
-        0,
-        1.5,
-        -5
-      ],
       "scale": [
-        1.70703,
-        1.70703,
-        1.70703
+        2,
+        2,
+        2
       ]
     },
     "fixed": {
@@ -92,9 +82,14 @@
         0
       ],
       "translation": [
+        -0.25,
         0,
-        0.25,
-        0
+        -0.5
+      ],
+      "scale": [
+        1.41602,
+        1.41602,
+        1.41602
       ]
     }
   }

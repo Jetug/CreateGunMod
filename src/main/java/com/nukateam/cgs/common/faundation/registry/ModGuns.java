@@ -19,6 +19,8 @@ public class ModGuns {
     public static final RegistryObject<GunItem> REVOLVER = registerGun("revolver", RevolverItem::new);
     public static final RegistryObject<GunItem> GATLING = registerGun("gatling", GatlingItem::new);
     public static final RegistryObject<GunItem> FLINTLOCK = registerGun("flintlock", FlintlockItem::new);
+    public static final RegistryObject<GunItem> NAILGUN = registerGun("nailgun", BaseGunItem::new);
+    public static final RegistryObject<GunItem> SHOTGUN = registerGun("shotgun", ShotgunItem::new);
 
     private static RegistryObject<GunItem> registerGun(String name, Function<Item.Properties, GunItem> item) {
         return ITEMS.register(name,

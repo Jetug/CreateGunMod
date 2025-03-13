@@ -31,7 +31,7 @@
     "attachmentScreen": true,
     "zoom": {
       "xOffset": 0.0,
-      "yOffset": 4.8,
+      "yOffset": 8.2,
       "zOffset": 0.0,
       "fovModifier": 0.7
     },
@@ -41,7 +41,7 @@
           "name": "iron_sight",
           "item": "cgs:iron_sight",
           "xOffset": 0,
-          "yOffset": -2,
+          "yOffset": 0,
           "zOffset": 0
         }
       ],

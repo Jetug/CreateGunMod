@@ -1,0 +1,48 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"hold": {
+			"loop": true,
+			"bones": {
+				"right_arm_anim": {
+					"rotation": {
+						"vector": [7.5, 0, 0]
+					},
+					"position": {
+						"vector": [8.25, 1, 6.5]
+					}
+				},
+				"left_arm_anim": {
+					"rotation": {
+						"vector": [-12.15556, 15.36623, -25.88832]
+					},
+					"position": {
+						"vector": [-5, -0.25, -2]
+					}
+				}
+			}
+		},
+		"hold_one_hand": {
+			"loop": true,
+			"bones": {
+				"right_arm_anim": {
+					"rotation": {
+						"vector": [7.5, 0, 0]
+					},
+					"position": {
+						"vector": [8.25, 1, 6.5]
+					}
+				},
+				"left_arm_anim": {
+					"position": {
+						"vector": [0, -1, 13]
+					},
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				}
+			}
+		}
+	},
+	"azurelib_format_version": 2
+}

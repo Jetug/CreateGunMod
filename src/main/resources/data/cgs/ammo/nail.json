@@ -1,8 +1,8 @@
 {
   "visible": true,
   "damage": 1.0,
-  "size": 0.5,
-  "speed": 10.0,
-  "life": 100,
+  "size": 0.2,
+  "speed": 20.0,
+  "life": 180,
   "gravity": true
 }

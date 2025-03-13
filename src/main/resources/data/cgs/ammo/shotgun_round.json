@@ -1,0 +1,9 @@
+{
+  "visible": true,
+  "damage": 1.0,
+  "size": 0.2,
+  "speed": 20.0,
+  "life": 180,
+  "projectileAmount": 6,
+  "gravity": true
+}
