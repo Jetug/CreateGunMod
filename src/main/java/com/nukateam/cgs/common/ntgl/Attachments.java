@@ -107,4 +107,41 @@ public class Attachments {
 
     };
 
+    public static final IGunModifier SHOTGUN_DRUM = new IGunModifier() {
+        @Override
+        public int modifyMaxAmmo(int maxAmmo) {
+            return 8;
+        }
+    };
+
+    public static final IGunModifier SHOTGUN_PUMP = new IGunModifier() {
+        @Override
+        public int modifyMaxAmmo(int maxAmmo) {
+            return 10;
+        }
+
+        @Override
+        public GripType modifyGripType(GripType gripType) {
+            return GripType.TWO_HANDED;
+        }
+    };
+
+    public static final IGunModifier SHOTGUN_LONG_BARREL = new IGunModifier() {
+        @Override
+        public GripType modifyGripType(GripType gripType) {
+            return GripType.TWO_HANDED;
+        }
+
+        @Override
+        public float modifyProjectileSpread(float spread) {
+            return spread * 0.5f;
+        }
+    };
+
+    public static final IGunModifier SHOTGUN_SPREAD_BARREL = new IGunModifier() {
+        @Override
+        public float modifyProjectileSpread(float spread) {
+            return spread * 4;
+        }
+    };
 }

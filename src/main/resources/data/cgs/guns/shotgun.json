@@ -44,11 +44,11 @@
       "ntgl:barrel": [
         {
           "name": "long_barrels",
-          "item": "cgs:long_barrel"
+          "item": "cgs:shotgun_long_barrel"
         },
         {
           "name": "spread_barrels",
-          "item": "cgs:spread_barrel"
+          "item": "cgs:shotgun_spread_barrel"
         }
       ],
       "ntgl:magazine": [

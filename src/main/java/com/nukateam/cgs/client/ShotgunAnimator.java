@@ -46,20 +46,15 @@ public class ShotgunAnimator extends GunAnimator {
 
     private AnimationController.AnimationStateHandler<GunAnimator> animateCock() {
         return (event) -> {
-            var name = "";
-            switch (ammo){
-                case 0:
-                    name = "empty_both";
-                    break;
-                case 1:
-                    animation.then("empty_left", LOOP);
-                    break;
-                case 2:
-                    animation.then("full", LOOP);
-                    break;
-            }
+            var ammo = Gun.getAmmo(getStack());
+            var name = switch (ammo) {
+                case 0 -> "empty_both";
+                case 1 -> "empty_left";
+                default -> "full";
+            };
 
-            var animation = begin().then("full", LOOP);
+            var animation = begin().then(name, LOOP);
+            animationHelper.syncAnimation(event, name, rate);
             return event.setAndContinue(animation);
         };
     }
