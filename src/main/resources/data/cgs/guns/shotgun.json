@@ -10,7 +10,7 @@
     "recoilKick": 0.8,
     "recoilAdsReduction": 0.15,
     "alwaysSpread": true,
-    "spread": 1.0,
+    "spread": 2.0,
     "ammo": [
       "cgs:shotgun_round"
     ]

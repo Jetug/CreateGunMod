@@ -39,7 +39,7 @@ public class ModItems {
     public static final RegistryObject<Item> SHELL_10MM = registerItem("shell_10mm");
 
 //    @ItemModelGen
-    public static final RegistryObject<Item> SHELL = registerItem("shotgun_shell");
+    public static final RegistryObject<Item> SHOTGUN_SHELL = registerItem("shell_shotgun");
 
     @ItemModelGen
     public static final RegistryObject<Item> ROUND_7MM = registerAmmo("round_7mm");
