@@ -1,0 +1,51 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "minecraft:paper"
+  },
+  "transitionalItem": {
+    "item": "minecraft:paper"
+  },
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "minecraft:paper"
+        },
+        {
+          "item": "minecraft:gunpowder"
+        }
+      ],
+      "results": [
+        {
+          "item": "minecraft:paper"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "minecraft:paper"
+        },
+        {
+          "tag": "forge:nuggets/lead"
+        }
+      ],
+      "results": [
+        {
+          "item": "minecraft:paper"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "item": "cgs:ball",
+      "count": 3,
+      "chance": 100.0
+    }
+  ],
+  "loops": 1
+}

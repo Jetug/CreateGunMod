@@ -4,7 +4,7 @@
   "size": 0.2,
   "speed": 20.0,
   "life": 180,
-  "spread": 50.0,
-  "projectileAmount": 6,
+  "spread": 30.0,
+  "projectileAmount": 12,
   "gravity": true
 }

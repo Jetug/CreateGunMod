@@ -104,6 +104,11 @@ public class RevolverAnimator extends GunAnimator {
             var rate = GunModifierHelper.getRate(getStack());
             animationHelper.syncAnimation(event, "shot_auto", rate);
             return animation;
+
+//            var animation = begin();
+//            animation.then("shot_auto", LOOP);
+//            animationHelper.syncAnimation(event, "shot_auto", GunModifierHelper.getReloadTime(getStack()));
+//            return animation;
         }
         return super.getShootingAnimation(event);
     }

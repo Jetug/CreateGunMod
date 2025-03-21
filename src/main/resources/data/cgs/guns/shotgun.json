@@ -54,7 +54,7 @@
       "ntgl:magazine": [
         {
           "name": "drum",
-          "hide": ["chamber", "bullets"],
+          "hide": ["chambers"],
           "bones": [
             "drum_back",
             "drum_reload"

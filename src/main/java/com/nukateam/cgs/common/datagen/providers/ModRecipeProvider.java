@@ -1,16 +1,23 @@
 package com.nukateam.cgs.common.datagen.providers;
 
-import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.datagen.DataGenConfig;
 import com.nukateam.cgs.common.faundation.registry.ModBlocks;
+import com.nukateam.cgs.common.faundation.registry.ModGuns;
 import com.nukateam.cgs.common.faundation.registry.ModItems;
+import com.simibubi.create.AllItems;
+import com.simibubi.create.AllTags;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -46,13 +53,43 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         fromBlock(writer, rawBlock, raw);
         fromBlock(writer, block, ingot);
         fromBlock(writer, ingot, nugget);
-    }
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModGuns.FLINTLOCK.get())
+                .pattern("   ")
+                .pattern("BAF")
+                .pattern("  L")
+                .define('B', ModItems.BARREL.get())
+                .define('A', AllItems.ANDESITE_ALLOY.get())
+                .define('L', AllTags.AllItemTags.STRIPPED_LOGS.tag)
+                .define('F', Items.FLINT_AND_STEEL)
+                .unlockedBy(getHasName(ModItems.BARREL.get()), has(ModItems.BARREL.get()))
+                .save(writer, getId(ModGuns.FLINTLOCK.get()));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BALL.get(), 3)
+                .pattern("L")
+                .pattern("G")
+                .pattern("P")
+                .define('L', ModItems.LEAD_NUGGET.get())
+                .define('G', Tags.Items.GUNPOWDER)
+                .define('P', Items.PAPER)
+                .unlockedBy(getHasName(ModItems.LEAD_NUGGET.get()), has(ModItems.LEAD_NUGGET.get()))
+                .save(writer, getId(ModItems.BALL.get()));
+    }
     private static void fromBlock(Consumer<FinishedRecipe> writer, ItemLike ingredient, ItemLike result) {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, result, 9)
                 .requires(ingredient)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
                 .save(writer);
+    }
+
+    private static void craft(Consumer<FinishedRecipe> writer, ItemLike ingredient, ItemLike result) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, result)
+                .pattern("SSS")
+                .pattern("SSS")
+                .pattern("SSS")
+                .define('S', ingredient)
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(writer,  DataGenConfig.DATA_MOD_ID + ":" + getItemName(result) + "_" + "from" + "_" + getItemName(ingredient));
     }
 
     private static void simpleBlock(Consumer<FinishedRecipe> writer, ItemLike ingredient, ItemLike result) {
@@ -82,5 +119,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     .group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike))
                     .save(pFinishedRecipeConsumer,  DataGenConfig.DATA_MOD_ID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
         }
+    }
+
+    private static @NotNull ResourceLocation getId(ItemLike item) {
+        return new ResourceLocation(DataGenConfig.DATA_MOD_ID, getItemName(item));
     }
 }

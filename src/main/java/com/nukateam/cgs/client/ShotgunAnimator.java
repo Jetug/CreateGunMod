@@ -7,9 +7,12 @@ import com.nukateam.ntgl.client.animators.GunAnimator;
 import com.nukateam.ntgl.common.base.holders.AttachmentType;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.foundation.item.GunItem;
+import com.nukateam.ntgl.common.util.util.Cycler;
+import com.nukateam.ntgl.common.util.util.GunModifierHelper;
 import mod.azure.azurelib.core.animation.*;
 import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraftforge.event.TickEvent;
+
+import java.util.ArrayList;
 
 import static com.nukateam.cgs.common.ntgl.modifiers.ShotgunModifier.isAmmoEven;
 import static mod.azure.azurelib.core.animation.Animation.LoopType.LOOP;
@@ -17,11 +20,16 @@ import static mod.azure.azurelib.core.animation.Animation.LoopType.PLAY_ONCE;
 import static mod.azure.azurelib.core.animation.RawAnimation.begin;
 
 public class ShotgunAnimator extends GunAnimator {
+    public static final String SHOT_DRUM = "shot_drum";
+    public static final String SHOT_PUMP = "shot_pump";
+    public static final String RELOAD_DRUM = "reload_drum";
+    public static final String RELOAD_PUMP = "reload_pump";
     protected final AnimationController<GunAnimator> COCK_CONTROLLER;
 
     private int ammo;
     private boolean hasDrums;
     private boolean hasPumps;
+    private Cycler cockCycler;
 
     public ShotgunAnimator(ItemDisplayContext transformType, DynamicGeoItemRenderer<GunAnimator> renderer) {
         super(transformType, renderer);
@@ -38,43 +46,84 @@ public class ShotgunAnimator extends GunAnimator {
     @Override
     protected void tickStart() {
         super.tickStart();
-        if (isGun()) {
-            this.ammo = Gun.getAmmo(getStack());
-            var magazine = Gun.getAttachmentItem(AttachmentType.MAGAZINE, getStack());
+        if (!isGun()) return;
 
-            this.hasDrums = magazine.is(AttachmentItems.SHOTGUN_DRUM.get());
-            this.hasPumps = magazine.is(AttachmentItems.SHOTGUN_PUMP.get());
+        this.ammo = Gun.getAmmo(getStack());
+        var magazine = Gun.getAttachmentItem(AttachmentType.MAGAZINE, getStack());
+
+        this.hasDrums = magazine.is(AttachmentItems.SHOTGUN_DRUM.get());
+        this.hasPumps = magazine.is(AttachmentItems.SHOTGUN_PUMP.get());
+
+        var cooldown = shootingHandler.getCooldown(getEntity(), arm);
+
+        if (cockCycler == null)
+            cockCycler = new Cycler(1, 3);
+
+        if (cooldown == rate) {
+            cockCycler.cycle();
         }
     }
 
     @Override
     protected RawAnimation getShootingAnimation(AnimationState<GunAnimator> event) {
-        var shot = this.getGunAnim(Animations.SHOT);
-        var reload = this.getGunAnim("reload_drum");
         var animation = begin();
         var isAmmoEven = isAmmoEven(getStack());
-        animation.then(shot, PLAY_ONCE).then(reload, LOOP);
+        var animations = new ArrayList<String>();
 
-//        if(hasDrums && isAmmoEven) {
-//            animation.then(reload, LOOP);
-//        }
+        var shotAnim = this.getGunAnim(Animations.SHOT);
+        animation.then(shotAnim, PLAY_ONCE);
+        animations.add(shotAnim);
+
+        if((hasDrums || hasPumps) && isAmmoEven && ammo > 0) {
+            var reloadAnim = hasDrums ?
+                    this.getGunAnim(SHOT_DRUM) :
+                    this.getGunAnim(SHOT_PUMP);
+            animation.then(reloadAnim, LOOP);
+            animations.add(reloadAnim);
+        }
 
         if(isAmmoEven) {
             rate = 20;
         }
 
-        this.animationHelper.syncAnimations(event, rate, Animations.SHOT, "reload_drum");
+        this.animationHelper.syncAnimations(event, rate, animations);
         return animation;
+    }
+
+    @Override
+    protected RawAnimation getReloadingAnimation(AnimationState<GunAnimator> event) {
+        var reloadTime = GunModifierHelper.getReloadTime(this.getStack());
+        if(hasDrums){
+            this.animationHelper.syncAnimation(event, RELOAD_DRUM, reloadTime);
+            return begin().then(RELOAD_DRUM, Animation.LoopType.LOOP);
+        }
+        else if(hasPumps){
+            this.animationHelper.syncAnimation(event, RELOAD_PUMP, reloadTime);
+            return begin().then(RELOAD_PUMP, Animation.LoopType.LOOP);
+        }
+        else return super.getReloadingAnimation(event);
     }
 
     private AnimationController.AnimationStateHandler<GunAnimator> animateCock() {
         return (event) -> {
             var ammo = Gun.getAmmo(getStack());
-            var name = switch (ammo) {
-                case 0 -> "empty_both";
-                case 1 -> "empty_left";
-                default -> "full";
-            };
+            var name = "";
+
+            if (ammo == 0){
+                name = "empty_both";
+            }
+            else if(isAmmoEven(getStack())){
+                name = "full";
+            }
+            else {
+                name = "empty_left";
+            }
+
+//            var name = switch (ammo) {
+//                case 0 -> "empty_both";
+//                case 1 -> "empty_left";
+//                default -> "full";
+//            };
 
             var animation = begin().then(name, LOOP);
             animationHelper.syncAnimation(event, name, rate);

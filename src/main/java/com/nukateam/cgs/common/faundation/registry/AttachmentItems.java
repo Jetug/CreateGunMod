@@ -23,52 +23,59 @@ import static com.nukateam.cgs.common.ntgl.CgsAttachmentTypes.ENGINE;
 
 public class AttachmentItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Gunsmithing.MOD_ID);
-
-
     public static final Item.Properties GUN_PROPERTIES = new Item.Properties().stacksTo(1);
+
+    //GATLING
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> STEAM_ENGINE = ITEMS.register("steam_engine",
             () -> new AttachmentItem<>(ENGINE, GenericAttachment.create(STEAM_ENGINE_MODIFIERS), GUN_PROPERTIES));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> IRON_SIGHT = ITEMS.register("iron_sight",
-            () -> new ScopeItem(SHORT_SCOPE, new Item.Properties().stacksTo(1)));
+            () -> new ScopeItem(SHORT_SCOPE, GUN_PROPERTIES));
 
+    //REVOLVER
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> SCOPE = ITEMS.register("scope",
-            () -> new ScopeItem(LONG_SCOPE, new Item.Properties().stacksTo(1)));
+            () -> new ScopeItem(LONG_SCOPE, GUN_PROPERTIES));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> STOCK = ITEMS.register("stock",
-            () -> new StockItem(Stock.create(), new Item.Properties().stacksTo(1)));
+            () -> new StockItem(Stock.create(), GUN_PROPERTIES));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> LONG_BARREL = ITEMS.register("long_barrel",
-            () -> new BarrelItem(Barrel.create(5, Attachments.LONG_BARREL), new Item.Properties().stacksTo(1)));
+            () -> new BarrelItem(Barrel.create(5, Attachments.LONG_BARREL), GUN_PROPERTIES));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> BELT = ITEMS.register("round_belt",
-            () -> new AttachmentItem<>(CgsAttachmentTypes.CHAMBER, GenericAttachment.create(BELT_MODIFIERS),
-                    new Item.Properties().stacksTo(1)));
+            () -> new AttachmentItem<>(CgsAttachmentTypes.CHAMBER,
+                    GenericAttachment.create(BELT_MODIFIERS), GUN_PROPERTIES));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> AUTO = ITEMS.register("auto_fire",
-            () -> new AttachmentItem<>(CgsAttachmentTypes.FRAME, GenericAttachment.create(AUTO_FIRE),
-                    new Item.Properties().stacksTo(1)));
+            () -> new AttachmentItem<>(CgsAttachmentTypes.FRAME,
+                    GenericAttachment.create(AUTO_FIRE), GUN_PROPERTIES));
 
+    //SHOTGUN
     public static final RegistryObject<Item> SHOTGUN_DRUM = ITEMS.register("shotgun_drum",
-            () -> new AttachmentItem<>(AttachmentType.MAGAZINE, GenericAttachment.create(Attachments.SHOTGUN_DRUM),
-                    new Item.Properties().stacksTo(1)));
+            () -> new AttachmentItem<>(AttachmentType.MAGAZINE,
+                    GenericAttachment.create(Attachments.SHOTGUN_DRUM), GUN_PROPERTIES));
 
     public static final RegistryObject<Item> SHOTGUN_PUMP = ITEMS.register("shotgun_pump",
-            () -> new AttachmentItem<>(AttachmentType.MAGAZINE, GenericAttachment.create(Attachments.SHOTGUN_PUMP),
-                    new Item.Properties().stacksTo(1)));
+            () -> new AttachmentItem<>(AttachmentType.MAGAZINE,
+                    GenericAttachment.create(Attachments.SHOTGUN_PUMP), GUN_PROPERTIES));
 
     public static final RegistryObject<Item> SHOTGUN_LONG_BARREL = ITEMS.register("shotgun_long_barrel",
-            () -> new BarrelItem(Barrel.create(10f, Attachments.SHOTGUN_LONG_BARREL), new Item.Properties().stacksTo(1)));
+            () -> new BarrelItem(Barrel.create(10f, Attachments.SHOTGUN_LONG_BARREL), GUN_PROPERTIES));
 
     public static final RegistryObject<Item> SHOTGUN_SPREAD_BARREL = ITEMS.register("shotgun_spread_barrel",
-            () -> new BarrelItem(Barrel.create(1f, Attachments.SHOTGUN_SPREAD_BARREL), new Item.Properties().stacksTo(1)));
+            () -> new BarrelItem(Barrel.create(1f, Attachments.SHOTGUN_SPREAD_BARREL), GUN_PROPERTIES));
+
+    //NAILGUN
+    public static final RegistryObject<Item> NAILGUN_SPLIT_BARREL = ITEMS.register("nailgun_split_barrel",
+            () -> new BarrelItem(Barrel.create(1f, Attachments.NAILGUN_SPLIT_BARREL), GUN_PROPERTIES));
+
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

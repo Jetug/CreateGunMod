@@ -43,7 +43,7 @@
       "ntgl:barrel": [
         {
           "name": "split_barrel",
-          "item": "cgs:split_barrel"
+          "item": "cgs:nailgun_split_barrel"
         }
       ]
     }

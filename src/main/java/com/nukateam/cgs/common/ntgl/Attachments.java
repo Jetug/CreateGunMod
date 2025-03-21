@@ -112,6 +112,11 @@ public class Attachments {
         public int modifyMaxAmmo(int maxAmmo) {
             return 8;
         }
+
+        @Override
+        public int modifyReloadTime(int reloadTime) {
+            return 80;
+        }
     };
 
     public static final IGunModifier SHOTGUN_PUMP = new IGunModifier() {
@@ -142,6 +147,28 @@ public class Attachments {
         @Override
         public float modifyProjectileSpread(float spread) {
             return spread * 4;
+        }
+    };
+
+    public static final IGunModifier NAILGUN_SPLIT_BARREL = new IGunModifier() {
+        @Override
+        public float modifyProjectileSpread(float spread) {
+            return 20;
+        }
+
+        @Override
+        public int modifyMaxAmmo(int maxAmmo) {
+            return maxAmmo / 5;
+        }
+
+        @Override
+        public int modifyProjectileAmount(int amount) {
+            return 5;
+        }
+
+        @Override
+        public int modifyFireRate(int rate) {
+            return rate * 3;
         }
     };
 }
