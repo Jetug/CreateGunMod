@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "B": {
+      "item": "cgs:barrel"
+    },
+    "F": {
+      "item": "minecraft:flint_and_steel"
+    },
+    "L": {
+      "tag": "forge:stripped_logs"
+    }
+  },
+  "pattern": [
+    "   ",
+    "BAF",
+    "  L"
+  ],
+  "result": {
+    "item": "cgs:flintlock"
+  },
+  "show_notification": true
+}
