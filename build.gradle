@@ -35,8 +35,8 @@ java {
 
 minecraft {
     mappings channel: mappings_channel, version: mappings_version
-
-   copyIdeResources = true
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+    copyIdeResources = true
 
     runs {
         configureEach {

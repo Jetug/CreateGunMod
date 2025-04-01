@@ -58,22 +58,27 @@ public class AttachmentItems {
                     GenericAttachment.create(AUTO_FIRE), GUN_PROPERTIES));
 
     //SHOTGUN
+    @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> SHOTGUN_DRUM = ITEMS.register("shotgun_drum",
             () -> new AttachmentItem<>(AttachmentType.MAGAZINE,
                     GenericAttachment.create(Attachments.SHOTGUN_DRUM), GUN_PROPERTIES));
 
+    @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> SHOTGUN_PUMP = ITEMS.register("shotgun_pump",
             () -> new AttachmentItem<>(AttachmentType.MAGAZINE,
                     GenericAttachment.create(Attachments.SHOTGUN_PUMP), GUN_PROPERTIES));
 
+    @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> SHOTGUN_LONG_BARREL = ITEMS.register("shotgun_long_barrel",
             () -> new BarrelItem(Barrel.create(10f, Attachments.SHOTGUN_LONG_BARREL), GUN_PROPERTIES));
 
+    @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> SHOTGUN_SPREAD_BARREL = ITEMS.register("shotgun_spread_barrel",
             () -> new BarrelItem(Barrel.create(1f, Attachments.SHOTGUN_SPREAD_BARREL), GUN_PROPERTIES));
 
     //NAILGUN
-    public static final RegistryObject<Item> NAILGUN_SPLIT_BARREL = ITEMS.register("nailgun_split_barrel",
+    @ItemModelGen(path = "attachments")
+    public static final RegistryObject<Item> NAILGUN_SPLITTER = ITEMS.register("nailgun_splitter",
             () -> new BarrelItem(Barrel.create(1f, Attachments.NAILGUN_SPLIT_BARREL), GUN_PROPERTIES));
 
 

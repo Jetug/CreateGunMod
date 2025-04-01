@@ -15,8 +15,10 @@ public class ModItems {
 
     @ItemModelGen
     public static final RegistryObject<Item> RAW_LEAD = registerItem   ("raw_lead");
+    
     @ItemModelGen
     public static final RegistryObject<Item> LEAD_INGOT = registerItem ("lead_ingot");
+
     @ItemModelGen
     public static final RegistryObject<Item> LEAD_NUGGET = registerItem("lead_nugget");
 
@@ -33,12 +35,15 @@ public class ModItems {
     public static final RegistryObject<Item> PRESS_FORM_10MM = registerItem("press_form_10mm");
 
     @ItemModelGen
+    public static final RegistryObject<Item> SHOTGUN_PRESS_FORM = registerItem("press_form_shotgun");
+
+    @ItemModelGen
     public static final RegistryObject<Item> SHELL_7MM = registerItem("shell_7mm");
 
     @ItemModelGen
     public static final RegistryObject<Item> SHELL_10MM = registerItem("shell_10mm");
 
-//    @ItemModelGen
+    @ItemModelGen
     public static final RegistryObject<Item> SHOTGUN_SHELL = registerItem("shell_shotgun");
 
     @ItemModelGen
@@ -47,11 +52,13 @@ public class ModItems {
     @ItemModelGen
     public static final RegistryObject<Item> ROUND_10MM = registerAmmo("round_10mm");
 
-//    @ItemModelGen
-    public static final RegistryObject<Item> SHOTGUN_ROUND = registerAmmo("shotgun_round");
+    @ItemModelGen
+    public static final RegistryObject<Item> SHOTGUN_ROUND = registerAmmo("round_shotgun");
 
+    @ItemModelGen
     public static final RegistryObject<Item> BALL = registerAmmo("ball");
 
+    @ItemModelGen
     public static final RegistryObject<Item> NAIL = registerAmmo("nail");
 
     public static RegistryObject<Item> registerAmmo(String name) {
