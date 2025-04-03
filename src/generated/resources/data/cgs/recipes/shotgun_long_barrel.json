@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "cgs:barrel_sturdy"
+    },
+    "L": {
+      "item": "minecraft:iron_ingot"
+    },
+    "W": {
+      "tag": "forge:stripped_logs"
+    }
+  },
+  "pattern": [
+    "BB ",
+    "LWW",
+    "BB "
+  ],
+  "result": {
+    "item": "cgs:shotgun_long_barrel"
+  },
+  "show_notification": true
+}

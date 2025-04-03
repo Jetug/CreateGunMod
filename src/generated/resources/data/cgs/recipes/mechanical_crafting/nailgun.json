@@ -1,0 +1,38 @@
+{
+  "type": "create:mechanical_crafting",
+  "acceptMirrored": false,
+  "key": {
+    "E": {
+      "item": "create:steam_engine"
+    },
+    "F": {
+      "item": "create:flywheel"
+    },
+    "I": {
+      "item": "create:iron_sheet"
+    },
+    "L": {
+      "item": "create:brass_sheet"
+    },
+    "M": {
+      "item": "create:precision_mechanism"
+    },
+    "P": {
+      "item": "create:fluid_pipe"
+    },
+    "T": {
+      "item": "create:fluid_tank"
+    },
+    "W": {
+      "tag": "forge:stripped_logs"
+    }
+  },
+  "pattern": [
+    " EFL ",
+    "PPTMW",
+    "IILL "
+  ],
+  "result": {
+    "item": "cgs:nailgun"
+  }
+}

@@ -1,6 +1,7 @@
 package com.nukateam.cgs.common.datagen.providers;
 
 import com.nukateam.cgs.common.datagen.DataGenConfig;
+import com.nukateam.cgs.common.faundation.registry.AttachmentItems;
 import com.nukateam.cgs.common.faundation.registry.ModBlocks;
 import com.nukateam.cgs.common.faundation.registry.ModGuns;
 import com.nukateam.cgs.common.faundation.registry.ModItems;
@@ -74,6 +75,35 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('P', Items.PAPER)
                 .unlockedBy(getHasName(ModItems.LEAD_NUGGET.get()), has(ModItems.LEAD_NUGGET.get()))
                 .save(writer, getId(ModItems.BALL.get()));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AttachmentItems.STOCK.get(), 1)
+                .pattern("WLW")
+                .pattern(" WW")
+                .define('L', AllItems.BRASS_SHEET.get())
+                .define('W', AllTags.AllItemTags.STRIPPED_LOGS.tag)
+                .unlockedBy(getHasName(ModItems.LEAD_NUGGET.get()), has(ModItems.LEAD_NUGGET.get()))
+                .save(writer, getId(AttachmentItems.STOCK.get()));
+
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AttachmentItems.LONG_BARREL.get(), 1)
+                .pattern("BB")
+                .pattern("LL")
+                .pattern(" W")
+                .define('L', AllItems.BRASS_SHEET.get())
+                .define('W', AllTags.AllItemTags.STRIPPED_LOGS.tag)
+                .define('B', ModItems.BARREL.get())
+                .unlockedBy(getHasName(ModItems.LEAD_NUGGET.get()), has(ModItems.LEAD_NUGGET.get()))
+                .save(writer, getId(AttachmentItems.LONG_BARREL.get()));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AttachmentItems.SHOTGUN_LONG_BARREL.get(), 1)
+                .pattern("BB ")
+                .pattern("LWW")
+                .pattern("BB ")
+                .define('L', Items.IRON_INGOT)
+                .define('W', AllTags.AllItemTags.STRIPPED_LOGS.tag)
+                .define('B', ModItems.STURDY_BARREL.get())
+                .unlockedBy(getHasName(ModItems.STURDY_BARREL.get()), has(ModItems.STURDY_BARREL.get()))
+                .save(writer, getId(AttachmentItems.SHOTGUN_LONG_BARREL.get()));
     }
     private static void fromBlock(Consumer<FinishedRecipe> writer, ItemLike ingredient, ItemLike result) {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, result, 9)

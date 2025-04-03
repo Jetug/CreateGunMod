@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "L": {
+      "item": "create:brass_sheet"
+    },
+    "W": {
+      "tag": "forge:stripped_logs"
+    }
+  },
+  "pattern": [
+    "WLW",
+    " WW"
+  ],
+  "result": {
+    "item": "cgs:stock"
+  },
+  "show_notification": true
+}

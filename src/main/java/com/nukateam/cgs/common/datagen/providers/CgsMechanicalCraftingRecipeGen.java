@@ -4,6 +4,7 @@ import java.util.function.UnaryOperator;
 
 import com.google.common.base.Supplier;
 import com.nukateam.cgs.common.datagen.DataGenConfig;
+import com.nukateam.cgs.common.faundation.registry.AttachmentItems;
 import com.nukateam.cgs.common.faundation.registry.ModGuns;
 import com.nukateam.cgs.common.faundation.registry.ModItems;
 import com.simibubi.create.AllBlocks;
@@ -29,16 +30,14 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 	GeneratedRecipe
 		SHOTGUN = create(ModGuns.SHOTGUN::get).returns(1)
 			.recipe(b -> b
+					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
 					.key('B', ModItems.STURDY_BARREL.get())
 					.key('A', AllItems.ANDESITE_ALLOY.get())
 					.key('S', AllItems.STURDY_SHEET.get())
-					.key('C', AllBlocks.COGWHEEL.get())
-					.key('P', AllItems.PRECISION_MECHANISM.get())
 					.key('L', AllItems.BRASS_SHEET.get())
-					.patternLine("BSLLL")
-					.patternLine("BSCCL")
-					.patternLine("BSPAL")
-					.patternLine("BSAAL")
+					.patternLine("BSAL")
+					.patternLine("BSAL")
+					.patternLine("WW W")
 					.disallowMirrored()),
 
 
@@ -70,7 +69,39 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 					.patternLine("WLAL")
 					.patternLine("   W")
 					.disallowMirrored())
-			;
+			,
+
+		NAILGUN = create(ModGuns.NAILGUN::get).returns(1)
+				.recipe(b -> b
+				.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
+				.key('M', AllItems.PRECISION_MECHANISM.get())
+				.key('P', AllBlocks.FLUID_PIPE)
+				.key('T', AllBlocks.FLUID_TANK)
+				.key('E', AllBlocks.STEAM_ENGINE)
+				.key('F', AllBlocks.FLYWHEEL)
+				.key('L', AllItems.BRASS_SHEET.get())
+				.key('I', AllItems.IRON_SHEET.get())
+						.patternLine(" EFL ")
+						.patternLine("PPTMW")
+						.patternLine("IILL ")
+						.disallowMirrored()),
+
+	//ATTACHMENTS
+		//GATLING
+		ENGINE = create(AttachmentItems.STEAM_ENGINE::get).returns(1)
+				.recipe(b -> b
+				.key('M', AllItems.PRECISION_MECHANISM.get())
+				.key('P', AllBlocks.FLUID_PIPE)
+				.key('T', AllBlocks.FLUID_TANK)
+				.key('E', AllBlocks.STEAM_ENGINE)
+				.key('F', AllBlocks.FLYWHEEL)
+				.key('L', AllItems.BRASS_SHEET.get())
+				.key('B', AllBlocks.BLAZE_BURNER.get())
+						.patternLine(" MP ")
+						.patternLine("FETP")
+						.patternLine(" LBL")
+						.disallowMirrored())
+		;
 
 
 

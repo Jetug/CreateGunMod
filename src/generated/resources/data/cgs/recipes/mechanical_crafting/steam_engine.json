@@ -1,0 +1,35 @@
+{
+  "type": "create:mechanical_crafting",
+  "acceptMirrored": false,
+  "key": {
+    "B": {
+      "item": "create:blaze_burner"
+    },
+    "E": {
+      "item": "create:steam_engine"
+    },
+    "F": {
+      "item": "create:flywheel"
+    },
+    "L": {
+      "item": "create:brass_sheet"
+    },
+    "M": {
+      "item": "create:precision_mechanism"
+    },
+    "P": {
+      "item": "create:fluid_pipe"
+    },
+    "T": {
+      "item": "create:fluid_tank"
+    }
+  },
+  "pattern": [
+    " MP ",
+    "FETP",
+    " LBL"
+  ],
+  "result": {
+    "item": "cgs:steam_engine"
+  }
+}

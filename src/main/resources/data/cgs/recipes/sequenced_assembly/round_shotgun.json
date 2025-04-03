@@ -1,0 +1,84 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "cgs:shell_shotgun"
+  },
+  "transitionalItem": {
+    "item": "cgs:shell_shotgun"
+  },
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:shell_shotgun"
+        },
+        {
+          "item": "cgs:press_form_shotgun"
+        }
+      ],
+      "results": [
+        {
+          "item": "cgs:shell_shotgun"
+        }
+      ],
+      "keepHeldItem": true
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:shell_shotgun"
+        },
+        {
+          "item": "minecraft:gunpowder"
+        }
+      ],
+      "results": [
+        {
+          "item": "cgs:shell_shotgun"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:shell_shotgun"
+        },
+        {
+          "item": "minecraft:paper"
+        }
+      ],
+      "results": [
+        {
+          "item": "cgs:shell_shotgun"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:shell_shotgun"
+        },
+        {
+          "tag": "forge:nuggets/lead"
+        }
+      ],
+      "results": [
+        {
+          "item": "cgs:shell_shotgun"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "item": "cgs:round_shotgun",
+      "count": 4,
+      "chance": 100.0
+    }
+  ],
+  "loops": 1
+}

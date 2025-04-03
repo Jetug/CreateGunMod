@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "cgs:barrel"
+    },
+    "L": {
+      "item": "create:brass_sheet"
+    },
+    "W": {
+      "tag": "forge:stripped_logs"
+    }
+  },
+  "pattern": [
+    "BB",
+    "LL",
+    " W"
+  ],
+  "result": {
+    "item": "cgs:long_barrel"
+  },
+  "show_notification": true
+}

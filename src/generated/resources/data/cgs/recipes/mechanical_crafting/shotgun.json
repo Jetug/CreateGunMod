@@ -8,24 +8,20 @@
     "B": {
       "item": "cgs:barrel_sturdy"
     },
-    "C": {
-      "item": "create:cogwheel"
-    },
     "L": {
       "item": "create:brass_sheet"
     },
-    "P": {
-      "item": "create:precision_mechanism"
-    },
     "S": {
       "item": "create:sturdy_sheet"
+    },
+    "W": {
+      "tag": "forge:stripped_logs"
     }
   },
   "pattern": [
-    "BSLLL",
-    "BSCCL",
-    "BSPAL",
-    "BSAAL"
+    "BSAL",
+    "BSAL",
+    "WW W"
   ],
   "result": {
     "item": "cgs:shotgun"
