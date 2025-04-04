@@ -54,6 +54,24 @@
 					"pivot": [0, 6.5, 2]
 				},
 				{
+					"name": "muzzle_smoke",
+					"parent": "gun",
+					"pivot": [0, 8.62069, -16.4],
+					"cubes": [
+						{
+							"origin": [-1.54014, 7.06095, -16.4],
+							"size": [3.108, 3.108, 0],
+							"inflate": 0.005,
+							"pivot": [0.01386, 8.63455, -16.0892],
+							"rotation": [0, 0, 45],
+							"uv": {
+								"north": {"uv": [14, 11], "uv_size": [70, 70]},
+								"south": {"uv": [84, 11], "uv_size": [-70, 70]}
+							}
+						}
+					]
+				},
+				{
 					"name": "split_barrel",
 					"parent": "gun",
 					"pivot": [0, 8.6175, -13.4275],

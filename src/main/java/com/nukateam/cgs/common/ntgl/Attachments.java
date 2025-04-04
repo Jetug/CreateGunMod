@@ -121,8 +121,18 @@ public class Attachments {
 
     public static final IGunModifier SHOTGUN_PUMP = new IGunModifier() {
         @Override
+        public LoadingType modifyLoadingType(LoadingType loadingType) {
+            return LoadingType.PER_CARTRIDGE;
+        }
+
+        @Override
         public int modifyMaxAmmo(int maxAmmo) {
             return 10;
+        }
+
+        @Override
+        public int modifyFireRate(int rate) {
+            return 6;
         }
 
         @Override

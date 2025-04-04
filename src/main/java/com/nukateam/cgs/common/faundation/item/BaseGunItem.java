@@ -22,12 +22,17 @@ public class BaseGunItem extends GunItem {
     }
 
     @Override
+    public DynamicGeoItemRenderer getRenderer() {
+        return RENDERER.get();
+    }
+
+    @Override
     public boolean isEnchantable(ItemStack stack) {
         return false;
     }
 
     @Override
-    public DynamicGeoItemRenderer getRenderer() {
-        return RENDERER.get();
+    public boolean isFoil(ItemStack pStack) {
+        return false;
     }
 }

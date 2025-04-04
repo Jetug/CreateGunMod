@@ -12,18 +12,17 @@
     "alwaysSpread": true,
     "spread": 2.0,
     "ammo": [
-      "cgs:shotgun_round"
+      "cgs:round_shotgun"
     ]
   },
   "textures": {
     "default" : "cgs:shotgun"
   },
   "sounds": {
-    "fire": "cgs:gun.revolver.fire",
-    "chamber_open"  : "cgs:gun.revolver.chamber_open",
-    "chamber_close" : "cgs:gun.revolver.chamber_close",
-    "rounds_in"     : "cgs:gun.revolver.rounds_in",
-    "rounds_out"    : "cgs:gun.revolver.rounds_out"
+    "fire"          : "cgs:gun.shotgun.fire",
+    "chamber_open"  : "cgs:gun.shotgun.open",
+    "chamber_close" : "cgs:gun.shotgun.close",
+    "round_in"      : "cgs:gun.shotgun.round_in"
   },
   "modules": {
     "attachmentScreen": true,

@@ -23,8 +23,8 @@
     "default" : "cgs:gatling"
   },
   "sounds": {
-    "fire": "cgs:gun.gatling.fire",
-    "reload_mag_in": "cgs:gun.gatling.reload_mag_in",
+    "fire"          : "cgs:gun.gatling.fire",
+    "reload_mag_in" : "cgs:gun.gatling.reload_mag_in",
     "reload_mag_out": "cgs:gun.gatling.reload_mag_in"
   },
   "modules": {

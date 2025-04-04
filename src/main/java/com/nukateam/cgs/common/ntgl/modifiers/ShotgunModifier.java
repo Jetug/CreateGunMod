@@ -12,7 +12,8 @@ public class ShotgunModifier extends DynamicGunModifier {
     public int modifyFireRate(int rate) {
         var attachment = Gun.getAttachmentItem(AttachmentType.MAGAZINE, stack);
         if(!attachment.isEmpty() && !isAmmoEven(stack)) {
-            if(attachment.getItem() == AttachmentItems.SHOTGUN_DRUM.get()){
+            if(attachment.getItem() == AttachmentItems.SHOTGUN_DRUM.get()
+                    || attachment.getItem() == AttachmentItems.SHOTGUN_PUMP.get()){
                 return 20;
             }
         }

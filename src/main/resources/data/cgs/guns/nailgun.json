@@ -19,11 +19,9 @@
     "default" : "cgs:nailgun"
   },
   "sounds": {
-    "fire": "cgs:gun.revolver.fire",
-    "chamber_open"  : "cgs:gun.revolver.chamber_open",
-    "chamber_close" : "cgs:gun.revolver.chamber_close",
-    "rounds_in"     : "cgs:gun.revolver.rounds_in",
-    "rounds_out"    : "cgs:gun.revolver.rounds_out"
+    "fire"       : "cgs:gun.nailgun.fire",
+    "mag_in"     : "cgs:gun.nailgun.mag_in",
+    "mag_out"    : "cgs:gun.nailgun.mag_out"
   },
   "modules": {
     "attachmentScreen": true,

@@ -15,6 +15,8 @@ import net.minecraft.world.item.ItemDisplayContext;
 import java.util.ArrayList;
 
 import static com.nukateam.cgs.common.ntgl.modifiers.ShotgunModifier.isAmmoEven;
+import static mod.azure.azurelib.core.animation.Animation.*;
+import static mod.azure.azurelib.core.animation.Animation.LoopType.*;
 import static mod.azure.azurelib.core.animation.Animation.LoopType.LOOP;
 import static mod.azure.azurelib.core.animation.Animation.LoopType.PLAY_ONCE;
 import static mod.azure.azurelib.core.animation.RawAnimation.begin;
@@ -23,7 +25,8 @@ public class ShotgunAnimator extends GunAnimator {
     public static final String SHOT_DRUM = "shot_drum";
     public static final String SHOT_PUMP = "shot_pump";
     public static final String RELOAD_DRUM = "reload_drum";
-    public static final String RELOAD_PUMP = "reload_pump";
+    public static final String RELOAD_PUMP_LEFT = "reload_pump_left";
+    public static final String RELOAD_PUMP_RIGHT = "reload_pump_right";
     protected final AnimationController<GunAnimator> COCK_CONTROLLER;
 
     private int ammo;
@@ -91,17 +94,23 @@ public class ShotgunAnimator extends GunAnimator {
     }
 
     @Override
-    protected RawAnimation getReloadingAnimation(AnimationState<GunAnimator> event) {
+    protected RawAnimation getDefaultReloadAminmation(AnimationState<GunAnimator> event) {
         var reloadTime = GunModifierHelper.getReloadTime(this.getStack());
         if(hasDrums){
             this.animationHelper.syncAnimation(event, RELOAD_DRUM, reloadTime);
-            return begin().then(RELOAD_DRUM, Animation.LoopType.LOOP);
+            return begin().then(RELOAD_DRUM, LOOP);
         }
         else if(hasPumps){
-            this.animationHelper.syncAnimation(event, RELOAD_PUMP, reloadTime);
-            return begin().then(RELOAD_PUMP, Animation.LoopType.LOOP);
+            var lessThenHalf = ammo <= GunModifierHelper.getMaxAmmo(getStack()) / 2;
+            var name = lessThenHalf ?
+                    RELOAD_PUMP_LEFT:
+                    RELOAD_PUMP_RIGHT;
+
+            this.animationHelper.syncAnimation(event, name, reloadTime);
+            return begin().then(name, LOOP);
+
         }
-        else return super.getReloadingAnimation(event);
+        else return super.getDefaultReloadAminmation(event);
     }
 
     private AnimationController.AnimationStateHandler<GunAnimator> animateCock() {
