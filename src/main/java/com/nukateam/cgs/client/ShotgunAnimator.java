@@ -51,13 +51,12 @@ public class ShotgunAnimator extends GunAnimator {
         super.tickStart();
         if (!isGun()) return;
 
-        this.ammo = Gun.getAmmo(getStack());
         var magazine = Gun.getAttachmentItem(AttachmentType.MAGAZINE, getStack());
+        var cooldown = shootingHandler.getCooldown(getEntity(), arm);
 
+        this.ammo = Gun.getAmmo(getStack());
         this.hasDrums = magazine.is(AttachmentItems.SHOTGUN_DRUM.get());
         this.hasPumps = magazine.is(AttachmentItems.SHOTGUN_PUMP.get());
-
-        var cooldown = shootingHandler.getCooldown(getEntity(), arm);
 
         if (cockCycler == null)
             cockCycler = new Cycler(1, 3);
@@ -89,7 +88,7 @@ public class ShotgunAnimator extends GunAnimator {
             rate = 20;
         }
 
-        this.animationHelper.syncAnimations(event, rate, animations);
+        this.animationHelper.syncAnimation(event, rate, animations);
         return animation;
     }
 
@@ -97,14 +96,12 @@ public class ShotgunAnimator extends GunAnimator {
     protected RawAnimation getDefaultReloadAminmation(AnimationState<GunAnimator> event) {
         var reloadTime = GunModifierHelper.getReloadTime(this.getStack());
         if(hasDrums){
-            this.animationHelper.syncAnimation(event, RELOAD_DRUM, reloadTime);
-            return begin().then(RELOAD_DRUM, LOOP);
+            this.animationHelper.syncAnimation(event, reloadTime, RELOAD_DRUM, SHOT_DRUM);
+            return begin().then(RELOAD_DRUM, PLAY_ONCE).then(SHOT_DRUM, LOOP);
         }
         else if(hasPumps){
             var lessThenHalf = ammo <= GunModifierHelper.getMaxAmmo(getStack()) / 2;
-            var name = lessThenHalf ?
-                    RELOAD_PUMP_LEFT:
-                    RELOAD_PUMP_RIGHT;
+            var name = lessThenHalf ? RELOAD_PUMP_LEFT: RELOAD_PUMP_RIGHT;
 
             this.animationHelper.syncAnimation(event, name, reloadTime);
             return begin().then(name, LOOP);
@@ -127,12 +124,6 @@ public class ShotgunAnimator extends GunAnimator {
             else {
                 name = "empty_left";
             }
-
-//            var name = switch (ammo) {
-//                case 0 -> "empty_both";
-//                case 1 -> "empty_left";
-//                default -> "full";
-//            };
 
             var animation = begin().then(name, LOOP);
             animationHelper.syncAnimation(event, name, rate);

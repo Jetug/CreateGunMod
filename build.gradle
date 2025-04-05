@@ -121,6 +121,7 @@ dependencies {
     implementation fg.deobf("curse.maven:framework-549225:5180972")
     implementation fg.deobf("curse.maven:cyanide-541676:4824162")
     implementation fg.deobf("curse.maven:playeranimator-658587:4587214")
+    implementation(fg.deobf("me.shedaniel.cloth:cloth-config-forge:11.1.118"))
 
     implementation fg.deobf('com.nukateam:ntgl:1.20.1-1.7.0')
 
@@ -129,9 +130,10 @@ dependencies {
     implementation fg.deobf("mezz.jei:jei-1.20.1-forge:${jei_version}")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    testAnnotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
-tasks.named('processResources', ProcessResources).configure {
+    tasks.named('processResources', ProcessResources).configure {
     var replaceProperties = [minecraft_version   : minecraft_version, minecraft_version_range: minecraft_version_range,
                              forge_version       : forge_version, forge_version_range: forge_version_range,
                              loader_version_range: loader_version_range,
