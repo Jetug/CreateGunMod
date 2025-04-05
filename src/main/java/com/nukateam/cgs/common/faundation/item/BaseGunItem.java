@@ -17,7 +17,7 @@ public class BaseGunItem extends GunItem {
         super(properties);
     }
 
-    public BaseGunItem(Supplier<DynamicGunModifier> modifierFactory, Item.Properties properties) {
+    public BaseGunItem(Supplier<DynamicGunModifier> modifierFactory, Properties properties) {
         super(modifierFactory, properties);
     }
 

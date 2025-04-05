@@ -9,74 +9,108 @@ buildscript {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'org.parchmentmc:librarian:1.+'
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+        //classpath 'org.spongepowered:mixingradle:0.7.+'
     }
 }
 
 plugins {
     id 'eclipse'
-    id 'idea'
+    id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0.16,6.2)'
 }
 
-apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'org.spongepowered.mixin'
 
-group = mod_group_id
-version = mod_version
+version = "${minecraft_version}-1.16.0-alpha"
+group = 'com.nukateam.cgs' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'cgs'
 
-base {
-    archivesName = "create-gunsmithing"
-}
+// Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-java {
-    toolchain.languageVersion = JavaLanguageVersion.of(17)
-}
-
+println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
     mappings channel: mappings_channel, version: mappings_version
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-    copyIdeResources = true
 
     runs {
-        configureEach {
+        client {
             workingDirectory project.file('run')
+
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'cgs'
+
+            arg "-mixin.config=cgs.mixin.json"
 
             mods {
-                "${mod_id}" {
+                cgs {
                     source sourceSets.main
                 }
             }
         }
 
-        client {
-            property 'forge.enabledGameTestNamespaces', mod_id
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-        }
-
         server {
-            property 'forge.enabledGameTestNamespaces', mod_id
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-            args '--nogui'
+            workingDirectory project.file('run')
+
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'cgs'
+
+            arg "-mixin.config=cgs.mixin.json"
+
+            mods {
+                cgs {
+                    source sourceSets.main
+                }
+            }
         }
 
         gameTestServer {
-            property 'forge.enabledGameTestNamespaces', mod_id
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            workingDirectory project.file('run')
+
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'cgs'
+
+            arg "-mixin.config=cgs.mixin.json"
+
+            mods {
+                cgs {
+                    source sourceSets.main
+                }
+            }
         }
 
         data {
-            // example of overriding the workingDirectory set in configureEach above
-            workingDirectory project.file('run-data')
+            workingDirectory project.file('run')
 
-            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            args '--mod', 'cgs', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+
+            mods {
+                cgs {
+                    source sourceSets.main
+                }
+            }
         }
+    }
+}
+
+tasks.named('processResources', ProcessResources).configure {
+    var replaceProperties = [minecraft_version   : minecraft_version, minecraft_version_range: minecraft_version_range,
+                             forge_version       : forge_version, forge_version_range: forge_version_range,
+                             loader_version_range: loader_version_range,
+                             mod_id              : mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+                             mod_authors         : mod_authors, mod_description: mod_description,]
+
+    inputs.properties replaceProperties
+    duplicatesStrategy = DuplicatesStrategy.WARN // or DuplicatesStrategy.EXCLUDE
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
     }
 }
 
@@ -89,30 +123,38 @@ repositories {
         name 'tterrag maven'
         url 'https://maven.tterrag.com'
     }
+
     maven {
         name = "Jared's maven"
         url = "https://maven.blamejared.com/"
     }
+
     maven {
-        url 'https://www.cursemaven.com'
-        content {
-            includeGroup "curse.maven"
-        }
+        name "Progwml6 maven"
+        url "https://dvs1.progwml6.com/files/maven/"
     }
-    mavenLocal()
+
+    maven {
+        url "https://www.cursemaven.com"
+    }
+
     maven {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
+
     maven { url "https://maven.shedaniel.me/" }
 
     flatDir {
-        dir 'lib'
+        dirs 'lib'
     }
+
+    mavenLocal()
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
     implementation fg.deobf("com.simibubi.create:create-${create_minecraft_version}:${create_version}:slim") { transitive = false }
     implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-${flywheel_minecraft_version}:${flywheel_version}")
     implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
@@ -120,10 +162,11 @@ dependencies {
     implementation fg.deobf("mod.azure.azurelib:azurelib-neo-1.20.1:2.0.41")
     implementation fg.deobf("curse.maven:framework-549225:5180972")
     implementation fg.deobf("curse.maven:cyanide-541676:4824162")
+    implementation fg.deobf('com.nukateam:ntgl:1.20.1-1.7.0')
+
+    implementation fg.deobf("curse.maven:bettercombat-639842:5266134")
     implementation fg.deobf("curse.maven:playeranimator-658587:4587214")
     implementation(fg.deobf("me.shedaniel.cloth:cloth-config-forge:11.1.118"))
-
-    implementation fg.deobf('com.nukateam:ntgl:1.20.1-1.7.0')
 
     implementation fg.deobf("mezz.jei:jei-1.20.1-common-api:${jei_version}")
     implementation fg.deobf("mezz.jei:jei-1.20.1-forge-api:${jei_version}")
@@ -133,36 +176,45 @@ dependencies {
     testAnnotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
-    tasks.named('processResources', ProcessResources).configure {
-    var replaceProperties = [minecraft_version   : minecraft_version, minecraft_version_range: minecraft_version_range,
-                             forge_version       : forge_version, forge_version_range: forge_version_range,
-                             loader_version_range: loader_version_range,
-                             mod_id              : mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
-                             mod_authors         : mod_authors, mod_description: mod_description,]
-
-    inputs.properties replaceProperties
-
-    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
-        expand replaceProperties + [project: project]
-    }
-}
-
-// Example for how to get properties into the manifest for reading at runtime.
-tasks.named('jar', Jar).configure {
-    manifest {
-        attributes(["Specification-Title"     : mod_id,
-                    "Specification-Vendor"    : mod_authors,
-                    "Specification-Version"   : "1",
-                    "Implementation-Title"    : project.name,
-                    "Implementation-Version"  : project.jar.archiveVersion,
-                    "Implementation-Vendor"   : mod_authors,
-                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")])
-    }
-    finalizedBy 'reobfJar'
-}
-
 mixin {
-    add sourceSets.main, "${mod_id}.mixin-refmap.json"
+    add sourceSets.main, "cgs.mixin-refmap.json"
+}
+
+jar {
+    manifest {
+        attributes([
+                "Specification-Title"     : "cgs",
+                "Specification-Vendor"    : "NukaTeam",
+                "Specification-Version"   : "1", // We are version 1 of ourselves
+                "Implementation-Title"    : "cgs",
+                "Implementation-Version"  : project.jar.archiveVersion,
+                "Implementation-Vendor"   : "NukaTeam",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "TweakClass"              : "org.spongepowered.asm.launch.MixinTweaker",
+                "TweakOrder"              : 0,
+                "MixinConfigs"            : "cgs.mixin.json"
+        ])
+    }
+}
+
+// Example configuration to allow publishing using the maven-publish plugin
+// This is the preferred method to reobfuscate your jar file
+jar.finalizedBy('reobfJar')
+// However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
+// publish.dependsOn('reobfJar')
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact jar
+        }
+    }
+    repositories {
+        maven {
+            url "file://${project.projectDir}/mcmodsrepo"
+        }
+
+    }
 }
 
 tasks.withType(JavaCompile).configureEach {

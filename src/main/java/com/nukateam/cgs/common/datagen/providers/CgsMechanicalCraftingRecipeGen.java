@@ -22,6 +22,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.Tags;
 
+
 public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 	public CgsMechanicalCraftingRecipeGen(PackOutput p_i48262_1_) {
 		super(p_i48262_1_);

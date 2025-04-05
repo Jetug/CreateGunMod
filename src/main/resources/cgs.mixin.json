@@ -1,11 +1,11 @@
 {
   "required": true,
-  "minVersion": "0.8",
   "package": "com.nukateam.cgs.mixin",
   "compatibilityLevel": "JAVA_8",
   "refmap": "cgs.mixin-refmap.json",
+  "minVersion": "0.8",
+  "server": [],
   "mixins": [
-    "PlayerMixin"
   ],
   "client": [
   ],
