@@ -19,9 +19,9 @@
     "default" : "cgs:nailgun"
   },
   "sounds": {
-    "fire"       : "cgs:gun.nailgun.fire",
-    "mag_in"     : "cgs:gun.nailgun.mag_in",
-    "mag_out"    : "cgs:gun.nailgun.mag_out"
+    "fire"   : "cgs:gun.nailgun.fire",
+    "magin"  : "cgs:gun.nailgun.mag_in",
+    "magout" : "cgs:gun.nailgun.mag_out"
   },
   "modules": {
     "attachmentScreen": true,
@@ -36,12 +36,6 @@
         {
           "name": "stock",
           "item": "cgs:stock"
-        }
-      ],
-      "ntgl:barrel": [
-        {
-          "name": "split_barrel",
-          "item": "cgs:nailgun_split_barrel"
         }
       ]
     }

@@ -91,19 +91,76 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 		//GATLING
 		ENGINE = create(AttachmentItems.STEAM_ENGINE::get).returns(1)
 				.recipe(b -> b
-				.key('M', AllItems.PRECISION_MECHANISM.get())
-				.key('P', AllBlocks.FLUID_PIPE)
-				.key('T', AllBlocks.FLUID_TANK)
-				.key('E', AllBlocks.STEAM_ENGINE)
-				.key('F', AllBlocks.FLYWHEEL)
-				.key('L', AllItems.BRASS_SHEET.get())
-				.key('B', AllBlocks.BLAZE_BURNER.get())
+						.key('M', AllItems.PRECISION_MECHANISM.get())
+						.key('P', AllBlocks.FLUID_PIPE)
+						.key('T', AllBlocks.FLUID_TANK)
+						.key('E', AllBlocks.STEAM_ENGINE)
+						.key('F', AllBlocks.FLYWHEEL)
+						.key('L', AllItems.BRASS_SHEET.get())
+						.key('B', AllBlocks.BLAZE_BURNER.get())
 						.patternLine(" MP ")
 						.patternLine("FETP")
 						.patternLine(" LBL")
 						.disallowMirrored())
-		;
+		,
 
+		AUTO = create(AttachmentItems.AUTO::get).returns(1)
+				.recipe(b -> b
+						.key('M', AllItems.PRECISION_MECHANISM.get())
+						.key('A', AllItems.ANDESITE_ALLOY.get())
+						.key('S', AllBlocks.SHAFT.get())
+						.key('C', AllBlocks.COGWHEEL.get())
+						.key('L', AllItems.BRASS_SHEET.get())
+						.patternLine("SAMC")
+						.patternLine("SLL ")
+						.disallowMirrored())
+		,
+
+		BELT = create(AttachmentItems.BELT::get).returns(1)
+				.recipe(b -> b
+						.key('S', AllItems.STURDY_SHEET.get())
+						.key('B', AllItems.BRASS_NUGGET.get())
+						.patternLine("BB")
+						.patternLine("SS")
+						.patternLine("BB")
+						.patternLine("SS")
+						.patternLine("BB")
+						.disallowMirrored())
+		,
+
+		DRUMS = create(AttachmentItems.SHOTGUN_DRUM::get).returns(1)
+				.recipe(b -> b
+						.key('S', AllItems.STURDY_SHEET.get())
+						.key('C', AllBlocks.COGWHEEL.get())
+						.key('L', AllItems.BRASS_SHEET.get())
+						.patternLine("LSLLSL")
+						.patternLine("SCSSCS")
+						.patternLine("LSLLSL")
+						.disallowMirrored()),
+
+		PUMPS = create(AttachmentItems.SHOTGUN_PUMP::get).returns(1)
+				.recipe(b -> b
+						.key('M', AllItems.PRECISION_MECHANISM.get())
+						.key('A', AllItems.ANDESITE_ALLOY.get())
+						.key('L', AllItems.BRASS_SHEET.get())
+						.patternLine("LMLLML")
+						.patternLine("L LL L")
+						.patternLine("L LL L")
+						.patternLine("LALLAL")
+						.disallowMirrored()),
+
+		BIG_DRUM = create(AttachmentItems.GATLING_DRUM::get).returns(1)
+				.recipe(b -> b
+						.key('A', AllItems.ANDESITE_ALLOY.get())
+						.key('C', AllBlocks.LARGE_COGWHEEL.get())
+						.key('L', AllItems.BRASS_SHEET.get())
+						.patternLine("  L  ")
+						.patternLine(" LAL ")
+						.patternLine("LACAL")
+						.patternLine(" LAL ")
+						.patternLine("  L  ")
+						.disallowMirrored())
+		;
 
 
 	RecipeBuilder create(Supplier<ItemLike> result) {

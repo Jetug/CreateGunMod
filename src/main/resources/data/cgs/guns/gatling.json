@@ -45,6 +45,13 @@
           "zOffset": 0
         }
       ],
+      "ntgl:magazine": [
+        {
+          "name": "big_drum_base",
+          "item": "cgs:gatling_drum",
+          "hide": ["magazine_group"]
+        }
+      ],
       "cgs:engine": [
         {
           "name": "steam_engine",

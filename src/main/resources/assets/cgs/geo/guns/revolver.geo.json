@@ -54,8 +54,13 @@
 					"pivot": [0, 5.65, 4.1]
 				},
 				{
-					"name": "muzzle_smoke",
+					"name": "muzzle_flash",
 					"parent": "gun",
+					"pivot": [0, 5.65, 4.1]
+				},
+				{
+					"name": "muzzle_smoke",
+					"parent": "muzzle_flash",
 					"pivot": [-0.06349, 9.83999, -8.32889],
 					"cubes": [
 						{
@@ -71,8 +76,8 @@
 					]
 				},
 				{
-					"name": "muzzle_flash",
-					"parent": "gun",
+					"name": "muzzle_fire",
+					"parent": "muzzle_flash",
 					"pivot": [0.01336, 9.88803, -9.49176],
 					"rotation": [0, 0, 45],
 					"cubes": [

@@ -1,0 +1,45 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "minecraft:iron_nugget"
+  },
+  "transitionalItem": {
+    "item": "minecraft:iron_nugget"
+  },
+  "sequence": [
+    {
+      "type": "create:cutting",
+      "ingredients": [
+        {
+          "item": "minecraft:iron_nugget"
+        }
+      ],
+      "results": [
+        {
+          "item": "minecraft:iron_nugget"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "minecraft:iron_nugget"
+        }
+      ],
+      "results": [
+        {
+          "item": "minecraft:iron_nugget"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "item": "cgs:nail",
+      "count": 6,
+      "chance": 100.0
+    }
+  ],
+  "loops": 1
+}

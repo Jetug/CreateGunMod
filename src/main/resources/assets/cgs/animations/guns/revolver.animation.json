@@ -33,7 +33,7 @@
 						"vector": [0, 0, 0]
 					}
 				},
-				"muzzle_flash": {
+				"muzzle_fire": {
 					"scale": {
 						"vector": [0, 0, 0]
 					}
@@ -215,7 +215,7 @@
 						"vector": [0, 0, 0]
 					}
 				},
-				"muzzle_flash": {
+				"muzzle_fire": {
 					"scale": {
 						"vector": [0, 0, 0]
 					}
@@ -394,7 +394,7 @@
 						"vector": [0, 0, 0]
 					}
 				},
-				"muzzle_flash": {
+				"muzzle_fire": {
 					"scale": {
 						"vector": [0, 0, 0]
 					}
@@ -573,7 +573,7 @@
 						"vector": [0, 0, 0]
 					}
 				},
-				"muzzle_flash": {
+				"muzzle_fire": {
 					"scale": {
 						"vector": [0, 0, 0]
 					}
@@ -841,7 +841,7 @@
 						"vector": [8.15, 3.83594, 6.45573]
 					}
 				},
-				"muzzle_flash": {
+				"muzzle_fire": {
 					"scale": {
 						"vector": [0, 0, 0]
 					}
@@ -1198,7 +1198,7 @@
 						"vector": [0, 0, 0]
 					}
 				},
-				"muzzle_flash": {
+				"muzzle_fire": {
 					"scale": {
 						"vector": [0, 0, 0]
 					}
@@ -1701,7 +1701,7 @@
 						"vector": [8.15, 3.83594, 6.45573]
 					}
 				},
-				"muzzle_flash": {
+				"muzzle_fire": {
 					"rotation": {
 						"0.0": {
 							"vector": [0, 0, 0]
@@ -1924,7 +1924,7 @@
 						"vector": [8.15, 3.83594, 6.45573]
 					}
 				},
-				"muzzle_flash": {
+				"muzzle_fire": {
 					"rotation": {
 						"0.0": {
 							"vector": [0, 0, 0]
@@ -1999,7 +1999,7 @@
 		},
 		"shot_auto": {
 			"loop": true,
-			"animation_length": 1.25,
+			"animation_length": 0.75,
 			"bones": {
 				"left_arm_anim": {
 					"rotation": {
@@ -2136,7 +2136,7 @@
 						"vector": [0, 0, 0]
 					}
 				},
-				"muzzle_flash": {
+				"muzzle_fire": {
 					"rotation": {
 						"0.0": {
 							"vector": [0, 0, 0]
@@ -2727,7 +2727,7 @@
 						"vector": [0, 0, 0]
 					}
 				},
-				"muzzle_flash": {
+				"muzzle_fire": {
 					"rotation": {
 						"0.0": {
 							"vector": [0, 0, 0]
@@ -3258,7 +3258,7 @@
 						"vector": [0, 0, 0]
 					}
 				},
-				"muzzle_flash": {
+				"muzzle_fire": {
 					"scale": {
 						"vector": [0, 0, 0]
 					}
@@ -3547,7 +3547,7 @@
 						}
 					}
 				},
-				"muzzle_flash": {
+				"muzzle_fire": {
 					"scale": {
 						"0.0": {
 							"vector": [0, 0, 0]
@@ -3671,7 +3671,7 @@
 						"vector": [0, 0, 0]
 					}
 				},
-				"muzzle_flash": {
+				"muzzle_fire": {
 					"scale": {
 						"vector": [0, 0, 0]
 					}
@@ -4034,7 +4034,7 @@
 						"vector": [0, 0, 0]
 					}
 				},
-				"muzzle_flash": {
+				"muzzle_fire": {
 					"scale": {
 						"vector": [0, 0, 0]
 					}

@@ -55,6 +55,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         fromBlock(writer, block, ingot);
         fromBlock(writer, ingot, nugget);
 
+        //GUNS
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModGuns.FLINTLOCK.get())
                 .pattern("   ")
                 .pattern("BAF")
@@ -66,6 +67,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModItems.BARREL.get()), has(ModItems.BARREL.get()))
                 .save(writer, getId(ModGuns.FLINTLOCK.get()));
 
+        //AMMO
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BALL.get(), 3)
                 .pattern("L")
                 .pattern("G")
@@ -76,6 +78,22 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModItems.LEAD_NUGGET.get()), has(ModItems.LEAD_NUGGET.get()))
                 .save(writer, getId(ModItems.BALL.get()));
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.NAIL.get(), 9)
+                .pattern("N")
+                .pattern("N")
+                .pattern("N")
+                .define('N', Items.IRON_NUGGET)
+                .unlockedBy(getHasName(Items.IRON_NUGGET), has(Items.IRON_NUGGET))
+                .save(writer, getId(ModItems.NAIL.get()));
+
+        //ATTACHMENTS
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AttachmentItems.SCOPE.get(), 1)
+                .requires(AllItems.BRASS_SHEET.get())
+                .requires(Items.SPYGLASS)
+                .requires(Items.BLACK_DYE)
+                .unlockedBy(getHasName(ModItems.LEAD_NUGGET.get()), has(ModItems.LEAD_NUGGET.get()))
+                .save(writer, getId(AttachmentItems.SCOPE.get()));
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AttachmentItems.STOCK.get(), 1)
                 .pattern("WLW")
                 .pattern(" WW")
@@ -83,7 +101,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('W', AllTags.AllItemTags.STRIPPED_LOGS.tag)
                 .unlockedBy(getHasName(ModItems.LEAD_NUGGET.get()), has(ModItems.LEAD_NUGGET.get()))
                 .save(writer, getId(AttachmentItems.STOCK.get()));
-
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AttachmentItems.LONG_BARREL.get(), 1)
                 .pattern("BB")
@@ -104,6 +121,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('B', ModItems.STURDY_BARREL.get())
                 .unlockedBy(getHasName(ModItems.STURDY_BARREL.get()), has(ModItems.STURDY_BARREL.get()))
                 .save(writer, getId(AttachmentItems.SHOTGUN_LONG_BARREL.get()));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AttachmentItems.SHOTGUN_SPREAD_BARREL.get(), 1)
+                .pattern("LBL")
+                .define('L', AllItems.IRON_SHEET.get())
+                .define('B', ModItems.STURDY_BARREL.get())
+                .unlockedBy(getHasName(ModItems.STURDY_BARREL.get()), has(ModItems.STURDY_BARREL.get()))
+                .save(writer, getId(AttachmentItems.SHOTGUN_SPREAD_BARREL.get()));
     }
     private static void fromBlock(Consumer<FinishedRecipe> writer, ItemLike ingredient, ItemLike result) {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, result, 9)

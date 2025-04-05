@@ -1,23 +1,52 @@
 {
   "itemGroup.mod_items": "Create: Gunsmithing",
+
   "slot.cgs.attachment.engine": "Двигатель",
-  "item.cgs.gatling": "Гатлинг",
-  "item.cgs.revolver": "Револьвер",
+  "slot.cgs.attachment.frame": "Основа",
+  "slot.cgs.attachment.chamber": "Патронник",
+
+  "item.cgs.flintlock": "Кремневый пистолет",
+  "item.cgs.revolver" : "Револьвер",
+  "item.cgs.shotgun"  : "Дробовик",
+  "item.cgs.nailgun"  : "Гвозьдемёт",
+  "item.cgs.gatling"  : "Гатлинг",
+
   "item.cgs.barrel": "Ствол",
   "item.cgs.barrel_sturdy": "Укреплённый ствол",
-  "item.cgs.press_form_7mm": "Пресс форма для 7мм гильзы",
-  "item.cgs.press_form_10mm": "Пресс форма для 10мм гильзы",
-  "item.cgs.shell_7mm": "Гильза 7мм",
-  "item.cgs.shell_10mm": "Гильза 10мм",
-  "item.cgs.round_7mm": "Патрон 7мм",
-  "item.cgs.round_10mm": "Патрон 10мм",
-  "item.cgs.steam_engine": "Гатлинг: Паравой двигатель",
-  "item.cgs.iron_sight": "Гатлинг: Прицел",
 
+  "item.cgs.press_form_7mm": "Пресс форма 7мм гильзы",
+  "item.cgs.press_form_10mm": "Пресс форма 10мм гильзы",
+  "item.cgs.press_form_shotgun": "Пресс форма гильзы для дробовика",
+
+  "item.cgs.shell_7mm"    : "Гильза 7мм",
+  "item.cgs.shell_10mm"   : "Гильза 10мм",
+  "item.cgs.shell_shotgun": "Гильза для дробовика",
+
+  "item.cgs.round_7mm"    : "Патрон 7мм",
+  "item.cgs.round_10mm"   : "Патрон 10мм",
+  "item.cgs.round_shotgun": "Патрон для дробовика",
+  "item.cgs.ball": "Бумажный патрон",
+  "item.cgs.nail": "Гвоздь",
+  
+  "item.cgs.steam_engine" : "Гатлинг: Паравой двигатель",
+  "item.cgs.iron_sight"   : "Гатлинг: Прицел",
+  "item.cgs.gatling_drum" : "Гатлинг: Барабанный Магазин",
+
+  "item.cgs.scope": "Оптический прицел",
+  "item.cgs.stock": "Приклад",
+  
+  "item.cgs.round_belt": "Револьвер: Патронная лента",
+  "item.cgs.auto": "Револьвер: Авто огонь",
+  "item.cgs.long_barrel": "Револьвер: Длинный ствол",
+  
+  "item.cgs.shotgun_drum": "Дробовик: Барабаны",
+  "item.cgs.shotgun_pump": "Дробовик: Автоматический зарядник",
+  "item.cgs.shotgun_long_barrel": "Дробовик: Длинные стволы",
+  "item.cgs.shotgun_spread_barrel": "Дробовик: Рассеивающие стволы",
+  
   "item.cgs.raw_lead": "Рудный свинец",
   "item.cgs.lead_ingot": "Свинцовый слиток",
   "item.cgs.lead_nugget": "Кусочек свинца",
-
   "block.cgs.lead_ore": "Свинцовая руда",
   "block.cgs.deepslate_lead_ore": "Свинцовоносный глубинный сланец",
   "block.cgs.lead_block": "Блок свинца",

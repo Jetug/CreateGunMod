@@ -27,4 +27,9 @@ public class BaseGunRenderer extends DynamicGunRenderer<GunAnimator> {
         super.render(entity, stack, transformType, poseStack, bufferSource, renderType, buffer, packedLight);
         poseStack.popPose();
     }
+
+    @Override
+    protected void renderMuzzleFlash(PoseStack poseStack) {
+        super.renderMuzzleFlash(poseStack);
+    }
 }

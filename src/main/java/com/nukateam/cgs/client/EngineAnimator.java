@@ -63,15 +63,17 @@ public abstract class EngineAnimator extends GunAnimator {
 
     protected AnimationController.AnimationStateHandler<GunAnimator> animateEngine() {
         return (event) -> {
-            event.getController().setAnimationSpeed(1);
-            var animation = begin().then(ENGINE, LOOP);
+            if(TransformUtils.isHandTransform(transformType)) {
+                event.getController().setAnimationSpeed(1);
+                var animation = begin().then(ENGINE, LOOP);
 
-            if(shootingHandler.isShooting()) {
-                animationHelper.syncAnimation(event, ENGINE, rate * getBarrelAmount());
+                if (shootingHandler.isOnCooldown(getEntity(), getArm())){
+                    animationHelper.syncAnimation(event, ENGINE, rate * getBarrelAmount());
+                }
+
+                return event.setAndContinue(animation);
             }
-
-            return event.setAndContinue(animation);
-
+            return PlayState.STOP;
         };
     }
 

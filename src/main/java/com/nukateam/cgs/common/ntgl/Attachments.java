@@ -1,10 +1,13 @@
 package com.nukateam.cgs.common.ntgl;
 
 import com.nukateam.ntgl.common.base.GunModifiers;
+import com.nukateam.ntgl.common.base.holders.FireMode;
 import com.nukateam.ntgl.common.base.holders.GripType;
 import com.nukateam.ntgl.common.base.holders.LoadingType;
 import com.nukateam.ntgl.common.data.attachment.impl.Scope;
 import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
+
+import java.util.Set;
 
 public class Attachments {
     public static final Scope SHORT_SCOPE = Scope.builder()
@@ -28,13 +31,21 @@ public class Attachments {
         public float modifyProjectileSpread(float spread) {
             return spread + 8f;
         }
+    };
+
+    public static final IGunModifier GATLING_DRUM_MODIFIERS = new IGunModifier() {
+        @Override
+        public int modifyMaxAmmo(int maxAmmo) {
+            return 300;
+        }
 
         @Override
-        public GripType modifyGripType(GripType gripType) {
-            return IGunModifier.super.modifyGripType(gripType);
+        public float modifyProjectileSpread(float spread) {
+            return spread * 2;
         }
     };
 
+    //REVOLVER
     public static final IGunModifier BELT_MODIFIERS = new IGunModifier() {
         @Override
         public int modifyReloadTime(int reloadTime) {
@@ -56,6 +67,21 @@ public class Attachments {
         @Override
         public int modifyFireDelay(int chargeTime) {
             return 0;
+        }
+
+        @Override
+        public Set<FireMode> modifyFireModes(Set<FireMode> fireMode) {
+            return Set.of(FireMode.AUTO, FireMode.SEMI_AUTO);
+        }
+
+        @Override
+        public float modifyProjectileSpread(float spread) {
+            return spread * 1.5f;
+        }
+
+        @Override
+        public int modifyFireRate(int rate) {
+            return rate / 2;
         }
     };
 
@@ -133,6 +159,21 @@ public class Attachments {
         @Override
         public int modifyFireRate(int rate) {
             return 6;
+        }
+
+        @Override
+        public int modifyReloadStart(int reloadTime) {
+            return 8;
+        }
+
+        @Override
+        public int modifyReloadTime(int reloadTime) {
+            return 15;
+        }
+
+        @Override
+        public int modifyReloadEnd(int reloadTime) {
+            return 20;
         }
 
         @Override

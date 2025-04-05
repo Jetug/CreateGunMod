@@ -1,19 +1,46 @@
 {
   "itemGroup.mod_items": "Create: Gunsmithing",
   "slot.cgs.attachment.engine": "Engine",
+  "slot.cgs.attachment.frame": "Frame",
+  "slot.cgs.attachment.chamber": "Chamber",
+
+  "item.cgs.flintlock": "Flintlock",
   "item.cgs.revolver": "Revolver",
+  "item.cgs.shotgun": "Shotgun",
+  "item.cgs.nailgun": "Nailgun",
   "item.cgs.gatling": "Gatling",
+
   "item.cgs.barrel": "Barrel",
   "item.cgs.barrel_sturdy": "Sturdy Barrel",
+
   "item.cgs.press_form_7mm": "7mm Shell Press Form",
   "item.cgs.press_form_10mm": "10mm Shell Press Form",
+  "item.cgs.press_form_shotgun": "Shotgun Shell Press Form",
+
   "item.cgs.shell_7mm": "7mm Shell",
   "item.cgs.shell_10mm": "10mm Shell",
+  "item.cgs.shell_shotgun": "Shotgun Shell",
+
   "item.cgs.round_7mm": "7mm Round",
   "item.cgs.round_10mm": "10mm Round",
+  "item.cgs.round_shotgun": "Shotgun Round",
+  "item.cgs.ball": "Paper cartridge",
+  "item.cgs.nail": "Nail",
+
   "item.cgs.steam_engine": "Gatling: Steam Engine",
   "item.cgs.iron_sight": "Gatling: Iron Sight",
+  "item.cgs.gatling_drum": "Gatling: Drum Magazine",
 
+  "item.cgs.scope": "Scope",
+  "item.cgs.stock": "Stock",
+  "item.cgs.round_belt": "Revolver: Chamber Belt",
+  "item.cgs.auto": "Revolver: Auto Fire",
+  "item.cgs.long_barrel": "Revolver: Long Barrel",
+
+  "item.cgs.shotgun_drum": "Shotgun: Drums",
+  "item.cgs.shotgun_pump": "Shotgun: Automatic Loader",
+  "item.cgs.shotgun_long_barrel": "Shotgun: Long Barrels",
+  "item.cgs.shotgun_spread_barrel": "Shotgun: Spreading Barrels",
 
   "item.cgs.raw_lead": "Raw Lead",
   "item.cgs.lead_ingot": "Lead Ingot",

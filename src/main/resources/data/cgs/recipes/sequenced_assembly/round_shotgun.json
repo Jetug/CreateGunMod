@@ -1,7 +1,7 @@
 {
   "type": "create:sequenced_assembly",
   "ingredient": {
-    "item": "cgs:shell_shotgun"
+    "tag": "forge:plates/brass"
   },
   "transitionalItem": {
     "item": "cgs:shell_shotgun"
