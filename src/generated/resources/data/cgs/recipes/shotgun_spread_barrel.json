@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "cgs:barrel_sturdy"
+    },
+    "L": {
+      "item": "create:iron_sheet"
+    }
+  },
+  "pattern": [
+    "LBL"
+  ],
+  "result": {
+    "item": "cgs:shotgun_spread_barrel"
+  },
+  "show_notification": true
+}

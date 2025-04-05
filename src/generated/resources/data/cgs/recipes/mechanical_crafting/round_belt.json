@@ -1,0 +1,22 @@
+{
+  "type": "create:mechanical_crafting",
+  "acceptMirrored": false,
+  "key": {
+    "B": {
+      "item": "create:brass_nugget"
+    },
+    "S": {
+      "item": "create:sturdy_sheet"
+    }
+  },
+  "pattern": [
+    "BB",
+    "SS",
+    "BB",
+    "SS",
+    "BB"
+  ],
+  "result": {
+    "item": "cgs:round_belt"
+  }
+}

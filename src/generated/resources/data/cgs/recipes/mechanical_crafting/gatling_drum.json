@@ -1,0 +1,25 @@
+{
+  "type": "create:mechanical_crafting",
+  "acceptMirrored": false,
+  "key": {
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "C": {
+      "item": "create:large_cogwheel"
+    },
+    "L": {
+      "item": "create:brass_sheet"
+    }
+  },
+  "pattern": [
+    "  L  ",
+    " LAL ",
+    "LACAL",
+    " LAL ",
+    "  L  "
+  ],
+  "result": {
+    "item": "cgs:gatling_drum"
+  }
+}
