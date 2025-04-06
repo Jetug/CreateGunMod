@@ -36,6 +36,10 @@
         {
           "name": "stock",
           "item": "cgs:stock"
+        },
+        {
+          "name": "split_barrel",
+          "item": "cgs:nailgun_split_barrel"
         }
       ]
     }

@@ -8,13 +8,15 @@ import com.nukateam.ntgl.common.base.holders.AttachmentType;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.foundation.item.GunItem;
 import com.nukateam.ntgl.common.util.util.Cycler;
+import com.nukateam.ntgl.common.util.util.GunData;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
 import mod.azure.azurelib.core.animation.*;
 import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-import static com.nukateam.cgs.common.ntgl.modifiers.ShotgunModifier.isAmmoEven;
 import static com.nukateam.ntgl.common.util.util.GunModifierHelper.*;
 import static mod.azure.azurelib.core.animation.Animation.*;
 import static mod.azure.azurelib.core.animation.Animation.LoopType.*;
@@ -69,6 +71,10 @@ public class ShotgunAnimator extends GunAnimator {
         }
     }
 
+    public static boolean isAmmoEven(ItemStack stack) {
+        return Gun.getAmmo(stack) % 2 == 0;
+    }
+
     @Override
     protected RawAnimation getShootingAnimation(AnimationState<GunAnimator> event) {
         var animation = begin();
@@ -98,7 +104,8 @@ public class ShotgunAnimator extends GunAnimator {
     @Override
     protected RawAnimation getStartReloadAnimation(AnimationState<GunAnimator> event) {
         if(hasPumps) {
-            int time = getReloadStart(this.getStack());
+            var data = getGunData();
+            int time = getReloadStart(data);
             this.animationHelper.syncAnimation(event, RELOAD_PUMP_START, time);
             return RawAnimation.begin().then(RELOAD_PUMP_START, PLAY_ONCE);
         }
@@ -107,13 +114,14 @@ public class ShotgunAnimator extends GunAnimator {
 
     @Override
     protected RawAnimation getDefaultReloadAminmation(AnimationState<GunAnimator> event) {
-        var reloadTime = getReloadTime(this.getStack());
+        var data = getGunData();
+        var reloadTime = getReloadTime(data);
         if(hasDrums){
             this.animationHelper.syncAnimation(event, reloadTime, RELOAD_DRUM, SHOT_DRUM);
             return begin().then(RELOAD_DRUM, PLAY_ONCE).then(SHOT_DRUM, LOOP);
         }
         else if(hasPumps){
-            var lessThenHalf = ammo <= getMaxAmmo(getStack()) / 2;
+            var lessThenHalf = ammo <= getMaxAmmo(data) / 2;
             var name = lessThenHalf ? RELOAD_PUMP_LEFT: RELOAD_PUMP_RIGHT;
 
             this.animationHelper.syncAnimation(event, name, reloadTime);
@@ -126,11 +134,16 @@ public class ShotgunAnimator extends GunAnimator {
     @Override
     protected RawAnimation getEndReloadAnimation(AnimationState<GunAnimator> event) {
         if(hasPumps) {
-            int time = getReloadEnd(this.getStack());
+            var data = getGunData();
+            int time = getReloadEnd(data);
             this.animationHelper.syncAnimation(event, time, RELOAD_PUMP_END, SHOT_PUMP);
             return RawAnimation.begin().then(RELOAD_PUMP_END, PLAY_ONCE).then(SHOT_PUMP, LOOP);
         }
         else return super.getEndReloadAnimation(event);
+    }
+
+    private @NotNull GunData getGunData() {
+        return new GunData(getStack(), getEntity());
     }
 
     private AnimationController.AnimationStateHandler<GunAnimator> animateCock() {

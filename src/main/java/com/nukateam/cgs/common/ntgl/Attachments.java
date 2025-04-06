@@ -1,13 +1,21 @@
 package com.nukateam.cgs.common.ntgl;
 
+import com.nukateam.cgs.common.faundation.registry.AttachmentItems;
 import com.nukateam.ntgl.common.base.GunModifiers;
+import com.nukateam.ntgl.common.base.holders.AttachmentType;
 import com.nukateam.ntgl.common.base.holders.FireMode;
 import com.nukateam.ntgl.common.base.holders.GripType;
 import com.nukateam.ntgl.common.base.holders.LoadingType;
 import com.nukateam.ntgl.common.data.attachment.impl.Scope;
+import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
+import com.nukateam.ntgl.common.util.util.GunData;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.Set;
+
+import static com.nukateam.cgs.client.ShotgunAnimator.isAmmoEven;
 
 public class Attachments {
     public static final Scope SHORT_SCOPE = Scope.builder()
@@ -23,24 +31,37 @@ public class Attachments {
 
     public static final IGunModifier STEAM_ENGINE_MODIFIERS = new IGunModifier() {
         @Override
-        public int modifyFireRate(int rate) {
+        public int modifyFireRate(int rate, GunData data) {
             return 2;
         }
 
         @Override
-        public float modifyProjectileSpread(float spread) {
+        public float modifyProjectileSpread(float spread, GunData data) {
             return spread + 8f;
+        }
+
+        @Override
+        public GripType modifyGripType(GripType gripType, GunData data) {
+            if(data == null) return IGunModifier.super.modifyGripType(gripType, data);
+            var hasDrum = Gun
+                    .getAttachmentItem(AttachmentType.MAGAZINE, data.stack)
+                    .getItem() == AttachmentItems.GATLING_DRUM.get();
+
+            if(!hasDrum && data.shooter.hasEffect(MobEffects.DAMAGE_BOOST)){
+                return GripType.ONE_HANDED;
+            }
+            return IGunModifier.super.modifyGripType(gripType, data);
         }
     };
 
     public static final IGunModifier GATLING_DRUM_MODIFIERS = new IGunModifier() {
         @Override
-        public int modifyMaxAmmo(int maxAmmo) {
+        public int modifyMaxAmmo(int maxAmmo, GunData data) {
             return 300;
         }
 
         @Override
-        public float modifyProjectileSpread(float spread) {
+        public float modifyProjectileSpread(float spread, GunData data) {
             return spread * 2;
         }
     };
@@ -48,63 +69,63 @@ public class Attachments {
     //REVOLVER
     public static final IGunModifier BELT_MODIFIERS = new IGunModifier() {
         @Override
-        public int modifyReloadTime(int reloadTime) {
+        public int modifyReloadTime(int reloadTime, GunData data) {
             return 20;
         }
 
         @Override
-        public int modifyMaxAmmo(int maxAmmo) {
+        public int modifyMaxAmmo(int maxAmmo, GunData data) {
             return 12;
         }
 
         @Override
-        public LoadingType modifyLoadingType(LoadingType loadingType) {
+        public LoadingType modifyLoadingType(LoadingType loadingType, GunData data) {
             return LoadingType.PER_CARTRIDGE;
         }
     };
 
     public static final IGunModifier AUTO_FIRE = new IGunModifier() {
         @Override
-        public int modifyFireDelay(int chargeTime) {
+        public int modifyFireDelay(int chargeTime, GunData data) {
             return 0;
         }
 
         @Override
-        public Set<FireMode> modifyFireModes(Set<FireMode> fireMode) {
+        public Set<FireMode> modifyFireModes(Set<FireMode> fireMode, GunData data) {
             return Set.of(FireMode.AUTO, FireMode.SEMI_AUTO);
         }
 
         @Override
-        public float modifyProjectileSpread(float spread) {
+        public float modifyProjectileSpread(float spread, GunData data) {
             return spread * 1.5f;
         }
 
         @Override
-        public int modifyFireRate(int rate) {
+        public int modifyFireRate(int rate, GunData data) {
             return rate / 2;
         }
     };
 
     public static final IGunModifier LONG_BARREL = new IGunModifier() {
         @Override
-        public GripType modifyGripType(GripType gripType) {
+        public GripType modifyGripType(GripType gripType, GunData data) {
             return GripType.TWO_HANDED;
         }
 
         @Override
-        public float modifyDamage(float damage) {
+        public float modifyDamage(float damage, GunData data) {
             return damage * 1.5f;
         }
 
         @Override
-        public double modifyProjectileSpeed(double speed) {
+        public double modifyProjectileSpeed(double speed, GunData data) {
             return speed * 3;
         }
     };
 
     public static final IGunModifier AUTO = new IGunModifier() {
         @Override
-        public float modifyProjectileSpread(float spread) {
+        public float modifyProjectileSpread(float spread, GunData data) {
             return spread * 2;
         }
     };
@@ -112,113 +133,124 @@ public class Attachments {
 
     public static final IGunModifier STOCK = new IGunModifier() {
         @Override
-        public float recoilModifier() {
+        public float recoilModifier(GunData data) {
             return 0.1F;
         }
 
         @Override
-        public float kickModifier() {
+        public float kickModifier(GunData data) {
             return 0.1F;
         }
 
         @Override
-        public float modifyProjectileSpread(float spread) {
+        public float modifyProjectileSpread(float spread, GunData data) {
             return spread * 0.25F;
         }
 
         @Override
-        public double modifyAimDownSightSpeed(double speed) {
+        public double modifyAimDownSightSpeed(double speed, GunData data) {
             return speed * 0.5F;
         }
 
     };
 
-    public static final IGunModifier SHOTGUN_DRUM = new IGunModifier() {
+
+
+    public static final IGunModifier SHOTGUN_MODIFIER = new IGunModifier() {
         @Override
-        public int modifyMaxAmmo(int maxAmmo) {
+        public int modifyFireRate(int rate, GunData data) {
+            if(!isAmmoEven(data.stack))
+                return 20;
+            return IGunModifier.super.modifyFireRate(rate, data);
+        }
+    };
+
+    public static final IGunModifier SHOTGUN_DRUM_MODIFIER = new IGunModifier() {
+        @Override
+        public int modifyMaxAmmo(int maxAmmo, GunData data) {
             return 8;
         }
 
         @Override
-        public int modifyReloadTime(int reloadTime) {
+        public int modifyReloadTime(int reloadTime, GunData data) {
             return 80;
         }
     };
 
-    public static final IGunModifier SHOTGUN_PUMP = new IGunModifier() {
+    public static final IGunModifier SHOTGUN_PUMP_MODIFIER = new IGunModifier() {
         @Override
-        public LoadingType modifyLoadingType(LoadingType loadingType) {
+        public LoadingType modifyLoadingType(LoadingType loadingType, GunData data) {
             return LoadingType.PER_CARTRIDGE;
         }
 
         @Override
-        public int modifyMaxAmmo(int maxAmmo) {
+        public int modifyMaxAmmo(int maxAmmo, GunData data) {
             return 10;
         }
 
         @Override
-        public int modifyFireRate(int rate) {
+        public int modifyFireRate(int rate, GunData data) {
             return 6;
         }
 
         @Override
-        public int modifyReloadStart(int reloadTime) {
+        public int modifyReloadStart(int reloadTime, GunData data) {
             return 8;
         }
 
         @Override
-        public int modifyReloadTime(int reloadTime) {
-            return 15;
+        public int modifyReloadTime(int reloadTime, GunData data) {
+            return 12;
         }
 
         @Override
-        public int modifyReloadEnd(int reloadTime) {
+        public int modifyReloadEnd(int reloadTime, GunData data) {
             return 20;
         }
 
         @Override
-        public GripType modifyGripType(GripType gripType) {
+        public GripType modifyGripType(GripType gripType, GunData data) {
             return GripType.TWO_HANDED;
         }
     };
 
     public static final IGunModifier SHOTGUN_LONG_BARREL = new IGunModifier() {
         @Override
-        public GripType modifyGripType(GripType gripType) {
+        public GripType modifyGripType(GripType gripType, GunData data) {
             return GripType.TWO_HANDED;
         }
 
         @Override
-        public float modifyProjectileSpread(float spread) {
+        public float modifyProjectileSpread(float spread, GunData data) {
             return spread * 0.5f;
         }
     };
 
     public static final IGunModifier SHOTGUN_SPREAD_BARREL = new IGunModifier() {
         @Override
-        public float modifyProjectileSpread(float spread) {
+        public float modifyProjectileSpread(float spread, GunData data) {
             return spread * 4;
         }
     };
 
     public static final IGunModifier NAILGUN_SPLIT_BARREL = new IGunModifier() {
         @Override
-        public float modifyProjectileSpread(float spread) {
+        public float modifyProjectileSpread(float spread, GunData data) {
             return 20;
         }
 
         @Override
-        public int modifyMaxAmmo(int maxAmmo) {
+        public int modifyMaxAmmo(int maxAmmo, GunData data) {
             return maxAmmo / 5;
         }
 
         @Override
-        public int modifyProjectileAmount(int amount) {
+        public int modifyProjectileAmount(int amount, GunData data) {
             return 5;
         }
 
         @Override
-        public int modifyFireRate(int rate) {
+        public int modifyFireRate(int rate, GunData data) {
             return rate * 3;
         }
     };

@@ -9,6 +9,7 @@ import com.nukateam.ntgl.client.util.util.TransformUtils;
 import com.nukateam.ntgl.common.base.holders.AttachmentType;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.foundation.item.GunItem;
+import com.nukateam.ntgl.common.util.util.GunData;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
 import com.simibubi.create.AllSoundEvents;
 import mod.azure.azurelib.core.animation.*;
@@ -68,7 +69,8 @@ public class GatlingAnimator extends EngineAnimator {
     @Override
     protected RawAnimation getDefaultReloadAminmation(AnimationState<GunAnimator> event) {
         if(hasDrum) {
-            var time = GunModifierHelper.getReloadTime(getStack());
+            var data = new GunData(getStack(), getEntity());
+            var time = GunModifierHelper.getReloadTime(data);
             animationHelper.syncAnimation(event, RELOAD_DRUM, time);
             return begin().then(RELOAD_DRUM, LOOP);
         }

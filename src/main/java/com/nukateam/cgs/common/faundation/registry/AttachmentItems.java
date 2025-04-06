@@ -7,7 +7,6 @@ import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.ntgl.common.base.holders.AttachmentType;
 import com.nukateam.ntgl.common.data.attachment.impl.Barrel;
 import com.nukateam.ntgl.common.data.attachment.impl.GenericAttachment;
-import com.nukateam.ntgl.common.data.attachment.impl.Magazine;
 import com.nukateam.ntgl.common.data.attachment.impl.Stock;
 import com.nukateam.ntgl.common.foundation.item.attachment.*;
 import net.minecraft.world.item.Item;
@@ -63,12 +62,12 @@ public class AttachmentItems {
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> SHOTGUN_DRUM = ITEMS.register("shotgun_drum",
             () -> new AttachmentItem<>(AttachmentType.MAGAZINE,
-                    GenericAttachment.create(Attachments.SHOTGUN_DRUM), GUN_PROPERTIES));
+                    GenericAttachment.create(SHOTGUN_DRUM_MODIFIER, SHOTGUN_MODIFIER), GUN_PROPERTIES));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> SHOTGUN_PUMP = ITEMS.register("shotgun_pump",
             () -> new AttachmentItem<>(AttachmentType.MAGAZINE,
-                    GenericAttachment.create(Attachments.SHOTGUN_PUMP), GUN_PROPERTIES));
+                    GenericAttachment.create(SHOTGUN_PUMP_MODIFIER, SHOTGUN_MODIFIER), GUN_PROPERTIES));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> SHOTGUN_LONG_BARREL = ITEMS.register("shotgun_long_barrel",

@@ -1,6 +1,5 @@
 package com.nukateam.cgs.common.faundation.item;
 
-import com.nukateam.cgs.common.ntgl.modifiers.GatlingModifier;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.cgs.client.GatlingAnimator;
 import com.nukateam.cgs.client.render.GatlingRenderer;
@@ -15,7 +14,6 @@ public class GatlingItem extends BaseGunItem {
 
     public GatlingItem(Properties properties) {
         super(properties);
-        modifierFactory = GatlingModifier::new;
     }
 
     @Override

@@ -16,16 +16,17 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> GATLING_MAG_IN   = register("gun.gatling.reload_mag_in");
     public static final RegistryObject<SoundEvent> GATLING_MAG_OUT  = register("gun.gatling.reload_mag_out");
 
-    public static final RegistryObject<SoundEvent> REVOLVER_FIRE            = register("gun.revolver.fire");
-    public static final RegistryObject<SoundEvent> REVOLVER_CHAMBER_OPEN    = register("gun.revolver.chamber_open"  );
-    public static final RegistryObject<SoundEvent> REVOLVER_CHAMBER_CLOSE   = register("gun.revolver.chamber_close" );
-    public static final RegistryObject<SoundEvent> REVOLVER_ROUNDS_IN       = register("gun.revolver.rounds_in"     );
-    public static final RegistryObject<SoundEvent> REVOLVER_ROUNDS_OUT      = register("gun.revolver.rounds_out"     );
+    public static final RegistryObject<SoundEvent> REVOLVER_FIRE            = register("gun.revolver.fire"         );
+    public static final RegistryObject<SoundEvent> REVOLVER_CHAMBER_OPEN    = register("gun.revolver.chamber_open" );
+    public static final RegistryObject<SoundEvent> REVOLVER_CHAMBER_CLOSE   = register("gun.revolver.chamber_close");
+    public static final RegistryObject<SoundEvent> REVOLVER_ROUNDS_IN       = register("gun.revolver.rounds_in"    );
+    public static final RegistryObject<SoundEvent> REVOLVER_ROUNDS_OUT      = register("gun.revolver.rounds_out"   );
 
-    public static final RegistryObject<SoundEvent> SHOTGUN_FIRE     = register("gun.shotgun.fire"     );
-    public static final RegistryObject<SoundEvent> SHOTGUN_ROUND_IN = register("gun.shotgun.round_in" );
-    public static final RegistryObject<SoundEvent> SHOTGUN_CLOSE    = register("gun.shotgun.close"    );
-    public static final RegistryObject<SoundEvent> SHOTGUN_OPEN     = register("gun.shotgun.open"     );
+    public static final RegistryObject<SoundEvent> SHOTGUN_FIRE     = register("gun.shotgun.fire"    );
+    public static final RegistryObject<SoundEvent> SHOTGUN_ROUND_IN = register("gun.shotgun.round_in");
+    public static final RegistryObject<SoundEvent> SHOTGUN_CLOSE    = register("gun.shotgun.close"   );
+    public static final RegistryObject<SoundEvent> SHOTGUN_OPEN     = register("gun.shotgun.open"    );
+    public static final RegistryObject<SoundEvent> SHOTGUN_LEVEL    = register("gun.shotgun.lever"   );
 
     public static final RegistryObject<SoundEvent> NAILGUN_FIRE     = register("gun.nailgun.fire"   );
     public static final RegistryObject<SoundEvent> NAILGUN_MAG_IN   = register("gun.nailgun.mag_in" );

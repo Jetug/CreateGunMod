@@ -7,6 +7,7 @@ import com.nukateam.ntgl.client.util.handler.ClientReloadHandler;
 import com.nukateam.ntgl.client.util.util.TransformUtils;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.foundation.item.GunItem;
+import com.nukateam.ntgl.common.util.util.GunData;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
 import com.simibubi.create.AllSoundEvents;
 import mod.azure.azurelib.core.animation.AnimatableManager;
@@ -53,7 +54,8 @@ public abstract class EngineAnimator extends GunAnimator {
         if (event.phase == TickEvent.Phase.START && isGun(getStack())) {
             super.tick(event);
             this.ticks++;
-            this.rate = GunModifierHelper.getRate(getStack());
+            var data = new GunData(getStack(), getEntity());
+            this.rate = GunModifierHelper.getRate(data);
 
             playEngineSound();
 
@@ -82,7 +84,7 @@ public abstract class EngineAnimator extends GunAnimator {
             var player = minecraft.player;
             var isShooting = shootingHandler.isShooting();
             var pitch = 1.18f - minecraft.level.random.nextFloat() * .25f;
-            var volume = isShooting ? 6f : 0.6f;
+            var volume = isShooting ? 6f : 0.5f;
 
             assert player != null;
             minecraft.level.playLocalSound(
@@ -99,9 +101,9 @@ public abstract class EngineAnimator extends GunAnimator {
 
     private boolean shouldPlayEngineSound() {
         var player = minecraft.player;
-        var isShooting = shootingHandler.isShooting();
+        var isShooting = shootingHandler.isShooting(getEntity(), arm);
         var isNotPaused = !minecraft.getInstance().isPaused();
-        var frequency = isShooting ? 5 : 20;
+        var frequency = isShooting ? 10 : 60;
 
         return player != null && hasEngine()
                 && this.ticks % frequency == 0

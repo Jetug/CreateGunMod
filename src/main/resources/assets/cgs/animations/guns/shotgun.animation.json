@@ -2616,6 +2616,14 @@
 						}
 					}
 				}
+			},
+			"sound_effects": {
+				"0.0": {
+					"effect": "open"
+				},
+				"0.4583": {
+					"effect": "close"
+				}
 			}
 		},
 		"shot_drum": {
@@ -2742,6 +2750,11 @@
 						}
 					}
 				}
+			},
+			"sound_effects": {
+				"0.2917": {
+					"effect": "lever"
+				}
 			}
 		},
 		"shot_drum_one_hand": {
@@ -2858,6 +2871,11 @@
 							"vector": [0, 0, 0]
 						}
 					}
+				}
+			},
+			"sound_effects": {
+				"0.625": {
+					"effect": "lever"
 				}
 			}
 		},

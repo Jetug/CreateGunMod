@@ -162,7 +162,7 @@ dependencies {
     implementation fg.deobf("mod.azure.azurelib:azurelib-neo-1.20.1:2.0.41")
     implementation fg.deobf("curse.maven:framework-549225:5180972")
     implementation fg.deobf("curse.maven:cyanide-541676:4824162")
-    implementation fg.deobf('com.nukateam:ntgl:1.20.1-1.7.0')
+    implementation fg.deobf('com.nukateam:ntgl:1.20.1-1.8.0')
 
     implementation fg.deobf("curse.maven:bettercombat-639842:5266134")
     implementation fg.deobf("curse.maven:playeranimator-658587:4587214")

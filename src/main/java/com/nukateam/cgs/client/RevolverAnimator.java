@@ -11,6 +11,7 @@ import com.nukateam.ntgl.common.data.constants.Animations;
 import com.nukateam.ntgl.common.foundation.item.GunItem;
 import com.nukateam.ntgl.common.util.helpers.PlayerHelper;
 import com.nukateam.ntgl.common.util.util.AnimationHelper;
+import com.nukateam.ntgl.common.util.util.GunData;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
 import mod.azure.azurelib.core.animation.*;
 import mod.azure.azurelib.core.object.PlayState;
@@ -101,7 +102,8 @@ public class RevolverAnimator extends GunAnimator {
     protected RawAnimation getShootingAnimation(AnimationState<GunAnimator> event) {
         if(isAuto){
             var animation = playGunAnim("shot_auto", LOOP);
-            var rate = GunModifierHelper.getRate(getStack());
+            var data = new GunData(getStack(), getEntity());
+            var rate = GunModifierHelper.getRate(data);
             animationHelper.syncAnimation(event, "shot_auto", rate);
             return animation;
 
@@ -118,7 +120,8 @@ public class RevolverAnimator extends GunAnimator {
         if(hasBelt){
             var animation = begin();
             animation.then("reload_belt", LOOP);
-            animationHelper.syncAnimation(event, "reload_belt", GunModifierHelper.getReloadTime(getStack()));
+            var data = new GunData(getStack(), getEntity());
+            animationHelper.syncAnimation(event, "reload_belt", GunModifierHelper.getReloadTime(data));
 
             return animation;
         }

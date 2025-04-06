@@ -3,7 +3,7 @@
     "rate": 2,
     "gripType": "ntgl:one_handed",
     "maxAmmo": 2,
-    "damage": 25.0,
+    "damage": 40.0,
     "reloadTime": 40,
     "reloadAmount": 1,
     "recoilAngle": 10.0,
@@ -21,7 +21,8 @@
     "fire"     : "cgs:gun.shotgun.fire",
     "open"     : "cgs:gun.shotgun.open",
     "close"    : "cgs:gun.shotgun.close",
-    "round_in" : "cgs:gun.shotgun.round_in"
+    "round_in" : "cgs:gun.shotgun.round_in",
+    "lever"    : "cgs:gun.shotgun.lever"
   },
   "modules": {
     "attachmentScreen": true,
