@@ -44,7 +44,7 @@ public class Attachments {
         public GripType modifyGripType(GripType gripType, GunData data) {
             if(data == null) return IGunModifier.super.modifyGripType(gripType, data);
             var hasDrum = Gun
-                    .getAttachmentItem(AttachmentType.MAGAZINE, data.stack)
+                    .getAttachmentItem(AttachmentType.MAGAZINE, data.gun)
                     .getItem() == AttachmentItems.GATLING_DRUM.get();
 
             if(!hasDrum && data.shooter.hasEffect(MobEffects.DAMAGE_BOOST)){
@@ -159,7 +159,7 @@ public class Attachments {
     public static final IGunModifier SHOTGUN_MODIFIER = new IGunModifier() {
         @Override
         public int modifyFireRate(int rate, GunData data) {
-            if(!isAmmoEven(data.stack))
+            if(!isAmmoEven(data.gun))
                 return 20;
             return IGunModifier.super.modifyFireRate(rate, data);
         }
@@ -186,11 +186,6 @@ public class Attachments {
         @Override
         public int modifyMaxAmmo(int maxAmmo, GunData data) {
             return 10;
-        }
-
-        @Override
-        public int modifyFireRate(int rate, GunData data) {
-            return 6;
         }
 
         @Override

@@ -137,7 +137,10 @@ public class ShotgunAnimator extends GunAnimator {
             var data = getGunData();
             int time = getReloadEnd(data);
             this.animationHelper.syncAnimation(event, time, RELOAD_PUMP_END, SHOT_PUMP);
-            return RawAnimation.begin().then(RELOAD_PUMP_END, PLAY_ONCE).then(SHOT_PUMP, LOOP);
+            return RawAnimation.begin()
+                    .then(RELOAD_PUMP_END, PLAY_ONCE)
+                    .then(SHOT_PUMP, PLAY_ONCE)
+                    .then(Animations.HOLD, LOOP);
         }
         else return super.getEndReloadAnimation(event);
     }

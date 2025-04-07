@@ -18,6 +18,7 @@ import mod.azure.azurelib.core.object.PlayState;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraftforge.event.TickEvent;
 
@@ -105,7 +106,16 @@ public abstract class EngineAnimator extends GunAnimator {
         var isNotPaused = !minecraft.getInstance().isPaused();
         var frequency = isShooting ? 10 : 60;
 
-        return player != null && hasEngine()
+        var mainGunData = new GunData(getEntity().getMainHandItem(), getEntity());
+        var offGunData = new GunData(getEntity().getOffhandItem(), getEntity());
+
+        var isVisible = arm == HumanoidArm.RIGHT || (arm == HumanoidArm.LEFT
+                && GunModifierHelper.isOneHanded(mainGunData)
+                && GunModifierHelper.isOneHanded(offGunData));
+
+        return player != null
+                && hasEngine()
+                && isVisible
                 && this.ticks % frequency == 0
                 && TransformUtils.isHandTransform(transformType)
                 && hasGunInHands(player)

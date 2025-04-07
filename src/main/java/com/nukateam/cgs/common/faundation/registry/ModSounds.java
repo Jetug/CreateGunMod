@@ -32,6 +32,11 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> NAILGUN_MAG_IN   = register("gun.nailgun.mag_in" );
     public static final RegistryObject<SoundEvent> NAILGUN_MAG_OUT  = register("gun.nailgun.mag_out");
 
+    public static final RegistryObject<SoundEvent> FLINTLOCK_FIRE    = register("gun.flintlock.fire"    );
+    public static final RegistryObject<SoundEvent> FLINTLOCK_AMMO_IN = register("gun.flintlock.ammo_in" );
+    public static final RegistryObject<SoundEvent> FLINTLOCK_COCK    = register("gun.flintlock.cock"    );
+    public static final RegistryObject<SoundEvent> FLINTLOCK_RAMROD  = register("gun.flintlock.ramrod"  );
+
     private static RegistryObject<SoundEvent> register(String key) {
         return REGISTER.register(key, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(Gunsmithing.MOD_ID, key)));
     }

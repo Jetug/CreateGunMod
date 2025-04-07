@@ -4,6 +4,7 @@ import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.cgs.client.GatlingAnimator;
 import com.nukateam.cgs.client.render.GatlingRenderer;
 import com.nukateam.ntgl.client.animators.GunAnimator;
+import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraftforge.common.util.Lazy;
 
@@ -12,8 +13,8 @@ import java.util.function.BiFunction;
 public class GatlingItem extends BaseGunItem {
     private final Lazy<GatlingRenderer> RENDERER = Lazy.of(() -> new GatlingRenderer());
 
-    public GatlingItem(Properties properties) {
-        super(properties);
+    public GatlingItem(Properties properties, IGunModifier... modifiers) {
+        super(properties, modifiers);
     }
 
     @Override

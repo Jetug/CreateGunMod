@@ -68,5 +68,23 @@
 
    "gun.nailgun.mag_out": { "subtitle": "subtitle.ntgl.reload", "sounds": [
       { "name": "cgs:gun/nailgun/reload/mag_out" }
+   ]},
+
+   "gun.flintlock.fire": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+      { "name": "cgs:gun/flintlock/fire/fire_01" },
+      { "name": "cgs:gun/flintlock/fire/fire_02" },
+      { "name": "cgs:gun/flintlock/fire/fire_03" }
+   ]},
+
+   "gun.flintlock.ammo_in": { "subtitle": "subtitle.ntgl.reload", "sounds": [
+      { "name": "cgs:gun/flintlock/reload/ammo_in" }
+   ]},
+
+   "gun.flintlock.cock": { "subtitle": "subtitle.ntgl.reload", "sounds": [
+      { "name": "cgs:gun/flintlock/reload/cock" }
+   ]},
+
+   "gun.flintlock.ramrod": { "subtitle": "subtitle.ntgl.reload", "sounds": [
+      { "name": "cgs:gun/flintlock/reload/ramrod" }
    ]}
 }
