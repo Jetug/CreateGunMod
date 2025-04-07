@@ -79,6 +79,11 @@ public class Attachments {
         }
 
         @Override
+        public double modifyAimDownSightSpeed(double speed, GunData data) {
+            return speed * 0.25F;
+        }
+
+        @Override
         public LoadingType modifyLoadingType(LoadingType loadingType, GunData data) {
             return LoadingType.PER_CARTRIDGE;
         }
@@ -121,6 +126,12 @@ public class Attachments {
         public double modifyProjectileSpeed(double speed, GunData data) {
             return speed * 3;
         }
+
+
+        @Override
+        public double modifyAimDownSightSpeed(double speed, GunData data) {
+            return speed * 0.15F;
+        }
     };
 
     public static final IGunModifier AUTO = new IGunModifier() {
@@ -129,7 +140,6 @@ public class Attachments {
             return spread * 2;
         }
     };
-
 
     public static final IGunModifier STOCK = new IGunModifier() {
         @Override
@@ -151,10 +161,7 @@ public class Attachments {
         public double modifyAimDownSightSpeed(double speed, GunData data) {
             return speed * 0.5F;
         }
-
     };
-
-
 
     public static final IGunModifier SHOTGUN_MODIFIER = new IGunModifier() {
         @Override

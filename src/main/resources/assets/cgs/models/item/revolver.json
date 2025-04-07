@@ -1,9 +1,5 @@
 {
   "parent": "builtin/entity",
-  "texture_size": [
-    512,
-    512
-  ],
   "display": {
     "thirdperson_righthand": {
       "translation": [

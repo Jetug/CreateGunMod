@@ -104,7 +104,7 @@ public abstract class EngineAnimator extends GunAnimator {
         var player = minecraft.player;
         var isShooting = shootingHandler.isShooting(getEntity(), arm);
         var isNotPaused = !minecraft.getInstance().isPaused();
-        var frequency = isShooting ? 10 : 60;
+        var frequency = isShooting ? 5 : 20;
 
         var mainGunData = new GunData(getEntity().getMainHandItem(), getEntity());
         var offGunData = new GunData(getEntity().getOffhandItem(), getEntity());

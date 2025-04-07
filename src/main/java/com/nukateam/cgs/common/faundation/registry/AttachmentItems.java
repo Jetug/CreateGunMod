@@ -42,7 +42,7 @@ public class AttachmentItems {
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> STOCK = ITEMS.register("stock",
-            () -> new StockItem(Stock.create(), GUN_PROPERTIES));
+            () -> new StockItem(Stock.create(Attachments.STOCK), GUN_PROPERTIES));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> LONG_BARREL = ITEMS.register("long_barrel",
