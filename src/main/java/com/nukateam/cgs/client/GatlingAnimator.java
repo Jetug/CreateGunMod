@@ -1,5 +1,6 @@
 package com.nukateam.cgs.client;
 
+import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.registry.AttachmentItems;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
@@ -9,6 +10,7 @@ import com.nukateam.ntgl.client.util.util.TransformUtils;
 import com.nukateam.ntgl.common.base.holders.AttachmentType;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.foundation.item.GunItem;
+import com.nukateam.ntgl.common.util.util.Cycler;
 import com.nukateam.ntgl.common.util.util.GunData;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
 import com.simibubi.create.AllSoundEvents;
@@ -17,6 +19,7 @@ import mod.azure.azurelib.core.object.PlayState;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraftforge.event.TickEvent;
 
@@ -29,6 +32,7 @@ public class GatlingAnimator extends EngineAnimator {
     public static final String HANDLE = "handle";
     public static final String VOID = "void";
     public static final String RELOAD_DRUM = "reload_drum";
+    protected Cycler handleCycler = new Cycler(1, this.getBarrelAmount());
 
     private boolean hasDrum;
 
@@ -58,6 +62,13 @@ public class GatlingAnimator extends EngineAnimator {
         super.tickStart();
         var magazine = Gun.getAttachmentItem(AttachmentType.MAGAZINE, getStack());
         this.hasDrum = magazine.is(AttachmentItems.GATLING_DRUM.get());
+
+        float cooldown = this.shootingHandler.getCooldown(getEntity(), this.arm);
+
+        if (cooldown == (float)this.rate) {
+            this.handleCycler.cycle();
+        }
+        Gunsmithing.LOGGER.info(String.valueOf(handleCycler.getCurrent()));
     }
 
     @Override
@@ -90,7 +101,10 @@ public class GatlingAnimator extends EngineAnimator {
 
                 if (reloadHandler.isReloading(getEntity(), getArm()))
                     animation = begin().then(VOID, PLAY_ONCE);
-                else return getCycledAnimation(event, HANDLE, this.barrelCycler);
+                else {
+                    var handleAnim = getCycledAnimation(event, HANDLE, this.handleCycler);
+                    return handleAnim;
+                }
             }
 
             return event.setAndContinue(animation);

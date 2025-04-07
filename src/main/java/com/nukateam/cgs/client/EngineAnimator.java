@@ -38,7 +38,7 @@ public abstract class EngineAnimator extends GunAnimator {
 
     protected int aTicks = 0;
     protected int ticks = 0;
-    private int rate;
+    protected int rate;
 
     public EngineAnimator(ItemDisplayContext transformType, DynamicGeoItemRenderer<GunAnimator> renderer) {
         super(transformType, renderer);
@@ -51,9 +51,9 @@ public abstract class EngineAnimator extends GunAnimator {
     }
 
     @Override
-    public void tick(TickEvent event) {
-        if (event.phase == TickEvent.Phase.START && isGun(getStack())) {
-            super.tick(event);
+    protected void tickStart() {
+        if (isGun(getStack())) {
+            super.tickStart();
             this.ticks++;
             var data = new GunData(getStack(), getEntity());
             this.rate = GunModifierHelper.getRate(data);
