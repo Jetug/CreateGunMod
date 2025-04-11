@@ -10,7 +10,7 @@ import net.minecraftforge.common.util.Lazy;
 
 import java.util.function.BiFunction;
 
-public class GatlingItem extends BaseGunItem {
+public class GatlingItem extends CgsGunItem {
     private final Lazy<GatlingRenderer> RENDERER = Lazy.of(() -> new GatlingRenderer());
 
     public GatlingItem(Properties properties, IGunModifier... modifiers) {

@@ -8,7 +8,7 @@ import net.minecraft.world.item.*;
 
 import java.util.function.BiFunction;
 
-public class FlintlockItem extends BaseGunItem {
+public class FlintlockItem extends CgsGunItem {
     public FlintlockItem(Properties properties, IGunModifier... modifiers) {
         super(properties, modifiers);
     }

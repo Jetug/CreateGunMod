@@ -68,7 +68,6 @@ public class GatlingAnimator extends EngineAnimator {
         if (cooldown == (float)this.rate) {
             this.handleCycler.cycle();
         }
-        Gunsmithing.LOGGER.info(String.valueOf(handleCycler.getCurrent()));
     }
 
     @Override

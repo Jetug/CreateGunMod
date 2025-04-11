@@ -20,6 +20,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ShieldItem;
 import net.minecraftforge.event.TickEvent;
 
 import static com.nukateam.example.common.util.constants.Animations.RELOAD;
@@ -95,7 +96,6 @@ public abstract class EngineAnimator extends GunAnimator {
                     SoundEvents.CANDLE_EXTINGUISH,
                     SoundSource.BLOCKS,
                     volume, pitch, false);
-
             AllSoundEvents.STEAM.playAt(minecraft.level, player.position(), volume / 16, .8f, false);
         }
     }
@@ -109,26 +109,31 @@ public abstract class EngineAnimator extends GunAnimator {
         var mainGunData = new GunData(getEntity().getMainHandItem(), getEntity());
         var offGunData = new GunData(getEntity().getOffhandItem(), getEntity());
 
-        var isVisible = arm == HumanoidArm.RIGHT || (arm == HumanoidArm.LEFT
-                && GunModifierHelper.isOneHanded(mainGunData)
-                && GunModifierHelper.isOneHanded(offGunData));
+        var i1 = GunModifierHelper.isOneHanded(mainGunData);
+        var i2 = GunModifierHelper.isOneHanded(offGunData);
+        var arm = this.getArm();
+
+        var isVisible = arm == HumanoidArm.RIGHT || (arm == HumanoidArm.LEFT && i1 && i2);
+        var hasEngine = hasEngine();
+        var tick = this.ticks % frequency == 0;
+        var trans = TransformUtils.isHandTransform(transformType);
+        var hasGunInHands = hasGunInHands(player);
 
         return player != null
-                && hasEngine()
+                && hasEngine
                 && isVisible
-                && this.ticks % frequency == 0
-                && TransformUtils.isHandTransform(transformType)
-                && hasGunInHands(player)
+                && tick
+                && trans
+                && hasGunInHands
                 && isNotPaused;
     }
 
     protected boolean hasGunInHands(LocalPlayer player) {
-        return player.getMainHandItem() == getStack() || player.getOffhandItem() == getStack();
+        return player.getMainHandItem().getItem() == getStack().getItem() || player.getOffhandItem().getItem() == getStack().getItem();
     }
 
     protected boolean hasEngine(){
-        return !getStack().isEmpty()
-                && Gun.hasAttachmentEquipped(getStack(),
+        return !getStack().isEmpty() && Gun.hasAttachmentEquipped(getStack(),
                 getGunItem().getGun(),
                 CgsAttachmentTypes.ENGINE);
     }

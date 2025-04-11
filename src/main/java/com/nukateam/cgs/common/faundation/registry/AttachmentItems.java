@@ -78,10 +78,9 @@ public class AttachmentItems {
             () -> new BarrelItem(Barrel.create(1f, Attachments.SHOTGUN_SPREAD_BARREL), GUN_PROPERTIES));
 
     //NAILGUN
-//    @ItemModelGen(path = "attachments")
-//    public static final RegistryObject<Item> NAILGUN_SPLITTER = ITEMS.register("nailgun_splitter",
-//            () -> new BarrelItem(Barrel.create(1f, Attachments.NAILGUN_SPLIT_BARREL), GUN_PROPERTIES));
-
+    @ItemModelGen(path = "attachments")
+    public static final RegistryObject<Item> NAILGUN_SPLITTER = ITEMS.register("nailgun_splitter",
+            () -> new BarrelItem(Barrel.create(1f, Attachments.NAILGUN_SPLIT_BARREL), GUN_PROPERTIES));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

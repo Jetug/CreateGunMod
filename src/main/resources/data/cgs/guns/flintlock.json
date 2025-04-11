@@ -9,7 +9,7 @@
     "recoilKick": 0.4,
     "recoilAdsReduction": 0.15,
     "alwaysSpread": true,
-    "spread": 2.0,
+    "spread": 3.0,
     "ammo": [
       "cgs:ball"
     ]

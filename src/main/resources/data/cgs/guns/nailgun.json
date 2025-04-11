@@ -10,6 +10,7 @@
     "recoilKick": 0.3,
     "recoilAdsReduction": 0.20,
     "alwaysSpread": true,
+    "renderHud": false,
     "spread": 1.0,
     "ammo": [
       "cgs:nail"
@@ -36,10 +37,12 @@
         {
           "name": "stock",
           "item": "cgs:stock"
-        },
+        }
+      ],
+      "ntgl:barrel": [
         {
           "name": "split_barrel",
-          "item": "cgs:nailgun_split_barrel"
+          "item": "cgs:nailgun_splitter"
         }
       ]
     }

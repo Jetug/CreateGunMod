@@ -7,7 +7,7 @@ import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
 import net.minecraft.world.item.*;
 import java.util.function.*;
 
-public class ShotgunItem extends BaseGunItem {
+public class ShotgunItem extends CgsGunItem {
     public ShotgunItem(Properties properties, IGunModifier... modifiers) {
         super(properties, modifiers);
     }

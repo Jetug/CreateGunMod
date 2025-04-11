@@ -2,10 +2,7 @@ package com.nukateam.cgs.common.ntgl;
 
 import com.nukateam.cgs.common.faundation.registry.AttachmentItems;
 import com.nukateam.ntgl.common.base.GunModifiers;
-import com.nukateam.ntgl.common.base.holders.AttachmentType;
-import com.nukateam.ntgl.common.base.holders.FireMode;
-import com.nukateam.ntgl.common.base.holders.GripType;
-import com.nukateam.ntgl.common.base.holders.LoadingType;
+import com.nukateam.ntgl.common.base.holders.*;
 import com.nukateam.ntgl.common.data.attachment.impl.Scope;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
@@ -13,19 +10,26 @@ import com.nukateam.ntgl.common.util.util.GunData;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import static com.nukateam.cgs.client.ShotgunAnimator.isAmmoEven;
 
 public class Attachments {
+    public static final String WATER = "water";
+    public static final String FUEL = "fuel";
+    public static final int MAX_FUEL = 20000;
+    public static final int MAX_WATER = 2000;
+
     public static final Scope SHORT_SCOPE = Scope.builder()
             .aimFovModifier(0.85F)
             .modifiers(GunModifiers.SLOW_ADS)
             .build();
 
     public static final Scope LONG_SCOPE = Scope.builder()
-            .aimFovModifier(0.25F)
             .modifiers(GunModifiers.SLOWER_ADS)
+            .aimFovModifier(0.25F)
             .overlay()
             .build();
 
@@ -38,6 +42,11 @@ public class Attachments {
         @Override
         public float modifyProjectileSpread(float spread, GunData data) {
             return spread + 8f;
+        }
+
+        @Override
+        public ArrayList<SecondaryAmmoType> modifySecondaryAmmo(ArrayList<SecondaryAmmoType> secondaryAmmo, GunData data) {
+            return new ArrayList<>(List.of(SecondaryAmmoType.BURNABLE, SecondaryAmmoType.WATER));
         }
 
         @Override
@@ -80,7 +89,7 @@ public class Attachments {
 
         @Override
         public double modifyAimDownSightSpeed(double speed, GunData data) {
-            return speed * 0.25F;
+            return speed * 0.75F;
         }
 
         @Override
@@ -127,10 +136,9 @@ public class Attachments {
             return speed * 3;
         }
 
-
         @Override
         public double modifyAimDownSightSpeed(double speed, GunData data) {
-            return speed * 0.15F;
+            return speed * 0.95;
         }
     };
 
@@ -159,7 +167,7 @@ public class Attachments {
 
         @Override
         public double modifyAimDownSightSpeed(double speed, GunData data) {
-            return speed * 0.5F;
+            return speed * 0.8F;
         }
     };
 
@@ -242,12 +250,12 @@ public class Attachments {
         }
 
         @Override
-        public int modifyMaxAmmo(int maxAmmo, GunData data) {
-            return maxAmmo / 5;
+        public int modifyProjectileAmount(int amount, GunData data) {
+            return Math.min(5, Gun.getAmmo(data.gun));
         }
 
         @Override
-        public int modifyProjectileAmount(int amount, GunData data) {
+        public int modifyAmmoPerShot(int ammoPerShot, GunData data) {
             return 5;
         }
 

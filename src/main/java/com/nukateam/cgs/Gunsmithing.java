@@ -40,6 +40,6 @@ public class Gunsmithing {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(PacketHandler::register);
+        PacketHandler.init();
     }
 }
