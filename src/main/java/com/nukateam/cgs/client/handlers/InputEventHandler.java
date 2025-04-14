@@ -1,26 +1,20 @@
 
 package com.nukateam.cgs.client.handlers;
 
-import com.nukateam.cgs.Gunsmithing;
-import com.nukateam.cgs.client.hud.SteamGunHud;
 import com.nukateam.cgs.common.network.PacketHandler;
 import com.nukateam.cgs.common.network.packets.C2SMessageFuel;
+import com.nukateam.ntgl.common.base.utils.FuelUtils;
+import com.nukateam.ntgl.common.util.util.GunData;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
 import net.minecraft.client.Minecraft;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-
-import java.awt.event.MouseEvent;
-
-import static com.nukateam.cgs.common.ntgl.Attachments.*;
+import org.lwjgl.glfw.GLFW;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT)
 public class InputEventHandler {
@@ -33,7 +27,7 @@ public class InputEventHandler {
             var mainHandItem = player.getMainHandItem();
             var offhandItem = player.getOffhandItem();
 
-            if (event.getButton() == mc.options.keyUse.getKey().getValue()) {
+            if (event.getAction() == GLFW.GLFW_RELEASE && event.getButton() == mc.options.keyUse.getKey().getValue()) {
                 if (GunModifierHelper.isGun(mainHandItem)) {
                     fillEngine(mainHandItem, offhandItem);
                 } else if (GunModifierHelper.isGun(offhandItem)) {
@@ -43,14 +37,23 @@ public class InputEventHandler {
         }
     }
 
-    private static void fillEngine(ItemStack gun, ItemStack stack) {
+    private static void fillEngine(ItemStack gun, ItemStack fuelStack) {
         var mc = Minecraft.getInstance();
-        var burnTime = ForgeHooks.getBurnTime(stack, null);
-
-        if(burnTime > 0 || stack.getItem() == Items.WATER_BUCKET){
+        if(canAcceptFuel(gun, fuelStack)){
             PacketHandler.getPlayChannel().sendToServer(new C2SMessageFuel());
             mc.options.keyUse.setDown(false);
         }
+    }
+
+    private static boolean canAcceptFuel(ItemStack gun, ItemStack fuelStack) {
+        var mc = Minecraft.getInstance();
+        var gunData = new GunData(gun, mc.player);
+        var allFuel = GunModifierHelper.getFuelTypes(gunData);
+        for (var fuelType: allFuel){
+            if (fuelType.isAcceptable(fuelStack) && !FuelUtils.isFull(gunData, fuelType))
+                return true;
+        }
+        return false;
     }
 
     public static boolean isInGame() {

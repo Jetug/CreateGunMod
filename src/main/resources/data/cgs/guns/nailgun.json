@@ -10,11 +10,16 @@
     "recoilKick": 0.3,
     "recoilAdsReduction": 0.20,
     "alwaysSpread": true,
-    "renderHud": false,
+    "renderHud": true,
     "spread": 1.0,
     "ammo": [
       "cgs:nail"
     ]
+  },
+  "fuel": {
+    "cgs:air":{
+      "max": 900
+    }
   },
   "textures": {
     "default" : "cgs:nailgun"

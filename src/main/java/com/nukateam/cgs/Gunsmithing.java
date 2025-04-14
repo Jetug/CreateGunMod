@@ -3,6 +3,7 @@ package com.nukateam.cgs;
 import com.mojang.logging.LogUtils;
 import com.nukateam.cgs.common.faundation.registry.*;
 import com.nukateam.cgs.common.network.PacketHandler;
+import com.nukateam.cgs.common.ntgl.CgsFuel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -21,6 +22,7 @@ public class Gunsmithing {
     public static final IEventBus MOD_EVENT_BUS = FMLJavaModLoadingContext.get().getModEventBus();
 
     public Gunsmithing() {
+        var s = CgsFuel.AIR;
         MOD_EVENT_BUS.addListener(this::commonSetup);
         ModGuns.register(MOD_EVENT_BUS);
         ModItems.register(MOD_EVENT_BUS);

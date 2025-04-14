@@ -1,19 +1,20 @@
-package com.nukateam.cgs.common.faundation.item;
+package com.nukateam.cgs.common.faundation.item.guns;
 
 import com.nukateam.cgs.client.*;
 import com.nukateam.geo.render.*;
 import com.nukateam.ntgl.client.animators.*;
 import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
 import net.minecraft.world.item.*;
-import java.util.function.*;
 
-public class ShotgunItem extends CgsGunItem {
-    public ShotgunItem(Properties properties, IGunModifier... modifiers) {
+import java.util.function.BiFunction;
+
+public class FlintlockItem extends CgsGunItem {
+    public FlintlockItem(Properties properties, IGunModifier... modifiers) {
         super(properties, modifiers);
     }
 
     @Override
     public BiFunction<ItemDisplayContext, DynamicGeoItemRenderer<GunAnimator>, GunAnimator> getAnimatorFactory() {
-        return ShotgunAnimator::new;
+        return FlintlockAnimator::new;
     }
 }

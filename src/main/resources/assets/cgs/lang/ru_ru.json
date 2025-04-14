@@ -5,6 +5,8 @@
   "slot.cgs.attachment.frame": "Основа",
   "slot.cgs.attachment.chamber": "Патронник",
 
+  "info.cgs.air": "Воздух: %s",
+
   "item.cgs.flintlock": "Кремневый пистолет",
   "item.cgs.revolver" : "Револьвер",
   "item.cgs.shotgun"  : "Дробовик",

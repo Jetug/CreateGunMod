@@ -8,7 +8,6 @@ import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
 import com.nukateam.ntgl.common.util.util.GunData;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +16,9 @@ import java.util.Set;
 import static com.nukateam.cgs.client.ShotgunAnimator.isAmmoEven;
 
 public class Attachments {
-    public static final String WATER = "water";
-    public static final String FUEL = "fuel";
     public static final int MAX_FUEL = 20000;
     public static final int MAX_WATER = 2000;
+    public static final int MAX_AIR = 900;
 
     public static final Scope SHORT_SCOPE = Scope.builder()
             .aimFovModifier(0.85F)
@@ -45,8 +43,17 @@ public class Attachments {
         }
 
         @Override
-        public ArrayList<SecondaryAmmoType> modifySecondaryAmmo(ArrayList<SecondaryAmmoType> secondaryAmmo, GunData data) {
-            return new ArrayList<>(List.of(SecondaryAmmoType.BURNABLE, SecondaryAmmoType.WATER));
+        public Set<FuelType> modifyFuel(Set<FuelType> secondaryAmmo, GunData data) {
+            return Set.of(FuelType.BURNABLE, FuelType.WATER);
+        }
+
+        @Override
+        public int modifyMaxFuel(int max, FuelType type, GunData data) {
+            if(type == FuelType.BURNABLE)
+                return MAX_FUEL;
+            else if(type == FuelType.WATER)
+                return MAX_WATER;
+            return max;
         }
 
         @Override

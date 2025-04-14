@@ -1,4 +1,4 @@
-package com.nukateam.cgs.common.faundation.item;
+package com.nukateam.cgs.common.faundation.item.guns;
 
 import com.nukateam.cgs.client.RevolverAnimator;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;

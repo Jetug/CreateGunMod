@@ -4,6 +4,8 @@
   "slot.cgs.attachment.frame": "Frame",
   "slot.cgs.attachment.chamber": "Chamber",
 
+  "info.cgs.air": "Air: %s",
+
   "item.cgs.flintlock": "Flintlock",
   "item.cgs.revolver": "Revolver",
   "item.cgs.shotgun": "Shotgun",

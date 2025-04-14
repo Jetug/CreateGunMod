@@ -5,6 +5,7 @@ import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.GunAnimator;
 import com.nukateam.ntgl.client.util.handler.ClientReloadHandler;
 import com.nukateam.ntgl.client.util.util.TransformUtils;
+import com.nukateam.ntgl.common.base.utils.FuelUtils;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.foundation.item.GunItem;
 import com.nukateam.ntgl.common.util.util.GunData;
@@ -15,6 +16,7 @@ import mod.azure.azurelib.core.animation.AnimationController;
 import mod.azure.azurelib.core.animation.AnimationState;
 import mod.azure.azurelib.core.animation.RawAnimation;
 import mod.azure.azurelib.core.object.PlayState;
+import net.minecraft.FileUtil;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -67,7 +69,7 @@ public abstract class EngineAnimator extends GunAnimator {
 
     protected AnimationController.AnimationStateHandler<GunAnimator> animateEngine() {
         return (event) -> {
-            if(TransformUtils.isHandTransform(transformType)) {
+            if(isEngineWorking()) {
                 event.getController().setAnimationSpeed(1);
                 var animation = begin().then(ENGINE, LOOP);
 
@@ -101,29 +103,32 @@ public abstract class EngineAnimator extends GunAnimator {
     }
 
     private boolean shouldPlayEngineSound() {
-        var player = minecraft.player;
         var isShooting = shootingHandler.isShooting(getEntity(), arm);
-        var isNotPaused = !minecraft.getInstance().isPaused();
         var frequency = isShooting ? 5 : 20;
+        var tick = this.ticks % frequency == 0;
 
+        return isEngineWorking() && tick;
+    }
+
+    private boolean isEngineWorking() {
+        var player = minecraft.player;
+        if(player == null) return false;
         var mainGunData = new GunData(getEntity().getMainHandItem(), getEntity());
         var offGunData = new GunData(getEntity().getOffhandItem(), getEntity());
-
         var i1 = GunModifierHelper.isOneHanded(mainGunData);
         var i2 = GunModifierHelper.isOneHanded(offGunData);
         var arm = this.getArm();
-
+        var isNotPaused = !minecraft.getInstance().isPaused();
         var isVisible = arm == HumanoidArm.RIGHT || (arm == HumanoidArm.LEFT && i1 && i2);
         var hasEngine = hasEngine();
-        var tick = this.ticks % frequency == 0;
-        var trans = TransformUtils.isHandTransform(transformType);
+        var isHandTransform = TransformUtils.isHandTransform(transformType);
         var hasGunInHands = hasGunInHands(player);
+        var hasFuel = FuelUtils.hasFuel(new GunData(getStack(),getEntity()));
 
-        return player != null
-                && hasEngine
+        return hasEngine
+                && hasFuel
                 && isVisible
-                && tick
-                && trans
+                && isHandTransform
                 && hasGunInHands
                 && isNotPaused;
     }
