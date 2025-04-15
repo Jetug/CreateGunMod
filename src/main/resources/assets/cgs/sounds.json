@@ -57,6 +57,10 @@
    ]},
 
    "gun.nailgun.fire": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+      { "name": "cgs:gun/nailgun/fire/fire" }
+   ]},
+
+   "gun.nailgun.fire_steam": { "subtitle": "subtitle.ntgl.fire", "sounds": [
       { "name": "cgs:gun/nailgun/fire/fire_01" },
       { "name": "cgs:gun/nailgun/fire/fire_02" },
       { "name": "cgs:gun/nailgun/fire/fire_03" }

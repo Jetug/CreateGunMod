@@ -1,6 +1,7 @@
 package com.nukateam.cgs.common.handlers;
 
 import com.nukateam.cgs.Gunsmithing;
+import com.nukateam.cgs.common.ntgl.CgsFuel;
 import com.nukateam.ntgl.common.base.utils.FuelUtils;
 import com.nukateam.ntgl.common.base.holders.FuelType;
 import com.nukateam.ntgl.common.event.GunFireEvent;
@@ -35,6 +36,9 @@ public class GunEventHandler {
         }
         if(fuel.contains(FuelType.WATER)){
             FuelUtils.addFuel(data, FuelType.WATER, -5);
+        }
+        if(fuel.contains(CgsFuel.AIR)){
+            FuelUtils.addFuel(data, CgsFuel.AIR, -5);
         }
     }
 }

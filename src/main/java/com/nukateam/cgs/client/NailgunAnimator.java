@@ -10,8 +10,4 @@ public class NailgunAnimator extends EngineAnimator {
     public NailgunAnimator(ItemDisplayContext transformType, DynamicGeoItemRenderer<GunAnimator> renderer) {
         super(transformType, renderer);
     }
-
-    protected boolean hasEngine(){
-        return true;
-    }
 }

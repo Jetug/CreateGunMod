@@ -138,8 +138,6 @@ public abstract class EngineAnimator extends GunAnimator {
     }
 
     protected boolean hasEngine(){
-        return !getStack().isEmpty() && Gun.hasAttachmentEquipped(getStack(),
-                getGunItem().getGun(),
-                CgsAttachmentTypes.ENGINE);
+        return !getStack().isEmpty() && Gun.hasAttachmentEquipped(getStack(), CgsAttachmentTypes.ENGINE);
     }
 }

@@ -1,19 +1,20 @@
 package com.nukateam.cgs.common.ntgl;
 
 import com.nukateam.cgs.common.faundation.registry.AttachmentItems;
+import com.nukateam.cgs.common.faundation.registry.ModGuns;
+import com.nukateam.cgs.common.faundation.registry.ModSounds;
 import com.nukateam.ntgl.common.base.GunModifiers;
 import com.nukateam.ntgl.common.base.holders.*;
 import com.nukateam.ntgl.common.data.attachment.impl.Scope;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
 import com.nukateam.ntgl.common.util.util.GunData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffects;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
-import static com.nukateam.cgs.client.ShotgunAnimator.isAmmoEven;
+import static com.nukateam.cgs.common.utils.GunUtils.isAmmoEven;
 
 public class Attachments {
     public static final int MAX_FUEL = 20000;
@@ -34,12 +35,34 @@ public class Attachments {
     public static final IGunModifier STEAM_ENGINE_MODIFIERS = new IGunModifier() {
         @Override
         public int modifyFireRate(int rate, GunData data) {
-            return 2;
+            if(data.gun.getItem() == ModGuns.NAILGUN.get())
+                return 4;
+            else if(data.gun.getItem() == ModGuns.GATLING.get())
+                return 2;
+            return rate;
+        }
+
+        @Override
+        public ResourceLocation modifyFireSound(ResourceLocation sound, GunData data) {
+            if(data.gun.getItem() == ModGuns.NAILGUN.get()){
+                return ModSounds.NAILGUN_FIRE_STEAM.get().getLocation();
+            }
+            return IGunModifier.super.modifyFireSound(sound, data);
+        }
+
+        @Override
+        public float modifyDamage(float damage, GunData data) {
+            if(data.gun.getItem() == ModGuns.NAILGUN.get())
+                return damage * 2.5f;
+            return IGunModifier.super.modifyDamage(damage, data);
         }
 
         @Override
         public float modifyProjectileSpread(float spread, GunData data) {
-            return spread + 8f;
+            if(data.gun.getItem() == ModGuns.GATLING.get()) {
+                return spread + 8f;
+            }
+            return spread;
         }
 
         @Override
@@ -58,15 +81,26 @@ public class Attachments {
 
         @Override
         public GripType modifyGripType(GripType gripType, GunData data) {
-            if(data == null) return IGunModifier.super.modifyGripType(gripType, data);
-            var hasDrum = Gun
-                    .getAttachmentItem(AttachmentType.MAGAZINE, data.gun)
-                    .getItem() == AttachmentItems.GATLING_DRUM.get();
-
-            if(!hasDrum && data.shooter.hasEffect(MobEffects.DAMAGE_BOOST)){
-                return GripType.ONE_HANDED;
+            if(data != null) {
+                if(data.gun.getItem() == ModGuns.NAILGUN.get()) {
+                    return GripType.TWO_HANDED;
+                }
+                else if(data.gun.getItem() == ModGuns.GATLING.get()) {
+                    return getGatlingGripType(gripType, data);
+                }
             }
             return IGunModifier.super.modifyGripType(gripType, data);
+        }
+
+        private GripType getGatlingGripType(GripType gripType, GunData data){
+            var magazineItem = Gun.getAttachmentItem(AttachmentType.MAGAZINE, data.gun).getItem();
+            var drumItem = AttachmentItems.GATLING_DRUM.get();
+
+            if (magazineItem != drumItem && data.shooter.hasEffect(MobEffects.DAMAGE_BOOST)) {
+                return GripType.ONE_HANDED;
+            }
+
+            return gripType;
         }
     };
 

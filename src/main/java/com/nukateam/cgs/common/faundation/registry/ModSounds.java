@@ -1,7 +1,6 @@
 package com.nukateam.cgs.common.faundation.registry;
 
 import com.nukateam.cgs.Gunsmithing;
-import com.nukateam.ntgl.Ntgl;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -28,9 +27,10 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> SHOTGUN_OPEN     = register("gun.shotgun.open"    );
     public static final RegistryObject<SoundEvent> SHOTGUN_LEVEL    = register("gun.shotgun.lever"   );
 
-    public static final RegistryObject<SoundEvent> NAILGUN_FIRE     = register("gun.nailgun.fire"   );
-    public static final RegistryObject<SoundEvent> NAILGUN_MAG_IN   = register("gun.nailgun.mag_in" );
-    public static final RegistryObject<SoundEvent> NAILGUN_MAG_OUT  = register("gun.nailgun.mag_out");
+    public static final RegistryObject<SoundEvent> NAILGUN_FIRE        = register("gun.nailgun.fire"       );
+    public static final RegistryObject<SoundEvent> NAILGUN_FIRE_STEAM  = register("gun.nailgun.fire_steam");
+    public static final RegistryObject<SoundEvent> NAILGUN_MAG_IN      = register("gun.nailgun.mag_in"     );
+    public static final RegistryObject<SoundEvent> NAILGUN_MAG_OUT     = register("gun.nailgun.mag_out"    );
 
     public static final RegistryObject<SoundEvent> FLINTLOCK_FIRE    = register("gun.flintlock.fire"    );
     public static final RegistryObject<SoundEvent> FLINTLOCK_AMMO_IN = register("gun.flintlock.ammo_in" );

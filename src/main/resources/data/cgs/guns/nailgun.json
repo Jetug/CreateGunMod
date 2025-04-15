@@ -1,10 +1,10 @@
 {
   "general": {
-    "rate": 3,
+    "rate": 2,
     "fireMode": ["ntgl:auto", "ntgl:semi"],
-    "gripType": "ntgl:two_handed",
+    "gripType": "ntgl:one_hand",
     "maxAmmo": 40,
-    "damage": 10.0,
+    "damage": 5.0,
     "reloadTime": 60,
     "recoilAngle": 2.0,
     "recoilKick": 0.3,
@@ -26,6 +26,7 @@
   },
   "sounds": {
     "fire"   : "cgs:gun.nailgun.fire",
+    "fire_steam"   : "cgs:gun.nailgun.fire",
     "magin"  : "cgs:gun.nailgun.mag_in",
     "magout" : "cgs:gun.nailgun.mag_out"
   },
@@ -48,6 +49,12 @@
         {
           "name": "split_barrel",
           "item": "cgs:nailgun_splitter"
+        }
+      ],
+      "cgs:engine": [
+        {
+          "name": "steam_engine",
+          "item": "cgs:steam_engine"
         }
       ]
     }

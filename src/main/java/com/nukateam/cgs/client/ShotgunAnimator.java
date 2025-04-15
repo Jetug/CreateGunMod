@@ -1,6 +1,7 @@
 package com.nukateam.cgs.client;
 
 import com.nukateam.cgs.common.faundation.registry.AttachmentItems;
+import com.nukateam.cgs.common.utils.GunUtils;
 import com.nukateam.example.common.util.constants.Animations;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.GunAnimator;
@@ -9,17 +10,13 @@ import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.foundation.item.GunItem;
 import com.nukateam.ntgl.common.util.util.Cycler;
 import com.nukateam.ntgl.common.util.util.GunData;
-import com.nukateam.ntgl.common.util.util.GunModifierHelper;
 import mod.azure.azurelib.core.animation.*;
 import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
 import static com.nukateam.ntgl.common.util.util.GunModifierHelper.*;
-import static mod.azure.azurelib.core.animation.Animation.*;
-import static mod.azure.azurelib.core.animation.Animation.LoopType.*;
 import static mod.azure.azurelib.core.animation.Animation.LoopType.LOOP;
 import static mod.azure.azurelib.core.animation.Animation.LoopType.PLAY_ONCE;
 import static mod.azure.azurelib.core.animation.RawAnimation.begin;
@@ -71,14 +68,10 @@ public class ShotgunAnimator extends GunAnimator {
         }
     }
 
-    public static boolean isAmmoEven(ItemStack stack) {
-        return Gun.getAmmo(stack) % 2 == 0;
-    }
-
     @Override
     protected RawAnimation getShootingAnimation(AnimationState<GunAnimator> event) {
         var animation = begin();
-        var isAmmoEven = isAmmoEven(getStack());
+        var isAmmoEven = GunUtils.isAmmoEven(getStack());
         var animations = new ArrayList<String>();
 
         var shotAnim = this.getGunAnim(Animations.SHOT);
@@ -157,7 +150,7 @@ public class ShotgunAnimator extends GunAnimator {
             if (ammo == 0){
                 name = "empty_both";
             }
-            else if(isAmmoEven(getStack())){
+            else if(GunUtils.isAmmoEven(getStack())){
                 name = "full";
             }
             else {

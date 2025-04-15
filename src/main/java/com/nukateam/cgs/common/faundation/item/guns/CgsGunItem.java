@@ -1,5 +1,6 @@
 package com.nukateam.cgs.common.faundation.item.guns;
 
+import com.nukateam.cgs.common.utils.GunUtils;
 import com.nukateam.ntgl.common.base.utils.FuelUtils;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.cgs.client.render.BaseGunRenderer;
@@ -10,6 +11,10 @@ import com.nukateam.ntgl.common.util.util.GunData;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.SlotAccess;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ClickAction;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.util.Lazy;
@@ -42,12 +47,24 @@ public class CgsGunItem extends GunItem {
         }
     }
 
+    @Override
+    public boolean overrideOtherStackedOnMe(ItemStack gun, ItemStack fuel, Slot pSlot, ClickAction pAction, Player player, SlotAccess pAccess) {
+        if (player.level().isClientSide()
+                && pAction == ClickAction.SECONDARY
+                && pSlot.allowModification(player)) {
+            var dunData = new GunData(gun, player);
+            GunUtils.playAttachSound(player, 0.5f);
+            return GunUtils.fillFuel(dunData, fuel);
+        }
+        else return false;
+    }
+
     private static void onEngineTick(GunData data) {
         var fuel = GunModifierHelper.getFuelTypes(data);
 
         if(!fuel.isEmpty() && isInHand(data)){
             if(fuel.contains(FuelType.BURNABLE)){
-                FuelUtils.addFuel(data, FuelType.BURNABLE, -50);
+                FuelUtils.addFuel(data, FuelType.BURNABLE, -1);
             }
         }
     }
