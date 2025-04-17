@@ -2,7 +2,8 @@
   "general": {
     "rate": 2,
     "fireMode": ["ntgl:auto", "ntgl:semi"],
-    "gripType": "ntgl:one_hand",
+    "gripType": "ntgl:two_handed",
+    "loadingType": "ntgl:per_cartridge",
     "maxAmmo": 40,
     "damage": 5.0,
     "reloadTime": 60,
