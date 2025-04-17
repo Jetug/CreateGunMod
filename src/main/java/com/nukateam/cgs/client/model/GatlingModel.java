@@ -1,6 +1,6 @@
 package com.nukateam.cgs.client.model;
 
-import com.nukateam.cgs.client.GatlingAnimator;
+import com.nukateam.cgs.client.animators.GatlingAnimator;
 import com.nukateam.ntgl.client.model.gun.GeoGunModel;
 import mod.azure.azurelib.core.animation.AnimationState;
 

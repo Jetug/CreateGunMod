@@ -29,14 +29,14 @@
   "item.cgs.round_shotgun": "Патрон для дробовика",
   "item.cgs.ball": "Бумажный патрон",
   "item.cgs.nail": "Гвоздь",
-  
-  "item.cgs.steam_engine" : "Гатлинг: Паравой двигатель",
+
+  "item.cgs.steam_engine" : "Паравой двигатель",
+  "item.cgs.scope": "Оптический прицел",
+  "item.cgs.stock": "Приклад",
+
   "item.cgs.iron_sight"   : "Гатлинг: Прицел",
   "item.cgs.gatling_drum" : "Гатлинг: Барабанный Магазин",
 
-  "item.cgs.scope": "Оптический прицел",
-  "item.cgs.stock": "Приклад",
-  
   "item.cgs.round_belt": "Револьвер: Патронная лента",
   "item.cgs.auto_fire": "Револьвер: Авто огонь",
   "item.cgs.long_barrel": "Револьвер: Длинный ствол",

@@ -52,7 +52,7 @@ public class AttachmentItems {
     public static final RegistryObject<Item> BELT = ITEMS.register("round_belt",
             () -> new AttachmentItem<>(CgsAttachmentTypes.CHAMBER,
                     GenericAttachment.create(BELT_MODIFIERS), GUN_PROPERTIES));
-
+ 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> AUTO = ITEMS.register("auto_fire",
             () -> new AttachmentItem<>(CgsAttachmentTypes.FRAME,

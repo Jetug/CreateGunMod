@@ -1,30 +1,22 @@
-package com.nukateam.cgs.client;
+package com.nukateam.cgs.client.animators;
 
-import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.registry.AttachmentItems;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.GunAnimator;
 import com.nukateam.ntgl.client.util.handler.ClientReloadHandler;
-import com.nukateam.ntgl.client.util.util.TransformUtils;
 import com.nukateam.ntgl.common.base.holders.AttachmentType;
+import com.nukateam.ntgl.common.base.utils.FuelUtils;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.foundation.item.GunItem;
 import com.nukateam.ntgl.common.util.util.Cycler;
 import com.nukateam.ntgl.common.util.util.GunData;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
-import com.simibubi.create.AllSoundEvents;
 import mod.azure.azurelib.core.animation.*;
 import mod.azure.azurelib.core.object.PlayState;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraftforge.event.TickEvent;
 
 import static com.nukateam.example.common.util.constants.Animations.*;
-import static com.nukateam.ntgl.common.util.util.GunModifierHelper.isGun;
 import static mod.azure.azurelib.core.animation.Animation.LoopType.*;
 import static mod.azure.azurelib.core.animation.RawAnimation.begin;
 
@@ -77,23 +69,24 @@ public class GatlingAnimator extends EngineAnimator {
     }
 
     @Override
-    protected RawAnimation getDefaultReloadAminmation(AnimationState<GunAnimator> event) {
+    protected RawAnimation getDefaultReloadAnimation(AnimationState<GunAnimator> event) {
         if(hasDrum) {
             var data = new GunData(getStack(), getEntity());
             var time = GunModifierHelper.getReloadTime(data);
             animationHelper.syncAnimation(event, RELOAD_DRUM, time);
             return begin().then(RELOAD_DRUM, LOOP);
         }
-        return super.getDefaultReloadAminmation(event);
+        return super.getDefaultReloadAnimation(event);
     }
 
     protected AnimationController.AnimationStateHandler<GunAnimator> animateHandle() {
         return (event) -> {
             var gun = ((GunItem)getStack().getItem()).getGun();
             var animation = begin();
+            var hasEngine = Gun.hasAttachmentEquipped(getStack(), gun, CgsAttachmentTypes.ENGINE);
+            var hasFuel = FuelUtils.hasFuel(getGunData());
 
-            if (Gun.hasAttachmentEquipped(getStack(), gun, CgsAttachmentTypes.ENGINE)
-                    || MAIN_CONTROLLER.getCurrentAnimation().animation().name().equals(RELOAD)) {
+            if ((hasEngine && hasFuel) || hasAnimationPlaying(MAIN_CONTROLLER, RELOAD)) {
                 return PlayState.STOP;
             } else {
                 var reloadHandler = ClientReloadHandler.get();
@@ -108,5 +101,9 @@ public class GatlingAnimator extends EngineAnimator {
 
             return event.setAndContinue(animation);
         };
+    }
+
+    private boolean hasAnimationPlaying(AnimationController<GunAnimator> controller, String name) {
+        return controller.getCurrentAnimation().animation().name().equals(name);
     }
 }

@@ -5,6 +5,7 @@ import com.nukateam.cgs.common.faundation.registry.ModGuns;
 import com.nukateam.cgs.common.faundation.registry.ModSounds;
 import com.nukateam.ntgl.common.base.GunModifiers;
 import com.nukateam.ntgl.common.base.holders.*;
+import com.nukateam.ntgl.common.base.utils.FuelUtils;
 import com.nukateam.ntgl.common.data.attachment.impl.Scope;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
@@ -37,17 +38,10 @@ public class Attachments {
         public int modifyFireRate(int rate, GunData data) {
             if(data.gun.getItem() == ModGuns.NAILGUN.get())
                 return 4;
-            else if(data.gun.getItem() == ModGuns.GATLING.get())
+            else if(data.gun.getItem() == ModGuns.GATLING.get() && FuelUtils.hasFuel(data)) {
                 return 2;
-            return rate;
-        }
-
-        @Override
-        public ResourceLocation modifyFireSound(ResourceLocation sound, GunData data) {
-            if(data.gun.getItem() == ModGuns.NAILGUN.get()){
-                return ModSounds.NAILGUN_FIRE_STEAM.get().getLocation();
             }
-            return IGunModifier.super.modifyFireSound(sound, data);
+            return rate;
         }
 
         @Override
@@ -59,7 +53,7 @@ public class Attachments {
 
         @Override
         public float modifyProjectileSpread(float spread, GunData data) {
-            if(data.gun.getItem() == ModGuns.GATLING.get()) {
+            if(data.gun.getItem() == ModGuns.GATLING.get() && FuelUtils.hasFuel(data)) {
                 return spread + 8f;
             }
             return spread;
@@ -92,11 +86,19 @@ public class Attachments {
             return IGunModifier.super.modifyGripType(gripType, data);
         }
 
+        @Override
+        public ResourceLocation modifyFireSound(ResourceLocation sound, GunData data) {
+            if(data.gun.getItem() == ModGuns.NAILGUN.get()){
+                return ModSounds.NAILGUN_FIRE_STEAM.get().getLocation();
+            }
+            return IGunModifier.super.modifyFireSound(sound, data);
+        }
+
         private GripType getGatlingGripType(GripType gripType, GunData data){
             var magazineItem = Gun.getAttachmentItem(AttachmentType.MAGAZINE, data.gun).getItem();
             var drumItem = AttachmentItems.GATLING_DRUM.get();
 
-            if (magazineItem != drumItem && data.shooter.hasEffect(MobEffects.DAMAGE_BOOST)) {
+            if (magazineItem != drumItem && FuelUtils.hasFuel(data) && data.shooter.hasEffect(MobEffects.DAMAGE_BOOST)) {
                 return GripType.ONE_HANDED;
             }
 

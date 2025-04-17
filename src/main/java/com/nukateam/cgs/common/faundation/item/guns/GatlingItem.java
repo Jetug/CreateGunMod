@@ -1,7 +1,7 @@
 package com.nukateam.cgs.common.faundation.item.guns;
 
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
-import com.nukateam.cgs.client.GatlingAnimator;
+import com.nukateam.cgs.client.animators.GatlingAnimator;
 import com.nukateam.cgs.client.render.GatlingRenderer;
 import com.nukateam.ntgl.client.animators.GunAnimator;
 import com.nukateam.ntgl.common.util.interfaces.IGunModifier;

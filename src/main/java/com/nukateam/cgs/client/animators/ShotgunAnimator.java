@@ -1,4 +1,4 @@
-package com.nukateam.cgs.client;
+package com.nukateam.cgs.client.animators;
 
 import com.nukateam.cgs.common.faundation.registry.AttachmentItems;
 import com.nukateam.cgs.common.utils.GunUtils;
@@ -106,7 +106,7 @@ public class ShotgunAnimator extends GunAnimator {
     }
 
     @Override
-    protected RawAnimation getDefaultReloadAminmation(AnimationState<GunAnimator> event) {
+    protected RawAnimation getDefaultReloadAnimation(AnimationState<GunAnimator> event) {
         var data = getGunData();
         var reloadTime = getReloadTime(data);
         if(hasDrums){
@@ -121,7 +121,7 @@ public class ShotgunAnimator extends GunAnimator {
             return begin().then(name, LOOP);
 
         }
-        else return super.getDefaultReloadAminmation(event);
+        else return super.getDefaultReloadAnimation(event);
     }
 
     @Override
@@ -138,7 +138,7 @@ public class ShotgunAnimator extends GunAnimator {
         else return super.getEndReloadAnimation(event);
     }
 
-    private @NotNull GunData getGunData() {
+    protected @NotNull GunData getGunData() {
         return new GunData(getStack(), getEntity());
     }
 

@@ -2,10 +2,9 @@ package com.nukateam.cgs.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.nukateam.cgs.client.GatlingAnimator;
+import com.nukateam.cgs.client.animators.GatlingAnimator;
 import com.nukateam.cgs.client.model.GatlingModel;
 import com.nukateam.ntgl.client.render.renderers.gun.DynamicGunRenderer;
-import mod.azure.azurelib.core.object.DataTicket;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.entity.LivingEntity;

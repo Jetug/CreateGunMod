@@ -1,6 +1,7 @@
 package com.nukateam.cgs.common.handlers;
 
 import com.nukateam.cgs.Gunsmithing;
+import com.nukateam.cgs.common.faundation.registry.ModGuns;
 import com.nukateam.cgs.common.ntgl.CgsFuel;
 import com.nukateam.ntgl.common.base.utils.FuelUtils;
 import com.nukateam.ntgl.common.base.holders.FuelType;
@@ -15,10 +16,12 @@ public class GunEventHandler {
     @SubscribeEvent
     public static void preShoot(GunFireEvent.Pre event) {
         var shooter = event.getEntity();
-        var heldItem = shooter.getItemInHand(event.getHand());
+        var gun = shooter.getItemInHand(event.getHand());
 
-        if (!FuelUtils.hasFuel(new GunData(heldItem, shooter))){
-            event.setCanceled(true);
+        if(gun.getItem() == ModGuns.NAILGUN.get()) {
+            if (!FuelUtils.hasFuel(new GunData(gun, shooter))) {
+                event.setCanceled(true);
+            }
         }
     }
 

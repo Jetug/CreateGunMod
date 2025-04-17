@@ -88,7 +88,6 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 						.disallowMirrored()),
 
 	//ATTACHMENTS
-		//GATLING
 		ENGINE = create(AttachmentItems.STEAM_ENGINE::get).returns(1)
 				.recipe(b -> b
 						.key('M', AllItems.PRECISION_MECHANISM.get())
@@ -97,7 +96,7 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 						.key('E', AllBlocks.STEAM_ENGINE)
 						.key('F', AllBlocks.FLYWHEEL)
 						.key('L', AllItems.BRASS_SHEET.get())
-						.key('B', AllBlocks.BLAZE_BURNER.get())
+						.key('B', Items.BLAST_FURNACE)
 						.patternLine(" MP ")
 						.patternLine("FETP")
 						.patternLine(" LBL")

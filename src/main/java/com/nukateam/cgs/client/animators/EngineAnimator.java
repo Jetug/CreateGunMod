@@ -1,34 +1,25 @@
-package com.nukateam.cgs.client;
+package com.nukateam.cgs.client.animators;
 
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.GunAnimator;
-import com.nukateam.ntgl.client.util.handler.ClientReloadHandler;
 import com.nukateam.ntgl.client.util.util.TransformUtils;
 import com.nukateam.ntgl.common.base.utils.FuelUtils;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
-import com.nukateam.ntgl.common.foundation.item.GunItem;
 import com.nukateam.ntgl.common.util.util.GunData;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
 import com.simibubi.create.AllSoundEvents;
 import mod.azure.azurelib.core.animation.AnimatableManager;
 import mod.azure.azurelib.core.animation.AnimationController;
-import mod.azure.azurelib.core.animation.AnimationState;
-import mod.azure.azurelib.core.animation.RawAnimation;
 import mod.azure.azurelib.core.object.PlayState;
-import net.minecraft.FileUtil;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ShieldItem;
-import net.minecraftforge.event.TickEvent;
 
-import static com.nukateam.example.common.util.constants.Animations.RELOAD;
 import static com.nukateam.ntgl.common.util.util.GunModifierHelper.isGun;
 import static mod.azure.azurelib.core.animation.Animation.LoopType.LOOP;
-import static mod.azure.azurelib.core.animation.Animation.LoopType.PLAY_ONCE;
 import static mod.azure.azurelib.core.animation.RawAnimation.begin;
 
 public abstract class EngineAnimator extends GunAnimator {

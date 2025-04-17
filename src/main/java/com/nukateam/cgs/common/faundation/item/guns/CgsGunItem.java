@@ -23,27 +23,34 @@ import java.util.Set;
 
 public class CgsGunItem extends GunItem {
     private final Lazy<BaseGunRenderer> RENDERER = Lazy.of(() -> new BaseGunRenderer());
-    private boolean needFuel = false;
 
     public CgsGunItem(Properties properties, IGunModifier... modifiers) {
         super(properties, modifiers);
     }
 
-    public boolean isNeedFuel() {
-        return needFuel;
-    }
-
-    public CgsGunItem setNeedFuel(boolean needFuel) {
-        this.needFuel = needFuel;
-        return this;
+    @Override
+    public DynamicGeoItemRenderer getRenderer() {
+        return RENDERER.get();
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, Level level, Entity entity, int pSlotId, boolean pIsSelected) {
-        super.inventoryTick(stack, level, entity, pSlotId, pIsSelected);
+    public boolean isEnchantable(ItemStack stack) {
+        return false;
+    }
+
+    @Override
+    public boolean isFoil(ItemStack stack) {
+        return false;
+    }
+
+    @Override
+    public void inventoryTick(ItemStack gun, Level level, Entity entity, int pSlotId, boolean pIsSelected) {
+        super.inventoryTick(gun, level, entity, pSlotId, pIsSelected);
 
         if (entity instanceof LivingEntity livingEntity) {
-            onEngineTick(new GunData(stack, livingEntity));
+            var gunData = new GunData(gun, livingEntity);
+            onEngineTick(gunData);
+            fillWater(gunData);
         }
     }
 
@@ -69,27 +76,22 @@ public class CgsGunItem extends GunItem {
         }
     }
 
+    private static void fillWater(GunData gunData) {
+        var types = GunModifierHelper.getFuelTypes(gunData);
+
+        if(gunData.shooter.isInWater() && types.contains(FuelType.WATER)){
+            var maxWater = GunModifierHelper.getMaxFuel(gunData, FuelType.WATER);
+            FuelUtils.setFuel(gunData.gun, FuelType.WATER, maxWater);
+        }
+    }
+
     private static boolean isInHand(GunData data) {
         var mainHand = data.shooter.getMainHandItem();
-        var offHand = data.shooter.getMainHandItem();
+        var offHand = data.shooter.getOffhandItem();
 
-        return mainHand == data.gun || (offHand == data.gun
-                && GunModifierHelper.isOneHanded(new GunData(mainHand, data.shooter))
-                && GunModifierHelper.isOneHanded(new GunData(offHand, data.shooter)));
-    }
+        var oneHanded1 = GunModifierHelper.isOneHanded(new GunData(mainHand, data.shooter));
+        var oneHanded2 = GunModifierHelper.isOneHanded(new GunData(offHand, data.shooter));
 
-    @Override
-    public DynamicGeoItemRenderer getRenderer() {
-        return RENDERER.get();
-    }
-
-    @Override
-    public boolean isEnchantable(ItemStack stack) {
-        return false;
-    }
-
-    @Override
-    public boolean isFoil(ItemStack stack) {
-        return false;
+        return mainHand == data.gun || (offHand == data.gun && oneHanded1 && oneHanded2);
     }
 }

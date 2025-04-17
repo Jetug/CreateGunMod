@@ -49,14 +49,14 @@ public class ModItems {
     @ItemModelGen
     public static final RegistryObject<Item> ROUND_7MM = registerAmmo("round_7mm");
 
-    @ItemModelGen
-    public static final RegistryObject<Item> ROUND_7MM_PIERCING = registerAmmo("round_7mm_piercing");
+//    @ItemModelGen
+//    public static final RegistryObject<Item> ROUND_7MM_PIERCING = registerAmmo("round_7mm_piercing");
 
     @ItemModelGen
     public static final RegistryObject<Item> ROUND_10MM = registerAmmo("round_10mm");
 
-    @ItemModelGen
-    public static final RegistryObject<Item> ROUND_10MM_PIERCING = registerAmmo("round_10mm_piercing");
+//    @ItemModelGen
+//    public static final RegistryObject<Item> ROUND_10MM_PIERCING = registerAmmo("round_10mm_piercing");
 
     @ItemModelGen
     public static final RegistryObject<Item> SHOTGUN_ROUND = registerAmmo("round_shotgun");
@@ -67,8 +67,8 @@ public class ModItems {
     @ItemModelGen
     public static final RegistryObject<Item> NAIL = registerAmmo("nail");
 
-    @ItemModelGen
-    public static final RegistryObject<Item> NAIL_PIERCING = registerAmmo("nail_piercing");
+//    @ItemModelGen
+//    public static final RegistryObject<Item> NAIL_PIERCING = registerAmmo("nail_piercing");
 
     public static RegistryObject<Item> registerAmmo(String name) {
         return ITEMS.register(name, () -> new AmmoItem(new Item.Properties()));

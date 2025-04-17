@@ -1,4 +1,4 @@
-package com.nukateam.cgs.client;
+package com.nukateam.cgs.client.animators;
 
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.GunAnimator;

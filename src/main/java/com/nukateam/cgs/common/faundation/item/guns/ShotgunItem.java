@@ -1,6 +1,6 @@
 package com.nukateam.cgs.common.faundation.item.guns;
 
-import com.nukateam.cgs.client.*;
+import com.nukateam.cgs.client.animators.ShotgunAnimator;
 import com.nukateam.geo.render.*;
 import com.nukateam.ntgl.client.animators.*;
 import com.nukateam.ntgl.common.util.interfaces.IGunModifier;

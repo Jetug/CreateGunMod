@@ -1,7 +1,6 @@
-package com.nukateam.cgs.client;
+package com.nukateam.cgs.client.animators;
 
 import com.nukateam.cgs.common.faundation.registry.AttachmentItems;
-import com.nukateam.cgs.common.ntgl.Attachments;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.GunAnimator;
@@ -9,17 +8,12 @@ import com.nukateam.ntgl.common.base.holders.AttachmentType;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.data.constants.Animations;
 import com.nukateam.ntgl.common.foundation.item.GunItem;
-import com.nukateam.ntgl.common.util.helpers.PlayerHelper;
-import com.nukateam.ntgl.common.util.util.AnimationHelper;
 import com.nukateam.ntgl.common.util.util.GunData;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
 import mod.azure.azurelib.core.animation.*;
-import mod.azure.azurelib.core.object.PlayState;
-import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraftforge.event.TickEvent;
 
-import static com.nukateam.example.common.util.constants.Animations.HOLD;
 import static mod.azure.azurelib.core.animation.Animation.LoopType.*;
 import static mod.azure.azurelib.core.animation.RawAnimation.begin;
 

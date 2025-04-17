@@ -3,7 +3,7 @@
   "acceptMirrored": false,
   "key": {
     "B": {
-      "item": "create:blaze_burner"
+      "item": "minecraft:blast_furnace"
     },
     "E": {
       "item": "create:steam_engine"

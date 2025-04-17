@@ -29,12 +29,13 @@
   "item.cgs.ball": "Paper Cartridge",
   "item.cgs.nail": "Nail",
 
-  "item.cgs.steam_engine": "Gatling: Steam Engine",
+  "item.cgs.steam_engine": "Steam Engine",
+  "item.cgs.scope": "Scope",
+  "item.cgs.stock": "Stock",
+
   "item.cgs.iron_sight": "Gatling: Iron Sight",
   "item.cgs.gatling_drum": "Gatling: Drum Magazine",
 
-  "item.cgs.scope": "Scope",
-  "item.cgs.stock": "Stock",
   "item.cgs.round_belt": "Revolver: Chamber Belt",
   "item.cgs.auto_fire": "Revolver: Auto Fire",
   "item.cgs.long_barrel": "Revolver: Long Barrel",
