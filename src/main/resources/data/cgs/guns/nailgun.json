@@ -9,6 +9,7 @@
     "reloadTime": 60,
     "recoilAngle": 2.0,
     "recoilKick": 0.3,
+    "reloadAmount": 10,
     "recoilAdsReduction": 0.20,
     "alwaysSpread": true,
     "renderHud": true,
