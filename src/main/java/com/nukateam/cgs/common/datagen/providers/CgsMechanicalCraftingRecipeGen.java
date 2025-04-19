@@ -77,14 +77,15 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 				.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
 				.key('M', AllItems.PRECISION_MECHANISM.get())
 				.key('P', AllBlocks.FLUID_PIPE)
-				.key('T', AllBlocks.FLUID_TANK)
-				.key('E', AllBlocks.STEAM_ENGINE)
-				.key('F', AllBlocks.FLYWHEEL)
+				.key('T', AllItems.COPPER_BACKTANK)
+				.key('A', AllItems.ANDESITE_ALLOY.get())
+				.key('F', AllBlocks.FLUID_VALVE)
 				.key('L', AllItems.BRASS_SHEET.get())
 				.key('I', AllItems.IRON_SHEET.get())
-						.patternLine(" EFL ")
-						.patternLine("PPTMW")
-						.patternLine("IILL ")
+				.key('B', Ingredient.of(AllTags.AllItemTags.TOOLBOXES.tag))
+						.patternLine("IIBAL ")
+						.patternLine("PPFTMW")
+						.patternLine(" LLLW ")
 						.disallowMirrored()),
 
 	//ATTACHMENTS
@@ -158,6 +159,18 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 						.patternLine("LACAL")
 						.patternLine(" LAL ")
 						.patternLine("  L  ")
+						.disallowMirrored())
+		,
+
+		SPLITTER = create(AttachmentItems.NAILGUN_SPLITTER::get).returns(1)
+				.recipe(b -> b
+						.key('M', AllItems.PRECISION_MECHANISM.get())
+						.key('P', AllBlocks.FLUID_PIPE)
+						.key('I', AllItems.IRON_SHEET.get())
+						.key('C', AllBlocks.CHUTE.get())
+						.patternLine("PIP ")
+						.patternLine("IMIC")
+						.patternLine("PIP ")
 						.disallowMirrored())
 		;
 

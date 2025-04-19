@@ -1,0 +1,26 @@
+{
+  "type": "create:mechanical_crafting",
+  "acceptMirrored": false,
+  "key": {
+    "C": {
+      "item": "create:chute"
+    },
+    "I": {
+      "item": "create:iron_sheet"
+    },
+    "M": {
+      "item": "create:precision_mechanism"
+    },
+    "P": {
+      "item": "create:fluid_pipe"
+    }
+  },
+  "pattern": [
+    "PIP ",
+    "IMIC",
+    "PIP "
+  ],
+  "result": {
+    "item": "cgs:nailgun_splitter"
+  }
+}

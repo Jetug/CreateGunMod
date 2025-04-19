@@ -1,6 +1,8 @@
 {
   "itemGroup.mod_items": "Create: Gunsmithing",
 
+  "info.cgs.fuel": "ПКМ по оружию топливом что бы заправить его",
+
   "slot.cgs.attachment.engine": "Двигатель",
   "slot.cgs.attachment.frame": "Основа",
   "slot.cgs.attachment.chamber": "Патронник",
@@ -45,7 +47,9 @@
   "item.cgs.shotgun_pump": "Дробовик: Автоматический зарядник",
   "item.cgs.shotgun_long_barrel": "Дробовик: Длинные стволы",
   "item.cgs.shotgun_spread_barrel": "Дробовик: Рассеивающие стволы",
-  
+
+  "item.cgs.nailgun_splitter": "Гвозьдемёт: Разделяющий ствол",
+
   "item.cgs.raw_lead": "Рудный свинец",
   "item.cgs.lead_ingot": "Свинцовый слиток",
   "item.cgs.lead_nugget": "Кусочек свинца",

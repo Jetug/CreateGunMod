@@ -1,5 +1,8 @@
 {
   "itemGroup.mod_items": "Create: Gunsmithing",
+
+  "info.cgs.fuel": "RMB on a weapon with a fuel item to refuel it",
+
   "slot.cgs.attachment.engine": "Engine",
   "slot.cgs.attachment.frame": "Frame",
   "slot.cgs.attachment.chamber": "Chamber",
@@ -44,6 +47,8 @@
   "item.cgs.shotgun_pump": "Shotgun: Automatic Loader",
   "item.cgs.shotgun_long_barrel": "Shotgun: Long Barrels",
   "item.cgs.shotgun_spread_barrel": "Shotgun: Spreading Barrels",
+
+  "item.cgs.nailgun_splitter": "Nailgun: Splitter Barrel",
 
   "item.cgs.raw_lead": "Raw Lead",
   "item.cgs.lead_ingot": "Lead Ingot",

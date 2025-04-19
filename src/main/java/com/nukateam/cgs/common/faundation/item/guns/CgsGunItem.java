@@ -9,17 +9,22 @@ import com.nukateam.ntgl.common.foundation.item.GunItem;
 import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
 import com.nukateam.ntgl.common.util.util.GunData;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
 import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.BundleItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.util.Lazy;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.Set;
+import java.util.List;
 
 public class CgsGunItem extends GunItem {
     private final Lazy<BaseGunRenderer> RENDERER = Lazy.of(() -> new BaseGunRenderer());
@@ -55,15 +60,25 @@ public class CgsGunItem extends GunItem {
     }
 
     @Override
-    public boolean overrideOtherStackedOnMe(ItemStack gun, ItemStack fuel, Slot pSlot, ClickAction pAction, Player player, SlotAccess pAccess) {
-        if (player.level().isClientSide()
-                && pAction == ClickAction.SECONDARY
-                && pSlot.allowModification(player)) {
-            var dunData = new GunData(gun, player);
+    public boolean overrideOtherStackedOnMe(ItemStack gun, ItemStack fuel,
+                                            Slot slot, ClickAction action,
+                                            Player player, SlotAccess access) {
+        if (action == ClickAction.SECONDARY) {
             GunUtils.playAttachSound(player, 0.5f);
-            return GunUtils.fillFuel(dunData, fuel);
+            return GunUtils.fillFuel(gun, player, fuel);
         }
         else return false;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flag) {
+        super.appendHoverText(stack, worldIn, tooltip, flag);
+        var gunData = new GunData(stack, null);
+        var fuelTypes = GunModifierHelper.getFuelTypes(gunData);
+
+        if(!fuelTypes.isEmpty()) {
+            tooltip.add(Component.translatable("info.cgs.fuel").withStyle(ChatFormatting.GRAY));
+        }
     }
 
     private static void onEngineTick(GunData data) {

@@ -9,13 +9,8 @@ import com.nukateam.ntgl.common.util.util.GunData;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
 import com.simibubi.create.content.equipment.armor.BacktankUtil;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraftforge.common.ForgeHooks;
 
-import static com.nukateam.cgs.common.utils.GunUtils.fillFuel;
+import static com.nukateam.cgs.common.utils.GunUtils.*;
 
 public class C2SMessageFuel extends PlayMessage<C2SMessageFuel> {
     public C2SMessageFuel() {}
@@ -40,14 +35,13 @@ public class C2SMessageFuel extends PlayMessage<C2SMessageFuel> {
                 var offhandItem = player.getOffhandItem();
 
                 if (GunModifierHelper.isGun(mainHandItem)) {
-                    fillFuel(new GunData(mainHandItem, player), offhandItem);
+                    fillFuel(mainHandItem, player, offhandItem);
                 }
                 else if (GunModifierHelper.isGun(offhandItem)) {
-                    fillFuel(new GunData(offhandItem, player), mainHandItem);
+                    fillFuel(offhandItem, player, mainHandItem);
                 }
             }
         }));
         supplier.setHandled(true);
     }
-
 }

@@ -37,9 +37,9 @@ public class Attachments {
         @Override
         public int modifyFireRate(int rate, GunData data) {
             if(data.gun.getItem() == ModGuns.NAILGUN.get())
-                return 4;
+                return rate * 2;
             else if(data.gun.getItem() == ModGuns.GATLING.get() && FuelUtils.hasFuel(data)) {
-                return 2;
+                return rate / 2;
             }
             return rate;
         }
@@ -49,6 +49,22 @@ public class Attachments {
             if(data.gun.getItem() == ModGuns.NAILGUN.get())
                 return damage * 2.5f;
             return IGunModifier.super.modifyDamage(damage, data);
+        }
+
+        @Override
+        public float recoilModifier(GunData data) {
+            if(data.gun.getItem() == ModGuns.NAILGUN.get()) {
+                return 2;
+            }
+            return IGunModifier.super.recoilModifier(data);
+        }
+
+        @Override
+        public float kickModifier(GunData data) {
+            if(data.gun.getItem() == ModGuns.NAILGUN.get()) {
+                return 2;
+            }
+            return IGunModifier.super.kickModifier(data);
         }
 
         @Override
@@ -287,24 +303,35 @@ public class Attachments {
     };
 
     public static final IGunModifier NAILGUN_SPLIT_BARREL = new IGunModifier() {
+        public static final int AMMO_PER_SHOT = 4;
+
+        @Override
+        public float modifyDamage(float damage, GunData data) {
+            return damage * getProjectileAmount(data);
+        }
+
         @Override
         public float modifyProjectileSpread(float spread, GunData data) {
-            return 20;
+            return spread * 8;
         }
 
         @Override
         public int modifyProjectileAmount(int amount, GunData data) {
-            return Math.min(5, Gun.getAmmo(data.gun));
+            return getProjectileAmount(data);
+        }
+
+        private static int getProjectileAmount(GunData data) {
+            return Math.min(AMMO_PER_SHOT, Gun.getAmmo(data.gun));
         }
 
         @Override
         public int modifyAmmoPerShot(int ammoPerShot, GunData data) {
-            return 5;
+            return AMMO_PER_SHOT;
         }
 
         @Override
         public int modifyFireRate(int rate, GunData data) {
-            return rate * 3;
+            return rate * 2;
         }
     };
 }

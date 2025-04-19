@@ -6,7 +6,9 @@
     "loadingType": "ntgl:per_cartridge",
     "maxAmmo": 40,
     "damage": 5.0,
-    "reloadTime": 60,
+    "reloadStart": 15,
+    "reloadTime": 20,
+    "reloadEnd": 20,
     "recoilAngle": 2.0,
     "recoilKick": 0.3,
     "reloadAmount": 10,
@@ -56,7 +58,8 @@
       "cgs:engine": [
         {
           "name": "steam_engine",
-          "item": "cgs:steam_engine"
+          "item": "cgs:steam_engine",
+          "hide": ["air_tank_holder"]
         }
       ]
     }

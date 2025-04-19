@@ -55,7 +55,8 @@
       "cgs:engine": [
         {
           "name": "steam_engine",
-          "item": "cgs:steam_engine"
+          "item": "cgs:steam_engine",
+          "hide": ["heater"]
         }
       ]
     }

@@ -2,11 +2,14 @@
   "type": "create:mechanical_crafting",
   "acceptMirrored": false,
   "key": {
-    "E": {
-      "item": "create:steam_engine"
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "B": {
+      "tag": "create:toolboxes"
     },
     "F": {
-      "item": "create:flywheel"
+      "item": "create:fluid_valve"
     },
     "I": {
       "item": "create:iron_sheet"
@@ -21,16 +24,16 @@
       "item": "create:fluid_pipe"
     },
     "T": {
-      "item": "create:fluid_tank"
+      "item": "create:copper_backtank"
     },
     "W": {
       "tag": "forge:stripped_logs"
     }
   },
   "pattern": [
-    " EFL ",
-    "PPTMW",
-    "IILL "
+    "IIBAL ",
+    "PPFTMW",
+    " LLLW "
   ],
   "result": {
     "item": "cgs:nailgun"

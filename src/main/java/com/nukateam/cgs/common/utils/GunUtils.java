@@ -30,40 +30,44 @@ public class GunUtils {
                 pitch);
     }
 
-    public static boolean fillFuel(GunData gunData, ItemStack fuelStack) {
-        var player = (Player)gunData.shooter;
+    public static boolean fillFuel(ItemStack gun, Player player, ItemStack fuelStack) {
+        var gunData = new GunData(gun, player);
+        var isSurvival = !player.isCreative();
         var allFuel = GunModifierHelper.getFuelTypes(gunData);
 
-//        if(allFuel == null) return;
         for (var fuelType : allFuel){
             if(fuelType.isAcceptable(fuelStack)) {
                 var value = 0;
-                if(fuelType == FuelType.BURNABLE) {
-                    var burnTime = ForgeHooks.getBurnTime(fuelStack, null);
-                    value = burnTime;
-                    if(!player.isCreative())
+                var maxFuel = GunModifierHelper.getMaxFuel(gunData, fuelType);
+                var currentFuel = FuelUtils.getFuel(gun,fuelType);
+                if(currentFuel >= maxFuel) {
+                    return false;
+                }
+                else if(fuelType == FuelType.BURNABLE) {
+                    value = ForgeHooks.getBurnTime(fuelStack, null);
+                    if(isSurvival) {
                         fuelStack.shrink(1);
+                    }
                 }
                 else if(fuelType == FuelType.WATER) {
                     value = 1000;
-                    if(!player.isCreative())
-                        fuelStack = new ItemStack(Items.BUCKET);
+                    if(isSurvival) {
+                        fuelStack.shrink(1);
+                        player.addItem(new ItemStack(Items.BUCKET));
+                    }
                 }
                 else if(fuelType == CgsFuel.AIR){
                     var gunRemaining = FuelUtils.getFuel(fuelStack, fuelType);
                     var tankAir = BacktankUtil.getAir(fuelStack);
-                    var maxTankAir = BacktankUtil.maxAir(fuelStack);
-                    var maxFuel = GunModifierHelper.getMaxFuel(gunData, fuelType);
-
                     var airSum = gunRemaining + tankAir;
                     value = Mth.clamp((int)airSum, 0, maxFuel);
 
-                    if(!player.isCreative()) {
+                    if(isSurvival) {
                         if (airSum <= maxFuel) {
                             consumeAir(fuelStack, tankAir);
                         } else {
                             var tankRemaining = airSum - maxFuel;
-                            consumeAir(fuelStack, maxTankAir - tankRemaining);
+                            setAir(fuelStack, tankRemaining);
                         }
                     }
                 }
@@ -79,6 +83,13 @@ public class GunUtils {
         int maxAir = BacktankUtil.maxAir(tank);
         float air = BacktankUtil.getAir(tank);
         float newAir = Math.max(air - i, 0);
+        tag.putFloat("Air", Math.min(newAir, maxAir));
+        tank.setTag(tag);
+    }
+
+    public static void setAir(ItemStack tank, float newAir) {
+        var tag = tank.getOrCreateTag();
+        var maxAir = BacktankUtil.maxAir(tank);
         tag.putFloat("Air", Math.min(newAir, maxAir));
         tank.setTag(tag);
     }
