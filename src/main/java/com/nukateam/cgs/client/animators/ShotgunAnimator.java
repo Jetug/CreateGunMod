@@ -11,6 +11,7 @@ import com.nukateam.ntgl.common.foundation.item.GunItem;
 import com.nukateam.ntgl.common.util.util.Cycler;
 import com.nukateam.ntgl.common.util.util.GunData;
 import mod.azure.azurelib.core.animation.*;
+import mod.azure.azurelib.core.animation.AnimationController.AnimationStateHandler;
 import net.minecraft.world.item.ItemDisplayContext;
 import org.jetbrains.annotations.NotNull;
 
@@ -29,7 +30,11 @@ public class ShotgunAnimator extends GunAnimator {
     public static final String RELOAD_PUMP_RIGHT = "reload_pump_right";
     public static final String RELOAD_PUMP_START = "reload_pump_start";
     public static final String RELOAD_PUMP_END = "reload_pump_end";
+    public static final String EMPTY_BOTH = "empty_both";
+    public static final String FULL = "full";
+    public static final String EMPTY_LEFT = "empty_left";
     protected final AnimationController<GunAnimator> COCK_CONTROLLER;
+    protected final AnimationController<GunAnimator> SHOOTING_CONTROLLER;
 
     private int ammo;
     private boolean hasDrums;
@@ -39,12 +44,14 @@ public class ShotgunAnimator extends GunAnimator {
     public ShotgunAnimator(ItemDisplayContext transformType, DynamicGeoItemRenderer<GunAnimator> renderer) {
         super(transformType, renderer);
         COCK_CONTROLLER = createController("cock_controller", animateCock());
+        SHOOTING_CONTROLLER = createController("shooting_controller", animateShoot());
     }
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         super.registerControllers(controllerRegistrar);
         controllerRegistrar.add(COCK_CONTROLLER);
+        controllerRegistrar.add(SHOOTING_CONTROLLER);
     }
 
 
@@ -54,14 +61,15 @@ public class ShotgunAnimator extends GunAnimator {
         if (!isGun()) return;
 
         var magazine = Gun.getAttachmentItem(AttachmentType.MAGAZINE, getStack());
-        var cooldown = shootingHandler.getCooldown(getEntity(), arm);
 
         this.ammo = Gun.getAmmo(getStack());
         this.hasDrums = magazine.is(AttachmentItems.SHOTGUN_DRUM.get());
         this.hasPumps = magazine.is(AttachmentItems.SHOTGUN_PUMP.get());
 
+        var cooldown = this.shootingHandler.getCooldown(getEntity(), this.arm);
+
         if (cockCycler == null)
-            cockCycler = new Cycler(1, 3);
+            cockCycler = new Cycler(1, 2);
 
         if (cooldown == rate) {
             cockCycler.cycle();
@@ -142,24 +150,37 @@ public class ShotgunAnimator extends GunAnimator {
         return new GunData(getStack(), getEntity());
     }
 
-    private AnimationController.AnimationStateHandler<GunAnimator> animateCock() {
+    private AnimationStateHandler<GunAnimator> animateCock() {
         return (event) -> {
             var ammo = Gun.getAmmo(getStack());
             var name = "";
 
             if (ammo == 0){
-                name = "empty_both";
+                name = EMPTY_BOTH;
             }
             else if(GunUtils.isAmmoEven(getStack())){
-                name = "full";
+                name = FULL;
             }
             else {
-                name = "empty_left";
+                name = EMPTY_LEFT;
             }
 
             var animation = begin().then(name, LOOP);
             animationHelper.syncAnimation(event, name, rate);
             return event.setAndContinue(animation);
+        };
+    }
+
+    private AnimationStateHandler<GunAnimator> animateShoot() {
+        return (event) -> {
+            var isShooting = shootingHandler.isShooting(getEntity(), arm);
+            if(isShooting) {
+                var name = cockCycler.getCurrent() == 1 ? "shoot_left" : "shoot_right";
+                var animation = begin().then(name, PLAY_ONCE).then("wait", LOOP);
+                animationHelper.syncAnimation(event, name, rate);
+                return event.setAndContinue(animation);
+            }
+            return event.setAndContinue(begin().then("wait", LOOP));
         };
     }
 

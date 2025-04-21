@@ -36,14 +36,11 @@ public class GunUtils {
         var allFuel = GunModifierHelper.getFuelTypes(gunData);
 
         for (var fuelType : allFuel){
-            if(fuelType.isAcceptable(fuelStack)) {
+            var maxFuel = GunModifierHelper.getMaxFuel(gunData, fuelType);
+            var currentFuel = FuelUtils.getFuel(gun,fuelType);
+            if(fuelType.isAcceptable(fuelStack) && currentFuel < maxFuel) {
                 var value = 0;
-                var maxFuel = GunModifierHelper.getMaxFuel(gunData, fuelType);
-                var currentFuel = FuelUtils.getFuel(gun,fuelType);
-                if(currentFuel >= maxFuel) {
-                    return false;
-                }
-                else if(fuelType == FuelType.BURNABLE) {
+                if(fuelType == FuelType.BURNABLE) {
                     value = ForgeHooks.getBurnTime(fuelStack, null);
                     if(isSurvival) {
                         fuelStack.shrink(1);

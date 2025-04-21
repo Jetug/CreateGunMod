@@ -119,6 +119,119 @@
 				}
 			}
 		},
+		"equip": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.5,
+			"bones": {
+				"bone16": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"bone5": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"left_cock": {
+					"scale": {
+						"vector": [1, 1, 1]
+					}
+				},
+				"right_cock": {
+					"scale": {
+						"vector": [1, 1, 1]
+					}
+				},
+				"model": {
+					"rotation": {
+						"0.0": {
+							"vector": [30.25, -34.13, 42.74]
+						},
+						"0.1667": {
+							"vector": [20.44997, -25.20737, 35.1549]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0.02827, -5.09777, -4.33019]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"gun_arm": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					},
+					"position": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"right_arm_anim": {
+					"rotation": {
+						"vector": [5, 0, 0]
+					},
+					"position": {
+						"vector": [8.25, -0.1, 7.5]
+					}
+				},
+				"right_arm": {
+					"rotation": {
+						"vector": [2, 0, 0]
+					}
+				},
+				"muzzle_flash": {
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"muzzle_smoke": {
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"cock": {
+					"rotation": {
+						"vector": [-27.5, 0, 0]
+					}
+				},
+				"shpindel": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					},
+					"position": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"left_arm_anim": {
+					"rotation": {
+						"vector": [17.6076, -3.82821, -3.21873]
+					},
+					"position": {
+						"vector": [2.92423, -5.041, 13.3923]
+					},
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"ammo": {
+					"rotation": {
+						"vector": [0, 20, 0]
+					},
+					"position": {
+						"vector": [-5.15, -1.3, 5.8]
+					},
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				}
+			}
+		},
 		"shot": {
 			"loop": true,
 			"animation_length": 0.75,

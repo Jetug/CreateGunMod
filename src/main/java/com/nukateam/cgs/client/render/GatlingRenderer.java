@@ -12,7 +12,7 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
-public class GatlingRenderer extends DynamicGunRenderer<GatlingAnimator> {
+public class GatlingRenderer extends BaseGunRenderer{
 //    public static final DataTicket<Float> ROTATION = new DataTicket<>("rot", Float.class);
 
     public GatlingRenderer() {

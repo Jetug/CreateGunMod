@@ -6,6 +6,7 @@
     "fireTimer": 3,
     "fullCharge": true,
     "damage": 12.0,
+    "equipTime": 0,
     "reloadTime": 60,
     "reloadAmount": 1,
     "recoilAngle": 7.0,

@@ -45,9 +45,19 @@ public class Attachments {
         }
 
         @Override
+        public int modifyFireDelay(int chargeTime, GunData data) {
+            if(data.gun.getItem() == ModGuns.GATLING.get() && FuelUtils.hasFuel(data)) {
+                return 10;
+            }
+            return IGunModifier.super.modifyFireDelay(chargeTime, data);
+        }
+
+
+
+        @Override
         public float modifyDamage(float damage, GunData data) {
             if(data.gun.getItem() == ModGuns.NAILGUN.get())
-                return damage * 2.5f;
+                return damage * 2f;
             return IGunModifier.super.modifyDamage(damage, data);
         }
 
@@ -331,7 +341,7 @@ public class Attachments {
 
         @Override
         public int modifyFireRate(int rate, GunData data) {
-            return rate * 2;
+            return (int)(rate * 2.5);
         }
     };
 }
