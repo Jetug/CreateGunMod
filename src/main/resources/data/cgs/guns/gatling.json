@@ -5,7 +5,7 @@
     "category": "heavy",
     "rate": 5,
     "fireTimer": 0,
-    "equipTime": 0,
+    "equipTime": 5,
     "fullCharge": true,
     "oneTimeCharge": true,
     "maxAmmo": 100,

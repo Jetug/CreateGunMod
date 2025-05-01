@@ -4,7 +4,7 @@
     "gripType": "ntgl:one_handed",
     "maxAmmo": 1,
     "damage": 15.0,
-    "equipTime": 0,
+    "equipTime": 5,
     "reloadTime": 80,
     "recoilAngle": 7.0,
     "recoilKick": 0.4,

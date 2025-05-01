@@ -177,12 +177,17 @@ public class ShotgunAnimator extends GunAnimator {
 
     private AnimationStateHandler<GunAnimator> animateFlash() {
         return (event) -> {
-            var isShooting = rate - shootingHandler.getCooldown(getEntity(), arm) <= SHOT_TIME;
-            if(isShooting) {
-                var name = cockCycler.getCurrent() == 1 ? SHOT_LEFT : SHOT_RIGHT;
-                var animation = begin().then(name, PLAY_ONCE).then(WAIT, LOOP);
-                animationHelper.syncAnimation(event, name, SHOT_TIME);
-                return event.setAndContinue(animation);
+            var cooldown = shootingHandler.getCooldown(getEntity(), arm);
+                var isShooting = rate <= cooldown;
+            var sas = cooldown > 0;
+
+            if(shootingHandler.isShooting(getEntity(), arm)) {
+//                var name = cockCycler.getCurrent() == 1 ? SHOT_LEFT : SHOT_RIGHT;
+//                var animation = begin().then(name, PLAY_ONCE).then(WAIT, LOOP);
+//                animationHelper.syncAnimation(event, name, SHOT_TIME);
+//                return event.setAndContinue(animation);
+
+                return event.setAndContinue(begin().then(SHOT_LEFT, PLAY_ONCE).then(WAIT, LOOP));
             }
             return event.setAndContinue(begin().then(WAIT, LOOP));
         };

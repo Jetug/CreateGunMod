@@ -53,9 +53,4 @@ public class BaseGunRenderer extends DynamicGunRenderer<GunAnimator> {
                 bufferSource, isReRender, partialTick,
                 packedLight, packedOverlay, rgba);
     }
-
-    @Override
-    protected void renderMuzzleFlash(PoseStack poseStack) {
-        super.renderMuzzleFlash(poseStack);
-    }
 }

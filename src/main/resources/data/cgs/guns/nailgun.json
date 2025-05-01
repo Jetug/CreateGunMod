@@ -6,7 +6,7 @@
     "loadingType": "ntgl:per_cartridge",
     "maxAmmo": 40,
     "damage": 5.0,
-    "equipTime": 0,
+    "equipTime": 5,
     "reloadStart": 15,
     "reloadTime": 20,
     "reloadEnd": 20,
