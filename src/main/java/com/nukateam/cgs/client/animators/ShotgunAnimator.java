@@ -33,27 +33,31 @@ public class ShotgunAnimator extends GunAnimator {
     public static final String EMPTY_BOTH = "empty_both";
     public static final String FULL = "full";
     public static final String EMPTY_LEFT = "empty_left";
+    public static final String SHOT_LEFT = "shot_left";
+    public static final String SHOT_RIGHT = "shot_right";
+    public static final String WAIT = "wait";
+
+    public static final int SHOT_TIME = 2;
     protected final AnimationController<GunAnimator> COCK_CONTROLLER;
-    protected final AnimationController<GunAnimator> SHOOTING_CONTROLLER;
+    protected final AnimationController<GunAnimator> FLASH_CONTROLLER;
 
     private int ammo;
     private boolean hasDrums;
     private boolean hasPumps;
-    private Cycler cockCycler;
+    private Cycler cockCycler = new Cycler(1, 2);
 
     public ShotgunAnimator(ItemDisplayContext transformType, DynamicGeoItemRenderer<GunAnimator> renderer) {
         super(transformType, renderer);
         COCK_CONTROLLER = createController("cock_controller", animateCock());
-        SHOOTING_CONTROLLER = createController("shooting_controller", animateShoot());
+        FLASH_CONTROLLER = createController("flash_controller", animateFlash());
     }
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         super.registerControllers(controllerRegistrar);
         controllerRegistrar.add(COCK_CONTROLLER);
-        controllerRegistrar.add(SHOOTING_CONTROLLER);
+        controllerRegistrar.add(FLASH_CONTROLLER);
     }
-
 
     @Override
     protected void tickStart() {
@@ -90,14 +94,14 @@ public class ShotgunAnimator extends GunAnimator {
             var reloadAnim = hasDrums ?
                     this.getGunAnim(SHOT_DRUM) :
                     this.getGunAnim(SHOT_PUMP);
-            animation.then(reloadAnim, LOOP);
+            animation.then(reloadAnim, PLAY_ONCE);
             animations.add(reloadAnim);
         }
 
         if(isAmmoEven) {
             rate = 20;
         }
-
+        animation.then(this.getGunAnim(Animations.HOLD), LOOP);
         this.animationHelper.syncAnimation(event, rate, animations);
         return animation;
     }
@@ -166,21 +170,21 @@ public class ShotgunAnimator extends GunAnimator {
             }
 
             var animation = begin().then(name, LOOP);
-            animationHelper.syncAnimation(event, name, rate);
+            animationHelper.syncAnimation(event, name, SHOT_TIME);
             return event.setAndContinue(animation);
         };
     }
 
-    private AnimationStateHandler<GunAnimator> animateShoot() {
+    private AnimationStateHandler<GunAnimator> animateFlash() {
         return (event) -> {
-            var isShooting = shootingHandler.isShooting(getEntity(), arm);
+            var isShooting = rate - shootingHandler.getCooldown(getEntity(), arm) <= SHOT_TIME;
             if(isShooting) {
-                var name = cockCycler.getCurrent() == 1 ? "shoot_left" : "shoot_right";
-                var animation = begin().then(name, PLAY_ONCE).then("wait", LOOP);
-                animationHelper.syncAnimation(event, name, rate);
+                var name = cockCycler.getCurrent() == 1 ? SHOT_LEFT : SHOT_RIGHT;
+                var animation = begin().then(name, PLAY_ONCE).then(WAIT, LOOP);
+                animationHelper.syncAnimation(event, name, SHOT_TIME);
                 return event.setAndContinue(animation);
             }
-            return event.setAndContinue(begin().then("wait", LOOP));
+            return event.setAndContinue(begin().then(WAIT, LOOP));
         };
     }
 

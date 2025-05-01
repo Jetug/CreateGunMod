@@ -77,7 +77,7 @@ public abstract class EngineAnimator extends GunAnimator {
     private void playEngineSound() {
         if (shouldPlayEngineSound()) {
             var player = minecraft.player;
-            var isShooting = shootingHandler.isShooting();
+            var isShooting = shootingHandler.isShooting(getEntity(), getArm());
             var pitch = 1.18f - minecraft.level.random.nextFloat() * .25f;
             var volume = isShooting ? 6f : 0.5f;
 
