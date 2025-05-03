@@ -165,17 +165,15 @@ dependencies {
     implementation fg.deobf("mod.azure.azurelib:azurelib-neo-1.20.1:2.0.41")
     implementation fg.deobf("curse.maven:framework-549225:5180972")
     implementation fg.deobf("curse.maven:cyanide-541676:4824162")
-    implementation fg.deobf('com.nukateam:ntgl:1.20.1-1.9.3')
+    implementation fg.deobf('com.nukateam:ntgl:1.20.1-1.9.2')
 
     implementation fg.deobf("curse.maven:bettercombat-639842:5266134")
     implementation fg.deobf("curse.maven:playeranimator-658587:4587214")
     implementation(fg.deobf("me.shedaniel.cloth:cloth-config-forge:11.1.118"))
 
-    implementation fg.deobf("curse.maven:create-ore-excavation-649832:6440624")
-
-    implementation fg.deobf("mezz.jei:jei-1.20.1-common-api:${jei_version}")
-    implementation fg.deobf("mezz.jei:jei-1.20.1-forge-api:${jei_version}")
-    implementation fg.deobf("mezz.jei:jei-1.20.1-forge:${jei_version}")
+    compileOnly fg.deobf("mezz.jei:jei-1.20.1-forge-api:15.20.0.106")
+    compileOnly fg.deobf("mezz.jei:jei-1.20.1-common-api:15.20.0.106")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.20.1-forge:15.20.0.106")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     testAnnotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
