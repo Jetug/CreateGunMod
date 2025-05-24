@@ -2,9 +2,7 @@ package com.nukateam.cgs.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.nukateam.cgs.client.model.GatlingModel;
 import com.nukateam.ntgl.client.animators.GunAnimator;
-import com.nukateam.ntgl.client.event.InputEvents;
 import com.nukateam.ntgl.client.model.gun.GeoGunModel;
 import com.nukateam.ntgl.client.render.renderers.gun.DynamicGunRenderer;
 import com.nukateam.ntgl.common.util.data.Rgba;
@@ -35,7 +33,6 @@ public class BaseGunRenderer extends DynamicGunRenderer<GunAnimator> {
         poseStack.pushPose();
         var hasExtendoGrip = entity.getOffhandItem().getItem() == AllItems.EXTENDO_GRIP.get();
         if(hasExtendoGrip && transformType == ItemDisplayContext.FIRST_PERSON_RIGHT_HAND) {
-            poseStack.translate(InputEvents.X / 16D, InputEvents.Y / 16D, InputEvents.Z / 16D);
             poseStack.translate(1 / 16D, -3 / 16D, -3 / 16D);
         }
         super.render(entity, stack, transformType, poseStack, bufferSource, renderType, buffer, packedLight);
