@@ -301,7 +301,7 @@ public class Attachments {
 
         @Override
         public float modifyProjectileSpread(float spread, GunData data) {
-            return spread * 0.5f;
+            return spread * 0.8f;
         }
     };
 

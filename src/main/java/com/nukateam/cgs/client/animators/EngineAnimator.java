@@ -15,6 +15,7 @@ import mod.azure.azurelib.core.object.PlayState;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.item.ItemDisplayContext;
 
@@ -109,8 +110,8 @@ public abstract class EngineAnimator extends GunAnimator {
         var i1 = GunModifierHelper.isOneHanded(mainGunData);
         var i2 = GunModifierHelper.isOneHanded(offGunData);
         var arm = this.getArm();
-        var isNotPaused = !minecraft.getInstance().isPaused();
-        var isVisible = arm == HumanoidArm.RIGHT || (arm == HumanoidArm.LEFT && i1 && i2);
+        var isNotPaused = !minecraft.isPaused();
+        var isVisible = arm == InteractionHand.MAIN_HAND || (arm == InteractionHand.OFF_HAND && i1 && i2);
         var hasEngine = hasEngine();
         var isHandTransform = TransformUtils.isHandTransform(transformType);
         var hasGunInHands = hasGunInHands(player);
