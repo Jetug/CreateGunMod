@@ -3,9 +3,13 @@
   "ingredient": {
     "item": "minecraft:paper"
   },
-  "transitionalItem": {
-    "item": "minecraft:paper"
-  },
+  "loops": 1,
+  "results": [
+    {
+      "count": 3,
+      "item": "cgs:ball"
+    }
+  ],
   "sequence": [
     {
       "type": "create:deploying",
@@ -14,7 +18,7 @@
           "item": "minecraft:paper"
         },
         {
-          "item": "minecraft:gunpowder"
+          "tag": "forge:gunpowder"
         }
       ],
       "results": [
@@ -40,12 +44,7 @@
       ]
     }
   ],
-  "results": [
-    {
-      "item": "cgs:ball",
-      "count": 3,
-      "chance": 100.0
-    }
-  ],
-  "loops": 1
+  "transitionalItem": {
+    "item": "minecraft:paper"
+  }
 }

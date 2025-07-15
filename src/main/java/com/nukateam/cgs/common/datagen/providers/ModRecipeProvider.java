@@ -10,20 +10,28 @@ import com.simibubi.create.AllTags;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
+    public static final String INGOT_TAG = "ingots/";
+    public static final String NUGGET_TAG = "nuggets/";
+    public static final String LEAD = "lead";
 
     public ModRecipeProvider(PackOutput pOutput) {
         super(pOutput);
@@ -35,25 +43,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 ModBlocks.LEAD_ORE.get(), ModBlocks.DEEPSLATE_LEAD_ORE.get(),
                 ModBlocks.LEAD_BLOCK.get(), ModBlocks.RAW_LEAD_BLOCK.get(),
                 ModItems.RAW_LEAD.get(), ModItems.LEAD_INGOT.get(), ModItems.LEAD_NUGGET.get());
-    }
 
-    private static void buildOreRecipes(Consumer<FinishedRecipe> writer,
-                                        ItemLike ore, ItemLike deepslateOre,
-                                        ItemLike block, ItemLike rawBlock,
-                                        ItemLike raw, ItemLike ingot, ItemLike nugget) {
-
-        var smeltables = List.of(raw, ore, deepslateOre);
-
-        oreSmelting(writer, smeltables, RecipeCategory.MISC, ingot, 0.25f, 200, "lead");
-        oreBlasting(writer, smeltables, RecipeCategory.MISC, ingot, 0.25f, 100, "lead");
-
-        simpleBlock(writer, raw, rawBlock);
-        simpleBlock(writer, ingot, block);
-        simpleBlock(writer, nugget, ingot);
-
-        fromBlock(writer, rawBlock, raw);
-        fromBlock(writer, block, ingot);
-        fromBlock(writer, ingot, nugget);
+//        var leadIngot = forgeItemTag(INGOT_TAG + LEAD);
+        var leadNugget = AllTags.forgeItemTag(NUGGET_TAG + LEAD);
 
         //GUNS
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModGuns.FLINTLOCK.get())
@@ -72,7 +64,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("L")
                 .pattern("G")
                 .pattern("P")
-                .define('L', ModItems.LEAD_NUGGET.get())
+                .define('L', leadNugget)
                 .define('G', Tags.Items.GUNPOWDER)
                 .define('P', Items.PAPER)
                 .unlockedBy(getHasName(ModItems.LEAD_NUGGET.get()), has(ModItems.LEAD_NUGGET.get()))
@@ -129,6 +121,26 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModItems.STURDY_BARREL.get()), has(ModItems.STURDY_BARREL.get()))
                 .save(writer, getId(AttachmentItems.SHOTGUN_SPREAD_BARREL.get()));
     }
+
+    private static void buildOreRecipes(Consumer<FinishedRecipe> writer,
+                                        ItemLike ore, ItemLike deepslateOre,
+                                        ItemLike block, ItemLike rawBlock,
+                                        ItemLike raw, ItemLike ingot, ItemLike nugget) {
+
+        var smeltables = List.of(raw, ore, deepslateOre);
+
+        oreSmelting(writer, smeltables, RecipeCategory.MISC, ingot, 0.25f, 200, "lead");
+        oreBlasting(writer, smeltables, RecipeCategory.MISC, ingot, 0.25f, 100, "lead");
+
+        simpleBlock(writer, raw, rawBlock);
+        simpleBlock(writer, ingot, block);
+        simpleBlock(writer, nugget, ingot);
+
+        fromBlock(writer, rawBlock, raw);
+        fromBlock(writer, block, ingot);
+        fromBlock(writer, ingot, nugget);
+    }
+
     private static void fromBlock(Consumer<FinishedRecipe> writer, ItemLike ingredient, ItemLike result) {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, result, 9)
                 .requires(ingredient)
@@ -175,7 +187,28 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         }
     }
 
+    public static <T> TagKey<T> optionalTag(IForgeRegistry<T> registry, ResourceLocation id) {
+        return registry.tags().createOptionalTagKey(id, Collections.emptySet());
+    }
+
     private static @NotNull ResourceLocation getId(ItemLike item) {
         return new ResourceLocation(DataGenConfig.DATA_MOD_ID, getItemName(item));
     }
+
+    public static <T> TagKey<T> forgeTag(IForgeRegistry<T> registry, String path) {
+        return optionalTag(registry, new ResourceLocation("forge", path));
+    }
+
+//    public static <T> TagKey<T> mcTag(IForgeRegistry<T> registry, String path) {
+//        return optionalTag(registry, new ResourceLocation("minecraft", path));
+//    }
+
+    public static TagKey<Block> forgeBlockTag(String path) {
+        return forgeTag(ForgeRegistries.BLOCKS, path);
+    }
+
+    public static TagKey<Item> forgeItemTag(String path) {
+        return forgeTag(ForgeRegistries.ITEMS, path);
+    }
+
 }

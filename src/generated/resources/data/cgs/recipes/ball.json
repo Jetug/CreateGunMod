@@ -6,7 +6,7 @@
       "tag": "forge:gunpowder"
     },
     "L": {
-      "item": "cgs:lead_nugget"
+      "tag": "forge:nuggets/lead"
     },
     "P": {
       "item": "minecraft:paper"

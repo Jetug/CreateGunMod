@@ -3,40 +3,28 @@
   "ingredient": {
     "tag": "forge:plates/brass"
   },
-  "transitionalItem": {
-    "item": "cgs:shell_shotgun"
-  },
+  "loops": 1,
+  "results": [
+    {
+      "count": 4,
+      "item": "cgs:round_7mm"
+    }
+  ],
   "sequence": [
     {
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "cgs:shell_shotgun"
+          "item": "cgs:shell_7mm"
         },
         {
-          "item": "cgs:press_form_shotgun"
+          "item": "cgs:press_form_7mm"
         }
       ],
+      "keepHeldItem": true,
       "results": [
         {
-          "item": "cgs:shell_shotgun"
-        }
-      ],
-      "keepHeldItem": true
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "cgs:shell_shotgun"
-        },
-        {
-          "item": "minecraft:gunpowder"
-        }
-      ],
-      "results": [
-        {
-          "item": "cgs:shell_shotgun"
+          "item": "cgs:shell_7mm"
         }
       ]
     },
@@ -44,15 +32,15 @@
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "cgs:shell_shotgun"
+          "item": "cgs:shell_7mm"
         },
         {
-          "item": "minecraft:paper"
+          "tag": "forge:gunpowder"
         }
       ],
       "results": [
         {
-          "item": "cgs:shell_shotgun"
+          "item": "cgs:shell_7mm"
         }
       ]
     },
@@ -60,7 +48,7 @@
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "cgs:shell_shotgun"
+          "item": "cgs:shell_7mm"
         },
         {
           "tag": "forge:nuggets/lead"
@@ -68,17 +56,28 @@
       ],
       "results": [
         {
-          "item": "cgs:shell_shotgun"
+          "item": "cgs:shell_7mm"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:shell_7mm"
+        },
+        {
+          "tag": "forge:plates/copper"
+        }
+      ],
+      "results": [
+        {
+          "item": "cgs:shell_7mm"
         }
       ]
     }
   ],
-  "results": [
-    {
-      "item": "cgs:round_shotgun",
-      "count": 4,
-      "chance": 100.0
-    }
-  ],
-  "loops": 1
+  "transitionalItem": {
+    "item": "cgs:shell_7mm"
+  }
 }

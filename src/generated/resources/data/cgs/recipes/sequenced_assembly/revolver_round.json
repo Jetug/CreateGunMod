@@ -3,9 +3,13 @@
   "ingredient": {
     "tag": "forge:plates/brass"
   },
-  "transitionalItem": {
-    "item": "cgs:shell_10mm"
-  },
+  "loops": 1,
+  "results": [
+    {
+      "count": 8,
+      "item": "cgs:round_10mm"
+    }
+  ],
   "sequence": [
     {
       "type": "create:deploying",
@@ -17,12 +21,12 @@
           "item": "cgs:press_form_10mm"
         }
       ],
+      "keepHeldItem": true,
       "results": [
         {
           "item": "cgs:shell_10mm"
         }
-      ],
-      "keepHeldItem": true
+      ]
     },
     {
       "type": "create:deploying",
@@ -31,7 +35,7 @@
           "item": "cgs:shell_10mm"
         },
         {
-          "item": "minecraft:gunpowder"
+          "tag": "forge:gunpowder"
         }
       ],
       "results": [
@@ -57,12 +61,7 @@
       ]
     }
   ],
-  "results": [
-    {
-      "item": "cgs:round_10mm",
-      "count": 8,
-      "chance": 100.0
-    }
-  ],
-  "loops": 1
+  "transitionalItem": {
+    "item": "cgs:shell_10mm"
+  }
 }

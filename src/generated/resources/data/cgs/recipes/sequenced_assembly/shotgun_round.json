@@ -3,40 +3,28 @@
   "ingredient": {
     "tag": "forge:plates/brass"
   },
-  "transitionalItem": {
-    "item": "cgs:shell_7mm"
-  },
+  "loops": 1,
+  "results": [
+    {
+      "count": 2,
+      "item": "cgs:round_shotgun"
+    }
+  ],
   "sequence": [
     {
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "cgs:shell_7mm"
+          "item": "cgs:shell_shotgun"
         },
         {
-          "item": "cgs:press_form_7mm"
+          "item": "cgs:press_form_shotgun"
         }
       ],
+      "keepHeldItem": true,
       "results": [
         {
-          "item": "cgs:shell_7mm"
-        }
-      ],
-      "keepHeldItem": true
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "cgs:shell_7mm"
-        },
-        {
-          "item": "minecraft:gunpowder"
-        }
-      ],
-      "results": [
-        {
-          "item": "cgs:shell_7mm"
+          "item": "cgs:shell_shotgun"
         }
       ]
     },
@@ -44,7 +32,39 @@
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "cgs:shell_7mm"
+          "item": "cgs:shell_shotgun"
+        },
+        {
+          "tag": "forge:gunpowder"
+        }
+      ],
+      "results": [
+        {
+          "item": "cgs:shell_shotgun"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:shell_shotgun"
+        },
+        {
+          "item": "minecraft:paper"
+        }
+      ],
+      "results": [
+        {
+          "item": "cgs:shell_shotgun"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:shell_shotgun"
         },
         {
           "tag": "forge:nuggets/lead"
@@ -52,33 +72,12 @@
       ],
       "results": [
         {
-          "item": "cgs:shell_7mm"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "cgs:shell_10mm"
-        },
-        {
-          "tag": "forge:plates/copper"
-        }
-      ],
-      "results": [
-        {
-          "item": "cgs:shell_10mm"
+          "item": "cgs:shell_shotgun"
         }
       ]
     }
   ],
-  "results": [
-    {
-      "item": "cgs:round_7mm",
-      "count": 4,
-      "chance": 100.0
-    }
-  ],
-  "loops": 1
+  "transitionalItem": {
+    "item": "cgs:shell_shotgun"
+  }
 }
