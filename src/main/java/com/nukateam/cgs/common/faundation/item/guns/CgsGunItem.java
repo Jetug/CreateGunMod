@@ -5,7 +5,7 @@ import com.nukateam.ntgl.common.base.utils.FuelUtils;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.cgs.client.render.BaseGunRenderer;
 import com.nukateam.ntgl.common.base.holders.FuelType;
-import com.nukateam.ntgl.common.foundation.item.GunItem;
+import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
 import com.nukateam.ntgl.common.util.util.GunData;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
@@ -26,7 +26,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class CgsGunItem extends GunItem {
+public class CgsGunItem extends WeaponItem {
     private final Lazy<BaseGunRenderer> RENDERER = Lazy.of(() -> new BaseGunRenderer());
 
     public CgsGunItem(Properties properties, IGunModifier... modifiers) {

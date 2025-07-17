@@ -4,11 +4,12 @@ import com.nukateam.cgs.common.faundation.registry.AttachmentItems;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.GunAnimator;
+import com.nukateam.ntgl.client.render.renderers.gun.DynamicGunRenderer;
 import com.nukateam.ntgl.client.util.handler.ClientReloadHandler;
 import com.nukateam.ntgl.common.base.holders.AttachmentType;
 import com.nukateam.ntgl.common.base.utils.FuelUtils;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
-import com.nukateam.ntgl.common.foundation.item.GunItem;
+import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.util.Cycler;
 import com.nukateam.ntgl.common.util.util.GunData;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
@@ -33,7 +34,7 @@ public class GatlingAnimator extends EngineAnimator {
             .triggerableAnim(HANDLE, begin().then(HANDLE, PLAY_ONCE))
             .triggerableAnim(VOID, begin().then(VOID, PLAY_ONCE));
 
-    public GatlingAnimator(ItemDisplayContext transformType, DynamicGeoItemRenderer<GunAnimator> renderer) {
+    public GatlingAnimator(ItemDisplayContext transformType, DynamicGunRenderer<GunAnimator> renderer) {
         super(transformType, renderer);
     }
 
@@ -81,7 +82,7 @@ public class GatlingAnimator extends EngineAnimator {
 
     protected AnimationController.AnimationStateHandler<GunAnimator> animateHandle() {
         return (event) -> {
-            var gun = ((GunItem)getStack().getItem()).getGun();
+            var gun = ((WeaponItem)getStack().getItem()).getGun();
             var animation = begin();
             var hasEngine = Gun.hasAttachmentEquipped(getStack(), gun, CgsAttachmentTypes.ENGINE);
             var hasFuel = FuelUtils.hasFuel(getGunData());

@@ -5,9 +5,10 @@ import com.nukateam.cgs.common.utils.GunUtils;
 import com.nukateam.example.common.util.constants.Animations;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.GunAnimator;
+import com.nukateam.ntgl.client.render.renderers.gun.DynamicGunRenderer;
 import com.nukateam.ntgl.common.base.holders.AttachmentType;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
-import com.nukateam.ntgl.common.foundation.item.GunItem;
+import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.util.Cycler;
 import com.nukateam.ntgl.common.util.util.GunData;
 import mod.azure.azurelib.core.animation.*;
@@ -46,7 +47,7 @@ public class ShotgunAnimator extends GunAnimator {
     private boolean hasPumps;
     private Cycler cockCycler = new Cycler(1, 2);
 
-    public ShotgunAnimator(ItemDisplayContext transformType, DynamicGeoItemRenderer<GunAnimator> renderer) {
+    public ShotgunAnimator(ItemDisplayContext transformType, DynamicGunRenderer<GunAnimator> renderer) {
         super(transformType, renderer);
         COCK_CONTROLLER = createController("cock_controller", animateCock());
         FLASH_CONTROLLER = createController("flash_controller", animateFlash());
@@ -194,6 +195,6 @@ public class ShotgunAnimator extends GunAnimator {
     }
 
     private boolean isGun() {
-        return getStack().getItem() instanceof GunItem;
+        return getStack().getItem() instanceof WeaponItem;
     }
 }

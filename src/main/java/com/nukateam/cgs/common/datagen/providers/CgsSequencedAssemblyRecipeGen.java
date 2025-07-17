@@ -75,15 +75,14 @@ public class CgsSequencedAssemblyRecipeGen extends CreateRecipeProvider {
 //                .addStep(PressingRecipe::new, (rb) -> rb);
 //    });
 
-    CreateRecipeProvider.GeneratedRecipe REVOLVER_ROUND = this.create("revolver_round", (b) -> {
-        return b.require(brassSheet())
-                .transitionTo(ModItems.SHELL_10MM.get())
-                .addOutput(new ItemStack(ModItems.ROUND_10MM.get(), 8), 1.0F)
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.toolNotConsumed().require(ModItems.PRESS_FORM_10MM.get()))
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(leadNugget()))
-                .loops(1);
-    });
+    CreateRecipeProvider.GeneratedRecipe REVOLVER_ROUND = this.create("revolver_round", (b) -> b
+            .require(brassSheet())
+            .transitionTo(ModItems.SHELL_10MM.get())
+            .addOutput(new ItemStack(ModItems.ROUND_10MM.get(), 8), 1.0F)
+            .addStep(DeployerApplicationRecipe::new, (rb) -> rb.toolNotConsumed().require(ModItems.PRESS_FORM_10MM.get()))
+            .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
+            .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(leadNugget()))
+            .loops(1));
 
     CreateRecipeProvider.GeneratedRecipe GATLING_ROUND = this.create("gatling_round", (b) -> {
         return b.require(brassSheet())

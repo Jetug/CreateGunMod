@@ -3,6 +3,7 @@ package com.nukateam.cgs.client.animators;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.GunAnimator;
+import com.nukateam.ntgl.client.render.renderers.gun.DynamicGunRenderer;
 import com.nukateam.ntgl.client.util.util.TransformUtils;
 import com.nukateam.ntgl.common.base.utils.FuelUtils;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
@@ -15,6 +16,7 @@ import mod.azure.azurelib.core.object.PlayState;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.item.ItemDisplayContext;
 
@@ -34,7 +36,7 @@ public abstract class EngineAnimator extends GunAnimator {
     protected int ticks = 0;
     protected int rate;
 
-    public EngineAnimator(ItemDisplayContext transformType, DynamicGeoItemRenderer<GunAnimator> renderer) {
+    public EngineAnimator(ItemDisplayContext transformType, DynamicGunRenderer<GunAnimator> renderer) {
         super(transformType, renderer);
     }
 
@@ -110,7 +112,7 @@ public abstract class EngineAnimator extends GunAnimator {
         var i2 = GunModifierHelper.isOneHanded(offGunData);
         var arm = this.getArm();
         var isNotPaused = !minecraft.getInstance().isPaused();
-        var isVisible = arm == HumanoidArm.RIGHT || (arm == HumanoidArm.LEFT && i1 && i2);
+        var isVisible = arm == InteractionHand.MAIN_HAND || (arm == InteractionHand.OFF_HAND && i1 && i2);
         var hasEngine = hasEngine();
         var isHandTransform = TransformUtils.isHandTransform(transformType);
         var hasGunInHands = hasGunInHands(player);

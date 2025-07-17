@@ -2,6 +2,7 @@ package com.nukateam.cgs.client.animators;
 
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.GunAnimator;
+import com.nukateam.ntgl.client.render.renderers.gun.DynamicGunRenderer;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import mod.azure.azurelib.core.animation.*;
 import net.minecraft.world.item.ItemDisplayContext;
@@ -12,7 +13,7 @@ public class FlintlockAnimator extends GunAnimator {
     public static final String EMPTY = "empty";
     private boolean hasAmmo;
 
-    public FlintlockAnimator(ItemDisplayContext transformType, DynamicGeoItemRenderer<GunAnimator> renderer) {
+    public FlintlockAnimator(ItemDisplayContext transformType, DynamicGunRenderer<GunAnimator> renderer) {
         super(transformType, renderer);
     }
 
