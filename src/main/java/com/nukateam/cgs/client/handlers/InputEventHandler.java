@@ -3,8 +3,8 @@ package com.nukateam.cgs.client.handlers;
 
 import com.nukateam.cgs.common.network.PacketHandler;
 import com.nukateam.cgs.common.network.packets.C2SMessageFuel;
-import com.nukateam.ntgl.common.base.utils.FuelUtils;
-import com.nukateam.ntgl.common.util.util.GunData;
+import com.nukateam.ntgl.common.util.util.FuelUtils;
+import com.nukateam.ntgl.common.data.GunData;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.ItemStack;

@@ -1,11 +1,11 @@
 package com.nukateam.cgs.common.utils;
 
 import com.nukateam.cgs.common.ntgl.CgsFuel;
-import com.nukateam.ntgl.common.base.holders.FuelType;
-import com.nukateam.ntgl.common.base.utils.FuelUtils;
+import com.nukateam.ntgl.common.data.holders.FuelType;
+import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.foundation.init.ModSounds;
-import com.nukateam.ntgl.common.util.util.GunData;
+import com.nukateam.ntgl.common.data.GunData;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
 import com.simibubi.create.content.equipment.armor.BacktankUtil;
 import net.minecraft.sounds.SoundSource;

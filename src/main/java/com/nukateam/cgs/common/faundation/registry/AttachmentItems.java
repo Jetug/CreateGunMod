@@ -4,7 +4,7 @@ import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.datagen.annotations.ItemModelGen;
 import com.nukateam.cgs.common.ntgl.Attachments;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
-import com.nukateam.ntgl.common.base.holders.AttachmentType;
+import com.nukateam.ntgl.common.data.holders.AttachmentType;
 import com.nukateam.ntgl.common.data.attachment.impl.Barrel;
 import com.nukateam.ntgl.common.data.attachment.impl.GenericAttachment;
 import com.nukateam.ntgl.common.data.attachment.impl.Stock;

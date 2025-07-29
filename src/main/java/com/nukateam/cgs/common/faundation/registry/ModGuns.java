@@ -3,7 +3,7 @@ package com.nukateam.cgs.common.faundation.registry;
 
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.item.guns.*;
-import com.nukateam.ntgl.common.foundation.item.GrenadeItem;
+import com.nukateam.ntgl.common.foundation.item.ThrowableItem;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -26,8 +26,8 @@ public class ModGuns {
     public static final RegistryObject<WeaponItem> ROCKET_LAUNCHER = registerGun("rocket_launcher", RocketLauncherItem::new);
     public static final RegistryObject<WeaponItem> HAMMER = registerGun("hammer", HammerItem::new);
 
-    public static final RegistryObject<GrenadeItem> GRENADE = ITEMS.register("frag_grenade",
-            () -> new GrenadeItem(new Item.Properties().stacksTo(1), 20));
+    public static final RegistryObject<ThrowableItem> GRENADE = ITEMS.register("frag_grenade",
+            () -> new ThrowableItem(new Item.Properties().stacksTo(1)));
 
     private static RegistryObject<WeaponItem> registerGun(String name, Function<Item.Properties, WeaponItem> item) {
         return ITEMS.register(name,

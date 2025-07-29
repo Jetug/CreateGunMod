@@ -1,5 +1,5 @@
 package com.nukateam.cgs.common.ntgl;
-import com.nukateam.ntgl.common.base.holders.FuelType;
+import com.nukateam.ntgl.common.data.holders.FuelType;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import net.minecraft.world.item.ItemStack;

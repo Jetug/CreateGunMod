@@ -3,13 +3,13 @@ package com.nukateam.cgs.common.ntgl;
 import com.nukateam.cgs.common.faundation.registry.AttachmentItems;
 import com.nukateam.cgs.common.faundation.registry.ModGuns;
 import com.nukateam.cgs.common.faundation.registry.ModSounds;
-import com.nukateam.ntgl.common.base.GunModifiers;
-import com.nukateam.ntgl.common.base.holders.*;
-import com.nukateam.ntgl.common.base.utils.FuelUtils;
+import com.nukateam.example.common.registery.GunModifiers;
+import com.nukateam.ntgl.common.data.holders.*;
+import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.ntgl.common.data.attachment.impl.Scope;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
-import com.nukateam.ntgl.common.util.util.GunData;
+import com.nukateam.ntgl.common.data.GunData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffects;
 

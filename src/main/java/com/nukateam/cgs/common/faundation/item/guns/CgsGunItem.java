@@ -1,13 +1,13 @@
 package com.nukateam.cgs.common.faundation.item.guns;
 
 import com.nukateam.cgs.common.utils.GunUtils;
-import com.nukateam.ntgl.common.base.utils.FuelUtils;
+import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.cgs.client.render.BaseGunRenderer;
-import com.nukateam.ntgl.common.base.holders.FuelType;
+import com.nukateam.ntgl.common.data.holders.FuelType;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
-import com.nukateam.ntgl.common.util.util.GunData;
+import com.nukateam.ntgl.common.data.GunData;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
