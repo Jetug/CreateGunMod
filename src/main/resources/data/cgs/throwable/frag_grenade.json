@@ -1,0 +1,25 @@
+{
+  "general": {
+    "mode": "ntgl:unsafe",
+    "equipTime": 15,
+    "prepareTime": 8,
+    "throwTime": 5
+  },
+  "projectile": {
+    "damage": 1.0,
+    "size": 1.0,
+    "speed": 50.0,
+    "life": 80,
+    "gravity": true,
+    
+    "explosion": {
+      "damage": 20,
+      "radius": 5,
+      "knockback": 0.3
+    }
+  },
+  "sounds": {
+    "throw": "ntgl:item.shotgun.fire",
+    "pin": "ntgl:item.shotgun.reload"
+  }
+}
