@@ -1,0 +1,55 @@
+{
+  "general": {
+    "fireMode": ["ntgl:auto"],
+    "rate": 1,
+    "gripType": "ntgl:mini_gun",
+    "category": "heavy",
+    "damage": 5.0,
+    "maxAmmo": 1000,
+    "reloadTime": 40,
+    "recoilAngle": 0.0,
+    "alwaysSpread": true,
+    "enchantable": false,
+    "projectileAmount": 6,
+    "spread": 6.0,
+    "ammo": [
+      "ntgl:fuel"
+    ]
+  },
+  "projectiles": {
+    "ntgl:fuel": {
+      "type": "ntgl:fire",
+      "damageType": "ntgl:fire",
+      "projectile": "ntgl:fire",
+      "visible": true,
+      "damage": 1.0,
+      "size": 1.0,
+      "gravity": true,
+      "speed": 1.0,
+      "life": 30
+    }
+  },
+  "sounds": {
+    "fire": "cgs:item.flamethrower.fire",
+    "reload": "cgs:item.flamethrower.reload",
+    "cock": "cgs:item.flamethrower.cock"
+  },
+  "modules": {
+    "attachments": {
+      "cgs:engine": [
+        {
+          "name": "engine",
+          "item": "cgs:steam_engine"
+        }
+      ],
+      "cgs:frame": [
+        {
+          "name": "potion_tank",
+          "item": "cgs:potion_tank",
+          "hide": [
+            "hole_filler"
+          ]
+        }
+      ]
+    }
+  }}

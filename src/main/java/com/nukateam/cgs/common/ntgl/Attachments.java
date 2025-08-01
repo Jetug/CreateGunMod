@@ -1,7 +1,7 @@
 package com.nukateam.cgs.common.ntgl;
 
 import com.nukateam.cgs.common.faundation.registry.AttachmentItems;
-import com.nukateam.cgs.common.faundation.registry.ModGuns;
+import com.nukateam.cgs.common.faundation.registry.ModWeapons;
 import com.nukateam.cgs.common.faundation.registry.ModSounds;
 import com.nukateam.example.common.registery.GunModifiers;
 import com.nukateam.ntgl.common.data.holders.*;
@@ -36,9 +36,9 @@ public class Attachments {
     public static final IGunModifier STEAM_ENGINE_MODIFIERS = new IGunModifier() {
         @Override
         public int modifyFireRate(int rate, GunData data) {
-            if(data.gun.getItem() == ModGuns.NAILGUN.get())
+            if(data.gun.getItem() == ModWeapons.NAILGUN.get())
                 return rate * 2;
-            else if(data.gun.getItem() == ModGuns.GATLING.get() && FuelUtils.hasFuel(data)) {
+            else if(data.gun.getItem() == ModWeapons.GATLING.get() && FuelUtils.hasFuel(data)) {
                 return rate / 2;
             }
             return rate;
@@ -46,7 +46,7 @@ public class Attachments {
 
         @Override
         public int modifyFireDelay(int chargeTime, GunData data) {
-            if(data.gun.getItem() == ModGuns.GATLING.get() && FuelUtils.hasFuel(data)) {
+            if(data.gun.getItem() == ModWeapons.GATLING.get() && FuelUtils.hasFuel(data)) {
                 return 10;
             }
             return IGunModifier.super.modifyFireDelay(chargeTime, data);
@@ -56,14 +56,14 @@ public class Attachments {
 
         @Override
         public float modifyDamage(float damage, GunData data) {
-            if(data.gun.getItem() == ModGuns.NAILGUN.get())
+            if(data.gun.getItem() == ModWeapons.NAILGUN.get())
                 return damage * 2f;
             return IGunModifier.super.modifyDamage(damage, data);
         }
 
         @Override
         public float recoilModifier(GunData data) {
-            if(data.gun.getItem() == ModGuns.NAILGUN.get()) {
+            if(data.gun.getItem() == ModWeapons.NAILGUN.get()) {
                 return 2;
             }
             return IGunModifier.super.recoilModifier(data);
@@ -71,7 +71,7 @@ public class Attachments {
 
         @Override
         public float kickModifier(GunData data) {
-            if(data.gun.getItem() == ModGuns.NAILGUN.get()) {
+            if(data.gun.getItem() == ModWeapons.NAILGUN.get()) {
                 return 2;
             }
             return IGunModifier.super.kickModifier(data);
@@ -79,7 +79,7 @@ public class Attachments {
 
         @Override
         public float modifyProjectileSpread(float spread, GunData data) {
-            if(data.gun.getItem() == ModGuns.GATLING.get() && FuelUtils.hasFuel(data)) {
+            if(data.gun.getItem() == ModWeapons.GATLING.get() && FuelUtils.hasFuel(data)) {
                 return spread + 8f;
             }
             return spread;
@@ -102,10 +102,10 @@ public class Attachments {
         @Override
         public GripType modifyGripType(GripType gripType, GunData data) {
             if(data != null) {
-                if(data.gun.getItem() == ModGuns.NAILGUN.get()) {
+                if(data.gun.getItem() == ModWeapons.NAILGUN.get()) {
                     return GripType.TWO_HANDED;
                 }
-                else if(data.gun.getItem() == ModGuns.GATLING.get()) {
+                else if(data.gun.getItem() == ModWeapons.GATLING.get()) {
                     return getGatlingGripType(gripType, data);
                 }
             }
@@ -114,7 +114,7 @@ public class Attachments {
 
         @Override
         public ResourceLocation modifyFireSound(ResourceLocation sound, GunData data) {
-            if(data.gun.getItem() == ModGuns.NAILGUN.get()){
+            if(data.gun.getItem() == ModWeapons.NAILGUN.get()){
                 return ModSounds.NAILGUN_FIRE_STEAM.get().getLocation();
             }
             return IGunModifier.super.modifyFireSound(sound, data);

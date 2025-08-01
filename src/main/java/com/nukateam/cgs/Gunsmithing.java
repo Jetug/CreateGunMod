@@ -24,7 +24,7 @@ public class Gunsmithing {
     public Gunsmithing() {
         var s = CgsFuel.AIR;
         MOD_EVENT_BUS.addListener(this::commonSetup);
-        ModGuns.register(MOD_EVENT_BUS);
+        ModWeapons.register(MOD_EVENT_BUS);
         ModItems.register(MOD_EVENT_BUS);
         AttachmentItems.register(MOD_EVENT_BUS);
         ModBlocks.register(MOD_EVENT_BUS);

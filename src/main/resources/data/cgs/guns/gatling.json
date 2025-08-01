@@ -8,6 +8,7 @@
     "equipTime": 0,
     "fullCharge": true,
     "oneTimeCharge": true,
+    "enchantable": false,
     "maxAmmo": 100,
     "reloadTime": 50,
     "reloadAmount": 10,

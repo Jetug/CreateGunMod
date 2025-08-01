@@ -4,7 +4,7 @@ import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.cgs.client.animators.GatlingAnimator;
 import com.nukateam.cgs.client.render.GatlingRenderer;
 import com.nukateam.ntgl.client.animators.GunAnimator;
-import com.nukateam.ntgl.client.render.renderers.gun.DynamicGunRenderer;
+import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;
 import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraftforge.common.util.Lazy;

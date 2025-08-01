@@ -5,7 +5,7 @@
     "maxAmmo": 1,
     "damage": 15.0,
     "equipTime": 0,
-    "reloadTime": 80,
+    "reloadTime": 40,
     "recoilAngle": 7.0,
     "recoilKick": 0.4,
     "recoilAdsReduction": 0.15,
@@ -32,6 +32,46 @@
       "zOffset": 2.4,
       "fovModifier": 0.7
     },
-    "attachments": {}
+    "attachments": {
+      "ntgl:scope": [
+        {
+          "name": "scope",
+          "item": "cgs:scope",
+          "xOffset": 0,
+          "yOffset": 0,
+          "zOffset": 0
+        }
+      ],
+      "ntgl:barrel": [
+        {
+          "name": "long_barrel",
+          "item": "cgs:flintlock_long_barrel"
+        },
+        {
+          "name": "grenade_launcher",
+          "item": "cgs:flintlock_grenade_launcher"
+        }
+      ],
+      "ntgl:stock": [
+        {
+          "name": "stock",
+          "item": "cgs:stock"
+        }
+      ],
+      "ntgl:muzzle": [
+        {
+          "name": "melee",
+          "item": "cgs:flintlock_knife"
+        },
+        {
+          "name": "melee2",
+          "item": "cgs:flintlock_knife2"
+        },
+        {
+          "name": "axe",
+          "item": "cgs:flintlock_axe"
+        }
+      ]
+    }
   }
 }

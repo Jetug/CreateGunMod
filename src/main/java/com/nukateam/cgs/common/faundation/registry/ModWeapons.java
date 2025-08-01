@@ -10,7 +10,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.*;
 import java.util.function.Function;
 
-public class ModGuns {
+public class ModWeapons {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Gunsmithing.MOD_ID);
 
 //    public static final RegistryObject<WeaponItem> MACHINE_GUN = registerGun("machine_gun");
@@ -23,11 +23,11 @@ public class ModGuns {
     public static final RegistryObject<WeaponItem> NAILGUN = registerGun("nailgun", NailgunItem::new);
     public static final RegistryObject<WeaponItem> GATLING = registerGun("gatling", GatlingItem::new);
     public static final RegistryObject<WeaponItem> FLAMETHROWER = registerGun("flamethrower", FlamethrowerItem::new);
-    public static final RegistryObject<WeaponItem> ROCKET_LAUNCHER = registerGun("rocket_launcher", RocketLauncherItem::new);
+    public static final RegistryObject<WeaponItem> ROCKET_LAUNCHER = registerGun("launcher", LauncherItem::new);
     public static final RegistryObject<WeaponItem> HAMMER = registerGun("hammer", HammerItem::new);
 
     public static final RegistryObject<ThrowableItem> GRENADE = ITEMS.register("frag_grenade",
-            () -> new ThrowableItem(new Item.Properties().stacksTo(1)));
+            () -> new ThrowableItem(new Item.Properties()));
 
     private static RegistryObject<WeaponItem> registerGun(String name, Function<Item.Properties, WeaponItem> item) {
         return ITEMS.register(name,

@@ -5,7 +5,7 @@ import java.util.function.UnaryOperator;
 import com.google.common.base.Supplier;
 import com.nukateam.cgs.common.datagen.DataGenConfig;
 import com.nukateam.cgs.common.faundation.registry.AttachmentItems;
-import com.nukateam.cgs.common.faundation.registry.ModGuns;
+import com.nukateam.cgs.common.faundation.registry.ModWeapons;
 import com.nukateam.cgs.common.faundation.registry.ModItems;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
@@ -16,11 +16,9 @@ import com.simibubi.create.foundation.utility.RegisteredObjects;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.common.Tags;
 
 
 public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
@@ -29,7 +27,7 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 	}
 
 	GeneratedRecipe
-		SHOTGUN = create(ModGuns.SHOTGUN::get).returns(1)
+		SHOTGUN = create(ModWeapons.SHOTGUN::get).returns(1)
 			.recipe(b -> b
 					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
 					.key('B', ModItems.STURDY_BARREL.get())
@@ -42,7 +40,7 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 					.disallowMirrored()),
 
 
-		GATLING = create(ModGuns.GATLING::get).returns(1)
+		GATLING = create(ModWeapons.GATLING::get).returns(1)
 			.recipe(b -> b
 					.key('B', ModItems.STURDY_BARREL.get())
 					.key('A', AllItems.ANDESITE_ALLOY.get())
@@ -57,7 +55,7 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 					.disallowMirrored()),
 
 
-		REVOLVER = create(ModGuns.REVOLVER::get).returns(1)
+		REVOLVER = create(ModWeapons.REVOLVER::get).returns(1)
 			.recipe(b -> b
 					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
 					.key('B', ModItems.BARREL.get())
@@ -72,7 +70,7 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 					.disallowMirrored())
 			,
 
-		NAILGUN = create(ModGuns.NAILGUN::get).returns(1)
+		NAILGUN = create(ModWeapons.NAILGUN::get).returns(1)
 				.recipe(b -> b
 				.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
 				.key('M', AllItems.PRECISION_MECHANISM.get())

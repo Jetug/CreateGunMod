@@ -1,0 +1,43 @@
+{
+  "general": {
+    "rate": 10,
+    "weaponMode": "ntgl:melee",
+    "gripType": "ntgl:one_handed",
+    "loadingType": "magazine",
+    "maxAmmo": 6,
+    "reloadTime": 50,
+    "equipTime": 10,
+    "enchantable": false,
+    "melee": true,
+    "ammo": [
+      "minecraft:stick"
+    ]
+  },
+  "melee": {
+    "mode": "ntgl:single",
+    "damage": 15,
+    "delay": 10,
+    "cooldown": 6,
+    "distance": 6,
+    "angle": 20,
+    "maxTargets": 1,
+    "knockback": 0.4
+  },
+  "fuel": {
+    "ntgl:burnable":{
+      "max": 1000
+    }
+  },
+  "sounds": {
+    "fire": "ntgl:item.pistol10mm.fire",
+    "reload": "ntgl:item.pistol45mm.reload",
+    "cock": "ntgl:item.pistol45mm.cock",
+    "silencedFire": "ntgl:item.pistol10mm.silenced_fire",
+    "enchantedFire": "ntgl:item.pistol10mm.enchanted_fire"
+  },
+  "modules": {
+    "attachments": {
+
+    }
+  }
+}

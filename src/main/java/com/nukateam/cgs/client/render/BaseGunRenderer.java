@@ -4,7 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.nukateam.ntgl.client.animators.GunAnimator;
 import com.nukateam.ntgl.client.model.gun.GeoGunModel;
-import com.nukateam.ntgl.client.render.renderers.gun.DynamicGunRenderer;
+import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;
 import com.nukateam.ntgl.common.util.data.Rgba;
 import com.simibubi.create.AllItems;
 import mod.azure.azurelib.cache.object.GeoBone;

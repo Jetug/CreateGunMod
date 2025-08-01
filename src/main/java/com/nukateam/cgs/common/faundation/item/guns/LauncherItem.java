@@ -11,10 +11,10 @@ import net.minecraftforge.common.util.Lazy;
 
 import java.util.function.BiFunction;
 
-public class HammerItem extends CgsGunItem {
-    private final Lazy<GatlingRenderer> RENDERER = Lazy.of(() -> new GatlingRenderer());
+public class LauncherItem extends CgsGunItem {
+//    private final Lazy<GatlingRenderer> RENDERER = Lazy.of(() -> new GatlingRenderer());
 
-    public HammerItem(Properties properties, IGunModifier... modifiers) {
+    public LauncherItem(Properties properties, IGunModifier... modifiers) {
         super(properties, modifiers);
     }
 

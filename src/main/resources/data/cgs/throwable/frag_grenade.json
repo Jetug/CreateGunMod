@@ -11,11 +11,11 @@
     "speed": 50.0,
     "life": 80,
     "gravity": true,
-    
+
     "explosion": {
-      "damage": 20,
-      "radius": 5,
-      "knockback": 0.3
+      "damage": 40,
+      "radius": 10,
+      "knockback": 0.5
     }
   },
   "sounds": {

@@ -1,11 +1,10 @@
 package com.nukateam.cgs.common.handlers;
 
 import com.nukateam.cgs.Gunsmithing;
-import com.nukateam.cgs.common.faundation.registry.ModGuns;
+import com.nukateam.cgs.common.faundation.registry.ModWeapons;
 import com.nukateam.cgs.common.ntgl.CgsFuel;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.ntgl.common.data.holders.FuelType;
-import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.event.GunFireEvent;
 import com.nukateam.ntgl.common.event.GunProjectileHitEvent;
 import com.nukateam.ntgl.common.data.GunData;
@@ -14,7 +13,6 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.content.equipment.armor.BacktankBlockEntity;
 import com.simibubi.create.content.equipment.armor.BacktankUtil;
-import com.simibubi.create.foundation.ponder.SceneBuildingUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -35,7 +33,7 @@ public class GunEventHandler {
             event.setCanceled(true);
         }
 
-        if(gun.getItem() == ModGuns.NAILGUN.get()) {
+        if(gun.getItem() == ModWeapons.NAILGUN.get()) {
             if (!FuelUtils.hasFuel(gunData)) {
                 event.setCanceled(true);
             }

@@ -13,6 +13,7 @@
     "recoilKick": 0.4,
     "recoilAdsReduction": 0.15,
     "alwaysSpread": true,
+    "enchantable": false,
     "spread": 1.0,
     "ammo": [
       "cgs:round_10mm"
