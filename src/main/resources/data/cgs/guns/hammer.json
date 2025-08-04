@@ -48,14 +48,67 @@
         },
         {
           "name": "hammer2",
-          "item": "cgs:hammer_diamond",
+          "item": "cgs:hammer_iron",
           "bones": [
-            "spring_holders"
+            "hammer",
+            "spring_holders",
+            "springs"
           ]
         },
         {
-          "name": "axe",
-          "item": "cgs:axe_diamond"
+          "name": "hammer3",
+          "item": "cgs:hammer_diamond",
+          "bones": [
+            "hammer",
+            "spring_holders",
+            "springs"
+          ]
+        },
+        {
+          "name": "hammer4",
+          "item": "cgs:hammer_netherite",
+          "bones": [
+            "hammer",
+            "spring_holders",
+            "springs"
+          ]
+        },
+
+        {
+          "name": "axe1",
+          "item": "cgs:axe_stone",
+          "bones": [
+            "axe",
+            "spring_holders",
+            "springs"
+          ]
+        },
+        {
+          "name": "axe2",
+          "item": "cgs:axe_iron",
+          "bones": [
+            "axe",
+            "spring_holders",
+            "springs"
+          ]
+        },
+        {
+          "name": "axe3",
+          "item": "cgs:axe_diamond",
+          "bones": [
+            "axe",
+            "spring_holders",
+            "springs"
+          ]
+        },
+        {
+          "name": "axe4",
+          "item": "cgs:axe_netherite",
+          "bones": [
+            "axe",
+            "spring_holders",
+            "springs"
+          ]
         }
       ]
     }
