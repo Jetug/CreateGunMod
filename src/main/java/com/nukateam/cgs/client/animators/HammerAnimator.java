@@ -13,4 +13,6 @@ public class HammerAnimator extends GunAnimator {
     public HammerAnimator(ItemDisplayContext transformType, DynamicGunRenderer<GunAnimator> renderer) {
         super(transformType, renderer);
     }
+
+
 }

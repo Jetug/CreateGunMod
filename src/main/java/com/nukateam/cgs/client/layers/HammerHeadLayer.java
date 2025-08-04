@@ -6,17 +6,13 @@ import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.item.attachments.HammerHeadItem;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.ntgl.client.animators.GunAnimator;
-import com.nukateam.ntgl.client.model.IGlowingModel;
-import com.nukateam.ntgl.client.render.layers.LayerBase;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.util.util.ResourceUtils;
 import mod.azure.azurelib.cache.object.BakedGeoModel;
-import mod.azure.azurelib.core.animatable.GeoAnimatable;
 import mod.azure.azurelib.renderer.GeoRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Tiers;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
@@ -40,14 +36,14 @@ public class HammerHeadLayer<T extends GunAnimator> extends LayerBase<T> {
     public void render(PoseStack poseStack, T animatable, BakedGeoModel bakedModel, RenderType renderType,
                        MultiBufferSource bufferSource, VertexConsumer buffer,
                        float partialTick, int packedLight, int packedOverlay) {
-        var texture = getGlowingTextureResource(animatable);
+        var texture = getHeadTexture(animatable);
         if(texture != null) {
             renderLayer(poseStack, animatable, bakedModel, bufferSource, partialTick, packedLight, texture);
         }
     }
 
     @Nullable
-    private ResourceLocation getGlowingTextureResource(T animatable) {
+    private ResourceLocation getHeadTexture(T animatable) {
         var attachment = Gun.getAttachmentItem(CgsAttachmentTypes.HEAD, animatable.getStack());
 
         if(!attachment.isEmpty()){
