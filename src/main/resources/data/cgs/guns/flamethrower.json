@@ -3,7 +3,6 @@
     "fireMode": ["ntgl:auto"],
     "rate": 1,
     "gripType": "ntgl:mini_gun",
-    "category": "heavy",
     "damage": 5.0,
     "maxAmmo": 1000,
     "reloadTime": 40,

@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "cgs:ball"
+        "recipe": "cgs:paper_cartridge"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "cgs:ball"
+      "cgs:paper_cartridge"
     ]
   },
   "sends_telemetry_event": false

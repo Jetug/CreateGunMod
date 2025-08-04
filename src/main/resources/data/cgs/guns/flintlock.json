@@ -10,9 +10,9 @@
     "recoilKick": 0.4,
     "recoilAdsReduction": 0.15,
     "alwaysSpread": true,
-    "spread": 3.0,
+    "spread": 3.5,
     "ammo": [
-      "cgs:ball"
+      "cgs:paper_cartridge"
     ]
   },
   "textures": {

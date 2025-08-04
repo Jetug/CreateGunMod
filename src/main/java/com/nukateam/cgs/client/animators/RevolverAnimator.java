@@ -2,7 +2,6 @@ package com.nukateam.cgs.client.animators;
 
 import com.nukateam.cgs.common.faundation.registry.AttachmentItems;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
-import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.GunAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
@@ -138,8 +137,8 @@ public class RevolverAnimator extends GunAnimator {
                 var frame = Gun.getAttachmentItem(CgsAttachmentTypes.FRAME, getStack());
                 var barrel = Gun.getAttachmentItem(AttachmentType.BARREL, getStack());
 
-                this.hasBelt = chamberAttachment.is(AttachmentItems.BELT.get());
-                this.isAuto = frame.is(AttachmentItems.AUTO.get());
+                this.hasBelt = chamberAttachment.is(AttachmentItems.REVOLVER_BELT.get());
+                this.isAuto = frame.is(AttachmentItems.REVOLVER_AUTO.get());
                 this.oneHanded = barrel.isEmpty();
             }
         }

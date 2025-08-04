@@ -60,7 +60,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(writer, getId(ModWeapons.FLINTLOCK.get()));
 
         //AMMO
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BALL.get(), 3)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PAPER_CARTRIDGE.get(), 3)
                 .pattern("L")
                 .pattern("G")
                 .pattern("P")
@@ -68,7 +68,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('G', Tags.Items.GUNPOWDER)
                 .define('P', Items.PAPER)
                 .unlockedBy(getHasName(ModItems.LEAD_NUGGET.get()), has(ModItems.LEAD_NUGGET.get()))
-                .save(writer, getId(ModItems.BALL.get()));
+                .save(writer, getId(ModItems.PAPER_CARTRIDGE.get()));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.NAIL.get(), 9)
                 .pattern("N")
@@ -94,7 +94,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModItems.LEAD_NUGGET.get()), has(ModItems.LEAD_NUGGET.get()))
                 .save(writer, getId(AttachmentItems.STOCK.get()));
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AttachmentItems.LONG_BARREL.get(), 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AttachmentItems.REVOLVER_LONG_BARREL.get(), 1)
                 .pattern("BB")
                 .pattern("LL")
                 .pattern(" W")
@@ -102,7 +102,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('W', AllTags.AllItemTags.STRIPPED_LOGS.tag)
                 .define('B', ModItems.BARREL.get())
                 .unlockedBy(getHasName(ModItems.LEAD_NUGGET.get()), has(ModItems.LEAD_NUGGET.get()))
-                .save(writer, getId(AttachmentItems.LONG_BARREL.get()));
+                .save(writer, getId(AttachmentItems.REVOLVER_LONG_BARREL.get()));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AttachmentItems.SHOTGUN_LONG_BARREL.get(), 1)
                 .pattern("BB ")

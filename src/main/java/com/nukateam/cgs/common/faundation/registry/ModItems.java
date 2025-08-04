@@ -61,8 +61,14 @@ public class ModItems {
     @ItemModelGen
     public static final RegistryObject<Item> SHOTGUN_ROUND = registerAmmo("round_shotgun");
 
+//    @ItemModelGen
+    public static final RegistryObject<Item> SHOTGUN_ROUND_BLANK = registerAmmo("round_shotgun_blank");
+
     @ItemModelGen
-    public static final RegistryObject<Item> BALL = registerAmmo("ball");
+    public static final RegistryObject<Item> PAPER_CARTRIDGE = registerAmmo("paper_cartridge");
+
+//    @ItemModelGen
+//    public static final RegistryObject<Item> PAPER_CARTRIDGE_BLANK = registerAmmo("paper_cartridge_blank");
 
     @ItemModelGen
     public static final RegistryObject<Item> NAIL = registerAmmo("nail");

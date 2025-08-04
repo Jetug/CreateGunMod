@@ -1,4 +1,4 @@
-package com.nukateam.cgs.client.render;
+package com.nukateam.cgs.client.renderers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -40,14 +40,10 @@ public class BaseGunRenderer extends DynamicGunRenderer<GunAnimator> {
     }
 
     @Override
-    protected void renderArms(PoseStack poseStack, GunAnimator animatable, GeoBone bone,
-                              RenderType renderType, MultiBufferSource bufferSource, boolean isReRender,
-                              float partialTick, int packedLight, int packedOverlay, Rgba rgba) {
+    protected void renderArms(PoseStack poseStack, GeoBone bone, int packedLight, int packedOverlay) {
         var hasExtendoGrip = currentEntity.getOffhandItem().getItem() == AllItems.EXTENDO_GRIP.get();
-        if (hasExtendoGrip) return;
-
-        super.renderArms(poseStack, animatable, bone, renderType,
-                bufferSource, isReRender, partialTick,
-                packedLight, packedOverlay, rgba);
+        if (!hasExtendoGrip) {
+            super.renderArms(poseStack, bone, packedLight, packedOverlay);
+        }
     }
 }

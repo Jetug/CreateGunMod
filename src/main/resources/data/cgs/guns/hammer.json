@@ -10,22 +10,22 @@
     "enchantable": false,
     "melee": true,
     "ammo": [
-      "minecraft:stick"
+      "cgs:stick"
     ]
   },
   "melee": {
     "mode": "ntgl:single",
     "damage": 15,
     "delay": 10,
-    "cooldown": 6,
-    "distance": 6,
+    "cooldown": 10,
+    "distance": 4,
     "angle": 20,
-    "maxTargets": 1,
+    "maxTargets": 3,
     "knockback": 0.4
   },
   "fuel": {
-    "ntgl:burnable":{
-      "max": 1000
+    "ntgl:air":{
+      "max": 900
     }
   },
   "sounds": {
@@ -37,7 +37,27 @@
   },
   "modules": {
     "attachments": {
-
+      "cgs:head": [
+        {
+          "name": "hammer",
+          "item": "cgs:hammer_stone",
+          "bones": [
+            "spring_holders",
+            "springs"
+          ]
+        },
+        {
+          "name": "hammer2",
+          "item": "cgs:hammer_diamond",
+          "bones": [
+            "spring_holders"
+          ]
+        },
+        {
+          "name": "axe",
+          "item": "cgs:axe_diamond"
+        }
+      ]
     }
   }
 }

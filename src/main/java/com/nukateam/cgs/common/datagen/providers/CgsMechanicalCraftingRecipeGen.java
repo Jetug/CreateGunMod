@@ -102,7 +102,7 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 						.disallowMirrored())
 		,
 
-		AUTO = create(AttachmentItems.AUTO::get).returns(1)
+		AUTO = create(AttachmentItems.REVOLVER_AUTO::get).returns(1)
 				.recipe(b -> b
 						.key('M', AllItems.PRECISION_MECHANISM.get())
 						.key('A', AllItems.ANDESITE_ALLOY.get())
@@ -114,7 +114,7 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 						.disallowMirrored())
 		,
 
-		BELT = create(AttachmentItems.BELT::get).returns(1)
+		BELT = create(AttachmentItems.REVOLVER_BELT::get).returns(1)
 				.recipe(b -> b
 						.key('S', AllItems.STURDY_SHEET.get())
 						.key('B', AllItems.BRASS_NUGGET.get())

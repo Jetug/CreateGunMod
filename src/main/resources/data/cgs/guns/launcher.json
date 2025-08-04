@@ -35,19 +35,44 @@
   },
   "modules": {
     "attachments": {
-      "cgs:engine": [
+      "ntgl:scope": [
         {
-          "name": "engine",
-          "item": "cgs:steam_engine"
+          "name": "scope",
+          "item": "cgs:scope",
+          "xOffset": 0,
+          "yOffset": 0,
+          "zOffset": 0
         }
       ],
-      "cgs:frame": [
+      "ntgl:melee": [
         {
-          "name": "potion_tank",
-          "item": "cgs:potion_tank",
+          "name": "melee",
+          "item": "cgs:launcher_bayonet",
           "hide": [
-            "hole_filler"
+            "ballista_handle"
           ]
+        }
+      ],
+      "ntgl:magazine": [
+        {
+          "name": "rocket_container",
+          "item": "cgs:rocket_container"
+        },
+        {
+          "name": "auto_launcher",
+          "item": "cgs:auto_launcher"
+        },
+        {
+          "name": "ballistazooka",
+          "item": "cgs:ballistazooka"
+        },
+        {
+          "name": "grappling_hook",
+          "item": "cgs:grappling_hook"
+        },
+        {
+          "name": "item_launcher",
+          "item": "cgs:item_launcher"
         }
       ]
     }

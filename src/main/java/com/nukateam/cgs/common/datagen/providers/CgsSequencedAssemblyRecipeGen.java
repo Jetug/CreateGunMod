@@ -99,7 +99,7 @@ public class CgsSequencedAssemblyRecipeGen extends CreateRecipeProvider {
     CreateRecipeProvider.GeneratedRecipe PAPER_CARTRIDGE = this.create("paper_cartridge", (b) -> {
         return b.require(Items.PAPER)
                 .transitionTo(Items.PAPER)
-                .addOutput(new ItemStack(ModItems.BALL.get(), 3), 1.0F)
+                .addOutput(new ItemStack(ModItems.PAPER_CARTRIDGE.get(), 3), 1.0F)
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(leadNugget()))
                 .loops(1);

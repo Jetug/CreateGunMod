@@ -33,6 +33,7 @@ public class Attachments {
             .overlay()
             .build();
 
+    //GENERIC
     public static final IGunModifier STEAM_ENGINE_MODIFIERS = new IGunModifier() {
         @Override
         public int modifyFireRate(int rate, GunData data) {
@@ -52,7 +53,13 @@ public class Attachments {
             return IGunModifier.super.modifyFireDelay(chargeTime, data);
         }
 
-
+        @Override
+        public float modifyMovementSpeed(float value, GunData data) {
+            if(data.gun.getItem() == ModWeapons.GATLING.get()) {
+                return value - 0.2f;
+            }
+            return IGunModifier.super.modifyMovementSpeed(value, data);
+        }
 
         @Override
         public float modifyDamage(float damage, GunData data) {
@@ -132,6 +139,7 @@ public class Attachments {
         }
     };
 
+    //GATLING
     public static final IGunModifier GATLING_DRUM_MODIFIERS = new IGunModifier() {
         @Override
         public int modifyMaxAmmo(int maxAmmo, GunData data) {
@@ -141,6 +149,50 @@ public class Attachments {
         @Override
         public float modifyProjectileSpread(float spread, GunData data) {
             return spread * 2;
+        }
+
+        @Override
+        public float modifyMovementSpeed(float value, GunData data) {
+            return value - 0.1f;
+        }
+    };
+
+    //FLINTLOCK
+    public static final IGunModifier BAYONET_MODIFIERS = new IGunModifier() {
+        @Override
+        public boolean modifyCanMelee(boolean value, GunData data) {
+            return true;
+        }
+
+        @Override
+        public float modifyMeleeDamage(float value, GunData data) {
+            return 10;
+        }
+
+        @Override
+        public float modifyMeleeAngle(float value, GunData data) {
+            var barrel = Gun.getAttachmentItem(AttachmentType.BARREL, data.gun);
+            if(barrel.getItem() == AttachmentItems.FLINTLOCK_LONG_BARREL.get())
+                return 1;
+            else return 120;
+        }
+
+        @Override
+        public float modifyMeleeDistance(float value, GunData data) {
+            var barrel = Gun.getAttachmentItem(AttachmentType.BARREL, data.gun);
+            if(barrel.getItem() == AttachmentItems.FLINTLOCK_LONG_BARREL.get())
+                return 5;
+            else return 3;
+        }
+
+        @Override
+        public int modifyMeleeDelay(int time, GunData data) {
+            return 5;
+        }
+
+        @Override
+        public int modifyMeleeCooldown(int time, GunData data) {
+            return 8;
         }
     };
 

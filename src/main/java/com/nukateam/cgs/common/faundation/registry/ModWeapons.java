@@ -26,18 +26,16 @@ public class ModWeapons {
     public static final RegistryObject<WeaponItem> ROCKET_LAUNCHER = registerGun("launcher", LauncherItem::new);
     public static final RegistryObject<WeaponItem> HAMMER = registerGun("hammer", HammerItem::new);
 
-    public static final RegistryObject<ThrowableItem> GRENADE = ITEMS.register("frag_grenade",
-            () -> new ThrowableItem(new Item.Properties()));
+    public static final RegistryObject<ThrowableItem> GRENADE = registerGrenade("frag_grenade", ThrowableItem::new);
 
     private static RegistryObject<WeaponItem> registerGun(String name, Function<Item.Properties, WeaponItem> item) {
         return ITEMS.register(name,
                 () -> item.apply(new Item.Properties().stacksTo(1)));
     }
 
-//    private static RegistryObject<WeaponItem> registerGrenade(String name, Function<Item.Properties, GrenadeItem> item) {
-//        return ITEMS.register(name,
-//                () -> item.apply(new Item.Properties().stacksTo(1)));
-//    }
+    private static RegistryObject<ThrowableItem> registerGrenade(String name, Function<Item.Properties, ThrowableItem> item) {
+        return ITEMS.register(name, () -> item.apply(new Item.Properties().stacksTo(16)));
+    }
 
     public static RegistryObject<WeaponItem> registerGun(String name) {
         return ITEMS.register(name, () -> new CgsGunItem(new Item.Properties().stacksTo(1)));
