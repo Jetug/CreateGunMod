@@ -1,5 +1,5 @@
 
-package com.nukateam.cgs.common.faundation.registry;
+package com.nukateam.cgs.common.faundation.registry.items;
 
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.item.guns.*;

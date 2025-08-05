@@ -1,5 +1,5 @@
 
-package com.nukateam.cgs.common.faundation.registry;
+package com.nukateam.cgs.common.faundation.registry.items;
 
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.datagen.annotations.ItemModelGen;
@@ -75,6 +75,9 @@ public class ModItems {
 
 //    @ItemModelGen
 //    public static final RegistryObject<Item> NAIL_PIERCING = registerAmmo("nail_piercing");
+
+//    @ItemModelGen
+    public static final RegistryObject<Item> ROCKET = registerAmmo("rocket");
 
     public static RegistryObject<Item> registerAmmo(String name) {
         return ITEMS.register(name, () -> new AmmoItem(new Item.Properties()));

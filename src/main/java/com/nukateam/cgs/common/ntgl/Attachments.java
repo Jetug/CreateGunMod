@@ -1,7 +1,7 @@
 package com.nukateam.cgs.common.ntgl;
 
-import com.nukateam.cgs.common.faundation.registry.AttachmentItems;
-import com.nukateam.cgs.common.faundation.registry.ModWeapons;
+import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
+import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
 import com.nukateam.cgs.common.faundation.registry.ModSounds;
 import com.nukateam.example.common.registery.GunModifiers;
 import com.nukateam.ntgl.common.data.holders.*;

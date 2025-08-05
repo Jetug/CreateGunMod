@@ -2,6 +2,9 @@ package com.nukateam.cgs;
 
 import com.mojang.logging.LogUtils;
 import com.nukateam.cgs.common.faundation.registry.*;
+import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
+import com.nukateam.cgs.common.faundation.registry.items.ModItems;
+import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
 import com.nukateam.cgs.common.network.PacketHandler;
 import com.nukateam.cgs.common.ntgl.CgsFuel;
 import net.minecraft.resources.ResourceLocation;

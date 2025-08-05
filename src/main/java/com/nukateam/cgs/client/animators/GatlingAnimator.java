@@ -1,6 +1,6 @@
 package com.nukateam.cgs.client.animators;
 
-import com.nukateam.cgs.common.faundation.registry.AttachmentItems;
+import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.ntgl.client.animators.GunAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;
@@ -104,6 +104,7 @@ public class GatlingAnimator extends EngineAnimator {
     }
 
     private boolean hasAnimationPlaying(AnimationController<GunAnimator> controller, String name) {
-        return controller.getCurrentAnimation().animation().name().equals(name);
+        var animation = controller.getCurrentAnimation();
+        return animation != null && animation.animation().name().equals(name);
     }
 }

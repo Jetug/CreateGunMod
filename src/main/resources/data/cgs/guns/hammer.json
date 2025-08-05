@@ -2,7 +2,7 @@
   "general": {
     "rate": 10,
     "weaponMode": "ntgl:melee",
-    "gripType": "ntgl:one_handed",
+    "gripType": "ntgl:two_handed",
     "loadingType": "magazine",
     "maxAmmo": 6,
     "reloadTime": 50,
@@ -10,7 +10,7 @@
     "enchantable": false,
     "melee": true,
     "ammo": [
-      "cgs:stick"
+      "cgs:round_shotgun_blank"
     ]
   },
   "melee": {
@@ -47,68 +47,45 @@
           ]
         },
         {
-          "name": "hammer2",
+          "name": "hammer",
           "item": "cgs:hammer_iron",
           "bones": [
-            "hammer",
             "spring_holders",
             "springs"
           ]
         },
         {
-          "name": "hammer3",
+          "name": "hammer",
           "item": "cgs:hammer_diamond",
           "bones": [
-            "hammer",
             "spring_holders",
             "springs"
           ]
         },
         {
-          "name": "hammer4",
+          "name": "hammer",
           "item": "cgs:hammer_netherite",
           "bones": [
-            "hammer",
             "spring_holders",
             "springs"
           ]
         },
 
         {
-          "name": "axe1",
-          "item": "cgs:axe_stone",
-          "bones": [
-            "axe",
-            "spring_holders",
-            "springs"
-          ]
+          "name": "axe",
+          "item": "cgs:axe_stone"
         },
         {
-          "name": "axe2",
-          "item": "cgs:axe_iron",
-          "bones": [
-            "axe",
-            "spring_holders",
-            "springs"
-          ]
+          "name": "axe",
+          "item": "cgs:axe_iron"
         },
         {
-          "name": "axe3",
-          "item": "cgs:axe_diamond",
-          "bones": [
-            "axe",
-            "spring_holders",
-            "springs"
-          ]
+          "name": "axe",
+          "item": "cgs:axe_diamond"
         },
         {
-          "name": "axe4",
-          "item": "cgs:axe_netherite",
-          "bones": [
-            "axe",
-            "spring_holders",
-            "springs"
-          ]
+          "name": "axe",
+          "item": "cgs:axe_netherite"
         }
       ]
     }

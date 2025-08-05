@@ -1,6 +1,6 @@
 package com.nukateam.cgs.client.animators;
 
-import com.nukateam.cgs.common.faundation.registry.AttachmentItems;
+import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.ntgl.client.animators.GunAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;

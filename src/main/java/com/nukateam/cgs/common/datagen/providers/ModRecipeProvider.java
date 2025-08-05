@@ -1,10 +1,10 @@
 package com.nukateam.cgs.common.datagen.providers;
 
 import com.nukateam.cgs.common.datagen.DataGenConfig;
-import com.nukateam.cgs.common.faundation.registry.AttachmentItems;
+import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
 import com.nukateam.cgs.common.faundation.registry.ModBlocks;
-import com.nukateam.cgs.common.faundation.registry.ModWeapons;
-import com.nukateam.cgs.common.faundation.registry.ModItems;
+import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
+import com.nukateam.cgs.common.faundation.registry.items.ModItems;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
 import net.minecraft.data.PackOutput;

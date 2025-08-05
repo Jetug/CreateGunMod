@@ -4,9 +4,9 @@ import java.util.function.UnaryOperator;
 
 import com.google.common.base.Supplier;
 import com.nukateam.cgs.common.datagen.DataGenConfig;
-import com.nukateam.cgs.common.faundation.registry.AttachmentItems;
-import com.nukateam.cgs.common.faundation.registry.ModWeapons;
-import com.nukateam.cgs.common.faundation.registry.ModItems;
+import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
+import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
+import com.nukateam.cgs.common.faundation.registry.items.ModItems;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
