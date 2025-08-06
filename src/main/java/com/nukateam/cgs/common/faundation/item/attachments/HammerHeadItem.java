@@ -16,7 +16,7 @@ public class HammerHeadItem extends AttachmentItem<GenericAttachment> {
     private final Type type;
 
     public HammerHeadItem(Tier tier, Type type, GenericAttachment attachmentData, Properties properties) {
-        super(CgsAttachmentTypes.HEAD, attachmentData, properties);
+        super(CgsAttachmentTypes.HEAD, attachmentData, properties.defaultDurability(tier.getUses() * 9));
         this.tier = tier;
         this.type = type;
     }

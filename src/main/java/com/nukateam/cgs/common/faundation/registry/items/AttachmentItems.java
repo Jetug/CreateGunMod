@@ -10,6 +10,7 @@ import com.nukateam.ntgl.common.data.attachment.impl.Barrel;
 import com.nukateam.ntgl.common.data.attachment.impl.GenericAttachment;
 import com.nukateam.ntgl.common.foundation.item.attachment.*;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tiers;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -103,29 +104,29 @@ public class AttachmentItems {
 
     //HAMMER
     public static final RegistryObject<Item> HAMMER_STONE = ITEMS.register("hammer_stone",
-            () -> new HammerHeadItem(Tiers.STONE, HammerHeadItem.Type.HAMMER, GenericAttachment.create(), ITEM_PROPERTIES));
+            () -> new HammerHeadItem(Tiers.STONE, HammerHeadItem.Type.HAMMER, GenericAttachment.create(), new Item.Properties()));
 
     public static final RegistryObject<Item> HAMMER_IRON = ITEMS.register("hammer_iron",
-            () -> new HammerHeadItem(Tiers.IRON, HammerHeadItem.Type.HAMMER, GenericAttachment.create(), ITEM_PROPERTIES));
+            () -> new HammerHeadItem(Tiers.IRON, HammerHeadItem.Type.HAMMER, GenericAttachment.create(), new Item.Properties()));
 
     public static final RegistryObject<Item> HAMMER_DIAMOND = ITEMS.register("hammer_diamond",
-            () -> new HammerHeadItem(Tiers.DIAMOND, HammerHeadItem.Type.HAMMER, GenericAttachment.create(), ITEM_PROPERTIES));
+            () -> new HammerHeadItem(Tiers.DIAMOND, HammerHeadItem.Type.HAMMER, GenericAttachment.create(), new Item.Properties()));
 
     public static final RegistryObject<Item> HAMMER_NETHERITE = ITEMS.register("hammer_netherite",
-            () -> new HammerHeadItem(Tiers.NETHERITE, HammerHeadItem.Type.HAMMER, GenericAttachment.create(), ITEM_PROPERTIES));
+            () -> new HammerHeadItem(Tiers.NETHERITE, HammerHeadItem.Type.HAMMER, GenericAttachment.create(), new Item.Properties()));
 
     //
     public static final RegistryObject<Item> AXE_STONE = ITEMS.register("axe_stone",
-            () -> new HammerHeadItem(Tiers.STONE, HammerHeadItem.Type.AXE, GenericAttachment.create(), ITEM_PROPERTIES));
+            () -> new HammerHeadItem(Tiers.STONE, HammerHeadItem.Type.AXE, GenericAttachment.create(), new Item.Properties()));
 
     public static final RegistryObject<Item> AXE_IRON = ITEMS.register("axe_iron",
-            () -> new HammerHeadItem(Tiers.IRON, HammerHeadItem.Type.AXE, GenericAttachment.create(), ITEM_PROPERTIES));
+            () -> new HammerHeadItem(Tiers.IRON, HammerHeadItem.Type.AXE, GenericAttachment.create(), new Item.Properties()));
 
     public static final RegistryObject<Item> AXE_DIAMOND = ITEMS.register("axe_diamond",
-            () -> new HammerHeadItem(Tiers.DIAMOND, HammerHeadItem.Type.AXE, GenericAttachment.create(), ITEM_PROPERTIES));
+            () -> new HammerHeadItem(Tiers.DIAMOND, HammerHeadItem.Type.AXE, GenericAttachment.create(), new Item.Properties()));
 
     public static final RegistryObject<Item> AXE_NETHERITE = ITEMS.register("axe_netherite",
-            () -> new HammerHeadItem(Tiers.NETHERITE, HammerHeadItem.Type.AXE, GenericAttachment.create(), ITEM_PROPERTIES));
+            () -> new HammerHeadItem(Tiers.NETHERITE, HammerHeadItem.Type.AXE, GenericAttachment.create(), new Item.Properties()));
 
 
     public static final RegistryObject<Item> SHOTGUN_RECEIVER = ITEMS.register("shotgun_receiver",
