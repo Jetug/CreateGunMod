@@ -7,11 +7,13 @@ import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;
 import com.nukateam.ntgl.client.util.handler.ClientReloadHandler;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
+import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.util.Cycler;
 import com.nukateam.ntgl.common.data.GunData;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
+import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import mod.azure.azurelib.core.animation.*;
 import mod.azure.azurelib.core.object.PlayState;
 import net.minecraft.world.item.ItemDisplayContext;
@@ -52,7 +54,7 @@ public class GatlingAnimator extends EngineAnimator {
     @Override
     protected void tickStart() {
         super.tickStart();
-        var magazine = Gun.getAttachmentItem(AttachmentType.MAGAZINE, getStack());
+        var magazine = GunStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getStack());
         this.hasDrum = magazine.is(AttachmentItems.GATLING_DRUM.get());
 
         float cooldown = this.shootingHandler.getCooldown(getEntity(), this.arm);
@@ -83,7 +85,7 @@ public class GatlingAnimator extends EngineAnimator {
         return (event) -> {
             var gun = ((WeaponItem)getStack().getItem()).getGun();
             var animation = begin();
-            var hasEngine = Gun.hasAttachmentEquipped(getStack(), gun, CgsAttachmentTypes.ENGINE);
+            var hasEngine = GunStateHelper.hasAttachmentEquipped(getStack(), CgsAttachmentTypes.ENGINE);
             var hasFuel = FuelUtils.hasFuel(getGunData());
 
             if ((hasEngine && hasFuel) || hasAnimationPlaying(MAIN_CONTROLLER, RELOAD)) {

@@ -6,6 +6,7 @@ import com.nukateam.ntgl.client.animators.GunAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
+import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import com.nukateam.ntgl.common.data.constants.Animations;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.data.GunData;
@@ -133,9 +134,9 @@ public class RevolverAnimator extends GunAnimator {
 //                    BELT_CONTROLLER.tryTriggerAnimation(BELT);
 //                }
 
-                var chamberAttachment = Gun.getAttachmentItem(CgsAttachmentTypes.CHAMBER, getStack());
-                var frame = Gun.getAttachmentItem(CgsAttachmentTypes.FRAME, getStack());
-                var barrel = Gun.getAttachmentItem(AttachmentType.BARREL, getStack());
+                var chamberAttachment = GunStateHelper.getAttachmentItem(CgsAttachmentTypes.CHAMBER, getStack());
+                var frame = GunStateHelper.getAttachmentItem(CgsAttachmentTypes.FRAME, getStack());
+                var barrel = GunStateHelper.getAttachmentItem(AttachmentType.BARREL, getStack());
 
                 this.hasBelt = chamberAttachment.is(AttachmentItems.REVOLVER_BELT.get());
                 this.isAuto = frame.is(AttachmentItems.REVOLVER_AUTO.get());

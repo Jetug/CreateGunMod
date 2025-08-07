@@ -3,6 +3,7 @@ package com.nukateam.cgs.client.animators;
 import com.nukateam.ntgl.client.animators.GunAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
+import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import mod.azure.azurelib.core.animation.AnimationState;
 import mod.azure.azurelib.core.animation.RawAnimation;
 import net.minecraft.world.item.ItemDisplayContext;

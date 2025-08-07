@@ -7,6 +7,7 @@ import com.nukateam.ntgl.client.animators.GunAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
+import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.util.Cycler;
 import com.nukateam.ntgl.common.data.GunData;
@@ -64,9 +65,9 @@ public class ShotgunAnimator extends GunAnimator {
         super.tickStart();
         if (!isGun()) return;
 
-        var magazine = Gun.getAttachmentItem(AttachmentType.MAGAZINE, getStack());
+        var magazine = GunStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getStack());
 
-        this.ammo = Gun.getAmmo(getStack());
+        this.ammo = GunStateHelper.getAmmoCount(getStack());
         this.hasDrums = magazine.is(AttachmentItems.SHOTGUN_DRUM.get());
         this.hasPumps = magazine.is(AttachmentItems.SHOTGUN_PUMP.get());
 
@@ -156,7 +157,7 @@ public class ShotgunAnimator extends GunAnimator {
 
     private AnimationStateHandler<GunAnimator> animateCock() {
         return (event) -> {
-            var ammo = Gun.getAmmo(getStack());
+            var ammo = GunStateHelper.getAmmoCount(getStack());
 
             var name = "";
 

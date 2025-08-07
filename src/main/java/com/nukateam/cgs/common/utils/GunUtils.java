@@ -4,6 +4,7 @@ import com.nukateam.cgs.common.ntgl.CgsFuel;
 import com.nukateam.ntgl.common.data.holders.FuelType;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
+import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import com.nukateam.ntgl.common.foundation.init.ModSounds;
 import com.nukateam.ntgl.common.data.GunData;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
@@ -17,7 +18,7 @@ import net.minecraftforge.common.ForgeHooks;
 
 public class GunUtils {
     public static boolean isAmmoEven(ItemStack stack) {
-        return Gun.getAmmo(stack) % 2 == 0;
+        return GunStateHelper.getAmmoCount(stack) % 2 == 0;
     }
 
     public static void playAttachSound(Player player, float pitch){

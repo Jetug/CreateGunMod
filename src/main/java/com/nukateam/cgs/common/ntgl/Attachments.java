@@ -8,6 +8,7 @@ import com.nukateam.ntgl.common.data.holders.*;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.ntgl.common.data.attachment.impl.Scope;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
+import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
 import com.nukateam.ntgl.common.data.GunData;
 import net.minecraft.resources.ResourceLocation;
@@ -128,7 +129,7 @@ public class Attachments {
         }
 
         private GripType getGatlingGripType(GripType gripType, GunData data){
-            var magazineItem = Gun.getAttachmentItem(AttachmentType.MAGAZINE, data.gun).getItem();
+            var magazineItem = GunStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, data.gun).getItem();
             var drumItem = AttachmentItems.GATLING_DRUM.get();
 
             if (magazineItem != drumItem && FuelUtils.hasFuel(data) && data.shooter.hasEffect(MobEffects.DAMAGE_BOOST)) {
@@ -171,7 +172,7 @@ public class Attachments {
 
         @Override
         public float modifyMeleeAngle(float value, GunData data) {
-            var barrel = Gun.getAttachmentItem(AttachmentType.BARREL, data.gun);
+            var barrel = GunStateHelper.getAttachmentItem(AttachmentType.BARREL, data.gun);
             if(barrel.getItem() == AttachmentItems.FLINTLOCK_LONG_BARREL.get())
                 return 1;
             else return 120;
@@ -179,7 +180,7 @@ public class Attachments {
 
         @Override
         public float modifyMeleeDistance(float value, GunData data) {
-            var barrel = Gun.getAttachmentItem(AttachmentType.BARREL, data.gun);
+            var barrel = GunStateHelper.getAttachmentItem(AttachmentType.BARREL, data.gun);
             if(barrel.getItem() == AttachmentItems.FLINTLOCK_LONG_BARREL.get())
                 return 5;
             else return 3;
@@ -383,7 +384,7 @@ public class Attachments {
         }
 
         private static int getProjectileAmount(GunData data) {
-            return Math.min(AMMO_PER_SHOT, Gun.getAmmo(data.gun));
+            return Math.min(AMMO_PER_SHOT, GunStateHelper.getAmmoCount(data.gun));
         }
 
         @Override

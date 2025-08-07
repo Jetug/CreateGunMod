@@ -7,8 +7,10 @@ import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;
 import com.nukateam.ntgl.client.util.util.TransformUtils;
 import com.nukateam.ntgl.common.data.GunData;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
+import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
+import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import com.simibubi.create.AllSoundEvents;
 import mod.azure.azurelib.core.animation.AnimatableManager;
 import mod.azure.azurelib.core.animation.AnimationController;
@@ -131,6 +133,6 @@ public abstract class EngineAnimator extends GunAnimator {
     }
 
     protected boolean hasEngine(){
-        return !getStack().isEmpty() && Gun.hasAttachmentEquipped(getStack(), CgsAttachmentTypes.ENGINE);
+        return !getStack().isEmpty() && GunStateHelper.hasAttachmentEquipped(getStack(), CgsAttachmentTypes.ENGINE);
     }
 }

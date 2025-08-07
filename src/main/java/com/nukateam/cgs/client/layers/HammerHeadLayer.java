@@ -7,6 +7,7 @@ import com.nukateam.cgs.common.faundation.item.attachments.HammerHeadItem;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.ntgl.client.animators.GunAnimator;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
+import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import com.nukateam.ntgl.common.util.util.ResourceUtils;
 import mod.azure.azurelib.cache.object.BakedGeoModel;
 import mod.azure.azurelib.renderer.GeoRenderer;
@@ -44,7 +45,7 @@ public class HammerHeadLayer<T extends GunAnimator> extends LayerBase<T> {
 
     @Nullable
     private ResourceLocation getHeadTexture(T animatable) {
-        var attachment = Gun.getAttachmentItem(CgsAttachmentTypes.HEAD, animatable.getStack());
+        var attachment = GunStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, animatable.getStack());
 
         if(!attachment.isEmpty()){
             var head = (HammerHeadItem)attachment.getItem();

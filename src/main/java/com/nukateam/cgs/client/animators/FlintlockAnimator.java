@@ -4,7 +4,9 @@ import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.GunAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
+import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import com.nukateam.ntgl.common.util.helpers.PlayerHelper;
+import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import mod.azure.azurelib.core.animation.*;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
@@ -34,7 +36,7 @@ public class FlintlockAnimator extends GunAnimator {
     @Override
     protected void tickStart() {
         super.tickStart();
-        this.hasAmmo = Gun.hasAmmo(getStack());
+        this.hasAmmo = GunStateHelper.hasAmmo(getStack());
     }
 
     @Override

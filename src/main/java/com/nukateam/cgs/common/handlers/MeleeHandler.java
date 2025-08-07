@@ -5,6 +5,7 @@ import com.nukateam.cgs.common.faundation.item.attachments.HammerHeadItem;
 import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
+import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import com.nukateam.ntgl.common.event.MeleeAttackEvent;
 import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import com.nukateam.ntgl.common.util.util.StackUtils;
@@ -31,7 +32,7 @@ public class MeleeHandler {
                 && event.getTargets().isEmpty()
                 && event.getEntity() instanceof ServerPlayer player){
 
-            var head = Gun.getAttachmentItem(CgsAttachmentTypes.HEAD, event.getStack());
+            var head = GunStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, event.getStack());
 
             if(head.getItem() instanceof HammerHeadItem headItem && headItem.getHeadType() == HammerHeadItem.Type.HAMMER){
                 breakBlocks3x3(player, headItem.getTier(), head);
