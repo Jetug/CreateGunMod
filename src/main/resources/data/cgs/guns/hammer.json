@@ -2,7 +2,7 @@
   "general": {
     "rate": 10,
     "weaponMode": "ntgl:melee",
-    "gripType": "ntgl:two_handed",
+    "gripType": "ntgl:hammer",
     "loadingType": "magazine",
     "maxAmmo": 6,
     "reloadTime": 50,

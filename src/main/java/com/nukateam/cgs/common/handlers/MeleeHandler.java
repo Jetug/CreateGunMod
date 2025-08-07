@@ -6,6 +6,7 @@ import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.event.MeleeAttackEvent;
+import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import com.nukateam.ntgl.common.util.util.StackUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -36,6 +37,10 @@ public class MeleeHandler {
                 breakBlocks3x3(player, headItem.getTier(), head);
             }
         }
+    }
+
+    private static boolean hasAmmo(ItemStack stack){
+        return GunStateHelper.getAmmoCount(stack) > 0;
     }
 
     private static void breakBlocks3x3(ServerPlayer player, Tier toolTier, ItemStack stack) {
