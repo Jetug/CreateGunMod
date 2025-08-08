@@ -17,6 +17,17 @@
       "cgs:round_shotgun"
     ]
   },
+  "projectiles":{
+    "cgs:round_shotgun": {
+      "damage": 1.0,
+      "size": 0.2,
+      "speed": 20.0,
+      "life": 180,
+      "spread": 15.0,
+      "projectileAmount": 12,
+      "type": "ntgl:buckshot"
+    }
+  },
   "textures": {
     "default" : "cgs:shotgun"
   },

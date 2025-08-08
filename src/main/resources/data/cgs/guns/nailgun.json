@@ -22,6 +22,17 @@
       "cgs:nail"
     ]
   },
+  "projectiles":{
+    "cgs:nail": {
+      "type": "cgs:nail",
+      "visible": true,
+      "damage": 1.0,
+      "size": 0.2,
+      "speed": 5.0,
+      "life": 60,
+      "gravity": true
+    }
+  },
   "fuel": {
     "cgs:air":{
       "max": 900

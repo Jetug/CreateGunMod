@@ -6,6 +6,7 @@
   "slot.cgs.attachment.engine": "Engine",
   "slot.cgs.attachment.frame": "Frame",
   "slot.cgs.attachment.chamber": "Chamber",
+  "slot.cgs.attachment.head": "Head",
 
   "info.cgs.air": "Air: %s",
 
@@ -18,16 +19,16 @@
   "item.cgs.barrel": "Barrel",
   "item.cgs.barrel_sturdy": "Sturdy Barrel",
 
-  "item.cgs.press_form_7mm": "7mm Shell Press Form",
-  "item.cgs.press_form_10mm": "10mm Shell Press Form",
+  "item.cgs.press_form_7mm": "Gatling Shell Press Form",
+  "item.cgs.press_form_10mm": "Revolver Shell Press Form",
   "item.cgs.press_form_shotgun": "Shotgun Shell Press Form",
 
-  "item.cgs.shell_7mm": "7mm Shell",
-  "item.cgs.shell_10mm": "10mm Shell",
+  "item.cgs.shell_7mm": "Gatling Shell",
+  "item.cgs.shell_10mm": "Revolver Shell",
   "item.cgs.shell_shotgun": "Shotgun Shell",
 
-  "item.cgs.round_7mm": "7mm Round",
-  "item.cgs.round_10mm": "10mm Round",
+  "item.cgs.round_7mm": "Gatling Round",
+  "item.cgs.round_10mm": "Revolver Round",
   "item.cgs.round_shotgun": "Shotgun Round",
   "item.cgs.paper_cartridge": "Paper Cartridge",
   "item.cgs.nail": "Nail",
