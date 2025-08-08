@@ -7,6 +7,7 @@ import com.nukateam.cgs.common.faundation.registry.items.ModItems;
 import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
 import com.nukateam.cgs.common.network.PacketHandler;
 import com.nukateam.cgs.common.ntgl.CgsFuel;
+import com.nukateam.ntgl.common.foundation.init.Projectiles;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -33,6 +34,7 @@ public class Gunsmithing {
         ModBlocks.register(MOD_EVENT_BUS);
         ModItemTabs.register(MOD_EVENT_BUS);
         ModSounds.register(MOD_EVENT_BUS);
+        ModProjectiles.register(MOD_EVENT_BUS);
         MinecraftForge.EVENT_BUS.register(this);
     }
 

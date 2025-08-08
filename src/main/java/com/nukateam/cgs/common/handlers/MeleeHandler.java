@@ -4,6 +4,7 @@ import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.item.attachments.HammerHeadItem;
 import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
+import com.nukateam.ntgl.common.data.GunData;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import com.nukateam.ntgl.common.event.MeleeAttackEvent;
@@ -13,6 +14,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Tiers;
@@ -32,15 +35,21 @@ public class MeleeHandler {
                 && event.getTargets().isEmpty()
                 && event.getEntity() instanceof ServerPlayer player){
 
+            var stack = event.getStack();
+            var entity = event.getEntity();
             var head = GunStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, event.getStack());
-
             if(head.getItem() instanceof HammerHeadItem headItem && headItem.getHeadType() == HammerHeadItem.Type.HAMMER){
-                breakBlocks3x3(player, headItem.getTier(), head);
+                if(isPowered(stack)) {
+                    if(!player.isCreative()){
+                        GunStateHelper.consumeAmmo(new GunData(stack, event.getEntity()));
+                    }
+                    breakBlocks3x3(player, headItem.getTier(), head);
+                }
             }
         }
     }
 
-    private static boolean hasAmmo(ItemStack stack){
+    public static boolean isPowered(ItemStack stack){
         return GunStateHelper.getAmmoCount(stack) > 0;
     }
 

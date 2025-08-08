@@ -19,7 +19,7 @@
     "ntgl:fuel": {
       "type": "ntgl:fire",
       "damageType": "ntgl:fire",
-      "projectile": "ntgl:fire",
+      "projectile": "ntgl:fireball",
       "visible": true,
       "damage": 1.0,
       "size": 1.0,
