@@ -103,9 +103,11 @@ public class AttachmentItems {
                     GenericAttachment.create(), ITEM_PROPERTIES));
 
     //HAMMER
+    @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> HAMMER_STONE = ITEMS.register("hammer_stone",
             () -> new HammerHeadItem(Tiers.STONE, HammerHeadItem.Type.HAMMER, GenericAttachment.create(), new Item.Properties()));
 
+    @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> HAMMER_IRON = ITEMS.register("hammer_iron",
             () -> new HammerHeadItem(Tiers.IRON, HammerHeadItem.Type.HAMMER, GenericAttachment.create(), new Item.Properties()));
 

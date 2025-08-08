@@ -6,6 +6,7 @@
   "slot.cgs.attachment.engine": "Двигатель",
   "slot.cgs.attachment.frame": "Основа",
   "slot.cgs.attachment.chamber": "Патронник",
+  "slot.cgs.attachment.head": "Наконечник",
 
   "info.cgs.air": "Воздух: %s",
 
@@ -18,23 +19,23 @@
   "item.cgs.barrel": "Ствол",
   "item.cgs.barrel_sturdy": "Укреплённый ствол",
 
-  "item.cgs.press_form_7mm": "Пресс форма 7мм гильзы",
-  "item.cgs.press_form_10mm": "Пресс форма 10мм гильзы",
-  "item.cgs.press_form_shotgun": "Пресс форма гильзы для дробовика",
+  "item.cgs.press_form_7mm": "Пресс форма гильзы гатлинга",
+  "item.cgs.press_form_10mm": "Пресс форма гильзы револьвера",
+  "item.cgs.press_form_shotgun": "Пресс форма гильзы дробовика",
 
-  "item.cgs.shell_7mm"    : "Гильза 7мм",
-  "item.cgs.shell_10mm"   : "Гильза 10мм",
-  "item.cgs.shell_shotgun": "Гильза для дробовика",
+  "item.cgs.shell_7mm"    : "Гильза гатлинга",
+  "item.cgs.shell_10mm"   : "Гильза револьвера",
+  "item.cgs.shell_shotgun": "Гильза дробовика",
 
-  "item.cgs.round_7mm"    : "Патрон 7мм",
-  "item.cgs.round_10mm"   : "Патрон 10мм",
-  "item.cgs.round_shotgun": "Патрон для дробовика",
+  "item.cgs.round_7mm"      : "Патрон гатлинга",
+  "item.cgs.round_10mm"     : "Патрон револьвера",
+  "item.cgs.round_shotgun"  : "Патрон дробовика",
   "item.cgs.paper_cartridge": "Бумажный патрон",
-  "item.cgs.nail": "Гвоздь",
+  "item.cgs.nail"           : "Гвоздь",
 
   "item.cgs.steam_engine" : "Паравой двигатель",
-  "item.cgs.scope": "Оптический прицел",
-  "item.cgs.stock": "Приклад",
+  "item.cgs.scope"        : "Оптический прицел",
+  "item.cgs.stock"        : "Приклад",
 
   "item.cgs.iron_sight"   : "Гатлинг: Прицел",
   "item.cgs.gatling_drum" : "Гатлинг: Барабанный Магазин",

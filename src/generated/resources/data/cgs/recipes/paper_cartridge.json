@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "tag": "forge:gunpowder"
+    },
+    "L": {
+      "tag": "forge:nuggets/lead"
+    },
+    "P": {
+      "item": "minecraft:paper"
+    }
+  },
+  "pattern": [
+    "L",
+    "G",
+    "P"
+  ],
+  "result": {
+    "count": 3,
+    "item": "cgs:paper_cartridge"
+  },
+  "show_notification": true
+}

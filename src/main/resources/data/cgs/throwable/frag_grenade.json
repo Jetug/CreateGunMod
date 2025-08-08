@@ -1,11 +1,15 @@
 {
   "general": {
-    "mode": "ntgl:unsafe",
+    "mode": [
+      "ntgl:safe",
+      "ntgl:unsafe"
+    ],
     "equipTime": 15,
     "prepareTime": 8,
     "throwTime": 5
   },
   "projectile": {
+    "type": "ntgl:explosive",
     "damage": 1.0,
     "size": 1.0,
     "speed": 50.0,
