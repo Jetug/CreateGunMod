@@ -22,6 +22,15 @@
       "cgs:round_7mm"
     ]
   },
+  "projectiles":{
+    "cgs:round_7mm": {
+      "visible": true,
+      "damage": 1.0,
+      "size": 0.2,
+      "speed": 50.0,
+      "life": 180
+    }
+  },
   "textures": {
     "default" : "cgs:gatling"
   },

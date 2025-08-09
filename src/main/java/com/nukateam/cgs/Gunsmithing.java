@@ -6,8 +6,8 @@ import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
 import com.nukateam.cgs.common.faundation.registry.items.ModItems;
 import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
 import com.nukateam.cgs.common.network.PacketHandler;
+import com.nukateam.cgs.common.ntgl.CgsAmmoType;
 import com.nukateam.cgs.common.ntgl.CgsFuel;
-import com.nukateam.ntgl.common.foundation.init.Projectiles;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -36,10 +36,11 @@ public class Gunsmithing {
         ModSounds.register(MOD_EVENT_BUS);
         ModProjectiles.register(MOD_EVENT_BUS);
         MinecraftForge.EVENT_BUS.register(this);
+        CgsAmmoType.register();
     }
 
-    public static @NotNull ResourceLocation cgsResource(String engine) {
-        return new ResourceLocation(Gunsmithing.MOD_ID, engine);
+    public static @NotNull ResourceLocation cgsResource(String name) {
+        return new ResourceLocation(Gunsmithing.MOD_ID, name);
     }
 
     public static boolean isDebugging() {

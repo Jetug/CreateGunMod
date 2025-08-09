@@ -26,11 +26,11 @@
     "cgs:nail": {
       "type": "cgs:nail",
       "visible": true,
+      "gravity": true,
       "damage": 1.0,
       "size": 0.2,
       "speed": 5.0,
-      "life": 60,
-      "gravity": true
+      "life": 60
     }
   },
   "fuel": {

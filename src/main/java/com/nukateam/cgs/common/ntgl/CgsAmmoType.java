@@ -8,7 +8,7 @@ import static com.nukateam.cgs.Gunsmithing.cgsResource;
 public class CgsAmmoType {
     public static AmmoType NAIL = new AmmoType(cgsResource("nail"));
 
-    static {
+    public static void register(){
         AmmoType.registerType(NAIL);
     }
 }

@@ -2,6 +2,7 @@ package com.nukateam.cgs.common.handlers;
 
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.item.attachments.HammerHeadItem;
+import com.nukateam.cgs.common.faundation.item.guns.HammerItem;
 import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.ntgl.common.data.GunData;
@@ -39,18 +40,14 @@ public class MeleeHandler {
             var entity = event.getEntity();
             var head = GunStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, event.getStack());
             if(head.getItem() instanceof HammerHeadItem headItem && headItem.getHeadType() == HammerHeadItem.Type.HAMMER){
-                if(isPowered(stack)) {
+                if(HammerItem.isPowered(stack)) {
                     if(!player.isCreative()){
-                        GunStateHelper.consumeAmmo(new GunData(stack, event.getEntity()));
+                        GunStateHelper.consumeAmmo(new GunData(stack, entity));
                     }
                     breakBlocks3x3(player, headItem.getTier(), head);
                 }
             }
         }
-    }
-
-    public static boolean isPowered(ItemStack stack){
-        return GunStateHelper.getAmmoCount(stack) > 0;
     }
 
     private static void breakBlocks3x3(ServerPlayer player, Tier toolTier, ItemStack stack) {
