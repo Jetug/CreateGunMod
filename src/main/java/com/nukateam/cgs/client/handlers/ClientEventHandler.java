@@ -8,6 +8,7 @@ import com.nukateam.ntgl.client.render.renderers.misc.FlyingGibsRenderer;
 import com.nukateam.ntgl.client.render.renderers.projectiles.*;
 import com.nukateam.ntgl.common.foundation.init.ModEntityTypes;
 import com.nukateam.ntgl.common.foundation.init.Projectiles;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;

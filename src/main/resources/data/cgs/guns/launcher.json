@@ -6,6 +6,7 @@
     "category": "heavy",
     "damage": 5.0,
     "maxAmmo": 1000,
+    "equipTime": 10,
     "reloadTime": 40,
     "recoilAngle": 0.0,
     "alwaysSpread": true,
@@ -18,7 +19,7 @@
   "projectiles": {
     "cgs:rocket": {
       "type": "ntgl:rocket",
-      "damageType": "ntgl:fire",
+      "damageType": "ntgl:explosive",
       "projectile": "ntgl:fire",
       "visible": true,
       "damage": 1.0,

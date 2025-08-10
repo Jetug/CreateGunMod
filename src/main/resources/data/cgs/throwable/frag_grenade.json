@@ -4,7 +4,7 @@
       "ntgl:safe",
       "ntgl:unsafe"
     ],
-    "equipTime": 15,
+    "equipTime": 10,
     "prepareTime": 8,
     "throwTime": 5
   },

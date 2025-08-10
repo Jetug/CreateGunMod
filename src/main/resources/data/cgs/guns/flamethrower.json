@@ -1,29 +1,29 @@
 {
   "general": {
     "fireMode": ["ntgl:auto"],
-    "rate": 1,
+    "rate": 3,
     "gripType": "ntgl:mini_gun",
     "damage": 5.0,
-    "maxAmmo": 1000,
+    "maxAmmo": 50,
     "reloadTime": 40,
     "recoilAngle": 0.0,
+    "equipTime": 10,
     "alwaysSpread": true,
     "enchantable": false,
     "projectileAmount": 6,
     "spread": 6.0,
     "ammo": [
-      "ntgl:fuel"
+      "cgs:paper_cartridge"
     ]
   },
   "projectiles": {
-    "ntgl:fuel": {
+    "cgs:paper_cartridge": {
       "type": "ntgl:fire",
       "damageType": "ntgl:fire",
-      "projectile": "ntgl:fireball",
+      "projectile": "cgs:fireball",
       "visible": true,
       "damage": 1.0,
       "size": 1.0,
-      "gravity": true,
       "speed": 1.0,
       "life": 30
     }

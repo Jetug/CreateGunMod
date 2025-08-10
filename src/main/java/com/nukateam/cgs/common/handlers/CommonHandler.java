@@ -2,6 +2,7 @@ package com.nukateam.cgs.common.handlers;
 
 import com.nukateam.cgs.common.ntgl.CgsProjectileRegistry;
 import com.nukateam.ntgl.Ntgl;
+import com.nukateam.ntgl.common.regestry.ProjectileRegistry;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
