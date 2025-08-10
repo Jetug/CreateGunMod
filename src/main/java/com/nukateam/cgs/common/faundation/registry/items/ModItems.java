@@ -4,11 +4,14 @@ package com.nukateam.cgs.common.faundation.registry.items;
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.datagen.annotations.ItemModelGen;
 import com.nukateam.ntgl.common.foundation.item.AmmoItem;
+import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.function.Function;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Gunsmithing.MOD_ID);
@@ -78,6 +81,11 @@ public class ModItems {
 
 //    @ItemModelGen
     public static final RegistryObject<Item> ROCKET = registerAmmo("rocket");
+    public static final RegistryObject<Item> JAVELIN = registerAmmo("javelin", AmmoItem::new);
+
+    private static RegistryObject<Item> registerAmmo(String name, Function<Item.Properties, AmmoItem> item) {
+        return ITEMS.register(name, () -> item.apply(new Item.Properties()));
+    }
 
     public static RegistryObject<Item> registerAmmo(String name) {
         return ITEMS.register(name, () -> new AmmoItem(new Item.Properties()));
