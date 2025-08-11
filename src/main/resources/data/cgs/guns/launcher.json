@@ -1,17 +1,17 @@
 {
   "general": {
-    "fireMode": ["ntgl:auto"],
-    "rate": 1,
-    "gripType": "ntgl:mini_gun",
+    "fireMode": ["ntgl:semi", "ntgl:auto"],
+    "gripType": "ntgl:bazooka",
     "category": "heavy",
+    "rate": 4,
     "damage": 5.0,
-    "maxAmmo": 1000,
+    "maxAmmo": 4,
     "equipTime": 10,
-    "reloadTime": 40,
-    "recoilAngle": 0.0,
+    "reloadTime": 80,
+    "recoilAngle": 0.1,
     "alwaysSpread": true,
-    "projectileAmount": 6,
-    "spread": 6.0,
+    "projectileAmount": 1,
+    "spread": 3.0,
     "ammo": [
       "cgs:rocket"
     ]
@@ -20,13 +20,18 @@
     "cgs:rocket": {
       "type": "ntgl:rocket",
       "damageType": "ntgl:explosive",
-      "projectile": "ntgl:fire",
+      "projectile": "ntgl:missile",
       "visible": true,
       "damage": 1.0,
       "size": 1.0,
-      "gravity": true,
       "speed": 1.0,
-      "life": 30
+      "life": 30,
+
+      "explosion": {
+        "damage": 40,
+        "radius": 15,
+        "knockback": 1.0
+      }
     }
   },
   "sounds": {
@@ -35,6 +40,12 @@
     "cock": "cgs:item.flamethrower.cock"
   },
   "modules": {
+    "zoom": {
+      "xOffset": 0,
+      "yOffset": 0,
+      "zOffset": 0,
+      "fovModifier": 0.7
+    },
     "attachments": {
       "ntgl:scope": [
         {
@@ -45,7 +56,7 @@
           "zOffset": 0
         }
       ],
-      "ntgl:melee": [
+      "ntgl:muzzle": [
         {
           "name": "melee",
           "item": "cgs:launcher_bayonet",
@@ -57,23 +68,41 @@
       "ntgl:magazine": [
         {
           "name": "rocket_container",
-          "item": "cgs:rocket_container"
+          "item": "cgs:rocket_container",
+          "hide": [
+            "cotainer_quadro"
+          ]
+
         },
         {
           "name": "auto_launcher",
-          "item": "cgs:auto_launcher"
+          "item": "cgs:auto_launcher",
+          "hide": [
+            "container"
+          ]
         },
         {
           "name": "ballistazooka",
-          "item": "cgs:ballistazooka"
+          "item": "cgs:ballistazooka",
+          "hide": [
+            "front",
+            "back",
+            "container"
+          ]
         },
         {
           "name": "grappling_hook",
-          "item": "cgs:grappling_hook"
+          "item": "cgs:grappling_hook",
+          "hide": [
+            "container"
+          ]
         },
         {
           "name": "item_launcher",
-          "item": "cgs:item_launcher"
+          "item": "cgs:item_launcher",
+          "hide": [
+            "container"
+          ]
         }
       ]
     }

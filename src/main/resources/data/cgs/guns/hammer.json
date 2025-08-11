@@ -97,6 +97,12 @@
           "name": "axe",
           "item": "cgs:axe_netherite"
         }
+      ],
+      "cgs:frame": [
+        {
+          "name": "filler",
+          "item": "cgs:shotgun_receiver"
+        }
       ]
     }
   }

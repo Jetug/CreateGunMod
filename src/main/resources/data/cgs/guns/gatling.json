@@ -41,7 +41,7 @@
   "modules": {
     "attachmentScreen": true,
     "zoom": {
-      "xOffset": 0.0,
+      "xOffset": -0.1,
       "yOffset": 8.2,
       "zOffset": 0.0,
       "fovModifier": 0.7

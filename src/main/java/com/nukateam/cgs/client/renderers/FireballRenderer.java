@@ -7,10 +7,7 @@ import com.nukateam.ntgl.common.foundation.entity.ProjectileEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.FireworkEntityRenderer;
-import net.minecraft.client.renderer.entity.ItemEntityRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.world.entity.monster.Blaze;
 import net.minecraft.world.item.ItemDisplayContext;
 
 public class FireballRenderer extends ProjectileRenderer {

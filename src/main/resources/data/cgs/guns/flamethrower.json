@@ -10,7 +10,6 @@
     "equipTime": 10,
     "alwaysSpread": true,
     "enchantable": false,
-    "projectileAmount": 6,
     "spread": 6.0,
     "ammo": [
       "cgs:paper_cartridge"
