@@ -6,7 +6,7 @@
     "rate": 4,
     "damage": 5.0,
     "maxAmmo": 4,
-    "equipTime": 10,
+    "equipTime": 15,
     "reloadTime": 80,
     "recoilAngle": 0.1,
     "alwaysSpread": true,
@@ -41,9 +41,9 @@
   },
   "modules": {
     "zoom": {
-      "xOffset": 0,
-      "yOffset": 0,
-      "zOffset": 0,
+      "xOffset": -5,
+      "yOffset": 2.7,
+      "zOffset": -0.5,
       "fovModifier": 0.7
     },
     "attachments": {

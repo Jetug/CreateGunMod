@@ -970,7 +970,7 @@
 					"pivot": [3.5, 16, 6.75]
 				},
 				{
-					"name": "rocket_cotainer",
+					"name": "rocket_container",
 					"parent": "container",
 					"pivot": [0, 10.742, 6.534],
 					"cubes": [
@@ -991,7 +991,7 @@
 				},
 				{
 					"name": "bone53",
-					"parent": "rocket_cotainer",
+					"parent": "rocket_container",
 					"pivot": [4.14555, 14.97598, 6.732],
 					"cubes": [
 						{
@@ -3450,7 +3450,7 @@
 					]
 				},
 				{
-					"name": "balistazooka",
+					"name": "ballistazooka",
 					"parent": "gun",
 					"pivot": [0, 10.742, 6.534],
 					"cubes": [
@@ -3540,12 +3540,12 @@
 				},
 				{
 					"name": "bone45",
-					"parent": "balistazooka",
+					"parent": "ballistazooka",
 					"pivot": [0, 10.742, 11.484]
 				},
 				{
 					"name": "bone47",
-					"parent": "balistazooka",
+					"parent": "ballistazooka",
 					"pivot": [0.099, 10.742, 7.326],
 					"cubes": [
 						{
@@ -3895,7 +3895,7 @@
 				},
 				{
 					"name": "bone14",
-					"parent": "balistazooka",
+					"parent": "ballistazooka",
 					"pivot": [3.63559, -14.8595, -5.73587],
 					"cubes": [
 						{
@@ -4167,7 +4167,7 @@
 				},
 				{
 					"name": "spear",
-					"parent": "balistazooka",
+					"parent": "ballistazooka",
 					"pivot": [0, 10.742, 4.862],
 					"rotation": [0, 0, 90],
 					"cubes": [
@@ -4278,8 +4278,8 @@
 					]
 				},
 				{
-					"name": "bone57",
-					"parent": "balistazooka",
+					"name": "ballista_handle",
+					"parent": "ballistazooka",
 					"pivot": [0, 6.06689, -8.6922],
 					"rotation": [-45, 0, 0],
 					"cubes": [
@@ -4385,7 +4385,7 @@
 				},
 				{
 					"name": "bone28",
-					"parent": "balistazooka",
+					"parent": "ballistazooka",
 					"pivot": [1.80789, 14.97046, -8.55907],
 					"cubes": [
 						{
@@ -5841,7 +5841,7 @@
 				},
 				{
 					"name": "bone23",
-					"parent": "balistazooka",
+					"parent": "ballistazooka",
 					"pivot": [1.80789, 6.61255, -8.53927],
 					"cubes": [
 						{

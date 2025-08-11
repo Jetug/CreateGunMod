@@ -38,8 +38,8 @@
     "attachmentScreen": true,
     "zoom": {
       "xOffset": -0.1,
-      "yOffset": 2.5,
-      "zOffset": 2.4,
+      "yOffset": 3.6,
+      "zOffset": 1.4,
       "fovModifier": 0.7
     },
     "attachments": {
