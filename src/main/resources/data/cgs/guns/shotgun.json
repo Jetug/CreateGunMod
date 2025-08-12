@@ -1,6 +1,7 @@
 {
   "general": {
     "rate": 2,
+    "fireMode": ["ntg:semi", "ntgl:multi"],
     "gripType": "ntgl:one_handed",
     "maxAmmo": 2,
     "damage": 40.0,
@@ -14,7 +15,8 @@
     "alwaysSpread": true,
     "enchantable": false,
     "ammo": [
-      "cgs:round_shotgun"
+      "cgs:round_shotgun",
+      "cgs:round_shotgun_blank"
     ]
   },
   "projectiles":{
@@ -25,6 +27,15 @@
       "life": 180,
       "spread": 15.0,
       "projectileAmount": 12,
+      "type": "ntgl:buckshot"
+    },
+    "cgs:round_shotgun_blank": {
+      "damage": 0,
+      "size": 0,
+      "speed": 0,
+      "life": 0,
+      "spread": 0,
+      "projectileAmount": 1,
       "type": "ntgl:buckshot"
     }
   },

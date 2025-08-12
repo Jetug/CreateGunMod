@@ -47,8 +47,8 @@
         {
           "name": "scope",
           "item": "cgs:scope",
-          "xOffset": 0,
-          "yOffset": 0,
+          "xOffset": -0.6,
+          "yOffset": 0.9,
           "zOffset": 0
         }
       ],

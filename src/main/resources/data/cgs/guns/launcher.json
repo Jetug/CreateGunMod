@@ -1,6 +1,6 @@
 {
   "general": {
-    "fireMode": ["ntgl:semi", "ntgl:auto"],
+    "fireMode": ["ntg:semi", "ntgl:multi"],
     "gripType": "ntgl:bazooka",
     "category": "heavy",
     "rate": 4,
@@ -11,6 +11,7 @@
     "recoilAngle": 0.1,
     "alwaysSpread": true,
     "projectileAmount": 1,
+    "multishotAmount": 4,
     "spread": 3.0,
     "ammo": [
       "cgs:rocket"
