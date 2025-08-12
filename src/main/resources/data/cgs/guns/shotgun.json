@@ -30,9 +30,10 @@
       "type": "ntgl:buckshot"
     },
     "cgs:round_shotgun_blank": {
+      "visible": false,
       "damage": 0,
       "size": 0,
-      "speed": 0,
+      "speed": 1,
       "life": 0,
       "spread": 0,
       "projectileAmount": 1,
