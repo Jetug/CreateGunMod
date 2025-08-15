@@ -4,7 +4,7 @@ import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
 import com.nukateam.cgs.common.ntgl.CgsFuel;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
-import com.nukateam.ntgl.common.data.holders.FuelType;
+import com.nukateam.ntgl.common.data.holders.AmmoHolders;
 import com.nukateam.ntgl.common.event.GunFireEvent;
 import com.nukateam.ntgl.common.event.GunProjectileHitEvent;
 import com.nukateam.ntgl.common.data.GunData;
@@ -47,11 +47,11 @@ public class GunEventHandler {
         var data = new GunData(gun, shooter);
         var fuel = GunModifierHelper.getFuelTypes(data);
 
-        if(fuel.contains(FuelType.BURNABLE)){
-            FuelUtils.addFuel(data, FuelType.BURNABLE, -1);
+        if(fuel.contains(AmmoHolders.BURNABLE)){
+            FuelUtils.addFuel(data, AmmoHolders.BURNABLE, -1);
         }
-        if(fuel.contains(FuelType.WATER)){
-            FuelUtils.addFuel(data, FuelType.WATER, -5);
+        if(fuel.contains(AmmoHolders.WATER)){
+            FuelUtils.addFuel(data, AmmoHolders.WATER, -5);
         }
         if(fuel.contains(CgsFuel.AIR)){
             FuelUtils.addFuel(data, CgsFuel.AIR, -5);

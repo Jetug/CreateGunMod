@@ -17,21 +17,26 @@
       "cgs:rocket"
     ]
   },
-  "projectiles": {
+  "ammoData": {
     "cgs:rocket": {
-      "type": "ntgl:rocket",
-      "damageType": "ntgl:explosive",
-      "projectile": "ntgl:missile",
-      "visible": true,
-      "damage": 1.0,
-      "size": 1.0,
-      "speed": 1.0,
-      "life": 30,
+      "ammo": {
+        "type": "ntgl:missile"
+      },
+      "projectile":{
+        "type": "ntgl:rocket",
+        "damageType": "ntgl:explosive",
+        "projectile": "ntgl:missile",
+        "visible": true,
+        "damage": 1.0,
+        "size": 1.0,
+        "speed": 1.0,
+        "life": 30,
 
-      "explosion": {
-        "damage": 40,
-        "radius": 15,
-        "knockback": 1.0
+        "explosion": {
+          "damage": 40,
+          "radius": 15,
+          "knockback": 1.0
+        }
       }
     }
   },

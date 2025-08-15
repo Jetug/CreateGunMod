@@ -1,10 +1,11 @@
 package com.nukateam.cgs.common.faundation.item.guns;
 
 import com.nukateam.cgs.common.utils.GunUtils;
+import com.nukateam.ntgl.common.data.holders.AmmoHolders;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.cgs.client.renderers.BaseGunRenderer;
-import com.nukateam.ntgl.common.data.holders.FuelType;
+import com.nukateam.ntgl.common.data.holders.AmmoHolders;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
 import com.nukateam.ntgl.common.data.GunData;
@@ -84,8 +85,8 @@ public class CgsGunItem extends WeaponItem {
         var fuel = GunModifierHelper.getFuelTypes(data);
 
         if(!fuel.isEmpty() && isInHand(data)){
-            if(fuel.contains(FuelType.BURNABLE)){
-                FuelUtils.addFuel(data, FuelType.BURNABLE, -1);
+            if(fuel.contains(AmmoHolders.BURNABLE)){
+                FuelUtils.addFuel(data, AmmoHolders.BURNABLE, -1);
             }
         }
     }
@@ -93,9 +94,9 @@ public class CgsGunItem extends WeaponItem {
     private static void fillWater(GunData gunData) {
         var types = GunModifierHelper.getFuelTypes(gunData);
 
-        if(gunData.shooter.isInWater() && types.contains(FuelType.WATER)){
-            var maxWater = GunModifierHelper.getMaxFuel(gunData, FuelType.WATER);
-            FuelUtils.setFuel(gunData.gun, FuelType.WATER, maxWater);
+        if(gunData.shooter.isInWater() && types.contains(AmmoHolders.WATER)){
+            var maxWater = GunModifierHelper.getMaxFuel(gunData, AmmoHolders.WATER);
+            FuelUtils.setFuel(gunData.gun, AmmoHolders.WATER, maxWater);
         }
     }
 

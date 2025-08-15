@@ -22,20 +22,26 @@
       "cgs:nail"
     ]
   },
-  "projectiles":{
+  "ammoData": {
     "cgs:nail": {
-      "type": "cgs:nail",
-      "visible": true,
-      "gravity": true,
-      "damage": 1.0,
-      "size": 0.2,
-      "speed": 5.0,
-      "life": 60
+      "ammo": {
+        "type": "cgs:nail"
+      },
+      "projectile":{
+        "visible": true,
+        "gravity": true,
+        "damage": 1.0,
+        "size": 0.2,
+        "speed": 5.0,
+        "life": 60
     }
   },
   "fuel": {
     "cgs:air":{
-      "max": 900
+      "max": 900,
+      "ammo": {
+        "type": "cgs:air"
+      }
     }
   },
   "textures": {

@@ -1,24 +1,22 @@
 package com.nukateam.cgs.common.ntgl;
-import com.nukateam.ntgl.common.data.holders.FuelType;
-import com.simibubi.create.AllBlocks;
+import com.nukateam.ntgl.common.data.holders.AmmoHolder;
 import com.simibubi.create.AllItems;
+import com.simibubi.create.content.equipment.armor.BacktankItem;
 import net.minecraft.world.item.ItemStack;
 
 import static com.nukateam.cgs.Gunsmithing.cgsResource;
 
 public class CgsFuel {
-    public static FuelType AIR = new FuelType(cgsResource("air"), CgsFuel::isAir);
+    public static AmmoHolder AIR = AmmoHolder.Builder.create(cgsResource("air"))
+            .isAcceptable(CgsFuel::isAir)
+            .build();
 
     static {
-        FuelType.registerType(AIR);
+        AmmoHolder.registerType(AIR);
     }
 
     private static Boolean isAir(ItemStack stack) {
         var item = stack.getItem();
-
-        var copperTank = AllItems.COPPER_BACKTANK.get();
-        var netherTank = AllItems.NETHERITE_BACKTANK.get();
-
-        return item == copperTank || item == netherTank;
+        return item instanceof BacktankItem;
     }
 }

@@ -15,14 +15,19 @@
       "cgs:paper_cartridge"
     ]
   },
-  "projectiles":{
+  "ammoData": {
     "cgs:paper_cartridge": {
-      "visible": true,
-      "damage": 1.0,
-      "size": 0.5,
-      "speed": 10.0,
-      "life": 100,
-      "gravity": true
+      "ammo": {
+        "type": "ntgl:standard"
+      },
+      "projectile":{
+        "visible": true,
+        "damage": 1.0,
+        "size": 0.5,
+        "speed": 10.0,
+        "life": 100,
+        "gravity": true
+      }
     }
   },
   "textures": {

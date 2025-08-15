@@ -12,19 +12,24 @@
     "enchantable": false,
     "spread": 6.0,
     "ammo": [
-      "cgs:paper_cartridge"
+      "ntgl:burnable"
     ]
   },
-  "projectiles": {
-    "cgs:paper_cartridge": {
-      "type": "ntgl:fire",
-      "damageType": "ntgl:fire",
-      "projectile": "cgs:fireball",
-      "visible": true,
-      "damage": 1.0,
-      "size": 1.0,
-      "speed": 1.0,
-      "life": 30
+  "ammoData": {
+    "ntgl:burnable": {
+      "ammo": {
+        "type": "ntgl:fire",
+        "counter": "ntgl:bar"
+      },
+      "projectile": {
+        "damageType": "ntgl:fire",
+        "projectile": "cgs:fireball",
+        "visible": true,
+        "damage": 1.0,
+        "size": 1.0,
+        "speed": 1.0,
+        "life": 30
+      }
     }
   },
   "sounds": {

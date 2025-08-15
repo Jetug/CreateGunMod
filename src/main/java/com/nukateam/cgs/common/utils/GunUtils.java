@@ -1,7 +1,7 @@
 package com.nukateam.cgs.common.utils;
 
 import com.nukateam.cgs.common.ntgl.CgsFuel;
-import com.nukateam.ntgl.common.data.holders.FuelType;
+import com.nukateam.ntgl.common.data.holders.AmmoHolders;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.util.util.GunStateHelper;
@@ -41,13 +41,13 @@ public class GunUtils {
             var currentFuel = FuelUtils.getFuel(gun,fuelType);
             if(fuelType.isAcceptable(fuelStack) && currentFuel < maxFuel) {
                 var value = 0;
-                if(fuelType == FuelType.BURNABLE) {
+                if(fuelType == AmmoHolders.BURNABLE) {
                     value = ForgeHooks.getBurnTime(fuelStack, null);
                     if(isSurvival) {
                         fuelStack.shrink(1);
                     }
                 }
-                else if(fuelType == FuelType.WATER) {
+                else if(fuelType == AmmoHolders.WATER) {
                     value = 1000;
                     if(isSurvival) {
                         fuelStack.shrink(1);

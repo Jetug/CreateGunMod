@@ -94,15 +94,15 @@ public class Attachments {
         }
 
         @Override
-        public Set<FuelType> modifyFuel(Set<FuelType> secondaryAmmo, GunData data) {
-            return Set.of(FuelType.BURNABLE, FuelType.WATER);
+        public Set<AmmoHolder> modifyFuel(Set<AmmoHolder> secondaryAmmo, GunData data) {
+            return Set.of(AmmoHolders.BURNABLE, AmmoHolders.WATER);
         }
 
         @Override
-        public int modifyMaxFuel(int max, FuelType type, GunData data) {
-            if(type == FuelType.BURNABLE)
+        public int modifyMaxFuel(int max, AmmoHolder type, GunData data) {
+            if(type == AmmoHolders.BURNABLE)
                 return MAX_FUEL;
-            else if(type == FuelType.WATER)
+            else if(type == AmmoHolders.WATER)
                 return MAX_WATER;
             return max;
         }

@@ -2,8 +2,6 @@ package com.nukateam.cgs.common.faundation.item.attachments;
 
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.ntgl.common.data.attachment.impl.GenericAttachment;
-import com.nukateam.ntgl.common.data.holders.AttachmentType;
-import com.nukateam.ntgl.common.data.holders.FuelType;
 import com.nukateam.ntgl.common.foundation.item.attachment.AttachmentItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;

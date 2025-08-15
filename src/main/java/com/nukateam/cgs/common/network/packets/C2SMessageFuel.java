@@ -2,12 +2,7 @@ package com.nukateam.cgs.common.network.packets;
 
 import com.mrcrayfish.framework.api.network.MessageContext;
 import com.mrcrayfish.framework.api.network.message.PlayMessage;
-import com.nukateam.ntgl.common.util.util.FuelUtils;
-import com.nukateam.cgs.common.ntgl.CgsFuel;
-import com.nukateam.ntgl.common.data.holders.FuelType;
-import com.nukateam.ntgl.common.data.GunData;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
-import com.simibubi.create.content.equipment.armor.BacktankUtil;
 import net.minecraft.network.FriendlyByteBuf;
 
 import static com.nukateam.cgs.common.utils.GunUtils.*;

@@ -19,25 +19,33 @@
       "cgs:round_shotgun_blank"
     ]
   },
-  "projectiles":{
+  "ammoData": {
     "cgs:round_shotgun": {
-      "damage": 1.0,
-      "size": 0.2,
-      "speed": 20.0,
-      "life": 180,
-      "spread": 15.0,
-      "projectileAmount": 12,
-      "type": "ntgl:buckshot"
+      "ammo": {
+        "type": "cgs:buckshot"
+      },
+      "projectile": {
+        "damage": 1.0,
+        "size": 0.2,
+        "speed": 20.0,
+        "life": 180,
+        "spread": 15.0,
+        "projectileAmount": 12
+      }
     },
     "cgs:round_shotgun_blank": {
-      "visible": false,
-      "damage": 0,
-      "size": 0,
-      "speed": 1,
-      "life": 0,
-      "spread": 0,
-      "projectileAmount": 1,
-      "type": "ntgl:buckshot"
+      "ammo": {
+        "type": "cgs:buckshot"
+      },
+      "projectile": {
+        "visible": false,
+        "damage": 0,
+        "size": 0,
+        "speed": 1,
+        "life": 0,
+        "spread": 0,
+        "projectileAmount": 1
+      }
     }
   },
   "textures": {

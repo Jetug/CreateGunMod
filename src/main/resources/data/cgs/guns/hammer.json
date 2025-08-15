@@ -23,14 +23,18 @@
     "maxTargets": 3,
     "knockback": 0.4
   },
-  "projectiles":{
+  "ammoData": {
     "cgs:round_shotgun_blank": {
-      "type": "ntgl:buckshot",
-      "damage": 0.0,
-      "size": 0.2,
-      "speed": 0.0,
-      "life": 0,
-      "projectileAmount": 0
+      "ammo": {
+        "type": "ntgl:buckshot"
+      },
+      "projectile":{
+        "damage": 0.0,
+        "size": 0.2,
+        "speed": 0.0,
+        "life": 0,
+        "projectileAmount": 0
+      }
     }
   },
   "fuel": {
