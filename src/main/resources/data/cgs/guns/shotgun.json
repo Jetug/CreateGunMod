@@ -22,7 +22,7 @@
   "ammoData": {
     "cgs:round_shotgun": {
       "ammo": {
-        "type": "cgs:buckshot"
+        "type": "ntgl:buckshot"
       },
       "projectile": {
         "damage": 1.0,
@@ -35,7 +35,7 @@
     },
     "cgs:round_shotgun_blank": {
       "ammo": {
-        "type": "cgs:buckshot"
+        "type": "ntgl:buckshot"
       },
       "projectile": {
         "visible": false,

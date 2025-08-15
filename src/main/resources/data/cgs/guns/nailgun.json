@@ -27,13 +27,14 @@
       "ammo": {
         "type": "cgs:nail"
       },
-      "projectile":{
+      "projectile": {
         "visible": true,
         "gravity": true,
         "damage": 1.0,
         "size": 0.2,
         "speed": 5.0,
         "life": 60
+      }
     }
   },
   "fuel": {

@@ -21,14 +21,15 @@
   },
   "ammoData": {
     "cgs:round_10mm": {
-      "projectile":{
+      "projectile": {
         "visible": true,
         "damage": 1.0,
         "size": 0.2,
         "speed": 20.0,
         "life": 180
       }
-    },
+    }
+  },
   "textures": {
     "default" : "cgs:revolver"
   },
