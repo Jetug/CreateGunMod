@@ -14,6 +14,8 @@ import com.nukateam.ntgl.common.data.GunData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffects;
 
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import static com.nukateam.cgs.common.utils.GunUtils.isAmmoEven;
@@ -227,7 +229,7 @@ public class AttachmentMods {
 
         @Override
         public Set<FireMode> modifyFireModes(Set<FireMode> fireMode, GunData data) {
-            return Set.of(FireMode.AUTO, FireMode.SEMI_AUTO);
+            return new LinkedHashSet<>(List.of(FireMode.AUTO, FireMode.SEMI_AUTO));
         }
 
         @Override
@@ -414,12 +416,6 @@ public class AttachmentMods {
 
     //LAUNCHER
     public static final IGunModifier BALLISTAZOOKA = new IGunModifier() {
-//        @Override
-//        public float modifyDamage(float damage, GunData data) {
-//            return damage * getProjectileAmount(data);
-//        }
-
-
         @Override
         public int modifyMaxAmmo(int maxAmmo, GunData data) {
             return 1;
@@ -430,15 +426,6 @@ public class AttachmentMods {
             return Set.of(CgsAmmo.AIR);
         }
 
-//        @Override
-//        public ProjectileConfig modifyProjectile(ProjectileConfig projectile, GunData data) {
-//            var explosion = projectile.getExplosion();
-//            explosion = ExplosionConfig.Builder.create(explosion).setRadius(0).build();
-//            projectile = ProjectileConfig.Builder.create(projectile).setExplosionConfig(explosion).build();
-//
-//            return IGunModifier.super.modifyProjectile(projectile, data);
-//        }
-
         @Override
         public Set<AmmoHolder> modifyAmmoItems(Set<AmmoHolder> item, GunData data) {
             return Set.of(AmmoHolder.getType(ModItems.SPEAR.getId()));
@@ -446,6 +433,11 @@ public class AttachmentMods {
     };
 
     public static final IGunModifier AUTO_LAUNCHER = new IGunModifier() {
+        @Override
+        public Set<FireMode> modifyFireModes(Set<FireMode> fireMode, GunData data) {
+            return new LinkedHashSet<>(List.of(FireMode.AUTO, FireMode.SEMI_AUTO));
+        }
+
         @Override
         public int modifyMaxAmmo(int maxAmmo, GunData data) {
             return 30;

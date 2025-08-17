@@ -2,11 +2,9 @@ package com.nukateam.cgs;
 
 import com.mojang.logging.LogUtils;
 import com.nukateam.cgs.common.faundation.registry.*;
-import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
-import com.nukateam.cgs.common.faundation.registry.items.ModItems;
-import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
+import com.nukateam.cgs.common.faundation.registry.items.*;
 import com.nukateam.cgs.common.network.PacketHandler;
-import com.nukateam.cgs.common.ntgl.CgsAmmoType;
+import com.nukateam.cgs.common.ntgl.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -35,6 +33,7 @@ public class Gunsmithing {
         ModProjectiles.register(MOD_EVENT_BUS);
         MinecraftForge.EVENT_BUS.register(this);
         CgsAmmoType.register();
+        CgsAmmo.register();
     }
 
     public static @NotNull ResourceLocation cgsResource(String name) {

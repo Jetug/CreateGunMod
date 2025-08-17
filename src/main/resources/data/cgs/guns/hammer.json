@@ -24,23 +24,23 @@
     "knockback": 1
   },
   "ammoData": {
-    "cgs:round_shotgun_blank": {
-      "ammo": {
-        "type": "ntgl:buckshot"
-      },
-      "projectile": {
-        "damage": 2.0,
-        "speed": 0.0,
-        "life": 0,
-        "projectileAmount": 0
-      }
-    },
     "cgs:air": {
       "ammo": {
         "type": "cgs:air"
       },
       "projectile": {
         "damage": 1.0,
+        "speed": 0.0,
+        "life": 0,
+        "projectileAmount": 0
+      }
+    },
+    "cgs:round_shotgun_blank": {
+      "ammo": {
+        "type": "ntgl:buckshot"
+      },
+      "projectile": {
+        "damage": 2.0,
         "speed": 0.0,
         "life": 0,
         "projectileAmount": 0

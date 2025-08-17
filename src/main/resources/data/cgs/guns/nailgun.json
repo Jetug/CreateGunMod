@@ -12,10 +12,9 @@
     "reloadEnd": 20,
     "recoilAngle": 2.0,
     "recoilKick": 0.3,
-    "reloadAmount": 10,
+    "reloadAmount": 5,
     "recoilAdsReduction": 0.20,
     "alwaysSpread": true,
-    "renderHud": true,
     "enchantable": false,
     "spread": 1.0,
     "ammo": [

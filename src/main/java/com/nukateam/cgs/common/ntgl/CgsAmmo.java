@@ -10,23 +10,26 @@ import java.util.List;
 import static com.nukateam.cgs.Gunsmithing.cgsResource;
 
 public class CgsAmmo {
-    public static AmmoHolder AIR = AmmoHolder.Builder.create(cgsResource("air"))
+    public static AmmoHolder AIR = AmmoHolder.Builder
+            .create(cgsResource("air"))
             .isAcceptable(CgsAmmo::isAir)
             .value((s) -> (int)BacktankUtil.getAir(s))
-            .onConsume((stack, amount) ->{
-                var tankAir = BacktankUtil.getAir(stack);
-                var tank = new ItemStack(stack.getItem());
-                GunUtils.setAir(tank, Math.max(0, tankAir - amount));
-                return List.of(tank);
-            })
+            .onConsume(CgsAmmo::onConsumeAir)
             .build();
 
-    static {
+    public static void register() {
         AmmoHolder.registerType(AIR);
     }
 
     private static Boolean isAir(ItemStack stack) {
         var item = stack.getItem();
         return item instanceof BacktankItem;
+    }
+
+    private static List<ItemStack> onConsumeAir(ItemStack stack, Integer amount) {
+        var tankAir = BacktankUtil.getAir(stack);
+        var tank = new ItemStack(stack.getItem());
+        GunUtils.setAir(tank, Math.max(0, tankAir - amount));
+        return List.of(tank);
     }
 }

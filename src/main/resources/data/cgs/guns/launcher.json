@@ -107,7 +107,7 @@
       "ntgl:muzzle": [
         {
           "name": "melee",
-          "item": "cgs:launcher_bayonet",
+          "item": "cgs:big_bayonet",
           "hide": [
             "ballista_handle"
           ]
