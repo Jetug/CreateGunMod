@@ -17,5 +17,6 @@ public class ClientEventHandler {
           event.registerEntityRenderer(ModProjectiles.FIREBALL.get(), FireballRenderer::new);
           event.registerEntityRenderer(ModProjectiles.ROCKET.get(), CgsProjectileRenderer::new);
           event.registerEntityRenderer(ModProjectiles.NAIL.get(), CgsProjectileRenderer::new);
+          event.registerEntityRenderer(ModProjectiles.SPEAR.get(), CgsProjectileRenderer::new);
      }
 }

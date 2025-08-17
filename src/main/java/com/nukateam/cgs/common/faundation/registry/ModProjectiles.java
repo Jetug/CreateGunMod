@@ -2,6 +2,7 @@ package com.nukateam.cgs.common.faundation.registry;
 
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.entity.BlazeProjectile;
+import com.nukateam.cgs.common.faundation.entity.GeoProjectile;
 import com.nukateam.cgs.common.faundation.entity.NailProjectile;
 import com.nukateam.cgs.common.faundation.entity.RocketProjectile;
 import net.minecraft.world.entity.Entity;
@@ -26,6 +27,9 @@ public class ModProjectiles {
 
     public static final RegistryObject<EntityType<NailProjectile>> NAIL =
             registerProjectile("nail", NailProjectile::new);
+
+    public static final RegistryObject<EntityType<GeoProjectile>> SPEAR =
+            registerProjectile("spear", GeoProjectile::new);
 
     private static <T extends Entity> RegistryObject<EntityType<T>> registerProjectile(
             String id, BiFunction<EntityType<T>, Level, T> function) {

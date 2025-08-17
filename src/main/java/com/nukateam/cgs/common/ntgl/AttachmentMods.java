@@ -1,13 +1,15 @@
 package com.nukateam.cgs.common.ntgl;
 
 import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
+import com.nukateam.cgs.common.faundation.registry.items.ModItems;
 import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
 import com.nukateam.cgs.common.faundation.registry.ModSounds;
 import com.nukateam.example.common.registery.GunModifiers;
+import com.nukateam.ntgl.common.data.config.ExplosionConfig;
+import com.nukateam.ntgl.common.data.config.ProjectileConfig;
 import com.nukateam.ntgl.common.data.holders.*;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.ntgl.common.data.attachment.impl.Scope;
-import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
 import com.nukateam.ntgl.common.data.GunData;
@@ -18,7 +20,7 @@ import java.util.Set;
 
 import static com.nukateam.cgs.common.utils.GunUtils.isAmmoEven;
 
-public class Attachments {
+public class AttachmentMods {
     public static final int MAX_FUEL = 20000;
     public static final int MAX_WATER = 2000;
 
@@ -364,6 +366,7 @@ public class Attachments {
         }
     };
 
+    //NAILGUN
     public static final IGunModifier NAILGUN_SPLIT_BARREL = new IGunModifier() {
         public static final int AMMO_PER_SHOT = 4;
 
@@ -394,6 +397,87 @@ public class Attachments {
         @Override
         public int modifyFireRate(int rate, GunData data) {
             return (int)(rate * 2.5);
+        }
+    };
+
+    //HAMMER
+    public static final IGunModifier RECIEVER = new IGunModifier() {
+        @Override
+        public float modifyMeleeDamage(float damage, GunData data) {
+            GunStateHelper.getAmmoCount(data.gun);
+            return damage * 2;
+        }
+
+        @Override
+        public Set<AmmoHolder> modifyAmmoItems(Set<AmmoHolder> item, GunData data) {
+            return Set.of(AmmoHolder.getType(ModItems.SHOTGUN_ROUND_BLANK.getId()));
+        }
+    };
+
+    //LAUNCHER
+    public static final IGunModifier BALLISTAZOOKA = new IGunModifier() {
+//        @Override
+//        public float modifyDamage(float damage, GunData data) {
+//            return damage * getProjectileAmount(data);
+//        }
+
+
+        @Override
+        public ProjectileConfig modifyProjectile(ProjectileConfig projectile, GunData data) {
+            var explosion = projectile.getExplosion();
+            explosion = ExplosionConfig.Builder.create(explosion).setRadius(0).build();
+            projectile = ProjectileConfig.Builder.create(projectile).setExplosionConfig(explosion).build();
+
+            return IGunModifier.super.modifyProjectile(projectile, data);
+        }
+
+        @Override
+        public Set<AmmoHolder> modifyAmmoItems(Set<AmmoHolder> item, GunData data) {
+            return Set.of(AmmoHolder.getType(ModItems.SPEAR.getId()));
+        }
+    };
+
+    public static final IGunModifier AUTO_LAUNCHER = new IGunModifier() {
+//        @Override
+//        public float modifyDamage(float damage, GunData data) {
+//            return damage * getProjectileAmount(data);
+//        }
+
+        @Override
+        public Set<AmmoHolder> modifyAmmoItems(Set<AmmoHolder> item, GunData data) {
+            return Set.of(AmmoHolder.getType(ModItems.MINI_ROCKET.getId()));
+        }
+
+        @Override
+        public int modifyFireRate(int rate, GunData data) {
+            return 2;
+        }
+
+//        @Override
+//        public int modifyFireDelay(int chargeTime, GunData data) {
+//            return IGunModifier.super.modifyFireDelay(chargeTime, data);
+//        }
+
+//        @Override
+//        public float modifyProjectileSpread(float spread, GunData data) {
+//            return spread;
+//        }
+
+        @Override
+        public Set<AmmoHolder> modifyFuel(Set<AmmoHolder> secondaryAmmo, GunData data) {
+            return Set.of(CgsAmmo.AIR);
+        }
+    };
+
+    public static final IGunModifier BIG_BAYONET = new IGunModifier() {
+        @Override
+        public boolean modifyCanMelee(boolean value, GunData data) {
+            return true;
+        }
+
+        @Override
+        public float modifyMeleeDamage(float value, GunData data) {
+            return 12;
         }
     };
 }

@@ -3,21 +3,20 @@ package com.nukateam.cgs.common.faundation.registry.items;
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.datagen.annotations.ItemModelGen;
 import com.nukateam.cgs.common.faundation.item.attachments.HammerHeadItem;
-import com.nukateam.cgs.common.ntgl.Attachments;
+import com.nukateam.cgs.common.ntgl.AttachmentMods;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
 import com.nukateam.ntgl.common.data.attachment.impl.Barrel;
 import com.nukateam.ntgl.common.data.attachment.impl.GenericAttachment;
 import com.nukateam.ntgl.common.foundation.item.attachment.*;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tiers;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import static com.nukateam.cgs.common.ntgl.Attachments.*;
+import static com.nukateam.cgs.common.ntgl.AttachmentMods.*;
 import static com.nukateam.cgs.common.ntgl.CgsAttachmentTypes.ENGINE;
 
 public class AttachmentItems {
@@ -31,26 +30,26 @@ public class AttachmentItems {
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> STOCK = ITEMS.register("stock",
-            () -> new AttachmentItem<>(AttachmentType.STOCK, GenericAttachment.create(Attachments.STOCK), ITEM_PROPERTIES));
+            () -> new AttachmentItem<>(AttachmentType.STOCK, GenericAttachment.create(AttachmentMods.STOCK), ITEM_PROPERTIES));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> BAYONET = ITEMS.register("bayonet",
             () -> new AttachmentItem<>(AttachmentType.MELEE,
-                    GenericAttachment.create(Attachments.BAYONET_MODIFIERS), ITEM_PROPERTIES));
+                    GenericAttachment.create(AttachmentMods.BAYONET_MODIFIERS), ITEM_PROPERTIES));
 
     //FLINTLOCK
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> FLINTLOCK_LONG_BARREL = ITEMS.register("flintlock_long_barrel",
-            () -> new BarrelItem(Barrel.create(11f, Attachments.LONG_BARREL), ITEM_PROPERTIES));
+            () -> new BarrelItem(Barrel.create(11f, AttachmentMods.LONG_BARREL), ITEM_PROPERTIES));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> FLINTLOCK_MORTAR_BARREL = ITEMS.register("flintlock_mortar_barrel",
-            () -> new BarrelItem(Barrel.create(11f, Attachments.LONG_BARREL), ITEM_PROPERTIES));
+            () -> new BarrelItem(Barrel.create(11f, AttachmentMods.LONG_BARREL), ITEM_PROPERTIES));
 
     //REVOLVER
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> REVOLVER_LONG_BARREL = ITEMS.register("long_barrel",
-            () -> new BarrelItem(Barrel.create(11f, Attachments.LONG_BARREL), ITEM_PROPERTIES));
+            () -> new BarrelItem(Barrel.create(11f, AttachmentMods.LONG_BARREL), ITEM_PROPERTIES));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> REVOLVER_BELT = ITEMS.register("round_belt",
@@ -75,11 +74,11 @@ public class AttachmentItems {
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> SHOTGUN_LONG_BARREL = ITEMS.register("shotgun_long_barrel",
-            () -> new BarrelItem(Barrel.create(11f, Attachments.SHOTGUN_LONG_BARREL), ITEM_PROPERTIES));
+            () -> new BarrelItem(Barrel.create(11f, AttachmentMods.SHOTGUN_LONG_BARREL), ITEM_PROPERTIES));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> SHOTGUN_SPREAD_BARREL = ITEMS.register("shotgun_spread_barrel",
-            () -> new BarrelItem(Barrel.create(1f, Attachments.SHOTGUN_SPREAD_BARREL), ITEM_PROPERTIES));
+            () -> new BarrelItem(Barrel.create(1f, AttachmentMods.SHOTGUN_SPREAD_BARREL), ITEM_PROPERTIES));
 
     //GATLING
     @ItemModelGen(path = "attachments")
@@ -98,7 +97,7 @@ public class AttachmentItems {
     //NAILGUN
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> NAILGUN_SPLITTER = ITEMS.register("nailgun_splitter",
-            () -> new BarrelItem(Barrel.create(1f, Attachments.NAILGUN_SPLIT_BARREL), ITEM_PROPERTIES));
+            () -> new BarrelItem(Barrel.create(1f, AttachmentMods.NAILGUN_SPLIT_BARREL), ITEM_PROPERTIES));
 
     //FLAMETHROWER
     @ItemModelGen(path = "attachments")
@@ -115,32 +114,32 @@ public class AttachmentItems {
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> AUTO_LAUNCHER = ITEMS.register("launcher_auto",
             () -> new AttachmentItem<>(AttachmentType.MAGAZINE,
-                    GenericAttachment.create(), ITEM_PROPERTIES));
+                    GenericAttachment.create(AttachmentMods.AUTO_LAUNCHER), ITEM_PROPERTIES));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> BALLISTAZOOKA = ITEMS.register("ballistazooka",
             () -> new AttachmentItem<>(AttachmentType.MAGAZINE,
-                    GenericAttachment.create(), ITEM_PROPERTIES));
+                    GenericAttachment.create(AttachmentMods.BALLISTAZOOKA), ITEM_PROPERTIES));
 
-    @ItemModelGen(path = "attachments")
-    public static final RegistryObject<Item> HOOK_LAUNCHER = ITEMS.register("launcher_hook",
-            () -> new AttachmentItem<>(AttachmentType.MAGAZINE,
-                    GenericAttachment.create(), ITEM_PROPERTIES));
+//    @ItemModelGen(path = "attachments")
+//    public static final RegistryObject<Item> HOOK_LAUNCHER = ITEMS.register("launcher_hook",
+//            () -> new AttachmentItem<>(AttachmentType.MAGAZINE,
+//                    GenericAttachment.create(), ITEM_PROPERTIES));
 
-    @ItemModelGen(path = "attachments")
-    public static final RegistryObject<Item> ITEM_LAUNCHER = ITEMS.register("item_launcher",
-            () -> new AttachmentItem<>(AttachmentType.MAGAZINE,
-                    GenericAttachment.create(), ITEM_PROPERTIES));
+//    @ItemModelGen(path = "attachments")
+//    public static final RegistryObject<Item> ITEM_LAUNCHER = ITEMS.register("item_launcher",
+//            () -> new AttachmentItem<>(AttachmentType.MAGAZINE,
+//                    GenericAttachment.create(), ITEM_PROPERTIES));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> LAUNCHER_BAYONET = ITEMS.register("big_bayonet",
             () -> new AttachmentItem<>(AttachmentType.MUZZLE,
-                    GenericAttachment.create(), ITEM_PROPERTIES));
+                    GenericAttachment.create(AttachmentMods.BIG_BAYONET), ITEM_PROPERTIES));
 
     //HAMMER
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> SHOTGUN_RECEIVER = ITEMS.register("shotgun_receiver",
-            () -> new AttachmentItem<>(CgsAttachmentTypes.FRAME, GenericAttachment.create(), ITEM_PROPERTIES));
+            () -> new AttachmentItem<>(AttachmentType.MAGAZINE, GenericAttachment.create(RECIEVER), ITEM_PROPERTIES));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> HAMMER_STONE = ITEMS.register("hammer_stone",

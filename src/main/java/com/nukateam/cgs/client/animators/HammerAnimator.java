@@ -24,9 +24,11 @@ public class HammerAnimator extends GunAnimator {
     public static final String MELEE_POWER_END = "melee_power_end";
     public static final String MELEE_POWER_END2 = "melee_power_end2";
     public static final String MELEE_POWER = "melee_power";
-    public static final String RELOAD_EMPTY = "reload_empty";
+    public static final String RELOAD_SHOT = "reload_shot";
+    public static final String RELOAD_SHOT_EMPTY = "reload_shot_empty";
     private boolean isPowered = false;
     private int ammoCount;
+    private boolean isShotPowered;
 
     public HammerAnimator(ItemDisplayContext transformType, DynamicGunRenderer<GunAnimator> renderer) {
         super(transformType, renderer);
@@ -36,6 +38,7 @@ public class HammerAnimator extends GunAnimator {
     protected void tickStart() {
         super.tickStart();
         this.ammoCount = GunStateHelper.getAmmoCount(getStack());
+        this.isShotPowered = isShotPowered();
     }
 
     @Override
@@ -64,7 +67,7 @@ public class HammerAnimator extends GunAnimator {
                 var animations = new ArrayList<>(List.of(MELEE_POWER_END));
                 var animation = begin().then(getGunAnim(MELEE_POWER_END), PLAY_ONCE);
 
-                if(isShotPowered()){
+                if(isShotPowered){
                     animation.then(getGunAnim(MELEE_POWER_END2), PLAY_ONCE);
                     animations.add(MELEE_POWER_END2);
                 }
@@ -78,19 +81,23 @@ public class HammerAnimator extends GunAnimator {
 
     @Override
     protected RawAnimation getDefaultReloadAnimation(AnimationState<GunAnimator> event) {
-        var animations = new ArrayList<>(List.of(RELOAD));
-        var animation = playGunAnim(RELOAD, PLAY_ONCE);
+        if(isShotPowered()){
+            var animations = new ArrayList<>(List.of(RELOAD_SHOT));
+            var animation = begin().then(getGunAnim(RELOAD_SHOT), PLAY_ONCE);
 
-        if(isShotPowered() && ammoCount == 0){
-            animation.then(getGunAnim(RELOAD_EMPTY), PLAY_ONCE);
-            animations.add(RELOAD_EMPTY);
+            if(ammoCount == 0){
+                animation.then(getGunAnim(RELOAD_SHOT_EMPTY), PLAY_ONCE);
+                animations.add(RELOAD_SHOT_EMPTY);
+            }
+
+            animationHelper.syncAnimation(event, reloadTime, animations);
+            return animation;
         }
-        animationHelper.syncAnimation(event, RELOAD, reloadTime);
-        return animation;
+        return super.getDefaultReloadAnimation(event);
     }
 
     private boolean isShotPowered() {
-        return GunStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getStack()).isEmpty();
+        return GunStateHelper.hasAttachmentEquipped(getStack(), AttachmentType.MAGAZINE);
     }
 
     @Override

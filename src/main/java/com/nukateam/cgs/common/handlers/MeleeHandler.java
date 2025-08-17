@@ -66,7 +66,7 @@ public class MeleeHandler {
         var planeDirs = getPlaneDirections(hitResult.getDirection());
 
         breakBlockAt(player, toolTier, stack, centerPos, planeDirs, 0, 0);
-        breakBlockAt(player, toolTier, stack, centerPos, planeDirs, 0, -1);
+        breakBlockAt(player, toolTier, stack, centerPos, planeDirs, -1, 0);
     }
 
     private static @NotNull BlockHitResult getBlockHitResult(ServerPlayer player, float reach) {

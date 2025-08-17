@@ -7,11 +7,13 @@ import static com.nukateam.cgs.Gunsmithing.cgsResource;
 public class CgsProjectileTypes {
     public static ProjectileType FIREBALL = new ProjectileType(cgsResource("fireball"));
     public static ProjectileType ROCKET = new ProjectileType(cgsResource("rocket"));
+    public static ProjectileType SPEAR = new ProjectileType(cgsResource("spear"));
     public static ProjectileType NAIL = new ProjectileType(cgsResource("nail"));
 
     static {
         ProjectileType.registerType(FIREBALL);
         ProjectileType.registerType(ROCKET);
+        ProjectileType.registerType(SPEAR);
         ProjectileType.registerType(NAIL);
     }
 }

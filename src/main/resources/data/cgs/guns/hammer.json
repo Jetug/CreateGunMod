@@ -10,13 +10,12 @@
     "enchantable": false,
     "melee": true,
     "ammo": [
-      "cgs:round_shotgun_blank",
       "cgs:air"
     ]
   },
   "melee": {
     "mode": "ntgl:single",
-    "damage": 15,
+    "damage": 3,
     "delay": 8,
     "cooldown": 10,
     "distance": 5,

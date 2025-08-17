@@ -17,6 +17,16 @@
       "cgs:rocket"
     ]
   },
+  "melee": {
+    "mode": "ntgl:single",
+    "damage": 12,
+    "delay": 6,
+    "cooldown": 6,
+    "distance": 5,
+    "angle": 40,
+    "maxTargets": 1,
+    "knockback": 0.3
+  },
   "ammoData": {
     "cgs:rocket": {
       "ammo": {

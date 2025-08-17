@@ -1,6 +1,6 @@
 package com.nukateam.cgs.common.faundation.item.guns;
 
-import com.nukateam.cgs.client.animators.HammerAnimator;
+import com.nukateam.cgs.client.animators.*;
 import com.nukateam.cgs.client.renderers.GatlingRenderer;
 import com.nukateam.cgs.client.renderers.HammerRenderer;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;

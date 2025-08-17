@@ -8,13 +8,17 @@ import com.nukateam.ntgl.common.util.util.GunStateHelper;
 
 public class HammerModifier implements IGunModifier {
     @Override
-    public float modifyDamage(float damage, GunData data) {
+    public float modifyMeleeDamage(float damage, GunData data) {
         var attachment = GunStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, data.gun);
-        if(!attachment.isEmpty()){
+        if (!attachment.isEmpty()) {
+            if(GunStateHelper.hasAmmo(data.gun)){
+                damage += 5;
+            }
+
             var headItem = (HammerHeadItem)attachment.getItem();
             return damage + headItem.getTier().getAttackDamageBonus() * 2;
+        } else {
+            return 1;
         }
-
-        return IGunModifier.super.modifyDamage(damage, data);
     }
 }
