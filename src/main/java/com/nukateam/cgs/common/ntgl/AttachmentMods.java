@@ -5,8 +5,6 @@ import com.nukateam.cgs.common.faundation.registry.items.ModItems;
 import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
 import com.nukateam.cgs.common.faundation.registry.ModSounds;
 import com.nukateam.example.common.registery.GunModifiers;
-import com.nukateam.ntgl.common.data.config.ExplosionConfig;
-import com.nukateam.ntgl.common.data.config.ProjectileConfig;
 import com.nukateam.ntgl.common.data.holders.*;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.ntgl.common.data.attachment.impl.Scope;
@@ -423,13 +421,23 @@ public class AttachmentMods {
 
 
         @Override
-        public ProjectileConfig modifyProjectile(ProjectileConfig projectile, GunData data) {
-            var explosion = projectile.getExplosion();
-            explosion = ExplosionConfig.Builder.create(explosion).setRadius(0).build();
-            projectile = ProjectileConfig.Builder.create(projectile).setExplosionConfig(explosion).build();
-
-            return IGunModifier.super.modifyProjectile(projectile, data);
+        public int modifyMaxAmmo(int maxAmmo, GunData data) {
+            return 1;
         }
+
+        @Override
+        public Set<AmmoHolder> modifyFuel(Set<AmmoHolder> secondaryAmmo, GunData data) {
+            return Set.of(CgsAmmo.AIR);
+        }
+
+//        @Override
+//        public ProjectileConfig modifyProjectile(ProjectileConfig projectile, GunData data) {
+//            var explosion = projectile.getExplosion();
+//            explosion = ExplosionConfig.Builder.create(explosion).setRadius(0).build();
+//            projectile = ProjectileConfig.Builder.create(projectile).setExplosionConfig(explosion).build();
+//
+//            return IGunModifier.super.modifyProjectile(projectile, data);
+//        }
 
         @Override
         public Set<AmmoHolder> modifyAmmoItems(Set<AmmoHolder> item, GunData data) {
@@ -438,14 +446,14 @@ public class AttachmentMods {
     };
 
     public static final IGunModifier AUTO_LAUNCHER = new IGunModifier() {
-//        @Override
-//        public float modifyDamage(float damage, GunData data) {
-//            return damage * getProjectileAmount(data);
-//        }
+        @Override
+        public int modifyMaxAmmo(int maxAmmo, GunData data) {
+            return 30;
+        }
 
         @Override
         public Set<AmmoHolder> modifyAmmoItems(Set<AmmoHolder> item, GunData data) {
-            return Set.of(AmmoHolder.getType(ModItems.MINI_ROCKET.getId()));
+            return Set.of(AmmoHolder.getType(ModItems.SMALL_ROCKET.getId()));
         }
 
         @Override

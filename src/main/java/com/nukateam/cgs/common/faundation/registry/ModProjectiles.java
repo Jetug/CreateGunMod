@@ -25,6 +25,9 @@ public class ModProjectiles {
     public static final RegistryObject<EntityType<RocketProjectile>> ROCKET =
             registerProjectile("rocket", RocketProjectile::new);
 
+    public static final RegistryObject<EntityType<RocketProjectile>> SMALL_ROCKET =
+            registerProjectile("small_rocket", RocketProjectile::new);
+
     public static final RegistryObject<EntityType<NailProjectile>> NAIL =
             registerProjectile("nail", NailProjectile::new);
 

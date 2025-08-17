@@ -4,7 +4,6 @@ package com.nukateam.cgs.common.faundation.registry.items;
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.datagen.annotations.ItemModelGen;
 import com.nukateam.ntgl.common.foundation.item.AmmoItem;
-import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -81,7 +80,7 @@ public class ModItems {
 
 //    @ItemModelGen
     public static final RegistryObject<Item> ROCKET = registerAmmo("rocket");
-    public static final RegistryObject<Item> MINI_ROCKET = registerAmmo("mini_rocket");
+    public static final RegistryObject<Item> SMALL_ROCKET = registerAmmo("rocket_small");
     public static final RegistryObject<Item> SPEAR = registerAmmo("spear", AmmoItem::new);
 
     private static RegistryObject<Item> registerAmmo(String name, Function<Item.Properties, AmmoItem> item) {

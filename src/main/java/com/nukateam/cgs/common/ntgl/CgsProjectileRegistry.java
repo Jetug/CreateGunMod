@@ -15,6 +15,9 @@ public class CgsProjectileRegistry {
     private static final IProjectileFactory ROCKET = (level, entity, weapon, item, modifiedGun) ->
             new RocketProjectile(ModProjectiles.ROCKET.get(), level, entity, weapon, item, modifiedGun);
 
+    private static final IProjectileFactory SMALL_ROCKET = (level, entity, weapon, item, modifiedGun) ->
+            new RocketProjectile(ModProjectiles.SMALL_ROCKET.get(), level, entity, weapon, item, modifiedGun);
+
     private static final IProjectileFactory NAIL = (level, entity, weapon, item, modifiedGun) ->
             new NailProjectile(ModProjectiles.NAIL.get(), level, entity, weapon, item, modifiedGun);
 
@@ -24,6 +27,7 @@ public class CgsProjectileRegistry {
     public static void registerProjectiles() {
         ProjectileManager.getInstance().registerFactory(CgsProjectileTypes.FIREBALL, FIREBALL);
         ProjectileManager.getInstance().registerFactory(CgsProjectileTypes.ROCKET, ROCKET);
+        ProjectileManager.getInstance().registerFactory(CgsProjectileTypes.SMALL_ROCKET, SMALL_ROCKET);
         ProjectileManager.getInstance().registerFactory(CgsProjectileTypes.NAIL, NAIL);
         ProjectileManager.getInstance().registerFactory(CgsProjectileTypes.SPEAR, SPEAR);
     }
