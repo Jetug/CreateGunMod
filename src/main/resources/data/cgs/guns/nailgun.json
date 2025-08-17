@@ -32,7 +32,7 @@
         "visible": true,
         "damage": 1.0,
         "size": 0.2,
-        "speed": 0.1,
+        "speed": 4.0,
         "life": 1200
       }
     }

@@ -4,23 +4,38 @@ import com.nukateam.cgs.common.faundation.item.guns.HammerItem;
 import com.nukateam.ntgl.client.animators.GunAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
+import com.nukateam.ntgl.common.data.holders.AttachmentType;
+import com.nukateam.ntgl.common.util.util.GunModifierHelper;
 import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import mod.azure.azurelib.core.animation.AnimationState;
 import mod.azure.azurelib.core.animation.RawAnimation;
 import net.minecraft.world.item.ItemDisplayContext;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.nukateam.ntgl.client.util.util.TransformUtils.isFirstPerson;
 import static com.nukateam.ntgl.common.data.constants.Animations.*;
 import static com.nukateam.ntgl.common.data.constants.Animations.MELEE_END;
 import static mod.azure.azurelib.core.animation.Animation.LoopType.*;
+import static mod.azure.azurelib.core.animation.RawAnimation.begin;
 
 public class HammerAnimator extends GunAnimator {
     public static final String MELEE_POWER_END = "melee_power_end";
+    public static final String MELEE_POWER_END2 = "melee_power_end2";
     public static final String MELEE_POWER = "melee_power";
+    public static final String RELOAD_EMPTY = "reload_empty";
     private boolean isPowered = false;
+    private int ammoCount;
 
     public HammerAnimator(ItemDisplayContext transformType, DynamicGunRenderer<GunAnimator> renderer) {
         super(transformType, renderer);
+    }
+
+    @Override
+    protected void tickStart() {
+        super.tickStart();
+        this.ammoCount = GunStateHelper.getAmmoCount(getStack());
     }
 
     @Override
@@ -28,9 +43,9 @@ public class HammerAnimator extends GunAnimator {
         if(isFirstPerson(transformType)) {
             if(HammerItem.isPowered(getStack())){
                 isPowered = true;
-                    var animation = playGunAnim(MELEE_POWER, HOLD_ON_LAST_FRAME);
-                    animationHelper.syncAnimation(event, MELEE_POWER, meleeDelay);
-                    return animation;
+                var animation = playGunAnim(MELEE_POWER, HOLD_ON_LAST_FRAME);
+                animationHelper.syncAnimation(event, MELEE_POWER, meleeDelay);
+                return animation;
             }
             else {
                 isPowered = false;
@@ -46,12 +61,36 @@ public class HammerAnimator extends GunAnimator {
                 if (!animationHelper.hasAnimation(MELEE_POWER_END))
                     return getHoldAnimation(event);
 
-                var animation = playGunAnim(MELEE_POWER_END, LOOP);
-                animationHelper.syncAnimation(event, MELEE_POWER_END, meleeCooldown);
+                var animations = new ArrayList<>(List.of(MELEE_POWER_END));
+                var animation = begin().then(getGunAnim(MELEE_POWER_END), PLAY_ONCE);
+
+                if(isShotPowered()){
+                    animation.then(getGunAnim(MELEE_POWER_END2), PLAY_ONCE);
+                    animations.add(MELEE_POWER_END2);
+                }
+
+                animationHelper.syncAnimation(event, meleeCooldown, animations);
                 return animation;
             }
         }
         return super.getMeleeCooldownAnimation(event);
+    }
+
+    @Override
+    protected RawAnimation getDefaultReloadAnimation(AnimationState<GunAnimator> event) {
+        var animations = new ArrayList<>(List.of(RELOAD));
+        var animation = playGunAnim(RELOAD, PLAY_ONCE);
+
+        if(isShotPowered() && ammoCount == 0){
+            animation.then(getGunAnim(RELOAD_EMPTY), PLAY_ONCE);
+            animations.add(RELOAD_EMPTY);
+        }
+        animationHelper.syncAnimation(event, RELOAD, reloadTime);
+        return animation;
+    }
+
+    private boolean isShotPowered() {
+        return GunStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getStack()).isEmpty();
     }
 
     @Override

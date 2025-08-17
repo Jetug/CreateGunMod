@@ -19,7 +19,7 @@
     "damage": 15,
     "delay": 8,
     "cooldown": 10,
-    "distance": 4,
+    "distance": 5,
     "angle": 50,
     "maxTargets": 10,
     "knockback": 1
@@ -113,10 +113,11 @@
           "item": "cgs:axe_netherite"
         }
       ],
-      "cgs:frame": [
+      "ntgl:magazine": [
         {
-          "name": "filler",
-          "item": "cgs:shotgun_receiver"
+          "name": "shotgun_receiver",
+          "item": "cgs:shotgun_receiver",
+          "hide": ["filler"]
         }
       ]
     }

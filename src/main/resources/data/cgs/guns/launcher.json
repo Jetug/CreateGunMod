@@ -37,6 +37,25 @@
           "knockback": 1.0
         }
       }
+    },
+    "cgs:spear": {
+      "ammo": {
+        "type": "cgs:spear"
+      },
+      "projectile":{
+        "projectile": "cgs:spear",
+        "visible": true,
+        "damage": 5.0,
+        "size": 4.0,
+        "speed": 5.0,
+        "life": 30,
+
+        "explosion": {
+          "damage": 40,
+          "radius": 15,
+          "knockback": 1.0
+        }
+      }
     }
   },
   "sounds": {

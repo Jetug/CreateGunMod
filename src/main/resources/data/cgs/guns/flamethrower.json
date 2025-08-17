@@ -45,7 +45,7 @@
           "item": "cgs:steam_engine"
         }
       ],
-      "cgs:frame": [
+      "ntgl:magazine": [
         {
           "name": "potion_tank",
           "item": "cgs:potion_tank",

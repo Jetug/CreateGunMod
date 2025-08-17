@@ -3,6 +3,7 @@ package com.nukateam.cgs.common.faundation.registry.items;
 
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.item.guns.*;
+import com.nukateam.cgs.common.ntgl.modifiers.HammerModifier;
 import com.nukateam.ntgl.common.foundation.item.ThrowableItem;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import net.minecraft.world.item.Item;
@@ -24,7 +25,8 @@ public class ModWeapons {
     public static final RegistryObject<WeaponItem> GATLING = registerGun("gatling", GatlingItem::new);
     public static final RegistryObject<WeaponItem> FLAMETHROWER = registerGun("flamethrower", FlamethrowerItem::new);
     public static final RegistryObject<WeaponItem> ROCKET_LAUNCHER = registerGun("launcher", LauncherItem::new);
-    public static final RegistryObject<WeaponItem> HAMMER = registerGun("hammer", HammerItem::new);
+    public static final RegistryObject<WeaponItem> HAMMER = registerGun("hammer", properties ->
+            new HammerItem(properties,  new HammerModifier()));
 
     public static final RegistryObject<ThrowableItem> GRENADE = registerGrenade("frag_grenade", ThrowableItem::new);
 

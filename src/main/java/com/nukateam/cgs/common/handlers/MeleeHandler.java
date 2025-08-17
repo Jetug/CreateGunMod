@@ -6,27 +6,25 @@ import com.nukateam.cgs.common.faundation.item.guns.HammerItem;
 import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.ntgl.common.data.GunData;
-import com.nukateam.ntgl.common.data.config.gun.Gun;
+import com.nukateam.ntgl.common.data.holders.AttachmentType;
+import com.nukateam.ntgl.common.util.util.GunModifierHelper;
 import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import com.nukateam.ntgl.common.event.MeleeAttackEvent;
-import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import com.nukateam.ntgl.common.util.util.StackUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-
-import static net.minecraftforge.common.ForgeHooks.isCorrectToolForDrops;
+import org.jetbrains.annotations.NotNull;
 
 @Mod.EventBusSubscriber(modid = Gunsmithing.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class MeleeHandler {
@@ -39,19 +37,39 @@ public class MeleeHandler {
             var stack = event.getStack();
             var entity = event.getEntity();
             var head = GunStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, event.getStack());
-            if(head.getItem() instanceof HammerHeadItem headItem && headItem.getHeadType() == HammerHeadItem.Type.HAMMER){
-                if(HammerItem.isPowered(stack)) {
+
+            if(head.getItem() instanceof HammerHeadItem headItem){
+                if(headItem.getHeadType() == HammerHeadItem.Type.HAMMER && HammerItem.isPowered(stack)) {
+                    var data = new GunData(stack, entity);
                     if(!player.isCreative()){
-                        GunStateHelper.consumeAmmo(new GunData(stack, entity));
+                        GunStateHelper.consumeAmmo(data);
                     }
-                    breakBlocks3x3(player, headItem.getTier(), head);
+                    var reach = GunModifierHelper.getMeleeDistance(data);
+
+                    var magazine = GunStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, event.getStack());
+
+                    if(!magazine.isEmpty()) {
+                        breakBlocks3x3(player, headItem.getTier(), head, reach);
+                    }
+                    else breakBlocks2x1(player, headItem.getTier(), head, reach);
                 }
             }
         }
     }
 
-    private static void breakBlocks3x3(ServerPlayer player, Tier toolTier, ItemStack stack) {
-        var reach = 5.0;
+    private static void breakBlocks2x1(ServerPlayer player, Tier toolTier, ItemStack stack, float reach) {
+        var hitResult = getBlockHitResult(player, reach);
+
+        if (hitResult.getType() != HitResult.Type.BLOCK) return;
+
+        var centerPos = hitResult.getBlockPos();
+        var planeDirs = getPlaneDirections(hitResult.getDirection());
+
+        breakBlockAt(player, toolTier, stack, centerPos, planeDirs, 0, 0);
+        breakBlockAt(player, toolTier, stack, centerPos, planeDirs, 0, -1);
+    }
+
+    private static @NotNull BlockHitResult getBlockHitResult(ServerPlayer player, float reach) {
         var start = player.getEyePosition(1.0F);
         var look = player.getViewVector(1.0F);
         var end = start.add(look.x * reach, look.y * reach, look.z * reach);
@@ -59,27 +77,34 @@ public class MeleeHandler {
         var hitResult = player.level().clip(
                 new ClipContext(start, end, ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, player)
         );
+        return hitResult;
+    }
+
+    private static void breakBlocks3x3(ServerPlayer player, Tier toolTier, ItemStack stack, float reach) {
+        var hitResult = getBlockHitResult(player, reach);
 
         if (hitResult.getType() != HitResult.Type.BLOCK) return;
 
-        Direction face = hitResult.getDirection();
-        BlockPos centerPos = hitResult.getBlockPos();
-
-        Direction[] planeDirs = getPlaneDirections(face);
+        var centerPos = hitResult.getBlockPos();
+        var planeDirs = getPlaneDirections(hitResult.getDirection());
 
         for (int u = -1; u <= 1; u++) {
             for (int v = -1; v <= 1; v++) {
-                BlockPos targetPos = centerPos
-                        .relative(planeDirs[0], u)
-                        .relative(planeDirs[1], v);
-
-                var blockState = player.level().getBlockState(targetPos);
-                if(isToolTierSufficient(blockState, toolTier) && isMineable(blockState)) {
-                    if(!player.isCreative())
-                        StackUtils.damageItem(stack, 1);
-                    player.level().destroyBlock(targetPos, true);
-                }
+                breakBlockAt(player, toolTier, stack, centerPos, planeDirs, u, v);
             }
+        }
+    }
+
+    private static void breakBlockAt(ServerPlayer player, Tier toolTier, ItemStack stack, BlockPos centerPos, Direction[] planeDirs, int u, int v) {
+        var targetPos = centerPos
+                .relative(planeDirs[0], u)
+                .relative(planeDirs[1], v);
+
+        var blockState = player.level().getBlockState(targetPos);
+        if(isToolTierSufficient(blockState, toolTier) && isMineable(blockState)) {
+            if(!player.isCreative())
+                StackUtils.damageItem(stack, 1);
+            player.level().destroyBlock(targetPos, true);
         }
     }
 

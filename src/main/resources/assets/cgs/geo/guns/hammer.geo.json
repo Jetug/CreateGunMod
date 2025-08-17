@@ -349,7 +349,7 @@
 					]
 				},
 				{
-					"name": "pyropatron",
+					"name": "shotgun_receiver",
 					"parent": "weapon",
 					"pivot": [-0.32324, 11.20425, 2.22134],
 					"cubes": [
@@ -416,7 +416,7 @@
 				},
 				{
 					"name": "magazine",
-					"parent": "pyropatron",
+					"parent": "shotgun_receiver",
 					"pivot": [0.00176, 11.20425, 2.09384],
 					"cubes": [
 						{
@@ -435,7 +435,7 @@
 				},
 				{
 					"name": "lock",
-					"parent": "pyropatron",
+					"parent": "shotgun_receiver",
 					"pivot": [1.36437, 13.42349, 1.50884],
 					"cubes": [
 						{

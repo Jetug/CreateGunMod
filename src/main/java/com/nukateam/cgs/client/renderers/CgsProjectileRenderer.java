@@ -3,6 +3,7 @@ package com.nukateam.cgs.client.renderers;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.nukateam.cgs.client.model.ProjectileModel;
+import com.nukateam.ntgl.client.util.ClientDebug;
 import com.nukateam.ntgl.common.foundation.entity.ProjectileEntity;
 import mod.azure.azurelib.core.animatable.GeoAnimatable;
 import mod.azure.azurelib.renderer.GeoEntityRenderer;
@@ -21,9 +22,8 @@ public class CgsProjectileRenderer<T extends ProjectileEntity & GeoAnimatable> e
 
         poseStack.pushPose();
         {
-//            poseStack.mulPose(Axis.YP.rotationDegrees(180F));
             poseStack.mulPose(Axis.YP.rotationDegrees(entityYaw));
-            poseStack.mulPose(Axis.XP.rotationDegrees(entity.getXRot()));
+            poseStack.mulPose(Axis.XP.rotationDegrees(-entity.getXRot()));
             super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
 
         }

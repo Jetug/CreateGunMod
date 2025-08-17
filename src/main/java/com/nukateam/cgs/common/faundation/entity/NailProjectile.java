@@ -44,10 +44,10 @@ public class NailProjectile extends ProjectileEntity implements AnimatedProjecti
         this.inGround = true;
     }
 
-    @Override
-    protected boolean removeOnHit() {
-        return false;
-    }
+//    @Override
+//    protected boolean removeOnHit() {
+//        return false;
+//    }
 
     @Override
     public void playerTouch(Player pEntity) {
@@ -56,7 +56,6 @@ public class NailProjectile extends ProjectileEntity implements AnimatedProjecti
                 pEntity.take(this, 1);
                 this.discard();
             }
-
         }
     }
 
