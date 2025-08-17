@@ -21,7 +21,6 @@ import static com.nukateam.cgs.common.utils.GunUtils.isAmmoEven;
 public class Attachments {
     public static final int MAX_FUEL = 20000;
     public static final int MAX_WATER = 2000;
-    public static final int MAX_AIR = 900;
 
     public static final Scope SHORT_SCOPE = Scope.builder()
             .aimFovModifier(0.85F)

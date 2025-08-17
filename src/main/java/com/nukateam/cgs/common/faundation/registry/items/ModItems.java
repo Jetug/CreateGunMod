@@ -81,7 +81,7 @@ public class ModItems {
 
 //    @ItemModelGen
     public static final RegistryObject<Item> ROCKET = registerAmmo("rocket");
-    public static final RegistryObject<Item> JAVELIN = registerAmmo("javelin", AmmoItem::new);
+    public static final RegistryObject<Item> SPEAR = registerAmmo("spear", AmmoItem::new);
 
     private static RegistryObject<Item> registerAmmo(String name, Function<Item.Properties, AmmoItem> item) {
         return ITEMS.register(name, () -> item.apply(new Item.Properties()));

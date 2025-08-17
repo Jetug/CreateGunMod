@@ -1,9 +1,8 @@
 package com.nukateam.cgs.common.utils;
 
-import com.nukateam.cgs.common.ntgl.CgsFuel;
+import com.nukateam.cgs.common.ntgl.CgsAmmo;
 import com.nukateam.ntgl.common.data.holders.AmmoHolders;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
-import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import com.nukateam.ntgl.common.foundation.init.ModSounds;
 import com.nukateam.ntgl.common.data.GunData;
@@ -54,7 +53,7 @@ public class GunUtils {
                         player.addItem(new ItemStack(Items.BUCKET));
                     }
                 }
-                else if(fuelType == CgsFuel.AIR){
+                else if(fuelType == CgsAmmo.AIR){
                     var gunRemaining = FuelUtils.getFuel(fuelStack, fuelType);
                     var tankAir = BacktankUtil.getAir(fuelStack);
                     var airSum = gunRemaining + tankAir;

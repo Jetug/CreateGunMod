@@ -7,7 +7,9 @@ import com.nukateam.ntgl.common.foundation.entity.ProjectileEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.item.ItemDisplayContext;
 
 public class FireballRenderer extends ProjectileRenderer {
@@ -25,7 +27,7 @@ public class FireballRenderer extends ProjectileRenderer {
 //            poseStack.scale(this.scale, this.scale, this.scale);
             poseStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
             poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
-            Minecraft.getInstance().getItemRenderer().renderStatic(entity.getItem(), ItemDisplayContext.GROUND, light,
+            context.getItemRenderer().renderStatic(entity.getItem(), ItemDisplayContext.GROUND, light,
                     OverlayTexture.NO_OVERLAY, poseStack, buffer, entity.level(), entity.getId());
             poseStack.popPose();
 //            super.render(entity, entityYaw, partialTicks, poseStack, buffer, light);

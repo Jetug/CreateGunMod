@@ -10,27 +10,38 @@
     "enchantable": false,
     "melee": true,
     "ammo": [
-      "cgs:round_shotgun_blank"
+      "cgs:round_shotgun_blank",
+      "cgs:air"
     ]
   },
   "melee": {
     "mode": "ntgl:single",
     "damage": 15,
-    "delay": 10,
+    "delay": 8,
     "cooldown": 10,
     "distance": 4,
-    "angle": 20,
-    "maxTargets": 3,
-    "knockback": 0.4
+    "angle": 50,
+    "maxTargets": 10,
+    "knockback": 1
   },
   "ammoData": {
     "cgs:round_shotgun_blank": {
       "ammo": {
         "type": "ntgl:buckshot"
       },
-      "projectile":{
-        "damage": 0.0,
-        "size": 0.2,
+      "projectile": {
+        "damage": 2.0,
+        "speed": 0.0,
+        "life": 0,
+        "projectileAmount": 0
+      }
+    },
+    "cgs:air": {
+      "ammo": {
+        "type": "cgs:air"
+      },
+      "projectile": {
+        "damage": 1.0,
         "speed": 0.0,
         "life": 0,
         "projectileAmount": 0

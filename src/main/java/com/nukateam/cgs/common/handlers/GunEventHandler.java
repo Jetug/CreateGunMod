@@ -2,7 +2,7 @@ package com.nukateam.cgs.common.handlers;
 
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
-import com.nukateam.cgs.common.ntgl.CgsFuel;
+import com.nukateam.cgs.common.ntgl.CgsAmmo;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.ntgl.common.data.holders.AmmoHolders;
 import com.nukateam.ntgl.common.event.GunFireEvent;
@@ -53,8 +53,8 @@ public class GunEventHandler {
         if(fuel.contains(AmmoHolders.WATER)){
             FuelUtils.addFuel(data, AmmoHolders.WATER, -5);
         }
-        if(fuel.contains(CgsFuel.AIR)){
-            FuelUtils.addFuel(data, CgsFuel.AIR, -5);
+        if(fuel.contains(CgsAmmo.AIR)){
+            FuelUtils.addFuel(data, CgsAmmo.AIR, -5);
         }
     }
 

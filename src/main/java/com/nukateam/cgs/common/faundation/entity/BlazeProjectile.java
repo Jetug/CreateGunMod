@@ -1,8 +1,11 @@
 package com.nukateam.cgs.common.faundation.entity;
 
 import com.nukateam.ntgl.common.data.config.gun.Gun;
+import com.nukateam.ntgl.common.foundation.entity.FlameProjectile;
 import com.nukateam.ntgl.common.foundation.entity.ProjectileEntity;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
+import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
+import mod.azure.azurelib.core.animation.AnimatableManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
@@ -19,9 +22,12 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.function.Predicate;
 
+import static mod.azure.azurelib.util.AzureLibUtil.createInstanceCache;
 import static net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent;
 
-public class BlazeProjectile extends ProjectileEntity implements ItemSupplier {
+public class BlazeProjectile extends FlameProjectile implements ItemSupplier, AnimatedProjectile {
+    protected final AnimatableInstanceCache cache = createInstanceCache(this);
+
     public BlazeProjectile(EntityType<? extends ProjectileEntity> entityType, Level worldIn) {
         super(entityType, worldIn);
     }
@@ -34,9 +40,16 @@ public class BlazeProjectile extends ProjectileEntity implements ItemSupplier {
         return (value) -> false;
     }
 
-//    protected ItemStack getItemRaw() {
+    @Override
+    public void tick() {
+        super.tick();
+    }
+
+    //    protected ItemStack getItemRaw() {
 //        return this.getEntityData().get(DATA_ITEM_STACK);
 //    }
+
+
 
     @Override
     public ItemStack getItem() {
@@ -68,5 +81,15 @@ public class BlazeProjectile extends ProjectileEntity implements ItemSupplier {
                 }
             }
         }
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return cache;
     }
 }

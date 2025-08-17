@@ -28,12 +28,12 @@
         "type": "cgs:nail"
       },
       "projectile": {
+        "projectile": "cgs:nail",
         "visible": true,
-        "gravity": true,
         "damage": 1.0,
         "size": 0.2,
-        "speed": 5.0,
-        "life": 60
+        "speed": 0.1,
+        "life": 1200
       }
     }
   },
@@ -49,10 +49,10 @@
     "default" : "cgs:nailgun"
   },
   "sounds": {
-    "fire"   : "cgs:gun.nailgun.fire",
-    "fire_steam"   : "cgs:gun.nailgun.fire",
-    "magin"  : "cgs:gun.nailgun.mag_in",
-    "magout" : "cgs:gun.nailgun.mag_out"
+    "fire"       : "cgs:gun.nailgun.fire",
+    "fire_steam" : "cgs:gun.nailgun.fire",
+    "magin"      : "cgs:gun.nailgun.mag_in",
+    "magout"     : "cgs:gun.nailgun.mag_out"
   },
   "modules": {
     "attachmentScreen": true,

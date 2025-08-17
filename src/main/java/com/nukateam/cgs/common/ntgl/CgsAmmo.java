@@ -1,14 +1,24 @@
 package com.nukateam.cgs.common.ntgl;
+import com.nukateam.cgs.common.utils.GunUtils;
 import com.nukateam.ntgl.common.data.holders.AmmoHolder;
-import com.simibubi.create.AllItems;
 import com.simibubi.create.content.equipment.armor.BacktankItem;
+import com.simibubi.create.content.equipment.armor.BacktankUtil;
 import net.minecraft.world.item.ItemStack;
+
+import java.util.List;
 
 import static com.nukateam.cgs.Gunsmithing.cgsResource;
 
-public class CgsFuel {
+public class CgsAmmo {
     public static AmmoHolder AIR = AmmoHolder.Builder.create(cgsResource("air"))
-            .isAcceptable(CgsFuel::isAir)
+            .isAcceptable(CgsAmmo::isAir)
+            .value((s) -> (int)BacktankUtil.getAir(s))
+            .onConsume((stack, amount) ->{
+                var tankAir = BacktankUtil.getAir(stack);
+                var tank = new ItemStack(stack.getItem());
+                GunUtils.setAir(tank, Math.max(0, tankAir - amount));
+                return List.of(tank);
+            })
             .build();
 
     static {
