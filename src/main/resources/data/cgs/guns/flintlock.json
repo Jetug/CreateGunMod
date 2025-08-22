@@ -3,7 +3,7 @@
     "rate": 10,
     "gripType": "ntgl:one_handed",
     "maxAmmo": 1,
-    "damage": 15.0,
+    "damage": 10.0,
     "equipTime": 0,
     "reloadTime": 50,
     "recoilAngle": 7.0,
@@ -60,7 +60,8 @@
       "ntgl:barrel": [
         {
           "name": "long_barrel",
-          "item": "cgs:flintlock_long_barrel"
+          "item": "cgs:flintlock_long_barrel",
+          "hide": ["muzzle"]
         },
         {
           "name": "grenade_launcher",
@@ -76,7 +77,7 @@
       "ntgl:muzzle": [
         {
           "name": "melee",
-          "item": "cgs:flintlock_knife"
+          "item": "cgs:bayonet"
         },
         {
           "name": "melee2",

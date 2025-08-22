@@ -19,6 +19,9 @@
     "spread": 1.0,
     "ammo": [
       "cgs:nail"
+    ],
+    "fuel": [
+      "cgs:air"
     ]
   },
   "ammoData": {
@@ -41,6 +44,18 @@
       "max": 900,
       "ammo": {
         "type": "cgs:air"
+      }
+    },
+    "ntgl:burnable":{
+      "max": 20000,
+      "ammo": {
+        "type": "ntgl:burnable"
+      }
+    },
+    "ntgl:water":{
+      "max": 2000,
+      "ammo": {
+        "type": "ntgl:water"
       }
     }
   },

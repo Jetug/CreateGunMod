@@ -5,6 +5,7 @@ import com.nukateam.cgs.common.faundation.item.attachments.HammerHeadItem;
 import com.nukateam.cgs.common.faundation.item.guns.HammerItem;
 import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
+import com.nukateam.cgs.common.utils.BreakHandler;
 import com.nukateam.ntgl.common.data.GunData;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
@@ -15,6 +16,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Tiers;
@@ -28,6 +31,16 @@ import org.jetbrains.annotations.NotNull;
 
 @Mod.EventBusSubscriber(modid = Gunsmithing.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class MeleeHandler {
+    public static BreakHandler HAMMER_HANDLER = new BreakHandler(
+            MeleeHandler::isToolTierSufficient,
+            MeleeHandler::isMineable,
+            MeleeHandler::isCanDrop);
+
+    public static BreakHandler AXE_HANDLER = new BreakHandler(
+            MeleeHandler::isToolTierSufficient,
+            MeleeHandler::isMineableAxe,
+            MeleeHandler::isCanDropAxe);
+
     @SubscribeEvent
     public static void onMelee(MeleeAttackEvent.Pre event) {
         if(event.getStack().getItem() == ModWeapons.HAMMER.get()
@@ -38,26 +51,33 @@ public class MeleeHandler {
             var entity = event.getEntity();
             var head = GunStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, event.getStack());
 
-            if(head.getItem() instanceof HammerHeadItem headItem){
-                if(headItem.getHeadType() == HammerHeadItem.Type.HAMMER && HammerItem.isPowered(stack)) {
-                    var data = new GunData(stack, entity);
-                    if(!player.isCreative()){
-                        GunStateHelper.consumeAmmo(data);
-                    }
-                    var reach = GunModifierHelper.getMeleeDistance(data);
+            if(head.getItem() instanceof HammerHeadItem headItem && HammerItem.isPowered(stack)
+                    && !entity.hasEffect(MobEffects.DIG_SLOWDOWN)){
+                var data = new GunData(stack, entity);
+                if(!player.isCreative()){
+                    GunStateHelper.consumeAmmo(data);
+                }
 
-                    var magazine = GunStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, event.getStack());
+                var reach = GunModifierHelper.getMeleeDistance(data);
+                var isShotPowered = !GunStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, event.getStack()).isEmpty();
 
-                    if(!magazine.isEmpty()) {
-                        breakBlocks3x3(player, headItem.getTier(), head, reach);
+                if(headItem.getHeadType() == HammerHeadItem.Type.HAMMER) {
+                    if(isShotPowered) {
+                        breakBlocks3x3(player, headItem.getTier(), HAMMER_HANDLER, head, reach);
                     }
-                    else breakBlocks2x1(player, headItem.getTier(), head, reach);
+                    else breakBlocks2x1(player, headItem.getTier(), HAMMER_HANDLER,  head, reach);
+                }
+                else if(headItem.getHeadType() == HammerHeadItem.Type.AXE) {
+                    if(isShotPowered) {
+                        breakBlocks3x3(player, headItem.getTier(), AXE_HANDLER, head, reach);
+                    }
+                    else breakBlocks2x1(player, headItem.getTier(), AXE_HANDLER,  head, reach);
                 }
             }
         }
     }
 
-    private static void breakBlocks2x1(ServerPlayer player, Tier toolTier, ItemStack stack, float reach) {
+    private static void breakBlocks2x1(ServerPlayer player, Tier toolTier, BreakHandler handler, ItemStack stack, float reach) {
         var hitResult = getBlockHitResult(player, reach);
 
         if (hitResult.getType() != HitResult.Type.BLOCK) return;
@@ -65,8 +85,23 @@ public class MeleeHandler {
         var centerPos = hitResult.getBlockPos();
         var planeDirs = getPlaneDirections(hitResult.getDirection());
 
-        breakBlockAt(player, toolTier, stack, centerPos, planeDirs, 0, 0);
-        breakBlockAt(player, toolTier, stack, centerPos, planeDirs, -1, 0);
+        breakBlockAt(player, toolTier, stack, centerPos, planeDirs, handler, 0, 0);
+        breakBlockAt(player, toolTier, stack, centerPos, planeDirs, handler, -1, 0);
+    }
+
+    private static void breakBlocks3x3(ServerPlayer player, Tier toolTier, BreakHandler handler, ItemStack stack, float reach) {
+        var hitResult = getBlockHitResult(player, reach);
+
+        if (hitResult.getType() != HitResult.Type.BLOCK) return;
+
+        var centerPos = hitResult.getBlockPos();
+        var planeDirs = getPlaneDirections(hitResult.getDirection());
+
+        for (int u = -1; u <= 1; u++) {
+            for (int v = -1; v <= 1; v++) {
+                breakBlockAt(player, toolTier, stack, centerPos, planeDirs, handler, u, v);
+            }
+        }
     }
 
     private static @NotNull BlockHitResult getBlockHitResult(ServerPlayer player, float reach) {
@@ -80,31 +115,17 @@ public class MeleeHandler {
         return hitResult;
     }
 
-    private static void breakBlocks3x3(ServerPlayer player, Tier toolTier, ItemStack stack, float reach) {
-        var hitResult = getBlockHitResult(player, reach);
-
-        if (hitResult.getType() != HitResult.Type.BLOCK) return;
-
-        var centerPos = hitResult.getBlockPos();
-        var planeDirs = getPlaneDirections(hitResult.getDirection());
-
-        for (int u = -1; u <= 1; u++) {
-            for (int v = -1; v <= 1; v++) {
-                breakBlockAt(player, toolTier, stack, centerPos, planeDirs, u, v);
-            }
-        }
-    }
-
-    private static void breakBlockAt(ServerPlayer player, Tier toolTier, ItemStack stack, BlockPos centerPos, Direction[] planeDirs, int u, int v) {
+    private static void breakBlockAt(ServerPlayer player, Tier toolTier, ItemStack stack,
+                                     BlockPos centerPos, Direction[] planeDirs, BreakHandler handler, int u, int v) {
         var targetPos = centerPos
                 .relative(planeDirs[0], u)
                 .relative(planeDirs[1], v);
 
         var blockState = player.level().getBlockState(targetPos);
-        if(isToolTierSufficient(blockState, toolTier) && isMineable(blockState)) {
+        if(handler.isToolTierSufficient(blockState, toolTier) && handler.isMineable(blockState)) {
             if(!player.isCreative())
                 StackUtils.damageItem(stack, 1);
-            player.level().destroyBlock(targetPos, true);
+            player.level().destroyBlock(targetPos, handler.isCanDrop(blockState));
         }
     }
 
@@ -121,7 +142,23 @@ public class MeleeHandler {
     }
 
     private static boolean isMineable(BlockState blockState) {
-        return blockState.is(BlockTags.MINEABLE_WITH_PICKAXE);
+        return !blockState.is(BlockTags.MINEABLE_WITH_AXE) && !blockState.is(BlockTags.MINEABLE_WITH_HOE);
+//        return blockState.is(BlockTags.MINEABLE_WITH_PICKAXE)
+//                || blockState.is(BlockTags.MINEABLE_WITH_SHOVEL);
+    }
+
+    private static boolean isCanDrop(BlockState blockState) {
+        return blockState.is(BlockTags.MINEABLE_WITH_PICKAXE) || blockState.is(BlockTags.MINEABLE_WITH_SHOVEL);
+    }
+
+    private static boolean isMineableAxe(BlockState blockState) {
+        return blockState.is(BlockTags.MINEABLE_WITH_AXE) || blockState.is(BlockTags.MINEABLE_WITH_HOE);
+//        return blockState.is(BlockTags.MINEABLE_WITH_PICKAXE)
+//                || blockState.is(BlockTags.MINEABLE_WITH_SHOVEL);
+    }
+
+    private static boolean isCanDropAxe(BlockState blockState) {
+        return blockState.is(BlockTags.MINEABLE_WITH_AXE) || blockState.is(BlockTags.MINEABLE_WITH_HOE);
     }
 
     private static Direction[] getPlaneDirections(Direction face) {

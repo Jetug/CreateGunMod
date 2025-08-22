@@ -1,10 +1,11 @@
 {
   "general": {
-    "rate": 10,
+    "rate": 0,
     "weaponMode": "ntgl:melee",
     "gripType": "ntgl:hammer",
     "loadingType": "magazine",
-    "maxAmmo": 6,
+    "maxAmmo": 900,
+    "ammoPerShot": 20,
     "reloadTime": 50,
     "equipTime": 10,
     "enchantable": false,
@@ -16,8 +17,8 @@
   "melee": {
     "mode": "ntgl:single",
     "damage": 3,
-    "delay": 8,
-    "cooldown": 10,
+    "delay": 5,
+    "cooldown": 8,
     "distance": 5,
     "angle": 50,
     "maxTargets": 10,
@@ -26,7 +27,8 @@
   "ammoData": {
     "cgs:air": {
       "ammo": {
-        "type": "cgs:air"
+        "type": "cgs:air",
+        "counter": "ntgl:bar"
       },
       "projectile": {
         "damage": 1.0,
@@ -45,11 +47,6 @@
         "life": 0,
         "projectileAmount": 0
       }
-    }
-  },
-  "fuel": {
-    "cgs:air":{
-      "max": 900
     }
   },
   "sounds": {

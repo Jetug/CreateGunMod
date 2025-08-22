@@ -23,7 +23,7 @@ public class CgsAmmo {
 
     private static Boolean isAir(ItemStack stack) {
         var item = stack.getItem();
-        return item instanceof BacktankItem;
+        return item instanceof BacktankItem && BacktankUtil.hasAirRemaining(stack);
     }
 
     private static List<ItemStack> onConsumeAir(ItemStack stack, Integer amount) {

@@ -18,6 +18,7 @@ public class LauncherAnimator extends GunAnimator {
     public static final String RELOAD_BALLISTA_MANUAL = "reload_ballista_manual";
     public static final String RELOAD_BALLISTA_AUTO = "reload_ballista_auto";
     public static final String RELOAD_AUTO = "reload_auto";
+    public static final String SHOT_BALLISTA = "shot_ballista";
 
     private int ammoCount;
     private boolean isBallista;
@@ -42,6 +43,16 @@ public class LauncherAnimator extends GunAnimator {
             return playGunAnim(EMPTY, LOOP);
         }
         return super.getHoldAnimation(event);
+    }
+
+    @Override
+    protected RawAnimation getShootingAnimation(AnimationState<GunAnimator> event) {
+        if(isBallista){
+            var animation = begin().then(getGunAnim(SHOT_BALLISTA), PLAY_ONCE);
+            animationHelper.syncAnimation(event, rate, SHOT_BALLISTA);
+            return animation;
+        }
+        return super.getShootingAnimation(event);
     }
 
     @Override

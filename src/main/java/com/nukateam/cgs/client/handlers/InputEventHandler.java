@@ -46,7 +46,7 @@ public class InputEventHandler {
     private static boolean canAcceptFuel(ItemStack gun, ItemStack fuelStack) {
         var mc = Minecraft.getInstance();
         var gunData = new GunData(gun, mc.player);
-        var allFuel = GunModifierHelper.getFuelTypes(gunData);
+        var allFuel = GunModifierHelper.getAllFuel(gunData);
         for (var fuelType: allFuel){
             if (fuelType.isAcceptable(fuelStack) && !FuelUtils.isFull(gunData, fuelType))
                 return true;

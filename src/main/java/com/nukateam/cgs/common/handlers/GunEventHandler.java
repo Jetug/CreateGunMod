@@ -45,7 +45,7 @@ public class GunEventHandler {
         var shooter = event.getEntity();
         var gun = event.getStack();
         var data = new GunData(gun, shooter);
-        var fuel = GunModifierHelper.getFuelTypes(data);
+        var fuel = GunModifierHelper.getAllFuel(data);
 
         if(fuel.contains(AmmoHolders.BURNABLE)){
             FuelUtils.addFuel(data, AmmoHolders.BURNABLE, -1);

@@ -5,6 +5,7 @@ import com.nukateam.ntgl.client.animators.GunAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
+import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
 import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import mod.azure.azurelib.core.animation.AnimationState;
@@ -97,7 +98,7 @@ public class HammerAnimator extends GunAnimator {
     }
 
     private boolean isShotPowered() {
-        return GunStateHelper.hasAttachmentEquipped(getStack(), AttachmentType.MAGAZINE);
+        return getStack().getItem() instanceof WeaponItem && GunStateHelper.hasAttachmentEquipped(getStack(), AttachmentType.MAGAZINE);
     }
 
     @Override

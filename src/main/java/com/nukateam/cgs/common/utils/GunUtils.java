@@ -33,7 +33,7 @@ public class GunUtils {
     public static boolean fillFuel(ItemStack gun, Player player, ItemStack fuelStack) {
         var gunData = new GunData(gun, player);
         var isSurvival = !player.isCreative();
-        var allFuel = GunModifierHelper.getFuelTypes(gunData);
+        var allFuel = GunModifierHelper.getAllFuel(gunData);
 
         for (var fuelType : allFuel){
             var maxFuel = GunModifierHelper.getMaxFuel(gunData, fuelType);

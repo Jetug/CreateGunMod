@@ -14,6 +14,7 @@ import com.nukateam.ntgl.common.data.GunData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffects;
 
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -95,18 +96,18 @@ public class AttachmentMods {
         }
 
         @Override
-        public Set<AmmoHolder> modifyFuel(Set<AmmoHolder> secondaryAmmo, GunData data) {
+        public Set<AmmoHolder> modifyFuelItems(Set<AmmoHolder> secondaryAmmo, GunData data) {
             return Set.of(AmmoHolders.BURNABLE, AmmoHolders.WATER);
         }
 
-        @Override
-        public int modifyMaxFuel(int max, AmmoHolder type, GunData data) {
-            if(type == AmmoHolders.BURNABLE)
-                return MAX_FUEL;
-            else if(type == AmmoHolders.WATER)
-                return MAX_WATER;
-            return max;
-        }
+//        @Override
+//        public int modifyMaxFuel(int max, AmmoHolder type, GunData data) {
+//            if(type == AmmoHolders.BURNABLE)
+//                return MAX_FUEL;
+//            else if(type == AmmoHolders.WATER)
+//                return MAX_WATER;
+//            return max;
+//        }
 
         @Override
         public GripType modifyGripType(GripType gripType, GunData data) {
@@ -175,7 +176,7 @@ public class AttachmentMods {
         public float modifyMeleeAngle(float value, GunData data) {
             var barrel = GunStateHelper.getAttachmentItem(AttachmentType.BARREL, data.gun);
             if(barrel.getItem() == AttachmentItems.FLINTLOCK_LONG_BARREL.get())
-                return 1;
+                return 20;
             else return 120;
         }
 
@@ -403,6 +404,16 @@ public class AttachmentMods {
     //HAMMER
     public static final IGunModifier RECIEVER = new IGunModifier() {
         @Override
+        public int modifyMaxAmmo(int maxAmmo, GunData data) {
+            return 6;
+        }
+
+        @Override
+        public int modifyAmmoPerShot(int ammoPerShot, GunData data) {
+            return 1;
+        }
+
+        @Override
         public float modifyMeleeDamage(float damage, GunData data) {
             GunStateHelper.getAmmoCount(data.gun);
             return damage * 2;
@@ -422,7 +433,20 @@ public class AttachmentMods {
         }
 
         @Override
-        public Set<AmmoHolder> modifyFuel(Set<AmmoHolder> secondaryAmmo, GunData data) {
+        public double modifyProjectileSpeed(double speed, GunData data) {
+            return 20;
+        }
+
+        @Override
+        public int modifyReloadTime(int reloadTime, GunData data) {
+            if(FuelUtils.hasFuel(data)) {
+                return 20;
+            }
+            return 100;
+        }
+
+        @Override
+        public Set<AmmoHolder> modifyFuelItems(Set<AmmoHolder> secondaryAmmo, GunData data) {
             return Set.of(CgsAmmo.AIR);
         }
 
@@ -464,7 +488,7 @@ public class AttachmentMods {
 //        }
 
         @Override
-        public Set<AmmoHolder> modifyFuel(Set<AmmoHolder> secondaryAmmo, GunData data) {
+        public Set<AmmoHolder> modifyFuelItems(Set<AmmoHolder> secondaryAmmo, GunData data) {
             return Set.of(CgsAmmo.AIR);
         }
     };

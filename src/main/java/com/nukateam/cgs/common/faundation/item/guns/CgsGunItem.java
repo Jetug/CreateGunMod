@@ -74,7 +74,7 @@ public class CgsGunItem extends WeaponItem {
     public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, worldIn, tooltip, flag);
         var gunData = new GunData(stack, null);
-        var fuelTypes = GunModifierHelper.getFuelTypes(gunData);
+        var fuelTypes = GunModifierHelper.getAllFuel(gunData);
 
         if(!fuelTypes.isEmpty()) {
             tooltip.add(Component.translatable("info.cgs.fuel").withStyle(ChatFormatting.GRAY));
@@ -82,7 +82,7 @@ public class CgsGunItem extends WeaponItem {
     }
 
     private static void onEngineTick(GunData data) {
-        var fuel = GunModifierHelper.getFuelTypes(data);
+        var fuel = GunModifierHelper.getAllFuel(data);
 
         if(!fuel.isEmpty() && isInHand(data)){
             if(fuel.contains(AmmoHolders.BURNABLE)){
@@ -92,7 +92,7 @@ public class CgsGunItem extends WeaponItem {
     }
 
     private static void fillWater(GunData gunData) {
-        var types = GunModifierHelper.getFuelTypes(gunData);
+        var types = GunModifierHelper.getAllFuel(gunData);
 
         if(gunData.shooter.isInWater() && types.contains(AmmoHolders.WATER)){
             var maxWater = GunModifierHelper.getMaxFuel(gunData, AmmoHolders.WATER);

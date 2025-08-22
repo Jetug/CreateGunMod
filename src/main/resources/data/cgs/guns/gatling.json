@@ -35,6 +35,20 @@
       }
     }
   },
+  "fuel": {
+    "ntgl:burnable":{
+      "max": 20000,
+      "ammo": {
+        "type": "ntgl:burnable"
+      }
+    },
+    "ntgl:water":{
+      "max": 2000,
+      "ammo": {
+        "type": "ntgl:water"
+      }
+    }
+  },
   "textures": {
     "default" : "cgs:gatling"
   },
