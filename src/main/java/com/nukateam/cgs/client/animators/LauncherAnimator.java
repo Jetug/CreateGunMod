@@ -32,7 +32,7 @@ public class LauncherAnimator extends GunAnimator {
     protected void tickStart() {
         super.tickStart();
         var magazineAttachment = GunStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getStack()).getItem();
-        this.ammoCount = GunStateHelper.getAmmoCount(getStack());
+        this.ammoCount = GunStateHelper.getAmmoCount(getGunData());
         this.isBallista = magazineAttachment == AttachmentItems.BALLISTAZOOKA.get();
         this.isAutoLauncher = magazineAttachment == AttachmentItems.AUTO_LAUNCHER.get();
     }

@@ -6,6 +6,7 @@ import com.nukateam.cgs.client.renderers.HammerRenderer;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.GunAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;
+import com.nukateam.ntgl.common.data.GunData;
 import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
 import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import net.minecraft.world.item.ItemDisplayContext;
@@ -21,8 +22,8 @@ public class HammerItem extends CgsGunItem {
         super(properties, modifiers);
     }
 
-    public static boolean isPowered(ItemStack stack){
-        return GunStateHelper.getAmmoCount(stack) > 0;
+    public static boolean isPowered(GunData data){
+        return GunStateHelper.getAmmoCount(data) > 0;
     }
 
     @Override

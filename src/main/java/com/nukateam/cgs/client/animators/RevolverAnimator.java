@@ -97,8 +97,8 @@ public class RevolverAnimator extends GunAnimator {
     protected RawAnimation getShootingAnimation(AnimationState<GunAnimator> event) {
         if(isAuto){
             var animation = playGunAnim("shot_auto", LOOP);
-            var data = new GunData(getStack(), getEntity());
-            var rate = GunModifierHelper.getRate(data);
+//            var data = new GunData(getStack(), getEntity());
+//            var rate = GunModifierHelper.getRate(data);
             animationHelper.syncAnimation(event, "shot_auto", rate);
             return animation;
 

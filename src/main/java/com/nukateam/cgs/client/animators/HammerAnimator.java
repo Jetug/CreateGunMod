@@ -3,6 +3,7 @@ package com.nukateam.cgs.client.animators;
 import com.nukateam.cgs.common.faundation.item.guns.HammerItem;
 import com.nukateam.ntgl.client.animators.GunAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;
+import com.nukateam.ntgl.common.data.GunData;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
@@ -11,6 +12,7 @@ import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import mod.azure.azurelib.core.animation.AnimationState;
 import mod.azure.azurelib.core.animation.RawAnimation;
 import net.minecraft.world.item.ItemDisplayContext;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,7 @@ public class HammerAnimator extends GunAnimator {
     private boolean isPowered = false;
     private int ammoCount;
     private boolean isShotPowered;
+    private GunData data;
 
     public HammerAnimator(ItemDisplayContext transformType, DynamicGunRenderer<GunAnimator> renderer) {
         super(transformType, renderer);
@@ -38,14 +41,17 @@ public class HammerAnimator extends GunAnimator {
     @Override
     protected void tickStart() {
         super.tickStart();
-        this.ammoCount = GunStateHelper.getAmmoCount(getStack());
+        if(itemStack != null &&!itemStack.isEmpty()) {
+            this.data = getGunData();
+        }
+        this.ammoCount = GunStateHelper.getAmmoCount(data);
         this.isShotPowered = isShotPowered();
     }
 
     @Override
     protected RawAnimation getMeleeDelayAnimation(AnimationState<GunAnimator> event) {
         if(isFirstPerson(transformType)) {
-            if(HammerItem.isPowered(getStack())){
+            if(HammerItem.isPowered(data)){
                 isPowered = true;
                 var animation = playGunAnim(MELEE_POWER, HOLD_ON_LAST_FRAME);
                 animationHelper.syncAnimation(event, MELEE_POWER, meleeDelay);

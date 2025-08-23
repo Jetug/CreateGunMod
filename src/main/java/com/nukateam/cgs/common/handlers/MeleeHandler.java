@@ -50,10 +50,10 @@ public class MeleeHandler {
             var stack = event.getStack();
             var entity = event.getEntity();
             var head = GunStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, event.getStack());
+            var data = new GunData(stack, entity);
 
-            if(head.getItem() instanceof HammerHeadItem headItem && HammerItem.isPowered(stack)
+            if(head.getItem() instanceof HammerHeadItem headItem && HammerItem.isPowered(data)
                     && !entity.hasEffect(MobEffects.DIG_SLOWDOWN)){
-                var data = new GunData(stack, entity);
                 if(!player.isCreative()){
                     GunStateHelper.consumeAmmo(data);
                 }

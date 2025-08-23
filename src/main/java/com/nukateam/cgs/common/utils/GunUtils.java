@@ -15,9 +15,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.ForgeHooks;
 
+import java.util.List;
+
 public class GunUtils {
-    public static boolean isAmmoEven(ItemStack stack) {
-        return GunStateHelper.getAmmoCount(stack) % 2 == 0;
+    public static boolean isAmmoEven(GunData data) {
+        return GunStateHelper.getAmmoCount(data) % 2 == 0;
     }
 
     public static void playAttachSound(Player player, float pitch){
@@ -36,7 +38,7 @@ public class GunUtils {
         var allFuel = GunModifierHelper.getAllFuel(gunData);
 
         for (var fuelType : allFuel){
-            var maxFuel = GunModifierHelper.getMaxFuel(gunData, fuelType);
+            var maxFuel = GunModifierHelper.getMaxFuel(fuelType.getId(), gunData);
             var currentFuel = FuelUtils.getFuel(gun,fuelType);
             if(fuelType.isAcceptable(fuelStack) && currentFuel < maxFuel) {
                 var value = 0;
@@ -89,5 +91,10 @@ public class GunUtils {
         var maxAir = BacktankUtil.maxAir(tank);
         tag.putFloat("Air", Math.min(newAir, maxAir));
         tank.setTag(tag);
+    }
+
+    public static void consumeAir(ItemStack tank, Integer amount) {
+        var tankAir = BacktankUtil.getAir(tank);
+        GunUtils.setAir(tank, Math.max(0, tankAir - amount));
     }
 }

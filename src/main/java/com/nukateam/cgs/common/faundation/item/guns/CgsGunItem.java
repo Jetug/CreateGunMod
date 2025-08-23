@@ -95,7 +95,7 @@ public class CgsGunItem extends WeaponItem {
         var types = GunModifierHelper.getAllFuel(gunData);
 
         if(gunData.shooter.isInWater() && types.contains(AmmoHolders.WATER)){
-            var maxWater = GunModifierHelper.getMaxFuel(gunData, AmmoHolders.WATER);
+            var maxWater = GunModifierHelper.getMaxFuel(AmmoHolders.WATER.getId(), gunData);
             FuelUtils.setFuel(gunData.gun, AmmoHolders.WATER, maxWater);
         }
     }

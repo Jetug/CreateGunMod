@@ -42,18 +42,24 @@
   "fuel": {
     "cgs:air":{
       "max": 900,
+      "amountPerUse": 5,
+      "mandatory": false,
       "ammo": {
         "type": "cgs:air"
       }
     },
     "ntgl:burnable":{
       "max": 20000,
+      "mandatory": true,
+      "amountPerUse": 1,
       "ammo": {
         "type": "ntgl:burnable"
       }
     },
     "ntgl:water":{
       "max": 2000,
+      "mandatory": true,
+      "amountPerUse": 5,
       "ammo": {
         "type": "ntgl:water"
       }

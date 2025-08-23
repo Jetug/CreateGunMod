@@ -46,6 +46,7 @@ public class ShotgunAnimator extends GunAnimator {
     private boolean hasDrums;
     private boolean hasPumps;
     private Cycler cockCycler = new Cycler(1, 2);
+    private boolean isAmmoEven;
 
     public ShotgunAnimator(ItemDisplayContext transformType, DynamicGunRenderer<GunAnimator> renderer) {
         super(transformType, renderer);
@@ -66,11 +67,11 @@ public class ShotgunAnimator extends GunAnimator {
         if (!isGun()) return;
 
         var magazine = GunStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getStack());
-
-        this.ammo = GunStateHelper.getAmmoCount(getStack());
+        var data = getGunData();
+        this.ammo = GunStateHelper.getAmmoCount(data);
         this.hasDrums = magazine.is(AttachmentItems.SHOTGUN_DRUM.get());
         this.hasPumps = magazine.is(AttachmentItems.SHOTGUN_PUMP.get());
-
+        this.isAmmoEven =  GunUtils.isAmmoEven(data);
         var cooldown = this.shootingHandler.getCooldown(getEntity(), this.arm);
 
         if (cockCycler == null)
@@ -84,7 +85,6 @@ public class ShotgunAnimator extends GunAnimator {
     @Override
     protected RawAnimation getShootingAnimation(AnimationState<GunAnimator> event) {
         var animation = begin();
-        var isAmmoEven = GunUtils.isAmmoEven(getStack());
         var animations = new ArrayList<String>();
 
         var shotAnim = this.getGunAnim(Animations.SHOT);
@@ -157,14 +157,12 @@ public class ShotgunAnimator extends GunAnimator {
 
     private AnimationStateHandler<GunAnimator> animateCock() {
         return (event) -> {
-            var ammo = GunStateHelper.getAmmoCount(getStack());
-
             var name = "";
 
             if (ammo == 0){
                 name = EMPTY_BOTH;
             }
-            else if(GunUtils.isAmmoEven(getStack())){
+            else if(isAmmoEven){
                 name = FULL;
             }
             else {

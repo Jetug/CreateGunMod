@@ -298,7 +298,7 @@ public class AttachmentMods {
     public static final IGunModifier SHOTGUN_MODIFIER = new IGunModifier() {
         @Override
         public int modifyFireRate(int rate, GunData data) {
-            if(!isAmmoEven(data.gun))
+            if(!isAmmoEven(data))
                 return 20;
             return IGunModifier.super.modifyFireRate(rate, data);
         }
@@ -387,7 +387,7 @@ public class AttachmentMods {
         }
 
         private static int getProjectileAmount(GunData data) {
-            return Math.min(AMMO_PER_SHOT, GunStateHelper.getAmmoCount(data.gun));
+            return Math.min(AMMO_PER_SHOT, GunStateHelper.getAmmoCount(data));
         }
 
         @Override
@@ -415,7 +415,7 @@ public class AttachmentMods {
 
         @Override
         public float modifyMeleeDamage(float damage, GunData data) {
-            GunStateHelper.getAmmoCount(data.gun);
+            GunStateHelper.getAmmoCount(data);
             return damage * 2;
         }
 

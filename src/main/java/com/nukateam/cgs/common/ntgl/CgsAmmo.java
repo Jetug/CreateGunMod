@@ -30,6 +30,7 @@ public class CgsAmmo {
         var tankAir = BacktankUtil.getAir(stack);
         var tank = new ItemStack(stack.getItem());
         GunUtils.setAir(tank, Math.max(0, tankAir - amount));
+        GunUtils.consumeAir(tank, amount);
         return List.of(tank);
     }
 }
