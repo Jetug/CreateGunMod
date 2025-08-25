@@ -70,15 +70,6 @@
       "fovModifier": 0.7
     },
     "attachments": {
-      "ntgl:scope": [
-        {
-          "name": "iron_sight",
-          "item": "cgs:iron_sight",
-          "xOffset": 0,
-          "yOffset": 0,
-          "zOffset": 0
-        }
-      ],
       "ntgl:magazine": [
         {
           "name": "big_drum_base",

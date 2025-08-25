@@ -8,7 +8,7 @@
   "slot.cgs.attachment.chamber": "Патронник",
   "slot.cgs.attachment.head": "Наконечник",
 
-  "info.cgs.air": "Воздух: %s",
+  "info.cgs.air": "Воздух",
 
   "item.cgs.flintlock": "Кремневый пистолет",
   "item.cgs.revolver" : "Револьвер",

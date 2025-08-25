@@ -11,7 +11,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.*;
 import java.util.function.Function;
 
-public class ModWeapons {
+public class CgsWeapons {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Gunsmithing.MOD_ID);
 
 //    public static final RegistryObject<WeaponItem> MACHINE_GUN = registerGun("machine_gun");
@@ -24,7 +24,7 @@ public class ModWeapons {
     public static final RegistryObject<WeaponItem> NAILGUN = registerGun("nailgun", NailgunItem::new);
     public static final RegistryObject<WeaponItem> GATLING = registerGun("gatling", GatlingItem::new);
     public static final RegistryObject<WeaponItem> FLAMETHROWER = registerGun("flamethrower", FlamethrowerItem::new);
-    public static final RegistryObject<WeaponItem> ROCKET_LAUNCHER = registerGun("launcher", LauncherItem::new);
+    public static final RegistryObject<WeaponItem> LAUNCHER = registerGun("launcher", LauncherItem::new);
     public static final RegistryObject<WeaponItem> HAMMER = registerGun("hammer", properties ->
             new HammerItem(properties,  new HammerModifier()));
 

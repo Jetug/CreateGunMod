@@ -8,7 +8,7 @@
   "slot.cgs.attachment.chamber": "Chamber",
   "slot.cgs.attachment.head": "Head",
 
-  "info.cgs.air": "Air: %s",
+  "info.cgs.air": "Air",
 
   "item.cgs.flintlock": "Flintlock",
   "item.cgs.revolver": "Revolver",

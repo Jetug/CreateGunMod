@@ -3,7 +3,7 @@ package com.nukateam.cgs.common.handlers;
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.item.attachments.HammerHeadItem;
 import com.nukateam.cgs.common.faundation.item.guns.HammerItem;
-import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
+import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.cgs.common.utils.BreakHandler;
 import com.nukateam.ntgl.common.data.GunData;
@@ -16,7 +16,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
@@ -43,7 +42,7 @@ public class MeleeHandler {
 
     @SubscribeEvent
     public static void onMelee(MeleeAttackEvent.Pre event) {
-        if(event.getStack().getItem() == ModWeapons.HAMMER.get()
+        if(event.getStack().getItem() == CgsWeapons.HAMMER.get()
                 && event.getTargets().isEmpty()
                 && event.getEntity() instanceof ServerPlayer player){
 

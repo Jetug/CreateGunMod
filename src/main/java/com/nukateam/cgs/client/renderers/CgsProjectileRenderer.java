@@ -11,6 +11,8 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 
 public class CgsProjectileRenderer<T extends ProjectileEntity & GeoAnimatable> extends GeoEntityRenderer<T> {
+    public static final int MAX_SIZE_TICK = 10;
+
     public CgsProjectileRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new ProjectileModel<>());
     }
@@ -22,6 +24,15 @@ public class CgsProjectileRenderer<T extends ProjectileEntity & GeoAnimatable> e
 
         poseStack.pushPose();
         {
+
+            var scale = 1f;
+
+            if(entity.tickCount < MAX_SIZE_TICK) {
+                scale = (entity.tickCount + partialTick) / MAX_SIZE_TICK;
+            }
+
+            poseStack.scale(scale, scale, scale);
+
             poseStack.mulPose(Axis.YP.rotationDegrees(entityYaw));
             poseStack.mulPose(Axis.XP.rotationDegrees(-entity.getXRot()));
             super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);

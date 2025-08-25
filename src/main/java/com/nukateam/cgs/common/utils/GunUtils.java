@@ -1,5 +1,6 @@
 package com.nukateam.cgs.common.utils;
 
+import com.nukateam.cgs.common.handlers.GunEventHandler;
 import com.nukateam.cgs.common.ntgl.CgsAmmo;
 import com.nukateam.ntgl.common.data.holders.AmmoHolders;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
@@ -15,9 +16,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.ForgeHooks;
 
-import java.util.List;
-
 public class GunUtils {
+    public static final String COCK = "Cock";
+    public static final String AIR = "Air";
+
     public static boolean isAmmoEven(GunData data) {
         return GunStateHelper.getAmmoCount(data) % 2 == 0;
     }
@@ -82,19 +84,35 @@ public class GunUtils {
         int maxAir = BacktankUtil.maxAir(tank);
         float air = BacktankUtil.getAir(tank);
         float newAir = Math.max(air - i, 0);
-        tag.putFloat("Air", Math.min(newAir, maxAir));
+        tag.putFloat(AIR, Math.min(newAir, maxAir));
         tank.setTag(tag);
     }
 
     public static void setAir(ItemStack tank, float newAir) {
         var tag = tank.getOrCreateTag();
         var maxAir = BacktankUtil.maxAir(tank);
-        tag.putFloat("Air", Math.min(newAir, maxAir));
+        tag.putFloat(AIR, Math.min(newAir, maxAir));
         tank.setTag(tag);
     }
 
-    public static void consumeAir(ItemStack tank, Integer amount) {
-        var tankAir = BacktankUtil.getAir(tank);
-        GunUtils.setAir(tank, Math.max(0, tankAir - amount));
+//    public static void consumeAir(ItemStack tank, int amount) {
+//        var tankAir = BacktankUtil.getAir(tank);
+//        GunUtils.setAir(tank, Math.max(0, tankAir - amount));
+//    }
+
+    public static void setCock(ItemStack weapon, int i) {
+        var tag = weapon.getOrCreateTag();
+        tag.putInt(COCK, i);
+    }
+
+    public static int getCock(ItemStack weapon) {
+        var tag = weapon.getOrCreateTag();
+        return tag.getInt(COCK);
+    }
+
+    public static boolean hasAir(GunData gunData) {
+        var hasAirInGun = FuelUtils.hasFuel(CgsAmmo.AIR.getId(), gunData);
+        var hasAirInTank = GunEventHandler.hasAirInTank(gunData);
+        return hasAirInGun || hasAirInTank;
     }
 }

@@ -13,11 +13,12 @@
     "enchantable": false,
     "spread": 6.0,
     "ammo": [
-      "ntgl:burnable"
+      "cgs:burnable",
+      "cgs:blaze_cake"
     ]
   },
   "ammoData": {
-    "ntgl:burnable": {
+    "cgs:burnable": {
       "ammo": {
         "type": "ntgl:fire",
         "counter": "ntgl:bar"
@@ -31,10 +32,35 @@
         "speed": 2.0,
         "life": 30
       }
+    },
+    "cgs:blaze_cake": {
+      "ammo": {
+        "type": "cgs:blaze_cake",
+        "counter": "ntgl:bar"
+      },
+      "projectile": {
+        "damageType": "ntgl:fire",
+        "projectile": "cgs:fireball",
+        "visible": true,
+        "damage": 1.0,
+        "size": 1.0,
+        "speed": 2.0,
+        "life": 30
+      }
+    }
+  },
+  "fuel": {
+    "ntgl:water":{
+      "max": 2000,
+      "amountPerUse": 5,
+      "mandatory": true,
+      "ammo": {
+        "type": "ntgl:water"
+      }
     }
   },
   "sounds": {
-    "fire": "cgs:item.flamethrower.fire",
+    "fire": "minecraft:entity.blaze.shoot",
     "reload": "cgs:item.flamethrower.reload",
     "cock": "cgs:item.flamethrower.cock"
   },

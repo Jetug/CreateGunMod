@@ -3,7 +3,7 @@ package com.nukateam.cgs.common.datagen.providers;
 import com.nukateam.cgs.common.datagen.DataGenConfig;
 import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
 import com.nukateam.cgs.common.faundation.registry.ModBlocks;
-import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
+import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
 import com.nukateam.cgs.common.faundation.registry.items.ModItems;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
@@ -48,7 +48,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         var leadNugget = AllTags.forgeItemTag(NUGGET_TAG + LEAD);
 
         //GUNS
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModWeapons.FLINTLOCK.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CgsWeapons.FLINTLOCK.get())
                 .pattern("   ")
                 .pattern("BAF")
                 .pattern("  L")
@@ -57,7 +57,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('L', AllTags.AllItemTags.STRIPPED_LOGS.tag)
                 .define('F', Items.FLINT_AND_STEEL)
                 .unlockedBy(getHasName(ModItems.BARREL.get()), has(ModItems.BARREL.get()))
-                .save(writer, getId(ModWeapons.FLINTLOCK.get()));
+                .save(writer, getId(CgsWeapons.FLINTLOCK.get()));
 
         //AMMO
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PAPER_CARTRIDGE.get(), 3)

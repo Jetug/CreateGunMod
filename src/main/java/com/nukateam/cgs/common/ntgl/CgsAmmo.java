@@ -1,13 +1,18 @@
 package com.nukateam.cgs.common.ntgl;
 import com.nukateam.cgs.common.utils.GunUtils;
 import com.nukateam.ntgl.common.data.holders.AmmoHolder;
+import com.nukateam.ntgl.common.data.holders.AmmoHolders;
+import com.simibubi.create.AllItems;
 import com.simibubi.create.content.equipment.armor.BacktankItem;
 import com.simibubi.create.content.equipment.armor.BacktankUtil;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraftforge.common.ForgeHooks;
 
 import java.util.List;
 
 import static com.nukateam.cgs.Gunsmithing.cgsResource;
+import static com.nukateam.ntgl.Ntgl.ntglResource;
 
 public class CgsAmmo {
     public static AmmoHolder AIR = AmmoHolder.Builder
@@ -17,8 +22,29 @@ public class CgsAmmo {
             .onConsume(CgsAmmo::onConsumeAir)
             .build();
 
+    public static final AmmoHolder BURNABLE = AmmoHolder.Builder
+            .create(cgsResource("burnable"))
+            .isAcceptable(CgsAmmo::isBurnable)
+            .value((stack -> ForgeHooks.getBurnTime(stack, null)))
+            .onConsume(AmmoHolders::consumeBurnable)
+            .build();
+
+    public static final AmmoHolder BLAZE_CAKE = AmmoHolder.Builder
+            .create(cgsResource("blaze_cake"))
+            .isAcceptable(stack -> stack.getItem() == AllItems.BLAZE_CAKE.get())
+            .value((stack -> 20000))
+            .descriptionId((s) -> AllItems.BLAZE_CAKE.get().getDescriptionId())
+            .build();
+
     public static void register() {
         AmmoHolder.registerType(AIR);
+        AmmoHolder.registerType(BURNABLE);
+        AmmoHolder.registerType(BLAZE_CAKE);
+    }
+
+    private static boolean isBurnable(ItemStack ammoStack) {
+        var burnTime = ForgeHooks.getBurnTime(ammoStack, null);
+        return ammoStack.getItem() != AllItems.BLAZE_CAKE.get() && burnTime > 0;
     }
 
     private static Boolean isAir(ItemStack stack) {

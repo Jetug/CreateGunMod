@@ -82,10 +82,20 @@
       }
     }
   },
+  "fuel": {
+    "cgs:air":{
+      "max": 900,
+      "amountPerUse": 5,
+      "mandatory": false,
+      "ammo": {
+        "type": "cgs:air"
+      }
+    }
+  },
   "sounds": {
-    "fire": "cgs:item.flamethrower.fire",
-    "reload": "cgs:item.flamethrower.reload",
-    "cock": "cgs:item.flamethrower.cock"
+    "fire": "cgs:gun.launcher.fire",
+    "reload": "cgs:gun.launcher.reload",
+    "cock": "cgs:gun.launcher.cock"
   },
   "modules": {
     "zoom": {

@@ -3,7 +3,7 @@ package com.nukateam.cgs.common.faundation.registry;
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
 import com.nukateam.cgs.common.faundation.registry.items.ModItems;
-import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
+import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
 import com.nukateam.ntgl.common.util.helpers.RegistrationHelper;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -30,7 +30,7 @@ public class ModItemTabs {
 
 
     private static void getWeaponTab(ItemDisplayParameters itemDisplayParameters, Output output) {
-        registerGuns(output, ModWeapons.ITEMS);
+        registerGuns(output, CgsWeapons.ITEMS);
         registerItems(output, ModItems.ITEMS);
         registerItems(output, AttachmentItems.ITEMS);
 

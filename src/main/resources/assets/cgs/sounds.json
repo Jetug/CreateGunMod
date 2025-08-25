@@ -90,5 +90,13 @@
 
    "gun.flintlock.ramrod": { "subtitle": "subtitle.ntgl.reload", "sounds": [
       { "name": "cgs:gun/flintlock/reload/ramrod" }
+   ]},
+
+   "gun.launcher.fire": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+      { "name": "cgs:gun/launcher/fire" }
+   ]},
+
+   "gun.launcher.ballista_fire": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+      { "name": "cgs:gun/launcher/ballista_fire" }
    ]}
 }

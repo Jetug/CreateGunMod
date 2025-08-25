@@ -5,7 +5,7 @@ import java.util.function.UnaryOperator;
 import com.google.common.base.Supplier;
 import com.nukateam.cgs.common.datagen.DataGenConfig;
 import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
-import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
+import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
 import com.nukateam.cgs.common.faundation.registry.items.ModItems;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
@@ -27,7 +27,7 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 	}
 
 	GeneratedRecipe
-		SHOTGUN = create(ModWeapons.SHOTGUN::get).returns(1)
+		SHOTGUN = create(CgsWeapons.SHOTGUN::get).returns(1)
 			.recipe(b -> b
 					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
 					.key('B', ModItems.STURDY_BARREL.get())
@@ -40,7 +40,7 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 					.disallowMirrored()),
 
 
-		GATLING = create(ModWeapons.GATLING::get).returns(1)
+		GATLING = create(CgsWeapons.GATLING::get).returns(1)
 			.recipe(b -> b
 					.key('B', ModItems.STURDY_BARREL.get())
 					.key('A', AllItems.ANDESITE_ALLOY.get())
@@ -55,7 +55,7 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 					.disallowMirrored()),
 
 
-		REVOLVER = create(ModWeapons.REVOLVER::get).returns(1)
+		REVOLVER = create(CgsWeapons.REVOLVER::get).returns(1)
 			.recipe(b -> b
 					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
 					.key('B', ModItems.BARREL.get())
@@ -70,7 +70,7 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 					.disallowMirrored())
 			,
 
-		NAILGUN = create(ModWeapons.NAILGUN::get).returns(1)
+		NAILGUN = create(CgsWeapons.NAILGUN::get).returns(1)
 				.recipe(b -> b
 				.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
 				.key('M', AllItems.PRECISION_MECHANISM.get())

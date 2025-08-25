@@ -39,7 +39,7 @@
     },
     "cgs:round_shotgun_blank": {
       "ammo": {
-        "type": "ntgl:buckshot"
+        "type": "cgs:blank_shot"
       },
       "projectile": {
         "damage": 2.0,

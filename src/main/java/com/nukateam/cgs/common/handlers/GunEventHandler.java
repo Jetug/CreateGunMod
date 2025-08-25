@@ -1,31 +1,27 @@
 package com.nukateam.cgs.common.handlers;
 
 import com.nukateam.cgs.Gunsmithing;
-import com.nukateam.cgs.common.faundation.registry.items.ModWeapons;
+import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
 import com.nukateam.cgs.common.ntgl.CgsAmmo;
-import com.nukateam.cgs.common.ntgl.CgsAmmoType;
 import com.nukateam.cgs.common.utils.GunUtils;
 import com.nukateam.ntgl.common.data.holders.AmmoHolder;
+import com.nukateam.ntgl.common.event.GunReloadEvent;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.ntgl.common.data.holders.AmmoHolders;
 import com.nukateam.ntgl.common.event.GunFireEvent;
 import com.nukateam.ntgl.common.event.GunProjectileHitEvent;
 import com.nukateam.ntgl.common.data.GunData;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
+import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.content.equipment.armor.BacktankBlockEntity;
 import com.simibubi.create.content.equipment.armor.BacktankUtil;
-import com.simibubi.create.content.equipment.extendoGrip.ExtendoGripItem;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-
-import java.util.List;
 
 import static net.minecraft.world.phys.HitResult.Type.BLOCK;
 
@@ -42,8 +38,8 @@ public class GunEventHandler {
             event.setCanceled(true);
         }
 
-        if(gun.getItem() == ModWeapons.NAILGUN.get()) {
-            if (isUsesFuel(gunData, CgsAmmo.AIR) && !hasAir(gunData) ) {
+        if(gun.getItem() == CgsWeapons.NAILGUN.get()) {
+            if (isUsesFuel(gunData, CgsAmmo.AIR) && !GunUtils.hasAir(gunData) ) {
                 event.setCanceled(true);
             }
         }
@@ -55,17 +51,49 @@ public class GunEventHandler {
         var gun = event.getStack();
         var data = new GunData(gun, shooter);
         var fuel = GunModifierHelper.getAllFuel(data);
-
-        if(fuel.contains(AmmoHolders.BURNABLE)){
-            FuelUtils.addFuel(data, AmmoHolders.BURNABLE, -1);
-        }
-        if(fuel.contains(AmmoHolders.WATER)){
-            FuelUtils.addFuel(data, AmmoHolders.WATER, -5);
-        }
-        if(fuel.contains(CgsAmmo.AIR)){
-            consumeAir(data);
+        if(!event.getEntity().level().isClientSide) {
+            if (fuel.contains(AmmoHolders.BURNABLE)) {
+                FuelUtils.addFuel(data, AmmoHolders.BURNABLE, -1);
+            }
+            if (fuel.contains(AmmoHolders.WATER)) {
+                FuelUtils.addFuel(data, AmmoHolders.WATER, -5);
+            }
+            if (fuel.contains(CgsAmmo.AIR)) {
+                consumeAir(data);
 //            FuelUtils.addFuel(data, CgsAmmo.AIR, -5);
+            }
+            if (gun.getItem() == CgsWeapons.SHOTGUN.get()) {
+                checkCock(data);
+            }
         }
+    }
+
+    @SubscribeEvent
+    public static void postReload(GunReloadEvent.Post event) {
+        var gun = event.getStack();
+        var shooter = event.getEntity();
+        var data = new GunData(gun, shooter);
+
+        if(!event.getEntity().level().isClientSide) {
+            if (gun.getItem() == CgsWeapons.SHOTGUN.get()) {
+                checkCock(data);
+            }
+            if (gun.getItem() == CgsWeapons.LAUNCHER.get()) {
+                consumeAir(data);
+            }
+        }
+    }
+
+    private static void checkCock(GunData data) {
+        var ammoCount = GunStateHelper.getAmmoCount(data);
+        var isEven = GunStateHelper.getAmmoCount(data) % 2 == 0;
+        var id = 0;
+
+        if (ammoCount != 0) {
+            id = isEven ? 2 : 1;
+        }
+
+        GunUtils.setCock(data.gun, id);
     }
 
     public static boolean consumeAir(GunData data) {
@@ -102,13 +130,6 @@ public class GunEventHandler {
         var cost = GunModifierHelper.getFuelAmountPerUse(CgsAmmo.AIR.getId(), data);
         return BacktankUtil.getAir(backtanks.get(0)) >= cost;
     }
-
-    public static boolean hasAir(GunData gunData) {
-        var hasAirInGun = FuelUtils.hasFuel(CgsAmmo.AIR.getId(), gunData);
-        var hasAirInTank = hasAirInTank(gunData);
-        return hasAirInGun || hasAirInTank;
-    }
-
 
     @SubscribeEvent
     public static void onHit(GunProjectileHitEvent event) {

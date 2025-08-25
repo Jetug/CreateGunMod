@@ -8,6 +8,7 @@ import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
 import mod.azure.azurelib.core.animation.AnimatableManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -25,7 +26,7 @@ import java.util.function.Predicate;
 import static mod.azure.azurelib.util.AzureLibUtil.createInstanceCache;
 import static net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent;
 
-public class BlazeProjectile extends FlameProjectile implements ItemSupplier, AnimatedProjectile {
+public class BlazeProjectile extends ProjectileEntity implements ItemSupplier, AnimatedProjectile {
     protected final AnimatableInstanceCache cache = createInstanceCache(this);
 
     public BlazeProjectile(EntityType<? extends ProjectileEntity> entityType, Level worldIn) {
@@ -45,17 +46,22 @@ public class BlazeProjectile extends FlameProjectile implements ItemSupplier, An
         super.tick();
     }
 
-    //    protected ItemStack getItemRaw() {
-//        return this.getEntityData().get(DATA_ITEM_STACK);
-//    }
-
-
-
     @Override
     public ItemStack getItem() {
-//        ItemStack itemstack = this.getItemRaw();
-//        return itemstack.isEmpty() ? new ItemStack(Items.FIRE_CHARGE) : itemstack;
         return new ItemStack(Items.FIRE_CHARGE);
+    }
+
+    @Override
+    protected void onProjectileTick() {
+        if (this.level().isClientSide) {
+            for (int i = 5; i > 0; i--) {
+                this.level().addParticle(ParticleTypes.FLAME, true, this.getX() - (this.getDeltaMovement().x() / i), this.getY() - (this.getDeltaMovement().y() / i), this.getZ() - (this.getDeltaMovement().z() / i), 0, 0, 0);
+            }
+            if (this.level().random.nextInt(2) == 0) {
+                this.level().addParticle(ParticleTypes.SMOKE, true, this.getX(), this.getY(), this.getZ(), 0, 0, 0);
+                this.level().addParticle(ParticleTypes.FLAME, true, this.getX(), this.getY(), this.getZ(), 0, 0, 0);
+            }
+        }
     }
 
     @Override
