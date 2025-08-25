@@ -336,8 +336,11 @@ public class AttachmentMods {
 
             var cock = GunUtils.getCock(data.gun);
 
-
-            if(cock == 0)
+            if(GunStateHelper.getFireMode(data) == FireMode.MULTI){
+                if(cock == 2)
+                    return 20;
+            }
+            if(cock == 1)
                 return 20;
 
 //            if(!isAmmoEven(data))

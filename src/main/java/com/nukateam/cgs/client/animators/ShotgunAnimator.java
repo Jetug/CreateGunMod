@@ -47,6 +47,7 @@ public class ShotgunAnimator extends GunAnimator {
     private boolean hasPumps;
     private Cycler cockCycler = new Cycler(1, 2);
     private boolean isAmmoEven;
+    private int cockInfo;
 
     public ShotgunAnimator(ItemDisplayContext transformType, DynamicGunRenderer<GunAnimator> renderer) {
         super(transformType, renderer);
@@ -72,6 +73,8 @@ public class ShotgunAnimator extends GunAnimator {
         this.hasDrums = magazine.is(AttachmentItems.SHOTGUN_DRUM.get());
         this.hasPumps = magazine.is(AttachmentItems.SHOTGUN_PUMP.get());
         this.isAmmoEven =  GunUtils.isAmmoEven(data);
+        this.cockInfo =  GunUtils.getCock(getStack());
+
         var cooldown = this.shootingHandler.getCooldown(getEntity(), this.arm);
 
         if (cockCycler == null)
@@ -159,15 +162,21 @@ public class ShotgunAnimator extends GunAnimator {
         return (event) -> {
             var name = "";
 
-            if (ammo == 0){
-                name = EMPTY_BOTH;
+            switch (cockInfo){
+                case  0 ->  name = EMPTY_BOTH;
+                case  1 ->  name = EMPTY_LEFT;
+                case  2 ->  name = FULL;
             }
-            else if(isAmmoEven){
-                name = FULL;
-            }
-            else {
-                name = EMPTY_LEFT;
-            }
+
+//            if (ammo == 0){
+//                name = EMPTY_BOTH;
+//            }
+//            else if(isAmmoEven){
+//                name = FULL;
+//            }
+//            else {
+//                name = EMPTY_LEFT;
+//            }
 
             var animation = begin().then(name, LOOP);
             animationHelper.syncAnimation(event, name, SHOT_TIME);

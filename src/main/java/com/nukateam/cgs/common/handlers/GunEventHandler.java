@@ -51,7 +51,7 @@ public class GunEventHandler {
         var gun = event.getStack();
         var data = new GunData(gun, shooter);
         var fuel = GunModifierHelper.getAllFuel(data);
-        if(!event.getEntity().level().isClientSide) {
+//        if(!event.getEntity().level().isClientSide) {
             if (fuel.contains(AmmoHolders.BURNABLE)) {
                 FuelUtils.addFuel(data, AmmoHolders.BURNABLE, -1);
             }
@@ -65,7 +65,7 @@ public class GunEventHandler {
             if (gun.getItem() == CgsWeapons.SHOTGUN.get()) {
                 checkCock(data);
             }
-        }
+//        }
     }
 
     @SubscribeEvent
