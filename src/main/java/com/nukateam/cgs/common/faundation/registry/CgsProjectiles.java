@@ -16,7 +16,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.BiFunction;
 
-public class ModProjectiles {
+public class CgsProjectiles {
     public static final DeferredRegister<EntityType<?>> REGISTER = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, Gunsmithing.MOD_ID);
 
     public static final RegistryObject<EntityType<BlazeProjectile>> FIREBALL =

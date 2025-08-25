@@ -16,7 +16,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import static net.minecraft.world.item.CreativeModeTab.*;
 
-public class ModItemTabs {
+public class CgsItemTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Gunsmithing.MOD_ID);
 
@@ -24,7 +24,7 @@ public class ModItemTabs {
     public static final RegistryObject<CreativeModeTab> GUNS = CREATIVE_MODE_TABS.register("mod_items",
             () -> builder().icon(() -> new ItemStack(ModItems.ROUND_7MM.get()))
                     .title(Component.translatable("itemGroup.mod_items"))
-                    .displayItems(ModItemTabs::getWeaponTab)
+                    .displayItems(CgsItemTabs::getWeaponTab)
                     .build());
 
 

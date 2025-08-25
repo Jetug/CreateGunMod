@@ -2,7 +2,7 @@ package com.nukateam.cgs.common.datagen.providers;
 
 import com.nukateam.cgs.common.datagen.DataGenConfig;
 import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
-import com.nukateam.cgs.common.faundation.registry.ModBlocks;
+import com.nukateam.cgs.common.faundation.registry.CgsBlocks;
 import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
 import com.nukateam.cgs.common.faundation.registry.items.ModItems;
 import com.simibubi.create.AllItems;
@@ -40,8 +40,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> writer) {
         buildOreRecipes(writer,
-                ModBlocks.LEAD_ORE.get(), ModBlocks.DEEPSLATE_LEAD_ORE.get(),
-                ModBlocks.LEAD_BLOCK.get(), ModBlocks.RAW_LEAD_BLOCK.get(),
+                CgsBlocks.LEAD_ORE.get(), CgsBlocks.DEEPSLATE_LEAD_ORE.get(),
+                CgsBlocks.LEAD_BLOCK.get(), CgsBlocks.RAW_LEAD_BLOCK.get(),
                 ModItems.RAW_LEAD.get(), ModItems.LEAD_INGOT.get(), ModItems.LEAD_NUGGET.get());
 
 //        var leadIngot = forgeItemTag(INGOT_TAG + LEAD);

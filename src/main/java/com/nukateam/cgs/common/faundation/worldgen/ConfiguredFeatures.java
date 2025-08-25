@@ -1,8 +1,7 @@
 package com.nukateam.cgs.common.faundation.worldgen;
 
 import com.nukateam.cgs.Gunsmithing;
-import com.nukateam.cgs.common.faundation.registry.ModBlocks;
-import com.simibubi.create.AllItems;
+import com.nukateam.cgs.common.faundation.registry.CgsBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
@@ -25,8 +24,8 @@ public class ConfiguredFeatures {
         RuleTest deepslateReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
 
         var overworldSapphireOres = List.of(OreConfiguration.target(stoneReplaceable,
-                        ModBlocks.LEAD_ORE.get().defaultBlockState()),
-                OreConfiguration.target(deepslateReplaceables, ModBlocks.DEEPSLATE_LEAD_ORE.get().defaultBlockState()));
+                        CgsBlocks.LEAD_ORE.get().defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceables, CgsBlocks.DEEPSLATE_LEAD_ORE.get().defaultBlockState()));
 
         register(context, OVERWORLD_LEAD_ORE_KEY, Feature.ORE, new OreConfiguration(overworldSapphireOres, 9));
     }

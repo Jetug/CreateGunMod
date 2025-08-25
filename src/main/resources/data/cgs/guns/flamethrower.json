@@ -11,7 +11,7 @@
     "equipTime": 10,
     "alwaysSpread": true,
     "enchantable": false,
-    "spread": 6.0,
+    "spread": 5.0,
     "ammo": [
       "cgs:burnable",
       "cgs:blaze_cake"
@@ -30,7 +30,7 @@
         "damage": 1.0,
         "size": 1.0,
         "speed": 2.0,
-        "life": 30
+        "life": 50
       }
     },
     "cgs:blaze_cake": {
@@ -52,7 +52,7 @@
   "fuel": {
     "ntgl:water":{
       "max": 2000,
-      "amountPerUse": 5,
+      "amountPerUse": 1,
       "mandatory": true,
       "ammo": {
         "type": "ntgl:water"

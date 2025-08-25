@@ -1,6 +1,6 @@
 package com.nukateam.cgs.common.datagen.loot;
 
-import com.nukateam.cgs.common.faundation.registry.ModBlocks;
+import com.nukateam.cgs.common.faundation.registry.CgsBlocks;
 import com.nukateam.cgs.common.faundation.registry.items.ModItems;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
@@ -23,10 +23,10 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        this.dropSelf(ModBlocks.LEAD_BLOCK.get());
-        this.dropSelf(ModBlocks.RAW_LEAD_BLOCK.get());
-        this.dropItem(ModBlocks.LEAD_ORE.get(), ModItems.RAW_LEAD.get());
-        this.dropItem(ModBlocks.DEEPSLATE_LEAD_ORE.get(), ModItems.RAW_LEAD.get());
+        this.dropSelf(CgsBlocks.LEAD_BLOCK.get());
+        this.dropSelf(CgsBlocks.RAW_LEAD_BLOCK.get());
+        this.dropItem(CgsBlocks.LEAD_ORE.get(), ModItems.RAW_LEAD.get());
+        this.dropItem(CgsBlocks.DEEPSLATE_LEAD_ORE.get(), ModItems.RAW_LEAD.get());
     }
 
     private void dropItem(Block block, Item drop) {
@@ -43,6 +43,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected Iterable<Block> getKnownBlocks() {
-        return ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
+        return CgsBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
     }
 }

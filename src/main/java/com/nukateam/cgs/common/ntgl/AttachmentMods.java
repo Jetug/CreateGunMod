@@ -3,7 +3,7 @@ package com.nukateam.cgs.common.ntgl;
 import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
 import com.nukateam.cgs.common.faundation.registry.items.ModItems;
 import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
-import com.nukateam.cgs.common.faundation.registry.ModSounds;
+import com.nukateam.cgs.common.faundation.registry.CgsSounds;
 import com.nukateam.cgs.common.utils.GunUtils;
 import com.nukateam.example.common.registery.GunModifiers;
 import com.nukateam.ntgl.common.data.config.ProjectileConfig;
@@ -19,8 +19,6 @@ import net.minecraft.world.effect.MobEffects;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-
-import static com.nukateam.cgs.common.utils.GunUtils.isAmmoEven;
 
 public class AttachmentMods {
     public static final int MAX_FUEL = 20000;
@@ -41,7 +39,16 @@ public class AttachmentMods {
             .setProjectileType(ProjectileType.FIRE)
             .setDamage(0.2f)
             .setProjectileLife(10)
-            .setProjectileSpeed(2)
+            .setProjectileSpeed(1.5f)
+            .setProjectileAmount(6)
+            .setSpread(15)
+            .build();
+
+    public static final ProjectileConfig SUPER_FLAME_PROJECTILE = ProjectileConfig.Builder.create()
+            .setProjectileType(ProjectileType.FIRE)
+            .setDamage(1f)
+            .setProjectileLife(10)
+            .setProjectileSpeed(2.5f)
             .setProjectileAmount(8)
             .setSpread(10)
             .build();
@@ -50,8 +57,14 @@ public class AttachmentMods {
     public static final IGunModifier STEAM_ENGINE_MODIFIERS = new IGunModifier() {
         @Override
         public ProjectileConfig modifyProjectile(ProjectileConfig value, GunData data) {
-            if(data.gun.getItem() == CgsWeapons.FLAMETHROWER.get())
+            if(data.gun == null) return value;
+
+            if(data.gun.getItem() == CgsWeapons.FLAMETHROWER.get()) {
+                if(GunStateHelper.getCurrentAmmo(data) == CgsAmmo.BLAZE_CAKE){
+                    return SUPER_FLAME_PROJECTILE;
+                }
                 return FLAME_PROJECTILE;
+            }
             return value;
         }
 
@@ -64,7 +77,10 @@ public class AttachmentMods {
             else if(data.gun.getItem() == CgsWeapons.GATLING.get() && FuelUtils.hasFuel(data)) {
                 return rate / 2;
             } else if(data.gun.getItem() == CgsWeapons.FLAMETHROWER.get()) {
-                return 1;
+                if(GunStateHelper.getCurrentAmmo(data) == CgsAmmo.BLAZE_CAKE){
+                    return 1;
+                }
+                return 2;
             }
             return rate;
         }
@@ -93,8 +109,9 @@ public class AttachmentMods {
         public float modifyDamage(float damage, GunData data) {
             if(data.gun == null) return damage;
 
-            if(data.gun.getItem() == CgsWeapons.NAILGUN.get())
+            if(data.gun.getItem() == CgsWeapons.NAILGUN.get()) {
                 return damage * 2f;
+            }
             return IGunModifier.super.modifyDamage(damage, data);
         }
 
@@ -159,7 +176,7 @@ public class AttachmentMods {
         @Override
         public ResourceLocation modifyFireSound(ResourceLocation sound, GunData data) {
             if(data.gun.getItem() == CgsWeapons.NAILGUN.get()){
-                return ModSounds.NAILGUN_FIRE_STEAM.get().getLocation();
+                return CgsSounds.NAILGUN_FIRE_STEAM.get().getLocation();
             }
             return IGunModifier.super.modifyFireSound(sound, data);
         }
@@ -502,7 +519,7 @@ public class AttachmentMods {
 
         @Override
         public ResourceLocation modifyFireSound(ResourceLocation sound, GunData data) {
-            return ModSounds.BALLISTA_FIRE.getId();
+            return CgsSounds.BALLISTA_FIRE.getId();
         }
     };
 

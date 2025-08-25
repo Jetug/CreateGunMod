@@ -27,10 +27,11 @@ public class Gunsmithing {
         CgsWeapons.register(MOD_EVENT_BUS);
         ModItems.register(MOD_EVENT_BUS);
         AttachmentItems.register(MOD_EVENT_BUS);
-        ModBlocks.register(MOD_EVENT_BUS);
-        ModItemTabs.register(MOD_EVENT_BUS);
-        ModSounds.register(MOD_EVENT_BUS);
-        ModProjectiles.register(MOD_EVENT_BUS);
+        CgsBlocks.register(MOD_EVENT_BUS);
+        CgsItemTabs.register(MOD_EVENT_BUS);
+        CgsSounds.register(MOD_EVENT_BUS);
+        CgsProjectiles.register(MOD_EVENT_BUS);
+        CgsParticles.register(MOD_EVENT_BUS);
         MinecraftForge.EVENT_BUS.register(this);
         CgsAmmoType.register();
         CgsAmmo.register();

@@ -1,24 +1,30 @@
 package com.nukateam.cgs.common.faundation.entity;
 
+import com.nukateam.cgs.common.ntgl.CgsAmmo;
+import com.nukateam.ntgl.common.data.GunData;
+import com.nukateam.ntgl.common.data.config.ProjectileConfig;
+import com.nukateam.ntgl.common.data.config.gun.General;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
 import com.nukateam.ntgl.common.foundation.entity.FlameProjectile;
 import com.nukateam.ntgl.common.foundation.entity.ProjectileEntity;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
+import com.nukateam.ntgl.common.util.util.BufferUtil;
+import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
 import mod.azure.azurelib.core.animation.AnimatableManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseFireBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.function.Predicate;
@@ -29,12 +35,16 @@ import static net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent;
 public class BlazeProjectile extends ProjectileEntity implements ItemSupplier, AnimatedProjectile {
     protected final AnimatableInstanceCache cache = createInstanceCache(this);
 
+    private boolean isSuperHeated;
+
     public BlazeProjectile(EntityType<? extends ProjectileEntity> entityType, Level worldIn) {
         super(entityType, worldIn);
     }
 
-    public BlazeProjectile(EntityType<? extends ProjectileEntity> entityType, Level worldIn, LivingEntity shooter, ItemStack weapon, WeaponItem item, Gun modifiedGun) {
+    public BlazeProjectile(EntityType<? extends ProjectileEntity> entityType, Level worldIn,
+                           LivingEntity shooter, ItemStack weapon, WeaponItem item, Gun modifiedGun) {
         super(entityType, worldIn, shooter, weapon, item, modifiedGun);
+        isSuperHeated = GunStateHelper.getCurrentAmmo(new GunData(weapon, shooter)) == CgsAmmo.BLAZE_CAKE;
     }
 
     protected Predicate<BlockState> getBlockFilter() {
@@ -52,14 +62,46 @@ public class BlazeProjectile extends ProjectileEntity implements ItemSupplier, A
     }
 
     @Override
+    protected void addAdditionalSaveData(CompoundTag compound) {
+        super.addAdditionalSaveData(compound);
+        compound.putBoolean("isSuperHeated", this.isSuperHeated);
+    }
+
+    @Override
+    protected void readAdditionalSaveData(CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+        this.isSuperHeated = compound.getBoolean("isSuperHeated");
+    }
+
+    @Override
+    public void writeSpawnData(FriendlyByteBuf buffer) {
+        super.writeSpawnData(buffer);
+        buffer.writeBoolean(this.isSuperHeated);
+    }
+
+    @Override
+    public void readSpawnData(FriendlyByteBuf buffer) {
+        super.readSpawnData(buffer);
+        this.isSuperHeated = buffer.readBoolean();
+    }
+    @Override
     protected void onProjectileTick() {
         if (this.level().isClientSide) {
-            for (int i = 5; i > 0; i--) {
-                this.level().addParticle(ParticleTypes.FLAME, true, this.getX() - (this.getDeltaMovement().x() / i), this.getY() - (this.getDeltaMovement().y() / i), this.getZ() - (this.getDeltaMovement().z() / i), 0, 0, 0);
+
+            if(isSuperHeated){
+                for (int i = 5; i > 0; i--) {
+                    this.level().addParticle(ParticleTypes.SOUL_FIRE_FLAME, true, this.getX() - (this.getDeltaMovement().x() / i), this.getY() - (this.getDeltaMovement().y() / i), this.getZ() - (this.getDeltaMovement().z() / i), 0, 0, 0);
+                }
             }
+            else {
+                for (int i = 5; i > 0; i--) {
+                    this.level().addParticle(ParticleTypes.FLAME, true, this.getX() - (this.getDeltaMovement().x() / i), this.getY() - (this.getDeltaMovement().y() / i), this.getZ() - (this.getDeltaMovement().z() / i), 0, 0, 0);
+                }
+            }
+
             if (this.level().random.nextInt(2) == 0) {
                 this.level().addParticle(ParticleTypes.SMOKE, true, this.getX(), this.getY(), this.getZ(), 0, 0, 0);
-                this.level().addParticle(ParticleTypes.FLAME, true, this.getX(), this.getY(), this.getZ(), 0, 0, 0);
+//                this.level().addParticle(ParticleTypes.FLAME, true, this.getX(), this.getY(), this.getZ(), 0, 0, 0);
             }
         }
     }
@@ -73,6 +115,7 @@ public class BlazeProjectile extends ProjectileEntity implements ItemSupplier, A
             this.doEnchantDamageEffects(owner, entity);
         }
     }
+
 
     @Override
     protected void onHitBlock(BlockState blockstate, BlockPos blockpos, Direction face, double x, double y, double z) {
