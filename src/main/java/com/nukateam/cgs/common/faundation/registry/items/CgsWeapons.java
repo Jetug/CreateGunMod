@@ -13,21 +13,18 @@ import java.util.function.Function;
 
 public class CgsWeapons {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Gunsmithing.MOD_ID);
-
-//    public static final RegistryObject<WeaponItem> MACHINE_GUN = registerGun("machine_gun");
-//    public static final RegistryObject<WeaponItem> FLAMER = registerGun("flamethrower");
-
     //GUNS
     public static final RegistryObject<WeaponItem> FLINTLOCK = registerGun("flintlock", FlintlockItem::new);
     public static final RegistryObject<WeaponItem> REVOLVER = registerGun("revolver", RevolverItem::new);
     public static final RegistryObject<WeaponItem> SHOTGUN = registerGun("shotgun", ShotgunItem::new);
     public static final RegistryObject<WeaponItem> NAILGUN = registerGun("nailgun", NailgunItem::new);
     public static final RegistryObject<WeaponItem> GATLING = registerGun("gatling", GatlingItem::new);
-    public static final RegistryObject<WeaponItem> FLAMETHROWER = registerGun("flamethrower", FlamethrowerItem::new);
+    public static final RegistryObject<WeaponItem> BLAZEGUN = registerGun("blazegun", BlazegunItem::new);
     public static final RegistryObject<WeaponItem> LAUNCHER = registerGun("launcher", LauncherItem::new);
     public static final RegistryObject<WeaponItem> HAMMER = registerGun("hammer", properties ->
             new HammerItem(properties,  new HammerModifier()));
 
+    //GRENADES
     public static final RegistryObject<ThrowableItem> GRENADE = registerGrenade("frag_grenade", ThrowableItem::new);
 
     private static RegistryObject<WeaponItem> registerGun(String name, Function<Item.Properties, WeaponItem> item) {

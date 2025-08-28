@@ -1,14 +1,11 @@
 package com.nukateam.cgs.common.faundation.entity;
 
 import com.nukateam.cgs.common.ntgl.CgsAmmo;
+import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.ntgl.common.data.GunData;
-import com.nukateam.ntgl.common.data.config.ProjectileConfig;
-import com.nukateam.ntgl.common.data.config.gun.General;
 import com.nukateam.ntgl.common.data.config.gun.Gun;
-import com.nukateam.ntgl.common.foundation.entity.FlameProjectile;
 import com.nukateam.ntgl.common.foundation.entity.ProjectileEntity;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
-import com.nukateam.ntgl.common.util.util.BufferUtil;
 import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
 import mod.azure.azurelib.core.animation.AnimatableManager;
@@ -24,8 +21,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseFireBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Predicate;
 
@@ -36,6 +33,7 @@ public class BlazeProjectile extends ProjectileEntity implements ItemSupplier, A
     protected final AnimatableInstanceCache cache = createInstanceCache(this);
 
     private boolean isSuperHeated;
+    private boolean isStrong;
 
     public BlazeProjectile(EntityType<? extends ProjectileEntity> entityType, Level worldIn) {
         super(entityType, worldIn);
@@ -45,6 +43,7 @@ public class BlazeProjectile extends ProjectileEntity implements ItemSupplier, A
                            LivingEntity shooter, ItemStack weapon, WeaponItem item, Gun modifiedGun) {
         super(entityType, worldIn, shooter, weapon, item, modifiedGun);
         isSuperHeated = GunStateHelper.getCurrentAmmo(new GunData(weapon, shooter)) == CgsAmmo.BLAZE_CAKE;
+        isStrong = !GunStateHelper.hasAttachmentEquipped(weapon, CgsAttachmentTypes.ENGINE);
     }
 
     protected Predicate<BlockState> getBlockFilter() {
@@ -53,37 +52,47 @@ public class BlazeProjectile extends ProjectileEntity implements ItemSupplier, A
 
     @Override
     public void tick() {
+        if(!isStrong && isInWater()) {
+            this.remove(RemovalReason.KILLED);
+        }
         super.tick();
     }
 
     @Override
-    public ItemStack getItem() {
-        return new ItemStack(Items.FIRE_CHARGE);
+    public @NotNull ItemStack getItem() {
+        if(isStrong)
+            return new ItemStack(Items.FIRE_CHARGE);
+        else return ItemStack.EMPTY;
     }
 
     @Override
     protected void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         compound.putBoolean("isSuperHeated", this.isSuperHeated);
+        compound.putBoolean("isStrong", this.isStrong);
     }
 
     @Override
     protected void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
         this.isSuperHeated = compound.getBoolean("isSuperHeated");
+        this.isStrong = compound.getBoolean("isStrong");
     }
 
     @Override
     public void writeSpawnData(FriendlyByteBuf buffer) {
         super.writeSpawnData(buffer);
         buffer.writeBoolean(this.isSuperHeated);
+        buffer.writeBoolean(this.isStrong);
     }
 
     @Override
     public void readSpawnData(FriendlyByteBuf buffer) {
         super.readSpawnData(buffer);
         this.isSuperHeated = buffer.readBoolean();
+        this.isStrong = buffer.readBoolean();
     }
+
     @Override
     protected void onProjectileTick() {
         if (this.level().isClientSide) {

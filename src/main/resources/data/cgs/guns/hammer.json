@@ -50,11 +50,15 @@
     }
   },
   "sounds": {
-    "fire": "ntgl:item.pistol10mm.fire",
-    "reload": "ntgl:item.pistol45mm.reload",
-    "cock": "ntgl:item.pistol45mm.cock",
-    "silencedFire": "ntgl:item.pistol10mm.silenced_fire",
-    "enchantedFire": "ntgl:item.pistol10mm.enchanted_fire"
+    "shot": "cgs:gun.hammer.shot",
+    "reload": "cgs:gun.hammer.reload",
+    "magin": "cgs:gun.hammer.magin",
+    "magout": "cgs:gun.hammer.magout",
+    "equip": "cgs:gun.hammer.equip",
+    "boltopen": "cgs:gun.hammer.boltopen",
+    "boltclose": "cgs:gun.hammer.boltclose",
+    "swing_start": "cgs:gun.hammer.swing_start",
+    "swing_end": "cgs:gun.hammer.swing_end"
   },
   "modules": {
     "attachments": {

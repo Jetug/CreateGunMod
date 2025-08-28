@@ -36,7 +36,7 @@ public class AttachmentMods {
             .build();
 
     public static final ProjectileConfig FLAME_PROJECTILE = ProjectileConfig.Builder.create()
-            .setProjectileType(ProjectileType.FIRE)
+            .setProjectileType(CgsProjectileTypes.FIREBALL)
             .setDamage(0.2f)
             .setProjectileLife(10)
             .setProjectileSpeed(1.5f)
@@ -45,7 +45,7 @@ public class AttachmentMods {
             .build();
 
     public static final ProjectileConfig SUPER_FLAME_PROJECTILE = ProjectileConfig.Builder.create()
-            .setProjectileType(ProjectileType.FIRE)
+            .setProjectileType(CgsProjectileTypes.FIREBALL)
             .setDamage(1f)
             .setProjectileLife(10)
             .setProjectileSpeed(2.5f)
@@ -59,7 +59,7 @@ public class AttachmentMods {
         public ProjectileConfig modifyProjectile(ProjectileConfig value, GunData data) {
             if(data.gun == null) return value;
 
-            if(data.gun.getItem() == CgsWeapons.FLAMETHROWER.get()) {
+            if(data.gun.getItem() == CgsWeapons.BLAZEGUN.get()) {
                 if(GunStateHelper.getCurrentAmmo(data) == CgsAmmo.BLAZE_CAKE){
                     return SUPER_FLAME_PROJECTILE;
                 }
@@ -76,7 +76,7 @@ public class AttachmentMods {
                 return rate * 2;
             else if(data.gun.getItem() == CgsWeapons.GATLING.get() && FuelUtils.hasFuel(data)) {
                 return rate / 2;
-            } else if(data.gun.getItem() == CgsWeapons.FLAMETHROWER.get()) {
+            } else if(data.gun.getItem() == CgsWeapons.BLAZEGUN.get()) {
                 if(GunStateHelper.getCurrentAmmo(data) == CgsAmmo.BLAZE_CAKE){
                     return 1;
                 }
@@ -145,7 +145,7 @@ public class AttachmentMods {
         public Set<AmmoHolder> modifyFuelItems(Set<AmmoHolder> fuel, GunData data) {
             if(data.gun == null) return fuel;
 
-            if(data.gun.getItem() == CgsWeapons.FLAMETHROWER.get()) {
+            if(data.gun.getItem() == CgsWeapons.BLAZEGUN.get()) {
                 return Set.of(AmmoHolders.WATER);
             }
             return Set.of(AmmoHolders.BURNABLE, AmmoHolders.WATER);

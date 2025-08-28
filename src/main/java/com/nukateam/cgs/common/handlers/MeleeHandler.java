@@ -121,9 +121,13 @@ public class MeleeHandler {
                 .relative(planeDirs[1], v);
 
         var blockState = player.level().getBlockState(targetPos);
-        if(handler.isToolTierSufficient(blockState, toolTier) && handler.isMineable(blockState)) {
-            if(!player.isCreative())
+        var canDistroy = blockState.getDestroySpeed(player.level(), targetPos) >= 0;
+
+        if(canDistroy && handler.isToolTierSufficient(blockState, toolTier) && handler.isMineable(blockState)) {
+            if(!player.isCreative()) {
                 StackUtils.damageItem(stack, 1);
+            }
+
             player.level().destroyBlock(targetPos, handler.isCanDrop(blockState));
         }
     }
@@ -141,9 +145,11 @@ public class MeleeHandler {
     }
 
     private static boolean isMineable(BlockState blockState) {
-        return !blockState.is(BlockTags.MINEABLE_WITH_AXE) && !blockState.is(BlockTags.MINEABLE_WITH_HOE);
+//        return !blockState.is(BlockTags.MINEABLE_WITH_AXE) && !blockState.is(BlockTags.MINEABLE_WITH_HOE);
 //        return blockState.is(BlockTags.MINEABLE_WITH_PICKAXE)
 //                || blockState.is(BlockTags.MINEABLE_WITH_SHOVEL);
+
+        return true;
     }
 
     private static boolean isCanDrop(BlockState blockState) {

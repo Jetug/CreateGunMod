@@ -13,7 +13,7 @@
     "damage": 1.0,
     "size": 1.0,
     "speed": 50.0,
-    "life": 80,
+    "life": 100,
     "gravity": true,
 
     "explosion": {
@@ -23,7 +23,7 @@
     }
   },
   "sounds": {
-    "throw": "ntgl:item.shotgun.fire",
-    "pin": "ntgl:item.shotgun.reload"
+    "throw": "cgs:gun.grenade.throw",
+    "pin": "cgs:gun.grenade.pin"
   }
 }

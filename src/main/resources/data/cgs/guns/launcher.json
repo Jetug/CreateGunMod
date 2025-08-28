@@ -43,7 +43,7 @@
 
         "explosion": {
           "damage": 40,
-          "radius": 8,
+          "radius": 6,
           "knockback": 1.0
         }
       }
@@ -94,8 +94,12 @@
   },
   "sounds": {
     "fire": "cgs:gun.launcher.fire",
-    "reload": "cgs:gun.launcher.reload",
-    "cock": "cgs:gun.launcher.cock"
+    "boltopen": "cgs:gun.launcher.boltopen",
+    "equip": "cgs:gun.launcher.equip",
+    "magin": "cgs:gun.launcher.magin",
+    "magout": "cgs:gun.launcher.magout",
+    "magin_mini": "cgs:gun.launcher.magin_mini",
+    "magout_mini": "cgs:gun.launcher.magout_mini"
   },
   "modules": {
     "zoom": {

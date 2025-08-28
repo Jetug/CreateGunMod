@@ -39,6 +39,23 @@ public class CgsSounds {
 
     public static final RegistryObject<SoundEvent> LAUNCHER_FIRE  = register("gun.launcher.fire"  );
     public static final RegistryObject<SoundEvent> BALLISTA_FIRE  = register("gun.launcher.ballista_fire"  );
+    public static final RegistryObject<SoundEvent> LAUNCHER_BOLT_OPEN = register("gun.launcher.boltopen");
+    public static final RegistryObject<SoundEvent> LAUNCHER_EQUIP = register("gun.launcher.equip");
+    public static final RegistryObject<SoundEvent> LAUNCHER_MAG_IN = register("gun.launcher.magin");
+    public static final RegistryObject<SoundEvent> LAUNCHER_MAG_IN_MINI = register("gun.launcher.magin_mini");
+    public static final RegistryObject<SoundEvent> LAUNCHER_MAG_OUT = register("gun.launcher.magout");
+    public static final RegistryObject<SoundEvent> LAUNCHER_MAG_OUT_MINI = register("gun.launcher.magout_mini");
+
+    public static final RegistryObject<SoundEvent> GRENADE_PIN = register("gun.grenade.pin");
+    public static final RegistryObject<SoundEvent> GRENADE_THROW = register("gun.grenade.throw");
+
+    public static final RegistryObject<SoundEvent> HAMMER_BOLT_CLOSE = register("gun.hammer.boltclose");
+    public static final RegistryObject<SoundEvent> HAMMER_BOLT_OPEN = register("gun.hammer.boltopen");
+    public static final RegistryObject<SoundEvent> HAMMER_MAG_IN = register("gun.hammer.magin");
+    public static final RegistryObject<SoundEvent> HAMMER_MAG_OUT = register("gun.hammer.magout");
+    public static final RegistryObject<SoundEvent> HAMMER_RELOAD = register("gun.hammer.reload");
+    public static final RegistryObject<SoundEvent> HAMMER_SHOT = register("gun.hammer.shot");
+    public static final RegistryObject<SoundEvent> HAMMER_EQUIP = register("gun.hammer.equip");
 
     private static RegistryObject<SoundEvent> register(String key) {
         return REGISTER.register(key, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(Gunsmithing.MOD_ID, key)));

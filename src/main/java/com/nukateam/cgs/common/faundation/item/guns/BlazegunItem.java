@@ -4,10 +4,10 @@ import com.nukateam.cgs.client.renderers.GatlingRenderer;
 import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
 import net.minecraftforge.common.util.Lazy;
 
-public class FlamethrowerItem extends CgsGunItem {
+public class BlazegunItem extends CgsGunItem {
     private final Lazy<GatlingRenderer> RENDERER = Lazy.of(() -> new GatlingRenderer());
 
-    public FlamethrowerItem(Properties properties, IGunModifier... modifiers) {
+    public BlazegunItem(Properties properties, IGunModifier... modifiers) {
         super(properties, modifiers);
     }
 

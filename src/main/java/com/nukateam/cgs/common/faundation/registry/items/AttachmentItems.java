@@ -99,7 +99,7 @@ public class AttachmentItems {
     public static final RegistryObject<Item> NAILGUN_SPLITTER = ITEMS.register("nailgun_splitter",
             () -> new BarrelItem(Barrel.create(1f, AttachmentMods.NAILGUN_SPLIT_BARREL), ITEM_PROPERTIES));
 
-    //FLAMETHROWER
+    //BLAZEGUN
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> POTION_TANK = ITEMS.register("potion_tank",
             () -> new AttachmentItem<>(CgsAttachmentTypes.FRAME,

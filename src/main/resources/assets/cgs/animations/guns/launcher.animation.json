@@ -1030,6 +1030,11 @@
 						}
 					}
 				}
+			},
+			"sound_effects": {
+				"0.1667": {
+					"effect": "equip"
+				}
 			}
 		},
 		"reload": {
@@ -1319,6 +1324,17 @@
 							"vector": [0, 0, 0]
 						}
 					}
+				}
+			},
+			"sound_effects": {
+				"0.0": {
+					"effect": "boltopen"
+				},
+				"0.5833": {
+					"effect": "magout"
+				},
+				"1.9167": {
+					"effect": "magin"
 				}
 			}
 		},
@@ -1679,6 +1695,20 @@
 					"position": {
 						"vector": [0, -0.17431, 2.99239]
 					}
+				}
+			},
+			"sound_effects": {
+				"0.0833": {
+					"effect": "magout_mini"
+				},
+				"0.7083": {
+					"effect": "magout_mini"
+				},
+				"2.25": {
+					"effect": "magin_mini"
+				},
+				"3.0": {
+					"effect": "magin_mini"
 				}
 			}
 		},
@@ -3085,6 +3115,11 @@
 							"vector": [1, 1, 1]
 						}
 					}
+				}
+			},
+			"sound_effects": {
+				"0.0": {
+					"effect": "reload"
 				}
 			}
 		},

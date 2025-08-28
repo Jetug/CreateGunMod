@@ -98,5 +98,74 @@
 
    "gun.launcher.ballista_fire": { "subtitle": "subtitle.ntgl.fire", "sounds": [
       { "name": "cgs:gun/launcher/ballista_fire" }
+   ]},
+
+   "gun.launcher.boltopen": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+      { "name": "cgs:gun/launcher/boltopen" }
+   ]},
+
+   "gun.launcher.equip": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+      { "name": "cgs:gun/launcher/equip" }
+   ]},
+
+   "gun.launcher.magin": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+      { "name": "cgs:gun/launcher/magin" }
+   ]},
+
+   "gun.launcher.magin_mini": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+      { "name": "cgs:gun/launcher/magin_mini" }
+   ]},
+
+   "gun.launcher.magout": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+      { "name": "cgs:gun/launcher/magout" }
+   ]},
+
+   "gun.launcher.magout_mini": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+      { "name": "cgs:gun/launcher/magout_mini" }
+   ]},
+
+
+   "gun.grenade.pin": { "subtitle": "subtitle.ntgl.cock", "sounds": [
+      { "name": "cgs:gun/grenade/pin" }
+   ]},
+
+   "gun.grenade.throw": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+      { "name": "cgs:gun/grenade/throw" }
+   ]},
+
+   "gun.hammer.boltclose": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+      { "name": "cgs:gun/hammer/boltclose" }
+   ]},
+
+   "gun.hammer.boltopen": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+      { "name": "cgs:gun/hammer/boltopen" }
+   ]},
+
+   "gun.hammer.magin": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+      { "name": "cgs:gun/hammer/magin" }
+   ]},
+
+   "gun.hammer.magout": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+      { "name": "cgs:gun/hammer/magin" }
+   ]},
+
+   "gun.hammer.reload": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+      { "name": "cgs:gun/hammer/reload" }
+   ]},
+
+   "gun.hammer.shot": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+      { "name": "cgs:gun/hammer/shot" }
+   ]},
+
+   "gun.hammer.equip": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+      { "name": "cgs:gun/hammer/equip" }
+   ]},
+
+   "gun.hammer.swing_start": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+      { "name": "cgs:gun/hammer/swing_start" }
+   ]},
+
+   "gun.hammer.swing_end": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+      { "name": "cgs:gun/hammer/swing_end" }
    ]}
 }
