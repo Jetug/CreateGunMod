@@ -20,6 +20,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseFireBlock;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FireBlock;
+import net.minecraft.world.level.block.SoulFireBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
@@ -135,7 +138,7 @@ public class BlazeProjectile extends ProjectileEntity implements ItemSupplier, A
             if (!(entity instanceof Mob) || getMobGriefingEvent(this.level(), entity)) {
                 blockpos = blockpos.relative(face);
                 if (this.level().isEmptyBlock(blockpos)) {
-                    this.level().setBlockAndUpdate(blockpos, BaseFireBlock.getState(this.level(), blockpos));
+                    this.level().setBlockAndUpdate(blockpos, SoulFireBlock.getState(this.level(), blockpos));
                 }
             }
         }

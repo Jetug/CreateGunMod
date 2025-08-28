@@ -13,8 +13,13 @@
   "item.cgs.flintlock": "Кремневый пистолет",
   "item.cgs.revolver" : "Револьвер",
   "item.cgs.shotgun"  : "Дробовик",
-  "item.cgs.nailgun"  : "Гвозьдемёт",
+  "item.cgs.nailgun"  : "Гвоздемёт",
   "item.cgs.gatling"  : "Гатлинг",
+  "item.cgs.blazegun": "Всполохомёт",
+  "item.cgs.launcher": "Ракетница",
+  "item.cgs.hammer": "Пневмомолот",
+  "item.cgs.axe": "Пневмотопор",
+  "item.cgs.frag_grenade": "Осколочная граната",
 
   "item.cgs.barrel": "Ствол",
   "item.cgs.barrel_sturdy": "Укреплённый ствол",
@@ -30,10 +35,11 @@
   "item.cgs.round_7mm"      : "Патрон гатлинга",
   "item.cgs.round_10mm"     : "Патрон револьвера",
   "item.cgs.round_shotgun"  : "Патрон дробовика",
+  "item.cgs.round_shotgun_blank": "Холостой патрон дробовика",
   "item.cgs.paper_cartridge": "Бумажный патрон",
   "item.cgs.nail"           : "Гвоздь",
 
-  "item.cgs.steam_engine" : "Паравой двигатель",
+  "item.cgs.steam_engine" : "Паровой двигатель",
   "item.cgs.scope"        : "Оптический прицел",
   "item.cgs.stock"        : "Приклад",
 
@@ -43,13 +49,39 @@
   "item.cgs.round_belt": "Револьвер: Патронная лента",
   "item.cgs.auto_fire": "Револьвер: Авто огонь",
   "item.cgs.long_barrel": "Револьвер: Длинный ствол",
-  
+  "item.cgs.bayonet": "Штык",
+  "item.cgs.big_bayonet": "Большой штык",
+
   "item.cgs.shotgun_drum": "Дробовик: Барабаны",
   "item.cgs.shotgun_pump": "Дробовик: Автоматический зарядник",
   "item.cgs.shotgun_long_barrel": "Дробовик: Длинные стволы",
   "item.cgs.shotgun_spread_barrel": "Дробовик: Рассеивающие стволы",
 
-  "item.cgs.nailgun_splitter": "Гвозьдемёт: Разделяющий ствол",
+  "item.cgs.nailgun_splitter": "Гвоздемёт: Разделяющий ствол",
+
+  "item.cgs.potion_tank": "Резервуар для зелий",
+
+  "item.cgs.launcher_auto": "Авто лаунчер",
+  "item.cgs.ballistazooka": "Баллистазука",
+  "item.cgs.launcher_hook": "Пневмокрюк",
+  "item.cgs.item_launcher": "Предметомёт",
+
+  "item.cgs.flintlock_long_barrel": "Кремневый пистолет: Длинный ствол",
+  "item.cgs.flintlock_mortar_barrel": "Кремневый пистолет: Ствол мортиры",
+
+  "item.cgs.shotgun_receiver": "Молот: Ресивер дробовика",
+  "item.cgs.hammer_stone": "Каменная головка молота",
+  "item.cgs.hammer_iron": "Железная головка молота",
+  "item.cgs.hammer_diamond": "Алмазная головка молота",
+  "item.cgs.hammer_netherite": "Незеритовая головка молота",
+  "item.cgs.axe_stone": "Каменная головка топора",
+  "item.cgs.axe_iron": "Железная головка топора",
+  "item.cgs.axe_diamond": "Алмазная головка топора",
+  "item.cgs.axe_netherite": "Незеритовая головка топора",
+
+  "item.cgs.rocket": "Ракета",
+  "item.cgs.rocket_small": "Маленькая ракета",
+  "item.cgs.spear": "Копье",
 
   "item.cgs.raw_lead": "Рудный свинец",
   "item.cgs.lead_ingot": "Свинцовый слиток",

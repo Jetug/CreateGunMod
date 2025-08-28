@@ -495,14 +495,24 @@ public class AttachmentMods {
         }
 
         @Override
+        public int modifyFireRate(int rate, GunData data) {
+            return 15;
+        }
+
+        @Override
+        public float modifyProjectileSpread(float spread, GunData data) {
+            return 1;
+        }
+
+        @Override
         public double modifyProjectileSpeed(double speed, GunData data) {
-            return 20;
+            return 40;
         }
 
         @Override
         public int modifyReloadTime(int reloadTime, GunData data) {
             if(FuelUtils.hasFuel(data)) {
-                return 40;
+                return 80;
             }
             return 140;
         }

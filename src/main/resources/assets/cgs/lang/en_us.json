@@ -15,6 +15,11 @@
   "item.cgs.shotgun": "Shotgun",
   "item.cgs.nailgun": "Nailgun",
   "item.cgs.gatling": "Gatling",
+  "item.cgs.blazegun": "Blazegun",
+  "item.cgs.launcher": "Launcher",
+  "item.cgs.hammer": "Pneumatic Hammer",
+  "item.cgs.axe": "Pneumatic Axe",
+  "item.cgs.frag_grenade": "Frag Grenade",
 
   "item.cgs.barrel": "Barrel",
   "item.cgs.barrel_sturdy": "Sturdy Barrel",
@@ -30,12 +35,18 @@
   "item.cgs.round_7mm": "Gatling Round",
   "item.cgs.round_10mm": "Revolver Round",
   "item.cgs.round_shotgun": "Shotgun Round",
+  "item.cgs.round_shotgun_blank": "Blank Shotgun Round",
   "item.cgs.paper_cartridge": "Paper Cartridge",
   "item.cgs.nail": "Nail",
+  "item.cgs.rocket": "Rocket",
+  "item.cgs.rocket_small": "Small Rocket",
+  "item.cgs.spear": "Spear",
 
   "item.cgs.steam_engine": "Steam Engine",
   "item.cgs.scope": "Scope",
   "item.cgs.stock": "Stock",
+  "item.cgs.bayonet": "Bayonet",
+  "item.cgs.big_bayonet": "Large Bayonet",
 
   "item.cgs.iron_sight": "Gatling: Iron Sight",
   "item.cgs.gatling_drum": "Gatling: Drum Magazine",
@@ -50,6 +61,26 @@
   "item.cgs.shotgun_spread_barrel": "Shotgun: Spreading Barrels",
 
   "item.cgs.nailgun_splitter": "Nailgun: Splitter Barrel",
+
+  "item.cgs.potion_tank": "Potion Tank",
+
+  "item.cgs.launcher_auto": "Auto Launcher",
+  "item.cgs.ballistazooka": "Ballistazooka",
+  "item.cgs.launcher_hook": "Pneumatic Hook",
+  "item.cgs.item_launcher": "Item Launcher",
+
+  "item.cgs.flintlock_long_barrel": "Flintlock: Long Barrel",
+  "item.cgs.flintlock_mortar_barrel": "Flintlock: Mortar Barrel",
+
+  "item.cgs.shotgun_receiver": "Hammer: Shotgun Receiver",
+  "item.cgs.hammer_stone": "Stone Hammer Head",
+  "item.cgs.hammer_iron": "Iron Hammer Head",
+  "item.cgs.hammer_diamond": "Diamond Hammer Head",
+  "item.cgs.hammer_netherite": "Netherite Hammer Head",
+  "item.cgs.axe_stone": "Stone Axe Head",
+  "item.cgs.axe_iron": "Iron Axe Head",
+  "item.cgs.axe_diamond": "Diamond Axe Head",
+  "item.cgs.axe_netherite": "Netherite Axe Head",
 
   "item.cgs.raw_lead": "Raw Lead",
   "item.cgs.lead_ingot": "Lead Ingot",

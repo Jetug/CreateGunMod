@@ -36,6 +36,8 @@ public class ModItems {
     @ItemModelGen
     public static final RegistryObject<Item> PRESS_FORM_10MM = registerItem("press_form_10mm");
 
+    public static final RegistryObject<Item> PRESS_FORM_ROKET = registerItem("press_form_roket");
+
     @ItemModelGen
     public static final RegistryObject<Item> SHOTGUN_PRESS_FORM = registerItem("press_form_shotgun");
 

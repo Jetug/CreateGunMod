@@ -60,7 +60,7 @@ public class LauncherAnimator extends GunAnimator {
     @Override
     protected RawAnimation getShootingAnimation(AnimationState<GunAnimator> event) {
         if(isBallista){
-            var animation = begin().then(getGunAnim(SHOT_BALLISTA), PLAY_ONCE);
+            var animation = begin().then(getGunAnim(SHOT_BALLISTA), LOOP);
             animationHelper.syncAnimation(event, rate, SHOT_BALLISTA);
             return animation;
         }
