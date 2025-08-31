@@ -9,8 +9,11 @@ import com.nukateam.ntgl.common.data.holders.AttachmentType;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.ntgl.common.util.util.GunStateHelper;
+import mod.azure.azurelib.core.animation.AnimatableManager;
+import mod.azure.azurelib.core.animation.AnimationController;
 import mod.azure.azurelib.core.animation.AnimationState;
 import mod.azure.azurelib.core.animation.RawAnimation;
+import mod.azure.azurelib.core.object.PlayState;
 import net.minecraft.world.item.ItemDisplayContext;
 
 import static mod.azure.azurelib.core.animation.Animation.LoopType.*;
@@ -22,15 +25,27 @@ public class LauncherAnimator extends GunAnimator {
     public static final String RELOAD_BALLISTA_AUTO = "reload_ballista_auto";
     public static final String RELOAD_AUTO = "reload_auto";
     public static final String SHOT_BALLISTA = "shot_ballista";
+    public static final String HIDE_SIGHTS = "hide_sights";
 
     private int ammoCount;
     private boolean isBallista;
     private boolean isAutoLauncher;
     private boolean hasAir;
+    private boolean hasScope;
+
+    protected final AnimationController<GunAnimator> MISC_CONTROLLER;
 
     public LauncherAnimator(ItemDisplayContext transformType, DynamicGunRenderer<GunAnimator> renderer) {
         super(transformType, renderer);
+        MISC_CONTROLLER = createController("misc_controller", animateMisc());
     }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
+        super.registerControllers(controllerRegistrar);
+        controllerRegistrar.add(MISC_CONTROLLER);
+    }
+
     @Override
     protected void tickStart() {
         super.tickStart();
@@ -42,6 +57,7 @@ public class LauncherAnimator extends GunAnimator {
                 this.isBallista = magazineAttachment == AttachmentItems.BALLISTAZOOKA.get();
                 this.isAutoLauncher = magazineAttachment == AttachmentItems.AUTO_LAUNCHER.get();
                 this.hasAir = GunUtils.hasAir(data);
+                this.hasScope = GunStateHelper.hasAttachmentEquipped(getStack(), AttachmentType.SCOPE);
             }
         }
         catch (IllegalStateException e){
@@ -86,5 +102,15 @@ public class LauncherAnimator extends GunAnimator {
             return animation;
         }
         return super.getDefaultReloadAnimation(event);
+    }
+
+    private AnimationController.AnimationStateHandler<GunAnimator> animateMisc() {
+        return (event) -> {
+            if(hasScope){
+                var hideSights = begin().then(getGunAnim(HIDE_SIGHTS), LOOP);
+                return event.setAndContinue(hideSights);
+            }
+            return PlayState.STOP;
+        };
     }
 }
