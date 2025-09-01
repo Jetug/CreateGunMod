@@ -1,0 +1,35 @@
+{
+  "type": "create:mechanical_crafting",
+  "acceptMirrored": false,
+  "key": {
+    "B": {
+      "tag": "create:toolboxes"
+    },
+    "C": {
+      "item": "create:copper_sheet"
+    },
+    "L": {
+      "item": "create:brass_sheet"
+    },
+    "P": {
+      "item": "create:fluid_pipe"
+    },
+    "T": {
+      "item": "create:copper_backtank"
+    },
+    "c": {
+      "item": "create:cogwheel"
+    },
+    "p": {
+      "item": "create:precision_mechanism"
+    }
+  },
+  "pattern": [
+    "LLCC ",
+    "PPBBp",
+    "PPccT"
+  ],
+  "result": {
+    "item": "cgs:launcher_auto"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "tag": "forge:stone"
+    }
+  },
+  "pattern": [
+    "B ",
+    "BB",
+    "B "
+  ],
+  "result": {
+    "item": "cgs:hammer_stone"
+  },
+  "show_notification": true
+}

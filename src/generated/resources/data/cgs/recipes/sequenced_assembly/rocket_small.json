@@ -1,0 +1,66 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "tag": "forge:plates/brass"
+  },
+  "loops": 1,
+  "results": [
+    {
+      "count": 4,
+      "item": "cgs:rocket_small"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "create:brass_sheet"
+        },
+        {
+          "tag": "forge:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "item": "create:brass_sheet"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "create:brass_sheet"
+        },
+        {
+          "tag": "forge:gunpowder"
+        }
+      ],
+      "results": [
+        {
+          "item": "create:brass_sheet"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "create:brass_sheet"
+        },
+        {
+          "tag": "forge:plates/brass"
+        }
+      ],
+      "results": [
+        {
+          "item": "create:brass_sheet"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "create:brass_sheet"
+  }
+}

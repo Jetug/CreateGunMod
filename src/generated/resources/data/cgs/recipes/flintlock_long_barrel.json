@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "item": "cgs:barrel"
+    },
+    "L": {
+      "tag": "forge:stripped_logs"
+    }
+  },
+  "pattern": [
+    "BB",
+    "LL"
+  ],
+  "result": {
+    "item": "cgs:flintlock_long_barrel"
+  },
+  "show_notification": true
+}

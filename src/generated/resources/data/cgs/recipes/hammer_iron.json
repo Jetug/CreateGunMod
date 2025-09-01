@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "pattern": [
+    "B ",
+    "BB",
+    "B "
+  ],
+  "result": {
+    "item": "cgs:hammer_iron"
+  },
+  "show_notification": true
+}

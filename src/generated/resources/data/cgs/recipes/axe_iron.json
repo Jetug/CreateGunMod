@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "pattern": [
+    "BB",
+    "B "
+  ],
+  "result": {
+    "item": "cgs:axe_iron"
+  },
+  "show_notification": true
+}

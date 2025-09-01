@@ -1,0 +1,30 @@
+{
+  "type": "create:mechanical_crafting",
+  "acceptMirrored": false,
+  "key": {
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "L": {
+      "item": "create:brass_block"
+    },
+    "P": {
+      "item": "create:mechanical_piston"
+    },
+    "T": {
+      "item": "create:copper_backtank"
+    },
+    "W": {
+      "tag": "forge:stripped_logs"
+    }
+  },
+  "pattern": [
+    "PLT",
+    "WA ",
+    " A ",
+    " A "
+  ],
+  "result": {
+    "item": "cgs:hammer"
+  }
+}

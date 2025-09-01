@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "I": {
+      "item": "create:iron_sheet"
+    },
+    "W": {
+      "tag": "forge:stripped_logs"
+    }
+  },
+  "pattern": [
+    "II ",
+    "IW ",
+    "  W"
+  ],
+  "result": {
+    "count": 4,
+    "item": "cgs:spear"
+  },
+  "show_notification": true
+}

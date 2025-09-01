@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_barrel_sturdy": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "cgs:barrel_sturdy"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "cgs:shotgun_long_barrel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_barrel_sturdy",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cgs:shotgun_long_barrel"
+    ]
+  },
+  "sends_telemetry_event": false
+}

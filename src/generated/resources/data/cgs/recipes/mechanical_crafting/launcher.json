@@ -1,0 +1,33 @@
+{
+  "type": "create:mechanical_crafting",
+  "acceptMirrored": false,
+  "key": {
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "C": {
+      "item": "create:chute"
+    },
+    "I": {
+      "item": "create:iron_sheet"
+    },
+    "L": {
+      "item": "create:brass_sheet"
+    },
+    "P": {
+      "item": "create:fluid_pipe"
+    },
+    "W": {
+      "tag": "forge:stripped_logs"
+    }
+  },
+  "pattern": [
+    "APLLPA",
+    "ICCCCI",
+    "WAWWA ",
+    " WW   "
+  ],
+  "result": {
+    "item": "cgs:launcher"
+  }
+}

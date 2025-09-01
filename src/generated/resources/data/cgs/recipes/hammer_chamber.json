@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "B": {
+      "item": "create:sturdy_sheet"
+    },
+    "C": {
+      "item": "create:copper_sheet"
+    },
+    "L": {
+      "item": "create:brass_sheet"
+    }
+  },
+  "pattern": [
+    "LBL",
+    "ACC"
+  ],
+  "result": {
+    "item": "cgs:hammer_chamber"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,49 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "create:fluid_pipe"
+  },
+  "loops": 1,
+  "results": [
+    {
+      "item": "cgs:rocket"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "create:fluid_pipe"
+        },
+        {
+          "tag": "forge:gunpowder"
+        }
+      ],
+      "results": [
+        {
+          "item": "create:fluid_pipe"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "create:fluid_pipe"
+        },
+        {
+          "tag": "forge:plates/brass"
+        }
+      ],
+      "results": [
+        {
+          "item": "create:fluid_pipe"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "create:fluid_pipe"
+  }
+}
