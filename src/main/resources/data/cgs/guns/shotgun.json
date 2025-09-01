@@ -4,7 +4,7 @@
     "fireMode": ["ntg:semi", "ntgl:multi"],
     "gripType": "ntgl:one_handed",
     "maxAmmo": 2,
-    "damage": 40.0,
+    "damage": 25.0,
     "equipTime": 0,
     "autoReload": false,
     "reloadTime": 40,
@@ -28,9 +28,10 @@
         "damage": 1.0,
         "size": 0.2,
         "speed": 20.0,
-        "life": 180,
+        "life": 40,
         "spread": 15.0,
-        "projectileAmount": 12
+        "projectileAmount": 12,
+        "damageReduceOverLife": true
       }
     },
     "cgs:round_shotgun_blank": {

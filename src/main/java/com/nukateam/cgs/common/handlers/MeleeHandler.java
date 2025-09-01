@@ -17,6 +17,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Tiers;
@@ -43,35 +44,37 @@ public class MeleeHandler {
     @SubscribeEvent
     public static void onMelee(MeleeAttackEvent.Pre event) {
         if(event.getStack().getItem() == CgsWeapons.HAMMER.get()
-                && event.getTargets().isEmpty()
                 && event.getEntity() instanceof ServerPlayer player){
-
             var stack = event.getStack();
             var entity = event.getEntity();
-            var head = GunStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, event.getStack());
             var data = new GunData(stack, entity);
 
-            if(head.getItem() instanceof HammerHeadItem headItem && HammerItem.isPowered(data)
-                    && !entity.hasEffect(MobEffects.DIG_SLOWDOWN)){
-                if(!player.isCreative()){
-                    GunStateHelper.consumeAmmo(data);
-                }
+            if (!player.isCreative()) {
+                GunStateHelper.consumeAmmo(data);
+            }
 
-                var reach = GunModifierHelper.getMeleeDistance(data);
-                var isShotPowered = !GunStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, event.getStack()).isEmpty();
+            if(event.getTargets().isEmpty()) {
+                hitBlock(event, player, data, entity);
+            }
+        }
+    }
 
-                if(headItem.getHeadType() == HammerHeadItem.Type.HAMMER) {
-                    if(isShotPowered) {
-                        breakBlocks3x3(player, headItem.getTier(), HAMMER_HANDLER, head, reach);
-                    }
-                    else breakBlocks2x1(player, headItem.getTier(), HAMMER_HANDLER,  head, reach);
-                }
-                else if(headItem.getHeadType() == HammerHeadItem.Type.AXE) {
-                    if(isShotPowered) {
-                        breakBlocks3x3(player, headItem.getTier(), AXE_HANDLER, head, reach);
-                    }
-                    else breakBlocks2x1(player, headItem.getTier(), AXE_HANDLER,  head, reach);
-                }
+    private static void hitBlock(MeleeAttackEvent.Pre event, ServerPlayer player, GunData data, LivingEntity entity) {
+        var head = GunStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, event.getStack());
+
+        if (head.getItem() instanceof HammerHeadItem headItem && HammerItem.isPowered(data)
+                && !entity.hasEffect(MobEffects.DIG_SLOWDOWN)) {
+            var reach = GunModifierHelper.getMeleeDistance(data);
+            var isShotPowered = !GunStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, event.getStack()).isEmpty();
+
+            if (headItem.getHeadType() == HammerHeadItem.Type.HAMMER) {
+                if (isShotPowered) {
+                    breakBlocks3x3(player, headItem.getTier(), HAMMER_HANDLER, head, reach);
+                } else breakBlocks2x1(player, headItem.getTier(), HAMMER_HANDLER, head, reach);
+            } else if (headItem.getHeadType() == HammerHeadItem.Type.AXE) {
+                if (isShotPowered) {
+                    breakBlocks3x3(player, headItem.getTier(), AXE_HANDLER, head, reach);
+                } else breakBlocks2x1(player, headItem.getTier(), AXE_HANDLER, head, reach);
             }
         }
     }

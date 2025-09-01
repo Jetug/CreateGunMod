@@ -35,7 +35,7 @@
           "item": "cgs:shell_shotgun"
         },
         {
-          "tag": "forge:gunpowder"
+          "item": "minecraft:paper"
         }
       ],
       "results": [
@@ -51,7 +51,7 @@
           "item": "cgs:shell_shotgun"
         },
         {
-          "item": "minecraft:paper"
+          "tag": "forge:gunpowder"
         }
       ],
       "results": [

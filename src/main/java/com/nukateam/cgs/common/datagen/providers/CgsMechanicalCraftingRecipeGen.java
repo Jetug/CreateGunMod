@@ -39,7 +39,6 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 					.patternLine("WW W")
 					.disallowMirrored()),
 
-
 		GATLING = create(CgsWeapons.GATLING::get).returns(1)
 			.recipe(b -> b
 					.key('B', ModItems.STURDY_BARREL.get())
@@ -85,6 +84,47 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 						.patternLine("PPFTMW")
 						.patternLine(" LLLW ")
 						.disallowMirrored()),
+
+	LAUNCHER = create(CgsWeapons.LAUNCHER::get).returns(1)
+			.recipe(b -> b
+					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
+					.key('A', AllItems.ANDESITE_ALLOY.get())
+					.key('L', AllItems.BRASS_SHEET.get())
+					.key('I', AllItems.IRON_SHEET.get())
+					.key('P', AllBlocks.FLUID_PIPE.get())
+					.key('C', AllBlocks.CHUTE)
+					.patternLine("APLLPA")
+					.patternLine("ICCCCI")
+					.patternLine("WAWWA ")
+					.patternLine(" WW   ")
+					.disallowMirrored()),
+
+	BLAZEGUN = create(CgsWeapons.BLAZEGUN::get).returns(1)
+			.recipe(b -> b
+					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
+					.key('A', AllItems.ANDESITE_ALLOY.get())
+					.key('L', AllItems.BRASS_SHEET.get())
+					.key('P', AllBlocks.FLUID_PIPE.get())
+					.key('C', AllBlocks.CHUTE)
+					.key('B', AllBlocks.BLAZE_BURNER)
+					.key('T', AllBlocks.FLUID_TANK)
+					.patternLine("  ALW ")
+					.patternLine("LCCBLW")
+					.patternLine(" PPTW ")
+					.disallowMirrored()),
+
+	HAMMER = create(CgsWeapons.HAMMER::get).returns(1)
+			.recipe(b -> b
+					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
+					.key('A', AllItems.ANDESITE_ALLOY.get())
+					.key('L', AllBlocks.BRASS_BLOCK.get())
+					.key('P', AllBlocks.MECHANICAL_PISTON.get())
+					.key('T', AllItems.COPPER_BACKTANK)
+					.patternLine("PLT")
+					.patternLine("WA ")
+					.patternLine(" A ")
+					.patternLine(" A ")
+					.disallowMirrored()),
 
 	//ATTACHMENTS
 		ENGINE = create(AttachmentItems.STEAM_ENGINE::get).returns(1)
@@ -169,6 +209,33 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 						.patternLine("PIP ")
 						.patternLine("IMIC")
 						.patternLine("PIP ")
+						.disallowMirrored())
+		,
+
+		BALLISTAZOOKA = create(AttachmentItems.BALLISTAZOOKA::get).returns(1)
+				.recipe(b -> b
+						.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
+						.key('F', AllBlocks.FLYWHEEL)
+						.key('I', AllItems.IRON_SHEET.get())
+						.key('L', AllItems.BRASS_SHEET.get())
+						.key('S', Items.STRING)
+						.patternLine("FIISS")
+						.patternLine("WWWWL")
+						.patternLine("FIISS")
+						.disallowMirrored()),
+
+		AUTO_LAUNCHER = create(AttachmentItems.AUTO_LAUNCHER::get).returns(1)
+				.recipe(b -> b
+						.key('B', AllTags.AllItemTags.TOOLBOXES.tag)
+						.key('P', AllBlocks.FLUID_PIPE.get())
+						.key('p', AllItems.PRECISION_MECHANISM.get())
+						.key('T', AllItems.COPPER_BACKTANK.get())
+						.key('c', AllBlocks.COGWHEEL.get())
+						.key('L', AllItems.BRASS_SHEET.get())
+						.key('C', AllItems.COPPER_SHEET.get())
+						.patternLine("LLCC ")
+						.patternLine("PPBBp")
+						.patternLine("PPccT")
 						.disallowMirrored())
 		;
 

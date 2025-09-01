@@ -5,7 +5,7 @@
     "maxAmmo": 1,
     "damage": 10.0,
     "equipTime": 0,
-    "reloadTime": 50,
+    "reloadTime": 80,
     "recoilAngle": 7.0,
     "recoilKick": 0.4,
     "recoilAdsReduction": 0.15,
@@ -26,6 +26,7 @@
         "size": 0.5,
         "speed": 10.0,
         "life": 100,
+        "damageReduceOverLife": true,
         "gravity": true
       }
     }

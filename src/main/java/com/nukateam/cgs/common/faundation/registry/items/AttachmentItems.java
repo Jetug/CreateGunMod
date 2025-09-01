@@ -32,19 +32,19 @@ public class AttachmentItems {
     public static final RegistryObject<Item> STOCK = ITEMS.register("stock",
             () -> new AttachmentItem<>(AttachmentType.STOCK, GenericAttachment.create(AttachmentMods.STOCK), ITEM_PROPERTIES));
 
-    @ItemModelGen(path = "attachments")
-    public static final RegistryObject<Item> BAYONET = ITEMS.register("bayonet",
-            () -> new AttachmentItem<>(AttachmentType.MELEE,
-                    GenericAttachment.create(AttachmentMods.BAYONET_MODIFIERS), ITEM_PROPERTIES));
+//    @ItemModelGen(path = "attachments")
+//    public static final RegistryObject<Item> BAYONET = ITEMS.register("bayonet",
+//            () -> new AttachmentItem<>(AttachmentType.MELEE,
+//                    GenericAttachment.create(AttachmentMods.BAYONET_MODIFIERS), ITEM_PROPERTIES));
 
     //FLINTLOCK
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> FLINTLOCK_LONG_BARREL = ITEMS.register("flintlock_long_barrel",
             () -> new BarrelItem(Barrel.create(11f, AttachmentMods.LONG_BARREL), ITEM_PROPERTIES));
 
-    @ItemModelGen(path = "attachments")
-    public static final RegistryObject<Item> FLINTLOCK_MORTAR_BARREL = ITEMS.register("flintlock_mortar_barrel",
-            () -> new BarrelItem(Barrel.create(11f, AttachmentMods.LONG_BARREL), ITEM_PROPERTIES));
+//    @ItemModelGen(path = "attachments")
+//    public static final RegistryObject<Item> FLINTLOCK_MORTAR_BARREL = ITEMS.register("flintlock_mortar_barrel",
+//            () -> new BarrelItem(Barrel.create(11f, AttachmentMods.LONG_BARREL), ITEM_PROPERTIES));
 
     //REVOLVER
     @ItemModelGen(path = "attachments")
@@ -85,9 +85,9 @@ public class AttachmentItems {
     public static final RegistryObject<Item> STEAM_ENGINE = ITEMS.register("steam_engine",
             () -> new AttachmentItem<>(ENGINE, GenericAttachment.create(STEAM_ENGINE_MODIFIERS), ITEM_PROPERTIES));
 
-    @ItemModelGen(path = "attachments")
-    public static final RegistryObject<Item> IRON_SIGHT = ITEMS.register("iron_sight",
-            () -> new ScopeItem(SHORT_SCOPE, ITEM_PROPERTIES));
+//    @ItemModelGen(path = "attachments")
+//    public static final RegistryObject<Item> IRON_SIGHT = ITEMS.register("iron_sight",
+//            () -> new ScopeItem(SHORT_SCOPE, ITEM_PROPERTIES));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> GATLING_DRUM = ITEMS.register("gatling_drum",
@@ -99,11 +99,11 @@ public class AttachmentItems {
     public static final RegistryObject<Item> NAILGUN_SPLITTER = ITEMS.register("nailgun_splitter",
             () -> new BarrelItem(Barrel.create(1f, AttachmentMods.NAILGUN_SPLIT_BARREL), ITEM_PROPERTIES));
 
-    //BLAZEGUN
-    @ItemModelGen(path = "attachments")
-    public static final RegistryObject<Item> POTION_TANK = ITEMS.register("potion_tank",
-            () -> new AttachmentItem<>(CgsAttachmentTypes.FRAME,
-                    GenericAttachment.create(), ITEM_PROPERTIES));
+//    //BLAZEGUN
+//    @ItemModelGen(path = "attachments")
+//    public static final RegistryObject<Item> POTION_TANK = ITEMS.register("potion_tank",
+//            () -> new AttachmentItem<>(CgsAttachmentTypes.FRAME,
+//                    GenericAttachment.create(), ITEM_PROPERTIES));
 
     //LAUNCHER
 //    @ItemModelGen(path = "attachments")
@@ -138,7 +138,7 @@ public class AttachmentItems {
 
     //HAMMER
     @ItemModelGen(path = "attachments")
-    public static final RegistryObject<Item> SHOTGUN_RECEIVER = ITEMS.register("shotgun_receiver",
+    public static final RegistryObject<Item> HAMMER_CHAMBER = ITEMS.register("hammer_chamber",
             () -> new AttachmentItem<>(AttachmentType.MAGAZINE, GenericAttachment.create(RECIEVER), ITEM_PROPERTIES));
 
     @ItemModelGen(path = "attachments")

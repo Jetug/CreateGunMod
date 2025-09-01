@@ -2,10 +2,13 @@ package com.nukateam.cgs.common.datagen.providers;
 
 import com.nukateam.cgs.common.datagen.DataGenConfig;
 import com.nukateam.cgs.common.faundation.registry.items.ModItems;
+import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.content.kinetics.deployer.DeployerApplicationRecipe;
 import com.simibubi.create.content.kinetics.press.PressingRecipe;
 import com.simibubi.create.content.kinetics.saw.CuttingRecipe;
+import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
 import com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipeBuilder;
 import com.simibubi.create.foundation.data.recipe.CreateRecipeProvider;
 import net.minecraft.data.PackOutput;
@@ -45,6 +48,10 @@ public class CgsSequencedAssemblyRecipeGen extends CreateRecipeProvider {
 
     static TagKey<Item> copperSheet() {
         return AllTags.forgeItemTag("plates/copper");
+    }
+
+    static TagKey<Item> ironSheet() {
+        return AllTags.forgeItemTag("plates/iron");
     }
 
     static TagKey<Item> leadNugget() {
@@ -90,9 +97,39 @@ public class CgsSequencedAssemblyRecipeGen extends CreateRecipeProvider {
                 .transitionTo(ModItems.SHOTGUN_SHELL.get())
                 .addOutput(new ItemStack(ModItems.SHOTGUN_ROUND.get(), 2), 1.0F)
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.toolNotConsumed().require(ModItems.SHOTGUN_PRESS_FORM.get()))
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Items.PAPER))
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(leadNugget()))
+                .loops(1);
+    });
+
+    CreateRecipeProvider.GeneratedRecipe SHOTGUN_ROUND_BLANK = this.create("shotgun_round_blank", (b) -> {
+        return b.require(brassSheet())
+                .transitionTo(ModItems.SHOTGUN_SHELL.get())
+                .addOutput(new ItemStack(ModItems.SHOTGUN_ROUND_BLANK.get(), 2), 1.0F)
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.toolNotConsumed().require(ModItems.SHOTGUN_PRESS_FORM.get()))
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Items.PAPER))
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
+                .addStep(DeployerApplicationRecipe::new, ProcessingRecipeBuilder::toolNotConsumed)
+                .loops(1);
+    });
+
+    CreateRecipeProvider.GeneratedRecipe ROCKET = this.create("rocket", (b) -> {
+        return b.require(AllBlocks.FLUID_PIPE.get())
+                .transitionTo(AllBlocks.FLUID_PIPE.get())
+                .addOutput(new ItemStack(ModItems.ROCKET.get(), 1), 1.0F)
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(brassSheet()))
+                .loops(1);
+    });
+
+    CreateRecipeProvider.GeneratedRecipe ROCKET_SMALL = this.create("rocket_small", (b) -> {
+        return b.require(brassSheet())
+                .transitionTo(AllItems.BRASS_SHEET)
+                .addOutput(new ItemStack(ModItems.SMALL_ROCKET.get(), 4), 1.0F)
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(ironSheet()))
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(brassSheet()))
                 .loops(1);
     });
 

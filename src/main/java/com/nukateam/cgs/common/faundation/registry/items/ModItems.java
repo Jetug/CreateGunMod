@@ -36,7 +36,7 @@ public class ModItems {
     @ItemModelGen
     public static final RegistryObject<Item> PRESS_FORM_10MM = registerItem("press_form_10mm");
 
-    public static final RegistryObject<Item> PRESS_FORM_ROKET = registerItem("press_form_roket");
+//    public static final RegistryObject<Item> PRESS_FORM_ROKET = registerItem("press_form_roket");
 
     @ItemModelGen
     public static final RegistryObject<Item> SHOTGUN_PRESS_FORM = registerItem("press_form_shotgun");
@@ -50,39 +50,43 @@ public class ModItems {
     @ItemModelGen
     public static final RegistryObject<Item> SHOTGUN_SHELL = registerItem("shell_shotgun");
 
-    @ItemModelGen
+    @ItemModelGen(path = "ammo")
     public static final RegistryObject<Item> ROUND_7MM = registerAmmo("round_7mm");
 
 //    @ItemModelGen
 //    public static final RegistryObject<Item> ROUND_7MM_PIERCING = registerAmmo("round_7mm_piercing");
 
-    @ItemModelGen
+    @ItemModelGen(path = "ammo")
     public static final RegistryObject<Item> ROUND_10MM = registerAmmo("round_10mm");
 
 //    @ItemModelGen
 //    public static final RegistryObject<Item> ROUND_10MM_PIERCING = registerAmmo("round_10mm_piercing");
 
-    @ItemModelGen
+    @ItemModelGen(path = "ammo")
     public static final RegistryObject<Item> SHOTGUN_ROUND = registerAmmo("round_shotgun");
 
-    @ItemModelGen
+    @ItemModelGen(path = "ammo")
     public static final RegistryObject<Item> SHOTGUN_ROUND_BLANK = registerAmmo("round_shotgun_blank");
 
-    @ItemModelGen
+    @ItemModelGen(path = "ammo")
     public static final RegistryObject<Item> PAPER_CARTRIDGE = registerAmmo("paper_cartridge");
 
 //    @ItemModelGen
 //    public static final RegistryObject<Item> PAPER_CARTRIDGE_BLANK = registerAmmo("paper_cartridge_blank");
 
-    @ItemModelGen
+    @ItemModelGen(path = "ammo")
     public static final RegistryObject<Item> NAIL = registerAmmo("nail");
 
 //    @ItemModelGen
 //    public static final RegistryObject<Item> NAIL_PIERCING = registerAmmo("nail_piercing");
 
-//    @ItemModelGen
+    @ItemModelGen(path = "ammo")
     public static final RegistryObject<Item> ROCKET = registerAmmo("rocket");
+
+    @ItemModelGen(path = "ammo")
     public static final RegistryObject<Item> SMALL_ROCKET = registerAmmo("rocket_small");
+
+    @ItemModelGen(path = "ammo")
     public static final RegistryObject<Item> SPEAR = registerAmmo("spear", AmmoItem::new);
 
     private static RegistryObject<Item> registerAmmo(String name, Function<Item.Properties, AmmoItem> item) {

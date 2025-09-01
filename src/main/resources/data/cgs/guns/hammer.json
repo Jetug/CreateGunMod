@@ -116,7 +116,7 @@
       "ntgl:magazine": [
         {
           "name": "shotgun_receiver",
-          "item": "cgs:shotgun_receiver",
+          "item": "cgs:hammer_chamber",
           "hide": ["filler"]
         }
       ]

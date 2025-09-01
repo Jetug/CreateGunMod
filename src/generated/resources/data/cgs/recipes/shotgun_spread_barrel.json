@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "category": "equipment",
   "key": {
     "B": {
       "item": "cgs:barrel_sturdy"
@@ -10,7 +10,7 @@
     }
   },
   "pattern": [
-    "LBL"
+    "BLB"
   ],
   "result": {
     "item": "cgs:shotgun_spread_barrel"

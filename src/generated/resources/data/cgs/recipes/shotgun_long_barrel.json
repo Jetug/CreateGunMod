@@ -1,12 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "category": "equipment",
   "key": {
     "B": {
       "item": "cgs:barrel_sturdy"
     },
     "L": {
-      "item": "minecraft:iron_ingot"
+      "item": "create:brass_sheet"
     },
     "W": {
       "tag": "forge:stripped_logs"

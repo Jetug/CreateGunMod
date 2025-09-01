@@ -424,9 +424,16 @@ public class AttachmentMods {
 
     public static final IGunModifier SHOTGUN_SPREAD_BARREL = new IGunModifier() {
         @Override
-        public float modifyProjectileSpread(float spread, GunData data) {
-            return spread * 4;
+        public float modifyDamage(float damage, GunData data) {
+            return damage * 1.5f;
         }
+
+        @Override
+        public float modifyProjectileSpread(float spread, GunData data) {
+            return spread * 2;
+        }
+
+
     };
 
     //NAILGUN
@@ -536,7 +543,7 @@ public class AttachmentMods {
     public static final IGunModifier AUTO_LAUNCHER = new IGunModifier() {
         @Override
         public Set<FireMode> modifyFireModes(Set<FireMode> fireMode, GunData data) {
-            return new LinkedHashSet<>(List.of(FireMode.AUTO, FireMode.SEMI_AUTO));
+            return new LinkedHashSet<>(List.of(FireMode.AUTO));
         }
 
         @Override
@@ -554,7 +561,12 @@ public class AttachmentMods {
             return 2;
         }
 
-//        @Override
+        @Override
+        public int modifyReloadTime(int reloadTime, GunData data) {
+            return 100;
+        }
+
+        //        @Override
 //        public int modifyFireDelay(int chargeTime, GunData data) {
 //            return IGunModifier.super.modifyFireDelay(chargeTime, data);
 //        }

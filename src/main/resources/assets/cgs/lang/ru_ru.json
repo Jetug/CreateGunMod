@@ -9,6 +9,7 @@
   "slot.cgs.attachment.head": "Наконечник",
 
   "info.cgs.air": "Воздух",
+  "info.cgs.burnable": "Горючее",
 
   "item.cgs.flintlock": "Кремневый пистолет",
   "item.cgs.revolver" : "Револьвер",
@@ -69,7 +70,7 @@
   "item.cgs.flintlock_long_barrel": "Кремневый пистолет: Длинный ствол",
   "item.cgs.flintlock_mortar_barrel": "Кремневый пистолет: Ствол мортиры",
 
-  "item.cgs.shotgun_receiver": "Молот: Ресивер дробовика",
+  "item.cgs.hammer_chamber": "Молот: Патронник",
   "item.cgs.hammer_stone": "Каменная головка молота",
   "item.cgs.hammer_iron": "Железная головка молота",
   "item.cgs.hammer_diamond": "Алмазная головка молота",

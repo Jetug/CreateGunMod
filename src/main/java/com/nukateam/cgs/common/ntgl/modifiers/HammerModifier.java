@@ -12,7 +12,7 @@ public class HammerModifier implements IGunModifier {
         var attachment = GunStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, data.gun);
         if (!attachment.isEmpty()) {
             if(GunStateHelper.hasAmmo(data.gun)){
-                damage += 5;
+                damage += 6;
             }
 
             var headItem = (HammerHeadItem)attachment.getItem();
