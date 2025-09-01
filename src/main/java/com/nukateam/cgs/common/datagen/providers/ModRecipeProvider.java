@@ -5,6 +5,7 @@ import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
 import com.nukateam.cgs.common.faundation.registry.CgsBlocks;
 import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
 import com.nukateam.cgs.common.faundation.registry.items.ModItems;
+import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
 import net.minecraft.data.PackOutput;
@@ -218,8 +219,19 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("  W")
                 .define('I', AllItems.IRON_SHEET)
                 .define('W', AllTags.AllItemTags.STRIPPED_LOGS.tag)
-                .unlockedBy(getHasName(Blocks.IRON_BLOCK), has(Blocks.IRON_BLOCK))
+                .unlockedBy(getHasName( AllItems.IRON_SHEET), has( AllItems.IRON_SHEET))
                 .save(writer, getId(ModItems.SPEAR.get()));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsWeapons.GRENADE.get(), 1)
+                .pattern(" CЖ")
+                .pattern("IGB")
+                .define('I', AllItems.IRON_SHEET)
+                .define('B', AllItems.BRASS_SHEET)
+                .define('C', AllItems.COPPER_NUGGET)
+                .define('Ж', AllBlocks.COGWHEEL)
+                .define('G', Items.GUNPOWDER)
+                .unlockedBy(getHasName(AllItems.IRON_SHEET), has(AllItems.IRON_SHEET))
+                .save(writer, getId(CgsWeapons.GRENADE.get()));
 
     }
 

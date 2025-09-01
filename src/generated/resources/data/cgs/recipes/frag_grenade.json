@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "item": "create:brass_sheet"
+    },
+    "C": {
+      "item": "create:copper_nugget"
+    },
+    "G": {
+      "item": "minecraft:gunpowder"
+    },
+    "I": {
+      "item": "create:iron_sheet"
+    },
+    "Ж": {
+      "item": "create:cogwheel"
+    }
+  },
+  "pattern": [
+    " CЖ",
+    "IGB"
+  ],
+  "result": {
+    "item": "cgs:frag_grenade"
+  },
+  "show_notification": true
+}
