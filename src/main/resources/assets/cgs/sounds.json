@@ -35,9 +35,9 @@
    ]},
 
    "gun.shotgun.fire": { "subtitle": "subtitle.ntgl.fire", "sounds": [
-      { "name": "cgs:gun/shotgun/fire/fire_01" , "volume": 1.55},
-      { "name": "cgs:gun/shotgun/fire/fire_02" , "volume": 1.55},
-      { "name": "cgs:gun/shotgun/fire/fire_03" , "volume": 1.55}
+      { "name": "cgs:gun/shotgun/fire/fire_01" , "volume": 2},
+      { "name": "cgs:gun/shotgun/fire/fire_02" , "volume": 2},
+      { "name": "cgs:gun/shotgun/fire/fire_03" , "volume": 2}
    ]},
 
    "gun.shotgun.close": { "subtitle": "subtitle.ntgl.fire", "sounds": [

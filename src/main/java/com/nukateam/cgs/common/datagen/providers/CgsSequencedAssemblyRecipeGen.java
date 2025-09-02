@@ -92,25 +92,30 @@ public class CgsSequencedAssemblyRecipeGen extends CreateRecipeProvider {
                 .loops(1);
     });
 
-    CreateRecipeProvider.GeneratedRecipe SHOTGUN_ROUND = this.create("shotgun_round", (b) -> {
+
+    CreateRecipeProvider.GeneratedRecipe SHOTGUN_SHELL = this.create("shotgun_shell", (b) -> {
         return b.require(brassSheet())
                 .transitionTo(ModItems.SHOTGUN_SHELL.get())
-                .addOutput(new ItemStack(ModItems.SHOTGUN_ROUND.get(), 2), 1.0F)
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.toolNotConsumed().require(ModItems.SHOTGUN_PRESS_FORM.get()))
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Items.PAPER))
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(leadNugget()))
+                .addOutput(new ItemStack(ModItems.SHOTGUN_SHELL.get(), 4), 1.0F)
+                .addStep(DeployerApplicationRecipe::new, (rb) ->
+                        rb.toolNotConsumed().require(ModItems.SHOTGUN_PRESS_FORM.get()))
                 .loops(1);
     });
 
     CreateRecipeProvider.GeneratedRecipe SHOTGUN_ROUND_BLANK = this.create("shotgun_round_blank", (b) -> {
-        return b.require(brassSheet())
+        return b.require(ModItems.SHOTGUN_SHELL.get())
                 .transitionTo(ModItems.SHOTGUN_SHELL.get())
-                .addOutput(new ItemStack(ModItems.SHOTGUN_ROUND_BLANK.get(), 2), 1.0F)
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.toolNotConsumed().require(ModItems.SHOTGUN_PRESS_FORM.get()))
+                .addOutput(new ItemStack(ModItems.SHOTGUN_ROUND_BLANK.get(), 1), 1.0F)
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Items.PAPER))
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
-                .addStep(DeployerApplicationRecipe::new, ProcessingRecipeBuilder::toolNotConsumed)
+                .loops(1);
+    });
+
+    CreateRecipeProvider.GeneratedRecipe SHOTGUN_ROUND = this.create("shotgun_round", (b) -> {
+        return b.require(ModItems.SHOTGUN_ROUND_BLANK.get())
+                .transitionTo(ModItems.SHOTGUN_SHELL.get())
+                .addOutput(new ItemStack(ModItems.SHOTGUN_ROUND.get(), 1), 1.0F)
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(leadNugget()))
                 .loops(1);
     });
 

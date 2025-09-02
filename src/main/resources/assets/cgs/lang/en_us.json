@@ -1,7 +1,7 @@
 {
   "itemGroup.mod_items": "Create: Gunsmithing",
 
-  "info.cgs.fuel": "RMB on a weapon with a fuel item to refuel it",
+  "info.cgs.fuel": "Right click on a weapon with a fuel item to refuel it",
 
   "slot.cgs.attachment.engine": "Engine",
   "slot.cgs.attachment.frame": "Frame",
