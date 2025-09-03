@@ -1,7 +1,7 @@
 {
   "type": "create:sequenced_assembly",
   "ingredient": {
-    "tag": "forge:plates/brass"
+    "item": "cgs:barrel"
   },
   "loops": 1,
   "results": [
@@ -15,23 +15,7 @@
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "create:brass_sheet"
-        },
-        {
-          "tag": "forge:plates/iron"
-        }
-      ],
-      "results": [
-        {
-          "item": "create:brass_sheet"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "create:brass_sheet"
+          "item": "cgs:barrel"
         },
         {
           "tag": "forge:gunpowder"
@@ -39,7 +23,7 @@
       ],
       "results": [
         {
-          "item": "create:brass_sheet"
+          "item": "cgs:barrel"
         }
       ]
     },
@@ -47,7 +31,7 @@
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "create:brass_sheet"
+          "item": "cgs:barrel"
         },
         {
           "tag": "forge:plates/brass"
@@ -55,12 +39,12 @@
       ],
       "results": [
         {
-          "item": "create:brass_sheet"
+          "item": "cgs:barrel"
         }
       ]
     }
   ],
   "transitionalItem": {
-    "item": "create:brass_sheet"
+    "item": "cgs:barrel"
   }
 }

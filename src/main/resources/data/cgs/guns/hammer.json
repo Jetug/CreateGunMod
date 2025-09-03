@@ -16,12 +16,12 @@
   },
   "melee": {
     "mode": "ntgl:single",
-    "damage": 3,
+    "damage": 1,
     "delay": 5,
     "cooldown": 8,
     "distance": 5,
     "angle": 50,
-    "maxTargets": 10,
+    "maxTargets": 1,
     "knockback": 1
   },
   "ammoData": {

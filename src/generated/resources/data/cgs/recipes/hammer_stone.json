@@ -7,9 +7,9 @@
     }
   },
   "pattern": [
-    "B ",
-    "BB",
-    "B "
+    "BB ",
+    "BBB",
+    "BB "
   ],
   "result": {
     "item": "cgs:hammer_stone"

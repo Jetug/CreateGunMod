@@ -3,12 +3,16 @@
   "category": "equipment",
   "key": {
     "B": {
-      "item": "minecraft:iron_block"
+      "item": "minecraft:diamond_block"
+    },
+    "I": {
+      "item": "minecraft:diamond"
     }
   },
   "pattern": [
-    "BB",
-    "B "
+    "II",
+    "IB",
+    "I "
   ],
   "result": {
     "item": "cgs:axe_diamond"

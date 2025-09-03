@@ -143,36 +143,35 @@ public class AttachmentItems {
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> HAMMER_STONE = ITEMS.register("hammer_stone",
-            () -> new HammerHeadItem(Tiers.STONE, HammerHeadItem.Type.HAMMER, GenericAttachment.create(), new Item.Properties()));
+            () -> new HammerHeadItem(Tiers.STONE, HammerHeadItem.Type.HAMMER, GenericAttachment.create(HAMMER_HEAD), new Item.Properties()));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> HAMMER_IRON = ITEMS.register("hammer_iron",
-            () -> new HammerHeadItem(Tiers.IRON, HammerHeadItem.Type.HAMMER, GenericAttachment.create(), new Item.Properties()));
+            () -> new HammerHeadItem(Tiers.IRON, HammerHeadItem.Type.HAMMER, GenericAttachment.create(HAMMER_HEAD), new Item.Properties()));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> HAMMER_DIAMOND = ITEMS.register("hammer_diamond",
-            () -> new HammerHeadItem(Tiers.DIAMOND, HammerHeadItem.Type.HAMMER, GenericAttachment.create(), new Item.Properties()));
+            () -> new HammerHeadItem(Tiers.DIAMOND, HammerHeadItem.Type.HAMMER, GenericAttachment.create(HAMMER_HEAD), new Item.Properties()));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> HAMMER_NETHERITE = ITEMS.register("hammer_netherite",
-            () -> new HammerHeadItem(Tiers.NETHERITE, HammerHeadItem.Type.HAMMER, GenericAttachment.create(), new Item.Properties()));
-
+            () -> new HammerHeadItem(Tiers.NETHERITE, HammerHeadItem.Type.HAMMER, GenericAttachment.create(HAMMER_HEAD), new Item.Properties()));
     //
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> AXE_STONE = ITEMS.register("axe_stone",
-            () -> new HammerHeadItem(Tiers.STONE, HammerHeadItem.Type.AXE, GenericAttachment.create(), new Item.Properties()));
+            () -> new HammerHeadItem(Tiers.STONE, HammerHeadItem.Type.AXE, GenericAttachment.create(AXE_HEAD), new Item.Properties()));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> AXE_IRON = ITEMS.register("axe_iron",
-            () -> new HammerHeadItem(Tiers.IRON, HammerHeadItem.Type.AXE, GenericAttachment.create(), new Item.Properties()));
+            () -> new HammerHeadItem(Tiers.IRON, HammerHeadItem.Type.AXE, GenericAttachment.create(AXE_HEAD), new Item.Properties()));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> AXE_DIAMOND = ITEMS.register("axe_diamond",
-            () -> new HammerHeadItem(Tiers.DIAMOND, HammerHeadItem.Type.AXE, GenericAttachment.create(), new Item.Properties()));
+            () -> new HammerHeadItem(Tiers.DIAMOND, HammerHeadItem.Type.AXE, GenericAttachment.create(AXE_HEAD), new Item.Properties()));
 
     @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> AXE_NETHERITE = ITEMS.register("axe_netherite",
-            () -> new HammerHeadItem(Tiers.NETHERITE, HammerHeadItem.Type.AXE, GenericAttachment.create(), new Item.Properties()));
+            () -> new HammerHeadItem(Tiers.NETHERITE, HammerHeadItem.Type.AXE, GenericAttachment.create(AXE_HEAD), new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

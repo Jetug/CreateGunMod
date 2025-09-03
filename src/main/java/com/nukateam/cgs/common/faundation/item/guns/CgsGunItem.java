@@ -1,11 +1,11 @@
 package com.nukateam.cgs.common.faundation.item.guns;
 
 import com.nukateam.cgs.common.utils.GunUtils;
+import com.nukateam.ntgl.client.animators.GunAnimator;
 import com.nukateam.ntgl.common.data.holders.AmmoHolders;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.cgs.client.renderers.BaseGunRenderer;
-import com.nukateam.ntgl.common.data.holders.AmmoHolders;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
 import com.nukateam.ntgl.common.data.GunData;
@@ -21,6 +21,8 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.util.Lazy;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,7 +36,8 @@ public class CgsGunItem extends WeaponItem {
     }
 
     @Override
-    public DynamicGeoItemRenderer getRenderer() {
+    @OnlyIn(Dist.CLIENT)
+    public DynamicGeoItemRenderer<GunAnimator> getRenderer() {
         return RENDERER.get();
     }
 

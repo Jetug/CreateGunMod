@@ -4,12 +4,15 @@
   "key": {
     "B": {
       "item": "minecraft:iron_block"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
     }
   },
   "pattern": [
-    "B ",
-    "BB",
-    "B "
+    "II ",
+    "IBI",
+    "II "
   ],
   "result": {
     "item": "cgs:hammer_iron"

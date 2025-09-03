@@ -1,5 +1,6 @@
 package com.nukateam.cgs.common.ntgl;
 
+import com.nukateam.cgs.common.faundation.item.attachments.HammerHeadItem;
 import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
 import com.nukateam.cgs.common.faundation.registry.items.ModItems;
 import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
@@ -494,6 +495,35 @@ public class AttachmentMods {
         }
     };
 
+    public static final IGunModifier HAMMER_HEAD = new IGunModifier() {
+        @Override
+        public int modifyMeleeMaxTargets(int value, GunData data) {
+            return 6;
+        }
+
+        @Override
+        public float modifyMeleeDamage(float damage, GunData data) {
+            return damage + 2;
+        }
+
+        @Override
+        public float modifyMeleeAngle(float value, GunData data) {
+            return 80;
+        }
+    };
+
+    public static final IGunModifier AXE_HEAD = new IGunModifier() {
+        @Override
+        public int modifyMeleeMaxTargets(int value, GunData data) {
+            return 1;
+        }
+
+        @Override
+        public float modifyMeleeDamage(float damage, GunData data) {
+            return damage + 4;
+        }
+    };
+
     //LAUNCHER
     public static final IGunModifier BALLISTAZOOKA = new IGunModifier() {
         @Override
@@ -538,12 +568,24 @@ public class AttachmentMods {
         public ResourceLocation modifyFireSound(ResourceLocation sound, GunData data) {
             return CgsSounds.BALLISTA_FIRE.getId();
         }
+
+        @Override
+        public boolean modifyAutoReloading(boolean autoReload, GunData data) {
+            return true;
+        }
     };
 
     public static final IGunModifier AUTO_LAUNCHER = new IGunModifier() {
         @Override
         public Set<FireMode> modifyFireModes(Set<FireMode> fireMode, GunData data) {
             return new LinkedHashSet<>(List.of(FireMode.AUTO));
+        }
+
+        @Override
+        public int modifyFuelAmountPerUse(ResourceLocation ammo, int value, GunData data) {
+            if(ammo.equals(CgsAmmo.AIR.getId()))
+                return  1;
+            return value;
         }
 
         @Override

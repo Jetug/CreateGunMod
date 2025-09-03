@@ -1,6 +1,7 @@
 package com.nukateam.cgs.common.datagen.providers;
 
 import com.nukateam.cgs.common.datagen.DataGenConfig;
+import com.nukateam.cgs.common.datagen.util.TagsKeys;
 import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
 import com.nukateam.cgs.common.faundation.registry.CgsBlocks;
 import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
@@ -80,6 +81,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.IRON_NUGGET), has(Items.IRON_NUGGET))
                 .save(writer, getId(ModItems.NAIL.get()));
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, AttachmentItems.HAMMER_DIAMOND.get(), 1)
+                .requires(TagsKeys.ironSheet())
+                .requires(TagsKeys.brassSheet())
+                .requires(Items.GUNPOWDER)
+                .unlockedBy(getHasName(Items.DIAMOND), has(Blocks.IRON_BLOCK))
+                .save(writer, getId(AttachmentItems.HAMMER_DIAMOND.get()));
+
+
         //ATTACHMENTS
         ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, AttachmentItems.SCOPE.get(), 1)
                 .requires(AllItems.BRASS_SHEET.get())
@@ -150,27 +159,29 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(writer, getId(AttachmentItems.LAUNCHER_BAYONET.get()));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AttachmentItems.HAMMER_STONE.get(), 1)
-                .pattern("B ")
-                .pattern("BB")
-                .pattern("B ")
+                .pattern("BB ")
+                .pattern("BBB")
+                .pattern("BB ")
                 .define('B', Tags.Items.STONE)
                 .unlockedBy(getHasName(Blocks.IRON_BLOCK), has(Blocks.IRON_BLOCK))
                 .save(writer, getId(AttachmentItems.HAMMER_STONE.get()));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AttachmentItems.HAMMER_IRON.get(), 1)
-                .pattern("B ")
-                .pattern("BB")
-                .pattern("B ")
+                .pattern("II ")
+                .pattern("IBI")
+                .pattern("II ")
                 .define('B', Blocks.IRON_BLOCK)
+                .define('I', Items.IRON_INGOT)
                 .unlockedBy(getHasName(Blocks.IRON_BLOCK), has(Blocks.IRON_BLOCK))
                 .save(writer, getId(AttachmentItems.HAMMER_IRON.get()));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AttachmentItems.HAMMER_DIAMOND.get(), 1)
-                .pattern("B ")
-                .pattern("BB")
-                .pattern("B ")
-                .define('B', Blocks.IRON_BLOCK)
-                .unlockedBy(getHasName(Blocks.IRON_BLOCK), has(Blocks.IRON_BLOCK))
+                .pattern("II ")
+                .pattern("IBI")
+                .pattern("II ")
+                .define('B', Blocks.DIAMOND_BLOCK)
+                .define('I', Items.DIAMOND)
+                .unlockedBy(getHasName(Items.DIAMOND), has(Blocks.IRON_BLOCK))
                 .save(writer, getId(AttachmentItems.HAMMER_DIAMOND.get()));
 
         SmithingTransformRecipeBuilder.smithing(
@@ -184,22 +195,27 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AttachmentItems.AXE_STONE.get(), 1)
                 .pattern("BB")
+                .pattern("BB")
                 .pattern("B ")
                 .define('B', Tags.Items.STONE)
                 .unlockedBy(getHasName(Blocks.IRON_BLOCK), has(Blocks.IRON_BLOCK))
                 .save(writer, getId(AttachmentItems.AXE_STONE.get()));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AttachmentItems.AXE_IRON.get(), 1)
-                .pattern("BB")
-                .pattern("B ")
+                .pattern("II")
+                .pattern("IB")
+                .pattern("I ")
                 .define('B', Blocks.IRON_BLOCK)
+                .define('I', Items.IRON_INGOT)
                 .unlockedBy(getHasName(Blocks.IRON_BLOCK), has(Blocks.IRON_BLOCK))
                 .save(writer, getId(AttachmentItems.AXE_IRON.get()));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AttachmentItems.AXE_DIAMOND.get(), 1)
-                .pattern("BB")
-                .pattern("B ")
-                .define('B', Blocks.IRON_BLOCK)
+                .pattern("II")
+                .pattern("IB")
+                .pattern("I ")
+                .define('B', Blocks.DIAMOND_BLOCK)
+                .define('I', Items.DIAMOND)
                 .unlockedBy(getHasName(Blocks.IRON_BLOCK), has(Blocks.IRON_BLOCK))
                 .save(writer, getId(AttachmentItems.AXE_DIAMOND.get()));
 

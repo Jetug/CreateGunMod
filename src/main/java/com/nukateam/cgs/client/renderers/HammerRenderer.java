@@ -9,6 +9,4 @@ public class HammerRenderer extends BaseGunRenderer{
         super();
         addRenderLayer(new HammerHeadLayer<>(this));
     }
-
-
 }

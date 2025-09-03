@@ -1,10 +1,12 @@
 package com.nukateam.cgs.common.handlers;
 
 import com.nukateam.cgs.Gunsmithing;
+import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
 import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
 import com.nukateam.cgs.common.ntgl.CgsAmmo;
 import com.nukateam.cgs.common.utils.GunUtils;
 import com.nukateam.ntgl.common.data.holders.AmmoHolder;
+import com.nukateam.ntgl.common.data.holders.AttachmentType;
 import com.nukateam.ntgl.common.event.GunReloadEvent;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.ntgl.common.data.holders.AmmoHolders;
@@ -38,11 +40,16 @@ public class GunEventHandler {
             event.setCanceled(true);
         }
 
-        if(gun.getItem() == CgsWeapons.NAILGUN.get()) {
+        if(gun.getItem() == CgsWeapons.LAUNCHER.get() &&
+                GunStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, gun).getItem() == AttachmentItems.BALLISTAZOOKA.get()) {
+            return;
+        }
+
+//        if(gun.getItem() == CgsWeapons.NAILGUN.get()) {
             if (isUsesFuel(gunData, CgsAmmo.AIR) && !GunUtils.hasAir(gunData) ) {
                 event.setCanceled(true);
             }
-        }
+//        }
     }
 
     @SubscribeEvent

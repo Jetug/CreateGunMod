@@ -1,20 +1,17 @@
 package com.nukateam.cgs.common.datagen.providers;
 
 import com.nukateam.cgs.common.datagen.DataGenConfig;
+import com.nukateam.cgs.common.datagen.util.TagsKeys;
 import com.nukateam.cgs.common.faundation.registry.items.ModItems;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
-import com.simibubi.create.AllTags;
 import com.simibubi.create.content.kinetics.deployer.DeployerApplicationRecipe;
 import com.simibubi.create.content.kinetics.press.PressingRecipe;
 import com.simibubi.create.content.kinetics.saw.CuttingRecipe;
-import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
 import com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipeBuilder;
 import com.simibubi.create.foundation.data.recipe.CreateRecipeProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
@@ -42,27 +39,7 @@ public class CgsSequencedAssemblyRecipeGen extends CreateRecipeProvider {
 //        });
 //    });
 
-    static TagKey<Item> brassSheet() {
-        return AllTags.forgeItemTag("plates/brass");
-    }
-
-    static TagKey<Item> copperSheet() {
-        return AllTags.forgeItemTag("plates/copper");
-    }
-
-    static TagKey<Item> ironSheet() {
-        return AllTags.forgeItemTag("plates/iron");
-    }
-
-    static TagKey<Item> leadNugget() {
-        return AllTags.forgeItemTag("nuggets/lead");
-    }
-
-    static TagKey<Item> ironNugget() {
-        return AllTags.forgeItemTag("nuggets/iron");
-    }
-
-//    CreateRecipeProvider.GeneratedRecipe REINFORCED_SHEET = this.create("sturdy_sheet", (b) -> {
+    //    CreateRecipeProvider.GeneratedRecipe REINFORCED_SHEET = this.create("sturdy_sheet", (b) -> {
 //        return b.require(AllItems.POWDERED_OBSIDIAN.get())
 //                .transitionTo(AllItems.INCOMPLETE_REINFORCED_SHEET.get())
 //                .addOutput(AllItems.STURDY_SHEET.get(), 1.0F)
@@ -73,28 +50,28 @@ public class CgsSequencedAssemblyRecipeGen extends CreateRecipeProvider {
 //    });
 
     CreateRecipeProvider.GeneratedRecipe REVOLVER_ROUND = this.create("revolver_round", (b) -> b
-            .require(brassSheet())
+            .require(TagsKeys.brassSheet())
             .transitionTo(ModItems.SHELL_10MM.get())
             .addOutput(new ItemStack(ModItems.ROUND_10MM.get(), 8), 1.0F)
             .addStep(DeployerApplicationRecipe::new, (rb) -> rb.toolNotConsumed().require(ModItems.PRESS_FORM_10MM.get()))
             .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
-            .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(leadNugget()))
+            .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagsKeys.leadNugget()))
             .loops(1));
 
     CreateRecipeProvider.GeneratedRecipe GATLING_ROUND = this.create("gatling_round", (b) -> {
-        return b.require(brassSheet())
+        return b.require(TagsKeys.brassSheet())
                 .transitionTo(ModItems.SHELL_7MM.get())
                 .addOutput(new ItemStack(ModItems.ROUND_7MM.get(), 4), 1.0F)
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.toolNotConsumed().require(ModItems.PRESS_FORM_7MM.get()))
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(leadNugget()))
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(copperSheet()))
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagsKeys.leadNugget()))
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagsKeys.copperSheet()))
                 .loops(1);
     });
 
 
     CreateRecipeProvider.GeneratedRecipe SHOTGUN_SHELL = this.create("shotgun_shell", (b) -> {
-        return b.require(brassSheet())
+        return b.require(TagsKeys.brassSheet())
                 .transitionTo(ModItems.SHOTGUN_SHELL.get())
                 .addOutput(new ItemStack(ModItems.SHOTGUN_SHELL.get(), 4), 1.0F)
                 .addStep(DeployerApplicationRecipe::new, (rb) ->
@@ -115,7 +92,7 @@ public class CgsSequencedAssemblyRecipeGen extends CreateRecipeProvider {
         return b.require(ModItems.SHOTGUN_ROUND_BLANK.get())
                 .transitionTo(ModItems.SHOTGUN_SHELL.get())
                 .addOutput(new ItemStack(ModItems.SHOTGUN_ROUND.get(), 1), 1.0F)
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(leadNugget()))
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagsKeys.leadNugget()))
                 .loops(1);
     });
 
@@ -124,17 +101,16 @@ public class CgsSequencedAssemblyRecipeGen extends CreateRecipeProvider {
                 .transitionTo(AllBlocks.FLUID_PIPE.get())
                 .addOutput(new ItemStack(ModItems.ROCKET.get(), 1), 1.0F)
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(brassSheet()))
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagsKeys.brassSheet()))
                 .loops(1);
     });
 
     CreateRecipeProvider.GeneratedRecipe ROCKET_SMALL = this.create("rocket_small", (b) -> {
-        return b.require(brassSheet())
-                .transitionTo(AllItems.BRASS_SHEET)
+        return b.require(TagsKeys.ironSheet())
+                .transitionTo(AllItems.IRON_SHEET)
                 .addOutput(new ItemStack(ModItems.SMALL_ROCKET.get(), 4), 1.0F)
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(ironSheet()))
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(brassSheet()))
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagsKeys.brassSheet()))
                 .loops(1);
     });
 
@@ -143,12 +119,12 @@ public class CgsSequencedAssemblyRecipeGen extends CreateRecipeProvider {
                 .transitionTo(Items.PAPER)
                 .addOutput(new ItemStack(ModItems.PAPER_CARTRIDGE.get(), 3), 1.0F)
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(leadNugget()))
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagsKeys.leadNugget()))
                 .loops(1);
     });
 
     CreateRecipeProvider.GeneratedRecipe NAIL = this.create("nail", (b) -> {
-        return b.require(ironNugget())
+        return b.require(TagsKeys.ironNugget())
                 .transitionTo(Items.IRON_NUGGET)
                 .addOutput(new ItemStack(ModItems.NAIL.get(), 6), 1.0F)
                 .addStep(CuttingRecipe::new, (rb) -> rb)

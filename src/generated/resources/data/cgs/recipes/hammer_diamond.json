@@ -3,13 +3,16 @@
   "category": "equipment",
   "key": {
     "B": {
-      "item": "minecraft:iron_block"
+      "item": "minecraft:diamond_block"
+    },
+    "I": {
+      "item": "minecraft:diamond"
     }
   },
   "pattern": [
-    "B ",
-    "BB",
-    "B "
+    "II ",
+    "IBI",
+    "II "
   ],
   "result": {
     "item": "cgs:hammer_diamond"

@@ -8,7 +8,6 @@
     "maxAmmo": 4,
     "equipTime": 15,
     "reloadTime": 70,
-    "autoReload": true,
     "recoilAngle": 0.1,
     "alwaysSpread": true,
     "projectileAmount": 1,
