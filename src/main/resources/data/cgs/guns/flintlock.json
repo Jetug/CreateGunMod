@@ -10,6 +10,7 @@
     "recoilKick": 0.4,
     "recoilAdsReduction": 0.15,
     "alwaysSpread": true,
+    "enchantable": false,
     "spread": 3.5,
     "ammo": [
       "cgs:paper_cartridge"

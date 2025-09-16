@@ -1,3 +1,4 @@
+
 {
 	"format_version": "1.8.0",
 	"animations": {
@@ -43,6 +44,14 @@
 					"scale": {
 						"vector": [0, 0, 0]
 					}
+				},
+				"grenade": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					},
+					"position": {
+						"vector": [0, 0, 0]
+					}
 				}
 			}
 		},
@@ -50,26 +59,6 @@
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.6667,
 			"bones": {
-				"grenade": {
-					"rotation": {
-						"0.0": {
-							"vector": [0, 15, 0]
-						},
-						"0.6667": {
-							"vector": [0, 15, 0]
-						}
-					}
-				},
-				"gear": {
-					"rotation": {
-						"0.0": {
-							"vector": [-5, 0, 0]
-						},
-						"0.6667": {
-							"vector": [-5, 0, 0]
-						}
-					}
-				},
 				"right_arm_anim": {
 					"rotation": {
 						"0.0": {

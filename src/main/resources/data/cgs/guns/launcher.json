@@ -10,6 +10,7 @@
     "reloadTime": 70,
     "recoilAngle": 0.1,
     "alwaysSpread": true,
+    "enchantable": false,
     "projectileAmount": 1,
     "multishotAmount": 4,
     "spread": 3.0,
@@ -42,8 +43,8 @@
         "life": 120,
 
         "explosion": {
-          "damage": 40,
-          "radius": 6,
+          "damage": 15,
+          "radius": 7,
           "knockback": 1.0
         }
       }
@@ -62,7 +63,7 @@
         "life": 120,
 
         "explosion": {
-          "damage": 10,
+          "damage": 7,
           "radius": 5,
           "knockback": 0.1
         }
