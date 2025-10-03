@@ -21,8 +21,8 @@
       "gravity": true,
 
       "explosion": {
-        "damage": 40,
-        "radius": 10,
+        "damage": 20,
+        "radius": 8,
         "knockback": 0.5
       }
     }
