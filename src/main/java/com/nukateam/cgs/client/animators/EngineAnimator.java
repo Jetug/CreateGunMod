@@ -110,8 +110,8 @@ public abstract class EngineAnimator extends GunAnimator {
         if(player == null) return false;
         var mainGunData = new GunData(getEntity().getMainHandItem(), getEntity());
         var offGunData = new GunData(getEntity().getOffhandItem(), getEntity());
-        var i1 = GunModifierHelper.isOneHanded(mainGunData);
-        var i2 = GunModifierHelper.isOneHanded(offGunData);
+        var i1 = GunStateHelper.isOneHanded(mainGunData);
+        var i2 = GunStateHelper.isOneHanded(offGunData);
         var arm = this.getArm();
         var isNotPaused = !minecraft.getInstance().isPaused();
         var isVisible = arm == InteractionHand.MAIN_HAND || (arm == InteractionHand.OFF_HAND && i1 && i2);

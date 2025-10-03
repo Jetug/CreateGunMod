@@ -1,10 +1,10 @@
 {
    "gun.gatling.fire": { "subtitle": "subtitle.ntgl.fire", "sounds": [
-      { "name": "cgs:gun/gatling/fire/fire_01" },
-      { "name": "cgs:gun/gatling/fire/fire_02" },
-      { "name": "cgs:gun/gatling/fire/fire_03" },
-      { "name": "cgs:gun/gatling/fire/fire_04" },
-      { "name": "cgs:gun/gatling/fire/fire_05" }
+      { "name": "cgs:gun/gatling/fire/fire_01" , "volume": 1.55},
+      { "name": "cgs:gun/gatling/fire/fire_02" , "volume": 1.55},
+      { "name": "cgs:gun/gatling/fire/fire_03" , "volume": 1.55},
+      { "name": "cgs:gun/gatling/fire/fire_04" , "volume": 1.55},
+      { "name": "cgs:gun/gatling/fire/fire_05" , "volume": 1.55}
    ]},
 
    "gun.gatling.reload_mag_in": { "subtitle": "subtitle.ntgl.reload", "sounds": [

@@ -49,9 +49,6 @@
       }
     }
   },
-  "textures": {
-    "default" : "cgs:shotgun"
-  },
   "sounds": {
     "fire"     : "cgs:gun.shotgun.fire",
     "open"     : "cgs:gun.shotgun.open",

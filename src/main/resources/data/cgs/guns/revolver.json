@@ -30,9 +30,6 @@
       }
     }
   },
-  "textures": {
-    "default" : "cgs:revolver"
-  },
   "sounds": {
     "fire"          : "cgs:gun.revolver.fire",
     "chamber_open"  : "cgs:gun.revolver.chamber_open",

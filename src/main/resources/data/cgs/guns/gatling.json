@@ -53,9 +53,6 @@
       }
     }
   },
-  "textures": {
-    "default" : "cgs:gatling"
-  },
   "sounds": {
     "fire"          : "cgs:gun.gatling.fire",
     "reload_mag_in" : "cgs:gun.gatling.reload_mag_in",

@@ -65,9 +65,6 @@
       }
     }
   },
-  "textures": {
-    "default" : "cgs:nailgun"
-  },
   "sounds": {
     "fire"       : "cgs:gun.nailgun.fire",
     "fire_steam" : "cgs:gun.nailgun.fire",

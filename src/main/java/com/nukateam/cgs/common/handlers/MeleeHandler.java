@@ -6,6 +6,7 @@ import com.nukateam.cgs.common.faundation.item.guns.HammerItem;
 import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.cgs.common.utils.BreakHandler;
+import com.nukateam.ntgl.Config;
 import com.nukateam.ntgl.common.data.GunData;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
@@ -43,7 +44,7 @@ public class MeleeHandler {
 
     @SubscribeEvent
     public static void onMelee(MeleeAttackEvent.Pre event) {
-        if(event.getStack().getItem() == CgsWeapons.HAMMER.get()
+        if(!event.isClient() && event.getStack().getItem() == CgsWeapons.HAMMER.get()
                 && event.getEntity() instanceof ServerPlayer player){
             var stack = event.getStack();
             var entity = event.getEntity();
@@ -125,13 +126,13 @@ public class MeleeHandler {
 
         var blockState = player.level().getBlockState(targetPos);
         var canDistroy = blockState.getDestroySpeed(player.level(), targetPos) >= 0;
+        var canGrief = Config.COMMON.gameplay.griefing.enableBlockRemovalOnExplosions.get();
 
-        if(canDistroy && handler.isToolTierSufficient(blockState, toolTier) && handler.isMineable(blockState)) {
+        if(canGrief && canDistroy && handler.isToolTierSufficient(blockState, toolTier) && handler.isMineable(blockState)) {
             if(!player.isCreative()) {
                 StackUtils.damageItem(stack, 1);
             }
-
-            player.level().destroyBlock(targetPos, handler.isCanDrop(blockState));
+            player.level().destroyBlock(targetPos, handler.isCanDrop(blockState), player);
         }
     }
 

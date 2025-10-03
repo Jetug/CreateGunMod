@@ -1,6 +1,5 @@
 package com.nukateam.cgs.common.ntgl;
 
-import com.nukateam.cgs.common.faundation.item.attachments.HammerHeadItem;
 import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
 import com.nukateam.cgs.common.faundation.registry.items.ModItems;
 import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
@@ -22,14 +21,6 @@ import java.util.List;
 import java.util.Set;
 
 public class AttachmentMods {
-    public static final int MAX_FUEL = 20000;
-    public static final int MAX_WATER = 2000;
-
-    public static final Scope SHORT_SCOPE = Scope.builder()
-            .aimFovModifier(0.85F)
-            .modifiers(GunModifiers.SLOW_ADS)
-            .build();
-
     public static final Scope LONG_SCOPE = Scope.builder()
             .modifiers(GunModifiers.SLOWER_ADS)
             .aimFovModifier(0.25F)
@@ -118,7 +109,7 @@ public class AttachmentMods {
 
         @Override
         public float recoilModifier(GunData data) {
-            if(data.gun.getItem() == CgsWeapons.NAILGUN.get()) {
+            if(data.gun != null && data.gun.getItem() == CgsWeapons.NAILGUN.get()) {
                 return 2;
             }
             return IGunModifier.super.recoilModifier(data);
@@ -126,7 +117,7 @@ public class AttachmentMods {
 
         @Override
         public float kickModifier(GunData data) {
-            if(data.gun.getItem() == CgsWeapons.NAILGUN.get()) {
+            if(data.gun != null && data.gun.getItem() == CgsWeapons.NAILGUN.get()) {
                 return 2;
             }
             return IGunModifier.super.kickModifier(data);
@@ -152,18 +143,9 @@ public class AttachmentMods {
             return Set.of(AmmoHolders.BURNABLE, AmmoHolders.WATER);
         }
 
-//        @Override
-//        public int modifyMaxFuel(int max, AmmoHolder type, GunData data) {
-//            if(type == AmmoHolders.BURNABLE)
-//                return MAX_FUEL;
-//            else if(type == AmmoHolders.WATER)
-//                return MAX_WATER;
-//            return max;
-//        }
-
         @Override
         public GripType modifyGripType(GripType gripType, GunData data) {
-            if(data != null) {
+            if(data != null && data.gun != null) {
                 if(data.gun.getItem() == CgsWeapons.NAILGUN.get()) {
                     return GripType.TWO_HANDED;
                 }
@@ -176,20 +158,21 @@ public class AttachmentMods {
 
         @Override
         public ResourceLocation modifyFireSound(ResourceLocation sound, GunData data) {
-            if(data.gun.getItem() == CgsWeapons.NAILGUN.get()){
+            if(data.gun != null && data.gun.getItem() == CgsWeapons.NAILGUN.get()){
                 return CgsSounds.NAILGUN_FIRE_STEAM.get().getLocation();
             }
             return IGunModifier.super.modifyFireSound(sound, data);
         }
 
         private GripType getGatlingGripType(GripType gripType, GunData data){
-            var magazineItem = GunStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, data.gun).getItem();
-            var drumItem = AttachmentItems.GATLING_DRUM.get();
+            if(data.shooter != null && data.gun != null) {
+                var magazineItem = GunStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, data.gun).getItem();
+                var drumItem = AttachmentItems.GATLING_DRUM.get();
 
-            if (magazineItem != drumItem && FuelUtils.hasFuel(data) && data.shooter.hasEffect(MobEffects.DAMAGE_BOOST)) {
-                return GripType.ONE_HANDED;
+                if (magazineItem != drumItem && FuelUtils.hasFuel(data) && data.shooter.hasEffect(MobEffects.DAMAGE_BOOST)) {
+                    return GripType.ONE_HANDED;
+                }
             }
-
             return gripType;
         }
     };
@@ -226,6 +209,8 @@ public class AttachmentMods {
 
         @Override
         public float modifyMeleeAngle(float value, GunData data) {
+            if(data.gun == null) return value;
+
             var barrel = GunStateHelper.getAttachmentItem(AttachmentType.BARREL, data.gun);
             if(barrel.getItem() == AttachmentItems.FLINTLOCK_LONG_BARREL.get())
                 return 20;
@@ -234,6 +219,8 @@ public class AttachmentMods {
 
         @Override
         public float modifyMeleeDistance(float value, GunData data) {
+            if(data.gun == null) return value;
+
             var barrel = GunStateHelper.getAttachmentItem(AttachmentType.BARREL, data.gun);
             if(barrel.getItem() == AttachmentItems.FLINTLOCK_LONG_BARREL.get())
                 return 5;
@@ -318,13 +305,6 @@ public class AttachmentMods {
         }
     };
 
-    public static final IGunModifier AUTO = new IGunModifier() {
-        @Override
-        public float modifyProjectileSpread(float spread, GunData data) {
-            return spread * 2;
-        }
-    };
-
     public static final IGunModifier STOCK = new IGunModifier() {
         @Override
         public float recoilModifier(GunData data) {
@@ -350,20 +330,18 @@ public class AttachmentMods {
     public static final IGunModifier SHOTGUN_MODIFIER = new IGunModifier() {
         @Override
         public int modifyFireRate(int rate, GunData data) {
-            if(data.gun == null) return rate;
+        if(data.gun == null) return rate;
 
-            var cock = GunUtils.getCock(data.gun);
+        var cock = GunUtils.getCock(data.gun);
 
-            if(GunStateHelper.getFireMode(data) == FireMode.MULTI){
-                if(cock == 2)
-                    return 20;
-            }
-            if(cock == 1)
+        if(GunStateHelper.getFireMode(data) == FireMode.MULTI){
+            if(cock == 2)
                 return 20;
+        }
+        if(cock == 1)
+            return 20;
 
-//            if(!isAmmoEven(data))
-//                return 20;
-            return rate;
+        return rate;
         }
     };
 
@@ -527,6 +505,11 @@ public class AttachmentMods {
     //LAUNCHER
     public static final IGunModifier BALLISTAZOOKA = new IGunModifier() {
         @Override
+        public Set<FireMode> modifyFireModes(Set<FireMode> fireMode, GunData data) {
+            return new LinkedHashSet<>(List.of(FireMode.SEMI_AUTO));
+        }
+
+        @Override
         public int modifyMaxAmmo(int maxAmmo, GunData data) {
             return 1;
         }
@@ -607,16 +590,6 @@ public class AttachmentMods {
         public int modifyReloadTime(int reloadTime, GunData data) {
             return 100;
         }
-
-        //        @Override
-//        public int modifyFireDelay(int chargeTime, GunData data) {
-//            return IGunModifier.super.modifyFireDelay(chargeTime, data);
-//        }
-
-//        @Override
-//        public float modifyProjectileSpread(float spread, GunData data) {
-//            return spread;
-//        }
 
         @Override
         public Set<AmmoHolder> modifyFuelItems(Set<AmmoHolder> secondaryAmmo, GunData data) {

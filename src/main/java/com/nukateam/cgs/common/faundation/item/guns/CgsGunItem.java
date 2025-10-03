@@ -10,6 +10,7 @@ import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
 import com.nukateam.ntgl.common.data.GunData;
 import com.nukateam.ntgl.common.util.util.GunModifierHelper;
+import com.nukateam.ntgl.common.util.util.GunStateHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
@@ -107,8 +108,8 @@ public class CgsGunItem extends WeaponItem {
         var mainHand = data.shooter.getMainHandItem();
         var offHand = data.shooter.getOffhandItem();
 
-        var oneHanded1 = GunModifierHelper.isOneHanded(new GunData(mainHand, data.shooter));
-        var oneHanded2 = GunModifierHelper.isOneHanded(new GunData(offHand, data.shooter));
+        var oneHanded1 = GunStateHelper.isOneHanded(new GunData(mainHand, data.shooter));
+        var oneHanded2 = GunStateHelper.isOneHanded(new GunData(offHand, data.shooter));
 
         return mainHand == data.gun || (offHand == data.gun && oneHanded1 && oneHanded2);
     }

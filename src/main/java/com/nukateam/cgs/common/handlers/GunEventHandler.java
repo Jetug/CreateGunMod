@@ -36,7 +36,7 @@ public class GunEventHandler {
         var gunData = new GunData(gun, shooter);
         var hasExtendoGrip = shooter.getOffhandItem().getItem() == AllItems.EXTENDO_GRIP.get();
 
-        if(hasExtendoGrip && !GunModifierHelper.isOneHanded(gunData)){
+        if(hasExtendoGrip && !GunStateHelper.isOneHanded(gunData)){
             event.setCanceled(true);
         }
 
