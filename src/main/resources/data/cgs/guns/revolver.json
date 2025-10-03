@@ -30,6 +30,9 @@
       }
     }
   },
+  "animations": {
+    "ntgl:reload": "ntgl:revolver_reload"
+  },
   "sounds": {
     "fire"          : "cgs:gun.revolver.fire",
     "chamber_open"  : "cgs:gun.revolver.chamber_open",

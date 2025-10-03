@@ -1,6 +1,65 @@
 {
-	"format	_version": "1.8.0",
+	"format_version": "1.8.0",
 	"animations": {
+		"hold_tpv": {
+			"loop": true,
+			"bones": {
+				"right_arm_anim": {
+					"rotation": {
+						"vector": [-5.07741, -12.4807, 0.44576]
+					},
+					"position": {
+						"vector": [5.95, 1.25, 2.45]
+					}
+				},
+				"front_cover": {
+					"rotation": {
+						"vector": [-132.5, 0, 0]
+					}
+				},
+				"bone": {
+					"rotation": {
+						"vector": [112.5, 0, 0]
+					}
+				},
+				"back_cover": {
+					"rotation": {
+						"vector": [135, 0, 0]
+					}
+				},
+				"bone5": {
+					"rotation": {
+						"vector": [-120, 0, 0]
+					}
+				},
+				"front_piston2": {
+					"position": {
+						"vector": [0, -0.30505, -3.48668]
+					}
+				},
+				"front_handle": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					},
+					"position": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"left_arm_anim": {
+					"rotation": {
+						"vector": [-24.74384, -14.76654, -65.34093]
+					},
+					"position": {
+						"vector": [-2.26651, -0.2999, -0.72246]
+					}
+				},
+				"front_piston": {
+					"position": {
+						"vector": [0, -0.17431, 2.99239]
+					}
+				}
+			}
+		},
 		"hold": {
 			"loop": true,
 			"bones": {

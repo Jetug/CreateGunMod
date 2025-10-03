@@ -286,6 +286,12 @@ public class AttachmentMods {
     public static final IGunModifier LONG_BARREL = new IGunModifier() {
         @Override
         public GripType modifyGripType(GripType gripType, GunData data) {
+            if(data.gun != null && data.gun.getItem() == CgsWeapons.REVOLVER.get()){
+                if(GunStateHelper.hasAttachmentEquipped(data.gun, AttachmentType.STOCK)){
+                    return GripType.TWO_HANDED;
+                }
+                else return gripType;
+            }
             return GripType.TWO_HANDED;
         }
 

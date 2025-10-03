@@ -422,6 +422,121 @@
 				}
 			}
 		},
+		"reload_tpv": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 3.8333,
+			"bones": {
+				"reload_upper": {
+					"rotation": {
+						"0.25": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [35, 0, 0]
+						},
+						"3.0833": {
+							"vector": [35, 0, 0]
+						},
+						"3.2083": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"piston_body": {
+					"position": {
+						"0.25": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [0, 0, 2.15]
+						},
+						"3.0833": {
+							"vector": [0, 0, 2.15]
+						},
+						"3.2083": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"right_arm_anim": {
+					"rotation": {
+						"vector": [2.5, 0, 0]
+					},
+					"position": {
+						"vector": [8.15, 3.83594, 6.45573]
+					}
+				},
+				"muzzle_flash": {
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"muzzle_smoke": {
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"hummer": {
+					"position": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"bullets": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					},
+					"position": {
+						"vector": [0, 0, 0]
+					},
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"bullet4": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					},
+					"position": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"piston_head2": {
+					"position": {
+						"0.25": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [0, 0, 1.4]
+						},
+						"3.0833": {
+							"vector": [0, 0, 1.4]
+						},
+						"3.2083": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"chamber": {
+					"rotation": {
+						"vector": [0, 0, -45]
+					}
+				}
+			},
+			"sound_effects": {
+				"0.4167": {
+					"effect": "chamber_open"
+				},
+				"0.5833": {
+					"effect": "rounds_out"
+				},
+				"1.875": {
+					"effect": "rounds_in"
+				},
+				"3.0833": {
+					"effect": "chamber_close"
+				}
+			}
+		},
 		"hold": {
 			"loop": true,
 			"bones": {

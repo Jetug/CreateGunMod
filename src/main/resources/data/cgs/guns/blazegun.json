@@ -59,6 +59,9 @@
       }
     }
   },
+  "animations": {
+    "ntgl:reload": "cgs:blazegun_reload"
+  },
   "sounds": {
     "fire": "minecraft:entity.blaze.shoot",
     "reload": "cgs:item.blazegun.reload",

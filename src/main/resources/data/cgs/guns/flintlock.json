@@ -32,6 +32,9 @@
       }
     }
   },
+  "animations": {
+    "ntgl:reload": "ntgl:revolver_reload"
+  },
   "sounds": {
     "fire"    : "cgs:gun.flintlock.fire",
     "ammo_in" : "cgs:gun.flintlock.ammo_in",

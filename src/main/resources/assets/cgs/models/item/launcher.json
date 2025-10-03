@@ -2,32 +2,32 @@
   "credit": "Made with Blockbench",
   "parent": "builtin/entity",
   "texture_size": [
-    512,
-    512
+    256,
+    256
   ],
   "display": {
     "thirdperson_righthand": {
       "translation": [
-        0.5,
         2.75,
+        4.75,
         2.75
       ],
       "scale": [
-        0.8828125,
-        0.8828125,
-        0.8828125
+        0.88281,
+        0.88281,
+        0.88281
       ]
     },
     "thirdperson_lefthand": {
       "translation": [
-        0.5,
-        2.75,
+        1.5,
+        3.5,
         2.75
       ],
       "scale": [
-        0.8828125,
-        0.8828125,
-        0.8828125
+        0.88281,
+        0.88281,
+        0.88281
       ]
     },
     "firstperson_righthand": {

@@ -49,6 +49,10 @@
       }
     }
   },
+  "animations": {
+    "ntgl:melee": "ntgl:hammer_hit",
+    "ntgl:reload": "cgs:hammer_reload"
+  },
   "sounds": {
     "shot": "cgs:gun.hammer.shot",
     "reload": "cgs:gun.hammer.reload",

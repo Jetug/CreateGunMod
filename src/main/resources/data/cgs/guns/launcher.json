@@ -93,6 +93,9 @@
       }
     }
   },
+  "animations": {
+    "ntgl:reload": "cgs:launcher_reload"
+  },
   "sounds": {
     "fire": "cgs:gun.launcher.fire",
     "boltopen": "cgs:gun.launcher.boltopen",

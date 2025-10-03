@@ -49,6 +49,9 @@
       }
     }
   },
+  "animations": {
+    "ntgl:reload": "cgs:shotgun_reload"
+  },
   "sounds": {
     "fire"     : "cgs:gun.shotgun.fire",
     "open"     : "cgs:gun.shotgun.open",
