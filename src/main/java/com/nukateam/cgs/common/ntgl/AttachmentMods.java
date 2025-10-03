@@ -1,5 +1,6 @@
 package com.nukateam.cgs.common.ntgl;
 
+import com.nukateam.cgs.common.faundation.item.attachments.HammerHeadItem;
 import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
 import com.nukateam.cgs.common.faundation.registry.items.ModItems;
 import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
@@ -15,6 +16,7 @@ import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
 import com.nukateam.ntgl.common.data.GunData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -487,7 +489,8 @@ public class AttachmentMods {
 
         @Override
         public float modifyMeleeDamage(float damage, GunData data) {
-            return damage + 2;
+            if(data.gun == null) return damage;
+            return getHeadMeleeDamage(damage, data.gun);
         }
 
         @Override
@@ -495,6 +498,14 @@ public class AttachmentMods {
             return 80;
         }
     };
+
+    private static float getHeadMeleeDamage(float damage, ItemStack gun) {
+        var attachment = GunStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, gun);
+        if(attachment.getItem() instanceof HammerHeadItem headItem) {
+            return damage + 2 + headItem.getTier().getAttackDamageBonus() * 2;
+        }
+        return damage;
+    }
 
     public static final IGunModifier AXE_HEAD = new IGunModifier() {
         @Override
@@ -504,7 +515,8 @@ public class AttachmentMods {
 
         @Override
         public float modifyMeleeDamage(float damage, GunData data) {
-            return damage + 4;
+            if(data.gun == null) return damage;
+            return getHeadMeleeDamage(damage, data.gun) + 4;
         }
     };
 
