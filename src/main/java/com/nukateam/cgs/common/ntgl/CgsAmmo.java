@@ -6,13 +6,11 @@ import com.simibubi.create.AllItems;
 import com.simibubi.create.content.equipment.armor.BacktankItem;
 import com.simibubi.create.content.equipment.armor.BacktankUtil;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraftforge.common.ForgeHooks;
 
 import java.util.List;
 
 import static com.nukateam.cgs.Gunsmithing.cgsResource;
-import static com.nukateam.ntgl.Ntgl.ntglResource;
 
 public class CgsAmmo {
     public static AmmoHolder AIR = AmmoHolder.Builder
@@ -52,11 +50,11 @@ public class CgsAmmo {
         return item instanceof BacktankItem && BacktankUtil.hasAirRemaining(stack);
     }
 
-    private static List<ItemStack> onConsumeAir(ItemStack stack, Integer amount) {
-        var tankAir = BacktankUtil.getAir(stack);
-        var tank = new ItemStack(stack.getItem());
+    private static List<ItemStack> onConsumeAir(ItemStack tank, Integer amount) {
+        var tankAir = BacktankUtil.getAir(tank);
+        var newTank = tank.copy();
         GunUtils.setAir(tank, Math.max(0, tankAir - amount));
-        GunUtils.consumeAir(tank, amount);
-        return List.of(tank);
+        GunUtils.consumeAir(newTank, amount);
+        return List.of(newTank);
     }
 }

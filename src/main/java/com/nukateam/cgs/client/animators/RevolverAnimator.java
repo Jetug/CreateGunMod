@@ -18,6 +18,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
+import net.minecraft.world.level.block.SculkSensorBlock;
+import net.minecraft.world.level.block.entity.SculkSensorBlockEntity;
 import net.minecraftforge.event.TickEvent;
 
 import static mod.azure.azurelib.core.animation.Animation.LoopType.*;

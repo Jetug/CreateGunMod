@@ -14,41 +14,13 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 
 import java.util.function.UnaryOperator;
 
 public class CgsSequencedAssemblyRecipeGen extends CreateRecipeProvider {
-
-//    CreateRecipeProvider.GeneratedRecipe PRECISION_MECHANISM = this.create("precision_mechanism", (b) -> {
-//        return b.require(I.goldSheet()).transitionTo(AllItems.INCOMPLETE_PRECISION_MECHANISM.get())
-//                .addOutput(AllItems.PRECISION_MECHANISM.get(), 120.0F)
-//                .addOutput(AllItems.GOLDEN_SHEET.get(), 8.0F)
-//                .addOutput(AllItems.ANDESITE_ALLOY.get(), 8.0F)
-//                .addOutput( AllBlocks.COGWHEEL.get(), 5.0F)
-//                .addOutput(Items.GOLD_NUGGET, 3.0F)
-//                .addOutput(AllBlocks.SHAFT.get(), 2.0F)
-//                .addOutput(AllItems.CRUSHED_GOLD.get(), 2.0F)
-//                .addOutput(Items.IRON_INGOT, 1.0F)
-//                .addOutput(Items.CLOCK, 1.0F).loops(5).addStep(DeployerApplicationRecipe::new, (rb) -> {
-//            return rb.require(I.cog());
-//        }).addStep(DeployerApplicationRecipe::new, (rb) -> {
-//            return rb.require(I.largeCog());
-//        }).addStep(DeployerApplicationRecipe::new, (rb) -> {
-//            return rb.require(I.ironNugget());
-//        });
-//    });
-
-    //    CreateRecipeProvider.GeneratedRecipe REINFORCED_SHEET = this.create("sturdy_sheet", (b) -> {
-//        return b.require(AllItems.POWDERED_OBSIDIAN.get())
-//                .transitionTo(AllItems.INCOMPLETE_REINFORCED_SHEET.get())
-//                .addOutput(AllItems.STURDY_SHEET.get(), 1.0F)
-//                .loops(1)
-//                .addStep(FillingRecipe::new, (rb) -> rb.require(Fluids.LAVA, 500))
-//                .addStep(PressingRecipe::new, (rb) -> rb)
-//                .addStep(PressingRecipe::new, (rb) -> rb);
-//    });
-
     CreateRecipeProvider.GeneratedRecipe REVOLVER_ROUND = this.create("revolver_round", (b) -> b
             .require(TagsKeys.brassSheet())
             .transitionTo(ModItems.SHELL_10MM.get())
@@ -100,15 +72,17 @@ public class CgsSequencedAssemblyRecipeGen extends CreateRecipeProvider {
         return b.require(AllBlocks.FLUID_PIPE.get())
                 .transitionTo(AllBlocks.FLUID_PIPE.get())
                 .addOutput(new ItemStack(ModItems.ROCKET.get(), 1), 1.0F)
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagsKeys.brassSheet()))
+                .addStep(DeployerApplicationRecipe::new, (rb) ->
+                        rb.require(Blocks.TNT))
+                .addStep(DeployerApplicationRecipe::new, (rb) ->
+                        rb.require(TagsKeys.brassSheet()))
                 .loops(1);
     });
 
     CreateRecipeProvider.GeneratedRecipe ROCKET_SMALL = this.create("rocket_small", (b) -> {
         return b.require(TagsKeys.ironSheet())
                 .transitionTo(AllItems.IRON_SHEET)
-                .addOutput(new ItemStack(ModItems.SMALL_ROCKET.get(), 4), 1.0F)
+                .addOutput(new ItemStack(ModItems.SMALL_ROCKET.get(), 1), 1.0F)
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagsKeys.brassSheet()))
                 .loops(1);

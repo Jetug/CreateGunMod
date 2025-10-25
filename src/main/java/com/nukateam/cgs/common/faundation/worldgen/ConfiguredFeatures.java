@@ -20,8 +20,8 @@ public class ConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_LEAD_ORE_KEY = registerKey("lead_ore");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
-        RuleTest stoneReplaceable = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
-        RuleTest deepslateReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
+        var stoneReplaceable = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
+        var deepslateReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
 
         var overworldSapphireOres = List.of(OreConfiguration.target(stoneReplaceable,
                         CgsBlocks.LEAD_ORE.get().defaultBlockState()),

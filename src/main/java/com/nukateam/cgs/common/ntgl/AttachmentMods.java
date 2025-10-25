@@ -481,6 +481,13 @@ public class AttachmentMods {
         }
     };
 
+    private static float getHeadMeleeDamage(float damage, ItemStack attachment) {
+        if(attachment.getItem() instanceof HammerHeadItem headItem) {
+            return damage + 2 + headItem.getTier().getAttackDamageBonus() * 2;
+        }
+        return damage;
+    }
+
     public static final IGunModifier HAMMER_HEAD = new IGunModifier() {
         @Override
         public int modifyMeleeMaxTargets(int value, GunData data) {
@@ -490,7 +497,7 @@ public class AttachmentMods {
         @Override
         public float modifyMeleeDamage(float damage, GunData data) {
             if(data.gun == null) return damage;
-            return getHeadMeleeDamage(damage, data.gun);
+            return getHeadMeleeDamage(damage, data.attachment);
         }
 
         @Override
@@ -498,14 +505,6 @@ public class AttachmentMods {
             return 80;
         }
     };
-
-    private static float getHeadMeleeDamage(float damage, ItemStack gun) {
-        var attachment = GunStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, gun);
-        if(attachment.getItem() instanceof HammerHeadItem headItem) {
-            return damage + 2 + headItem.getTier().getAttackDamageBonus() * 2;
-        }
-        return damage;
-    }
 
     public static final IGunModifier AXE_HEAD = new IGunModifier() {
         @Override
@@ -516,7 +515,7 @@ public class AttachmentMods {
         @Override
         public float modifyMeleeDamage(float damage, GunData data) {
             if(data.gun == null) return damage;
-            return getHeadMeleeDamage(damage, data.gun) + 4;
+            return getHeadMeleeDamage(damage, data.attachment) + 4;
         }
     };
 

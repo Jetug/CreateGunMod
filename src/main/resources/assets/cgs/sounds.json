@@ -1,10 +1,8 @@
 {
    "gun.gatling.fire": { "subtitle": "subtitle.ntgl.fire", "sounds": [
-      { "name": "cgs:gun/gatling/fire/fire_01" , "volume": 1.55},
-      { "name": "cgs:gun/gatling/fire/fire_02" , "volume": 1.55},
-      { "name": "cgs:gun/gatling/fire/fire_03" , "volume": 1.55},
-      { "name": "cgs:gun/gatling/fire/fire_04" , "volume": 1.55},
-      { "name": "cgs:gun/gatling/fire/fire_05" , "volume": 1.55}
+      { "name": "cgs:gun/gatling/fire/fire_02" , "volume": 60.0},
+      { "name": "cgs:gun/gatling/fire/fire_03" , "volume": 60.0},
+      { "name": "cgs:gun/gatling/fire/fire_05" , "volume": 60.0}
    ]},
 
    "gun.gatling.reload_mag_in": { "subtitle": "subtitle.ntgl.reload", "sounds": [
@@ -16,9 +14,9 @@
    ]},
 
    "gun.revolver.fire": { "subtitle": "subtitle.ntgl.fire", "sounds": [
-      { "name": "cgs:gun/revolver/fire/fire_01" },
-      { "name": "cgs:gun/revolver/fire/fire_02" },
-      { "name": "cgs:gun/revolver/fire/fire_03" }
+      { "name": "cgs:gun/revolver/fire/fire_01" , "volume": 5.0},
+      { "name": "cgs:gun/revolver/fire/fire_02" , "volume": 5.0},
+      { "name": "cgs:gun/revolver/fire/fire_03" , "volume": 5.0}
    ]},
 
    "gun.revolver.chamber_open": { "subtitle": "subtitle.ntgl.reload", "sounds": [
@@ -35,9 +33,9 @@
    ]},
 
    "gun.shotgun.fire": { "subtitle": "subtitle.ntgl.fire", "sounds": [
-      { "name": "cgs:gun/shotgun/fire/fire_01" , "volume": 2},
-      { "name": "cgs:gun/shotgun/fire/fire_02" , "volume": 2},
-      { "name": "cgs:gun/shotgun/fire/fire_03" , "volume": 2}
+      { "name": "cgs:gun/shotgun/fire/fire_01" , "volume": 40.0},
+      { "name": "cgs:gun/shotgun/fire/fire_02" , "volume": 40.0},
+      { "name": "cgs:gun/shotgun/fire/fire_03" , "volume": 40.0}
    ]},
 
    "gun.shotgun.close": { "subtitle": "subtitle.ntgl.fire", "sounds": [
@@ -57,7 +55,7 @@
    ]},
 
    "gun.nailgun.fire": { "subtitle": "subtitle.ntgl.fire", "sounds": [
-      { "name": "cgs:gun/nailgun/fire/fire" }
+      { "name": "cgs:gun/nailgun/fire/fire", "volume": 0.7  }
    ]},
 
    "gun.nailgun.fire_steam": { "subtitle": "subtitle.ntgl.fire", "sounds": [
