@@ -45,7 +45,8 @@
         "explosion": {
           "damage": 20,
           "radius": 6,
-          "knockback": 1.0
+          "knockback": 1.0,
+          "destroyBlocks": true
         }
       }
     },
