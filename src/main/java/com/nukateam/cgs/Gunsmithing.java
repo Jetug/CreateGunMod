@@ -25,7 +25,7 @@ public class Gunsmithing {
     public Gunsmithing() {
         MOD_EVENT_BUS.addListener(this::commonSetup);
         CgsWeapons.register(MOD_EVENT_BUS);
-        ModItems.register(MOD_EVENT_BUS);
+        CgsItems.register(MOD_EVENT_BUS);
         AttachmentItems.register(MOD_EVENT_BUS);
         CgsBlocks.register(MOD_EVENT_BUS);
         CgsItemTabs.register(MOD_EVENT_BUS);

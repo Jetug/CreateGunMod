@@ -2,7 +2,7 @@ package com.nukateam.cgs.common.ntgl;
 
 import com.nukateam.cgs.common.faundation.item.attachments.HammerHeadItem;
 import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
-import com.nukateam.cgs.common.faundation.registry.items.ModItems;
+import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
 import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
 import com.nukateam.cgs.common.faundation.registry.CgsSounds;
 import com.nukateam.cgs.common.utils.GunUtils;
@@ -477,7 +477,7 @@ public class AttachmentMods {
 
         @Override
         public Set<AmmoHolder> modifyAmmoItems(Set<AmmoHolder> item, GunData data) {
-            return Set.of(AmmoHolder.getType(ModItems.SHOTGUN_ROUND_BLANK.getId()));
+            return Set.of(AmmoHolder.getType(CgsItems.SHOTGUN_ROUND_BLANK.getId()));
         }
     };
 
@@ -561,7 +561,7 @@ public class AttachmentMods {
 
         @Override
         public Set<AmmoHolder> modifyAmmoItems(Set<AmmoHolder> item, GunData data) {
-            return Set.of(AmmoHolder.getType(ModItems.SPEAR.getId()));
+            return Set.of(AmmoHolder.getType(CgsItems.SPEAR.getId()));
         }
 
         @Override
@@ -595,7 +595,7 @@ public class AttachmentMods {
 
         @Override
         public Set<AmmoHolder> modifyAmmoItems(Set<AmmoHolder> item, GunData data) {
-            return Set.of(AmmoHolder.getType(ModItems.SMALL_ROCKET.getId()));
+            return Set.of(AmmoHolder.getType(CgsItems.SMALL_ROCKET.getId()));
         }
 
         @Override

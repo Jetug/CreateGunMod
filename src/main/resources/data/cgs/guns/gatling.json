@@ -12,7 +12,6 @@
     "maxAmmo": 100,
     "reloadTime": 50,
     "recoilAngle": 2.0,
-    "recoilKick": 0.8,
     "damage": 10.0,
     "alwaysSpread": true,
     "spread": 1.2,

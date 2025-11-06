@@ -17,7 +17,7 @@
           "item": "create:fluid_pipe"
         },
         {
-          "tag": "forge:gunpowder"
+          "item": "minecraft:tnt"
         }
       ],
       "results": [

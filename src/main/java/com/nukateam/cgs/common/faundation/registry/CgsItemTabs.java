@@ -2,7 +2,7 @@ package com.nukateam.cgs.common.faundation.registry;
 
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
-import com.nukateam.cgs.common.faundation.registry.items.ModItems;
+import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
 import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
 import com.nukateam.ntgl.common.util.helpers.RegistrationHelper;
 import net.minecraft.core.registries.Registries;
@@ -22,7 +22,7 @@ public class CgsItemTabs {
 
 
     public static final RegistryObject<CreativeModeTab> GUNS = CREATIVE_MODE_TABS.register("mod_items",
-            () -> builder().icon(() -> new ItemStack(ModItems.ROUND_7MM.get()))
+            () -> builder().icon(() -> new ItemStack(CgsItems.ROUND_7MM.get()))
                     .title(Component.translatable("itemGroup.mod_items"))
                     .displayItems(CgsItemTabs::getWeaponTab)
                     .build());
@@ -31,7 +31,7 @@ public class CgsItemTabs {
 
     private static void getWeaponTab(ItemDisplayParameters itemDisplayParameters, Output output) {
         registerGuns(output, CgsWeapons.ITEMS);
-        registerItems(output, ModItems.ITEMS);
+        registerItems(output, CgsItems.ITEMS);
         registerItems(output, AttachmentItems.ITEMS);
 
     }

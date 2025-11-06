@@ -4,12 +4,12 @@ import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
 import com.nukateam.cgs.common.faundation.registry.CgsBlocks;
 import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
-import com.nukateam.cgs.common.faundation.registry.items.ModItems;
+import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
 
 public class DataGenConfig {
     public static Class[] dataGenClasses = new Class[]{
             CgsWeapons.class,
-            ModItems.class,
+            CgsItems.class,
             AttachmentItems.class,
             CgsBlocks.class
     };

@@ -6,7 +6,7 @@ import com.google.common.base.Supplier;
 import com.nukateam.cgs.common.datagen.DataGenConfig;
 import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
 import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
-import com.nukateam.cgs.common.faundation.registry.items.ModItems;
+import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
@@ -30,7 +30,7 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 		SHOTGUN = create(CgsWeapons.SHOTGUN::get).returns(1)
 			.recipe(b -> b
 					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
-					.key('B', ModItems.STURDY_BARREL.get())
+					.key('B', CgsItems.STURDY_BARREL.get())
 					.key('A', AllItems.ANDESITE_ALLOY.get())
 					.key('S', AllItems.STURDY_SHEET.get())
 					.key('L', AllItems.BRASS_SHEET.get())
@@ -41,7 +41,7 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 
 		GATLING = create(CgsWeapons.GATLING::get).returns(1)
 			.recipe(b -> b
-					.key('B', ModItems.STURDY_BARREL.get())
+					.key('B', CgsItems.STURDY_BARREL.get())
 					.key('A', AllItems.ANDESITE_ALLOY.get())
 					.key('S', AllItems.STURDY_SHEET.get())
 					.key('C', AllBlocks.COGWHEEL.get())
@@ -57,7 +57,7 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 		REVOLVER = create(CgsWeapons.REVOLVER::get).returns(1)
 			.recipe(b -> b
 					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
-					.key('B', ModItems.BARREL.get())
+					.key('B', CgsItems.BARREL.get())
 					.key('A', AllItems.ANDESITE_ALLOY.get())
 					.key('S', AllItems.STURDY_SHEET.get())
 					.key('C', AllBlocks.COGWHEEL.get())

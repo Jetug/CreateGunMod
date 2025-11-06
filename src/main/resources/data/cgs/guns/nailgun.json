@@ -11,11 +11,11 @@
     "reloadTime": 20,
     "reloadEnd": 20,
     "recoilAngle": 2.0,
-    "recoilKick": 0.3,
     "reloadAmount": 5,
     "recoilAdsReduction": 0.20,
     "alwaysSpread": true,
     "enchantable": false,
+    "silenced": true,
     "spread": 1.0,
     "ammo": [
       "cgs:nail"

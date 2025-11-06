@@ -1,7 +1,7 @@
 package com.nukateam.cgs.common.datagen.loot;
 
 import com.nukateam.cgs.common.faundation.registry.CgsBlocks;
-import com.nukateam.cgs.common.faundation.registry.items.ModItems;
+import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
@@ -25,8 +25,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     protected void generate() {
         this.dropSelf(CgsBlocks.LEAD_BLOCK.get());
         this.dropSelf(CgsBlocks.RAW_LEAD_BLOCK.get());
-        this.dropItem(CgsBlocks.LEAD_ORE.get(), ModItems.RAW_LEAD.get());
-        this.dropItem(CgsBlocks.DEEPSLATE_LEAD_ORE.get(), ModItems.RAW_LEAD.get());
+        this.dropItem(CgsBlocks.LEAD_ORE.get(), CgsItems.RAW_LEAD.get());
+        this.dropItem(CgsBlocks.DEEPSLATE_LEAD_ORE.get(), CgsItems.RAW_LEAD.get());
     }
 
     private void dropItem(Block block, Item drop) {
