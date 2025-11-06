@@ -3,27 +3,27 @@ package com.nukateam.cgs.client.animators;
 import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
 import com.nukateam.cgs.common.utils.GunUtils;
 import com.nukateam.example.common.util.constants.Animations;
-import com.nukateam.ntgl.client.animators.GunAnimator;
-import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;
+import com.nukateam.ntgl.client.animators.WeaponAnimator;
+import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
-import com.nukateam.ntgl.common.data.config.gun.Gun;
-import com.nukateam.ntgl.common.util.util.GunStateHelper;
+import com.nukateam.ntgl.common.data.config.weapon.WeaponConfig;
+import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.util.Cycler;
-import com.nukateam.ntgl.common.data.GunData;
-import mod.azure.azurelib.core.animation.*;
-import mod.azure.azurelib.core.animation.AnimationController.AnimationStateHandler;
+import com.nukateam.ntgl.common.data.WeaponData;
+import software.bernie.geckolib.core.animation.*;
+import software.bernie.geckolib.core.animation.AnimationController.AnimationStateHandler;
 import net.minecraft.world.item.ItemDisplayContext;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-import static com.nukateam.ntgl.common.util.util.GunModifierHelper.*;
-import static mod.azure.azurelib.core.animation.Animation.LoopType.LOOP;
-import static mod.azure.azurelib.core.animation.Animation.LoopType.PLAY_ONCE;
-import static mod.azure.azurelib.core.animation.RawAnimation.begin;
+import static com.nukateam.ntgl.common.util.util.WeaponModifierHelper.*;
+import static software.bernie.geckolib.core.animation.Animation.LoopType.LOOP;
+import static software.bernie.geckolib.core.animation.Animation.LoopType.PLAY_ONCE;
+import static software.bernie.geckolib.core.animation.RawAnimation.begin;
 
-public class ShotgunAnimator extends GunAnimator {
+public class ShotgunAnimator extends WeaponAnimator {
     public static final String SHOT_DRUM = "shot_drum";
     public static final String SHOT_PUMP = "shot_pump";
     public static final String RELOAD_DRUM = "reload_drum";
@@ -39,8 +39,8 @@ public class ShotgunAnimator extends GunAnimator {
     public static final String WAIT = "wait";
 
     public static final int SHOT_TIME = 2;
-    protected final AnimationController<GunAnimator> COCK_CONTROLLER;
-    protected final AnimationController<GunAnimator> FLASH_CONTROLLER;
+    protected final AnimationController<WeaponAnimator> COCK_CONTROLLER;
+    protected final AnimationController<WeaponAnimator> FLASH_CONTROLLER;
 
     private int ammo;
     private boolean hasDrums;
@@ -49,7 +49,7 @@ public class ShotgunAnimator extends GunAnimator {
     private boolean isAmmoEven;
     private int cockInfo;
 
-    public ShotgunAnimator(ItemDisplayContext transformType, DynamicGunRenderer<GunAnimator> renderer) {
+    public ShotgunAnimator(ItemDisplayContext transformType, DynamicWeaponRenderer<WeaponAnimator> renderer) {
         super(transformType, renderer);
         COCK_CONTROLLER = createController("cock_controller", animateCock());
         FLASH_CONTROLLER = createController("flash_controller", animateFlash());
@@ -67,9 +67,9 @@ public class ShotgunAnimator extends GunAnimator {
         super.tickStart();
         if (!isGun()) return;
 
-        var magazine = GunStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getStack());
+        var magazine = WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getStack());
         var data = getGunData();
-        this.ammo = GunStateHelper.getAmmoCount(data);
+        this.ammo = WeaponStateHelper.getAmmoCount(data);
         this.hasDrums = magazine.is(AttachmentItems.SHOTGUN_DRUM.get());
         this.hasPumps = magazine.is(AttachmentItems.SHOTGUN_PUMP.get());
         this.isAmmoEven =  GunUtils.isAmmoEven(data);
@@ -86,7 +86,7 @@ public class ShotgunAnimator extends GunAnimator {
     }
 
     @Override
-    protected RawAnimation getShootingAnimation(AnimationState<GunAnimator> event) {
+    protected RawAnimation getShootingAnimation(AnimationState<WeaponAnimator> event) {
         var animation = begin();
         var animations = new ArrayList<String>();
 
@@ -111,7 +111,7 @@ public class ShotgunAnimator extends GunAnimator {
     }
 
     @Override
-    protected RawAnimation getStartReloadAnimation(AnimationState<GunAnimator> event) {
+    protected RawAnimation getStartReloadAnimation(AnimationState<WeaponAnimator> event) {
         if(hasPumps) {
             var data = getGunData();
             int time = getReloadStart(data);
@@ -122,7 +122,7 @@ public class ShotgunAnimator extends GunAnimator {
     }
 
     @Override
-    protected RawAnimation getDefaultReloadAnimation(AnimationState<GunAnimator> event) {
+    protected RawAnimation getDefaultReloadAnimation(AnimationState<WeaponAnimator> event) {
         var data = getGunData();
         var reloadTime = getReloadTime(data);
         if(hasDrums){
@@ -141,7 +141,7 @@ public class ShotgunAnimator extends GunAnimator {
     }
 
     @Override
-    protected RawAnimation getEndReloadAnimation(AnimationState<GunAnimator> event) {
+    protected RawAnimation getEndReloadAnimation(AnimationState<WeaponAnimator> event) {
         if(hasPumps) {
             var data = getGunData();
             int time = getReloadEnd(data);
@@ -154,11 +154,11 @@ public class ShotgunAnimator extends GunAnimator {
         else return super.getEndReloadAnimation(event);
     }
 
-    protected @NotNull GunData getGunData() {
-        return new GunData(getStack(), getEntity());
+    protected @NotNull WeaponData getGunData() {
+        return new WeaponData(getStack(), getEntity());
     }
 
-    private AnimationStateHandler<GunAnimator> animateCock() {
+    private AnimationStateHandler<WeaponAnimator> animateCock() {
         return (event) -> {
             var name = "";
 
@@ -184,7 +184,7 @@ public class ShotgunAnimator extends GunAnimator {
         };
     }
 
-    private AnimationStateHandler<GunAnimator> animateFlash() {
+    private AnimationStateHandler<WeaponAnimator> animateFlash() {
         return (event) -> {
             var cooldown = shootingHandler.getCooldown(getEntity(), arm);
                 var isShooting = rate <= cooldown;

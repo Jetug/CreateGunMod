@@ -2,13 +2,14 @@ package com.nukateam.cgs.common.faundation.entity;
 
 import com.nukateam.cgs.common.ntgl.CgsAmmo;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
-import com.nukateam.ntgl.common.data.GunData;
-import com.nukateam.ntgl.common.data.config.gun.Gun;
+import com.nukateam.ntgl.common.data.WeaponData;
+import com.nukateam.ntgl.common.data.config.weapon.WeaponConfig;
 import com.nukateam.ntgl.common.foundation.entity.ProjectileEntity;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
-import com.nukateam.ntgl.common.util.util.GunStateHelper;
-import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
-import mod.azure.azurelib.core.animation.AnimatableManager;
+import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
+import net.minecraft.world.phys.BlockHitResult;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -29,7 +30,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Predicate;
 
-import static mod.azure.azurelib.util.AzureLibUtil.createInstanceCache;
+import static software.bernie.geckolib.util.GeckoLibUtil.createInstanceCache;
 import static net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent;
 
 public class BlazeProjectile extends ProjectileEntity implements ItemSupplier, AnimatedProjectile {
@@ -38,15 +39,14 @@ public class BlazeProjectile extends ProjectileEntity implements ItemSupplier, A
     private boolean isSuperHeated;
     private boolean isStrong;
 
-    public BlazeProjectile(EntityType<? extends ProjectileEntity> entityType, Level worldIn) {
-        super(entityType, worldIn);
+    public BlazeProjectile(EntityType<? extends ProjectileEntity> entityType, Level level) {
+        super(entityType, level);
     }
-
-    public BlazeProjectile(EntityType<? extends ProjectileEntity> entityType, Level worldIn,
-                           LivingEntity shooter, ItemStack weapon, WeaponItem item, Gun modifiedGun) {
-        super(entityType, worldIn, shooter, weapon, item, modifiedGun);
-        isSuperHeated = GunStateHelper.getCurrentAmmo(new GunData(weapon, shooter)) == CgsAmmo.BLAZE_CAKE;
-        isStrong = !GunStateHelper.hasAttachmentEquipped(weapon, CgsAttachmentTypes.ENGINE);
+    
+    public BlazeProjectile(EntityType<? extends ProjectileEntity> entityType, Level level, WeaponData data) {
+        super(entityType, level, data);
+        isSuperHeated = WeaponStateHelper.getCurrentAmmo(data) == CgsAmmo.BLAZE_CAKE;
+        isStrong = !WeaponStateHelper.hasAttachmentEquipped(weapon, CgsAttachmentTypes.ENGINE);
     }
 
     protected Predicate<BlockState> getBlockFilter() {
@@ -128,10 +128,12 @@ public class BlazeProjectile extends ProjectileEntity implements ItemSupplier, A
         }
     }
 
-
     @Override
-    protected void onHitBlock(BlockState blockstate, BlockPos blockpos, Direction face, double x, double y, double z) {
-        super.onHitBlock(blockstate, blockpos, face, x, y, z);
+    protected void onHitBlock(BlockHitResult blockHitResult, BlockState state) {
+        super.onHitBlock(blockHitResult, state);
+
+        var blockpos = blockHitResult.getBlockPos();
+        var face = blockHitResult.getDirection();
 
         if (!this.level().isClientSide) {
             Entity entity = this.getShooter();

@@ -2,25 +2,25 @@ package com.nukateam.cgs.client.animators;
 
 import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
-import com.nukateam.ntgl.client.animators.GunAnimator;
-import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;
+import com.nukateam.ntgl.client.animators.WeaponAnimator;
+import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
 import com.nukateam.ntgl.client.util.handler.ClientReloadHandler;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
-import com.nukateam.ntgl.common.data.config.gun.Gun;
-import com.nukateam.ntgl.common.util.util.GunStateHelper;
+import com.nukateam.ntgl.common.data.config.weapon.WeaponConfig;
+import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.util.Cycler;
-import com.nukateam.ntgl.common.data.GunData;
+import com.nukateam.ntgl.common.data.WeaponData;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
-import com.nukateam.ntgl.common.util.util.GunModifierHelper;
-import com.nukateam.ntgl.common.util.util.GunStateHelper;
-import mod.azure.azurelib.core.animation.*;
-import mod.azure.azurelib.core.object.PlayState;
+import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
+import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
+import software.bernie.geckolib.core.animation.*;
+import software.bernie.geckolib.core.object.PlayState;
 import net.minecraft.world.item.ItemDisplayContext;
 
 import static com.nukateam.example.common.util.constants.Animations.*;
-import static mod.azure.azurelib.core.animation.Animation.LoopType.*;
-import static mod.azure.azurelib.core.animation.RawAnimation.begin;
+import static software.bernie.geckolib.core.animation.Animation.LoopType.*;
+import static software.bernie.geckolib.core.animation.RawAnimation.begin;
 
 public class GatlingAnimator extends EngineAnimator {
     public static final String HANDLE = "handle";
@@ -30,12 +30,12 @@ public class GatlingAnimator extends EngineAnimator {
 
     private boolean hasDrum;
 
-    protected final AnimationController<GunAnimator> HANDLE_CONTROLLER = createController("handle_controller", animateHandle());
-    protected final AnimationController<GunAnimator> GATLING_TRIGGER = createController( "gatling_trigger", event -> PlayState.CONTINUE)
+    protected final AnimationController<WeaponAnimator> HANDLE_CONTROLLER = createController("handle_controller", animateHandle());
+    protected final AnimationController<WeaponAnimator> GATLING_TRIGGER = createController( "gatling_trigger", event -> PlayState.CONTINUE)
             .triggerableAnim(HANDLE, begin().then(HANDLE, PLAY_ONCE))
             .triggerableAnim(VOID, begin().then(VOID, PLAY_ONCE));
 
-    public GatlingAnimator(ItemDisplayContext transformType, DynamicGunRenderer<GunAnimator> renderer) {
+    public GatlingAnimator(ItemDisplayContext transformType, DynamicWeaponRenderer<WeaponAnimator> renderer) {
         super(transformType, renderer);
     }
 
@@ -54,7 +54,7 @@ public class GatlingAnimator extends EngineAnimator {
     @Override
     protected void tickStart() {
         super.tickStart();
-        var magazine = GunStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getStack());
+        var magazine = WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getStack());
         this.hasDrum = magazine.is(AttachmentItems.GATLING_DRUM.get());
 
         float cooldown = this.shootingHandler.getCooldown(getEntity(), this.arm);
@@ -65,27 +65,27 @@ public class GatlingAnimator extends EngineAnimator {
     }
 
     @Override
-    protected RawAnimation getReloadingAnimation(AnimationState<GunAnimator> event) {
+    protected RawAnimation getReloadingAnimation(AnimationState<WeaponAnimator> event) {
         HANDLE_CONTROLLER.setAnimation(begin().then(VOID, PLAY_ONCE));
         return super.getReloadingAnimation(event);
     }
 
     @Override
-    protected RawAnimation getDefaultReloadAnimation(AnimationState<GunAnimator> event) {
+    protected RawAnimation getDefaultReloadAnimation(AnimationState<WeaponAnimator> event) {
         if(hasDrum) {
-            var data = new GunData(getStack(), getEntity());
-            var time = GunModifierHelper.getReloadTime(data);
+            var data = new WeaponData(getStack(), getEntity());
+            var time = WeaponModifierHelper.getReloadTime(data);
             animationHelper.syncAnimation(event, RELOAD_DRUM, time);
             return begin().then(RELOAD_DRUM, LOOP);
         }
         return super.getDefaultReloadAnimation(event);
     }
 
-    protected AnimationController.AnimationStateHandler<GunAnimator> animateHandle() {
+    protected AnimationController.AnimationStateHandler<WeaponAnimator> animateHandle() {
         return (event) -> {
-            var gun = ((WeaponItem)getStack().getItem()).getGun();
+            var gun = ((WeaponItem)getStack().getItem()).getConfig();
             var animation = begin();
-            var hasEngine = GunStateHelper.hasAttachmentEquipped(getStack(), CgsAttachmentTypes.ENGINE);
+            var hasEngine = WeaponStateHelper.hasAttachmentEquipped(getStack(), CgsAttachmentTypes.ENGINE);
             var hasFuel = FuelUtils.hasFuel(getGunData());
 
             if ((hasEngine && hasFuel) || hasAnimationPlaying(MAIN_CONTROLLER, RELOAD)) {
@@ -105,7 +105,7 @@ public class GatlingAnimator extends EngineAnimator {
         };
     }
 
-    private boolean hasAnimationPlaying(AnimationController<GunAnimator> controller, String name) {
+    private boolean hasAnimationPlaying(AnimationController<WeaponAnimator> controller, String name) {
         var animation = controller.getCurrentAnimation();
         return animation != null && animation.animation().name().equals(name);
     }

@@ -9,12 +9,12 @@ import com.nukateam.ntgl.common.data.holders.AmmoHolder;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
 import com.nukateam.ntgl.common.event.GunReloadEvent;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
-import com.nukateam.ntgl.common.data.holders.AmmoHolders;
+import com.nukateam.ntgl.common.registry.AmmoHolders;
 import com.nukateam.ntgl.common.event.GunFireEvent;
 import com.nukateam.ntgl.common.event.GunProjectileHitEvent;
-import com.nukateam.ntgl.common.data.GunData;
-import com.nukateam.ntgl.common.util.util.GunModifierHelper;
-import com.nukateam.ntgl.common.util.util.GunStateHelper;
+import com.nukateam.ntgl.common.data.WeaponData;
+import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
+import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.content.equipment.armor.BacktankBlockEntity;
@@ -33,15 +33,15 @@ public class GunEventHandler {
     public static void preShoot(GunFireEvent.Pre event) {
         var shooter = event.getEntity();
         var gun = shooter.getItemInHand(event.getHand());
-        var gunData = new GunData(gun, shooter);
+        var gunData = new WeaponData(gun, shooter);
         var hasExtendoGrip = shooter.getOffhandItem().getItem() == AllItems.EXTENDO_GRIP.get();
 
-        if(hasExtendoGrip && !GunStateHelper.isOneHanded(gunData)){
+        if(hasExtendoGrip && !WeaponModifierHelper.isOneHanded(gunData)){
             event.setCanceled(true);
         }
 
         if(gun.getItem() == CgsWeapons.LAUNCHER.get() &&
-                GunStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, gun).getItem() == AttachmentItems.BALLISTAZOOKA.get()) {
+                WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, gun).getItem() == AttachmentItems.BALLISTAZOOKA.get()) {
             return;
         }
 
@@ -56,8 +56,8 @@ public class GunEventHandler {
     public static void postShoot(GunFireEvent.Post event) {
         var shooter = event.getEntity();
         var gun = event.getStack();
-        var data = new GunData(gun, shooter);
-        var fuel = GunModifierHelper.getAllFuel(data);
+        var data = new WeaponData(gun, shooter);
+        var fuel = WeaponModifierHelper.getAllFuel(data);
 //        if(!event.getEntity().level().isClientSide) {
             if (fuel.contains(AmmoHolders.BURNABLE)) {
                 FuelUtils.addFuel(data, AmmoHolders.BURNABLE, -1);
@@ -79,7 +79,7 @@ public class GunEventHandler {
     public static void postReload(GunReloadEvent.Post event) {
         var gun = event.getStack();
         var shooter = event.getEntity();
-        var data = new GunData(gun, shooter);
+        var data = new WeaponData(gun, shooter);
 
         if(!event.getEntity().level().isClientSide) {
             if (gun.getItem() == CgsWeapons.SHOTGUN.get()) {
@@ -91,56 +91,57 @@ public class GunEventHandler {
         }
     }
 
-    private static void checkCock(GunData data) {
-        var ammoCount = GunStateHelper.getAmmoCount(data);
-        var isEven = GunStateHelper.getAmmoCount(data) % 2 == 0;
+    private static void checkCock(WeaponData data) {
+        var ammoCount = WeaponStateHelper.getAmmoCount(data);
+        var isEven = WeaponStateHelper.getAmmoCount(data) % 2 == 0;
         var id = 0;
 
         if (ammoCount != 0) {
             id = isEven ? 2 : 1;
         }
 
-        GunUtils.setCock(data.gun, id);
+        GunUtils.setCock(data.weapon, id);
     }
 
-    public static boolean consumeAir(GunData data) {
-        var amount = GunModifierHelper.getFuelAmountPerUse(CgsAmmo.AIR.getId(), data);
+    public static boolean consumeAir(WeaponData data) {
+        var amount = WeaponModifierHelper.getFuelAmountPerUse(CgsAmmo.AIR.getId(), data);
 
         if (amount == 0) return false;
 
-        if (data.shooter instanceof Player player && player.isCreative())
+        if (data.wielder instanceof Player player && player.isCreative())
             return true;
 
-        var backtanks = BacktankUtil.getAllWithAir(data.shooter);
+        var backtanks = BacktankUtil.getAllWithAir(data.wielder);
 
         if (!backtanks.isEmpty()) {
-            BacktankUtil.consumeAir(data.shooter, backtanks.get(0), amount);
+            BacktankUtil.consumeAir(data.wielder, backtanks.get(0), amount);
         } else {
             FuelUtils.consumeFuel(CgsAmmo.AIR, data); //.addFuel(data, CgsAmmo.AIR, -5);
         }
         return true;
     }
 
-    public static boolean isUsesFuel(GunData data, AmmoHolder ammo) {
-        return GunModifierHelper.getAllFuel(data).stream().anyMatch((i) -> i.getId().equals(ammo.getId()));
+    public static boolean isUsesFuel(WeaponData data, AmmoHolder ammo) {
+        return WeaponModifierHelper.getAllFuel(data).stream().anyMatch((i) -> i.getId().equals(ammo.getId()));
     }
 
-    public static boolean hasAirInTank(GunData data) {
-        if (data.shooter instanceof Player player && player.isCreative())
+    public static boolean hasAirInTank(WeaponData data) {
+        if (data.wielder instanceof Player player && player.isCreative())
             return true;
 
-        var backtanks = BacktankUtil.getAllWithAir(data.shooter);
+        var backtanks = BacktankUtil.getAllWithAir(data.wielder);
 
         if (backtanks.isEmpty())
             return false;
 
-        var cost = GunModifierHelper.getFuelAmountPerUse(CgsAmmo.AIR.getId(), data);
+        var cost = WeaponModifierHelper.getFuelAmountPerUse(CgsAmmo.AIR.getId(), data);
         return BacktankUtil.getAir(backtanks.get(0)) >= cost;
     }
 
     @SubscribeEvent
     public static void onHit(GunProjectileHitEvent event) {
         var shooter = event.getProjectile().getShooter();
+        if(shooter == null) return;
         var hitResult = event.getRayTrace();
         var level = shooter.level();
         var pos = hitResult.getLocation();

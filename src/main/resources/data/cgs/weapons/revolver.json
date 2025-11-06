@@ -1,9 +1,11 @@
 {
   "general": {
+    "action": "ntgl:gun",
     "rate": 10,
     "gripType": "ntgl:one_handed",
     "maxAmmo": 6,
     "fireTimer": 3,
+    "oneHanded": true,
     "fullCharge": true,
     "damage": 8.0,
     "equipTime": 0,
@@ -29,6 +31,19 @@
       }
     }
   },
+  "modes": {
+    "ntgl:secondary": {
+      "general": {
+    "action": "ntgl:gun",
+        "action": "ntgl:scope"
+      },
+      "zoom": {
+        "offset": [-0.05, 3.6, 0.0],
+        "fovModifier": 0.7,
+        "movementModifier": 0.5
+      }
+    }
+  },
   "animations": {
     "ntgl:reload": "ntgl:revolver_reload"
   },
@@ -41,12 +56,6 @@
   },
   "modules": {
     "attachmentScreen": true,
-    "zoom": {
-      "xOffset": -0.05,
-      "yOffset": 3.6,
-      "zOffset": 0.0,
-      "fovModifier": 0.7
-    },
     "attachments": {
       "ntgl:scope": [
         {

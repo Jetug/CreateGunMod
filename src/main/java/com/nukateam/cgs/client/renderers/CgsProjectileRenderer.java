@@ -5,8 +5,8 @@ import com.mojang.math.Axis;
 import com.nukateam.cgs.client.model.ProjectileModel;
 import com.nukateam.ntgl.client.util.ClientDebug;
 import com.nukateam.ntgl.common.foundation.entity.ProjectileEntity;
-import mod.azure.azurelib.core.animatable.GeoAnimatable;
-import mod.azure.azurelib.renderer.GeoEntityRenderer;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 

@@ -2,7 +2,7 @@ package com.nukateam.cgs.common.network.packets;
 
 import com.mrcrayfish.framework.api.network.MessageContext;
 import com.mrcrayfish.framework.api.network.message.PlayMessage;
-import com.nukateam.ntgl.common.util.util.GunModifierHelper;
+import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
 import net.minecraft.network.FriendlyByteBuf;
 
 import static com.nukateam.cgs.common.utils.GunUtils.*;
@@ -29,10 +29,10 @@ public class C2SMessageFuel extends PlayMessage<C2SMessageFuel> {
                 var mainHandItem = player.getMainHandItem();
                 var offhandItem = player.getOffhandItem();
 
-                if (GunModifierHelper.isGun(mainHandItem)) {
+                if (WeaponModifierHelper.isGun(mainHandItem)) {
                     fillFuel(mainHandItem, player, offhandItem);
                 }
-                else if (GunModifierHelper.isGun(offhandItem)) {
+                else if (WeaponModifierHelper.isGun(offhandItem)) {
                     fillFuel(offhandItem, player, mainHandItem);
                 }
             }

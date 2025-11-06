@@ -1,5 +1,6 @@
 {
   "general": {
+    "action": "ntgl:gun",
     "fireMode": ["ntgl:auto"],
     "gripType": "ntgl:mini_gun",
     "category": "heavy",

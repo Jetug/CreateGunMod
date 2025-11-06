@@ -5,12 +5,12 @@ import com.nukateam.cgs.client.renderers.*;
 import com.nukateam.cgs.common.faundation.item.attachments.HammerHeadItem;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
-import com.nukateam.ntgl.client.animators.GunAnimator;
-import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;
-import com.nukateam.ntgl.common.data.GunData;
+import com.nukateam.ntgl.client.animators.WeaponAnimator;
+import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
+import com.nukateam.ntgl.common.data.WeaponData;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
-import com.nukateam.ntgl.common.util.interfaces.IGunModifier;
-import com.nukateam.ntgl.common.util.util.GunStateHelper;
+import com.nukateam.ntgl.common.util.interfaces.IWeaponModifier;
+import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
@@ -21,12 +21,12 @@ import java.util.function.BiFunction;
 
 public class HammerItem extends CgsGunItem {
 
-    public HammerItem(Properties properties, IGunModifier... modifiers) {
+    public HammerItem(Properties properties, IWeaponModifier... modifiers) {
         super(properties, modifiers);
     }
 
-    public static boolean isPowered(GunData data){
-        return GunStateHelper.getAmmoCount(data) > 0;
+    public static boolean isPowered(WeaponData data){
+        return WeaponStateHelper.getAmmoCount(data) > 0;
     }
 
     @Override
@@ -36,13 +36,13 @@ public class HammerItem extends CgsGunItem {
     }
 
     @Override
-    public BiFunction<ItemDisplayContext, DynamicGunRenderer<GunAnimator>, GunAnimator> getAnimatorFactory() {
+    public BiFunction<ItemDisplayContext, DynamicWeaponRenderer<WeaponAnimator>, WeaponAnimator> getAnimatorFactory() {
         return HammerAnimator::new;
     }
 
     @Override
     public String getDescriptionId(ItemStack stack) {
-        var headAttachment = GunStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, stack).getItem();
+        var headAttachment = WeaponStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, stack).getItem();
         if(headAttachment instanceof HammerHeadItem item && item.getHeadType() == HammerHeadItem.Type.AXE){
             return "item.cgs.axe";
         }

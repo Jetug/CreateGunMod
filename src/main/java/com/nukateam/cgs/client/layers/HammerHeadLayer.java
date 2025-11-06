@@ -5,12 +5,12 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.item.attachments.HammerHeadItem;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
-import com.nukateam.ntgl.client.animators.GunAnimator;
-import com.nukateam.ntgl.common.data.config.gun.Gun;
-import com.nukateam.ntgl.common.util.util.GunStateHelper;
+import com.nukateam.ntgl.client.animators.WeaponAnimator;
+import com.nukateam.ntgl.common.data.config.weapon.WeaponConfig;
+import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.nukateam.ntgl.common.util.util.ResourceUtils;
-import mod.azure.azurelib.cache.object.BakedGeoModel;
-import mod.azure.azurelib.renderer.GeoRenderer;
+import software.bernie.geckolib.cache.object.BakedGeoModel;
+import software.bernie.geckolib.renderer.GeoRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
@@ -19,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.HashMap;
 import java.util.Locale;
 
-public class HammerHeadLayer<T extends GunAnimator> extends LayerBase<T> {
+public class HammerHeadLayer<T extends WeaponAnimator> extends LayerBase<T> {
     public static final String PATH = "textures/guns/hammer/";
     public static HashMap<ResourceLocation, Boolean> textures = new HashMap<>();
     public HammerHeadLayer(GeoRenderer<T> entityRenderer) {
@@ -45,7 +45,7 @@ public class HammerHeadLayer<T extends GunAnimator> extends LayerBase<T> {
 
     @Nullable
     private ResourceLocation getHeadTexture(T animatable) {
-        var attachment = GunStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, animatable.getStack());
+        var attachment = WeaponStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, animatable.getStack());
 
         if(!attachment.isEmpty()){
             var head = (HammerHeadItem)attachment.getItem();

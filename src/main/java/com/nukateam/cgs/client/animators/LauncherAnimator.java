@@ -3,23 +3,23 @@ package com.nukateam.cgs.client.animators;
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
 import com.nukateam.cgs.common.utils.GunUtils;
-import com.nukateam.ntgl.client.animators.GunAnimator;
-import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;
+import com.nukateam.ntgl.client.animators.WeaponAnimator;
+import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
-import com.nukateam.ntgl.common.util.util.GunStateHelper;
-import mod.azure.azurelib.core.animation.AnimatableManager;
-import mod.azure.azurelib.core.animation.AnimationController;
-import mod.azure.azurelib.core.animation.AnimationState;
-import mod.azure.azurelib.core.animation.RawAnimation;
-import mod.azure.azurelib.core.object.PlayState;
+import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
 import net.minecraft.world.item.ItemDisplayContext;
 
-import static mod.azure.azurelib.core.animation.Animation.LoopType.*;
-import static mod.azure.azurelib.core.animation.RawAnimation.begin;
+import static software.bernie.geckolib.core.animation.Animation.LoopType.*;
+import static software.bernie.geckolib.core.animation.RawAnimation.begin;
 
-public class LauncherAnimator extends GunAnimator {
+public class LauncherAnimator extends WeaponAnimator {
     public static final String EMPTY = "empty";
     public static final String RELOAD_BALLISTA_MANUAL = "reload_ballista_manual";
     public static final String RELOAD_BALLISTA_AUTO = "reload_ballista_auto";
@@ -33,9 +33,9 @@ public class LauncherAnimator extends GunAnimator {
     private boolean hasAir;
     private boolean hasScope;
 
-    protected final AnimationController<GunAnimator> MISC_CONTROLLER;
+    protected final AnimationController<WeaponAnimator> MISC_CONTROLLER;
 
-    public LauncherAnimator(ItemDisplayContext transformType, DynamicGunRenderer<GunAnimator> renderer) {
+    public LauncherAnimator(ItemDisplayContext transformType, DynamicWeaponRenderer<WeaponAnimator> renderer) {
         super(transformType, renderer);
         MISC_CONTROLLER = createController("misc_controller", animateMisc());
     }
@@ -49,15 +49,15 @@ public class LauncherAnimator extends GunAnimator {
     @Override
     protected void tickStart() {
         super.tickStart();
-        var magazineAttachment = GunStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getStack()).getItem();
+        var magazineAttachment = WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getStack()).getItem();
         try {
             if (itemStack.getItem() instanceof WeaponItem) {
                 var data = getGunData();
-                this.ammoCount = GunStateHelper.getAmmoCount(data);
+                this.ammoCount = WeaponStateHelper.getAmmoCount(data);
                 this.isBallista = magazineAttachment == AttachmentItems.BALLISTAZOOKA.get();
                 this.isAutoLauncher = magazineAttachment == AttachmentItems.AUTO_LAUNCHER.get();
                 this.hasAir = GunUtils.hasAir(data);
-                this.hasScope = GunStateHelper.hasAttachmentEquipped(getStack(), AttachmentType.SCOPE);
+                this.hasScope = WeaponStateHelper.hasAttachmentEquipped(getStack(), AttachmentType.SCOPE);
             }
         }
         catch (IllegalStateException e){
@@ -66,7 +66,7 @@ public class LauncherAnimator extends GunAnimator {
     }
 
     @Override
-    protected RawAnimation getHoldAnimation(AnimationState<GunAnimator> event) {
+    protected RawAnimation getHoldAnimation(AnimationState<WeaponAnimator> event) {
         if(ammoCount == 0){
             return playGunAnim(EMPTY, LOOP);
         }
@@ -74,7 +74,7 @@ public class LauncherAnimator extends GunAnimator {
     }
 
     @Override
-    protected RawAnimation getShootingAnimation(AnimationState<GunAnimator> event) {
+    protected RawAnimation getShootingAnimation(AnimationState<WeaponAnimator> event) {
         if(isBallista){
             var animation = begin().then(getGunAnim(SHOT_BALLISTA), LOOP);
             animationHelper.syncAnimation(event, rate, SHOT_BALLISTA);
@@ -84,7 +84,7 @@ public class LauncherAnimator extends GunAnimator {
     }
 
     @Override
-    protected RawAnimation getDefaultReloadAnimation(AnimationState<GunAnimator> event) {
+    protected RawAnimation getDefaultReloadAnimation(AnimationState<WeaponAnimator> event) {
         if(isBallista){
             if (hasAir) {
                 var animation = begin().then(getGunAnim(RELOAD_BALLISTA_AUTO), PLAY_ONCE);
@@ -104,7 +104,7 @@ public class LauncherAnimator extends GunAnimator {
         return super.getDefaultReloadAnimation(event);
     }
 
-    private AnimationController.AnimationStateHandler<GunAnimator> animateMisc() {
+    private AnimationController.AnimationStateHandler<WeaponAnimator> animateMisc() {
         return (event) -> {
             if(hasScope){
                 var hideSights = begin().then(getGunAnim(HIDE_SIGHTS), LOOP);

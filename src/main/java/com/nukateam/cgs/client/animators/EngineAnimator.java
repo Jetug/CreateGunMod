@@ -2,19 +2,20 @@ package com.nukateam.cgs.client.animators;
 
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
-import com.nukateam.ntgl.client.animators.GunAnimator;
-import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;
-import com.nukateam.ntgl.client.util.util.TransformUtils;
-import com.nukateam.ntgl.common.data.GunData;
-import com.nukateam.ntgl.common.data.config.gun.Gun;
-import com.nukateam.ntgl.common.util.util.GunStateHelper;
+import com.nukateam.ntgl.client.animators.WeaponAnimator;
+import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
+import com.nukateam.ntgl.client.util.helpers.TransformUtils;
+import com.nukateam.ntgl.common.data.WeaponData;
+import com.nukateam.ntgl.common.data.config.weapon.WeaponConfig;
+import com.nukateam.ntgl.common.data.config.weapon.WeaponConfig;
+import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
-import com.nukateam.ntgl.common.util.util.GunModifierHelper;
-import com.nukateam.ntgl.common.util.util.GunStateHelper;
+import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
+import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.simibubi.create.AllSoundEvents;
-import mod.azure.azurelib.core.animation.AnimatableManager;
-import mod.azure.azurelib.core.animation.AnimationController;
-import mod.azure.azurelib.core.object.PlayState;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.object.PlayState;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -22,23 +23,23 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.item.ItemDisplayContext;
 
-import static com.nukateam.ntgl.common.util.util.GunModifierHelper.isGun;
-import static mod.azure.azurelib.core.animation.Animation.LoopType.LOOP;
-import static mod.azure.azurelib.core.animation.RawAnimation.begin;
+import static com.nukateam.ntgl.common.util.util.WeaponModifierHelper.isGun;
+import static software.bernie.geckolib.core.animation.Animation.LoopType.LOOP;
+import static software.bernie.geckolib.core.animation.RawAnimation.begin;
 
-public abstract class EngineAnimator extends GunAnimator {
+public abstract class EngineAnimator extends WeaponAnimator {
     public static final String HANDLE = "handle";
     public static final String VOID = "void";
     public static final String ENGINE = "engine";
 
-    protected final AnimationController<GunAnimator> ENGINE_CONTROLLER
+    protected final AnimationController<WeaponAnimator> ENGINE_CONTROLLER
             = createController("engine_controller", animateEngine());
 
     protected int aTicks = 0;
     protected int ticks = 0;
     protected int rate;
 
-    public EngineAnimator(ItemDisplayContext transformType, DynamicGunRenderer<GunAnimator> renderer) {
+    public EngineAnimator(ItemDisplayContext transformType, DynamicWeaponRenderer<WeaponAnimator> renderer) {
         super(transformType, renderer);
     }
 
@@ -53,8 +54,8 @@ public abstract class EngineAnimator extends GunAnimator {
         if (isGun(getStack())) {
             super.tickStart();
             this.ticks++;
-            var data = new GunData(getStack(), getEntity());
-            this.rate = GunModifierHelper.getRate(data);
+            var data = new WeaponData(getStack(), getEntity());
+            this.rate = WeaponModifierHelper.getRate(data);
 
             playEngineSound();
 
@@ -62,7 +63,7 @@ public abstract class EngineAnimator extends GunAnimator {
         }
     }
 
-    protected AnimationController.AnimationStateHandler<GunAnimator> animateEngine() {
+    protected AnimationController.AnimationStateHandler<WeaponAnimator> animateEngine() {
         return (event) -> {
             if(isEngineWorking()) {
                 event.getController().setAnimationSpeed(1);
@@ -108,17 +109,17 @@ public abstract class EngineAnimator extends GunAnimator {
     private boolean isEngineWorking() {
         var player = minecraft.player;
         if(player == null) return false;
-        var mainGunData = new GunData(getEntity().getMainHandItem(), getEntity());
-        var offGunData = new GunData(getEntity().getOffhandItem(), getEntity());
-        var i1 = GunStateHelper.isOneHanded(mainGunData);
-        var i2 = GunStateHelper.isOneHanded(offGunData);
+        var mainGunData = new WeaponData(getEntity().getMainHandItem(), getEntity());
+        var offGunData = new WeaponData(getEntity().getOffhandItem(), getEntity());
+        var i1 = WeaponModifierHelper.isOneHanded(mainGunData);
+        var i2 = WeaponModifierHelper.isOneHanded(offGunData);
         var arm = this.getArm();
         var isNotPaused = !minecraft.getInstance().isPaused();
         var isVisible = arm == InteractionHand.MAIN_HAND || (arm == InteractionHand.OFF_HAND && i1 && i2);
         var hasEngine = hasEngine();
         var isHandTransform = TransformUtils.isHandTransform(transformType);
         var hasGunInHands = hasGunInHands(player);
-        var hasFuel = FuelUtils.hasFuel(new GunData(getStack(),getEntity()));
+        var hasFuel = FuelUtils.hasFuel(new WeaponData(getStack(),getEntity()));
 
         return hasEngine
                 && hasFuel
@@ -133,6 +134,6 @@ public abstract class EngineAnimator extends GunAnimator {
     }
 
     protected boolean hasEngine(){
-        return !getStack().isEmpty() && GunStateHelper.hasAttachmentEquipped(getStack(), CgsAttachmentTypes.ENGINE);
+        return !getStack().isEmpty() && WeaponStateHelper.hasAttachmentEquipped(getStack(), CgsAttachmentTypes.ENGINE);
     }
 }

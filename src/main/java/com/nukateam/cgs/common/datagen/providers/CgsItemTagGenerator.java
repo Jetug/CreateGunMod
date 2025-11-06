@@ -62,6 +62,7 @@ public class CgsItemTagGenerator extends ItemTagsProvider {
         this.tag(RAW_MATERIALS).add(CgsItems.RAW_LEAD.get());
         this.tag(RAW_LEAD).add(CgsItems.RAW_LEAD.get());
         this.tag(INGOTS).add(CgsItems.LEAD_INGOT.get());
+        this.tag(LEAD_INGOTS).add(CgsItems.LEAD_INGOT.get());
         this.tag(NUGGETS).add(CgsItems.LEAD_NUGGET.get());
         this.tag(LEAD_NUGGETS).add(CgsItems.LEAD_NUGGET.get());
     }

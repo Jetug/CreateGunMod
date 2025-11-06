@@ -2,12 +2,12 @@ package com.nukateam.cgs.common.utils;
 
 import com.nukateam.cgs.common.handlers.GunEventHandler;
 import com.nukateam.cgs.common.ntgl.CgsAmmo;
-import com.nukateam.ntgl.common.data.holders.AmmoHolders;
+import com.nukateam.ntgl.common.registry.AmmoHolders;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
-import com.nukateam.ntgl.common.util.util.GunStateHelper;
+import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.nukateam.ntgl.common.foundation.init.ModSounds;
-import com.nukateam.ntgl.common.data.GunData;
-import com.nukateam.ntgl.common.util.util.GunModifierHelper;
+import com.nukateam.ntgl.common.data.WeaponData;
+import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
 import com.simibubi.create.content.equipment.armor.BacktankUtil;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -20,8 +20,8 @@ public class GunUtils {
     public static final String COCK = "Cock";
     public static final String AIR = "Air";
 
-    public static boolean isAmmoEven(GunData data) {
-        return GunStateHelper.getAmmoCount(data) % 2 == 0;
+    public static boolean isAmmoEven(WeaponData data) {
+        return WeaponStateHelper.getAmmoCount(data) % 2 == 0;
     }
 
     public static void playAttachSound(Player player, float pitch){
@@ -35,12 +35,12 @@ public class GunUtils {
     }
 
     public static boolean fillFuel(ItemStack gun, Player player, ItemStack fuelStack) {
-        var gunData = new GunData(gun, player);
+        var gunData = new WeaponData(gun, player);
         var isSurvival = !player.isCreative();
-        var allFuel = GunModifierHelper.getAllFuel(gunData);
+        var allFuel = WeaponModifierHelper.getAllFuel(gunData);
 
         for (var fuelType : allFuel){
-            var maxFuel = GunModifierHelper.getMaxFuel(fuelType.getId(), gunData);
+            var maxFuel = WeaponModifierHelper.getMaxFuel(fuelType.getId(), gunData);
             var currentFuel = FuelUtils.getFuel(gun,fuelType);
             if(fuelType.isAcceptable(fuelStack) && currentFuel < maxFuel) {
                 var value = 0;
@@ -110,7 +110,7 @@ public class GunUtils {
         return tag.getInt(COCK);
     }
 
-    public static boolean hasAir(GunData gunData) {
+    public static boolean hasAir(WeaponData gunData) {
         var hasAirInGun = FuelUtils.hasFuel(CgsAmmo.AIR.getId(), gunData);
         var hasAirInTank = GunEventHandler.hasAirInTank(gunData);
         return hasAirInGun || hasAirInTank;

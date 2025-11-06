@@ -2,13 +2,13 @@ package com.nukateam.cgs.client.renderers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.nukateam.ntgl.client.animators.GunAnimator;
-import com.nukateam.ntgl.client.model.gun.GeoGunModel;
-import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;
+import com.nukateam.ntgl.client.animators.WeaponAnimator;
+import com.nukateam.ntgl.client.model.gun.GeoWeaponModel;
+import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
 import com.nukateam.ntgl.common.util.data.Rgba;
 import com.simibubi.create.AllItems;
-import mod.azure.azurelib.cache.object.GeoBone;
-import mod.azure.azurelib.model.GeoModel;
+import software.bernie.geckolib.cache.object.GeoBone;
+import software.bernie.geckolib.model.GeoModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,9 +16,9 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
-public class BaseGunRenderer extends DynamicGunRenderer<GunAnimator> {
+public class BaseGunRenderer extends DynamicWeaponRenderer<WeaponAnimator> {
     public BaseGunRenderer() {
-        super(new GeoGunModel());
+        super(new GeoWeaponModel());
     }
 
     public BaseGunRenderer(GeoModel model) {

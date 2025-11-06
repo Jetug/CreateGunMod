@@ -1,10 +1,10 @@
 package com.nukateam.cgs.client.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import mod.azure.azurelib.cache.object.BakedGeoModel;
-import mod.azure.azurelib.core.animatable.GeoAnimatable;
-import mod.azure.azurelib.renderer.GeoRenderer;
-import mod.azure.azurelib.renderer.layer.GeoRenderLayer;
+import software.bernie.geckolib.cache.object.BakedGeoModel;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.renderer.GeoRenderer;
+import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;

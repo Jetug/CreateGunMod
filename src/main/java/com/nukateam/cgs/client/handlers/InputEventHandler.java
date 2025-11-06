@@ -4,8 +4,8 @@ package com.nukateam.cgs.client.handlers;
 import com.nukateam.cgs.common.network.PacketHandler;
 import com.nukateam.cgs.common.network.packets.C2SMessageFuel;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
-import com.nukateam.ntgl.common.data.GunData;
-import com.nukateam.ntgl.common.util.util.GunModifierHelper;
+import com.nukateam.ntgl.common.data.WeaponData;
+import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
@@ -26,9 +26,9 @@ public class InputEventHandler {
             var offhandItem = player.getOffhandItem();
 
             if (event.getAction() == GLFW.GLFW_RELEASE && event.getButton() == mc.options.keyUse.getKey().getValue()) {
-                if (GunModifierHelper.isGun(mainHandItem)) {
+                if (WeaponModifierHelper.isGun(mainHandItem)) {
                     fillEngine(mainHandItem, offhandItem);
-                } else if (GunModifierHelper.isGun(offhandItem)) {
+                } else if (WeaponModifierHelper.isGun(offhandItem)) {
                     fillEngine(offhandItem, mainHandItem);
                 }
             }
@@ -45,8 +45,8 @@ public class InputEventHandler {
 
     private static boolean canAcceptFuel(ItemStack gun, ItemStack fuelStack) {
         var mc = Minecraft.getInstance();
-        var gunData = new GunData(gun, mc.player);
-        var allFuel = GunModifierHelper.getAllFuel(gunData);
+        var gunData = new WeaponData(gun, mc.player);
+        var allFuel = WeaponModifierHelper.getAllFuel(gunData);
         for (var fuelType: allFuel){
             if (fuelType.isAcceptable(fuelStack) && !FuelUtils.isFull(gunData, fuelType))
                 return true;

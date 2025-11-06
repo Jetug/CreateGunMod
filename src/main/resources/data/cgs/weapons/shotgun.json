@@ -1,5 +1,6 @@
 {
   "general": {
+    "action": "ntgl:gun",
     "rate": 2,
     "fireMode": ["ntg:semi", "ntgl:multi"],
     "gripType": "ntgl:one_handed",

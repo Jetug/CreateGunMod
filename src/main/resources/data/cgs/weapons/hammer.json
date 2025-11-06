@@ -1,5 +1,6 @@
 {
   "general": {
+    "action": "ntgl:gun",
     "rate": 0,
     "weaponMode": "ntgl:melee",
     "gripType": "ntgl:hammer",

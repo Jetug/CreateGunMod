@@ -2,17 +2,17 @@ package com.nukateam.cgs.client.animators;
 
 import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
-import com.nukateam.ntgl.client.animators.GunAnimator;
-import com.nukateam.ntgl.client.render.renderers.weapon.DynamicGunRenderer;
+import com.nukateam.ntgl.client.animators.WeaponAnimator;
+import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
-import com.nukateam.ntgl.common.data.config.gun.Gun;
+import com.nukateam.ntgl.common.data.config.weapon.WeaponConfig;
 import com.nukateam.ntgl.common.util.helpers.PlayerHelper;
-import com.nukateam.ntgl.common.util.util.GunStateHelper;
+import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.nukateam.ntgl.common.data.constants.Animations;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
-import com.nukateam.ntgl.common.data.GunData;
-import com.nukateam.ntgl.common.util.util.GunModifierHelper;
-import mod.azure.azurelib.core.animation.*;
+import com.nukateam.ntgl.common.data.WeaponData;
+import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
+import software.bernie.geckolib.core.animation.*;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
@@ -22,17 +22,17 @@ import net.minecraft.world.level.block.SculkSensorBlock;
 import net.minecraft.world.level.block.entity.SculkSensorBlockEntity;
 import net.minecraftforge.event.TickEvent;
 
-import static mod.azure.azurelib.core.animation.Animation.LoopType.*;
-import static mod.azure.azurelib.core.animation.RawAnimation.begin;
+import static software.bernie.geckolib.core.animation.Animation.LoopType.*;
+import static software.bernie.geckolib.core.animation.RawAnimation.begin;
 
-public class RevolverAnimator extends GunAnimator {
+public class RevolverAnimator extends WeaponAnimator {
     public static final String BELT = "belt";
 
     private boolean hasBelt;
     private boolean isAuto;
     private boolean oneHanded = false;
 
-    protected final AnimationController<GunAnimator> BELT_CONTROLLER = createController("belt_controller", animateBelt())
+    protected final AnimationController<WeaponAnimator> BELT_CONTROLLER = createController("belt_controller", animateBelt())
             .triggerableAnim(BELT, begin().then(BELT, PLAY_ONCE));
 
     @Override
@@ -46,19 +46,19 @@ public class RevolverAnimator extends GunAnimator {
         super.tick(event);
         if (event.phase == TickEvent.Phase.START) {
             if (isGun()) {
-                var chamberAttachment = GunStateHelper.getAttachmentItem(CgsAttachmentTypes.CHAMBER, getStack());
-                var frame = GunStateHelper.getAttachmentItem(CgsAttachmentTypes.FRAME, getStack());
-                var barrel = GunStateHelper.getAttachmentItem(AttachmentType.BARREL, getStack());
+                var chamberAttachment = WeaponStateHelper.getAttachmentItem(CgsAttachmentTypes.CHAMBER, getStack());
+                var frame = WeaponStateHelper.getAttachmentItem(CgsAttachmentTypes.FRAME, getStack());
+                var barrel = WeaponStateHelper.getAttachmentItem(AttachmentType.BARREL, getStack());
 
                 this.hasBelt = chamberAttachment.is(AttachmentItems.REVOLVER_BELT.get());
                 this.isAuto = frame.is(AttachmentItems.REVOLVER_AUTO.get());
                 this.oneHanded = barrel.isEmpty();
-                oneHanded = GunStateHelper.isOneHanded(getGunData());
+                oneHanded = WeaponModifierHelper.isOneHanded(getGunData());
             }
         }
     }
 
-    private AnimationController.AnimationStateHandler<GunAnimator> animateBelt() {
+    private AnimationController.AnimationStateHandler<WeaponAnimator> animateBelt() {
         return (event) ->{
             if(hasBelt && shootingHandler.isOnCooldown(getEntity(), getArm())) {
                 var animation = begin()
@@ -72,7 +72,7 @@ public class RevolverAnimator extends GunAnimator {
         };
     }
 
-    public RevolverAnimator(ItemDisplayContext transformType, DynamicGunRenderer<GunAnimator> renderer) {
+    public RevolverAnimator(ItemDisplayContext transformType, DynamicWeaponRenderer<WeaponAnimator> renderer) {
         super(transformType, renderer);
     }
 
@@ -93,7 +93,7 @@ public class RevolverAnimator extends GunAnimator {
 //    }
 
     @Override
-    protected RawAnimation getHoldAnimation(AnimationState<GunAnimator> event) {
+    protected RawAnimation getHoldAnimation(AnimationState<WeaponAnimator> event) {
         if(isAuto){
             return playGunAnim("hold_auto", LOOP);
         }
@@ -101,7 +101,7 @@ public class RevolverAnimator extends GunAnimator {
     }
 
     @Override
-    protected RawAnimation getShootingAnimation(AnimationState<GunAnimator> event) {
+    protected RawAnimation getShootingAnimation(AnimationState<WeaponAnimator> event) {
         if(isAuto){
             var animation = playGunAnim("shot_auto", LOOP);
             animationHelper.syncAnimation(event, "shot_auto", rate);
@@ -111,12 +111,12 @@ public class RevolverAnimator extends GunAnimator {
     }
 
     @Override
-    protected RawAnimation getReloadingAnimation(AnimationState<GunAnimator> event) {
+    protected RawAnimation getReloadingAnimation(AnimationState<WeaponAnimator> event) {
         if(hasBelt){
             var animation = begin();
             animation.then("reload_belt", LOOP);
-            var data = new GunData(getStack(), getEntity());
-            animationHelper.syncAnimation(event, "reload_belt", GunModifierHelper.getReloadTime(data));
+            var data = new WeaponData(getStack(), getEntity());
+            animationHelper.syncAnimation(event, "reload_belt", WeaponModifierHelper.getReloadTime(data));
 
             return animation;
         }

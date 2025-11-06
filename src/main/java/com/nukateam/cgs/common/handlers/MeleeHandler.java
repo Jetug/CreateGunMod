@@ -7,10 +7,10 @@ import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.cgs.common.utils.BreakHandler;
 import com.nukateam.ntgl.Config;
-import com.nukateam.ntgl.common.data.GunData;
+import com.nukateam.ntgl.common.data.WeaponData;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
-import com.nukateam.ntgl.common.util.util.GunModifierHelper;
-import com.nukateam.ntgl.common.util.util.GunStateHelper;
+import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
+import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.nukateam.ntgl.common.event.MeleeAttackEvent;
 import com.nukateam.ntgl.common.util.util.StackUtils;
 import net.minecraft.core.BlockPos;
@@ -44,29 +44,31 @@ public class MeleeHandler {
 
     @SubscribeEvent
     public static void onMelee(MeleeAttackEvent.Pre event) {
-        if(!event.isClient() && event.getStack().getItem() == CgsWeapons.HAMMER.get()
+        var data = event.getData();
+        var stack = event.getData().weapon;
+
+        if(!event.isClient() && stack != null && stack.getItem() == CgsWeapons.HAMMER.get()
                 && event.getEntity() instanceof ServerPlayer player){
-            var stack = event.getStack();
             var entity = event.getEntity();
-            var data = new GunData(stack, entity);
 
             if (!player.isCreative()) {
-                GunStateHelper.consumeAmmo(data);
+                WeaponStateHelper.consumeAmmo(data);
             }
 
             if(event.getTargets().isEmpty()) {
-                hitBlock(event, player, data, entity);
+                hitBlock( player, data, entity);
             }
         }
     }
 
-    private static void hitBlock(MeleeAttackEvent.Pre event, ServerPlayer player, GunData data, LivingEntity entity) {
-        var head = GunStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, event.getStack());
+    private static void hitBlock(ServerPlayer player, WeaponData data, LivingEntity entity) {
+        assert data.weapon != null;
+        var head = WeaponStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, data.weapon);
 
         if (head.getItem() instanceof HammerHeadItem headItem && HammerItem.isPowered(data)
                 && !entity.hasEffect(MobEffects.DIG_SLOWDOWN)) {
-            var reach = GunModifierHelper.getMeleeDistance(data);
-            var isShotPowered = !GunStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, event.getStack()).isEmpty();
+            var reach = WeaponModifierHelper.getMeleeDistance(data);
+            var isShotPowered = !WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, data.weapon).isEmpty();
 
             if (headItem.getHeadType() == HammerHeadItem.Type.HAMMER) {
                 if (isShotPowered) {

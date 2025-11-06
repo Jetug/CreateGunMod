@@ -1,5 +1,6 @@
 {
   "general": {
+    "action": "ntgl:gun",
     "fireMode": ["ntg:semi", "ntgl:multi"],
     "gripType": "ntgl:bazooka",
     "category": "heavy",
@@ -44,7 +45,7 @@
 
         "explosion": {
           "damage": 20,
-          "radius": 6,
+          "radius": 4,
           "knockback": 1.0,
           "destroyBlocks": true
         }
@@ -65,7 +66,7 @@
 
         "explosion": {
           "damage": 8,
-          "radius": 5,
+          "radius": 3,
           "knockback": 0.1
         }
       }

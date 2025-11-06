@@ -1,7 +1,7 @@
 package com.nukateam.cgs.common.ntgl;
 import com.nukateam.cgs.common.utils.GunUtils;
 import com.nukateam.ntgl.common.data.holders.AmmoHolder;
-import com.nukateam.ntgl.common.data.holders.AmmoHolders;
+import com.nukateam.ntgl.common.registry.AmmoHolders;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.content.equipment.armor.BacktankItem;
 import com.simibubi.create.content.equipment.armor.BacktankUtil;
