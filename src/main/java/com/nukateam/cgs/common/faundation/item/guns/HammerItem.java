@@ -8,8 +8,10 @@ import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
 import com.nukateam.ntgl.common.data.WeaponData;
+import com.nukateam.ntgl.common.data.constants.Tags;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.interfaces.IWeaponModifier;
+import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
@@ -26,7 +28,9 @@ public class HammerItem extends CgsGunItem {
     }
 
     public static boolean isPowered(WeaponData data){
-        return WeaponStateHelper.getAmmoCount(data) > 0;
+        var tag = data.weapon.getOrCreateTag();
+        var ammoPerShot = WeaponModifierHelper.getAmmoPerShot(data);
+        return tag.getBoolean("IgnoreAmmo") || WeaponStateHelper.getAmmoCount(data) >= ammoPerShot;
     }
 
     @Override

@@ -19,6 +19,17 @@
       "cgs:round_shotgun_blank"
     ]
   },
+  "modes": {
+    "ntgl:secondary": {
+      "general": {
+        "action": "ntgl:scope"
+      },
+      "zoom": {
+        "offset": [0, 2.2, 1.5],
+        "fovModifier": 0.7
+      }
+    }
+  },
   "ammoData": {
     "cgs:round_shotgun": {
       "ammo": {
@@ -61,12 +72,7 @@
   },
   "modules": {
     "attachmentScreen": true,
-    "zoom": {
-      "xOffset": 0,
-      "yOffset": 2.2,
-      "zOffset": 1.5,
-      "fovModifier": 0.7
-    },
+
     "attachments": {
       "ntgl:stock": [
         {

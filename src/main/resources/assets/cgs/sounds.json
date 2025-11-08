@@ -38,11 +38,11 @@
       { "name": "cgs:gun/shotgun/fire/fire_03" , "volume": 40.0}
    ]},
 
-   "gun.shotgun.close": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+   "gun.shotgun.close": { "subtitle": "subtitle.ntgl.reload", "sounds": [
       { "name": "cgs:gun/shotgun/reload/close" }
    ]},
 
-   "gun.shotgun.open": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+   "gun.shotgun.open": { "subtitle": "subtitle.ntgl.reload", "sounds": [
       { "name": "cgs:gun/shotgun/reload/open" }
    ]},
 
@@ -147,7 +147,7 @@
       { "name": "cgs:gun/hammer/magin" }
    ]},
 
-   "gun.hammer.reload": { "subtitle": "subtitle.ntgl.fire", "sounds": [
+   "gun.hammer.reload": { "subtitle": "subtitle.ntgl.reload", "sounds": [
       { "name": "cgs:gun/hammer/reload" }
    ]},
 
@@ -160,10 +160,10 @@
    ]},
 
    "gun.hammer.swing_start": { "subtitle": "subtitle.ntgl.fire", "sounds": [
-      { "name": "cgs:gun/hammer/swing_start" }
+      { "name": "cgs:gun/hammer/swing_start" , "volume": 5.0}
    ]},
 
    "gun.hammer.swing_end": { "subtitle": "subtitle.ntgl.fire", "sounds": [
-      { "name": "cgs:gun/hammer/swing_end" }
+      { "name": "cgs:gun/hammer/swing_end", "volume": 5.0}
    ]}
 }
