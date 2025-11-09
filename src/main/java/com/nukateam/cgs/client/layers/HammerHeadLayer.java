@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Locale;
 
 public class HammerHeadLayer<T extends WeaponAnimator> extends LayerBase<T> {
-    public static final String PATH = "textures/guns/hammer/";
+    public static final String PATH = "textures/weapons/hammer/";
     public static HashMap<ResourceLocation, Boolean> textures = new HashMap<>();
     public HammerHeadLayer(GeoRenderer<T> entityRenderer) {
         super(entityRenderer);

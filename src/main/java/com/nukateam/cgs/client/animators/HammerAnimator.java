@@ -3,9 +3,11 @@ package com.nukateam.cgs.client.animators;
 import com.nukateam.cgs.common.faundation.item.guns.HammerItem;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
+import com.nukateam.ntgl.client.util.handler.ClientMeleeHandler;
 import com.nukateam.ntgl.common.data.WeaponData;
 import com.nukateam.ntgl.common.data.config.weapon.WeaponConfig;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
+import com.nukateam.ntgl.common.data.holders.WeaponMode;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
@@ -18,8 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.nukateam.ntgl.client.util.helpers.TransformUtils.isFirstPerson;
-import static com.nukateam.ntgl.common.data.constants.Animations.*;
-import static com.nukateam.ntgl.common.data.constants.Animations.MELEE_END;
 import static software.bernie.geckolib.core.animation.Animation.LoopType.*;
 import static software.bernie.geckolib.core.animation.RawAnimation.begin;
 
@@ -27,12 +27,15 @@ public class HammerAnimator extends WeaponAnimator {
     public static final String MELEE_POWER_END = "melee_power_end";
     public static final String MELEE_POWER_END2 = "melee_power_end2";
     public static final String MELEE_POWER = "melee_power";
+    public static final String MELEE = "melee";
+    public static final String MELEE_END = "melee_end";
     public static final String RELOAD_SHOT = "reload_shot";
     public static final String RELOAD_SHOT_EMPTY = "reload_shot_empty";
     private boolean isPowered = false;
     private int ammoCount;
     private boolean isShotPowered;
     private WeaponData data;
+    private boolean isSecondary;
 
     public HammerAnimator(ItemDisplayContext transformType, DynamicWeaponRenderer<WeaponAnimator> renderer) {
         super(transformType, renderer);
@@ -41,6 +44,11 @@ public class HammerAnimator extends WeaponAnimator {
     @Override
     protected void tickStart() {
         super.tickStart();
+        var meleeTracker = ClientMeleeHandler.getTracker(getEntity(), getArm());
+        if(meleeTracker != null){
+            var data = meleeTracker.getData();
+            this.isSecondary = data.weaponMode == WeaponMode.SECONDARY;
+        }
         if(itemStack != null &&!itemStack.isEmpty()) {
             this.data = getGunData();
         }
@@ -51,14 +59,21 @@ public class HammerAnimator extends WeaponAnimator {
     @Override
     protected RawAnimation getMeleeDelayAnimation(AnimationState<WeaponAnimator> event) {
         if(isFirstPerson(transformType)) {
-            if(HammerItem.isPowered(data)){
+            if(isSecondary && HammerItem.isPowered(data)){
                 isPowered = true;
-                var animation = playGunAnim(MELEE_POWER, HOLD_ON_LAST_FRAME);
-                animationHelper.syncAnimation(event, MELEE_POWER, meleeDelay);
-                return animation;
+                try {
+                    var animation = playGunAnim(MELEE_POWER, HOLD_ON_LAST_FRAME);
+                    animationHelper.syncAnimation(event, meleeDelay, MELEE_POWER);
+                    return animation;
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
             }
             else {
                 isPowered = false;
+                var animation = playGunAnim(MELEE, HOLD_ON_LAST_FRAME);
+                animationHelper.syncAnimation(event, meleeDelay, MELEE);
+                return animation;
             }
         }
         return super.getMeleeDelayAnimation(event);
@@ -67,7 +82,7 @@ public class HammerAnimator extends WeaponAnimator {
     @Override
     protected RawAnimation getMeleeCooldownAnimation(AnimationState<WeaponAnimator> event) {
         if(isFirstPerson(transformType)) {
-            if (isPowered) {
+            if (isSecondary && isPowered) {
                 if (!animationHelper.hasAnimation(MELEE_POWER_END))
                     return getHoldAnimation(event);
 
@@ -80,6 +95,11 @@ public class HammerAnimator extends WeaponAnimator {
                 }
 
                 animationHelper.syncAnimation(event, meleeCooldown, animations);
+                return animation;
+            }
+            else {
+                var animation = playGunAnim(MELEE_END, HOLD_ON_LAST_FRAME);
+                animationHelper.syncAnimation(event, meleeCooldown, MELEE_END);
                 return animation;
             }
         }

@@ -1,6 +1,7 @@
 package com.nukateam.cgs.common.ntgl;
 
 import com.nukateam.cgs.common.faundation.item.attachments.HammerHeadItem;
+import com.nukateam.cgs.common.faundation.item.guns.HammerItem;
 import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
 import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
 import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
@@ -201,11 +202,6 @@ public class AttachmentMods {
 
     //FLINTLOCK
     public static final IWeaponModifier BAYONET_MODIFIERS = new IWeaponModifier() {
-//        @Override
-//        public boolean modifyCanMelee(boolean value, WeaponData data) {
-//            return true;
-//        }
-
         @Override
         public WeaponAction modifyWeaponAction(WeaponAction value, WeaponData data) {
             if(data.weaponMode == WeaponMode.ADDITIONAL){
@@ -498,16 +494,37 @@ public class AttachmentMods {
         return damage;
     }
 
-    public static final IWeaponModifier HAMMER_HEAD = new IWeaponModifier() {
+    private static class HeadModifier implements IWeaponModifier {
         @Override
-        public int modifyMeleeMaxTargets(int value, WeaponData data) {
-            return 6;
+        public WeaponAction modifyWeaponAction(WeaponAction value, WeaponData data) {
+            if(data.weaponMode == WeaponMode.SECONDARY){
+                if(HammerItem.isPowered(data)){
+                    return WeaponAction.MELEE;
+                }
+            }
+            return IWeaponModifier.super.modifyWeaponAction(value, data);
         }
 
         @Override
         public float modifyMeleeDamage(float damage, WeaponData data) {
-            if(data.weapon == null) return damage;
-            return getHeadMeleeDamage(damage, data.attachment);
+            if (data.weapon != null) {
+                damage = getHeadMeleeDamage(damage, data.attachment);
+
+                if(data.weaponMode == WeaponMode.SECONDARY && HammerItem.isPowered(data)){
+                    damage += 6;
+                }
+
+                return damage;
+            } else {
+                return 1;
+            }
+        }
+    }
+
+    public static final IWeaponModifier HAMMER_HEAD = new HeadModifier() {
+        @Override
+        public int modifyMeleeMaxTargets(int value, WeaponData data) {
+            return 6;
         }
 
         @Override
@@ -516,7 +533,7 @@ public class AttachmentMods {
         }
     };
 
-    public static final IWeaponModifier AXE_HEAD = new IWeaponModifier() {
+    public static final IWeaponModifier AXE_HEAD = new HeadModifier() {
         @Override
         public int modifyMeleeMaxTargets(int value, WeaponData data) {
             return 1;
@@ -524,8 +541,7 @@ public class AttachmentMods {
 
         @Override
         public float modifyMeleeDamage(float damage, WeaponData data) {
-            if(data.weapon == null) return damage;
-            return getHeadMeleeDamage(damage, data.attachment) + 4;
+            return super.modifyMeleeDamage(damage, data) + 4;
         }
     };
 

@@ -1,13 +1,13 @@
 {
   "general": {
-    "action": "ntgl:gun",
+    "action": "ntgl:melee",
     "rate": 0,
     "weaponMode": "ntgl:melee",
     "gripType": "ntgl:hammer",
     "loadingType": "magazine",
     "maxAmmo": 900,
-    "ammoPerShot": 20,
     "reloadTime": 50,
+    "ammoPerShot": 20,
     "equipTime": 10,
     "enchantable": false,
     "melee": true,
@@ -24,6 +24,23 @@
     "angle": 50,
     "maxTargets": 1,
     "knockback": 1
+  },
+  "modes": {
+    "ntgl:secondary": {
+      "general": {
+        "action": "ntgl:none"
+      },
+      "melee": {
+        "mode": "ntgl:single",
+        "damage": 1,
+        "delay": 10,
+        "cooldown": 10,
+        "distance": 5,
+        "angle": 50,
+        "maxTargets": 1,
+        "knockback": 1
+      }
+    }
   },
   "ammoData": {
     "cgs:air": {

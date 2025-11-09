@@ -3,6 +3,7 @@ package com.nukateam.cgs.common.datagen.providers;
 import java.util.function.UnaryOperator;
 
 import com.google.common.base.Supplier;
+import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.datagen.DataGenConfig;
 import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
 import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
@@ -10,23 +11,25 @@ import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
+import com.simibubi.create.api.data.recipe.BaseRecipeProvider;
+import com.simibubi.create.api.data.recipe.MechanicalCraftingRecipeBuilder;
+import com.simibubi.create.api.data.recipe.MechanicalCraftingRecipeGen;
 import com.simibubi.create.foundation.data.recipe.CreateRecipeProvider;
-import com.simibubi.create.foundation.data.recipe.MechanicalCraftingRecipeBuilder;
-import com.simibubi.create.foundation.utility.RegisteredObjects;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 
 
-public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
-	public CgsMechanicalCraftingRecipeGen(PackOutput p_i48262_1_) {
-		super(p_i48262_1_);
+public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen {
+	public CgsMechanicalCraftingRecipeGen(PackOutput output) {
+		super(output, Gunsmithing.MOD_ID);
 	}
 
-	GeneratedRecipe
+	BaseRecipeProvider.GeneratedRecipe
 		SHOTGUN = create(CgsWeapons.SHOTGUN::get).returns(1)
 			.recipe(b -> b
 					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
@@ -238,47 +241,4 @@ public class CgsMechanicalCraftingRecipeGen extends CreateRecipeProvider {
 						.patternLine("PPccT")
 						.disallowMirrored())
 		;
-
-
-	RecipeBuilder create(Supplier<ItemLike> result) {
-		return new RecipeBuilder(result);
-	}
-
-	class RecipeBuilder {
-		private String suffix;
-		private Supplier<ItemLike> result;
-		private int amount;
-
-		public RecipeBuilder(Supplier<ItemLike> result) {
-			this.suffix = "";
-			this.result = result;
-			this.amount = 1;
-		}
-
-		RecipeBuilder returns(int amount) {
-			this.amount = amount;
-			return this;
-		}
-
-		RecipeBuilder withSuffix(String suffix) {
-			this.suffix = suffix;
-			return this;
-		}
-
-		GeneratedRecipe recipe(UnaryOperator<MechanicalCraftingRecipeBuilder> builder) {
-			return register(consumer -> {
-				var b = builder.apply(MechanicalCraftingRecipeBuilder
-								.shapedRecipe(result.get(), amount));
-
-				var location = new ResourceLocation(DataGenConfig.DATA_MOD_ID, "mechanical_crafting/" +
-								RegisteredObjects.getKeyOrThrow(result.get().asItem()).getPath() + suffix);
-				b.build(consumer, location);
-			});
-		}
-	}
-
-	@Override
-	public String getName() {
-		return "CGS's Mechanical Crafting Recipes";
-	}
 }

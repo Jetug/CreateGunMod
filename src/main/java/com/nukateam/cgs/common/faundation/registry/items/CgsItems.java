@@ -25,6 +25,12 @@ public class CgsItems {
     public static final RegistryObject<Item> LEAD_NUGGET = registerItem("lead_nugget");
 
     @ItemModelGen
+    public static final RegistryObject<Item> STEEL_INGOT = registerItem ("steel_ingot");
+
+    @ItemModelGen
+    public static final RegistryObject<Item> STEEL_PLATE = registerItem ("steel_plate");
+
+    @ItemModelGen
     public static final RegistryObject<Item> BARREL = registerItem("barrel");
 
     @ItemModelGen

@@ -32,10 +32,10 @@ public class AttachmentItems {
     public static final RegistryObject<Item> STOCK = ITEMS.register("stock",
             () -> new AttachmentItem<>(AttachmentType.STOCK, GenericAttachment.create(AttachmentMods.STOCK), ITEM_PROPERTIES));
 
-//    @ItemModelGen(path = "attachments")
-//    public static final RegistryObject<Item> BAYONET = ITEMS.register("bayonet",
-//            () -> new AttachmentItem<>(AttachmentType.MELEE,
-//                    GenericAttachment.create(AttachmentMods.BAYONET_MODIFIERS), ITEM_PROPERTIES));
+    @ItemModelGen(path = "attachments")
+    public static final RegistryObject<Item> BAYONET = ITEMS.register("bayonet",
+            () -> new AttachmentItem<>(AttachmentType.MUZZLE,
+                    GenericAttachment.create(AttachmentMods.BAYONET_MODIFIERS), ITEM_PROPERTIES));
 
     //FLINTLOCK
     @ItemModelGen(path = "attachments")

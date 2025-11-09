@@ -19,6 +19,32 @@
       "cgs:rocket"
     ]
   },
+  "modes": {
+    "ntgl:secondary": {
+      "general": {
+        "action": "ntgl:scope"
+      },
+      "zoom": {
+        "offset": [ -5, 2.7, -0.5],
+        "fovModifier": 0.7
+      }
+    },
+    "ntgl:additional": {
+      "general": {
+        "action": "ntgl:none"
+      },
+      "melee": {
+        "mode": "ntgl:single",
+        "damage": 12,
+        "delay": 6,
+        "cooldown": 6,
+        "distance": 5,
+        "angle": 40,
+        "maxTargets": 1,
+        "knockback": 0.3
+      }
+    }
+  },
   "melee": {
     "mode": "ntgl:single",
     "damage": 12,
@@ -108,20 +134,13 @@
     "magout_mini": "cgs:gun.launcher.magout_mini"
   },
   "modules": {
-    "zoom": {
-      "xOffset": -5,
-      "yOffset": 2.7,
-      "zOffset": -0.5,
-      "fovModifier": 0.7
-    },
+
     "attachments": {
       "ntgl:scope": [
         {
           "name": "scope",
           "item": "cgs:scope",
-          "xOffset": 0,
-          "yOffset": 0,
-          "zOffset": 0
+          "offset": [ 0, 0, 0]
         }
       ],
       "ntgl:muzzle": [

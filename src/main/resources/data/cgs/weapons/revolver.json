@@ -34,7 +34,6 @@
   "modes": {
     "ntgl:secondary": {
       "general": {
-    "action": "ntgl:gun",
         "action": "ntgl:scope"
       },
       "zoom": {
@@ -61,9 +60,7 @@
         {
           "name": "scope",
           "item": "cgs:scope",
-          "xOffset": 0,
-          "yOffset": 1.1,
-          "zOffset": 0
+          "offset": [ 0, 1.1, 0]
         }
       ],
       "ntgl:stock": [
