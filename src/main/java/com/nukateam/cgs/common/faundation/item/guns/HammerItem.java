@@ -17,12 +17,10 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.util.Lazy;
 
 import java.util.function.BiFunction;
 
 public class HammerItem extends CgsGunItem {
-
     public HammerItem(Properties properties, IWeaponModifier... modifiers) {
         super(properties, modifiers);
     }

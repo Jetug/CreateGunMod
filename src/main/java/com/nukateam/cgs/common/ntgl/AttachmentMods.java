@@ -202,11 +202,6 @@ public class AttachmentMods {
 
     //FLINTLOCK
     public static final IWeaponModifier BAYONET_MODIFIERS = new IWeaponModifier() {
-//        @Override
-//        public boolean modifyCanMelee(boolean value, WeaponData data) {
-//            return true;
-//        }
-
         @Override
         public WeaponAction modifyWeaponAction(WeaponAction value, WeaponData data) {
             if(data.weaponMode == WeaponMode.ADDITIONAL){

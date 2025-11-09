@@ -1,18 +1,21 @@
 {
-  "type": "minecraft:crafting_shapeless",
+  "type": "minecraft:crafting_shaped",
   "category": "equipment",
-  "ingredients": [
-    {
-      "tag": "forge:plates/iron"
+  "key": {
+    "B": {
+      "item": "minecraft:diamond_block"
     },
-    {
-      "tag": "forge:plates/brass"
-    },
-    {
-      "item": "minecraft:gunpowder"
+    "I": {
+      "item": "minecraft:diamond"
     }
+  },
+  "pattern": [
+    "II ",
+    "IBI",
+    "II "
   ],
   "result": {
     "item": "cgs:hammer_diamond"
-  }
+  },
+  "show_notification": true
 }

@@ -9,16 +9,20 @@ import com.nukateam.cgs.common.utils.BreakHandler;
 import com.nukateam.ntgl.Config;
 import com.nukateam.ntgl.common.data.WeaponData;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
+import com.nukateam.ntgl.common.data.holders.WeaponMode;
 import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.nukateam.ntgl.common.event.MeleeAttackEvent;
 import com.nukateam.ntgl.common.util.util.StackUtils;
+import com.simibubi.create.content.kinetics.saw.TreeCutter;
+import net.createmod.catnip.math.VecHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Tiers;
@@ -26,9 +30,15 @@ import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Set;
 
 @Mod.EventBusSubscriber(modid = Gunsmithing.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class MeleeHandler {
@@ -46,9 +56,10 @@ public class MeleeHandler {
     public static void onMelee(MeleeAttackEvent.Pre event) {
         var data = event.getData();
         var stack = event.getData().weapon;
+        var isSecondaryMode = data.weaponMode == WeaponMode.SECONDARY;
+        var isHammer = stack != null && stack.getItem() == CgsWeapons.HAMMER.get();
 
-        if(!event.isClient() && stack != null && stack.getItem() == CgsWeapons.HAMMER.get()
-                && event.getEntity() instanceof ServerPlayer player){
+        if(!event.isClient() && isSecondaryMode && isHammer && event.getEntity() instanceof ServerPlayer player){
             var entity = event.getEntity();
 
             if (!player.isCreative()) {
@@ -56,7 +67,7 @@ public class MeleeHandler {
             }
 
             if(event.getTargets().isEmpty()) {
-                hitBlock( player, data, entity);
+                hitBlock(player, data, entity);
             }
         }
     }
@@ -69,42 +80,72 @@ public class MeleeHandler {
                 && !entity.hasEffect(MobEffects.DIG_SLOWDOWN)) {
             var reach = WeaponModifierHelper.getMeleeDistance(data);
             var isShotPowered = !WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, data.weapon).isEmpty();
+            var level = player.level();
+
+
+            var hitResult = getBlockHitResult(player, reach);
+            if (hitResult.getType() != HitResult.Type.BLOCK) return;
 
             if (headItem.getHeadType() == HammerHeadItem.Type.HAMMER) {
                 if (isShotPowered) {
-                    breakBlocks3x3(player, headItem.getTier(), HAMMER_HANDLER, head, reach);
-                } else breakBlocks2x1(player, headItem.getTier(), HAMMER_HANDLER, head, reach);
+                    breakBlocks3x3(player, headItem.getTier(), HAMMER_HANDLER, head, hitResult);
+                }
+                else {
+                    breakBlockAt(player, headItem.getTier(), head, hitResult.getBlockPos(), HAMMER_HANDLER);
+//
+//                    breakBlocks2x1(player, headItem.getTier(), HAMMER_HANDLER, head, hitResult);
+                }
             } else if (headItem.getHeadType() == HammerHeadItem.Type.AXE) {
                 if (isShotPowered) {
-                    breakBlocks3x3(player, headItem.getTier(), AXE_HANDLER, head, reach);
-                } else breakBlocks2x1(player, headItem.getTier(), AXE_HANDLER, head, reach);
+                    var hitPos = hitResult.getBlockPos();
+
+                    var planeDirs = getPlaneDirections(hitResult.getDirection());
+                    var breakingPos = hitPos
+                            .relative(planeDirs[0], -1)
+                            .relative(planeDirs[1], 0);
+
+                    TreeCutter.findTree(level, breakingPos, level.getBlockState(breakingPos))
+                            .destroyBlocks(level, null, (pos, stack) -> {
+//                                var distance = (float) Math.sqrt(pos.distSqr(breakingPos));
+                                var dropPos = VecHelper.getCenterOf(pos);
+                                var itemEntity = new ItemEntity(level, dropPos.x, dropPos.y, dropPos.z, stack);
+//                                itemEntity.setDeltaMovement(Vec3.atLowerCornerOf(breakingPos.subtract(breakingPos))
+//                                        .scale(distance / 20f));
+                                level.addFreshEntity(itemEntity);
+                            });
+
+                } else {
+                    breakBlockAt(player, headItem.getTier(), head, hitResult.getBlockPos(), AXE_HANDLER);
+//
+//                    breakBlocks2x1(player, headItem.getTier(), AXE_HANDLER, head, reach);
+                }
             }
         }
     }
 
-    private static void breakBlocks2x1(ServerPlayer player, Tier toolTier, BreakHandler handler, ItemStack stack, float reach) {
-        var hitResult = getBlockHitResult(player, reach);
-
-        if (hitResult.getType() != HitResult.Type.BLOCK) return;
-
+    private static void breakBlocks2x1(ServerPlayer player, Tier toolTier, BreakHandler handler, ItemStack stack, BlockHitResult hitResult) {
         var centerPos = hitResult.getBlockPos();
         var planeDirs = getPlaneDirections(hitResult.getDirection());
 
-        breakBlockAt(player, toolTier, stack, centerPos, planeDirs, handler, 0, 0);
-        breakBlockAt(player, toolTier, stack, centerPos, planeDirs, handler, -1, 0);
+        var targetPos = centerPos
+                .relative(planeDirs[0], -1)
+                .relative(planeDirs[1], 0);
+
+        breakBlockAt(player, toolTier, stack, centerPos, handler);
+        breakBlockAt(player, toolTier, stack, targetPos, handler);
     }
 
-    private static void breakBlocks3x3(ServerPlayer player, Tier toolTier, BreakHandler handler, ItemStack stack, float reach) {
-        var hitResult = getBlockHitResult(player, reach);
-
-        if (hitResult.getType() != HitResult.Type.BLOCK) return;
-
+    private static void breakBlocks3x3(ServerPlayer player, Tier toolTier, BreakHandler handler, ItemStack stack, BlockHitResult hitResult) {
         var centerPos = hitResult.getBlockPos();
         var planeDirs = getPlaneDirections(hitResult.getDirection());
 
         for (int u = -1; u <= 1; u++) {
             for (int v = -1; v <= 1; v++) {
-                breakBlockAt(player, toolTier, stack, centerPos, planeDirs, handler, u, v);
+                var targetPos = centerPos
+                        .relative(planeDirs[0], u)
+                        .relative(planeDirs[1], v);
+
+                breakBlockAt(player, toolTier, stack, targetPos, handler);
             }
         }
     }
@@ -114,18 +155,13 @@ public class MeleeHandler {
         var look = player.getViewVector(1.0F);
         var end = start.add(look.x * reach, look.y * reach, look.z * reach);
 
-        var hitResult = player.level().clip(
+        return player.level().clip(
                 new ClipContext(start, end, ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, player)
         );
-        return hitResult;
     }
 
     private static void breakBlockAt(ServerPlayer player, Tier toolTier, ItemStack stack,
-                                     BlockPos centerPos, Direction[] planeDirs, BreakHandler handler, int u, int v) {
-        var targetPos = centerPos
-                .relative(planeDirs[0], u)
-                .relative(planeDirs[1], v);
-
+                                     BlockPos targetPos, BreakHandler handler) {
         var blockState = player.level().getBlockState(targetPos);
         var canDistroy = blockState.getDestroySpeed(player.level(), targetPos) >= 0;
         var canGrief = Config.COMMON.gameplay.griefing.enableBlockRemovalOnExplosions.get();
