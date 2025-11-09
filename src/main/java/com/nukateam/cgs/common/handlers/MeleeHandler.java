@@ -27,24 +27,19 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Set;
 
 @Mod.EventBusSubscriber(modid = Gunsmithing.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class MeleeHandler {
     public static BreakHandler HAMMER_HANDLER = new BreakHandler(
             MeleeHandler::isToolTierSufficient,
-            MeleeHandler::isMineable,
+            MeleeHandler::isMineableHammer,
             MeleeHandler::isCanDrop);
 
     public static BreakHandler AXE_HANDLER = new BreakHandler(
@@ -80,68 +75,49 @@ public class MeleeHandler {
                 && !entity.hasEffect(MobEffects.DIG_SLOWDOWN)) {
             var reach = WeaponModifierHelper.getMeleeDistance(data);
             var isShotPowered = !WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, data.weapon).isEmpty();
-            var level = player.level();
-
-
             var hitResult = getBlockHitResult(player, reach);
             if (hitResult.getType() != HitResult.Type.BLOCK) return;
 
             if (headItem.getHeadType() == HammerHeadItem.Type.HAMMER) {
                 if (isShotPowered) {
                     breakBlocks3x3(player, headItem.getTier(), HAMMER_HANDLER, head, hitResult);
-                }
-                else {
+                } else {
                     breakBlockAt(player, headItem.getTier(), head, hitResult.getBlockPos(), HAMMER_HANDLER);
-//
-//                    breakBlocks2x1(player, headItem.getTier(), HAMMER_HANDLER, head, hitResult);
                 }
             } else if (headItem.getHeadType() == HammerHeadItem.Type.AXE) {
                 if (isShotPowered) {
-                    var hitPos = hitResult.getBlockPos();
-
-                    var planeDirs = getPlaneDirections(hitResult.getDirection());
-                    var breakingPos = hitPos
-                            .relative(planeDirs[0], -1)
-                            .relative(planeDirs[1], 0);
-
-                    TreeCutter.findTree(level, breakingPos, level.getBlockState(breakingPos))
-                            .destroyBlocks(level, null, (pos, stack) -> {
-//                                var distance = (float) Math.sqrt(pos.distSqr(breakingPos));
-                                var dropPos = VecHelper.getCenterOf(pos);
-                                var itemEntity = new ItemEntity(level, dropPos.x, dropPos.y, dropPos.z, stack);
-//                                itemEntity.setDeltaMovement(Vec3.atLowerCornerOf(breakingPos.subtract(breakingPos))
-//                                        .scale(distance / 20f));
-                                level.addFreshEntity(itemEntity);
-                            });
-
+                    chopTree(hitResult, player.level());
                 } else {
                     breakBlockAt(player, headItem.getTier(), head, hitResult.getBlockPos(), AXE_HANDLER);
-//
-//                    breakBlocks2x1(player, headItem.getTier(), AXE_HANDLER, head, reach);
                 }
             }
         }
     }
 
-    private static void breakBlocks2x1(ServerPlayer player, Tier toolTier, BreakHandler handler, ItemStack stack, BlockHitResult hitResult) {
-        var centerPos = hitResult.getBlockPos();
-        var planeDirs = getPlaneDirections(hitResult.getDirection());
+    private static void chopTree(BlockHitResult hitResult, Level level) {
+        var hitPos = hitResult.getBlockPos();
 
-        var targetPos = centerPos
+        var planeDirs = getPlaneDirections(hitResult.getDirection());
+        var breakingPos = hitPos
                 .relative(planeDirs[0], -1)
                 .relative(planeDirs[1], 0);
 
-        breakBlockAt(player, toolTier, stack, centerPos, handler);
-        breakBlockAt(player, toolTier, stack, targetPos, handler);
+        TreeCutter.findTree(level, breakingPos, level.getBlockState(breakingPos))
+                .destroyBlocks(level, null, (pos, stack) -> dropItemFromCutTree(level, pos, stack));
+    }
+
+    private static void dropItemFromCutTree(Level level, BlockPos pos, ItemStack stack){
+        var dropPos = VecHelper.getCenterOf(pos);
+        var itemEntity = new ItemEntity(level, dropPos.x, dropPos.y, dropPos.z, stack);
+        level.addFreshEntity(itemEntity);
     }
 
     private static void breakBlocks3x3(ServerPlayer player, Tier toolTier, BreakHandler handler, ItemStack stack, BlockHitResult hitResult) {
-        var centerPos = hitResult.getBlockPos();
         var planeDirs = getPlaneDirections(hitResult.getDirection());
 
         for (int u = -1; u <= 1; u++) {
             for (int v = -1; v <= 1; v++) {
-                var targetPos = centerPos
+                var targetPos = hitResult.getBlockPos()
                         .relative(planeDirs[0], u)
                         .relative(planeDirs[1], v);
 
@@ -186,7 +162,7 @@ public class MeleeHandler {
         return true;
     }
 
-    private static boolean isMineable(BlockState blockState) {
+    private static boolean isMineableHammer(BlockState blockState) {
 //        return !blockState.is(BlockTags.MINEABLE_WITH_AXE) && !blockState.is(BlockTags.MINEABLE_WITH_HOE);
 //        return blockState.is(BlockTags.MINEABLE_WITH_PICKAXE)
 //                || blockState.is(BlockTags.MINEABLE_WITH_SHOVEL);
