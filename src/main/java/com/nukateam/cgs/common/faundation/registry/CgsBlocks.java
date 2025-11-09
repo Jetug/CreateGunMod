@@ -40,6 +40,13 @@ public class CgsBlocks {
                     .sound(SoundType.DEEPSLATE)));
 
     @BlockStateGen
+    public static final RegistryObject<Block> RAW_LEAD_BLOCK = registerBlock("raw_lead_block",
+            () -> new DropExperienceBlock(Block.Properties.of()
+                    .mapColor(MapColor.RAW_IRON).instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops()
+                    .strength(5.0F, 6.0F)));
+
+    @BlockStateGen
     public static final RegistryObject<Block> LEAD_BLOCK = registerBlock("lead_block",
             () -> new DropExperienceBlock(Block.Properties.of()
                     .mapColor(MapColor.METAL)
@@ -49,11 +56,13 @@ public class CgsBlocks {
                     .sound(SoundType.METAL)));
 
     @BlockStateGen
-    public static final RegistryObject<Block> RAW_LEAD_BLOCK = registerBlock("raw_lead_block",
+    public static final RegistryObject<Block> STEEL_BLOCK = registerBlock("steel_block",
             () -> new DropExperienceBlock(Block.Properties.of()
-                    .mapColor(MapColor.RAW_IRON).instrument(NoteBlockInstrument.BASEDRUM)
+                    .mapColor(MapColor.METAL)
+                    .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
                     .requiresCorrectToolForDrops()
-                    .strength(5.0F, 6.0F)));
+                    .strength(3.0F, 6.0F)
+                    .sound(SoundType.METAL)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         var toReturn = BLOCKS.register(name, block);
