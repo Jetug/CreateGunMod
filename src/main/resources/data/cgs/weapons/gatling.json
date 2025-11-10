@@ -13,12 +13,11 @@
     "maxAmmo": 100,
     "reloadTime": 50,
     "recoilAngle": 2.0,
-    "damage": 10.0,
     "alwaysSpread": true,
     "spread": 1.2,
     "movementSpeed": -0.2,
     "ammo": [
-      "cgs:round_7mm"
+      "cgs:gatling_round"
     ]
   },
   "modes": {
@@ -32,15 +31,14 @@
       }
     }
   },
-
   "ammoData": {
-    "cgs:round_7mm": {
+    "cgs:gatling_round": {
       "ammo": {
         "type": "ntgl:standard"
       },
       "projectile":{
         "visible": true,
-        "damage": 1.0,
+        "damage": 10.0,
         "size": 0.2,
         "speed": 50.0,
         "life": 180

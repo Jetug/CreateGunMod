@@ -40,6 +40,7 @@ public class CgsItemTagGenerator extends ItemTagsProvider {
     private TagKey<Item> LEAD_STORAGE_BLOCKS = AllTags.forgeItemTag("storage_blocks/raw_lead");
     private TagKey<Item> INGOTS = AllTags.forgeItemTag("ingots");
     private TagKey<Item> LEAD_INGOTS = AllTags.forgeItemTag("ingots/lead");
+    private TagKey<Item> STEEL_INGOTS = AllTags.forgeItemTag("ingots/steel");
     private TagKey<Item> NUGGETS = AllTags.forgeItemTag("nuggets");
     private TagKey<Item> LEAD_NUGGETS = AllTags.forgeItemTag("nuggets/lead");
 
@@ -61,9 +62,10 @@ public class CgsItemTagGenerator extends ItemTagsProvider {
 
         this.tag(RAW_MATERIALS).add(CgsItems.RAW_LEAD.get());
         this.tag(RAW_LEAD).add(CgsItems.RAW_LEAD.get());
-        this.tag(INGOTS).add(CgsItems.LEAD_INGOT.get());
+        this.tag(INGOTS).add(CgsItems.LEAD_INGOT.get(), CgsItems.STEEL_INGOT.get());
         this.tag(LEAD_INGOTS).add(CgsItems.LEAD_INGOT.get());
-        this.tag(NUGGETS).add(CgsItems.LEAD_NUGGET.get());
+        this.tag(STEEL_INGOTS).add(CgsItems.STEEL_INGOT.get());
+        this.tag(NUGGETS).add(CgsItems.LEAD_NUGGET.get(), CgsItems.STEEL_NUGGET.get());
         this.tag(LEAD_NUGGETS).add(CgsItems.LEAD_NUGGET.get());
     }
 }

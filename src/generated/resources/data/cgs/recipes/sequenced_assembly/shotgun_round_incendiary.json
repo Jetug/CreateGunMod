@@ -1,12 +1,12 @@
 {
   "type": "create:sequenced_assembly",
   "ingredient": {
-    "item": "cgs:round_shotgun_incendiary"
+    "item": "cgs:round_shotgun_blank"
   },
   "loops": 1,
   "results": [
     {
-      "item": "cgs:round_shotgun"
+      "item": "cgs:round_shotgun_incendiary"
     }
   ],
   "sequence": [

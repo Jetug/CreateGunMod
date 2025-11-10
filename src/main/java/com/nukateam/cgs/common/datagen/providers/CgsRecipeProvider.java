@@ -50,8 +50,8 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
         weapons(writer);
         ammo(writer);
         attachments(writer);
-        simpleBlock(writer, CgsItems.STEEL_INGOT.get(), CgsBlocks.STEEL_BLOCK.get());
-        fromBlock(writer, CgsBlocks.STEEL_BLOCK.get(), CgsItems.STEEL_INGOT.get());
+        blocks(writer);
+        presssForms(writer);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, Items.GUNPOWDER, 3)
                 .requires(CgsItems.CHARCOAL_DUST.get())
@@ -59,10 +59,25 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(CgsItems.NITER.get())
                 .unlockedBy(getHasName(CgsItems.CHARCOAL_DUST.get()), has(CgsItems.CHARCOAL_DUST.get()))
                 .save(writer, getId(Items.GUNPOWDER));
+    }
 
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.IRON_INGOT), RecipeCategory.MISC, CgsItems.PRESS_FORM_GATLING.get());
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.IRON_INGOT), RecipeCategory.MISC, CgsItems.PRESS_FORM_REVOLVER.get());
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.IRON_INGOT), RecipeCategory.MISC, CgsItems.PRESS_FORM_SHOTGUN.get());
+    private static void blocks(Consumer<FinishedRecipe> writer) {
+        simpleBlock(writer, CgsItems.STEEL_INGOT.get(), CgsBlocks.STEEL_BLOCK.get());
+        fromBlock(writer, CgsBlocks.STEEL_BLOCK.get(), CgsItems.STEEL_INGOT.get());
+    }
+
+    private static void presssForms(Consumer<FinishedRecipe> writer) {
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.IRON_INGOT), RecipeCategory.MISC, CgsItems.PRESS_FORM_GATLING.get())
+                .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(writer, getId(CgsItems.PRESS_FORM_GATLING.get()));
+
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.IRON_INGOT), RecipeCategory.MISC, CgsItems.PRESS_FORM_REVOLVER.get())
+                .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(writer, getId(CgsItems.PRESS_FORM_REVOLVER.get()));
+
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.IRON_INGOT), RecipeCategory.MISC, CgsItems.PRESS_FORM_SHOTGUN.get())
+                .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(writer, getId(CgsItems.PRESS_FORM_SHOTGUN.get()));
     }
 
     private static void weapons(Consumer<FinishedRecipe> writer) {

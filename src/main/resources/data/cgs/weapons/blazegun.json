@@ -4,7 +4,6 @@
     "fireMode": ["ntgl:auto"],
     "rate": 3,
     "gripType": "ntgl:mini_gun",
-    "damage": 2.0,
     "maxAmmo": 20000,
     "ammoPerShot": 200,
     "reloadTime": 40,
@@ -28,7 +27,7 @@
         "damageType": "ntgl:fire",
         "projectile": "cgs:fireball",
         "visible": true,
-        "damage": 1.0,
+        "damage": 2.0,
         "size": 1.0,
         "speed": 2.0,
         "life": 50
@@ -43,7 +42,7 @@
         "damageType": "ntgl:fire",
         "projectile": "cgs:fireball",
         "visible": true,
-        "damage": 1.0,
+        "damage": 2.0,
         "size": 1.0,
         "speed": 2.0,
         "life": 30

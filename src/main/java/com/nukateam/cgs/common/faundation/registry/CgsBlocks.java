@@ -23,6 +23,15 @@ public class CgsBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Gunsmithing.MOD_ID);
 
     @BlockStateGen
+    public static final RegistryObject<Block> SULFUR_ORE = registerBlock("sulfur_ore",
+            () -> new DropExperienceBlock(Block.Properties.of()
+                    .sound(SoundType.NETHERRACK)
+                    .mapColor(MapColor.NETHER)
+                    .instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops()
+                    .strength(0.4F)));
+
+    @BlockStateGen
     public static final RegistryObject<Block> LEAD_ORE = registerBlock("lead_ore",
             () -> new DropExperienceBlock(Block.Properties.of()
                     .sound(SoundType.STONE)
@@ -56,14 +65,6 @@ public class CgsBlocks {
                     .strength(3.0F, 6.0F)
                     .sound(SoundType.METAL)));
 
-    @BlockStateGen
-    public static final RegistryObject<Block> SULFUR_ORE = registerBlock("sulfur_ore",
-            () -> new DropExperienceBlock(Block.Properties.of()
-                    .sound(SoundType.NETHERRACK)
-                    .mapColor(MapColor.NETHER)
-                    .instrument(NoteBlockInstrument.BASEDRUM)
-                    .requiresCorrectToolForDrops()
-                    .strength(0.4F)));
 
     @BlockStateGen
     public static final RegistryObject<Block> STEEL_BLOCK = registerBlock("steel_block",

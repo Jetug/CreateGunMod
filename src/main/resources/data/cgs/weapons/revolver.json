@@ -7,7 +7,6 @@
     "fireTimer": 3,
     "oneHanded": true,
     "fullCharge": true,
-    "damage": 8.0,
     "equipTime": 0,
     "reloadTime": 60,
     "reloadAmount": 1,
@@ -17,14 +16,14 @@
     "enchantable": false,
     "spread": 1.0,
     "ammo": [
-      "cgs:round_10mm"
+      "cgs:round_revolver"
     ]
   },
   "ammoData": {
-    "cgs:round_10mm": {
+    "cgs:round_revolver": {
       "projectile": {
         "visible": true,
-        "damage": 1.0,
+        "damage": 8.0,
         "size": 0.2,
         "speed": 20.0,
         "life": 180

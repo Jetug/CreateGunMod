@@ -26,15 +26,15 @@
   "item.cgs.barrel_sturdy": "Sturdy Barrel",
 
   "item.cgs.press_form_gatling": "Gatling Shell Press Form",
-  "item.cgs.press_form_10mm": "Revolver Shell Press Form",
+  "item.cgs.press_form_revolver": "Revolver Shell Press Form",
   "item.cgs.press_form_shotgun": "Shotgun Shell Press Form",
 
-  "item.cgs.shell_7mm": "Gatling Shell",
-  "item.cgs.shell_10mm": "Revolver Shell",
+  "item.cgs.shell_gatling": "Gatling Shell",
+  "item.cgs.shell_revolver": "Revolver Shell",
   "item.cgs.shell_shotgun": "Shotgun Shell",
 
-  "item.cgs.round_7mm": "Gatling Round",
-  "item.cgs.round_10mm": "Revolver Round",
+  "item.cgs.round_gatling": "Gatling Round",
+  "item.cgs.round_revolver": "Revolver Round",
   "item.cgs.round_shotgun": "Shotgun Round",
   "item.cgs.round_shotgun_blank": "Blank Shotgun Round",
   "item.cgs.paper_cartridge": "Paper Cartridge",

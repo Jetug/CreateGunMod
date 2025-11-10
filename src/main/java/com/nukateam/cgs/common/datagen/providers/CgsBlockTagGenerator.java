@@ -35,28 +35,34 @@ public class CgsBlockTagGenerator extends BlockTagsProvider {
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
                 CgsBlocks.LEAD_ORE.get(),
                 CgsBlocks.DEEPSLATE_LEAD_ORE.get(),
+                CgsBlocks.RAW_LEAD_BLOCK.get(),
                 CgsBlocks.LEAD_BLOCK.get(),
-                RAW_LEAD_BLOCK.get());
+                CgsBlocks.STEEL_BLOCK.get(),
+                CgsBlocks.SULFUR_ORE.get()
+        );
 
         this.tag(BlockTags.NEEDS_IRON_TOOL).add(
                 CgsBlocks.LEAD_ORE.get(),
                 CgsBlocks.DEEPSLATE_LEAD_ORE.get(),
+                CgsBlocks.RAW_LEAD_BLOCK.get(),
                 CgsBlocks.LEAD_BLOCK.get(),
-                RAW_LEAD_BLOCK.get());
+                CgsBlocks.STEEL_BLOCK.get(),
+                CgsBlocks.SULFUR_ORE.get());
 
         this.tag(ORES).add(
                 CgsBlocks.LEAD_ORE.get(),
-                CgsBlocks.DEEPSLATE_LEAD_ORE.get());
+                CgsBlocks.DEEPSLATE_LEAD_ORE.get(),
+                CgsBlocks.SULFUR_ORE.get());
 
         this.tag(LEAD_ORE_BLOCK).add(
                 CgsBlocks.LEAD_ORE.get(),
                 CgsBlocks.DEEPSLATE_LEAD_ORE.get());
 
-        this.tag(RAW_ORE_BLOCK).add(RAW_LEAD_BLOCK.get());
+        this.tag(RAW_ORE_BLOCK).add(CgsBlocks.RAW_LEAD_BLOCK.get());
         this.tag(ORES_IN_GROUND_STONE).add(CgsBlocks.LEAD_ORE.get());
         this.tag(ORES_IN_GROUND_DEEPSLATE).add(CgsBlocks.DEEPSLATE_LEAD_ORE.get());
 
-        this.tag(STORAGE_BLOCKS).add(RAW_LEAD_BLOCK.get());
-        this.tag(LEAD_STORAGE_BLOCKS).add(RAW_LEAD_BLOCK.get());
+        this.tag(STORAGE_BLOCKS).add(CgsBlocks.RAW_LEAD_BLOCK.get());
+        this.tag(LEAD_STORAGE_BLOCKS).add(CgsBlocks.RAW_LEAD_BLOCK.get());
     }
 }

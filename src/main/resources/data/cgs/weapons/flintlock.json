@@ -4,7 +4,6 @@
     "rate": 10,
     "gripType": "ntgl:one_handed",
     "maxAmmo": 1,
-    "damage": 10.0,
     "equipTime": 0,
     "reloadTime": 70,
     "recoilAngle": 7.0,
@@ -23,7 +22,7 @@
       },
       "projectile":{
         "visible": true,
-        "damage": 1.0,
+        "damage": 10.0,
         "size": 0.5,
         "speed": 10.0,
         "life": 100,

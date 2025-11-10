@@ -6,7 +6,6 @@
     "gripType": "ntgl:two_handed",
     "loadingType": "ntgl:per_cartridge",
     "maxAmmo": 40,
-    "damage": 5.0,
     "equipTime": 0,
     "reloadStart": 15,
     "reloadTime": 20,
@@ -44,7 +43,7 @@
       "projectile": {
         "projectile": "cgs:nail",
         "visible": true,
-        "damage": 1.0,
+        "damage": 5.0,
         "size": 0.2,
         "speed": 4.0,
         "life": 1200

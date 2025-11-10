@@ -16,16 +16,22 @@ public class CgsItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Gunsmithing.MOD_ID);
 
     @ItemModelGen
-    public static final RegistryObject<Item> RAW_LEAD = registerItem("raw_lead");
-    
+    public static final RegistryObject<Item> PRESS_FORM_GATLING = registerItem("press_form_gatling");
+
+    @ItemModelGen
+    public static final RegistryObject<Item> PRESS_FORM_REVOLVER = registerItem("press_form_revolver");
+
+    @ItemModelGen
+    public static final RegistryObject<Item> PRESS_FORM_SHOTGUN = registerItem("press_form_shotgun");
+
     @ItemModelGen
     public static final RegistryObject<Item> LEAD_INGOT = registerItem ("lead_ingot");
 
     @ItemModelGen
-    public static final RegistryObject<Item> LEAD_NUGGET = registerItem("lead_nugget");
+    public static final RegistryObject<Item> STEEL_INGOT = registerItem ("steel_ingot");
 
     @ItemModelGen
-    public static final RegistryObject<Item> STEEL_INGOT = registerItem ("steel_ingot");
+    public static final RegistryObject<Item> LEAD_NUGGET = registerItem("lead_nugget");
 
     @ItemModelGen
     public static final RegistryObject<Item> STEEL_NUGGET = registerItem ("steel_nugget");
@@ -34,10 +40,7 @@ public class CgsItems {
     public static final RegistryObject<Item> STEEL_SHEET = registerItem ("steel_sheet");
 
     @ItemModelGen
-    public static final RegistryObject<Item> CHARCOAL_DUST = registerItem ("charcoal_dust");
-
-    @ItemModelGen
-    public static final RegistryObject<Item> SULFUR = registerItem ("sulfur");
+    public static final RegistryObject<Item> RAW_LEAD = registerItem("raw_lead");
 
     @ItemModelGen
     public static final RegistryObject<Item> GUANO = registerItem ("guano");
@@ -46,19 +49,16 @@ public class CgsItems {
     public static final RegistryObject<Item> NITER = registerItem ("niter");
 
     @ItemModelGen
+    public static final RegistryObject<Item> SULFUR = registerItem ("sulfur");
+
+    @ItemModelGen
+    public static final RegistryObject<Item> CHARCOAL_DUST = registerItem ("charcoal_dust");
+
+    @ItemModelGen
     public static final RegistryObject<Item> BARREL = registerItem("barrel");
 
     @ItemModelGen
     public static final RegistryObject<Item> STURDY_BARREL = registerItem("barrel_sturdy");
-
-    @ItemModelGen
-    public static final RegistryObject<Item> PRESS_FORM_GATLING = registerItem("press_form_gatling");
-
-    @ItemModelGen
-    public static final RegistryObject<Item> PRESS_FORM_REVOLVER = registerItem("press_form_revolver");
-
-    @ItemModelGen
-    public static final RegistryObject<Item> PRESS_FORM_SHOTGUN = registerItem("press_form_shotgun");
 
 
     private static RegistryObject<Item> registerAmmo(String name, Function<Item.Properties, AmmoItem> item) {

@@ -92,9 +92,9 @@ public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
     });
 
     BaseRecipeProvider.GeneratedRecipe SHOTGUN_ROUND_INCENDIARY = this.create("shotgun_round_incendiary", (b) -> {
-        return b.require(CgsAmmo.SHOTGUN_ROUND_INCENDIARY.get())
+        return b.require(CgsAmmo.SHOTGUN_ROUND_BLANK.get())
                 .transitionTo(CgsAmmo.SHOTGUN_SHELL.get())
-                .addOutput(new ItemStack(CgsAmmo.SHOTGUN_ROUND.get(), 1), 1.0F)
+                .addOutput(new ItemStack(CgsAmmo.SHOTGUN_ROUND_INCENDIARY.get(), 1), 1.0F)
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagsKeys.leadNugget()))
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Items.BLAZE_POWDER))
                 .loops(1);

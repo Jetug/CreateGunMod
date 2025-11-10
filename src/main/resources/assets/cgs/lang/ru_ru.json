@@ -26,15 +26,15 @@
   "item.cgs.barrel_sturdy": "Укреплённый ствол",
 
   "item.cgs.press_form_gatling": "Пресс форма гильзы гатлинга",
-  "item.cgs.press_form_10mm": "Пресс форма гильзы револьвера",
+  "item.cgs.press_form_revolver": "Пресс форма гильзы револьвера",
   "item.cgs.press_form_shotgun": "Пресс форма гильзы дробовика",
 
-  "item.cgs.shell_7mm"    : "Гильза гатлинга",
-  "item.cgs.shell_10mm"   : "Гильза револьвера",
+  "item.cgs.shell_gatling"    : "Гильза гатлинга",
+  "item.cgs.shell_revolver"   : "Гильза револьвера",
   "item.cgs.shell_shotgun": "Гильза дробовика",
 
-  "item.cgs.round_7mm"      : "Патрон гатлинга",
-  "item.cgs.round_10mm"     : "Патрон револьвера",
+  "item.cgs.gatling_round"      : "Патрон гатлинга",
+  "item.cgs.round_revolver"     : "Патрон револьвера",
   "item.cgs.round_shotgun"  : "Патрон дробовика",
   "item.cgs.round_shotgun_blank": "Холостой патрон дробовика",
   "item.cgs.paper_cartridge": "Бумажный патрон",

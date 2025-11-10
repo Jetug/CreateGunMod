@@ -16,6 +16,7 @@
     "enchantable": false,
     "ammo": [
       "cgs:round_shotgun",
+      "cgs:round_shotgun_incendiary",
       "cgs:round_shotgun_blank"
     ]
   },
@@ -36,11 +37,26 @@
         "type": "ntgl:buckshot"
       },
       "projectile": {
-        "damage": 1.0,
+        "damage": 25.0,
         "size": 0.2,
         "speed": 20.0,
         "life": 40,
         "spread": 15.0,
+        "projectileAmount": 12,
+        "damageReduceOverLife": true
+      }
+    },
+    "cgs:round_shotgun_incendiary": {
+      "ammo": {
+        "type": "ntgl:dragon_breath"
+      },
+      "projectile": {
+        "damage": 20.0,
+        "size": 0.2,
+        "speed": 20.0,
+        "life": 40,
+        "spread": 15.0,
+        "burnSeconds": 4,
         "projectileAmount": 12,
         "damageReduceOverLife": true
       }

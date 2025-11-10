@@ -1,6 +1,7 @@
 {
   "values": [
     "cgs:lead_ore",
-    "cgs:deepslate_lead_ore"
+    "cgs:deepslate_lead_ore",
+    "cgs:sulfur_ore"
   ]
 }

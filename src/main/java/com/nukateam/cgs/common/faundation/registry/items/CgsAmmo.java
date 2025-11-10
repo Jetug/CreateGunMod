@@ -19,13 +19,13 @@ public class CgsAmmo {
     @ItemModelGen(path = "ammo")
     public static final RegistryObject<Item> SHOTGUN_SHELL = registerItem("shell_shotgun");
     @ItemModelGen(path = "ammo")
-    public static final RegistryObject<Item> GATLING_ROUND = registerAmmo("gatling_round");
+    public static final RegistryObject<Item> GATLING_ROUND = registerAmmo("round_gatling");
     @ItemModelGen(path = "ammo")
-    public static final RegistryObject<Item> GATLING_ROUND_PIERCING = registerAmmo("gatling_round_piercing");
+    public static final RegistryObject<Item> GATLING_ROUND_PIERCING = registerAmmo("round_gatling_piercing");
     @ItemModelGen(path = "ammo")
-    public static final RegistryObject<Item> REVOLVER_ROUND = registerAmmo("revolver_round");
+    public static final RegistryObject<Item> REVOLVER_ROUND = registerAmmo("round_revolver");
     @ItemModelGen(path = "ammo")
-    public static final RegistryObject<Item> REVOLVER_ROUND_PIERCING = registerAmmo("revolver_round_piercing");
+    public static final RegistryObject<Item> REVOLVER_ROUND_PIERCING = registerAmmo("round_revolver_piercing");
     @ItemModelGen(path = "ammo")
     public static final RegistryObject<Item> SHOTGUN_ROUND = registerAmmo("round_shotgun");
     @ItemModelGen(path = "ammo")
