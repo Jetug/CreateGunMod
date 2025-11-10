@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_lead_nugget": {
+    "has_iron_sheet": {
       "conditions": {
         "items": [
           {
             "items": [
-              "cgs:lead_nugget"
+              "create:iron_sheet"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_lead_nugget",
+      "has_iron_sheet",
       "has_the_recipe"
     ]
   ],

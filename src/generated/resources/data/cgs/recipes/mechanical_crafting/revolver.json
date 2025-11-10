@@ -6,27 +6,24 @@
       "item": "create:andesite_alloy"
     },
     "B": {
-      "item": "cgs:barrel"
+      "tag": "forge:plates/steel"
     },
     "C": {
       "item": "create:cogwheel"
     },
     "I": {
-      "item": "minecraft:iron_ingot"
+      "tag": "forge:ingots/steel"
     },
     "L": {
       "item": "create:brass_sheet"
-    },
-    "S": {
-      "item": "create:sturdy_sheet"
     },
     "W": {
       "tag": "forge:stripped_logs"
     }
   },
   "pattern": [
-    "BISC",
-    "WLAL",
+    "BBIC",
+    "WALL",
     "   W"
   ],
   "result": {

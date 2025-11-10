@@ -1,9 +1,6 @@
 package com.nukateam.cgs.common.ntgl;
 
-import com.nukateam.cgs.common.faundation.entity.BlazeProjectile;
-import com.nukateam.cgs.common.faundation.entity.GeoProjectile;
-import com.nukateam.cgs.common.faundation.entity.NailProjectile;
-import com.nukateam.cgs.common.faundation.entity.RocketProjectile;
+import com.nukateam.cgs.common.faundation.entity.*;
 import com.nukateam.cgs.common.faundation.registry.CgsProjectiles;
 import com.nukateam.ntgl.common.util.interfaces.IProjectileFactory;
 import com.nukateam.ntgl.common.util.managers.ProjectileManager;
@@ -22,7 +19,10 @@ public class CgsProjectileRegistry {
             new NailProjectile(CgsProjectiles.NAIL.get(), level, data);
 
     private static final IProjectileFactory SPEAR = (level, data) ->
-            new GeoProjectile(CgsProjectiles.SPEAR.get(), level, data);
+            new SpearProjectile(CgsProjectiles.SPEAR.get(), level, data);
+
+    private static final IProjectileFactory INCENDIARY = (level, data) ->
+            new IncendiaryProjectile(CgsProjectiles.INCENDIARY.get(), level, data);
 
     public static void registerProjectiles() {
         ProjectileManager.getInstance().registerFactory(CgsProjectileTypes.FIREBALL, FIREBALL);
@@ -30,5 +30,6 @@ public class CgsProjectileRegistry {
         ProjectileManager.getInstance().registerFactory(CgsProjectileTypes.SMALL_ROCKET, SMALL_ROCKET);
         ProjectileManager.getInstance().registerFactory(CgsProjectileTypes.NAIL, NAIL);
         ProjectileManager.getInstance().registerFactory(CgsProjectileTypes.SPEAR, SPEAR);
+        ProjectileManager.getInstance().registerFactory(CgsProjectileTypes.INCENDIARY, INCENDIARY);
     }
 }

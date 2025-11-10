@@ -3,7 +3,7 @@
   "category": "equipment",
   "key": {
     "B": {
-      "item": "cgs:barrel_sturdy"
+      "tag": "forge:plates/steel"
     },
     "L": {
       "item": "create:brass_sheet"

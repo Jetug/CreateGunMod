@@ -17,6 +17,14 @@ public class TagsKeys {
         return AllTags.forgeItemTag("plates/iron");
     }
 
+    public static TagKey<Item> steelSheet() {
+        return AllTags.forgeItemTag("plates/steel");
+    }
+
+    public static TagKey<Item> steelIngot() {
+        return AllTags.forgeItemTag("ingots/steel");
+    }
+
     public static TagKey<Item> leadNugget() {
         return AllTags.forgeItemTag("nuggets/lead");
     }

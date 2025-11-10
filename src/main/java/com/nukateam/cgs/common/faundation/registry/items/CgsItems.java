@@ -3,8 +3,11 @@ package com.nukateam.cgs.common.faundation.registry.items;
 
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.datagen.annotations.ItemModelGen;
+import com.nukateam.cgs.common.faundation.registry.CgsBlocks;
 import com.nukateam.ntgl.common.foundation.item.AmmoItem;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -43,9 +46,6 @@ public class CgsItems {
     public static final RegistryObject<Item> RAW_LEAD = registerItem("raw_lead");
 
     @ItemModelGen
-    public static final RegistryObject<Item> GUANO = registerItem ("guano");
-
-    @ItemModelGen
     public static final RegistryObject<Item> NITER = registerItem ("niter");
 
     @ItemModelGen
@@ -54,20 +54,19 @@ public class CgsItems {
     @ItemModelGen
     public static final RegistryObject<Item> CHARCOAL_DUST = registerItem ("charcoal_dust");
 
-    @ItemModelGen
-    public static final RegistryObject<Item> BARREL = registerItem("barrel");
+//    @ItemModelGen
+//    public static final RegistryObject<Item> GUANO = ITEMS.register("guano", () -> new BlockItem(toReturn.get(), new Item.Properties())) = registerItem ("guano");
 
     @ItemModelGen
-    public static final RegistryObject<Item> STURDY_BARREL = registerItem("barrel_sturdy");
+    public static final RegistryObject<Item> GUANO = ITEMS.register("guano",
+            () -> new ItemNameBlockItem(CgsBlocks.GUANO_BLOCK.get(), new Item.Properties()));
 
+//    @ItemModelGen
+//    public static final RegistryObject<Item> BARREL = registerItem("barrel");
+//
+//    @ItemModelGen
+//    public static final RegistryObject<Item> STURDY_BARREL = registerItem("barrel_sturdy");
 
-    private static RegistryObject<Item> registerAmmo(String name, Function<Item.Properties, AmmoItem> item) {
-        return ITEMS.register(name, () -> item.apply(new Item.Properties()));
-    }
-
-    public static RegistryObject<Item> registerAmmo(String name) {
-        return ITEMS.register(name, () -> new AmmoItem(new Item.Properties()));
-    }
 
     public static RegistryObject<Item> registerItem(String name, Item.Properties properties) {
         return ITEMS.register(name, () -> new Item(properties));

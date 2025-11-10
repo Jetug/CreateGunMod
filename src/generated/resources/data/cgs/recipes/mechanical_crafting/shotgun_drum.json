@@ -9,7 +9,7 @@
       "item": "create:brass_sheet"
     },
     "S": {
-      "item": "create:sturdy_sheet"
+      "tag": "forge:plates/steel"
     }
   },
   "pattern": [

@@ -6,7 +6,7 @@
       "item": "create:andesite_alloy"
     },
     "B": {
-      "item": "create:sturdy_sheet"
+      "tag": "forge:plates/steel"
     },
     "C": {
       "item": "create:copper_sheet"

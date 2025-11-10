@@ -6,26 +6,26 @@
       "item": "create:andesite_alloy"
     },
     "B": {
-      "item": "cgs:barrel_sturdy"
+      "tag": "forge:plates/steel"
     },
     "C": {
       "item": "create:cogwheel"
+    },
+    "I": {
+      "tag": "forge:ingots/steel"
     },
     "L": {
       "item": "create:brass_sheet"
     },
     "P": {
       "item": "create:precision_mechanism"
-    },
-    "S": {
-      "item": "create:sturdy_sheet"
     }
   },
   "pattern": [
-    "BSLLL",
-    "BSCCL",
-    "BSPAL",
-    "BSAAL"
+    "BBILLL",
+    "BBICCL",
+    "BBIPAL",
+    "BBIAAL"
   ],
   "result": {
     "item": "cgs:gatling"

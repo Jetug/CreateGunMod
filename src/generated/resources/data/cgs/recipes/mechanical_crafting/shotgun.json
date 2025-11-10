@@ -6,21 +6,18 @@
       "item": "create:andesite_alloy"
     },
     "B": {
-      "item": "cgs:barrel_sturdy"
+      "tag": "forge:plates/steel"
     },
     "L": {
       "item": "create:brass_sheet"
-    },
-    "S": {
-      "item": "create:sturdy_sheet"
     },
     "W": {
       "tag": "forge:stripped_logs"
     }
   },
   "pattern": [
-    "BSAL",
-    "BSAL",
+    "BBAL",
+    "BBAL",
     "WW W"
   ],
   "result": {

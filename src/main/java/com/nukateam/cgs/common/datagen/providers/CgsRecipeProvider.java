@@ -31,6 +31,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 
+import static com.nukateam.cgs.common.datagen.util.TagsKeys.ironSheet;
+import static com.nukateam.cgs.common.datagen.util.TagsKeys.steelSheet;
+
 public class CgsRecipeProvider extends RecipeProvider implements IConditionBuilder {
     public static final String INGOT_TAG = "ingots/";
     public static final String NUGGET_TAG = "nuggets/";
@@ -85,11 +88,11 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("   ")
                 .pattern("BAF")
                 .pattern("  L")
-                .define('B', CgsItems.BARREL.get())
+                .define('B', ironSheet())
                 .define('A', AllItems.ANDESITE_ALLOY.get())
                 .define('L', AllTags.AllItemTags.STRIPPED_LOGS.tag)
                 .define('F', Items.FLINT_AND_STEEL)
-                .unlockedBy(getHasName(CgsItems.BARREL.get()), has(CgsItems.BARREL.get()))
+                .unlockedBy(getHasName(AllItems.IRON_SHEET.get()), has(AllItems.IRON_SHEET.get()))
                 .save(writer, getId(CgsWeapons.FLINTLOCK.get()));
     }
 
@@ -137,8 +140,8 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern(" W")
                 .define('L', AllItems.BRASS_SHEET.get())
                 .define('W', AllTags.AllItemTags.STRIPPED_LOGS.tag)
-                .define('B', CgsItems.BARREL.get())
-                .unlockedBy(getHasName(CgsItems.LEAD_NUGGET.get()), has(CgsItems.LEAD_NUGGET.get()))
+                .define('B', ironSheet())
+                .unlockedBy(getHasName(AllItems.IRON_SHEET.get()), has(AllItems.IRON_SHEET.get()))
                 .save(writer, getId(CgsAttachments.REVOLVER_LONG_BARREL.get()));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsAttachments.SHOTGUN_LONG_BARREL.get(), 1)
@@ -147,34 +150,41 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("BB ")
                 .define('L', AllItems.BRASS_SHEET)
                 .define('W', AllTags.AllItemTags.STRIPPED_LOGS.tag)
-                .define('B', CgsItems.STURDY_BARREL.get())
-                .unlockedBy(getHasName(CgsItems.STURDY_BARREL.get()), has(CgsItems.STURDY_BARREL.get()))
+                .define('B', steelSheet())
+                .unlockedBy(getHasName(CgsItems.STEEL_INGOT.get()), has(CgsItems.STEEL_INGOT.get()))
                 .save(writer, getId(CgsAttachments.SHOTGUN_LONG_BARREL.get()));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsAttachments.SHOTGUN_SPREAD_BARREL.get(), 1)
                 .pattern("BLB")
                 .define('L', AllItems.IRON_SHEET.get())
-                .define('B', CgsItems.STURDY_BARREL.get())
-                .unlockedBy(getHasName(CgsItems.STURDY_BARREL.get()), has(CgsItems.STURDY_BARREL.get()))
+                .define('B', steelSheet())
+                .unlockedBy(getHasName(CgsItems.STEEL_INGOT.get()), has(CgsItems.STEEL_INGOT.get()))
                 .save(writer, getId(CgsAttachments.SHOTGUN_SPREAD_BARREL.get()));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsAttachments.FLINTLOCK_LONG_BARREL.get(), 1)
                 .pattern("BB")
                 .pattern("LL")
                 .define('L', AllTags.AllItemTags.STRIPPED_LOGS.tag)
-                .define('B', CgsItems.BARREL.get())
-                .unlockedBy(getHasName(CgsItems.BARREL.get()), has(CgsItems.STURDY_BARREL.get()))
+                .define('B', ironSheet())
+                .unlockedBy(getHasName(CgsItems.STEEL_INGOT.get()), has(CgsItems.STEEL_INGOT.get()))
                 .save(writer, getId(CgsAttachments.FLINTLOCK_LONG_BARREL.get()));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsAttachments.HAMMER_CHAMBER.get(), 1)
                 .pattern("LBL")
                 .pattern("ACC")
                 .define('L', AllItems.BRASS_SHEET.get())
-                .define('B', AllItems.STURDY_SHEET.get())
+                .define('B', steelSheet())
                 .define('C', AllItems.COPPER_SHEET.get())
                 .define('A', AllItems.ANDESITE_ALLOY.get())
-                .unlockedBy(getHasName(AllItems.STURDY_SHEET.get()), has(AllItems.STURDY_SHEET.get()))
+                .unlockedBy(getHasName(CgsItems.STEEL_INGOT.get()), has(CgsItems.STEEL_INGOT.get()))
                 .save(writer, getId(CgsAttachments.HAMMER_CHAMBER.get()));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsAttachments.BAYONET.get(), 1)
+                .pattern("IIL")
+                .define('L', AllItems.BRASS_SHEET.get())
+                .define('I', AllItems.IRON_SHEET.get())
+                .unlockedBy(getHasName(AllItems.BRASS_SHEET.get()), has(AllItems.BRASS_SHEET.get()))
+                .save(writer, getId(CgsAttachments.BAYONET.get()));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsAttachments.LAUNCHER_BAYONET.get(), 1)
                 .pattern("IIL")

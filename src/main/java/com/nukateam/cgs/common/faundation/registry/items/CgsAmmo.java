@@ -13,9 +13,9 @@ import net.minecraftforge.registries.RegistryObject;
 public class CgsAmmo {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Gunsmithing.MOD_ID);
     @ItemModelGen(path = "ammo")
-    public static final RegistryObject<Item> GATLING_SHELL = registerItem("gatling_shell");
+    public static final RegistryObject<Item> GATLING_SHELL = registerItem("shell_gatling");
     @ItemModelGen(path = "ammo")
-    public static final RegistryObject<Item> REVOLVER_SHELL = registerItem("revolver_shell");
+    public static final RegistryObject<Item> REVOLVER_SHELL = registerItem("shell_revolver");
     @ItemModelGen(path = "ammo")
     public static final RegistryObject<Item> SHOTGUN_SHELL = registerItem("shell_shotgun");
     @ItemModelGen(path = "ammo")

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_sturdy_sheet": {
+    "has_steel_ingot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "create:sturdy_sheet"
+              "cgs:steel_ingot"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_sturdy_sheet",
+      "has_steel_ingot",
       "has_the_recipe"
     ]
   ],

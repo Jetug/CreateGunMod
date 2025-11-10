@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_barrel_sturdy": {
+    "has_steel_ingot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "cgs:barrel_sturdy"
+              "cgs:steel_ingot"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_barrel_sturdy",
+      "has_steel_ingot",
       "has_the_recipe"
     ]
   ],

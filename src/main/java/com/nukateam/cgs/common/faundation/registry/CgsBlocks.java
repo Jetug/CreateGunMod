@@ -3,6 +3,7 @@ package com.nukateam.cgs.common.faundation.registry;
 
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.datagen.annotations.BlockStateGen;
+import com.nukateam.cgs.common.faundation.block.GuanoPileBlock;
 import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -10,6 +11,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -51,14 +53,14 @@ public class CgsBlocks {
 
     @BlockStateGen
     public static final RegistryObject<Block> RAW_LEAD_BLOCK = registerBlock("raw_lead_block",
-            () -> new DropExperienceBlock(Block.Properties.of()
+            () -> new Block(Block.Properties.of()
                     .mapColor(MapColor.RAW_IRON).instrument(NoteBlockInstrument.BASEDRUM)
                     .requiresCorrectToolForDrops()
                     .strength(5.0F, 6.0F)));
 
     @BlockStateGen
     public static final RegistryObject<Block> LEAD_BLOCK = registerBlock("lead_block",
-            () -> new DropExperienceBlock(Block.Properties.of()
+            () -> new Block(Block.Properties.of()
                     .mapColor(MapColor.METAL)
                     .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
                     .requiresCorrectToolForDrops()
@@ -68,17 +70,30 @@ public class CgsBlocks {
 
     @BlockStateGen
     public static final RegistryObject<Block> STEEL_BLOCK = registerBlock("steel_block",
-            () -> new DropExperienceBlock(Block.Properties.of()
+            () -> new Block(Block.Properties.of()
                     .mapColor(MapColor.METAL)
                     .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
                     .requiresCorrectToolForDrops()
                     .strength(3.0F, 6.0F)
                     .sound(SoundType.METAL)));
 
+//    @BlockStateGen
+    public static final RegistryObject<Block> GUANO_BLOCK = registerBlockWithoutItem("guano_block",
+            () -> new GuanoPileBlock(BlockBehaviour.Properties.copy(Blocks.SNOW)
+                    .strength(0.5f)
+                    .mapColor(MapColor.STONE)
+                    .sound(SoundType.DRIPSTONE_BLOCK)
+                    .randomTicks()
+                    .noOcclusion()));
+
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         var toReturn = BLOCKS.register(name, block);
         CgsItems.ITEMS.register(name, () -> new BlockItem(toReturn.get(), new Item.Properties()));
         return toReturn;
+    }
+
+    private static <T extends Block> RegistryObject<T> registerBlockWithoutItem(String name, Supplier<T> block) {
+        return BLOCKS.register(name, block);
     }
 
     public static void register(IEventBus eventBus) {

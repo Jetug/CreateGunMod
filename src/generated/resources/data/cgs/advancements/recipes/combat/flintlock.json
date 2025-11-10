@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_barrel": {
+    "has_iron_sheet": {
       "conditions": {
         "items": [
           {
             "items": [
-              "cgs:barrel"
+              "create:iron_sheet"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_barrel",
+      "has_iron_sheet",
       "has_the_recipe"
     ]
   ],

@@ -11,8 +11,11 @@ import com.simibubi.create.api.data.recipe.BaseRecipeProvider;
 import com.simibubi.create.api.data.recipe.MechanicalCraftingRecipeGen;
 
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+
+import static com.nukateam.cgs.common.datagen.util.TagsKeys.*;
 
 
 public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen {
@@ -24,41 +27,39 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 		SHOTGUN = create(CgsWeapons.SHOTGUN::get).returns(1)
 			.recipe(b -> b
 					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
-					.key('B', CgsItems.STURDY_BARREL.get())
+					.key('B', steelSheet())
 					.key('A', AllItems.ANDESITE_ALLOY.get())
-					.key('S', AllItems.STURDY_SHEET.get())
 					.key('L', AllItems.BRASS_SHEET.get())
-					.patternLine("BSAL")
-					.patternLine("BSAL")
+					.patternLine("BBAL")
+					.patternLine("BBAL")
 					.patternLine("WW W")
 					.disallowMirrored()),
 
 		GATLING = create(CgsWeapons.GATLING::get).returns(1)
 			.recipe(b -> b
-					.key('B', CgsItems.STURDY_BARREL.get())
+					.key('B', steelSheet())
+					.key('I', steelIngot())
 					.key('A', AllItems.ANDESITE_ALLOY.get())
-					.key('S', AllItems.STURDY_SHEET.get())
 					.key('C', AllBlocks.COGWHEEL.get())
 					.key('P', AllItems.PRECISION_MECHANISM.get())
 					.key('L', AllItems.BRASS_SHEET.get())
-					.patternLine("BSLLL")
-					.patternLine("BSCCL")
-					.patternLine("BSPAL")
-					.patternLine("BSAAL")
+					.patternLine("BBILLL")
+					.patternLine("BBICCL")
+					.patternLine("BBIPAL")
+					.patternLine("BBIAAL")
 					.disallowMirrored()),
 
 
 		REVOLVER = create(CgsWeapons.REVOLVER::get).returns(1)
 			.recipe(b -> b
 					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
-					.key('B', CgsItems.BARREL.get())
+					.key('B', steelSheet())
 					.key('A', AllItems.ANDESITE_ALLOY.get())
-					.key('S', AllItems.STURDY_SHEET.get())
 					.key('C', AllBlocks.COGWHEEL.get())
-					.key('I', Items.IRON_INGOT)
+					.key('I', steelIngot())
 					.key('L', AllItems.BRASS_SHEET.get())
-					.patternLine("BISC")
-					.patternLine("WLAL")
+					.patternLine("BBIC")
+					.patternLine("WALL")
 					.patternLine("   W")
 					.disallowMirrored())
 			,
@@ -84,7 +85,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
 					.key('A', AllItems.ANDESITE_ALLOY.get())
 					.key('L', AllItems.BRASS_SHEET.get())
-					.key('I', AllItems.IRON_SHEET.get())
+					.key('I', steelSheet())
 					.key('P', AllBlocks.FLUID_PIPE.get())
 					.key('C', AllBlocks.CHUTE)
 					.patternLine("APLLPA")
@@ -150,7 +151,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 
 		BELT = create(CgsAttachments.REVOLVER_BELT::get).returns(1)
 				.recipe(b -> b
-						.key('S', AllItems.STURDY_SHEET.get())
+						.key('S', steelSheet())
 						.key('B', AllItems.BRASS_NUGGET.get())
 						.patternLine("BB")
 						.patternLine("SS")
@@ -162,7 +163,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 
 		DRUMS = create(CgsAttachments.SHOTGUN_DRUM::get).returns(1)
 				.recipe(b -> b
-						.key('S', AllItems.STURDY_SHEET.get())
+						.key('S', steelSheet())
 						.key('C', AllBlocks.COGWHEEL.get())
 						.key('L', AllItems.BRASS_SHEET.get())
 						.patternLine("LSLLSL")

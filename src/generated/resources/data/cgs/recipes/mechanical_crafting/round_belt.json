@@ -6,7 +6,7 @@
       "item": "create:brass_nugget"
     },
     "S": {
-      "item": "create:sturdy_sheet"
+      "tag": "forge:plates/steel"
     }
   },
   "pattern": [

@@ -5,6 +5,7 @@
     "cgs:raw_lead_block",
     "cgs:lead_block",
     "cgs:steel_block",
-    "cgs:sulfur_ore"
+    "cgs:sulfur_ore",
+    "cgs:guano_block"
   ]
 }

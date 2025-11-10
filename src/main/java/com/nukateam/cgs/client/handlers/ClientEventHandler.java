@@ -4,6 +4,7 @@ import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.client.renderers.FireballRenderer;
 import com.nukateam.cgs.common.faundation.registry.CgsParticles;
 import com.nukateam.cgs.common.faundation.registry.CgsProjectiles;
+import com.nukateam.ntgl.client.render.renderers.projectiles.ProjectileRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraftforge.api.distmarker.Dist;
@@ -22,6 +23,7 @@ public class ClientEventHandler {
           event.registerEntityRenderer(CgsProjectiles.SMALL_ROCKET.get(), CgsProjectileRenderer::new);
           event.registerEntityRenderer(CgsProjectiles.NAIL.get(), CgsProjectileRenderer::new);
           event.registerEntityRenderer(CgsProjectiles.SPEAR.get(), CgsProjectileRenderer::new);
+          event.registerEntityRenderer(CgsProjectiles.INCENDIARY.get(), ProjectileRenderer::new);
      }
 
      @SubscribeEvent

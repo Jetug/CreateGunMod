@@ -17,7 +17,8 @@
     "spread": 1.2,
     "movementSpeed": -0.2,
     "ammo": [
-      "cgs:gatling_round"
+      "cgs:gatling_round",
+      "cgs:round_gatling_piercing"
     ]
   },
   "modes": {
@@ -39,6 +40,19 @@
       "projectile":{
         "visible": true,
         "damage": 10.0,
+        "size": 0.2,
+        "speed": 50.0,
+        "life": 180
+      }
+    },
+    "cgs:round_gatling_piercing": {
+      "ammo": {
+        "type": "ntgl:piercing"
+      },
+      "projectile":{
+        "visible": true,
+        "pierceLevel": 2,
+        "damage": 15.0,
         "size": 0.2,
         "speed": 50.0,
         "life": 180

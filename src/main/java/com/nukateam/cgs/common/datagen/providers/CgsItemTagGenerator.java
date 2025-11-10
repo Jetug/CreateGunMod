@@ -16,6 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
+import static com.nukateam.cgs.common.datagen.util.TagsKeys.*;
 import static com.nukateam.cgs.common.faundation.registry.CgsBlocks.RAW_LEAD_BLOCK;
 
 public class CgsItemTagGenerator extends ItemTagsProvider {
@@ -29,20 +30,24 @@ public class CgsItemTagGenerator extends ItemTagsProvider {
 //                .createOptionalTagKey(ResourceLocation.tryBuild("create", path), Collections.emptySet());
 //    }
 
-    private TagKey<Item> LEAD_ORE = AllTags.forgeItemTag("ores/lead");
-    private TagKey<Item> ORES = AllTags.forgeItemTag("ores");
-    private TagKey<Item> RAW_ORE = AllTags.forgeItemTag("raw_lead/lead");
-    private TagKey<Item> ORES_IN_GROUND_STONE = AllTags.forgeItemTag("ores_in_ground/stone");
-    private TagKey<Item> ORES_IN_GROUND_DEEPSLATE = AllTags.forgeItemTag("ores_in_ground/deepslate");
-    private TagKey<Item> RAW_MATERIALS = AllTags.forgeItemTag("raw_materials");
-    private TagKey<Item> RAW_LEAD = AllTags.forgeItemTag("raw_materials/lead");
-    private TagKey<Item> STORAGE_BLOCKS = AllTags.forgeItemTag("storage_blocks");
-    private TagKey<Item> LEAD_STORAGE_BLOCKS = AllTags.forgeItemTag("storage_blocks/raw_lead");
-    private TagKey<Item> INGOTS = AllTags.forgeItemTag("ingots");
-    private TagKey<Item> LEAD_INGOTS = AllTags.forgeItemTag("ingots/lead");
-    private TagKey<Item> STEEL_INGOTS = AllTags.forgeItemTag("ingots/steel");
-    private TagKey<Item> NUGGETS = AllTags.forgeItemTag("nuggets");
-    private TagKey<Item> LEAD_NUGGETS = AllTags.forgeItemTag("nuggets/lead");
+    private final TagKey<Item> LEAD_ORE = AllTags.forgeItemTag("ores/lead");
+    private final TagKey<Item> ORES = AllTags.forgeItemTag("ores");
+    private final TagKey<Item> RAW_ORE = AllTags.forgeItemTag("raw_lead/lead");
+    private final TagKey<Item> ORES_IN_GROUND_STONE = AllTags.forgeItemTag("ores_in_ground/stone");
+    private final TagKey<Item> ORES_IN_GROUND_DEEPSLATE = AllTags.forgeItemTag("ores_in_ground/deepslate");
+    private final TagKey<Item> RAW_MATERIALS = AllTags.forgeItemTag("raw_materials");
+    private final TagKey<Item> RAW_LEAD = AllTags.forgeItemTag("raw_materials/lead");
+    private final TagKey<Item> STORAGE_BLOCKS = AllTags.forgeItemTag("storage_blocks");
+    private final TagKey<Item> LEAD_STORAGE_BLOCKS = AllTags.forgeItemTag("storage_blocks/raw_lead");
+    private final TagKey<Item> INGOTS = AllTags.forgeItemTag("ingots");
+    private final TagKey<Item> LEAD_INGOTS = AllTags.forgeItemTag("ingots/lead");
+    private final TagKey<Item> STEEL_INGOTS = AllTags.forgeItemTag("ingots/steel");
+    private final TagKey<Item> NUGGETS = AllTags.forgeItemTag("nuggets");
+    private final TagKey<Item> LEAD_NUGGETS = AllTags.forgeItemTag("nuggets/lead");
+    private final TagKey<Item> DUSTS = AllTags.forgeItemTag("dusts/lead");
+    private final TagKey<Item> SULFUR = AllTags.forgeItemTag("dusts/sulfur");
+    private final TagKey<Item> NITER = AllTags.forgeItemTag("dusts/niter");
+    private final TagKey<Item> CHARCOAL_DUST = AllTags.forgeItemTag("dusts/charcoal_dust");
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
@@ -62,10 +67,24 @@ public class CgsItemTagGenerator extends ItemTagsProvider {
 
         this.tag(RAW_MATERIALS).add(CgsItems.RAW_LEAD.get());
         this.tag(RAW_LEAD).add(CgsItems.RAW_LEAD.get());
+
         this.tag(INGOTS).add(CgsItems.LEAD_INGOT.get(), CgsItems.STEEL_INGOT.get());
         this.tag(LEAD_INGOTS).add(CgsItems.LEAD_INGOT.get());
-        this.tag(STEEL_INGOTS).add(CgsItems.STEEL_INGOT.get());
+        this.tag(steelIngot()).add(CgsItems.STEEL_INGOT.get());
+
         this.tag(NUGGETS).add(CgsItems.LEAD_NUGGET.get(), CgsItems.STEEL_NUGGET.get());
         this.tag(LEAD_NUGGETS).add(CgsItems.LEAD_NUGGET.get());
+        this.tag(steelNugget()).add(CgsItems.STEEL_NUGGET.get());
+
+        this.tag(steelSheet()).add(CgsItems.STEEL_SHEET.get());
+
+        this.tag(DUSTS).add(
+                CgsItems.SULFUR.get(),
+                CgsItems.NITER.get(),
+                CgsItems.CHARCOAL_DUST.get());
+
+        this.tag(SULFUR).add(CgsItems.SULFUR.get());
+        this.tag(NITER).add(CgsItems.NITER.get());
+        this.tag(CHARCOAL_DUST).add(CgsItems.CHARCOAL_DUST.get());
     }
 }

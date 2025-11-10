@@ -16,7 +16,8 @@
     "enchantable": false,
     "spread": 1.0,
     "ammo": [
-      "cgs:round_revolver"
+      "cgs:round_revolver",
+      "cgs:round_revolver_piercing"
     ]
   },
   "ammoData": {
@@ -24,6 +25,19 @@
       "projectile": {
         "visible": true,
         "damage": 8.0,
+        "size": 0.2,
+        "speed": 20.0,
+        "life": 180
+      }
+    },
+    "cgs:round_revolver_piercing": {
+      "ammo": {
+        "type": "ntgl:piercing"
+      },
+      "projectile":{
+        "visible": true,
+        "pierceLevel": 2,
+        "damage": 12.0,
         "size": 0.2,
         "speed": 20.0,
         "life": 180

@@ -9,7 +9,7 @@
       "item": "create:chute"
     },
     "I": {
-      "item": "create:iron_sheet"
+      "tag": "forge:plates/steel"
     },
     "L": {
       "item": "create:brass_sheet"

@@ -7,7 +7,7 @@
   "results": [
     {
       "count": 8,
-      "item": "cgs:revolver_round"
+      "item": "cgs:round_revolver"
     }
   ],
   "sequence": [
@@ -15,7 +15,7 @@
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "cgs:revolver_shell"
+          "item": "cgs:shell_revolver"
         },
         {
           "item": "cgs:press_form_revolver"
@@ -24,7 +24,7 @@
       "keepHeldItem": true,
       "results": [
         {
-          "item": "cgs:revolver_shell"
+          "item": "cgs:shell_revolver"
         }
       ]
     },
@@ -32,7 +32,7 @@
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "cgs:revolver_shell"
+          "item": "cgs:shell_revolver"
         },
         {
           "tag": "forge:gunpowder"
@@ -40,7 +40,7 @@
       ],
       "results": [
         {
-          "item": "cgs:revolver_shell"
+          "item": "cgs:shell_revolver"
         }
       ]
     },
@@ -48,7 +48,7 @@
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "cgs:revolver_shell"
+          "item": "cgs:shell_revolver"
         },
         {
           "tag": "forge:nuggets/lead"
@@ -56,12 +56,12 @@
       ],
       "results": [
         {
-          "item": "cgs:revolver_shell"
+          "item": "cgs:shell_revolver"
         }
       ]
     }
   ],
   "transitionalItem": {
-    "item": "cgs:revolver_shell"
+    "item": "cgs:shell_revolver"
   }
 }

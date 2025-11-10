@@ -51,9 +51,10 @@
         "type": "ntgl:dragon_breath"
       },
       "projectile": {
+        "projectile": "cgs:incendiary",
         "damage": 20.0,
         "size": 0.2,
-        "speed": 20.0,
+        "speed": 8.0,
         "life": 40,
         "spread": 15.0,
         "burnSeconds": 4,

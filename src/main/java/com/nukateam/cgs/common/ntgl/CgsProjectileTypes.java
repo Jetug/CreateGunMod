@@ -10,6 +10,7 @@ public class CgsProjectileTypes {
     public static ProjectileType SMALL_ROCKET = new ProjectileType(cgsResource("small_rocket"));
     public static ProjectileType SPEAR = new ProjectileType(cgsResource("spear"));
     public static ProjectileType NAIL = new ProjectileType(cgsResource("nail"));
+    public static ProjectileType INCENDIARY = new ProjectileType(cgsResource("incendiary"));
 
     static {
         ProjectileType.registerType(FIREBALL);
@@ -17,5 +18,6 @@ public class CgsProjectileTypes {
         ProjectileType.registerType(SMALL_ROCKET);
         ProjectileType.registerType(SPEAR);
         ProjectileType.registerType(NAIL);
+        ProjectileType.registerType(INCENDIARY);
     }
 }
