@@ -1,0 +1,83 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "tag": "forge:plates/brass"
+  },
+  "loops": 1,
+  "results": [
+    {
+      "count": 4,
+      "item": "cgs:gatling_round_piercing"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:gatling_shell"
+        },
+        {
+          "item": "cgs:press_form_gatling"
+        }
+      ],
+      "keepHeldItem": true,
+      "results": [
+        {
+          "item": "cgs:gatling_shell"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:gatling_shell"
+        },
+        {
+          "tag": "forge:gunpowder"
+        }
+      ],
+      "results": [
+        {
+          "item": "cgs:gatling_shell"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:gatling_shell"
+        },
+        {
+          "tag": "forge:nuggets/steel"
+        }
+      ],
+      "results": [
+        {
+          "item": "cgs:gatling_shell"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:gatling_shell"
+        },
+        {
+          "tag": "forge:plates/copper"
+        }
+      ],
+      "results": [
+        {
+          "item": "cgs:gatling_shell"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "cgs:gatling_shell"
+  }
+}

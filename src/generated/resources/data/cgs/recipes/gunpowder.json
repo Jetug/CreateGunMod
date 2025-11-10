@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "cgs:charcoal_dust"
+    },
+    {
+      "item": "cgs:sulfur"
+    },
+    {
+      "item": "cgs:niter"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "minecraft:gunpowder"
+  }
+}

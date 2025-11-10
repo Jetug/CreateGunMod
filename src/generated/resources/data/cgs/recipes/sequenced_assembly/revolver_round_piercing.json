@@ -1,0 +1,83 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "tag": "forge:plates/brass"
+  },
+  "loops": 1,
+  "results": [
+    {
+      "count": 8,
+      "item": "cgs:revolver_round_piercing"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:revolver_shell"
+        },
+        {
+          "item": "cgs:press_form_revolver"
+        }
+      ],
+      "keepHeldItem": true,
+      "results": [
+        {
+          "item": "cgs:revolver_shell"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:revolver_shell"
+        },
+        {
+          "tag": "forge:gunpowder"
+        }
+      ],
+      "results": [
+        {
+          "item": "cgs:revolver_shell"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:revolver_shell"
+        },
+        {
+          "tag": "forge:nuggets/steel"
+        }
+      ],
+      "results": [
+        {
+          "item": "cgs:revolver_shell"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:revolver_shell"
+        },
+        {
+          "tag": "forge:nuggets/lead"
+        }
+      ],
+      "results": [
+        {
+          "item": "cgs:revolver_shell"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "cgs:revolver_shell"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "superheated",
+  "ingredients": [
+    {
+      "tag": "forge:ingots/iron"
+    },
+    {
+      "item": "cgs:charcoal_dust"
+    }
+  ],
+  "results": [
+    {
+      "item": "cgs:steel_ingot"
+    }
+  ]
+}

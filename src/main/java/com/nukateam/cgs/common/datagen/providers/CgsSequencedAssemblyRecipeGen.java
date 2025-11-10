@@ -32,6 +32,16 @@ public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
             .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagsKeys.leadNugget()))
             .loops(1));
 
+    BaseRecipeProvider.GeneratedRecipe REVOLVER_ROUND_PIERCING = this.create("revolver_round_piercing", (b) -> b
+            .require(TagsKeys.brassSheet())
+            .transitionTo(CgsAmmo.REVOLVER_SHELL.get())
+            .addOutput(new ItemStack(CgsAmmo.REVOLVER_ROUND_PIERCING.get(), 8), 1.0F)
+            .addStep(DeployerApplicationRecipe::new, (rb) -> rb.toolNotConsumed().require(CgsItems.PRESS_FORM_REVOLVER.get()))
+            .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
+            .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagsKeys.steelNugget()))
+            .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagsKeys.leadNugget()))
+            .loops(1));
+
     BaseRecipeProvider.GeneratedRecipe GATLING_ROUND = this.create("gatling_round", (b) -> {
         return b.require(TagsKeys.brassSheet())
                 .transitionTo(CgsAmmo.GATLING_SHELL.get())
@@ -44,12 +54,23 @@ public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
     });
 
 
+    BaseRecipeProvider.GeneratedRecipe GATLING_ROUND_PIERCING = this.create("gatling_round_piercing", (b) -> {
+        return b.require(TagsKeys.brassSheet())
+                .transitionTo(CgsAmmo.GATLING_SHELL.get())
+                .addOutput(new ItemStack(CgsAmmo.GATLING_ROUND_PIERCING.get(), 4), 1.0F)
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.toolNotConsumed().require(CgsItems.PRESS_FORM_GATLING.get()))
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagsKeys.steelNugget()))
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagsKeys.copperSheet()))
+                .loops(1);
+    });
+
     BaseRecipeProvider.GeneratedRecipe SHOTGUN_SHELL = this.create("shotgun_shell", (b) -> {
         return b.require(TagsKeys.brassSheet())
                 .transitionTo(CgsAmmo.SHOTGUN_SHELL.get())
                 .addOutput(new ItemStack(CgsAmmo.SHOTGUN_SHELL.get(), 4), 1.0F)
                 .addStep(DeployerApplicationRecipe::new, (rb) ->
-                        rb.toolNotConsumed().require(CgsItems.SHOTGUN_PRESS_FORM.get()))
+                        rb.toolNotConsumed().require(CgsItems.PRESS_FORM_SHOTGUN.get()))
                 .loops(1);
     });
 
@@ -67,6 +88,15 @@ public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
                 .transitionTo(CgsAmmo.SHOTGUN_SHELL.get())
                 .addOutput(new ItemStack(CgsAmmo.SHOTGUN_ROUND.get(), 1), 1.0F)
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagsKeys.leadNugget()))
+                .loops(1);
+    });
+
+    BaseRecipeProvider.GeneratedRecipe SHOTGUN_ROUND_INCENDIARY = this.create("shotgun_round_incendiary", (b) -> {
+        return b.require(CgsAmmo.SHOTGUN_ROUND_INCENDIARY.get())
+                .transitionTo(CgsAmmo.SHOTGUN_SHELL.get())
+                .addOutput(new ItemStack(CgsAmmo.SHOTGUN_ROUND.get(), 1), 1.0F)
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagsKeys.leadNugget()))
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Items.BLAZE_POWDER))
                 .loops(1);
     });
 

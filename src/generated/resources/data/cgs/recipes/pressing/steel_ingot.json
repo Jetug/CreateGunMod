@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "cgs:steel_ingot"
+    }
+  ],
+  "results": [
+    {
+      "item": "cgs:steel_sheet"
+    }
+  ]
+}

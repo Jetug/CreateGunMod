@@ -19,6 +19,8 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), new CgsMechanicalCraftingRecipeGen(packOutput));
         generator.addProvider(event.includeServer(), new CgsSequencedAssemblyRecipeGen(packOutput));
         generator.addProvider(event.includeServer(), new CgsMixingRecipeGen(packOutput));
+        generator.addProvider(event.includeServer(), new CgsPressingRecipeGen(packOutput));
+        generator.addProvider(event.includeServer(), new CgsCrushingRecipeGen(packOutput));
 
         generator.addProvider(event.includeServer(), CgsLootTableProvider.create(packOutput));
         generator.addProvider(event.includeClient(), new CgsBlockStateProvider(packOutput, fileHelper));

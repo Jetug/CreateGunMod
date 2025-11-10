@@ -29,6 +29,8 @@ public class CgsAmmo {
     @ItemModelGen(path = "ammo")
     public static final RegistryObject<Item> SHOTGUN_ROUND = registerAmmo("round_shotgun");
     @ItemModelGen(path = "ammo")
+    public static final RegistryObject<Item> SHOTGUN_ROUND_INCENDIARY = registerAmmo("round_shotgun_incendiary");
+    @ItemModelGen(path = "ammo")
     public static final RegistryObject<Item> SHOTGUN_ROUND_BLANK = registerAmmo("round_shotgun_blank");
     @ItemModelGen(path = "ammo")
     public static final RegistryObject<Item> PAPER_CARTRIDGE = registerAmmo("paper_cartridge");

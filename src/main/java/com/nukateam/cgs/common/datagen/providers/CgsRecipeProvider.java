@@ -1,7 +1,6 @@
 package com.nukateam.cgs.common.datagen.providers;
 
 import com.nukateam.cgs.common.datagen.DataGenConfig;
-import com.nukateam.cgs.common.datagen.util.TagsKeys;
 import com.nukateam.cgs.common.faundation.registry.items.CgsAmmo;
 import com.nukateam.cgs.common.faundation.registry.items.CgsAttachments;
 import com.nukateam.cgs.common.faundation.registry.CgsBlocks;
@@ -10,7 +9,6 @@ import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
@@ -49,9 +47,25 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 CgsBlocks.LEAD_BLOCK.get(), CgsBlocks.RAW_LEAD_BLOCK.get(),
                 CgsItems.RAW_LEAD.get(), CgsItems.LEAD_INGOT.get(), CgsItems.LEAD_NUGGET.get());
 
-        var leadNugget = AllTags.forgeItemTag(NUGGET_TAG + LEAD);
+        weapons(writer);
+        ammo(writer);
+        attachments(writer);
+        simpleBlock(writer, CgsItems.STEEL_INGOT.get(), CgsBlocks.STEEL_BLOCK.get());
+        fromBlock(writer, CgsBlocks.STEEL_BLOCK.get(), CgsItems.STEEL_INGOT.get());
 
-        //GUNS
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, Items.GUNPOWDER, 3)
+                .requires(CgsItems.CHARCOAL_DUST.get())
+                .requires(CgsItems.SULFUR.get())
+                .requires(CgsItems.NITER.get())
+                .unlockedBy(getHasName(CgsItems.CHARCOAL_DUST.get()), has(CgsItems.CHARCOAL_DUST.get()))
+                .save(writer, getId(Items.GUNPOWDER));
+
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.IRON_INGOT), RecipeCategory.MISC, CgsItems.PRESS_FORM_GATLING.get());
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.IRON_INGOT), RecipeCategory.MISC, CgsItems.PRESS_FORM_REVOLVER.get());
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.IRON_INGOT), RecipeCategory.MISC, CgsItems.PRESS_FORM_SHOTGUN.get());
+    }
+
+    private static void weapons(Consumer<FinishedRecipe> writer) {
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsWeapons.FLINTLOCK.get())
                 .pattern("   ")
                 .pattern("BAF")
@@ -62,25 +76,11 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('F', Items.FLINT_AND_STEEL)
                 .unlockedBy(getHasName(CgsItems.BARREL.get()), has(CgsItems.BARREL.get()))
                 .save(writer, getId(CgsWeapons.FLINTLOCK.get()));
-
-        //AMMO
-        ammo(writer, leadNugget);
-//
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, Items.GUNPOWDER, 3)
-                .requires(CgsItems.CHARCOAL_DUST.get())
-                .requires(CgsItems.SULFUR.get())
-                .requires(CgsItems.SELITRA.get())
-                .requires(Items.GUNPOWDER)
-                .unlockedBy(getHasName(CgsItems.CHARCOAL_DUST.get()), has(CgsItems.CHARCOAL_DUST.get()))
-                .save(writer, getId(Items.GUNPOWDER));
-
-
-        //ATTACHMENTS
-        attachments(writer);
-
     }
 
-    private static void ammo(Consumer<FinishedRecipe> writer, TagKey<Item> leadNugget) {
+    private static void ammo(Consumer<FinishedRecipe> writer) {
+        var leadNugget = AllTags.forgeItemTag(NUGGET_TAG + LEAD);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsAmmo.PAPER_CARTRIDGE.get(), 3)
                 .pattern("L")
                 .pattern("G")

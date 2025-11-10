@@ -16,7 +16,7 @@ public class CgsItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Gunsmithing.MOD_ID);
 
     @ItemModelGen
-    public static final RegistryObject<Item> RAW_LEAD = registerItem   ("raw_lead");
+    public static final RegistryObject<Item> RAW_LEAD = registerItem("raw_lead");
     
     @ItemModelGen
     public static final RegistryObject<Item> LEAD_INGOT = registerItem ("lead_ingot");
@@ -26,6 +26,9 @@ public class CgsItems {
 
     @ItemModelGen
     public static final RegistryObject<Item> STEEL_INGOT = registerItem ("steel_ingot");
+
+    @ItemModelGen
+    public static final RegistryObject<Item> STEEL_NUGGET = registerItem ("steel_nugget");
 
     @ItemModelGen
     public static final RegistryObject<Item> STEEL_SHEET = registerItem ("steel_sheet");
@@ -40,7 +43,7 @@ public class CgsItems {
     public static final RegistryObject<Item> GUANO = registerItem ("guano");
 
     @ItemModelGen
-    public static final RegistryObject<Item> SELITRA = registerItem ("selitra");
+    public static final RegistryObject<Item> NITER = registerItem ("niter");
 
     @ItemModelGen
     public static final RegistryObject<Item> BARREL = registerItem("barrel");
@@ -55,7 +58,7 @@ public class CgsItems {
     public static final RegistryObject<Item> PRESS_FORM_REVOLVER = registerItem("press_form_revolver");
 
     @ItemModelGen
-    public static final RegistryObject<Item> SHOTGUN_PRESS_FORM = registerItem("press_form_shotgun");
+    public static final RegistryObject<Item> PRESS_FORM_SHOTGUN = registerItem("press_form_shotgun");
 
 
     private static RegistryObject<Item> registerAmmo(String name, Function<Item.Properties, AmmoItem> item) {

@@ -25,8 +25,10 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     protected void generate() {
         this.dropSelf(CgsBlocks.LEAD_BLOCK.get());
         this.dropSelf(CgsBlocks.RAW_LEAD_BLOCK.get());
+        this.dropSelf(CgsBlocks.STEEL_BLOCK.get());
         this.dropItem(CgsBlocks.LEAD_ORE.get(), CgsItems.RAW_LEAD.get());
         this.dropItem(CgsBlocks.DEEPSLATE_LEAD_ORE.get(), CgsItems.RAW_LEAD.get());
+        this.dropItem(CgsBlocks.SULFUR_ORE.get(), CgsItems.SULFUR.get());
     }
 
     private void dropItem(Block block, Item drop) {

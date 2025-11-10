@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "cgs:item/shell_10mm"
+    "layer0": "cgs:item/ammo/revolver_shell"
   }
 }

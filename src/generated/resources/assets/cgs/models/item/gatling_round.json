@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "cgs:item/ammo/shell_shotgun"
+    "layer0": "cgs:item/ammo/gatling_round"
   }
 }

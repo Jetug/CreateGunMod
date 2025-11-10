@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "tag": "forge:ingots/iron"
-  },
-  "result": "cgs:press_form_shotgun"
-}
