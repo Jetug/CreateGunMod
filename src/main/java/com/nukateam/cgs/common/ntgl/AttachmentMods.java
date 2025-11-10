@@ -2,12 +2,11 @@ package com.nukateam.cgs.common.ntgl;
 
 import com.nukateam.cgs.common.faundation.item.attachments.HammerHeadItem;
 import com.nukateam.cgs.common.faundation.item.guns.HammerItem;
-import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
-import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
+import com.nukateam.cgs.common.faundation.registry.items.CgsAmmo;
+import com.nukateam.cgs.common.faundation.registry.items.CgsAttachments;
 import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
 import com.nukateam.cgs.common.faundation.registry.CgsSounds;
 import com.nukateam.cgs.common.utils.GunUtils;
-import com.nukateam.example.common.registery.WeaponModifiers;
 import com.nukateam.example.common.registery.WeaponModifiers;
 import com.nukateam.ntgl.common.data.config.weapon.ProjectileConfig;
 import com.nukateam.ntgl.common.data.holders.*;
@@ -57,7 +56,7 @@ public class AttachmentMods {
             if(data.weapon == null) return value;
 
             if(data.weapon.getItem() == CgsWeapons.BLAZEGUN.get()) {
-                if(WeaponStateHelper.getCurrentAmmo(data) == CgsAmmo.BLAZE_CAKE){
+                if(WeaponStateHelper.getCurrentAmmo(data) == CgsAmmoHolders.BLAZE_CAKE){
                     return SUPER_FLAME_PROJECTILE;
                 }
                 return FLAME_PROJECTILE;
@@ -74,7 +73,7 @@ public class AttachmentMods {
             else if(data.weapon.getItem() == CgsWeapons.GATLING.get() && FuelUtils.hasFuel(data)) {
                 return rate / 2;
             } else if(data.weapon.getItem() == CgsWeapons.BLAZEGUN.get()) {
-                if(WeaponStateHelper.getCurrentAmmo(data) == CgsAmmo.BLAZE_CAKE){
+                if(WeaponStateHelper.getCurrentAmmo(data) == CgsAmmoHolders.BLAZE_CAKE){
                     return 1;
                 }
                 return 2;
@@ -172,7 +171,7 @@ public class AttachmentMods {
         private GripType getGatlingGripType(GripType gripType, WeaponData data){
             if(data.wielder != null && data.weapon != null) {
                 var magazineItem = WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, data.weapon).getItem();
-                var drumItem = AttachmentItems.GATLING_DRUM.get();
+                var drumItem = CgsAttachments.GATLING_DRUM.get();
 
                 if (magazineItem != drumItem && FuelUtils.hasFuel(data) && data.wielder.hasEffect(MobEffects.DAMAGE_BOOST)) {
                     return GripType.ONE_HANDED;
@@ -220,7 +219,7 @@ public class AttachmentMods {
             if(data.weapon == null) return value;
 
             var barrel = WeaponStateHelper.getAttachmentItem(AttachmentType.BARREL, data.weapon);
-            if(barrel.getItem() == AttachmentItems.FLINTLOCK_LONG_BARREL.get())
+            if(barrel.getItem() == CgsAttachments.FLINTLOCK_LONG_BARREL.get())
                 return 20;
             else return 120;
         }
@@ -230,7 +229,7 @@ public class AttachmentMods {
             if(data.weapon == null) return value;
 
             var barrel = WeaponStateHelper.getAttachmentItem(AttachmentType.BARREL, data.weapon);
-            if(barrel.getItem() == AttachmentItems.FLINTLOCK_LONG_BARREL.get())
+            if(barrel.getItem() == CgsAttachments.FLINTLOCK_LONG_BARREL.get())
                 return 5;
             else return 3;
         }
@@ -483,7 +482,7 @@ public class AttachmentMods {
 
         @Override
         public Set<AmmoHolder> modifyAmmoItems(Set<AmmoHolder> item, WeaponData data) {
-            return Set.of(AmmoHolder.getType(CgsItems.SHOTGUN_ROUND_BLANK.getId()));
+            return Set.of(AmmoHolder.getType(CgsAmmo.SHOTGUN_ROUND_BLANK.getId()));
         }
     };
 
@@ -582,12 +581,12 @@ public class AttachmentMods {
 
         @Override
         public Set<AmmoHolder> modifyFuelItems(Set<AmmoHolder> secondaryAmmo, WeaponData data) {
-            return Set.of(CgsAmmo.AIR);
+            return Set.of(CgsAmmoHolders.AIR);
         }
 
         @Override
         public Set<AmmoHolder> modifyAmmoItems(Set<AmmoHolder> item, WeaponData data) {
-            return Set.of(AmmoHolder.getType(CgsItems.SPEAR.getId()));
+            return Set.of(AmmoHolder.getType(CgsAmmo.SPEAR.getId()));
         }
 
         @Override
@@ -609,7 +608,7 @@ public class AttachmentMods {
 
         @Override
         public int modifyFuelAmountPerUse(ResourceLocation ammo, int value, WeaponData data) {
-            if(ammo.equals(CgsAmmo.AIR.getId()))
+            if(ammo.equals(CgsAmmoHolders.AIR.getId()))
                 return  1;
             return value;
         }
@@ -621,7 +620,7 @@ public class AttachmentMods {
 
         @Override
         public Set<AmmoHolder> modifyAmmoItems(Set<AmmoHolder> item, WeaponData data) {
-            return Set.of(AmmoHolder.getType(CgsItems.SMALL_ROCKET.getId()));
+            return Set.of(AmmoHolder.getType(CgsAmmo.SMALL_ROCKET.getId()));
         }
 
         @Override
@@ -636,7 +635,7 @@ public class AttachmentMods {
 
         @Override
         public Set<AmmoHolder> modifyFuelItems(Set<AmmoHolder> secondaryAmmo, WeaponData data) {
-            return Set.of(CgsAmmo.AIR);
+            return Set.of(CgsAmmoHolders.AIR);
         }
     };
 

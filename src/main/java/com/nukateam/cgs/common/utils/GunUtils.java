@@ -1,7 +1,7 @@
 package com.nukateam.cgs.common.utils;
 
 import com.nukateam.cgs.common.handlers.GunEventHandler;
-import com.nukateam.cgs.common.ntgl.CgsAmmo;
+import com.nukateam.cgs.common.ntgl.CgsAmmoHolders;
 import com.nukateam.ntgl.common.registry.AmmoHolders;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
@@ -57,7 +57,7 @@ public class GunUtils {
                         player.addItem(new ItemStack(Items.BUCKET));
                     }
                 }
-                else if(fuelType == CgsAmmo.AIR){
+                else if(fuelType == CgsAmmoHolders.AIR){
                     var gunRemaining = FuelUtils.getFuel(fuelStack, fuelType);
                     var tankAir = BacktankUtil.getAir(fuelStack);
                     var airSum = gunRemaining + tankAir;
@@ -111,7 +111,7 @@ public class GunUtils {
     }
 
     public static boolean hasAir(WeaponData gunData) {
-        var hasAirInGun = FuelUtils.hasFuel(CgsAmmo.AIR.getId(), gunData);
+        var hasAirInGun = FuelUtils.hasFuel(CgsAmmoHolders.AIR.getId(), gunData);
         var hasAirInTank = GunEventHandler.hasAirInTank(gunData);
         return hasAirInGun || hasAirInTank;
     }

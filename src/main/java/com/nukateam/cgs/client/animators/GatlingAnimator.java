@@ -1,19 +1,17 @@
 package com.nukateam.cgs.client.animators;
 
-import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
+import com.nukateam.cgs.common.faundation.registry.items.CgsAttachments;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
 import com.nukateam.ntgl.client.util.handler.ClientReloadHandler;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
-import com.nukateam.ntgl.common.data.config.weapon.WeaponConfig;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.util.Cycler;
 import com.nukateam.ntgl.common.data.WeaponData;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
-import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 import net.minecraft.world.item.ItemDisplayContext;
@@ -55,7 +53,7 @@ public class GatlingAnimator extends EngineAnimator {
     protected void tickStart() {
         super.tickStart();
         var magazine = WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getStack());
-        this.hasDrum = magazine.is(AttachmentItems.GATLING_DRUM.get());
+        this.hasDrum = magazine.is(CgsAttachments.GATLING_DRUM.get());
 
         float cooldown = this.shootingHandler.getCooldown(getEntity(), this.arm);
 

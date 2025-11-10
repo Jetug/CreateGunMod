@@ -5,6 +5,7 @@ import com.nukateam.cgs.common.faundation.registry.*;
 import com.nukateam.cgs.common.faundation.registry.items.*;
 import com.nukateam.cgs.common.network.PacketHandler;
 import com.nukateam.cgs.common.ntgl.*;
+import com.nukateam.cgs.common.ntgl.CgsAmmoHolders;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -26,7 +27,8 @@ public class Gunsmithing {
         MOD_EVENT_BUS.addListener(this::commonSetup);
         CgsWeapons.register(MOD_EVENT_BUS);
         CgsItems.register(MOD_EVENT_BUS);
-        AttachmentItems.register(MOD_EVENT_BUS);
+        CgsAmmo.register(MOD_EVENT_BUS);
+        CgsAttachments.register(MOD_EVENT_BUS);
         CgsBlocks.register(MOD_EVENT_BUS);
         CgsItemTabs.register(MOD_EVENT_BUS);
         CgsSounds.register(MOD_EVENT_BUS);
@@ -34,7 +36,7 @@ public class Gunsmithing {
         CgsParticles.register(MOD_EVENT_BUS);
         MinecraftForge.EVENT_BUS.register(this);
         CgsAmmoType.register();
-        CgsAmmo.register();
+        CgsAmmoHolders.register();
     }
 
     public static @NotNull ResourceLocation cgsResource(String name) {

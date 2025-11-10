@@ -1,17 +1,14 @@
 package com.nukateam.cgs.common.faundation.entity;
 
-import com.nukateam.cgs.common.ntgl.CgsAmmo;
+import com.nukateam.cgs.common.ntgl.CgsAmmoHolders;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.ntgl.common.data.WeaponData;
-import com.nukateam.ntgl.common.data.config.weapon.WeaponConfig;
 import com.nukateam.ntgl.common.foundation.entity.ProjectileEntity;
-import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
+import com.nukateam.ntgl.common.util.util.math.ExtendedEntityRayTraceResult;
 import net.minecraft.world.phys.BlockHitResult;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
@@ -20,12 +17,8 @@ import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseFireBlock;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.SoulFireBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Predicate;
@@ -45,7 +38,7 @@ public class BlazeProjectile extends ProjectileEntity implements ItemSupplier, A
     
     public BlazeProjectile(EntityType<? extends ProjectileEntity> entityType, Level level, WeaponData data) {
         super(entityType, level, data);
-        isSuperHeated = WeaponStateHelper.getCurrentAmmo(data) == CgsAmmo.BLAZE_CAKE;
+        isSuperHeated = WeaponStateHelper.getCurrentAmmo(data) == CgsAmmoHolders.BLAZE_CAKE;
         isStrong = !WeaponStateHelper.hasAttachmentEquipped(weapon, CgsAttachmentTypes.ENGINE);
     }
 
@@ -119,13 +112,10 @@ public class BlazeProjectile extends ProjectileEntity implements ItemSupplier, A
     }
 
     @Override
-    protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot) {
-        super.onHitEntity(entity, hitVec, startVec, endVec, headshot);
-        if (!this.level().isClientSide) {
-            var owner = this.getShooter();
-            entity.setSecondsOnFire(5);
-            this.doEnchantDamageEffects(owner, entity);
-        }
+    protected void onHitEntity(ExtendedEntityRayTraceResult result) {
+        super.onHitEntity(result);
+        var owner = this.getShooter();
+        this.doEnchantDamageEffects(owner, result.getEntity());
     }
 
     @Override

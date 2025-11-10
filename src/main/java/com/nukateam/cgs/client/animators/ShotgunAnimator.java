@@ -1,12 +1,11 @@
 package com.nukateam.cgs.client.animators;
 
-import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
+import com.nukateam.cgs.common.faundation.registry.items.CgsAttachments;
 import com.nukateam.cgs.common.utils.GunUtils;
 import com.nukateam.example.common.util.constants.Animations;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
-import com.nukateam.ntgl.common.data.config.weapon.WeaponConfig;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.util.Cycler;
@@ -70,8 +69,8 @@ public class ShotgunAnimator extends WeaponAnimator {
         var magazine = WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getStack());
         var data = getGunData();
         this.ammo = WeaponStateHelper.getAmmoCount(data);
-        this.hasDrums = magazine.is(AttachmentItems.SHOTGUN_DRUM.get());
-        this.hasPumps = magazine.is(AttachmentItems.SHOTGUN_PUMP.get());
+        this.hasDrums = magazine.is(CgsAttachments.SHOTGUN_DRUM.get());
+        this.hasPumps = magazine.is(CgsAttachments.SHOTGUN_PUMP.get());
         this.isAmmoEven =  GunUtils.isAmmoEven(data);
         this.cockInfo =  GunUtils.getCock(getStack());
 

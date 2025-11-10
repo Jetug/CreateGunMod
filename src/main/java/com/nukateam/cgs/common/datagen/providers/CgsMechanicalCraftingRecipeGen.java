@@ -1,27 +1,18 @@
 package com.nukateam.cgs.common.datagen.providers;
 
-import java.util.function.UnaryOperator;
-
-import com.google.common.base.Supplier;
 import com.nukateam.cgs.Gunsmithing;
-import com.nukateam.cgs.common.datagen.DataGenConfig;
-import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
+import com.nukateam.cgs.common.faundation.registry.items.CgsAttachments;
 import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
 import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.api.data.recipe.BaseRecipeProvider;
-import com.simibubi.create.api.data.recipe.MechanicalCraftingRecipeBuilder;
 import com.simibubi.create.api.data.recipe.MechanicalCraftingRecipeGen;
-import com.simibubi.create.foundation.data.recipe.CreateRecipeProvider;
 
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
 
 
 public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen {
@@ -130,7 +121,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 					.disallowMirrored()),
 
 	//ATTACHMENTS
-		ENGINE = create(AttachmentItems.STEAM_ENGINE::get).returns(1)
+		ENGINE = create(CgsAttachments.STEAM_ENGINE::get).returns(1)
 				.recipe(b -> b
 						.key('M', AllItems.PRECISION_MECHANISM.get())
 						.key('P', AllBlocks.FLUID_PIPE)
@@ -145,7 +136,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 						.disallowMirrored())
 		,
 
-		AUTO = create(AttachmentItems.REVOLVER_AUTO::get).returns(1)
+		AUTO = create(CgsAttachments.REVOLVER_AUTO::get).returns(1)
 				.recipe(b -> b
 						.key('M', AllItems.PRECISION_MECHANISM.get())
 						.key('A', AllItems.ANDESITE_ALLOY.get())
@@ -157,7 +148,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 						.disallowMirrored())
 		,
 
-		BELT = create(AttachmentItems.REVOLVER_BELT::get).returns(1)
+		BELT = create(CgsAttachments.REVOLVER_BELT::get).returns(1)
 				.recipe(b -> b
 						.key('S', AllItems.STURDY_SHEET.get())
 						.key('B', AllItems.BRASS_NUGGET.get())
@@ -169,7 +160,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 						.disallowMirrored())
 		,
 
-		DRUMS = create(AttachmentItems.SHOTGUN_DRUM::get).returns(1)
+		DRUMS = create(CgsAttachments.SHOTGUN_DRUM::get).returns(1)
 				.recipe(b -> b
 						.key('S', AllItems.STURDY_SHEET.get())
 						.key('C', AllBlocks.COGWHEEL.get())
@@ -179,7 +170,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 						.patternLine("LSLLSL")
 						.disallowMirrored()),
 
-		PUMPS = create(AttachmentItems.SHOTGUN_PUMP::get).returns(1)
+		PUMPS = create(CgsAttachments.SHOTGUN_PUMP::get).returns(1)
 				.recipe(b -> b
 						.key('M', AllItems.PRECISION_MECHANISM.get())
 						.key('A', AllItems.ANDESITE_ALLOY.get())
@@ -190,7 +181,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 						.patternLine("LALLAL")
 						.disallowMirrored()),
 
-		BIG_DRUM = create(AttachmentItems.GATLING_DRUM::get).returns(1)
+		BIG_DRUM = create(CgsAttachments.GATLING_DRUM::get).returns(1)
 				.recipe(b -> b
 						.key('A', AllItems.ANDESITE_ALLOY.get())
 						.key('C', AllBlocks.LARGE_COGWHEEL.get())
@@ -203,7 +194,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 						.disallowMirrored())
 		,
 
-		SPLITTER = create(AttachmentItems.NAILGUN_SPLITTER::get).returns(1)
+		SPLITTER = create(CgsAttachments.NAILGUN_SPLITTER::get).returns(1)
 				.recipe(b -> b
 						.key('M', AllItems.PRECISION_MECHANISM.get())
 						.key('P', AllBlocks.FLUID_PIPE)
@@ -215,7 +206,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 						.disallowMirrored())
 		,
 
-		BALLISTAZOOKA = create(AttachmentItems.BALLISTAZOOKA::get).returns(1)
+		BALLISTAZOOKA = create(CgsAttachments.BALLISTAZOOKA::get).returns(1)
 				.recipe(b -> b
 						.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
 						.key('F', AllBlocks.FLYWHEEL)
@@ -227,7 +218,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 						.patternLine("FIISS")
 						.disallowMirrored()),
 
-		AUTO_LAUNCHER = create(AttachmentItems.AUTO_LAUNCHER::get).returns(1)
+		AUTO_LAUNCHER = create(CgsAttachments.AUTO_LAUNCHER::get).returns(1)
 				.recipe(b -> b
 						.key('B', AllTags.AllItemTags.TOOLBOXES.tag)
 						.key('P', AllBlocks.FLUID_PIPE.get())

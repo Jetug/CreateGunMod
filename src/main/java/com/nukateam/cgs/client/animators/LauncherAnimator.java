@@ -1,13 +1,12 @@
 package com.nukateam.cgs.client.animators;
 
 import com.nukateam.cgs.Gunsmithing;
-import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
+import com.nukateam.cgs.common.faundation.registry.items.CgsAttachments;
 import com.nukateam.cgs.common.utils.GunUtils;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
-import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
@@ -54,8 +53,8 @@ public class LauncherAnimator extends WeaponAnimator {
             if (itemStack.getItem() instanceof WeaponItem) {
                 var data = getGunData();
                 this.ammoCount = WeaponStateHelper.getAmmoCount(data);
-                this.isBallista = magazineAttachment == AttachmentItems.BALLISTAZOOKA.get();
-                this.isAutoLauncher = magazineAttachment == AttachmentItems.AUTO_LAUNCHER.get();
+                this.isBallista = magazineAttachment == CgsAttachments.BALLISTAZOOKA.get();
+                this.isAutoLauncher = magazineAttachment == CgsAttachments.AUTO_LAUNCHER.get();
                 this.hasAir = GunUtils.hasAir(data);
                 this.hasScope = WeaponStateHelper.hasAttachmentEquipped(getStack(), AttachmentType.SCOPE);
             }

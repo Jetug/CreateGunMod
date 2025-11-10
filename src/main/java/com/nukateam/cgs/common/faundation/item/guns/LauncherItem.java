@@ -1,6 +1,6 @@
 package com.nukateam.cgs.common.faundation.item.guns;
 
-import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
+import com.nukateam.cgs.common.faundation.registry.items.CgsAttachments;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
@@ -25,7 +25,7 @@ public class LauncherItem extends CgsGunItem {
     @Override
     public String getDescriptionId(ItemStack stack) {
         var magazineAttachment = WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, stack).getItem();
-        if(magazineAttachment == AttachmentItems.BALLISTAZOOKA.get()){
+        if(magazineAttachment == CgsAttachments.BALLISTAZOOKA.get()){
             return "item.cgs.ballistazooka";
         }
 

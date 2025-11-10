@@ -1,9 +1,9 @@
 package com.nukateam.cgs.common.handlers;
 
 import com.nukateam.cgs.Gunsmithing;
-import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
+import com.nukateam.cgs.common.faundation.registry.items.CgsAttachments;
 import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
-import com.nukateam.cgs.common.ntgl.CgsAmmo;
+import com.nukateam.cgs.common.ntgl.CgsAmmoHolders;
 import com.nukateam.cgs.common.utils.GunUtils;
 import com.nukateam.ntgl.common.data.holders.AmmoHolder;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
@@ -41,12 +41,12 @@ public class GunEventHandler {
         }
 
         if(gun.getItem() == CgsWeapons.LAUNCHER.get() &&
-                WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, gun).getItem() == AttachmentItems.BALLISTAZOOKA.get()) {
+                WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, gun).getItem() == CgsAttachments.BALLISTAZOOKA.get()) {
             return;
         }
 
 //        if(gun.getItem() == CgsWeapons.NAILGUN.get()) {
-            if (isUsesFuel(gunData, CgsAmmo.AIR) && !GunUtils.hasAir(gunData) ) {
+            if (isUsesFuel(gunData, CgsAmmoHolders.AIR) && !GunUtils.hasAir(gunData) ) {
                 event.setCanceled(true);
             }
 //        }
@@ -65,7 +65,7 @@ public class GunEventHandler {
             if (fuel.contains(AmmoHolders.WATER)) {
                 FuelUtils.addFuel(data, AmmoHolders.WATER, -5);
             }
-            if (fuel.contains(CgsAmmo.AIR)) {
+            if (fuel.contains(CgsAmmoHolders.AIR)) {
                 consumeAir(data);
 //            FuelUtils.addFuel(data, CgsAmmo.AIR, -5);
             }
@@ -104,7 +104,7 @@ public class GunEventHandler {
     }
 
     public static boolean consumeAir(WeaponData data) {
-        var amount = WeaponModifierHelper.getFuelAmountPerUse(CgsAmmo.AIR.getId(), data);
+        var amount = WeaponModifierHelper.getFuelAmountPerUse(CgsAmmoHolders.AIR.getId(), data);
 
         if (amount == 0) return false;
 
@@ -116,7 +116,7 @@ public class GunEventHandler {
         if (!backtanks.isEmpty()) {
             BacktankUtil.consumeAir(data.wielder, backtanks.get(0), amount);
         } else {
-            FuelUtils.consumeFuel(CgsAmmo.AIR, data); //.addFuel(data, CgsAmmo.AIR, -5);
+            FuelUtils.consumeFuel(CgsAmmoHolders.AIR, data); //.addFuel(data, CgsAmmo.AIR, -5);
         }
         return true;
     }
@@ -134,7 +134,7 @@ public class GunEventHandler {
         if (backtanks.isEmpty())
             return false;
 
-        var cost = WeaponModifierHelper.getFuelAmountPerUse(CgsAmmo.AIR.getId(), data);
+        var cost = WeaponModifierHelper.getFuelAmountPerUse(CgsAmmoHolders.AIR.getId(), data);
         return BacktankUtil.getAir(backtanks.get(0)) >= cost;
     }
 

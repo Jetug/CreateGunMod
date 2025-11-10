@@ -1,7 +1,8 @@
 package com.nukateam.cgs.common.faundation.registry;
 
 import com.nukateam.cgs.Gunsmithing;
-import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
+import com.nukateam.cgs.common.faundation.registry.items.CgsAmmo;
+import com.nukateam.cgs.common.faundation.registry.items.CgsAttachments;
 import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
 import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
 import com.nukateam.ntgl.common.util.helpers.RegistrationHelper;
@@ -21,19 +22,17 @@ public class CgsItemTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Gunsmithing.MOD_ID);
 
 
-    public static final RegistryObject<CreativeModeTab> GUNS = CREATIVE_MODE_TABS.register("mod_items",
-            () -> builder().icon(() -> new ItemStack(CgsItems.ROUND_7MM.get()))
+    public static final RegistryObject<CreativeModeTab> CGS = CREATIVE_MODE_TABS.register("mod_items",
+            () -> builder().icon(() -> new ItemStack(CgsAmmo.GATLING_ROUND.get()))
                     .title(Component.translatable("itemGroup.mod_items"))
                     .displayItems(CgsItemTabs::getWeaponTab)
                     .build());
 
-
-
     private static void getWeaponTab(ItemDisplayParameters itemDisplayParameters, Output output) {
         registerGuns(output, CgsWeapons.ITEMS);
+        registerItems(output, CgsAmmo.ITEMS);
+        registerItems(output, CgsAttachments.ITEMS);
         registerItems(output, CgsItems.ITEMS);
-        registerItems(output, AttachmentItems.ITEMS);
-
     }
 
     private static void registerItems(Output output, DeferredRegister<Item> register) {

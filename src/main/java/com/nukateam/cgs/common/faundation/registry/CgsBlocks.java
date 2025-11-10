@@ -7,6 +7,7 @@ import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -54,6 +55,15 @@ public class CgsBlocks {
                     .requiresCorrectToolForDrops()
                     .strength(3.0F, 6.0F)
                     .sound(SoundType.METAL)));
+
+    @BlockStateGen
+    public static final RegistryObject<Block> SULFUR_ORE = registerBlock("sulfur_ore",
+            () -> new DropExperienceBlock(Block.Properties.of()
+                    .sound(SoundType.NETHERRACK)
+                    .mapColor(MapColor.NETHER)
+                    .instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops()
+                    .strength(0.4F)));
 
     @BlockStateGen
     public static final RegistryObject<Block> STEEL_BLOCK = registerBlock("steel_block",

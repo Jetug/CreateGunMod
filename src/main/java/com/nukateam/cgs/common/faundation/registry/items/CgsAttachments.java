@@ -19,7 +19,7 @@ import net.minecraftforge.registries.RegistryObject;
 import static com.nukateam.cgs.common.ntgl.AttachmentMods.*;
 import static com.nukateam.cgs.common.ntgl.CgsAttachmentTypes.ENGINE;
 
-public class AttachmentItems {
+public class CgsAttachments {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Gunsmithing.MOD_ID);
     public static final Item.Properties ITEM_PROPERTIES = new Item.Properties().stacksTo(1);
 

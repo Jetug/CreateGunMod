@@ -7,7 +7,7 @@
   "results": [
     {
       "count": 4,
-      "item": "cgs:round_7mm"
+      "item": "cgs:gatling_round"
     }
   ],
   "sequence": [
@@ -15,16 +15,16 @@
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "cgs:shell_7mm"
+          "item": "cgs:gatling_shell"
         },
         {
-          "item": "cgs:press_form_7mm"
+          "item": "cgs:press_form_gatling"
         }
       ],
       "keepHeldItem": true,
       "results": [
         {
-          "item": "cgs:shell_7mm"
+          "item": "cgs:gatling_shell"
         }
       ]
     },
@@ -32,7 +32,7 @@
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "cgs:shell_7mm"
+          "item": "cgs:gatling_shell"
         },
         {
           "tag": "forge:gunpowder"
@@ -40,7 +40,7 @@
       ],
       "results": [
         {
-          "item": "cgs:shell_7mm"
+          "item": "cgs:gatling_shell"
         }
       ]
     },
@@ -48,7 +48,7 @@
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "cgs:shell_7mm"
+          "item": "cgs:gatling_shell"
         },
         {
           "tag": "forge:nuggets/lead"
@@ -56,7 +56,7 @@
       ],
       "results": [
         {
-          "item": "cgs:shell_7mm"
+          "item": "cgs:gatling_shell"
         }
       ]
     },
@@ -64,7 +64,7 @@
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "cgs:shell_7mm"
+          "item": "cgs:gatling_shell"
         },
         {
           "tag": "forge:plates/copper"
@@ -72,12 +72,12 @@
       ],
       "results": [
         {
-          "item": "cgs:shell_7mm"
+          "item": "cgs:gatling_shell"
         }
       ]
     }
   ],
   "transitionalItem": {
-    "item": "cgs:shell_7mm"
+    "item": "cgs:gatling_shell"
   }
 }

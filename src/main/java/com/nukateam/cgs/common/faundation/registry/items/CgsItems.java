@@ -28,7 +28,19 @@ public class CgsItems {
     public static final RegistryObject<Item> STEEL_INGOT = registerItem ("steel_ingot");
 
     @ItemModelGen
-    public static final RegistryObject<Item> STEEL_PLATE = registerItem ("steel_plate");
+    public static final RegistryObject<Item> STEEL_SHEET = registerItem ("steel_sheet");
+
+    @ItemModelGen
+    public static final RegistryObject<Item> CHARCOAL_DUST = registerItem ("charcoal_dust");
+
+    @ItemModelGen
+    public static final RegistryObject<Item> SULFUR = registerItem ("sulfur");
+
+    @ItemModelGen
+    public static final RegistryObject<Item> GUANO = registerItem ("guano");
+
+    @ItemModelGen
+    public static final RegistryObject<Item> SELITRA = registerItem ("selitra");
 
     @ItemModelGen
     public static final RegistryObject<Item> BARREL = registerItem("barrel");
@@ -37,63 +49,14 @@ public class CgsItems {
     public static final RegistryObject<Item> STURDY_BARREL = registerItem("barrel_sturdy");
 
     @ItemModelGen
-    public static final RegistryObject<Item> PRESS_FORM_7MM = registerItem("press_form_7mm");
+    public static final RegistryObject<Item> PRESS_FORM_GATLING = registerItem("press_form_gatling");
 
     @ItemModelGen
-    public static final RegistryObject<Item> PRESS_FORM_10MM = registerItem("press_form_10mm");
-
-//    public static final RegistryObject<Item> PRESS_FORM_ROKET = registerItem("press_form_roket");
+    public static final RegistryObject<Item> PRESS_FORM_REVOLVER = registerItem("press_form_revolver");
 
     @ItemModelGen
     public static final RegistryObject<Item> SHOTGUN_PRESS_FORM = registerItem("press_form_shotgun");
 
-    @ItemModelGen
-    public static final RegistryObject<Item> SHELL_7MM = registerItem("shell_7mm");
-
-    @ItemModelGen
-    public static final RegistryObject<Item> SHELL_10MM = registerItem("shell_10mm");
-
-    @ItemModelGen
-    public static final RegistryObject<Item> SHOTGUN_SHELL = registerItem("shell_shotgun");
-
-    @ItemModelGen(path = "ammo")
-    public static final RegistryObject<Item> ROUND_7MM = registerAmmo("round_7mm");
-
-//    @ItemModelGen
-//    public static final RegistryObject<Item> ROUND_7MM_PIERCING = registerAmmo("round_7mm_piercing");
-
-    @ItemModelGen(path = "ammo")
-    public static final RegistryObject<Item> ROUND_10MM = registerAmmo("round_10mm");
-
-//    @ItemModelGen
-//    public static final RegistryObject<Item> ROUND_10MM_PIERCING = registerAmmo("round_10mm_piercing");
-
-    @ItemModelGen(path = "ammo")
-    public static final RegistryObject<Item> SHOTGUN_ROUND = registerAmmo("round_shotgun");
-
-    @ItemModelGen(path = "ammo")
-    public static final RegistryObject<Item> SHOTGUN_ROUND_BLANK = registerAmmo("round_shotgun_blank");
-
-    @ItemModelGen(path = "ammo")
-    public static final RegistryObject<Item> PAPER_CARTRIDGE = registerAmmo("paper_cartridge");
-
-//    @ItemModelGen
-//    public static final RegistryObject<Item> PAPER_CARTRIDGE_BLANK = registerAmmo("paper_cartridge_blank");
-
-    @ItemModelGen(path = "ammo")
-    public static final RegistryObject<Item> NAIL = registerAmmo("nail");
-
-//    @ItemModelGen
-//    public static final RegistryObject<Item> NAIL_PIERCING = registerAmmo("nail_piercing");
-
-    @ItemModelGen(path = "ammo")
-    public static final RegistryObject<Item> ROCKET = registerAmmo("rocket");
-
-    @ItemModelGen(path = "ammo")
-    public static final RegistryObject<Item> SMALL_ROCKET = registerAmmo("rocket_small");
-
-    @ItemModelGen(path = "ammo")
-    public static final RegistryObject<Item> SPEAR = registerAmmo("spear", AmmoItem::new);
 
     private static RegistryObject<Item> registerAmmo(String name, Function<Item.Properties, AmmoItem> item) {
         return ITEMS.register(name, () -> item.apply(new Item.Properties()));

@@ -2,9 +2,7 @@ package com.nukateam.cgs.client.renderers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.nukateam.cgs.client.model.GatlingModel;
-import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
-import com.nukateam.cgs.common.ntgl.AttachmentMods;
+import com.nukateam.cgs.common.faundation.registry.items.CgsAttachments;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
@@ -25,7 +23,7 @@ public class FlintlockRenderer extends BaseGunRenderer{
 
         if (bone.getName().equals("melee2")) {
             var barrel = WeaponStateHelper.getAttachmentItem(AttachmentType.BARREL, animatable.getStack());
-            if(barrel.getItem() == AttachmentItems.FLINTLOCK_LONG_BARREL.get())
+            if(barrel.getItem() == CgsAttachments.FLINTLOCK_LONG_BARREL.get())
                 bone.setHidden(true);
         }
         else bone.setHidden(false);

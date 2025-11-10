@@ -12,17 +12,17 @@ import java.util.List;
 
 import static com.nukateam.cgs.Gunsmithing.cgsResource;
 
-public class CgsAmmo {
+public class CgsAmmoHolders {
     public static AmmoHolder AIR = AmmoHolder.Builder
             .create(cgsResource("air"))
-            .isAcceptable(CgsAmmo::isAir)
+            .isAcceptable(CgsAmmoHolders::isAir)
             .value((s) -> (int)BacktankUtil.getAir(s))
-            .onConsume(CgsAmmo::onConsumeAir)
+            .onConsume(CgsAmmoHolders::onConsumeAir)
             .build();
 
     public static final AmmoHolder BURNABLE = AmmoHolder.Builder
             .create(cgsResource("burnable"))
-            .isAcceptable(CgsAmmo::isBurnable)
+            .isAcceptable(CgsAmmoHolders::isBurnable)
             .value((stack -> ForgeHooks.getBurnTime(stack, null)))
             .onConsume(AmmoHolders::consumeBurnable)
             .build();

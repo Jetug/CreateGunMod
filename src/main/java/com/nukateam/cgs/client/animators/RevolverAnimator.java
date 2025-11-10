@@ -1,25 +1,17 @@
 package com.nukateam.cgs.client.animators;
 
-import com.nukateam.cgs.common.faundation.registry.items.AttachmentItems;
+import com.nukateam.cgs.common.faundation.registry.items.CgsAttachments;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
-import com.nukateam.ntgl.common.data.config.weapon.WeaponConfig;
-import com.nukateam.ntgl.common.util.helpers.PlayerHelper;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.nukateam.ntgl.common.data.constants.Animations;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.data.WeaponData;
 import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
 import software.bernie.geckolib.core.animation.*;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ShieldItem;
-import net.minecraft.world.level.block.SculkSensorBlock;
-import net.minecraft.world.level.block.entity.SculkSensorBlockEntity;
 import net.minecraftforge.event.TickEvent;
 
 import static software.bernie.geckolib.core.animation.Animation.LoopType.*;
@@ -50,8 +42,8 @@ public class RevolverAnimator extends WeaponAnimator {
                 var frame = WeaponStateHelper.getAttachmentItem(CgsAttachmentTypes.FRAME, getStack());
                 var barrel = WeaponStateHelper.getAttachmentItem(AttachmentType.BARREL, getStack());
 
-                this.hasBelt = chamberAttachment.is(AttachmentItems.REVOLVER_BELT.get());
-                this.isAuto = frame.is(AttachmentItems.REVOLVER_AUTO.get());
+                this.hasBelt = chamberAttachment.is(CgsAttachments.REVOLVER_BELT.get());
+                this.isAuto = frame.is(CgsAttachments.REVOLVER_AUTO.get());
                 this.oneHanded = barrel.isEmpty();
                 oneHanded = WeaponModifierHelper.isOneHanded(getGunData());
             }
