@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/snow_height12",
+  "textures": {
+    "particle": "cgs:block/guano_block",
+    "texture": "cgs:block/guano_block"
+  }
+}

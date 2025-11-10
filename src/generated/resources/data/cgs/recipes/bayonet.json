@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "I": {
+      "item": "create:iron_sheet"
+    },
+    "L": {
+      "item": "create:brass_sheet"
+    }
+  },
+  "pattern": [
+    "IIL"
+  ],
+  "result": {
+    "item": "cgs:bayonet"
+  },
+  "show_notification": true
+}
