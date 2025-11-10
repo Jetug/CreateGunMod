@@ -33,7 +33,7 @@
   "item.cgs.shell_revolver"   : "Гильза револьвера",
   "item.cgs.shell_shotgun": "Гильза дробовика",
 
-  "item.cgs.gatling_round"      : "Патрон гатлинга",
+  "item.cgs.round_gatling"      : "Патрон гатлинга",
   "item.cgs.round_revolver"     : "Патрон револьвера",
   "item.cgs.round_shotgun"  : "Патрон дробовика",
   "item.cgs.round_shotgun_blank": "Холостой патрон дробовика",
@@ -87,8 +87,19 @@
   "item.cgs.raw_lead": "Рудный свинец",
   "item.cgs.lead_ingot": "Свинцовый слиток",
   "item.cgs.lead_nugget": "Кусочек свинца",
+  "item.cgs.steel_ingot": "Steel Ingot",
+  "item.cgs.steel_nugget": "Steel Nugget",
+  "item.cgs.steel_sheet": "Steel Sheet",
+
+  "item.cgs.guano": "Гуано",
+  "item.cgs.niter": "Селитра",
+  "item.cgs.sulfur": "Сера",
+  "item.cgs.charcoal_dust": "Угольная пыль",
+
   "block.cgs.lead_ore": "Свинцовая руда",
   "block.cgs.deepslate_lead_ore": "Свинцовоносный глубинный сланец",
+  "block.cgs.sulfur_ore": "Серная руда",
   "block.cgs.lead_block": "Блок свинца",
-  "block.cgs.raw_lead_block": "Блок рудного свинца"
+  "block.cgs.raw_lead_block": "Блок рудного свинца",
+  "block.cgs.steel_block": "Блок Стали"
 }

@@ -7,10 +7,12 @@ import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
@@ -18,16 +20,21 @@ import java.util.List;
 
 public class ConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_LEAD_ORE_KEY = registerKey("lead_ore");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SULFUR_ORE_NETHER = registerKey("sulfur_ore");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         var stoneReplaceable = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         var deepslateReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
+//        var netherrackReplaceable = new TagMatchTest(BlockTags.NETHER_CARVER_REPLACEABLES);
+        var netherrackReplaceable = new BlockMatchTest(Blocks.NETHERRACK);
 
-        var overworldSapphireOres = List.of(OreConfiguration.target(stoneReplaceable,
-                        CgsBlocks.LEAD_ORE.get().defaultBlockState()),
+        var netherSulfurOres = List.of(OreConfiguration.target(netherrackReplaceable, CgsBlocks.SULFUR_ORE.get().defaultBlockState()));
+        var overworldSapphireOres = List.of(
+                OreConfiguration.target(stoneReplaceable, CgsBlocks.LEAD_ORE.get().defaultBlockState()),
                 OreConfiguration.target(deepslateReplaceables, CgsBlocks.DEEPSLATE_LEAD_ORE.get().defaultBlockState()));
 
         register(context, OVERWORLD_LEAD_ORE_KEY, Feature.ORE, new OreConfiguration(overworldSapphireOres, 9));
+        register(context, SULFUR_ORE_NETHER, Feature.ORE, new OreConfiguration(netherSulfurOres, 9));
     }
 
 

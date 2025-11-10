@@ -12,7 +12,7 @@
     "enchantable": false,
     "maxAmmo": 100,
     "reloadTime": 50,
-    "recoilAngle": 2.0,
+    "recoilAngle": -2.0,
     "alwaysSpread": true,
     "spread": 1.2,
     "movementSpeed": -0.2,

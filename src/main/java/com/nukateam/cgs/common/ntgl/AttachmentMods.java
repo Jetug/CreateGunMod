@@ -33,7 +33,7 @@ public class AttachmentMods {
 
     public static final ProjectileConfig FLAME_PROJECTILE = ProjectileConfig.Builder.create()
             .setProjectileType(CgsProjectileTypes.FIREBALL)
-            .setDamage(0.2f)
+            .setDamage(1f)
             .setProjectileLife(10)
             .setProjectileSpeed(1.5f)
             .setProjectileAmount(6)
@@ -42,7 +42,7 @@ public class AttachmentMods {
 
     public static final ProjectileConfig SUPER_FLAME_PROJECTILE = ProjectileConfig.Builder.create()
             .setProjectileType(CgsProjectileTypes.FIREBALL)
-            .setDamage(1f)
+            .setDamage(3f)
             .setProjectileLife(10)
             .setProjectileSpeed(2.5f)
             .setProjectileAmount(8)
@@ -102,13 +102,13 @@ public class AttachmentMods {
         }
 
         @Override
-        public float modifyDamage(float damage, WeaponData data) {
+        public float modifyProjectileDamage(float damage, ResourceLocation ammo, WeaponData data) {
             if(data.weapon == null) return damage;
 
             if(data.weapon.getItem() == CgsWeapons.NAILGUN.get()) {
                 return damage * 2f;
             }
-            return IWeaponModifier.super.modifyDamage(damage, data);
+            return damage;
         }
 
         @Override
@@ -303,14 +303,9 @@ public class AttachmentMods {
         }
 
         @Override
-        public float modifyDamage(float damage, WeaponData data) {
+        public float modifyProjectileDamage(float damage, ResourceLocation ammo, WeaponData data) {
             return damage * 1.5f;
         }
-
-//        @Override
-//        public double modifyProjectileSpeed(double speed, WeaponData data) {
-//            return speed * 3;
-//        }
 
         @Override
         public double modifyAimDownSightSpeed(double speed, WeaponData data) {
@@ -416,7 +411,7 @@ public class AttachmentMods {
 
     public static final IWeaponModifier SHOTGUN_SPREAD_BARREL = new IWeaponModifier() {
         @Override
-        public float modifyDamage(float damage, WeaponData data) {
+        public float modifyProjectileDamage(float damage, ResourceLocation ammo, WeaponData data) {
             return damage * 1.5f;
         }
 
@@ -424,8 +419,6 @@ public class AttachmentMods {
         public float modifyProjectileSpread(float spread, WeaponData data) {
             return spread * 2;
         }
-
-
     };
 
     //NAILGUN
@@ -433,7 +426,7 @@ public class AttachmentMods {
         public static final int AMMO_PER_SHOT = 4;
 
         @Override
-        public float modifyDamage(float damage, WeaponData data) {
+        public float modifyProjectileDamage(float damage, ResourceLocation ammo, WeaponData data) {
             return damage * getProjectileAmount(data);
         }
 

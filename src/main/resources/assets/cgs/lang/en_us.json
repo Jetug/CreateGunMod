@@ -86,9 +86,19 @@
   "item.cgs.raw_lead": "Raw Lead",
   "item.cgs.lead_ingot": "Lead Ingot",
   "item.cgs.lead_nugget": "Lead Nugget",
+  "item.cgs.steel_ingot": "Steel Ingot",
+  "item.cgs.steel_nugget": "Steel Nugget",
+  "item.cgs.steel_sheet": "Steel Sheet",
+  "item.cgs.guano": "Guano",
+  "item.cgs.niter": "Niter",
+  "item.cgs.sulfur": "Sulfur",
+  "item.cgs.charcoal_dust": "Charcoal Dust",
 
   "block.cgs.lead_ore": "Lead Ore",
   "block.cgs.deepslate_lead_ore": "Deepslate Lead Ore",
+  "block.cgs.sulfur_ore": "Sulfur Ore",
+  "block.cgs.raw_lead_block": "Block Of Raw Lead ",
   "block.cgs.lead_block": "Block Of Lead",
-  "block.cgs.raw_lead_block": "Block Of Raw Lead "
+
+  "block.cgs.steel_block": "Block Of Steel"
 }
