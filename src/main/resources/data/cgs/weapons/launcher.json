@@ -105,7 +105,7 @@
         "visible": true,
         "gravity": true,
         "affectedByFluid": false,
-        "damage": 5.0,
+        "damage": 20.0,
         "size": 4.0,
         "speed": 5.0,
         "life": 1200
