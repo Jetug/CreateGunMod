@@ -8,7 +8,7 @@
     "maxAmmo": 4,
     "equipTime": 15,
     "reloadTime": 70,
-    "recoilAngle": 0.1,
+    "recoilAngle": -0.1,
     "alwaysSpread": true,
     "enchantable": false,
     "projectileAmount": 1,

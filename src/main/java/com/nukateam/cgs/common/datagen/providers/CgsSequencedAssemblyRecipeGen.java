@@ -42,7 +42,7 @@ public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
             .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagsKeys.leadNugget()))
             .loops(1));
 
-    BaseRecipeProvider.GeneratedRecipe GATLING_ROUND = this.create("gatling_round", (b) -> {
+    BaseRecipeProvider.GeneratedRecipe GATLING_ROUND = this.create("round_gatling", (b) -> {
         return b.require(TagsKeys.brassSheet())
                 .transitionTo(CgsAmmo.GATLING_SHELL.get())
                 .addOutput(new ItemStack(CgsAmmo.GATLING_ROUND.get(), 4), 1.0F)
@@ -54,7 +54,7 @@ public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
     });
 
 
-    BaseRecipeProvider.GeneratedRecipe GATLING_ROUND_PIERCING = this.create("gatling_round_piercing", (b) -> {
+    BaseRecipeProvider.GeneratedRecipe GATLING_ROUND_PIERCING = this.create("round_gatling_piercing", (b) -> {
         return b.require(TagsKeys.brassSheet())
                 .transitionTo(CgsAmmo.GATLING_SHELL.get())
                 .addOutput(new ItemStack(CgsAmmo.GATLING_ROUND_PIERCING.get(), 4), 1.0F)

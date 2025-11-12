@@ -10,7 +10,7 @@
     "equipTime": 0,
     "reloadTime": 60,
     "reloadAmount": 1,
-    "recoilAngle": 7.0,
+    "recoilAngle": -7.0,
     "recoilAdsReduction": 0.15,
     "alwaysSpread": true,
     "enchantable": false,

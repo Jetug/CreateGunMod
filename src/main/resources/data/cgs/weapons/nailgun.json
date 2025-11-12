@@ -10,7 +10,7 @@
     "reloadStart": 15,
     "reloadTime": 20,
     "reloadEnd": 20,
-    "recoilAngle": 2.0,
+    "recoilAngle": -2.0,
     "reloadAmount": 5,
     "recoilAdsReduction": 0.20,
     "alwaysSpread": true,

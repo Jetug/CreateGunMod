@@ -10,7 +10,7 @@
     "autoReload": false,
     "reloadTime": 40,
     "reloadAmount": 1,
-    "recoilAngle": 25.0,
+    "recoilAngle": -15.0,
     "recoilAdsReduction": 0.15,
     "alwaysSpread": true,
     "enchantable": false,

@@ -1,5 +1,7 @@
 {
   "values": [
+    "cgs:lead_block",
+    "cgs:steel_block",
     "cgs:raw_lead_block"
   ]
 }

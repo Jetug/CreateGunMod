@@ -6,7 +6,7 @@
     "maxAmmo": 1,
     "equipTime": 0,
     "reloadTime": 70,
-    "recoilAngle": 7.0,
+    "recoilAngle": -7.0,
     "recoilAdsReduction": 0.15,
     "alwaysSpread": true,
     "enchantable": false,
