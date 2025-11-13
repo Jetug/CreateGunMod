@@ -1,15 +1,11 @@
-package com.nukateam.cgs.client.renderers;
+package com.nukateam.cgs.client.renderers.weapon;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.nukateam.cgs.common.faundation.registry.items.CgsAttachments;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.client.model.gun.GeoWeaponModel;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
 import com.nukateam.ntgl.client.util.helpers.TransformUtils;
-import com.nukateam.ntgl.common.data.holders.AttachmentType;
-import com.nukateam.ntgl.common.util.data.Rgba;
-import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.simibubi.create.AllItems;
 import software.bernie.geckolib.cache.object.GeoBone;
 import software.bernie.geckolib.model.GeoModel;
@@ -20,12 +16,12 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
-public class BaseGunRenderer extends DynamicWeaponRenderer<WeaponAnimator> {
-    public BaseGunRenderer() {
+public class BaseWeaponRenderer extends DynamicWeaponRenderer<WeaponAnimator> {
+    public BaseWeaponRenderer() {
         super(new GeoWeaponModel());
     }
 
-    public BaseGunRenderer(GeoModel model) {
+    public BaseWeaponRenderer(GeoModel model) {
         super(model);
     }
     private ItemDisplayContext transformType;
@@ -50,12 +46,8 @@ public class BaseGunRenderer extends DynamicWeaponRenderer<WeaponAnimator> {
                                   float partialTick, int packedLight, int packedOverlay,
                                   float red, float green, float blue, float alpha) {
 
-        if (!TransformUtils.isFirstPerson(transformType) && bone.getName().equals("muzzle_effect")) {
-            var barrel = WeaponStateHelper.getAttachmentItem(AttachmentType.BARREL, animatable.getStack());
-            if(barrel.getItem() == CgsAttachments.FLINTLOCK_LONG_BARREL.get())
-                bone.setHidden(true);
-        }
-        else bone.setHidden(false);
+        var hideMuzzleFlash = !TransformUtils.isFirstPerson(transformType) && bone.getName().equals("muzzle_effect");
+        bone.setHidden(hideMuzzleFlash);
 
         super.renderRecursively(poseStack, animatable, bone, renderType, bufferSource, buffer, isReRender, partialTick,
                 packedLight, packedOverlay, red, green, blue, alpha);

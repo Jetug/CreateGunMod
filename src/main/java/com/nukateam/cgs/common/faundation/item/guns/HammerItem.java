@@ -2,6 +2,7 @@ package com.nukateam.cgs.common.faundation.item.guns;
 
 import com.nukateam.cgs.client.animators.*;
 import com.nukateam.cgs.client.renderers.*;
+import com.nukateam.cgs.client.renderers.weapon.HammerRenderer;
 import com.nukateam.cgs.common.faundation.item.attachments.HammerHeadItem;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
@@ -17,10 +18,13 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.util.Lazy;
 
 import java.util.function.BiFunction;
 
 public class HammerItem extends CgsGunItem {
+    public static final Lazy<HammerRenderer> HAMMER_RENDERER = Lazy.of(HammerRenderer::new);
+
     public HammerItem(Properties properties, IWeaponModifier... modifiers) {
         super(properties, modifiers);
     }
@@ -34,7 +38,7 @@ public class HammerItem extends CgsGunItem {
     @Override
     @OnlyIn(Dist.CLIENT)
     public DynamicGeoItemRenderer getRenderer() {
-        return Renderers.HAMMER_RENDERER.get();
+        return HAMMER_RENDERER.get();
     }
 
     @Override

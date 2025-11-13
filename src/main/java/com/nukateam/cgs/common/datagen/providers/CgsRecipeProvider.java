@@ -1,6 +1,7 @@
 package com.nukateam.cgs.common.datagen.providers;
 
 import com.nukateam.cgs.common.datagen.DataGenConfig;
+import com.nukateam.cgs.common.datagen.util.TagsKeys;
 import com.nukateam.cgs.common.faundation.registry.items.CgsAmmo;
 import com.nukateam.cgs.common.faundation.registry.items.CgsAttachments;
 import com.nukateam.cgs.common.faundation.registry.CgsBlocks;
@@ -31,8 +32,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 
-import static com.nukateam.cgs.common.datagen.util.TagsKeys.ironSheet;
-import static com.nukateam.cgs.common.datagen.util.TagsKeys.steelSheet;
+import static com.nukateam.cgs.common.datagen.util.TagsKeys.*;
 
 public class CgsRecipeProvider extends RecipeProvider implements IConditionBuilder {
     public static final String INGOT_TAG = "ingots/";
@@ -88,7 +88,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("   ")
                 .pattern("BAF")
                 .pattern("  L")
-                .define('B', ironSheet())
+                .define('B', IRON_SHEET)
                 .define('A', AllItems.ANDESITE_ALLOY.get())
                 .define('L', AllTags.AllItemTags.STRIPPED_LOGS.tag)
                 .define('F', Items.FLINT_AND_STEEL)
@@ -97,13 +97,11 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     private static void ammo(Consumer<FinishedRecipe> writer) {
-        var leadNugget = AllTags.forgeItemTag(NUGGET_TAG + LEAD);
-
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsAmmo.PAPER_CARTRIDGE.get(), 3)
                 .pattern("L")
                 .pattern("G")
                 .pattern("P")
-                .define('L', leadNugget)
+                .define('L', TagsKeys.leadNugget())
                 .define('G', Tags.Items.GUNPOWDER)
                 .define('P', Items.PAPER)
                 .unlockedBy(getHasName(CgsItems.LEAD_NUGGET.get()), has(CgsItems.LEAD_NUGGET.get()))
@@ -140,7 +138,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern(" W")
                 .define('L', AllItems.BRASS_SHEET.get())
                 .define('W', AllTags.AllItemTags.STRIPPED_LOGS.tag)
-                .define('B', ironSheet())
+                .define('B', IRON_SHEET)
                 .unlockedBy(getHasName(AllItems.IRON_SHEET.get()), has(AllItems.IRON_SHEET.get()))
                 .save(writer, getId(CgsAttachments.REVOLVER_LONG_BARREL.get()));
 
@@ -150,14 +148,14 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("BB ")
                 .define('L', AllItems.BRASS_SHEET)
                 .define('W', AllTags.AllItemTags.STRIPPED_LOGS.tag)
-                .define('B', steelSheet())
+                .define('B', STEEL_SHEET)
                 .unlockedBy(getHasName(CgsItems.STEEL_INGOT.get()), has(CgsItems.STEEL_INGOT.get()))
                 .save(writer, getId(CgsAttachments.SHOTGUN_LONG_BARREL.get()));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsAttachments.SHOTGUN_SPREAD_BARREL.get(), 1)
                 .pattern("BLB")
                 .define('L', AllItems.IRON_SHEET.get())
-                .define('B', steelSheet())
+                .define('B', STEEL_SHEET)
                 .unlockedBy(getHasName(CgsItems.STEEL_INGOT.get()), has(CgsItems.STEEL_INGOT.get()))
                 .save(writer, getId(CgsAttachments.SHOTGUN_SPREAD_BARREL.get()));
 
@@ -165,7 +163,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("BB")
                 .pattern("LL")
                 .define('L', AllTags.AllItemTags.STRIPPED_LOGS.tag)
-                .define('B', ironSheet())
+                .define('B', IRON_SHEET)
                 .unlockedBy(getHasName(CgsItems.STEEL_INGOT.get()), has(CgsItems.STEEL_INGOT.get()))
                 .save(writer, getId(CgsAttachments.FLINTLOCK_LONG_BARREL.get()));
 
@@ -173,7 +171,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("LBL")
                 .pattern("ACC")
                 .define('L', AllItems.BRASS_SHEET.get())
-                .define('B', steelSheet())
+                .define('B', STEEL_SHEET)
                 .define('C', AllItems.COPPER_SHEET.get())
                 .define('A', AllItems.ANDESITE_ALLOY.get())
                 .unlockedBy(getHasName(CgsItems.STEEL_INGOT.get()), has(CgsItems.STEEL_INGOT.get()))

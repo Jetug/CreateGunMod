@@ -1,8 +1,7 @@
 package com.nukateam.cgs.common.faundation.item.guns;
 
 import com.nukateam.cgs.client.animators.FlintlockAnimator;
-import com.nukateam.cgs.client.renderers.FlintlockRenderer;
-import com.nukateam.cgs.client.renderers.GatlingRenderer;
+import com.nukateam.cgs.client.renderers.weapon.FlintlockRenderer;
 import com.nukateam.geo.render.*;
 import com.nukateam.ntgl.client.animators.*;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;

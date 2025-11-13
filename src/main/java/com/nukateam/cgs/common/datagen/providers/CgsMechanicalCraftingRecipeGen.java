@@ -27,7 +27,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 		SHOTGUN = create(CgsWeapons.SHOTGUN::get).returns(1)
 			.recipe(b -> b
 					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
-					.key('B', steelSheet())
+					.key('B', STEEL_SHEET)
 					.key('A', AllItems.ANDESITE_ALLOY.get())
 					.key('L', AllItems.BRASS_SHEET.get())
 					.patternLine("BBAL")
@@ -37,7 +37,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 
 		GATLING = create(CgsWeapons.GATLING::get).returns(1)
 			.recipe(b -> b
-					.key('B', steelSheet())
+					.key('B', STEEL_SHEET)
 					.key('I', steelIngot())
 					.key('A', AllItems.ANDESITE_ALLOY.get())
 					.key('C', AllBlocks.COGWHEEL.get())
@@ -53,7 +53,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 		REVOLVER = create(CgsWeapons.REVOLVER::get).returns(1)
 			.recipe(b -> b
 					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
-					.key('B', steelSheet())
+					.key('B', STEEL_SHEET)
 					.key('A', AllItems.ANDESITE_ALLOY.get())
 					.key('C', AllBlocks.COGWHEEL.get())
 					.key('I', steelIngot())
@@ -85,7 +85,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
 					.key('A', AllItems.ANDESITE_ALLOY.get())
 					.key('L', AllItems.BRASS_SHEET.get())
-					.key('I', steelSheet())
+					.key('I', STEEL_SHEET)
 					.key('P', AllBlocks.FLUID_PIPE.get())
 					.key('C', AllBlocks.CHUTE)
 					.patternLine("APLLPA")
@@ -151,7 +151,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 
 		BELT = create(CgsAttachments.REVOLVER_BELT::get).returns(1)
 				.recipe(b -> b
-						.key('S', steelSheet())
+						.key('S', STEEL_SHEET)
 						.key('B', AllItems.BRASS_NUGGET.get())
 						.patternLine("BB")
 						.patternLine("SS")
@@ -163,7 +163,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 
 		DRUMS = create(CgsAttachments.SHOTGUN_DRUM::get).returns(1)
 				.recipe(b -> b
-						.key('S', steelSheet())
+						.key('S', STEEL_SHEET)
 						.key('C', AllBlocks.COGWHEEL.get())
 						.key('L', AllItems.BRASS_SHEET.get())
 						.patternLine("LSLLSL")

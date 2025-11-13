@@ -1,9 +1,8 @@
-package com.nukateam.cgs.client.renderers;
+package com.nukateam.cgs.client.renderers.projectile;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.nukateam.cgs.client.model.ProjectileModel;
-import com.nukateam.ntgl.client.util.ClientDebug;
 import com.nukateam.ntgl.common.foundation.entity.ProjectileEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;

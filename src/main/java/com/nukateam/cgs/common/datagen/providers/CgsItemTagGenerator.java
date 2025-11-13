@@ -44,7 +44,7 @@ public class CgsItemTagGenerator extends ItemTagsProvider {
     private final TagKey<Item> STEEL_INGOTS = AllTags.forgeItemTag("ingots/steel");
     private final TagKey<Item> NUGGETS = AllTags.forgeItemTag("nuggets");
     private final TagKey<Item> LEAD_NUGGETS = AllTags.forgeItemTag("nuggets/lead");
-    private final TagKey<Item> DUSTS = AllTags.forgeItemTag("dusts/lead");
+    private final TagKey<Item> DUSTS = AllTags.forgeItemTag("dusts");
     private final TagKey<Item> SULFUR = AllTags.forgeItemTag("dusts/sulfur");
     private final TagKey<Item> NITER = AllTags.forgeItemTag("dusts/niter");
     private final TagKey<Item> CHARCOAL_DUST = AllTags.forgeItemTag("dusts/charcoal_dust");
@@ -76,7 +76,7 @@ public class CgsItemTagGenerator extends ItemTagsProvider {
         this.tag(LEAD_NUGGETS).add(CgsItems.LEAD_NUGGET.get());
         this.tag(steelNugget()).add(CgsItems.STEEL_NUGGET.get());
 
-        this.tag(steelSheet()).add(CgsItems.STEEL_SHEET.get());
+        this.tag(STEEL_SHEET).add(CgsItems.STEEL_SHEET.get());
 
         this.tag(DUSTS).add(
                 CgsItems.SULFUR.get(),

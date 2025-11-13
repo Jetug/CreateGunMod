@@ -4,19 +4,13 @@ import com.nukateam.cgs.common.utils.GunUtils;
 //import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.common.registry.AmmoHolders;
-import com.nukateam.ntgl.common.registry.AmmoHolders;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.geo.render.DynamicGeoItemRenderer;
-import com.nukateam.cgs.client.renderers.BaseGunRenderer;
+import com.nukateam.cgs.client.renderers.weapon.BaseWeaponRenderer;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.interfaces.IWeaponModifier;
-import com.nukateam.ntgl.common.util.interfaces.IWeaponModifier;
-import com.nukateam.ntgl.common.data.WeaponData;
 import com.nukateam.ntgl.common.data.WeaponData;
 import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
-import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
-import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
-import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
@@ -36,7 +30,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class CgsGunItem extends WeaponItem {
-    private final Lazy<BaseGunRenderer> RENDERER = Lazy.of(() -> new BaseGunRenderer());
+    private final Lazy<BaseWeaponRenderer> RENDERER = Lazy.of(() -> new BaseWeaponRenderer());
 
     public CgsGunItem(Properties properties, IWeaponModifier... modifiers) {
         super(properties, modifiers);

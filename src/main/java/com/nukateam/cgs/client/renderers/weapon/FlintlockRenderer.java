@@ -1,4 +1,4 @@
-package com.nukateam.cgs.client.renderers;
+package com.nukateam.cgs.client.renderers.weapon;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import software.bernie.geckolib.cache.object.GeoBone;
 
-public class FlintlockRenderer extends BaseGunRenderer{
+public class FlintlockRenderer extends BaseWeaponRenderer {
     public FlintlockRenderer() {
         super();
     }

@@ -1,7 +1,8 @@
 package com.nukateam.cgs.client.handlers;
 
 import com.nukateam.cgs.Gunsmithing;
-import com.nukateam.cgs.client.renderers.FireballRenderer;
+import com.nukateam.cgs.client.renderers.projectile.CgsProjectileRenderer;
+import com.nukateam.cgs.client.renderers.projectile.FireballRenderer;
 import com.nukateam.cgs.common.faundation.registry.CgsParticles;
 import com.nukateam.cgs.common.faundation.registry.CgsProjectiles;
 import com.nukateam.ntgl.client.render.renderers.projectiles.ProjectileRenderer;
@@ -12,7 +13,6 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import com.nukateam.cgs.client.renderers.*;
 
 @Mod.EventBusSubscriber(modid = Gunsmithing.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientEventHandler {

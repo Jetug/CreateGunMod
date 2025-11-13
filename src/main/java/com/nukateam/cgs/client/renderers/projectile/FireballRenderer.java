@@ -1,15 +1,12 @@
-package com.nukateam.cgs.client.renderers;
+package com.nukateam.cgs.client.renderers.projectile;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.nukateam.ntgl.client.render.renderers.projectiles.ProjectileRenderer;
 import com.nukateam.ntgl.common.foundation.entity.ProjectileEntity;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.item.ItemDisplayContext;
 
 public class FireballRenderer extends ProjectileRenderer {
