@@ -1,7 +1,7 @@
 {
   "type": "create:sequenced_assembly",
   "ingredient": {
-    "tag": "forge:plates/brass"
+    "tag": "forge:plates/iron"
   },
   "loops": 1,
   "results": [
@@ -34,7 +34,7 @@
           "item": "create:brass_sheet"
         },
         {
-          "tag": "forge:plates/iron"
+          "tag": "forge:plates/brass"
         }
       ],
       "results": [

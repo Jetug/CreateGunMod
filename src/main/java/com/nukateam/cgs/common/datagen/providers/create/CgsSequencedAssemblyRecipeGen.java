@@ -124,11 +124,11 @@ public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
     });
 
     BaseRecipeProvider.GeneratedRecipe ROCKET_SMALL = this.create("rocket_small", (b) -> {
-        return b.require(TagsKeys.BRASS_SHEET)
+        return b.require(TagsKeys.IRON_SHEET)
                 .transitionTo(AllItems.BRASS_SHEET)
                 .addOutput(new ItemStack(CgsAmmo.SMALL_ROCKET.get(), 5), 1.0F)
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Blocks.TNT))
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagsKeys.IRON_SHEET))
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagsKeys.BRASS_SHEET))
                 .loops(1);
     });
 

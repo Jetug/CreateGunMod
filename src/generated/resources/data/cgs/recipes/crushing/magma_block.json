@@ -1,0 +1,15 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "minecraft:magma_block"
+    }
+  ],
+  "processingTime": 100,
+  "results": [
+    {
+      "chance": 0.1,
+      "item": "cgs:sulfur"
+    }
+  ]
+}
