@@ -1,6 +1,5 @@
 package com.nukateam.cgs.common.datagen.util;
 
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -23,25 +22,27 @@ public class TagsKeys {
         return forgeTag(ForgeRegistries.ITEMS, path);
     }
 
+    //BLOCK TAGS
+    public static final TagKey<Block> ORES                         = forgeBlockTag("ores");
+    public static final TagKey<Block> LEAD_ORES                    = forgeBlockTag("ores/lead");
+    public static final TagKey<Block> SULFUR_ORES                  = forgeBlockTag("ores/sulfur");
+    public static final TagKey<Block> ORES_IN_GROUND_STONE         = forgeBlockTag("ores_in_ground/stone");
+    public static final TagKey<Block> ORES_IN_GROUND_DEEPSLATE     = forgeBlockTag("ores_in_ground/deepslate");
+    public static final TagKey<Block> ORES_IN_GROUND_NETHERRACK    = forgeBlockTag("ores_in_ground/netherrack");
+    public static final TagKey<Block> STORAGE_BLOCKS               = forgeBlockTag("storage_blocks");
+    public static final TagKey<Block> RAW_LEAD_STORAGE_BLOCKS      = forgeBlockTag("storage_blocks/raw_lead");
+    public static final TagKey<Block> LEAD_STORAGE_BLOCKS          = forgeBlockTag("storage_blocks/lead");
+    public static final TagKey<Block> STEEL_STORAGE_BLOCKS         = forgeBlockTag("storage_blocks/steel");
+
+    //ITEM TAGS
     public static TagKey<Item> BRASS_SHEET = forgeItemTag("plates/brass");
     public static TagKey<Item> COPPER_SHEET = forgeItemTag("plates/copper");
     public static TagKey<Item> IRON_SHEET = forgeItemTag("plates/iron");
     public static TagKey<Item> STEEL_SHEET = forgeItemTag("plates/steel");
-    public static TagKey<Item> STEEL_INGOT =forgeItemTag("ingots/steel");
+    public static TagKey<Item> STEEL_INGOT = forgeItemTag("ingots/steel");
 
-    public static TagKey<Item> steelIngot() {
-        return forgeItemTag("ingots/steel");
-    }
-
-    public static TagKey<Item> leadNugget() {
-        return forgeItemTag("nuggets/lead");
-    }
-
-    public static TagKey<Item> steelNugget() {
-        return forgeItemTag("nuggets/steel");
-    }
-
-    public static TagKey<Item> ironNugget() {
-        return forgeItemTag("nuggets/iron");
-    }
+    public static TagKey<Item> LEAD_NUGGET =forgeItemTag("nuggets/lead");
+    public static TagKey<Item> STEEL_NUGGET =forgeItemTag("nuggets/steel");
+    public static TagKey<Item> IRON_NUGGET =forgeItemTag("nuggets/iron");
+    public static TagKey<Item> COPPER_NUGGET =forgeItemTag("nuggets/copper");
 }

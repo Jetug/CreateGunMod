@@ -70,11 +70,11 @@ public class CgsItemTagGenerator extends ItemTagsProvider {
 
         this.tag(INGOTS).add(CgsItems.LEAD_INGOT.get(), CgsItems.STEEL_INGOT.get());
         this.tag(LEAD_INGOTS).add(CgsItems.LEAD_INGOT.get());
-        this.tag(steelIngot()).add(CgsItems.STEEL_INGOT.get());
+        this.tag(STEEL_INGOT).add(CgsItems.STEEL_INGOT.get());
 
         this.tag(NUGGETS).add(CgsItems.LEAD_NUGGET.get(), CgsItems.STEEL_NUGGET.get());
         this.tag(LEAD_NUGGETS).add(CgsItems.LEAD_NUGGET.get());
-        this.tag(steelNugget()).add(CgsItems.STEEL_NUGGET.get());
+        this.tag(STEEL_NUGGET).add(CgsItems.STEEL_NUGGET.get());
 
         this.tag(STEEL_SHEET).add(CgsItems.STEEL_SHEET.get());
 

@@ -35,10 +35,6 @@ import java.util.function.Consumer;
 import static com.nukateam.cgs.common.datagen.util.TagsKeys.*;
 
 public class CgsRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    public static final String INGOT_TAG = "ingots/";
-    public static final String NUGGET_TAG = "nuggets/";
-    public static final String LEAD = "lead";
-
     public CgsRecipeProvider(PackOutput pOutput) {
         super(pOutput);
     }
@@ -66,7 +62,9 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private static void blocks(Consumer<FinishedRecipe> writer) {
         simpleBlock(writer, CgsItems.STEEL_INGOT.get(), CgsBlocks.STEEL_BLOCK.get());
+        simpleBlock(writer, CgsItems.STEEL_NUGGET.get(), CgsItems.STEEL_INGOT.get());
         fromBlock(writer, CgsBlocks.STEEL_BLOCK.get(), CgsItems.STEEL_INGOT.get());
+        fromBlock(writer, CgsItems.STEEL_INGOT.get(), CgsItems.STEEL_NUGGET.get());
     }
 
     private static void presssForms(Consumer<FinishedRecipe> writer) {
@@ -101,7 +99,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("L")
                 .pattern("G")
                 .pattern("P")
-                .define('L', TagsKeys.leadNugget())
+                .define('L', TagsKeys.LEAD_NUGGET)
                 .define('G', Tags.Items.GUNPOWDER)
                 .define('P', Items.PAPER)
                 .unlockedBy(getHasName(CgsItems.LEAD_NUGGET.get()), has(CgsItems.LEAD_NUGGET.get()))

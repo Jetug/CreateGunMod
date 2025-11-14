@@ -1,7 +1,7 @@
 {
   "type": "create:sequenced_assembly",
   "ingredient": {
-    "tag": "forge:plates/brass"
+    "item": "cgs:round_revolver_blank"
   },
   "loops": 1,
   "results": [
@@ -15,40 +15,7 @@
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "cgs:shell_revolver"
-        },
-        {
-          "item": "cgs:press_form_revolver"
-        }
-      ],
-      "keepHeldItem": true,
-      "results": [
-        {
-          "item": "cgs:shell_revolver"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "cgs:shell_revolver"
-        },
-        {
-          "tag": "forge:gunpowder"
-        }
-      ],
-      "results": [
-        {
-          "item": "cgs:shell_revolver"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "cgs:shell_revolver"
+          "item": "cgs:round_revolver_blank"
         },
         {
           "tag": "forge:nuggets/lead"
@@ -56,12 +23,12 @@
       ],
       "results": [
         {
-          "item": "cgs:shell_revolver"
+          "item": "cgs:round_revolver_blank"
         }
       ]
     }
   ],
   "transitionalItem": {
-    "item": "cgs:shell_revolver"
+    "item": "cgs:round_revolver_blank"
   }
 }

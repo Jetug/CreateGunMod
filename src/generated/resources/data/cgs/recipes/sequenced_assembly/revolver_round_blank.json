@@ -6,8 +6,8 @@
   "loops": 1,
   "results": [
     {
-      "count": 5,
-      "item": "cgs:rocket_small"
+      "count": 8,
+      "item": "cgs:round_revolver_blank"
     }
   ],
   "sequence": [
@@ -15,15 +15,16 @@
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "create:brass_sheet"
+          "item": "cgs:shell_revolver"
         },
         {
-          "item": "minecraft:tnt"
+          "item": "cgs:press_form_revolver"
         }
       ],
+      "keepHeldItem": true,
       "results": [
         {
-          "item": "create:brass_sheet"
+          "item": "cgs:shell_revolver"
         }
       ]
     },
@@ -31,20 +32,20 @@
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "create:brass_sheet"
+          "item": "cgs:shell_revolver"
         },
         {
-          "tag": "forge:plates/iron"
+          "tag": "forge:gunpowder"
         }
       ],
       "results": [
         {
-          "item": "create:brass_sheet"
+          "item": "cgs:shell_revolver"
         }
       ]
     }
   ],
   "transitionalItem": {
-    "item": "create:brass_sheet"
+    "item": "cgs:shell_revolver"
   }
 }

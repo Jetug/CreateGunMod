@@ -1,15 +1,33 @@
 {
   "type": "create:sequenced_assembly",
   "ingredient": {
-    "item": "cgs:shell_shotgun"
+    "tag": "forge:plates/brass"
   },
   "loops": 1,
   "results": [
     {
+      "count": 4,
       "item": "cgs:round_shotgun_blank"
     }
   ],
   "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:shell_shotgun"
+        },
+        {
+          "item": "cgs:press_form_shotgun"
+        }
+      ],
+      "keepHeldItem": true,
+      "results": [
+        {
+          "item": "cgs:shell_shotgun"
+        }
+      ]
+    },
     {
       "type": "create:deploying",
       "ingredients": [

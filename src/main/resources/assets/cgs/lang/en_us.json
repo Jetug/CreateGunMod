@@ -33,10 +33,18 @@
   "item.cgs.shell_revolver": "Revolver Shell",
   "item.cgs.shell_shotgun": "Shotgun Shell",
 
+  "item.cgs.round_gatling_blank": "Blank Gatling Round",
   "item.cgs.round_gatling": "Gatling Round",
+  "item.cgs.round_gatling_piercing": "Piercing Gatling Round",
+
+  "item.cgs.round_revolver_blank": "Blank Revolver Round",
   "item.cgs.round_revolver": "Revolver Round",
-  "item.cgs.round_shotgun": "Shotgun Round",
+  "item.cgs.round_revolver_piercing": "Piercing Revolver Round",
+
   "item.cgs.round_shotgun_blank": "Blank Shotgun Round",
+  "item.cgs.round_shotgun": "Shotgun Round",
+  "item.cgs.round_shotgun_incendiary": "Incendiary Shotgun Round",
+
   "item.cgs.paper_cartridge": "Paper Cartridge",
   "item.cgs.nail": "Nail",
   "item.cgs.rocket": "Rocket",

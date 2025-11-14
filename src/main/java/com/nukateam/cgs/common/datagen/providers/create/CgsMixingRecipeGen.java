@@ -1,4 +1,4 @@
-package com.nukateam.cgs.common.datagen.providers;
+package com.nukateam.cgs.common.datagen.providers.create;
 
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.registry.items.CgsItems;

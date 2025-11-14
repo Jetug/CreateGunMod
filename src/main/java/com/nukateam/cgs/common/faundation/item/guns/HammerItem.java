@@ -1,7 +1,6 @@
 package com.nukateam.cgs.common.faundation.item.guns;
 
 import com.nukateam.cgs.client.animators.*;
-import com.nukateam.cgs.client.renderers.*;
 import com.nukateam.cgs.client.renderers.weapon.HammerRenderer;
 import com.nukateam.cgs.common.faundation.item.attachments.HammerHeadItem;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
@@ -9,8 +8,6 @@ import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
 import com.nukateam.ntgl.common.data.WeaponData;
-import com.nukateam.ntgl.common.data.constants.Tags;
-import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.interfaces.IWeaponModifier;
 import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;

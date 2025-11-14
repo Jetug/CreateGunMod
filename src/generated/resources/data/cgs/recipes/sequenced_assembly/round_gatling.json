@@ -1,12 +1,11 @@
 {
   "type": "create:sequenced_assembly",
   "ingredient": {
-    "tag": "forge:plates/brass"
+    "item": "cgs:round_gatling_blank"
   },
   "loops": 1,
   "results": [
     {
-      "count": 4,
       "item": "cgs:round_gatling"
     }
   ],
@@ -15,40 +14,7 @@
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "cgs:shell_gatling"
-        },
-        {
-          "item": "cgs:press_form_gatling"
-        }
-      ],
-      "keepHeldItem": true,
-      "results": [
-        {
-          "item": "cgs:shell_gatling"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "cgs:shell_gatling"
-        },
-        {
-          "tag": "forge:gunpowder"
-        }
-      ],
-      "results": [
-        {
-          "item": "cgs:shell_gatling"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "cgs:shell_gatling"
+          "item": "cgs:round_gatling_blank"
         },
         {
           "tag": "forge:nuggets/lead"
@@ -56,7 +22,7 @@
       ],
       "results": [
         {
-          "item": "cgs:shell_gatling"
+          "item": "cgs:round_gatling_blank"
         }
       ]
     },
@@ -64,20 +30,20 @@
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "cgs:shell_gatling"
+          "item": "cgs:round_gatling_blank"
         },
         {
-          "tag": "forge:plates/copper"
+          "tag": "forge:nuggets/copper"
         }
       ],
       "results": [
         {
-          "item": "cgs:shell_gatling"
+          "item": "cgs:round_gatling_blank"
         }
       ]
     }
   ],
   "transitionalItem": {
-    "item": "cgs:shell_gatling"
+    "item": "cgs:round_gatling_blank"
   }
 }

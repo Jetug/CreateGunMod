@@ -1,9 +1,8 @@
-package com.nukateam.cgs.common.datagen.providers;
+package com.nukateam.cgs.common.datagen.providers.create;
 
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.registry.items.CgsAttachments;
 import com.nukateam.cgs.common.faundation.registry.items.CgsWeapons;
-import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
@@ -11,7 +10,6 @@ import com.simibubi.create.api.data.recipe.BaseRecipeProvider;
 import com.simibubi.create.api.data.recipe.MechanicalCraftingRecipeGen;
 
 import net.minecraft.data.PackOutput;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 
@@ -38,7 +36,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 		GATLING = create(CgsWeapons.GATLING::get).returns(1)
 			.recipe(b -> b
 					.key('B', STEEL_SHEET)
-					.key('I', steelIngot())
+					.key('I', STEEL_INGOT)
 					.key('A', AllItems.ANDESITE_ALLOY.get())
 					.key('C', AllBlocks.COGWHEEL.get())
 					.key('P', AllItems.PRECISION_MECHANISM.get())
@@ -56,7 +54,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 					.key('B', STEEL_SHEET)
 					.key('A', AllItems.ANDESITE_ALLOY.get())
 					.key('C', AllBlocks.COGWHEEL.get())
-					.key('I', steelIngot())
+					.key('I', STEEL_INGOT)
 					.key('L', AllItems.BRASS_SHEET.get())
 					.patternLine("BBIC")
 					.patternLine("WALL")

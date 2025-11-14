@@ -1,6 +1,7 @@
 package com.nukateam.cgs.common.datagen;
 
 import com.nukateam.cgs.common.datagen.providers.*;
+import com.nukateam.cgs.common.datagen.providers.create.*;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -21,6 +22,7 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), new CgsMixingRecipeGen(packOutput));
         generator.addProvider(event.includeServer(), new CgsPressingRecipeGen(packOutput));
         generator.addProvider(event.includeServer(), new CgsCrushingRecipeGen(packOutput));
+        generator.addProvider(event.includeServer(), new CgsDeployingRecipeGen(packOutput));
 
         generator.addProvider(event.includeServer(), CgsLootTableProvider.create(packOutput));
         generator.addProvider(event.includeClient(), new CgsBlockStateProvider(packOutput, fileHelper));

@@ -17,22 +17,6 @@
           "item": "cgs:shell_shotgun"
         },
         {
-          "tag": "forge:nuggets/lead"
-        }
-      ],
-      "results": [
-        {
-          "item": "cgs:shell_shotgun"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "cgs:shell_shotgun"
-        },
-        {
           "item": "minecraft:blaze_powder"
         }
       ],
