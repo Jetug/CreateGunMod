@@ -30,8 +30,8 @@ public class CgsItemTabs {
 
     private static void getWeaponTab(ItemDisplayParameters itemDisplayParameters, Output output) {
         registerGuns(output, CgsWeapons.ITEMS);
-        registerItems(output, CgsAmmo.ITEMS);
         registerItems(output, CgsAttachments.ITEMS);
+        registerItems(output, CgsAmmo.ITEMS);
         registerItems(output, CgsItems.ITEMS);
     }
 
