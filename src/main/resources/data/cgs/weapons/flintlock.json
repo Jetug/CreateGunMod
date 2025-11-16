@@ -10,6 +10,7 @@
     "recoilAdsReduction": 0.15,
     "alwaysSpread": true,
     "enchantable": false,
+    "oneHanded": true,
     "spread": 3.5,
     "ammo": [
       "cgs:paper_cartridge"
@@ -31,6 +32,17 @@
       }
     }
   },
+  "modes": {
+    "ntgl:secondary": {
+      "general": {
+        "action": "ntgl:scope"
+      },
+      "zoom": {
+        "offset": [ -0.1, 3.6, 1.4],
+        "fovModifier": 0.7
+      }
+    }
+  },
   "animations": {
     "ntgl:reload": "ntgl:revolver_reload"
   },
@@ -42,10 +54,6 @@
   },
   "modules": {
     "attachmentScreen": true,
-    "zoom": {
-      "offset": [ -0.1, 3.6, 1.4],
-      "fovModifier": 0.7
-    },
     "attachments": {
       "ntgl:scope": [
         {

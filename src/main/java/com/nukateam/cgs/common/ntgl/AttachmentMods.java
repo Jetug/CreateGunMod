@@ -154,7 +154,10 @@ public class AttachmentMods {
                     return GripType.TWO_HANDED;
                 }
                 else if(data.weapon.getItem() == CgsWeapons.GATLING.get()) {
-                    return getGatlingGripType(gripType, data);
+                    if(data.weapon.getItem() == CgsWeapons.GATLING.get()) {
+                        return GripType.ONE_HANDED;
+                    }
+                    else return gripType;
                 }
             }
             return IWeaponModifier.super.modifyGripType(gripType, data);
@@ -168,16 +171,22 @@ public class AttachmentMods {
             return IWeaponModifier.super.modifyFireSound(sound, data);
         }
 
-        private GripType getGatlingGripType(GripType gripType, WeaponData data){
+        @Override
+        public boolean modifyOneHanded(boolean value, WeaponData data) {
+            if(data.weapon.getItem() == CgsWeapons.GATLING.get()) {
+                return getGatlingOneHanded(data);
+            }
+            return value;
+        }
+
+        private boolean getGatlingOneHanded(WeaponData data){
             if(data.wielder != null && data.weapon != null) {
                 var magazineItem = WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, data.weapon).getItem();
                 var drumItem = CgsAttachments.GATLING_DRUM.get();
-
-                if (magazineItem != drumItem && FuelUtils.hasFuel(data) && data.wielder.hasEffect(MobEffects.DAMAGE_BOOST)) {
-                    return GripType.ONE_HANDED;
-                }
+                var hasStrengthEffect = data.wielder.hasEffect(MobEffects.DAMAGE_BOOST);
+                return magazineItem != drumItem && FuelUtils.hasFuel(data) && hasStrengthEffect;
             }
-            return gripType;
+            return false;
         }
     };
 
@@ -303,6 +312,11 @@ public class AttachmentMods {
         }
 
         @Override
+        public boolean modifyOneHanded(boolean value, WeaponData data) {
+            return false;
+        }
+
+        @Override
         public float modifyProjectileDamage(float damage, ResourceLocation ammo, WeaponData data) {
             return damage * 1.5f;
         }
@@ -395,12 +409,22 @@ public class AttachmentMods {
         public GripType modifyGripType(GripType gripType, WeaponData data) {
             return GripType.TWO_HANDED;
         }
+
+        @Override
+        public boolean modifyOneHanded(boolean value, WeaponData data) {
+            return false;
+        }
     };
 
     public static final IWeaponModifier SHOTGUN_LONG_BARREL = new IWeaponModifier() {
         @Override
         public GripType modifyGripType(GripType gripType, WeaponData data) {
             return GripType.TWO_HANDED;
+        }
+
+        @Override
+        public boolean modifyOneHanded(boolean value, WeaponData data) {
+            return false;
         }
 
         @Override

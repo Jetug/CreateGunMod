@@ -1,8 +1,8 @@
 {
    "gun.gatling.fire": { "subtitle": "subtitle.ntgl.fire", "sounds": [
-      { "name": "cgs:gun/gatling/fire/fire_02" , "volume": 60.0},
-      { "name": "cgs:gun/gatling/fire/fire_03" , "volume": 60.0},
-      { "name": "cgs:gun/gatling/fire/fire_05" , "volume": 60.0}
+      { "name": "cgs:gun/gatling/fire/fire_02"},
+      { "name": "cgs:gun/gatling/fire/fire_03"},
+      { "name": "cgs:gun/gatling/fire/fire_05"}
    ]},
 
    "gun.gatling.reload_mag_in": { "subtitle": "subtitle.ntgl.reload", "sounds": [
@@ -14,9 +14,9 @@
    ]},
 
    "gun.revolver.fire": { "subtitle": "subtitle.ntgl.fire", "sounds": [
-      { "name": "cgs:gun/revolver/fire/fire_01" , "volume": 5.0},
-      { "name": "cgs:gun/revolver/fire/fire_02" , "volume": 5.0},
-      { "name": "cgs:gun/revolver/fire/fire_03" , "volume": 5.0}
+      { "name": "cgs:gun/revolver/fire/fire_01"},
+      { "name": "cgs:gun/revolver/fire/fire_02"},
+      { "name": "cgs:gun/revolver/fire/fire_03"}
    ]},
 
    "gun.revolver.chamber_open": { "subtitle": "subtitle.ntgl.reload", "sounds": [

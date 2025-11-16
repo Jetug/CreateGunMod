@@ -46,8 +46,10 @@ public class BaseWeaponRenderer extends DynamicWeaponRenderer<WeaponAnimator> {
                                   float partialTick, int packedLight, int packedOverlay,
                                   float red, float green, float blue, float alpha) {
 
-        var hideMuzzleFlash = !TransformUtils.isFirstPerson(transformType) && bone.getName().equals("muzzle_effect");
-        bone.setHidden(hideMuzzleFlash);
+        if(!TransformUtils.isFirstPerson(transformType)
+                && (bone.getName().equals("muzzle_effect") || bone.getName().equals("muzzle_flash"))) {
+            bone.setHidden(true);
+        }
 
         super.renderRecursively(poseStack, animatable, bone, renderType, bufferSource, buffer, isReRender, partialTick,
                 packedLight, packedOverlay, red, green, blue, alpha);
