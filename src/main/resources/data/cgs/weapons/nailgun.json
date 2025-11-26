@@ -59,7 +59,7 @@
         "type": "cgs:air"
       }
     },
-    "ntgl:burnable":{
+    "cgs:burnable":{
       "max": 20000,
       "mandatory": true,
       "amountPerUse": 1,
@@ -67,7 +67,7 @@
         "type": "ntgl:burnable"
       }
     },
-    "ntgl:water":{
+    "cgs:water":{
       "max": 2000,
       "mandatory": true,
       "amountPerUse": 5,

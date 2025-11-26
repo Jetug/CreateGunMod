@@ -1,5 +1,6 @@
 package com.nukateam.cgs.common.faundation.item.guns;
 
+import com.nukateam.cgs.common.ntgl.CgsAmmoHolders;
 import com.nukateam.cgs.common.utils.GunUtils;
 //import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
@@ -89,17 +90,17 @@ public class CgsGunItem extends WeaponItem {
         var fuel = WeaponModifierHelper.getAllFuel(data);
 
         if(!fuel.isEmpty() && isInHand(data)){
-            if(fuel.contains(AmmoHolders.BURNABLE)){
-                FuelUtils.addFuel(data, AmmoHolders.BURNABLE, -1);
+            if(fuel.contains(CgsAmmoHolders.BURNABLE)){
+                FuelUtils.addFuel(data, CgsAmmoHolders.BURNABLE, -1);
             }
         }
     }
 
     private static void fillWater(WeaponData gunData) {
         var types = WeaponModifierHelper.getAllFuel(gunData);
-        if(gunData.wielder.isInWater() && types.contains(AmmoHolders.WATER)){
-            var maxWater = WeaponModifierHelper.getMaxFuel(AmmoHolders.WATER.getId(), gunData);
-            FuelUtils.setFuel(gunData.weapon, AmmoHolders.WATER, maxWater);
+        if(gunData.wielder.isInWater() && types.contains(CgsAmmoHolders.WATER)){
+            var maxWater = WeaponModifierHelper.getMaxFuel(CgsAmmoHolders.WATER.getId(), gunData);
+            FuelUtils.setFuel(gunData.weapon, CgsAmmoHolders.WATER, maxWater);
         }
     }
 

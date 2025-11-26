@@ -24,7 +24,7 @@
   "modes": {
     "ntgl:secondary": {
       "general": {
-        "action": "ntgl:scope"
+        "action": "ntgl:none"
       },
       "zoom": {
         "offset": [ -0.1, 8.2, 0.0],
@@ -60,7 +60,7 @@
     }
   },
   "fuel": {
-    "ntgl:burnable":{
+    "cgs:burnable":{
       "max": 20000,
       "amountPerUse": 1,
       "mandatory": false,
@@ -68,12 +68,12 @@
         "type": "ntgl:burnable"
       }
     },
-    "ntgl:water":{
+    "cgs:water":{
       "max": 2000,
       "amountPerUse": 5,
       "mandatory": false,
       "ammo": {
-        "type": "ntgl:water"
+        "type": "cgs:water"
       }
     }
   },

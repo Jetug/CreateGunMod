@@ -1,5 +1,7 @@
 package com.nukateam.cgs.common.utils;
 
+import com.nukateam.cgs.common.faundation.item.FluidContainerItem;
+import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
 import com.nukateam.cgs.common.handlers.GunEventHandler;
 import com.nukateam.cgs.common.ntgl.CgsAmmoHolders;
 import com.nukateam.ntgl.common.registry.AmmoHolders;
@@ -12,6 +14,7 @@ import com.simibubi.create.content.equipment.armor.BacktankUtil;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.ForgeHooks;
@@ -34,6 +37,12 @@ public class GunUtils {
                 pitch);
     }
 
+    public static void giveItemToPlayer(Player player, ItemStack itemStack) {
+        if (!player.getInventory().add(itemStack)) {
+            player.drop(itemStack, false);
+        }
+    }
+
     public static boolean fillFuel(ItemStack gun, Player player, ItemStack fuelStack) {
         var gunData = new WeaponData(gun, player);
         var isSurvival = !player.isCreative();
@@ -44,14 +53,17 @@ public class GunUtils {
             var currentFuel = FuelUtils.getFuel(gun,fuelType);
             if(fuelType.isAcceptable(fuelStack) && currentFuel < maxFuel) {
                 var value = 0;
-                if(fuelType == AmmoHolders.BURNABLE) {
-                    value = ForgeHooks.getBurnTime(fuelStack, null);
+                if(fuelType == CgsAmmoHolders.BURNABLE) {
+                    value = CgsAmmoHolders.BURNABLE.getValue(fuelStack);
+
                     if(isSurvival) {
+                        var returnItem = CgsAmmoHolders.BURNABLE.onConsume().apply(fuelStack, 1);
+                        returnItem.forEach((item) -> giveItemToPlayer(player, item));
                         fuelStack.shrink(1);
                     }
                 }
-                else if(fuelType == AmmoHolders.WATER) {
-                    value = 1000;
+                else if(fuelType == CgsAmmoHolders.WATER) {
+                    value = CgsAmmoHolders.WATER.getValue(fuelStack);
                     if(isSurvival) {
                         fuelStack.shrink(1);
                         player.addItem(new ItemStack(Items.BUCKET));

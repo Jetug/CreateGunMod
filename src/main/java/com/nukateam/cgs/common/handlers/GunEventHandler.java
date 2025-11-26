@@ -8,11 +8,13 @@ import com.nukateam.cgs.common.utils.GunUtils;
 import com.nukateam.ntgl.common.data.holders.AmmoHolder;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
 import com.nukateam.ntgl.common.event.GunReloadEvent;
+import com.nukateam.ntgl.common.util.helpers.context.AmmoContext;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.ntgl.common.registry.AmmoHolders;
 import com.nukateam.ntgl.common.event.GunFireEvent;
 import com.nukateam.ntgl.common.event.GunProjectileHitEvent;
 import com.nukateam.ntgl.common.data.WeaponData;
+import com.nukateam.ntgl.common.util.util.InventoryUtil;
 import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.simibubi.create.AllBlocks;
@@ -20,11 +22,14 @@ import com.simibubi.create.AllItems;
 import com.simibubi.create.content.equipment.armor.BacktankBlockEntity;
 import com.simibubi.create.content.equipment.armor.BacktankUtil;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import static com.nukateam.cgs.common.utils.GunUtils.fillFuel;
 import static net.minecraft.world.phys.HitResult.Type.BLOCK;
 
 @Mod.EventBusSubscriber(modid = Gunsmithing.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -59,11 +64,11 @@ public class GunEventHandler {
         var data = new WeaponData(gun, shooter);
         var fuel = WeaponModifierHelper.getAllFuel(data);
 //        if(!event.getEntity().level().isClientSide) {
-            if (fuel.contains(AmmoHolders.BURNABLE)) {
-                FuelUtils.addFuel(data, AmmoHolders.BURNABLE, -1);
+            if (fuel.contains(CgsAmmoHolders.BURNABLE)) {
+                FuelUtils.addFuel(data, CgsAmmoHolders.BURNABLE, -1);
             }
-            if (fuel.contains(AmmoHolders.WATER)) {
-                FuelUtils.addFuel(data, AmmoHolders.WATER, -5);
+            if (fuel.contains(CgsAmmoHolders.WATER)) {
+                FuelUtils.addFuel(data, CgsAmmoHolders.WATER, -5);
             }
             if (fuel.contains(CgsAmmoHolders.AIR)) {
                 consumeAir(data);
@@ -73,6 +78,29 @@ public class GunEventHandler {
                 checkCock(data);
             }
 //        }
+    }
+
+    @SubscribeEvent
+    public static void preReload(GunReloadEvent.Pre event) {
+        var gun = event.getStack();
+        var shooter = event.getEntity();
+        var data = new WeaponData(gun, shooter);
+
+        if(!event.getEntity().level().isClientSide) {
+            var fuels = WeaponModifierHelper.getAllFuel(data);
+            fuels.forEach((f) -> {
+                var fuelCount = FuelUtils.getFuel(gun, f);
+                var maxFuel = WeaponModifierHelper.getMaxFuel(f.getId(), data);
+                if (fuelCount < maxFuel){
+                    var foundFuel = InventoryUtil.findPlayerAmmo(shooter, f);
+                    if(foundFuel != AmmoContext.NONE){
+                        if(fuelCount <= Math.min(0, maxFuel - f.getValue(foundFuel.stack()))){
+                            fillFuel(gun, shooter, foundFuel.stack());
+                        }
+                    }
+                }
+            });
+        }
     }
 
     @SubscribeEvent

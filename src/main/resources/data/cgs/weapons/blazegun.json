@@ -1,6 +1,6 @@
 {
   "general": {
-    "action": "ntgl:gun",
+    "action": "ntgl:shot",
     "fireMode": ["ntgl:auto"],
     "rate": 3,
     "gripType": "ntgl:mini_gun",
@@ -16,6 +16,17 @@
       "cgs:burnable",
       "cgs:blaze_cake"
     ]
+  },
+  "modes": {
+    "ntgl:secondary": {
+      "general": {
+        "action": "ntgl:gun",
+        "fireMode": ["ntgl:auto"],
+        "spread": 5.0,
+
+        "rate": 1
+      }
+    }
   },
   "ammoData": {
     "cgs:burnable": {
@@ -50,12 +61,12 @@
     }
   },
   "fuel": {
-    "ntgl:water":{
+    "cgs:water":{
       "max": 2000,
       "amountPerUse": 1,
       "mandatory": true,
       "ammo": {
-        "type": "ntgl:water"
+        "type": "cgs:water"
       }
     }
   },

@@ -30,24 +30,25 @@ public class CgsItemTagGenerator extends ItemTagsProvider {
 //                .createOptionalTagKey(ResourceLocation.tryBuild("create", path), Collections.emptySet());
 //    }
 
-    private final TagKey<Item> LEAD_ORE = AllTags.forgeItemTag("ores/lead");
-    private final TagKey<Item> ORES = AllTags.forgeItemTag("ores");
-    private final TagKey<Item> RAW_ORE = AllTags.forgeItemTag("raw_lead/lead");
-    private final TagKey<Item> ORES_IN_GROUND_STONE = AllTags.forgeItemTag("ores_in_ground/stone");
-    private final TagKey<Item> ORES_IN_GROUND_DEEPSLATE = AllTags.forgeItemTag("ores_in_ground/deepslate");
-    private final TagKey<Item> RAW_MATERIALS = AllTags.forgeItemTag("raw_materials");
-    private final TagKey<Item> RAW_LEAD = AllTags.forgeItemTag("raw_materials/lead");
-    private final TagKey<Item> STORAGE_BLOCKS = AllTags.forgeItemTag("storage_blocks");
-    private final TagKey<Item> LEAD_STORAGE_BLOCKS = AllTags.forgeItemTag("storage_blocks/raw_lead");
-    private final TagKey<Item> INGOTS = AllTags.forgeItemTag("ingots");
-    private final TagKey<Item> LEAD_INGOTS = AllTags.forgeItemTag("ingots/lead");
-    private final TagKey<Item> STEEL_INGOTS = AllTags.forgeItemTag("ingots/steel");
-    private final TagKey<Item> NUGGETS = AllTags.forgeItemTag("nuggets");
-    private final TagKey<Item> LEAD_NUGGETS = AllTags.forgeItemTag("nuggets/lead");
-    private final TagKey<Item> DUSTS = AllTags.forgeItemTag("dusts");
-    private final TagKey<Item> SULFUR = AllTags.forgeItemTag("dusts/sulfur");
-    private final TagKey<Item> NITER = AllTags.forgeItemTag("dusts/niter");
-    private final TagKey<Item> CHARCOAL_DUST = AllTags.forgeItemTag("dusts/charcoal_dust");
+    private final TagKey<Item> LEAD_ORE = forgeItemTag("ores/lead");
+    private final TagKey<Item> ORES = forgeItemTag("ores");
+    private final TagKey<Item> RAW_ORE = forgeItemTag("raw_lead/lead");
+    private final TagKey<Item> ORES_IN_GROUND_STONE = forgeItemTag("ores_in_ground/stone");
+    private final TagKey<Item> ORES_IN_GROUND_DEEPSLATE = forgeItemTag("ores_in_ground/deepslate");
+    private final TagKey<Item> RAW_MATERIALS = forgeItemTag("raw_materials");
+    private final TagKey<Item> RAW_LEAD = forgeItemTag("raw_materials/lead");
+    private final TagKey<Item> STORAGE_BLOCKS = forgeItemTag("storage_blocks");
+    private final TagKey<Item> LEAD_STORAGE_BLOCKS = forgeItemTag("storage_blocks/raw_lead");
+    private final TagKey<Item> INGOTS = forgeItemTag("ingots");
+    private final TagKey<Item> LEAD_INGOTS = forgeItemTag("ingots/lead");
+    private final TagKey<Item> STEEL_INGOTS = forgeItemTag("ingots/steel");
+    private final TagKey<Item> NUGGETS = forgeItemTag("nuggets");
+    private final TagKey<Item> LEAD_NUGGETS = forgeItemTag("nuggets/lead");
+    private final TagKey<Item> DUSTS = forgeItemTag("dusts");
+    private final TagKey<Item> SULFUR = forgeItemTag("dusts/sulfur");
+    private final TagKey<Item> NITER = forgeItemTag("dusts/niter");
+    private final TagKey<Item> SALTPETER = forgeItemTag("dusts/saltpeter");
+    private final TagKey<Item> CHARCOAL_DUST = forgeItemTag("dusts/charcoal_dust");
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
@@ -85,6 +86,7 @@ public class CgsItemTagGenerator extends ItemTagsProvider {
 
         this.tag(SULFUR).add(CgsItems.SULFUR.get());
         this.tag(NITER).add(CgsItems.NITER.get());
+        this.tag(SALTPETER).add(CgsItems.NITER.get());
         this.tag(CHARCOAL_DUST).add(CgsItems.CHARCOAL_DUST.get());
     }
 }

@@ -52,6 +52,16 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
         blocks(writer);
         presssForms(writer);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsItems.EMPTY_CONTAINER.get(), 4)
+                .define('C', COPPER_SHEET)
+                .define('A', AllItems.ANDESITE_ALLOY.get())
+                .define('P', Tags.Items.GLASS_PANES)
+                .pattern(" A ")
+                .pattern("CPC")
+                .pattern("CCC")
+                .unlockedBy(getHasName(AllItems.COPPER_SHEET), has(AllItems.COPPER_SHEET))
+                .save(writer, getId(CgsItems.EMPTY_CONTAINER.get()));
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, Items.GUNPOWDER, 3)
                 .requires(CgsItems.CHARCOAL_DUST.get())
                 .requires(CgsItems.SULFUR.get())
@@ -95,13 +105,10 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     private static void ammo(Consumer<FinishedRecipe> writer) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsAmmo.PAPER_CARTRIDGE.get(), 3)
-                .pattern("L")
-                .pattern("G")
-                .pattern("P")
-                .define('L', TagsKeys.LEAD_NUGGET)
-                .define('G', Tags.Items.GUNPOWDER)
-                .define('P', Items.PAPER)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, CgsAmmo.PAPER_CARTRIDGE.get(), 3)
+                .requires(TagsKeys.LEAD_NUGGET)
+                .requires(Tags.Items.GUNPOWDER)
+                .requires(Items.PAPER)
                 .unlockedBy(getHasName(CgsItems.LEAD_NUGGET.get()), has(CgsItems.LEAD_NUGGET.get()))
                 .save(writer, getId(CgsAmmo.PAPER_CARTRIDGE.get()));
 
@@ -370,5 +377,4 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
     public static TagKey<Item> forgeItemTag(String path) {
         return forgeTag(ForgeRegistries.ITEMS, path);
     }
-
 }

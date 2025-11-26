@@ -3,20 +3,44 @@ package com.nukateam.cgs.common.faundation.registry.items;
 
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.datagen.annotations.ItemModelGen;
+import com.nukateam.cgs.common.faundation.item.FluidContainerItem;
 import com.nukateam.cgs.common.faundation.registry.CgsBlocks;
 import com.nukateam.ntgl.common.foundation.item.AmmoItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.Map;
 import java.util.function.Function;
 
 public class CgsItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Gunsmithing.MOD_ID);
+
+    @ItemModelGen
+    public static final RegistryObject<Item> EMPTY_CONTAINER = ITEMS.register("tank_empty",
+            () -> new FluidContainerItem(() -> Fluids.EMPTY,
+                    new Item.Properties().stacksTo(16)));
+
+    @ItemModelGen
+    public static final RegistryObject<Item> WATER_CONTAINER = ITEMS.register("tank_water",
+            () -> new FluidContainerItem(() -> Fluids.WATER,
+                    new Item.Properties().stacksTo(16)));
+
+    @ItemModelGen
+    public static final RegistryObject<Item> LAVA_CONTAINER = ITEMS.register("tank_lava",
+            () -> new FluidContainerItem(() -> Fluids.LAVA,
+                    new Item.Properties().stacksTo(16)));
+
+    public static Map<Fluid, RegistryObject<Item>> CONTAINERS = Map.of(
+            Fluids.WATER, WATER_CONTAINER,
+            Fluids.LAVA, LAVA_CONTAINER
+    );
 
     @ItemModelGen
     public static final RegistryObject<Item> PRESS_FORM_GATLING = registerItem("press_form_gatling");
@@ -54,18 +78,9 @@ public class CgsItems {
     @ItemModelGen
     public static final RegistryObject<Item> CHARCOAL_DUST = registerItem ("charcoal_dust");
 
-//    @ItemModelGen
-//    public static final RegistryObject<Item> GUANO = ITEMS.register("guano", () -> new BlockItem(toReturn.get(), new Item.Properties())) = registerItem ("guano");
-
     @ItemModelGen
     public static final RegistryObject<Item> GUANO = ITEMS.register("guano",
             () -> new ItemNameBlockItem(CgsBlocks.GUANO_BLOCK.get(), new Item.Properties()));
-
-//    @ItemModelGen
-//    public static final RegistryObject<Item> BARREL = registerItem("barrel");
-//
-//    @ItemModelGen
-//    public static final RegistryObject<Item> STURDY_BARREL = registerItem("barrel_sturdy");
 
 
     public static RegistryObject<Item> registerItem(String name, Item.Properties properties) {

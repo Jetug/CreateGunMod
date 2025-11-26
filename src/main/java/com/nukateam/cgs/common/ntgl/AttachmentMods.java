@@ -52,6 +52,15 @@ public class AttachmentMods {
     //GENERIC
     public static final IWeaponModifier STEAM_ENGINE_MODIFIERS = new IWeaponModifier() {
         @Override
+        public WeaponAction modifyWeaponAction(WeaponAction value, WeaponData data) {
+            if(data.weapon.getItem() == CgsWeapons.BLAZEGUN.get() && data.weaponMode == WeaponMode.SECONDARY){
+                return WeaponAction.SHOT;
+            }
+
+            return value;
+        }
+
+        @Override
         public ProjectileConfig modifyProjectile(ProjectileConfig value, WeaponData data) {
             if(data.weapon == null) return value;
 
@@ -142,9 +151,9 @@ public class AttachmentMods {
             if(data.weapon == null) return fuel;
 
             if(data.weapon.getItem() == CgsWeapons.BLAZEGUN.get()) {
-                return Set.of(AmmoHolders.WATER);
+                return Set.of(CgsAmmoHolders.WATER);
             }
-            return Set.of(AmmoHolders.BURNABLE, AmmoHolders.WATER);
+            return Set.of(CgsAmmoHolders.BURNABLE, CgsAmmoHolders.WATER);
         }
 
         @Override

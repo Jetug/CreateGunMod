@@ -1,25 +1,19 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "category": "equipment",
-  "key": {
-    "G": {
-      "tag": "forge:gunpowder"
-    },
-    "L": {
+  "ingredients": [
+    {
       "tag": "forge:nuggets/lead"
     },
-    "P": {
+    {
+      "tag": "forge:gunpowder"
+    },
+    {
       "item": "minecraft:paper"
     }
-  },
-  "pattern": [
-    "L",
-    "G",
-    "P"
   ],
   "result": {
     "count": 3,
     "item": "cgs:paper_cartridge"
-  },
-  "show_notification": true
+  }
 }
