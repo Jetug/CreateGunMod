@@ -61,19 +61,6 @@ public class AttachmentMods {
         }
 
         @Override
-        public ProjectileConfig modifyProjectile(ProjectileConfig value, WeaponData data) {
-            if(data.weapon == null) return value;
-
-            if(data.weapon.getItem() == CgsWeapons.BLAZEGUN.get()) {
-                if(WeaponStateHelper.getCurrentAmmo(data) == CgsAmmoHolders.BLAZE_CAKE){
-                    return SUPER_FLAME_PROJECTILE;
-                }
-                return FLAME_PROJECTILE;
-            }
-            return value;
-        }
-
-        @Override
         public int modifyFireRate(int rate, WeaponData data) {
             if(data.weapon == null) return rate;
 
@@ -81,11 +68,11 @@ public class AttachmentMods {
                 return rate * 2;
             else if(data.weapon.getItem() == CgsWeapons.GATLING.get() && FuelUtils.hasFuel(data)) {
                 return rate / 2;
-            } else if(data.weapon.getItem() == CgsWeapons.BLAZEGUN.get()) {
+            }
+            else if(data.weapon.getItem() == CgsWeapons.BLAZEGUN.get()) {
                 if(WeaponStateHelper.getCurrentAmmo(data) == CgsAmmoHolders.BLAZE_CAKE){
-                    return 1;
+                    return rate / 2;
                 }
-                return 2;
             }
             return rate;
         }
@@ -111,6 +98,19 @@ public class AttachmentMods {
         }
 
         @Override
+        public ProjectileConfig modifyProjectile(ProjectileConfig value, WeaponData data) {
+            if(data.weapon == null) return value;
+
+            if(data.weapon.getItem() == CgsWeapons.BLAZEGUN.get() && data.weaponMode == WeaponMode.SECONDARY) {
+                if(WeaponStateHelper.getCurrentAmmo(data) == CgsAmmoHolders.BLAZE_CAKE){
+                    return SUPER_FLAME_PROJECTILE;
+                }
+                return FLAME_PROJECTILE;
+            }
+            return value;
+        }
+
+        @Override
         public float modifyProjectileDamage(float damage, ResourceLocation ammo, WeaponData data) {
             if(data.weapon == null) return damage;
 
@@ -118,6 +118,16 @@ public class AttachmentMods {
                 return damage * 2f;
             }
             return damage;
+        }
+
+        @Override
+        public float modifyProjectileSpread(float spread, WeaponData data) {
+            if(data.weapon == null) return spread;
+
+            if(data.weapon.getItem() == CgsWeapons.GATLING.get() && FuelUtils.hasFuel(data)) {
+                return spread + 8f;
+            }
+            return spread;
         }
 
         @Override
@@ -134,16 +144,6 @@ public class AttachmentMods {
                 return 2;
             }
             return IWeaponModifier.super.kickModifier(data);
-        }
-
-        @Override
-        public float modifyProjectileSpread(float spread, WeaponData data) {
-            if(data.weapon == null) return spread;
-
-            if(data.weapon.getItem() == CgsWeapons.GATLING.get() && FuelUtils.hasFuel(data)) {
-                return spread + 8f;
-            }
-            return spread;
         }
 
         @Override

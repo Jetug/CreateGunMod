@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "C": {
+      "tag": "forge:plates/copper"
+    },
+    "P": {
+      "tag": "forge:glass_panes"
+    }
+  },
+  "pattern": [
+    " A ",
+    "CPC",
+    "CCC"
+  ],
+  "result": {
+    "count": 4,
+    "item": "cgs:tank_empty"
+  },
+  "show_notification": true
+}

@@ -20,11 +20,10 @@
   "modes": {
     "ntgl:secondary": {
       "general": {
-        "action": "ntgl:gun",
+        "action": "ntgl:none",
         "fireMode": ["ntgl:auto"],
-        "spread": 5.0,
-
-        "rate": 1
+        "rate": 2,
+        "spread": 5.0
       }
     }
   },

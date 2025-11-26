@@ -24,7 +24,7 @@
   "modes": {
     "ntgl:secondary": {
       "general": {
-        "action": "ntgl:none"
+        "action": "ntgl:scope"
       },
       "zoom": {
         "offset": [ -0.1, 8.2, 0.0],
