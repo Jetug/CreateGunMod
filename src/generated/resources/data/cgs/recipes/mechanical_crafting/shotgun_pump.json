@@ -6,7 +6,7 @@
       "item": "create:andesite_alloy"
     },
     "L": {
-      "item": "create:brass_sheet"
+      "tag": "forge:plates/brass"
     },
     "M": {
       "item": "create:precision_mechanism"

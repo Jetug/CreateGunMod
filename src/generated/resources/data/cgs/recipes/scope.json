@@ -3,7 +3,7 @@
   "category": "equipment",
   "ingredients": [
     {
-      "item": "create:brass_sheet"
+      "tag": "forge:plates/brass"
     },
     {
       "item": "minecraft:spyglass"

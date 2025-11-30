@@ -9,10 +9,10 @@
       "tag": "forge:plates/steel"
     },
     "C": {
-      "item": "create:copper_sheet"
+      "tag": "forge:plates/copper"
     },
     "L": {
-      "item": "create:brass_sheet"
+      "tag": "forge:plates/brass"
     }
   },
   "pattern": [

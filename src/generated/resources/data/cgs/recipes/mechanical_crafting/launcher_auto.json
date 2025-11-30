@@ -6,10 +6,10 @@
       "tag": "create:toolboxes"
     },
     "C": {
-      "item": "create:copper_sheet"
+      "tag": "forge:plates/copper"
     },
     "L": {
-      "item": "create:brass_sheet"
+      "tag": "forge:plates/brass"
     },
     "P": {
       "item": "create:fluid_pipe"

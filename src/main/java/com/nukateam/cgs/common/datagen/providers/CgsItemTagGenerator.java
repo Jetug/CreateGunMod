@@ -18,6 +18,7 @@ import java.util.concurrent.CompletableFuture;
 
 import static com.nukateam.cgs.common.datagen.util.TagsKeys.*;
 import static com.nukateam.cgs.common.faundation.registry.CgsBlocks.RAW_LEAD_BLOCK;
+import static com.nukateam.cgs.common.faundation.registry.CgsBlocks.STEEL_BLOCK;
 
 public class CgsItemTagGenerator extends ItemTagsProvider {
     public CgsItemTagGenerator(PackOutput p_275343_, CompletableFuture<HolderLookup.Provider> p_275729_,
@@ -39,6 +40,7 @@ public class CgsItemTagGenerator extends ItemTagsProvider {
     private final TagKey<Item> RAW_LEAD = forgeItemTag("raw_materials/lead");
     private final TagKey<Item> STORAGE_BLOCKS = forgeItemTag("storage_blocks");
     private final TagKey<Item> LEAD_STORAGE_BLOCKS = forgeItemTag("storage_blocks/raw_lead");
+    private final TagKey<Item> STEEL_STORAGE_BLOCKS = forgeItemTag("storage_blocks/steel");
     private final TagKey<Item> INGOTS = forgeItemTag("ingots");
     private final TagKey<Item> LEAD_INGOTS = forgeItemTag("ingots/lead");
     private final TagKey<Item> STEEL_INGOTS = forgeItemTag("ingots/steel");
@@ -63,8 +65,9 @@ public class CgsItemTagGenerator extends ItemTagsProvider {
         this.tag(RAW_ORE).add(RAW_LEAD_BLOCK.get().asItem());
         this.tag(ORES_IN_GROUND_STONE).add(CgsBlocks.LEAD_ORE.get().asItem());
         this.tag(ORES_IN_GROUND_DEEPSLATE).add(CgsBlocks.DEEPSLATE_LEAD_ORE.get().asItem());
-        this.tag(STORAGE_BLOCKS).add(RAW_LEAD_BLOCK.get().asItem());
+        this.tag(STORAGE_BLOCKS).add(RAW_LEAD_BLOCK.get().asItem(), STEEL_BLOCK.get().asItem());
         this.tag(LEAD_STORAGE_BLOCKS).add(RAW_LEAD_BLOCK.get().asItem());
+        this.tag(STEEL_STORAGE_BLOCKS).add(STEEL_BLOCK.get().asItem());
 
         this.tag(RAW_MATERIALS).add(CgsItems.RAW_LEAD.get());
         this.tag(RAW_LEAD).add(CgsItems.RAW_LEAD.get());
@@ -76,7 +79,6 @@ public class CgsItemTagGenerator extends ItemTagsProvider {
         this.tag(NUGGETS).add(CgsItems.LEAD_NUGGET.get(), CgsItems.STEEL_NUGGET.get());
         this.tag(LEAD_NUGGETS).add(CgsItems.LEAD_NUGGET.get());
         this.tag(STEEL_NUGGET).add(CgsItems.STEEL_NUGGET.get());
-
         this.tag(STEEL_SHEET).add(CgsItems.STEEL_SHEET.get());
 
         this.tag(DUSTS).add(

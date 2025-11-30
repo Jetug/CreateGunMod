@@ -3,16 +3,16 @@
   "category": "equipment",
   "key": {
     "B": {
-      "item": "create:brass_sheet"
+      "tag": "forge:plates/brass"
     },
     "C": {
-      "item": "create:copper_nugget"
+      "tag": "forge:nuggets/copper"
     },
     "G": {
       "item": "minecraft:gunpowder"
     },
     "I": {
-      "item": "create:iron_sheet"
+      "tag": "forge:plates/iron"
     },
     "Ж": {
       "item": "create:cogwheel"

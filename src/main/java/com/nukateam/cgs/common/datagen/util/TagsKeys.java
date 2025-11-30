@@ -35,14 +35,14 @@ public class TagsKeys {
     public static final TagKey<Block> STEEL_STORAGE_BLOCKS         = forgeBlockTag("storage_blocks/steel");
 
     //ITEM TAGS
-    public static TagKey<Item> BRASS_SHEET = forgeItemTag("plates/brass");
-    public static TagKey<Item> COPPER_SHEET = forgeItemTag("plates/copper");
-    public static TagKey<Item> IRON_SHEET = forgeItemTag("plates/iron");
-    public static TagKey<Item> STEEL_SHEET = forgeItemTag("plates/steel");
-    public static TagKey<Item> STEEL_INGOT = forgeItemTag("ingots/steel");
-
-    public static TagKey<Item> LEAD_NUGGET =forgeItemTag("nuggets/lead");
-    public static TagKey<Item> STEEL_NUGGET =forgeItemTag("nuggets/steel");
-    public static TagKey<Item> IRON_NUGGET =forgeItemTag("nuggets/iron");
-    public static TagKey<Item> COPPER_NUGGET =forgeItemTag("nuggets/copper");
+    public static final TagKey<Item> BRASS_STORAGE_BLOCKS = forgeItemTag("storage_blocks/brass");
+    public static final TagKey<Item> BRASS_SHEET = forgeItemTag("plates/brass");
+    public static final TagKey<Item> COPPER_SHEET = forgeItemTag("plates/copper");
+    public static final TagKey<Item> IRON_SHEET = forgeItemTag("plates/iron");
+    public static final TagKey<Item> STEEL_SHEET = forgeItemTag("plates/steel");
+    public static final TagKey<Item> STEEL_INGOT = forgeItemTag("ingots/steel");
+    public static final TagKey<Item> LEAD_NUGGET =forgeItemTag("nuggets/lead");
+    public static final TagKey<Item> STEEL_NUGGET =forgeItemTag("nuggets/steel");
+    public static final TagKey<Item> IRON_NUGGET =forgeItemTag("nuggets/iron");
+    public static final TagKey<Item> COPPER_NUGGET =forgeItemTag("nuggets/copper");
 }

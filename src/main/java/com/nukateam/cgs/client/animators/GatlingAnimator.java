@@ -9,9 +9,7 @@ import com.nukateam.ntgl.common.data.holders.AttachmentType;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.util.Cycler;
-import com.nukateam.ntgl.common.data.WeaponData;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
-import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 import net.minecraft.world.item.ItemDisplayContext;
@@ -64,19 +62,21 @@ public class GatlingAnimator extends EngineAnimator {
 
     @Override
     protected RawAnimation getReloadingAnimation(AnimationState<WeaponAnimator> event) {
-        HANDLE_CONTROLLER.setAnimation(begin().then(VOID, PLAY_ONCE));
-        return super.getReloadingAnimation(event);
+//        HANDLE_CONTROLLER.setAnimation(begin().then(VOID, PLAY_ONCE));
+//        return super.getReloadingAnimation(event);
+
+        return begin().then(RELOAD, LOOP);
     }
 
     @Override
     protected RawAnimation getDefaultReloadAnimation(AnimationState<WeaponAnimator> event) {
-        if(hasDrum) {
-            var data = new WeaponData(getStack(), getEntity());
-            var time = WeaponModifierHelper.getReloadTime(data);
-            animationHelper.syncAnimation(event, RELOAD_DRUM, time);
-            return begin().then(RELOAD_DRUM, LOOP);
-        }
-        return super.getDefaultReloadAnimation(event);
+        return begin().then(RELOAD, LOOP);
+//
+//        if(hasDrum) {
+//            animationHelper.syncAnimation(event, reloadTime, RELOAD_DRUM);
+//            return begin().then(RELOAD_DRUM, LOOP);
+//        }
+//        return super.getDefaultReloadAnimation(event);
     }
 
     protected AnimationController.AnimationStateHandler<WeaponAnimator> animateHandle() {

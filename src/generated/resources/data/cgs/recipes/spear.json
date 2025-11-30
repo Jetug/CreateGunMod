@@ -3,7 +3,7 @@
   "category": "equipment",
   "key": {
     "I": {
-      "item": "create:iron_sheet"
+      "tag": "forge:plates/iron"
     },
     "W": {
       "tag": "forge:stripped_logs"

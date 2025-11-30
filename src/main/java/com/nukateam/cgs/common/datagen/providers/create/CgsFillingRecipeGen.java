@@ -17,11 +17,11 @@ public class CgsFillingRecipeGen extends FillingRecipeGen {
 
     GeneratedRecipe WATER_CONTAINER = create("water_container",
             b -> b.require(Fluids.WATER, 1000)
-            .require(Items.BUCKET)
+            .require(CgsItems.EMPTY_CONTAINER.get())
             .output(CgsItems.WATER_CONTAINER.get()));
 
     GeneratedRecipe LAVA_CONTAINER = create("lava_container",
             b -> b.require(Fluids.LAVA, 1000)
-            .require(Items.BUCKET)
+            .require(CgsItems.EMPTY_CONTAINER.get())
             .output(CgsItems.LAVA_CONTAINER.get()));
 }

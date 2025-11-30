@@ -6,7 +6,7 @@
       "item": "create:cogwheel"
     },
     "L": {
-      "item": "create:brass_sheet"
+      "tag": "forge:plates/brass"
     },
     "S": {
       "tag": "forge:plates/steel"

@@ -2,7 +2,7 @@
   "type": "create:filling",
   "ingredients": [
     {
-      "item": "minecraft:bucket"
+      "item": "cgs:tank_empty"
     },
     {
       "amount": 1000,

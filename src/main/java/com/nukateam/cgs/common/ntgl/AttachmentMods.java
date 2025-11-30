@@ -336,6 +336,13 @@ public class AttachmentMods {
         }
     };
 
+    public static final IWeaponModifier MORTAR_BARREL = new IWeaponModifier() {
+        @Override
+        public Set<AmmoHolder> modifyFuelItems(Set<AmmoHolder> item, WeaponData data) {
+            return Set.of(AmmoHolder.getType(CgsWeapons.GRENADE.getId()));
+        }
+    };
+
     public static final IWeaponModifier STOCK = new IWeaponModifier() {
         @Override
         public float recoilModifier(WeaponData data) {

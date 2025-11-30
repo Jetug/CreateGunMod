@@ -72,7 +72,23 @@
         },
         {
           "name": "grenade_launcher",
-          "item": "cgs:flintlock_grenade_launcher"
+          "item": "cgs:flintlock_mortar_barrel"
+        },
+        {
+          "name": "blunderbuss_barrel",
+          "item": "cgs:blunderbuss_barrel",
+          "bones": ["blunderbuss_back"]
+        }
+      ],
+      "ntgl:magazine": [
+        {
+          "name": "multi_shot",
+          "item": "cgs:revolving_chambers",
+          "hide": ["chamber"]
+        },
+        {
+          "name": "axe",
+          "item": "cgs:flintlock_axe"
         }
       ],
       "ntgl:stock": [

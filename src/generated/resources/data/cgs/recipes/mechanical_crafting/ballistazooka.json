@@ -6,10 +6,10 @@
       "item": "create:flywheel"
     },
     "I": {
-      "item": "create:iron_sheet"
+      "tag": "forge:plates/iron"
     },
     "L": {
-      "item": "create:brass_sheet"
+      "tag": "forge:plates/brass"
     },
     "S": {
       "item": "minecraft:string"

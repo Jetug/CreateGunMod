@@ -9,7 +9,7 @@
       "item": "create:cogwheel"
     },
     "L": {
-      "item": "create:brass_sheet"
+      "tag": "forge:plates/brass"
     },
     "M": {
       "item": "create:precision_mechanism"

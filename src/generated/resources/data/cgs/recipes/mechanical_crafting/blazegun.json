@@ -12,7 +12,7 @@
       "item": "create:chute"
     },
     "L": {
-      "item": "create:brass_sheet"
+      "tag": "forge:plates/brass"
     },
     "P": {
       "item": "create:fluid_pipe"

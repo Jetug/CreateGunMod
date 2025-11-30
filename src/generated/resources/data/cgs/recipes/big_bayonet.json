@@ -3,10 +3,10 @@
   "category": "equipment",
   "key": {
     "I": {
-      "item": "create:iron_sheet"
+      "tag": "forge:plates/iron"
     },
     "L": {
-      "item": "create:brass_sheet"
+      "tag": "forge:plates/brass"
     }
   },
   "pattern": [

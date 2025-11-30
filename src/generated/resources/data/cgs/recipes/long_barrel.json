@@ -6,7 +6,7 @@
       "tag": "forge:plates/iron"
     },
     "L": {
-      "item": "create:brass_sheet"
+      "tag": "forge:plates/brass"
     },
     "W": {
       "tag": "forge:stripped_logs"
