@@ -42,17 +42,20 @@ public class CgsAttachments {
     public static final RegistryObject<Item> FLINTLOCK_LONG_BARREL = ITEMS.register("flintlock_long_barrel",
             () -> new BarrelItem(Barrel.create(11f, AttachmentMods.LONG_BARREL), ITEM_PROPERTIES));
 
-    @ItemModelGen(path = "attachments")
-    public static final RegistryObject<Item> FLINTLOCK_MORTAR_BARREL = ITEMS.register("flintlock_mortar_barrel",
-            () -> new BarrelItem(Barrel.create(5f, AttachmentMods.LONG_BARREL), ITEM_PROPERTIES));
+//    @ItemModelGen(path = "attachments")
+//    public static final RegistryObject<Item> FLINTLOCK_MORTAR_BARREL = ITEMS.register("flintlock_mortar_barrel",
+//            () -> new BarrelItem(Barrel.create(5f, AttachmentMods.MORTAR_BARREL), ITEM_PROPERTIES));
 
     //    @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> BLUNDERBUSS_BARREL = ITEMS.register("blunderbuss_barrel",
-            () -> new BarrelItem(Barrel.create(5f, AttachmentMods.LONG_BARREL), ITEM_PROPERTIES));
+            () -> new BarrelItem(Barrel.create(5f, AttachmentMods.BLUNDERBUSS_BARREL), ITEM_PROPERTIES));
+
+    public static final RegistryObject<Item> LONG_BLUNDERBUSS_BARREL = ITEMS.register("long_blunderbuss_barrel",
+            () -> new BarrelItem(Barrel.create(10f, AttachmentMods.LONG_BLUNDERBUSS_BARREL), ITEM_PROPERTIES));
 
     //    @ItemModelGen(path = "attachments")
     public static final RegistryObject<Item> REVOLVING_CHAMBERS = ITEMS.register("revolving_chambers",
-            () -> new AttachmentItem<>(AttachmentType.MAGAZINE, GenericAttachment.create(AttachmentMods.LONG_BARREL), ITEM_PROPERTIES));
+            () -> new AttachmentItem<>(AttachmentType.MAGAZINE, GenericAttachment.create(AttachmentMods.REVOLVING_CHAMBERS), ITEM_PROPERTIES));
 
     //REVOLVER
     @ItemModelGen(path = "attachments")

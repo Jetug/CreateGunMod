@@ -9,8 +9,8 @@ import com.nukateam.ntgl.common.data.holders.AmmoHolder;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
 import com.nukateam.ntgl.common.event.GunReloadEvent;
 import com.nukateam.ntgl.common.util.helpers.context.AmmoContext;
+import com.nukateam.ntgl.common.util.helpers.context.IAmmoContext;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
-import com.nukateam.ntgl.common.registry.AmmoHolders;
 import com.nukateam.ntgl.common.event.GunFireEvent;
 import com.nukateam.ntgl.common.event.GunProjectileHitEvent;
 import com.nukateam.ntgl.common.data.WeaponData;
@@ -22,9 +22,7 @@ import com.simibubi.create.AllItems;
 import com.simibubi.create.content.equipment.armor.BacktankBlockEntity;
 import com.simibubi.create.content.equipment.armor.BacktankUtil;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -62,23 +60,25 @@ public class GunEventHandler {
         var shooter = event.getEntity();
         var gun = event.getStack();
         var data = new WeaponData(gun, shooter);
-        var fuel = WeaponModifierHelper.getAllFuel(data);
-//        if(!event.getEntity().level().isClientSide) {
-            if (fuel.contains(CgsAmmoHolders.BURNABLE)) {
-                FuelUtils.addFuel(data, CgsAmmoHolders.BURNABLE, -1);
-            }
-            if (fuel.contains(CgsAmmoHolders.WATER)) {
-                FuelUtils.addFuel(data, CgsAmmoHolders.WATER, -5);
-            }
-            if (fuel.contains(CgsAmmoHolders.AIR)) {
-                consumeAir(data);
-//            FuelUtils.addFuel(data, CgsAmmo.AIR, -5);
-            }
-            if (gun.getItem() == CgsWeapons.SHOTGUN.get()) {
-                checkCock(data);
-            }
-//        }
-    }
+        var fuels = WeaponModifierHelper.getAllFuel(data);
+        if (fuels.contains(CgsAmmoHolders.BURNABLE)) {
+            FuelUtils.addFuel(data, CgsAmmoHolders.BURNABLE, -1);
+        }
+        if (fuels.contains(CgsAmmoHolders.WATER)) {
+            FuelUtils.addFuel(data, CgsAmmoHolders.WATER, -5);
+        }
+        if (fuels.contains(CgsAmmoHolders.AIR)) {
+            consumeAir(data);
+        }
+        var grenade = AmmoHolder.getType(CgsWeapons.GRENADE.getId());
+        if (fuels.contains(grenade)) {
+            FuelUtils.addFuel(data, grenade, -1);
+        }
+
+        if (gun.getItem() == CgsWeapons.SHOTGUN.get()) {
+            checkCock(data);
+        }
+}
 
     @SubscribeEvent
     public static void preReload(GunReloadEvent.Pre event) {
@@ -88,21 +88,24 @@ public class GunEventHandler {
 
         if(!event.getEntity().level().isClientSide) {
             var fuels = WeaponModifierHelper.getAllFuel(data);
-            fuels.forEach((f) -> {
-                var fuelCount = FuelUtils.getFuel(gun, f);
-                var maxFuel = WeaponModifierHelper.getMaxFuel(f.getId(), data);
-                if (fuelCount < maxFuel){
-                    var foundFuel = InventoryUtil.findPlayerAmmo(shooter, f);
-                    if(foundFuel != AmmoContext.NONE){
-                        if(fuelCount <= Math.min(0, maxFuel - f.getValue(foundFuel.stack()))){
-                            fillFuel(gun, shooter, foundFuel.stack());
+            fuels.forEach((fuel) -> {
+                var foundFuel = (IAmmoContext)AmmoContext.NONE;
+//                do {
+                    var fuelCount = FuelUtils.getFuel(gun, fuel);
+                    var maxFuel = WeaponModifierHelper.getMaxFuel(fuel.getId(), data);
+                    if (fuelCount < maxFuel){
+                        foundFuel = InventoryUtil.findPlayerAmmo(shooter, fuel);
+                        if(foundFuel != AmmoContext.NONE){
+                            if(fuelCount <= Math.min(0, maxFuel - fuel.getValue(foundFuel.stack()))){
+                                fillFuel(gun, shooter, foundFuel.stack());
+                            }
                         }
                     }
-                }
+//                }
+//                while (foundFuel != AmmoContext.NONE && fuelCount <= Math.min(0, maxFuel - fuel.getValue(foundFuel.stack())));
             });
         }
     }
-
     @SubscribeEvent
     public static void postReload(GunReloadEvent.Post event) {
         var gun = event.getStack();

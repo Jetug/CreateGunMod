@@ -50,6 +50,7 @@ public class FlintlockRenderer extends BaseWeaponRenderer {
     }
 
     private boolean hasBlunderbussEquiped() {
-        return WeaponStateHelper.getAttachmentItem(AttachmentType.BARREL, gunStack).getItem() == CgsAttachments.BLUNDERBUSS_BARREL.get();
+        var barrel = WeaponStateHelper.getAttachmentItem(AttachmentType.BARREL, gunStack).getItem();
+        return barrel == CgsAttachments.BLUNDERBUSS_BARREL.get() && barrel == CgsAttachments.LONG_BLUNDERBUSS_BARREL.get();
     }
 }

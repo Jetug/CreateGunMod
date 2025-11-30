@@ -308,6 +308,32 @@ public class AttachmentMods {
         }
     };
 
+    public static class BlunderbussBarrel implements IWeaponModifier {
+        @Override
+        public int modifyProjectileAmount(int amount, WeaponData data) {
+            return 20;
+        }
+
+        @Override
+        public float modifyProjectileDamage(float damage, ResourceLocation ammo, WeaponData data) {
+            return 50;
+        }
+
+        @Override
+        public float modifyProjectileSpread(float spread, WeaponData data) {
+            return 50;
+        }
+    };
+
+    public static final IWeaponModifier LONG_BLUNDERBUSS_BARREL = new BlunderbussBarrel() {
+        @Override
+        public float modifyProjectileSpread(float spread, WeaponData data) {
+            return 25;
+        }
+    };
+
+    public static final IWeaponModifier BLUNDERBUSS_BARREL = new BlunderbussBarrel();
+
     public static final IWeaponModifier LONG_BARREL = new IWeaponModifier() {
         @Override
         public GripType modifyGripType(GripType gripType, WeaponData data) {
@@ -341,6 +367,33 @@ public class AttachmentMods {
         public Set<AmmoHolder> modifyFuelItems(Set<AmmoHolder> item, WeaponData data) {
             return Set.of(AmmoHolder.getType(CgsWeapons.GRENADE.getId()));
         }
+
+        @Override
+        public int modifyMaxFuel(ResourceLocation ammo, int max, WeaponData data) {
+            return 1;
+        }
+
+        @Override
+        public boolean modifyIsFuelMandatory(ResourceLocation ammo, boolean value, WeaponData data) {
+            return true;
+        }
+    };
+
+    public static final IWeaponModifier REVOLVING_CHAMBERS = new IWeaponModifier() {
+        @Override
+        public int modifyReloadTime(int value, WeaponData data) {
+            return 50;
+        }
+
+        @Override
+        public int modifyFireRate(int rate, WeaponData data) {
+            return 16;
+        }
+
+        @Override
+        public int modifyMaxAmmo(int maxAmmo, WeaponData data) {
+            return 8;
+        }
     };
 
     public static final IWeaponModifier STOCK = new IWeaponModifier() {
@@ -368,18 +421,18 @@ public class AttachmentMods {
     public static final IWeaponModifier SHOTGUN_MODIFIER = new IWeaponModifier() {
         @Override
         public int modifyFireRate(int rate, WeaponData data) {
-        if(data.weapon == null) return rate;
+            if(data.weapon == null) return rate;
 
-        var cock = GunUtils.getCock(data.weapon);
+            var cock = GunUtils.getCock(data.weapon);
 
-        if(WeaponStateHelper.getFireMode(data) == FireMode.MULTI){
-            if(cock == 2)
+            if(WeaponStateHelper.getFireMode(data) == FireMode.MULTI){
+                if(cock == 2)
+                    return 20;
+            }
+            if(cock == 1)
                 return 20;
-        }
-        if(cock == 1)
-            return 20;
 
-        return rate;
+            return rate;
         }
     };
 

@@ -10,6 +10,7 @@
 
   "info.cgs.air": "Air",
   "info.cgs.burnable": "Fuel",
+  "info.cgs.water": "Water",
 
   "item.cgs.flintlock": "Flintlock",
   "item.cgs.revolver": "Revolver",

@@ -78,6 +78,11 @@
           "name": "blunderbuss_barrel",
           "item": "cgs:blunderbuss_barrel",
           "bones": ["blunderbuss_back"]
+        },
+        {
+          "name": "long_blunderbuss_barrel",
+          "item": "cgs:long_blunderbuss_barrel",
+          "bones": ["blunderbuss_back"]
         }
       ],
       "ntgl:magazine": [

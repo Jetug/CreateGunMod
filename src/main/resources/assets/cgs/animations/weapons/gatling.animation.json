@@ -233,9 +233,7 @@
 				}
 			}
 		},
-		"void": {
-			"loop": true
-		},
+
 		"hold": {
 			"loop": true,
 			"bones": {
@@ -770,79 +768,6 @@
 			}
 		},
 		"reload": {
-			"animation_length": 2.75,
-			"bones": {
-				"right_arm_anim": {
-					"rotation": {
-						"vector": [0, -5.5, 0]
-					},
-					"position": {
-						"vector": [6.86885, 4.25, 8.57784]
-					}
-				},
-				"left_arm_anim": {
-					"rotation": {
-						"0.0": {
-							"vector": [-2, 15, 0]
-						},
-						"0.25": {
-							"vector": [-41.17858, 53.30922, -23.2693]
-						}
-					},
-					"position": {
-						"0.0": {
-							"vector": [2.07036, 1.65879, -0.6313]
-						},
-						"0.25": {
-							"vector": [-1.35611, 3.33171, -2.82008]
-						}
-					}
-				},
-				"muzzle_flash": {
-					"scale": {
-						"vector": [0, 0, 0]
-					}
-				},
-				"model": {
-					"rotation": {
-						"0.0": {
-							"vector": [0, 0, 0]
-						},
-						"0.25": {
-							"vector": [0, 0, 22.5]
-						},
-						"2.75": {
-							"vector": [0, 0, 0]
-						}
-					},
-					"position": {
-						"0.0": {
-							"vector": [0, 0, 0]
-						},
-						"0.25": {
-							"vector": [-1, 0, 0]
-						},
-						"2.75": {
-							"vector": [0, 0, 0]
-						}
-					}
-				},
-				"muzzle_smoke": {
-					"scale": {
-						"vector": [0, 0, 0]
-					}
-				}
-			},
-			"sound_effects": {
-				"0.25": {
-					"effect": "reload_mag_out"
-				},
-				"2.25": {
-					"effect": "reload_mag_in"
-				}
-			}
-		},
-		"reload2": {
 			"animation_length": 2.75,
 			"bones": {
 				"gun_arm": {

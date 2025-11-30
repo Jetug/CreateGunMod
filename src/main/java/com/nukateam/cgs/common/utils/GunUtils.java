@@ -53,23 +53,7 @@ public class GunUtils {
             var currentFuel = FuelUtils.getFuel(gun,fuelType);
             if(fuelType.isAcceptable(fuelStack) && currentFuel < maxFuel) {
                 var value = 0;
-                if(fuelType == CgsAmmoHolders.BURNABLE) {
-                    value = CgsAmmoHolders.BURNABLE.getValue(fuelStack);
-
-                    if(isSurvival) {
-                        var returnItem = CgsAmmoHolders.BURNABLE.onConsume().apply(fuelStack, 1);
-                        returnItem.forEach((item) -> giveItemToPlayer(player, item));
-                        fuelStack.shrink(1);
-                    }
-                }
-                else if(fuelType == CgsAmmoHolders.WATER) {
-                    value = CgsAmmoHolders.WATER.getValue(fuelStack);
-                    if(isSurvival) {
-                        fuelStack.shrink(1);
-                        player.addItem(new ItemStack(Items.BUCKET));
-                    }
-                }
-                else if(fuelType == CgsAmmoHolders.AIR){
+                if(fuelType == CgsAmmoHolders.AIR){
                     var gunRemaining = FuelUtils.getFuel(fuelStack, fuelType);
                     var tankAir = BacktankUtil.getAir(fuelStack);
                     var airSum = gunRemaining + tankAir;
@@ -82,6 +66,14 @@ public class GunUtils {
                             var tankRemaining = airSum - maxFuel;
                             setAir(fuelStack, tankRemaining);
                         }
+                    }
+                } else {
+                    value = fuelType.getValue(fuelStack);
+
+                    if(isSurvival) {
+                        var returnItem = fuelType.onConsume().apply(fuelStack, 1);
+                        returnItem.forEach((item) -> giveItemToPlayer(player, item));
+                        fuelStack.shrink(1);
                     }
                 }
                 FuelUtils.addFuel(gunData, fuelType, value);

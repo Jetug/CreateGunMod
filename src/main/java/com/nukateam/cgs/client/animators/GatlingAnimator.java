@@ -62,21 +62,17 @@ public class GatlingAnimator extends EngineAnimator {
 
     @Override
     protected RawAnimation getReloadingAnimation(AnimationState<WeaponAnimator> event) {
-//        HANDLE_CONTROLLER.setAnimation(begin().then(VOID, PLAY_ONCE));
-//        return super.getReloadingAnimation(event);
-
-        return begin().then(RELOAD, PLAY_ONCE);
+        HANDLE_CONTROLLER.setAnimation(begin().then(VOID, PLAY_ONCE));
+        return super.getReloadingAnimation(event);
     }
 
     @Override
     protected RawAnimation getDefaultReloadAnimation(AnimationState<WeaponAnimator> event) {
-        return begin().then(RELOAD, PLAY_ONCE);
-//
-//        if(hasDrum) {
-//            animationHelper.syncAnimation(event, reloadTime, RELOAD_DRUM);
-//            return begin().then(RELOAD_DRUM, LOOP);
-//        }
-//        return super.getDefaultReloadAnimation(event);
+        if(hasDrum) {
+            animationHelper.syncAnimation(event, reloadTime, RELOAD_DRUM);
+            return begin().then(RELOAD_DRUM, LOOP);
+        }
+        return super.getDefaultReloadAnimation(event);
     }
 
     protected AnimationController.AnimationStateHandler<WeaponAnimator> animateHandle() {
