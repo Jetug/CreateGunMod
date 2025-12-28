@@ -64,7 +64,8 @@
     "fire"    : "cgs:gun.flintlock.fire",
     "ammo_in" : "cgs:gun.flintlock.ammo_in",
     "cock"    : "cgs:gun.flintlock.cock",
-    "ramrod"  : "cgs:gun.flintlock.ramrod"
+    "ramrod"  : "cgs:gun.flintlock.ramrod",
+    "reload"  : "cgs:gun.flintlock.reload"
   },
   "modules": {
     "attachmentScreen": true,
@@ -95,14 +96,14 @@
         },
         {
           "name": "long_blunderbuss_barrel",
-          "item": "cgs:long_blunderbuss_barrel",
+          "item": "cgs:blunderbuss_barrel_long",
           "bones": ["blunderbuss_back"]
         }
       ],
       "ntgl:magazine": [
         {
           "name": "multi_shot",
-          "item": "cgs:revolving_chambers",
+          "item": "cgs:flintlock_chambers",
           "hide": ["chamber"]
         },
         {

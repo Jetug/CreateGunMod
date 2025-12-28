@@ -10,9 +10,8 @@
     }
   },
   "pattern": [
-    "BB",
-    "BB",
-    "LL"
+    "BBB",
+    "BLL"
   ],
   "result": {
     "item": "cgs:blunderbuss_barrel_long"

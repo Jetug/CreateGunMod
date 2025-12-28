@@ -82,6 +82,10 @@
       { "name": "cgs:gun/flintlock/reload/ammo_in"}
    ]},
 
+   "gun.flintlock.reload": { "subtitle": "subtitle.ntgl.reload", "sounds": [
+      { "name": "cgs:gun/flintlock/reload/reload"}
+   ]},
+
    "gun.flintlock.cock": { "subtitle": "subtitle.ntgl.reload", "sounds": [
       { "name": "cgs:gun/flintlock/reload/cock" }
    ]},

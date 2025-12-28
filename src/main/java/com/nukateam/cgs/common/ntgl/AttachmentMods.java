@@ -383,7 +383,7 @@ public class AttachmentMods {
     public static final IWeaponModifier REVOLVING_CHAMBERS = new IWeaponModifier() {
         @Override
         public int modifyReloadTime(int value, WeaponData data) {
-            return 50;
+            return 18;
         }
 
         @Override
@@ -394,6 +394,16 @@ public class AttachmentMods {
         @Override
         public int modifyMaxAmmo(int maxAmmo, WeaponData data) {
             return 8;
+        }
+
+        @Override
+        public int modifyReloadStart(int value, WeaponData data) {
+            return 10;
+        }
+
+        @Override
+        public LoadingType modifyLoadingType(LoadingType loadingType, WeaponData data) {
+            return LoadingType.PER_CARTRIDGE;
         }
     };
 

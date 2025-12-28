@@ -10,9 +10,8 @@
     }
   },
   "pattern": [
-    "B",
-    "B",
-    "L"
+    "BB",
+    "BL"
   ],
   "result": {
     "item": "cgs:blunderbuss_barrel"

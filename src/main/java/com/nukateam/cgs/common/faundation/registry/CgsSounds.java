@@ -36,6 +36,7 @@ public class CgsSounds {
     public static final RegistryObject<SoundEvent> FLINTLOCK_AMMO_IN = register("gun.flintlock.ammo_in" );
     public static final RegistryObject<SoundEvent> FLINTLOCK_COCK    = register("gun.flintlock.cock"    );
     public static final RegistryObject<SoundEvent> FLINTLOCK_RAMROD  = register("gun.flintlock.ramrod"  );
+    public static final RegistryObject<SoundEvent> FLINTLOCK_RELOAD  = register("gun.flintlock.reload"  );
 
     public static final RegistryObject<SoundEvent> LAUNCHER_FIRE  = register("gun.launcher.fire"  );
     public static final RegistryObject<SoundEvent> BALLISTA_FIRE  = register("gun.launcher.ballista_fire"  );
