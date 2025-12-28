@@ -13,7 +13,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 
-import static com.nukateam.cgs.common.datagen.util.TagsKeys.*;
+import static com.nukateam.cgs.common.datagen.util.TagKeys.*;
 
 
 public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen {

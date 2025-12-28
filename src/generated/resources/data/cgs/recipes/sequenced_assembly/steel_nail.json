@@ -1,0 +1,44 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "tag": "forge:nuggets/iron"
+  },
+  "loops": 1,
+  "results": [
+    {
+      "count": 6,
+      "item": "cgs:nail_steel"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:cutting",
+      "ingredients": [
+        {
+          "item": "cgs:steel_nugget"
+        }
+      ],
+      "results": [
+        {
+          "item": "cgs:steel_nugget"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "cgs:steel_nugget"
+        }
+      ],
+      "results": [
+        {
+          "item": "cgs:steel_nugget"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "cgs:steel_nugget"
+  }
+}

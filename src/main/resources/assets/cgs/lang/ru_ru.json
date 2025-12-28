@@ -12,7 +12,7 @@
   "info.cgs.burnable": "Горючее",
   "info.cgs.water": "Вода",
 
-  "item.cgs.flintlock": "Кремневый пистолет",
+  "item.cgs.flintlock": "Самопал",
   "item.cgs.revolver" : "Револьвер",
   "item.cgs.shotgun"  : "Дробовик",
   "item.cgs.nailgun"  : "Гвоздемёт",
@@ -45,9 +45,14 @@
   "item.cgs.round_shotgun_blank": "Холостой патрон дробовика",
   "item.cgs.round_shotgun"  : "Патрон дробовика",
   "item.cgs.round_shotgun_incendiary": "Зажигательный патрон дробовика",
+  "item.cgs.round_shotgun_flechette": "Патрон дробовика c флешеттами",
+  "item.cgs.round_shotgun_flechette_steel": "Патрон дробовика cо стальными флешеттами",
 
+  "item.cgs.lead_balls": "Картечь",
   "item.cgs.paper_cartridge": "Бумажный патрон",
-  "item.cgs.nail"           : "Гвоздь",
+  "item.cgs.paper_shot": "Бумажный патрон с картечью",
+  "item.cgs.nail"      : "Гвоздь",
+  "item.cgs.nail_steel": "Стальной гвоздь",
 
   "item.cgs.steam_engine" : "Паровой двигатель",
   "item.cgs.scope"        : "Оптический прицел",
@@ -110,5 +115,13 @@
   "block.cgs.sulfur_ore": "Серная руда",
   "block.cgs.lead_block": "Блок свинца",
   "block.cgs.raw_lead_block": "Блок рудного свинца",
-  "block.cgs.steel_block": "Блок Стали"
+  "block.cgs.steel_block": "Блок Стали",
+
+  "item.cgs.tank_empty": "Жидкостный контейнер",
+  "item.cgs.tank_water": "Контейнер с водой",
+  "item.cgs.tank_lava": "Контейнер с лавой",
+
+  "item.cgs.blunderbuss_barrel": "Ствол мушкетона",
+  "item.cgs.blunderbuss_barrel_long": "Длинный ствол мушкетона",
+  "item.cgs.flintlock_chambers": "Многозарядные камеры"
 }

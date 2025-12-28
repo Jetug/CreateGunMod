@@ -37,15 +37,29 @@ public class CgsAmmo {
     @ItemModelGen(path = "ammo")
     public static final RegistryObject<Item> SHOTGUN_ROUND_INCENDIARY = registerAmmo("round_shotgun_incendiary");
     @ItemModelGen(path = "ammo")
+    public static final RegistryObject<Item> SHOTGUN_ROUND_FLECHETTE = registerAmmo("round_shotgun_flechette");
+    @ItemModelGen(path = "ammo")
+    public static final RegistryObject<Item> SHOTGUN_ROUND_FLECHETTE_STEEL = registerAmmo("round_shotgun_flechette_steel");
+    @ItemModelGen(path = "ammo")
     public static final RegistryObject<Item> PAPER_CARTRIDGE = registerAmmo("paper_cartridge");
     @ItemModelGen(path = "ammo")
+    public static final RegistryObject<Item> PAPER_SHOT = registerAmmo("paper_shot");
+    @ItemModelGen(path = "ammo")
     public static final RegistryObject<Item> NAIL = registerAmmo("nail");
+    @ItemModelGen(path = "ammo")
+    public static final RegistryObject<Item> STEEL_NAIL = registerAmmo("nail_steel");
     @ItemModelGen(path = "ammo")
     public static final RegistryObject<Item> ROCKET = registerAmmo("rocket");
     @ItemModelGen(path = "ammo")
     public static final RegistryObject<Item> SMALL_ROCKET = registerAmmo("rocket_small");
     @ItemModelGen(path = "ammo")
     public static final RegistryObject<Item> SPEAR = registerAmmo("spear");
+    @ItemModelGen(path = "ammo")
+    public static final RegistryObject<Item> LEAD_BALLS = registerAmmo("lead_balls");
+//    @ItemModelGen(path = "ammo")
+//    public static final RegistryObject<Item> FLECHETTE = registerAmmo("flechette");
+//    @ItemModelGen(path = "ammo")
+//    public static final RegistryObject<Item> FLECHETTE_STEEL = registerAmmo("flechette_steel");
 
 //    @ItemModelGen
 //    public static final RegistryObject<Item> PAPER_CARTRIDGE_BLANK = registerAmmo("paper_cartridge_blank");

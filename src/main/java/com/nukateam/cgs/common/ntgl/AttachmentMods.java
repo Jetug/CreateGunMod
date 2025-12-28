@@ -310,29 +310,30 @@ public class AttachmentMods {
 
     public static class BlunderbussBarrel implements IWeaponModifier {
         @Override
-        public int modifyProjectileAmount(int amount, WeaponData data) {
-            return 20;
+        public Set<AmmoHolder> modifyAmmoItems(Set<AmmoHolder> item, WeaponData data) {
+            return Set.of(AmmoHolder.getType(CgsAmmo.PAPER_SHOT.getId()));
         }
+    }
 
-        @Override
-        public float modifyProjectileDamage(float damage, ResourceLocation ammo, WeaponData data) {
-            return 50;
-        }
-
-        @Override
-        public float modifyProjectileSpread(float spread, WeaponData data) {
-            return 50;
-        }
-    };
+    public static final IWeaponModifier BLUNDERBUSS_BARREL = new BlunderbussBarrel();
 
     public static final IWeaponModifier LONG_BLUNDERBUSS_BARREL = new BlunderbussBarrel() {
         @Override
         public float modifyProjectileSpread(float spread, WeaponData data) {
-            return 25;
+            return 40;
+        }
+
+        @Override
+        public boolean modifyOneHanded(boolean value, WeaponData data) {
+            return false;
+        }
+
+        @Override
+        public GripType modifyGripType(GripType gripType, WeaponData data) {
+            return GripType.TWO_HANDED;
         }
     };
 
-    public static final IWeaponModifier BLUNDERBUSS_BARREL = new BlunderbussBarrel();
 
     public static final IWeaponModifier LONG_BARREL = new IWeaponModifier() {
         @Override
@@ -516,16 +517,16 @@ public class AttachmentMods {
 
     //NAILGUN
     public static final IWeaponModifier NAILGUN_SPLIT_BARREL = new IWeaponModifier() {
-        public static final int AMMO_PER_SHOT = 4;
+        public static final int AMMO_PER_SHOT = 5;
 
         @Override
         public float modifyProjectileDamage(float damage, ResourceLocation ammo, WeaponData data) {
-            return damage * getProjectileAmount(data);
+            return damage * getProjectileAmount(data) * 0.8f;
         }
 
         @Override
         public float modifyProjectileSpread(float spread, WeaponData data) {
-            return spread * 8;
+            return spread * 10;
         }
 
         @Override

@@ -6,7 +6,7 @@
   "loops": 1,
   "results": [
     {
-      "item": "cgs:round_shotgun"
+      "item": "cgs:round_shotgun_flechette"
     }
   ],
   "sequence": [
@@ -17,7 +17,7 @@
           "item": "cgs:shell_shotgun"
         },
         {
-          "item": "cgs:lead_balls"
+          "item": "cgs:nail"
         }
       ],
       "results": [

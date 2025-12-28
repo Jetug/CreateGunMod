@@ -21,11 +21,17 @@ public class CgsMixingRecipeGen extends MixingRecipeGen {
             .output(CgsItems.STEEL_INGOT.get())
             .requiresHeat(HeatCondition.SUPERHEATED));
 
-    BaseRecipeProvider.GeneratedRecipe NITER = create("niter", b -> b
+    BaseRecipeProvider.GeneratedRecipe NITER = create("niter_guano", b -> b
             .require(Fluids.WATER, 250)
             .require(CgsItems.GUANO.get())
             .output(CgsItems.NITER.get())
-            .output(Items.BONE_MEAL)
+            .output(0.75f, Items.BONE_MEAL)
+            .requiresHeat(HeatCondition.HEATED));
+
+    BaseRecipeProvider.GeneratedRecipe NITER_ROT = create("niter_rot", b -> b
+            .require(Fluids.WATER, 250)
+            .require(Items.ROTTEN_FLESH)
+            .output(0.25f, CgsItems.NITER.get())
             .requiresHeat(HeatCondition.HEATED));
 
 }

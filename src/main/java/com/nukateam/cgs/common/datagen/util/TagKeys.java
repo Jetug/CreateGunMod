@@ -8,7 +8,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import static com.simibubi.create.AllTags.NameSpace.FORGE;
 
-public class TagsKeys {
+public class TagKeys {
     public static <T> TagKey<T> forgeTag(IForgeRegistry<T> registry, String path) {
         var id = FORGE.id(path);
         return TagKey.create(registry.getRegistryKey(), id);

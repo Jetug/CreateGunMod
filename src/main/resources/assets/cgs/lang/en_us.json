@@ -44,19 +44,34 @@
 
   "item.cgs.round_shotgun_blank": "Blank Shotgun Round",
   "item.cgs.round_shotgun": "Shotgun Round",
+  "item.cgs.round_shotgun_flechette": "Shotgun Flechette Round",
+  "item.cgs.round_shotgun_flechette_steel": "Shotgun Steel Flechette Round",
   "item.cgs.round_shotgun_incendiary": "Incendiary Shotgun Round",
 
   "item.cgs.paper_cartridge": "Paper Cartridge",
+  "item.cgs.paper_shot": "Paper Shot",
   "item.cgs.nail": "Nail",
+  "item.cgs.nail_steel": "Steel Nail",
   "item.cgs.rocket": "Rocket",
   "item.cgs.rocket_small": "Small Rocket",
   "item.cgs.spear": "Spear",
+
+  "item.cgs.lead_balls": "Lead Balls",
+  "item.cgs.tank_empty": "Fluid Container",
+  "item.cgs.tank_water": "Water Container",
+  "item.cgs.tank_lava": "Lava Container",
 
   "item.cgs.steam_engine": "Steam Engine",
   "item.cgs.scope": "Scope",
   "item.cgs.stock": "Stock",
   "item.cgs.bayonet": "Bayonet",
   "item.cgs.big_bayonet": "Large Bayonet",
+
+  "item.cgs.flintlock_long_barrel": "Musket Barrel",
+  "item.cgs.flintlock_mortar_barrel": "Mortar Barrel",
+  "item.cgs.blunderbuss_barrel": "Blunderbuss Barrel",
+  "item.cgs.blunderbuss_barrel_long": "Long Blunderbuss Barrel",
+  "item.cgs.flintlock_chambers": "Flintlock Chambers",
 
   "item.cgs.iron_sight": "Gatling: Iron Sight",
   "item.cgs.gatling_drum": "Gatling: Drum Magazine",
@@ -78,9 +93,6 @@
   "item.cgs.ballistazooka": "Ballistazooka",
   "item.cgs.launcher_hook": "Pneumatic Hook",
   "item.cgs.item_launcher": "Item Launcher",
-
-  "item.cgs.flintlock_long_barrel": "Flintlock: Musket Barrel",
-  "item.cgs.flintlock_mortar_barrel": "Flintlock: Mortar Barrel",
 
   "item.cgs.hammer_chamber": "Hammer: Gun Chamber",
   "item.cgs.hammer_stone": "Stone Hammer Head",

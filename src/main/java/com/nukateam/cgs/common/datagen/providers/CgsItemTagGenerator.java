@@ -3,11 +3,9 @@ package com.nukateam.cgs.common.datagen.providers;
 import com.nukateam.cgs.common.datagen.DataGenConfig;
 import com.nukateam.cgs.common.faundation.registry.CgsBlocks;
 import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
-import com.simibubi.create.AllTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -16,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-import static com.nukateam.cgs.common.datagen.util.TagsKeys.*;
+import static com.nukateam.cgs.common.datagen.util.TagKeys.*;
 import static com.nukateam.cgs.common.faundation.registry.CgsBlocks.RAW_LEAD_BLOCK;
 import static com.nukateam.cgs.common.faundation.registry.CgsBlocks.STEEL_BLOCK;
 

@@ -1,0 +1,17 @@
+{
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "cgs:tank_lava"
+    }
+  ],
+  "results": [
+    {
+      "item": "cgs:tank_empty"
+    },
+    {
+      "amount": 1000,
+      "fluid": "minecraft:lava"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "tag": "forge:plates/iron"
+    },
+    "L": {
+      "tag": "forge:stripped_logs"
+    }
+  },
+  "pattern": [
+    "B",
+    "B",
+    "L"
+  ],
+  "result": {
+    "item": "cgs:blunderbuss_barrel"
+  },
+  "show_notification": true
+}

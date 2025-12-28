@@ -8,17 +8,18 @@
     "maxAmmo": 40,
     "equipTime": 0,
     "reloadStart": 15,
-    "reloadTime": 20,
+    "reloadTime": 15,
     "reloadEnd": 20,
     "recoilAngle": -2.0,
-    "reloadAmount": 5,
+    "reloadAmount": 10,
     "recoilAdsReduction": 0.20,
     "alwaysSpread": true,
     "enchantable": false,
     "silenced": true,
     "spread": 1.0,
     "ammo": [
-      "cgs:nail"
+      "cgs:nail",
+      "cgs:nail_steel"
     ],
     "fuel": [
       "cgs:air"
@@ -45,7 +46,20 @@
         "visible": true,
         "damage": 5.0,
         "size": 0.2,
-        "speed": 4.0,
+        "speed": 20.0,
+        "life": 1200
+      }
+    },
+    "cgs:nail_steel": {
+      "ammo": {
+        "type": "cgs:nail_steel"
+      },
+      "projectile": {
+        "projectile": "cgs:nail",
+        "visible": true,
+        "damage": 8.0,
+        "size": 0.2,
+        "speed": 20.0,
         "life": 1200
       }
     }

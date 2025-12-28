@@ -1,7 +1,7 @@
 package com.nukateam.cgs.common.datagen.providers;
 
 import com.nukateam.cgs.common.datagen.DataGenConfig;
-import com.nukateam.cgs.common.datagen.util.TagsKeys;
+import com.nukateam.cgs.common.datagen.util.TagKeys;
 import com.nukateam.cgs.common.faundation.registry.CgsBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -40,25 +40,25 @@ public class CgsBlockTagGenerator extends BlockTagsProvider {
         this.tag(BlockTags.NEEDS_STONE_TOOL).add(
                 CgsBlocks.GUANO_BLOCK.get());
 
-        this.tag(TagsKeys.ORES).add(
+        this.tag(TagKeys.ORES).add(
                 CgsBlocks.LEAD_ORE.get(),
                 CgsBlocks.DEEPSLATE_LEAD_ORE.get(),
                 CgsBlocks.SULFUR_ORE.get());
 
-        this.tag(TagsKeys.LEAD_ORES).add(CgsBlocks.LEAD_ORE.get(), CgsBlocks.DEEPSLATE_LEAD_ORE.get());
-        this.tag(TagsKeys.SULFUR_ORES).add(CgsBlocks.SULFUR_ORE.get());
+        this.tag(TagKeys.LEAD_ORES).add(CgsBlocks.LEAD_ORE.get(), CgsBlocks.DEEPSLATE_LEAD_ORE.get());
+        this.tag(TagKeys.SULFUR_ORES).add(CgsBlocks.SULFUR_ORE.get());
 
-        this.tag(TagsKeys.ORES_IN_GROUND_STONE).add(CgsBlocks.LEAD_ORE.get());
-        this.tag(TagsKeys.ORES_IN_GROUND_DEEPSLATE).add(CgsBlocks.DEEPSLATE_LEAD_ORE.get());
-        this.tag(TagsKeys.ORES_IN_GROUND_NETHERRACK).add(CgsBlocks.SULFUR_ORE.get());
+        this.tag(TagKeys.ORES_IN_GROUND_STONE).add(CgsBlocks.LEAD_ORE.get());
+        this.tag(TagKeys.ORES_IN_GROUND_DEEPSLATE).add(CgsBlocks.DEEPSLATE_LEAD_ORE.get());
+        this.tag(TagKeys.ORES_IN_GROUND_NETHERRACK).add(CgsBlocks.SULFUR_ORE.get());
 
-        this.tag(TagsKeys.STORAGE_BLOCKS).add(
+        this.tag(TagKeys.STORAGE_BLOCKS).add(
                 CgsBlocks.LEAD_BLOCK.get(),
                 CgsBlocks.STEEL_BLOCK.get(),
                 CgsBlocks.RAW_LEAD_BLOCK.get());
 
-        this.tag(TagsKeys.LEAD_STORAGE_BLOCKS).add(CgsBlocks.LEAD_BLOCK.get());
-        this.tag(TagsKeys.STEEL_STORAGE_BLOCKS).add(CgsBlocks.STEEL_BLOCK.get());
-        this.tag(TagsKeys.RAW_LEAD_STORAGE_BLOCKS).add(CgsBlocks.RAW_LEAD_BLOCK.get());
+        this.tag(TagKeys.LEAD_STORAGE_BLOCKS).add(CgsBlocks.LEAD_BLOCK.get());
+        this.tag(TagKeys.STEEL_STORAGE_BLOCKS).add(CgsBlocks.STEEL_BLOCK.get());
+        this.tag(TagKeys.RAW_LEAD_STORAGE_BLOCKS).add(CgsBlocks.RAW_LEAD_BLOCK.get());
     }
 }

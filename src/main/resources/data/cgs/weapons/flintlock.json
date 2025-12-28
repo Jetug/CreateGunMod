@@ -1,7 +1,7 @@
 {
   "general": {
     "action": "ntgl:gun",
-    "rate": 10,
+    "rate": 13,
     "gripType": "ntgl:one_handed",
     "maxAmmo": 1,
     "equipTime": 0,
@@ -25,10 +25,24 @@
         "visible": true,
         "damage": 10.0,
         "size": 0.5,
-        "speed": 10.0,
+        "speed": 20.0,
         "life": 100,
         "damageReduceOverLife": true,
         "gravity": true
+      }
+    },
+    "cgs:paper_shot": {
+      "ammo": {
+        "type": "ntgl:buckshot"
+      },
+      "projectile":{
+        "damage": 20.0,
+        "size": 0.2,
+        "speed": 20.0,
+        "life": 40,
+        "spread": 70.0,
+        "projectileAmount": 12,
+        "damageReduceOverLife": true
       }
     }
   },

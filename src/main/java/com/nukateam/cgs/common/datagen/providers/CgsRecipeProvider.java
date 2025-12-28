@@ -1,7 +1,7 @@
 package com.nukateam.cgs.common.datagen.providers;
 
 import com.nukateam.cgs.common.datagen.DataGenConfig;
-import com.nukateam.cgs.common.datagen.util.TagsKeys;
+import com.nukateam.cgs.common.datagen.util.TagKeys;
 import com.nukateam.cgs.common.faundation.registry.items.CgsAmmo;
 import com.nukateam.cgs.common.faundation.registry.items.CgsAttachments;
 import com.nukateam.cgs.common.faundation.registry.CgsBlocks;
@@ -32,7 +32,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 
-import static com.nukateam.cgs.common.datagen.util.TagsKeys.*;
+import static com.nukateam.cgs.common.datagen.util.TagKeys.*;
 
 public class CgsRecipeProvider extends RecipeProvider implements IConditionBuilder {
     public CgsRecipeProvider(PackOutput pOutput) {
@@ -50,7 +50,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
         ammo(writer);
         attachments(writer);
         blocks(writer);
-        presssForms(writer);
+        pressForms(writer);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsItems.EMPTY_CONTAINER.get(), 4)
                 .define('C', COPPER_SHEET)
@@ -77,7 +77,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
         fromBlock(writer, CgsItems.STEEL_INGOT.get(), CgsItems.STEEL_NUGGET.get());
     }
 
-    private static void presssForms(Consumer<FinishedRecipe> writer) {
+    private static void pressForms(Consumer<FinishedRecipe> writer) {
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.IRON_INGOT), RecipeCategory.MISC, CgsItems.PRESS_FORM_GATLING.get())
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(writer, getId(CgsItems.PRESS_FORM_GATLING.get()));
@@ -89,6 +89,10 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.IRON_INGOT), RecipeCategory.MISC, CgsItems.PRESS_FORM_SHOTGUN.get())
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(writer, getId(CgsItems.PRESS_FORM_SHOTGUN.get()));
+
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(LEAD_NUGGET), RecipeCategory.MISC, CgsAmmo.LEAD_BALLS.get())
+                .unlockedBy(getHasName(Items.IRON_INGOT), has(CgsItems.LEAD_NUGGET.get()))
+                .save(writer, getId(CgsAmmo.LEAD_BALLS.get()));
     }
 
     private static void weapons(Consumer<FinishedRecipe> writer) {
@@ -106,11 +110,18 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private static void ammo(Consumer<FinishedRecipe> writer) {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, CgsAmmo.PAPER_CARTRIDGE.get(), 3)
-                .requires(TagsKeys.LEAD_NUGGET)
+                .requires(TagKeys.LEAD_NUGGET)
                 .requires(Tags.Items.GUNPOWDER)
                 .requires(Items.PAPER)
                 .unlockedBy(getHasName(CgsItems.LEAD_NUGGET.get()), has(CgsItems.LEAD_NUGGET.get()))
                 .save(writer, getId(CgsAmmo.PAPER_CARTRIDGE.get()));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, CgsAmmo.PAPER_SHOT.get(), 2)
+                .requires(CgsAmmo.LEAD_BALLS.get())
+                .requires(Tags.Items.GUNPOWDER)
+                .requires(Items.PAPER)
+                .unlockedBy(getHasName(CgsItems.LEAD_NUGGET.get()), has(CgsAmmo.LEAD_BALLS.get()))
+                .save(writer, getId(CgsAmmo.PAPER_SHOT.get()));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsAmmo.NAIL.get(), 9)
                 .pattern("N")
@@ -119,6 +130,14 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('N', Items.IRON_NUGGET)
                 .unlockedBy(getHasName(Items.IRON_NUGGET), has(Items.IRON_NUGGET))
                 .save(writer, getId(CgsAmmo.NAIL.get()));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsAmmo.STEEL_NAIL.get(), 9)
+                .pattern("N")
+                .pattern("N")
+                .pattern("N")
+                .define('N', STEEL_NUGGET)
+                .unlockedBy(getHasName(Items.IRON_NUGGET), has(Items.IRON_NUGGET))
+                .save(writer, getId(CgsAmmo.STEEL_NAIL.get()));
     }
 
     private static void attachments(Consumer<FinishedRecipe> writer) {
@@ -164,6 +183,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(CgsItems.STEEL_INGOT.get()), has(CgsItems.STEEL_INGOT.get()))
                 .save(writer, getId(CgsAttachments.SHOTGUN_SPREAD_BARREL.get()));
 
+        //FLINTLOCK
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsAttachments.FLINTLOCK_LONG_BARREL.get(), 1)
                 .pattern("BB")
                 .pattern("LL")
@@ -171,6 +191,33 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('B', IRON_SHEET)
                 .unlockedBy(getHasName(CgsItems.STEEL_INGOT.get()), has(CgsItems.STEEL_INGOT.get()))
                 .save(writer, getId(CgsAttachments.FLINTLOCK_LONG_BARREL.get()));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsAttachments.BLUNDERBUSS_BARREL.get(), 1)
+                .pattern("B")
+                .pattern("B")
+                .pattern("L")
+                .define('L', AllTags.AllItemTags.STRIPPED_LOGS.tag)
+                .define('B', IRON_SHEET)
+                .unlockedBy(getHasName(CgsItems.STEEL_INGOT.get()), has(CgsItems.STEEL_INGOT.get()))
+                .save(writer, getId(CgsAttachments.BLUNDERBUSS_BARREL.get()));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsAttachments.LONG_BLUNDERBUSS_BARREL.get(), 1)
+                .pattern("BB")
+                .pattern("BB")
+                .pattern("LL")
+                .define('L', AllTags.AllItemTags.STRIPPED_LOGS.tag)
+                .define('B', IRON_SHEET)
+                .unlockedBy(getHasName(CgsItems.STEEL_INGOT.get()), has(CgsItems.STEEL_INGOT.get()))
+                .save(writer, getId(CgsAttachments.LONG_BLUNDERBUSS_BARREL.get()));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsAttachments.REVOLVING_CHAMBERS.get(), 1)
+                .pattern("BBB")
+                .pattern("BCB")
+                .pattern("BBB")
+                .define('C', AllBlocks.COGWHEEL)
+                .define('B', IRON_SHEET)
+                .unlockedBy(getHasName(CgsItems.STEEL_INGOT.get()), has(CgsItems.STEEL_INGOT.get()))
+                .save(writer, getId(CgsAttachments.REVOLVING_CHAMBERS.get()));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsAttachments.HAMMER_CHAMBER.get(), 1)
                 .pattern("LBL")

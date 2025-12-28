@@ -6,8 +6,8 @@
   "loops": 1,
   "results": [
     {
-      "count": 4,
-      "item": "cgs:paper_cartridge"
+      "count": 2,
+      "item": "cgs:paper_shot"
     }
   ],
   "sequence": [
@@ -34,7 +34,7 @@
           "item": "minecraft:paper"
         },
         {
-          "tag": "forge:nuggets/lead"
+          "item": "cgs:lead_balls"
         }
       ],
       "results": [
