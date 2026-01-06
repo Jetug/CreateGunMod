@@ -109,28 +109,16 @@ public class FluidContainerItem extends Item {
     private InteractionResult tryPickupFluid(Player player, Level level, BlockHitResult hitResult, Fluid stack) {
         var pos = hitResult.getBlockPos();
         var state = level.getBlockState(pos);
-        var fluidState = state.getFluidState();
-//        if (blockstate.getBlock() instanceof BucketPickup bucketPickup) {
-//            player.awardStat(Stats.ITEM_USED.get(this));
-//            bucketPickup.pickupBlock(level, pos, state);
-//            bucketPickup.getPickupSound(blockstate).ifPresent((soundEvent) -> {
-//                player.playSound(soundEvent, 1.0F, 1.0F);
-//            });
-//            level.gameEvent(player, GameEvent.FLUID_PICKUP, pos);
-//
-//            return InteractionResult.SUCCESS;
-//        }
-//        if (fluidState.isSource() && fluidState.getType() != Fluids.EMPTY) {
-            if (state.getBlock() instanceof BucketPickup bucketPickup) {
-                bucketPickup.pickupBlock(level, pos, state);
-                player.awardStat(Stats.ITEM_USED.get(this));
-                bucketPickup.getPickupSound(state).ifPresent((soundEvent) -> {
-                    player.playSound(soundEvent, 1.0F, 1.0F);
-                });
 
-                return InteractionResult.SUCCESS;
-            }
-//        }
+        if (state.getBlock() instanceof BucketPickup bucketPickup) {
+            bucketPickup.pickupBlock(level, pos, state);
+            player.awardStat(Stats.ITEM_USED.get(this));
+            bucketPickup.getPickupSound(state).ifPresent((soundEvent) -> {
+                player.playSound(soundEvent, 1.0F, 1.0F);
+            });
+
+            return InteractionResult.SUCCESS;
+        }
 
         return InteractionResult.FAIL;
     }
@@ -223,22 +211,15 @@ public class FluidContainerItem extends Item {
 
     private ItemStack handleContainerAfterUse(Fluid targetFluid, Player player, ItemStack stack, boolean filled) {
         if(!player.isCreative()) {
-//            var pos = hitResult.getBlockPos();
-//            var state = player.level().getBlockState(pos);
-//            var fluidState = state.getFluidState();
-//            var targetFluid = fluidState.getType();
-//            var targetFluid = getTargetFluid(hitResult, player.level());
-            var newContainer = filled ?
-                    getFilledContainerForFluid(targetFluid)
+            var newContainer = filled ? getFilledContainerForFluid(targetFluid)
                     : CgsItems.EMPTY_CONTAINER.get();
 
             if (newContainer == null) return stack;
 
             var newStack = new ItemStack(newContainer);
 
-            if (stack.hasTag()) {
+            if (stack.hasTag())
                 newStack.setTag(stack.getTag().copy());
-            }
 
             stack.shrink(1);
 
