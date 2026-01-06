@@ -74,7 +74,8 @@
         "life": 40,
         "spread": 15.0,
         "projectileAmount": 6,
-        "damageReduceOverLife": true
+        "damageReduceOverLife": true,
+        "pierceLevel": 1
       }
     },
     "cgs:round_shotgun_incendiary": {
