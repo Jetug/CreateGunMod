@@ -16,7 +16,7 @@
     ]
   },
   "melee": {
-    "mode": "ntgl:single",
+    "mode": "ntgl:auto",
     "damage": 1,
     "delay": 5,
     "cooldown": 8,

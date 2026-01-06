@@ -88,7 +88,7 @@
         "speed": 8.0,
         "life": 40,
         "spread": 15.0,
-        "burnSeconds": 4,
+        "burnSeconds": 5,
         "projectileAmount": 12,
         "damageReduceOverLife": true
       }

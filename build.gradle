@@ -21,7 +21,7 @@ plugins {
 
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'org.spongepowered.mixin'
-
+    
 version = "${minecraft_version}-${mod_version}"
 group = 'com.nukateam.cgs' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'create-gunsmithing'

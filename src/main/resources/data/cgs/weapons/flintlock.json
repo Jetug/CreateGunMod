@@ -19,7 +19,7 @@
   "ammoData": {
     "cgs:paper_cartridge": {
       "ammo": {
-        "type": "ntgl:standard"
+        "type": "cgs:ball"
       },
       "projectile":{
         "visible": true,
@@ -33,7 +33,7 @@
     },
     "cgs:paper_shot": {
       "ammo": {
-        "type": "ntgl:buckshot"
+        "type": "cgs:balls"
       },
       "projectile":{
         "damage": 20.0,
