@@ -21,7 +21,6 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BucketPickup;
 import net.minecraft.world.level.block.LiquidBlockContainer;
 import net.minecraft.world.level.block.state.BlockState;
@@ -32,11 +31,11 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.event.ForgeEventFactory;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.wrappers.FluidBucketWrapper;
 
 import javax.annotation.Nullable;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 public class FluidContainerItem extends Item {
@@ -127,104 +126,75 @@ public class FluidContainerItem extends Item {
 
     private InteractionResult tryPlaceFluid(Player player, Level level, BlockHitResult hitResult, ItemStack stack) {
         var blockpos = hitResult.getBlockPos();
-        var blockpos1 = blockpos.relative(hitResult.getDirection());
+        var direction = hitResult.getDirection();
+        var relativePos = blockpos.relative(direction);
+        var blockstate = level.getBlockState(blockpos);
+        var placePos = canBlockContainFluid(level, blockpos, blockstate) ? blockpos : relativePos;
 
-        BlockState blockstate = level.getBlockState(blockpos);
-        BlockPos blockpos2 = canBlockContainFluid(level, blockpos, blockstate) ? blockpos : blockpos1;
-        if (this.emptyContents(player, level, blockpos2, hitResult, stack)) {
-            if (player instanceof ServerPlayer) {
-                CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, blockpos2, stack);
+        if (level.mayInteract(player, blockpos) && player.mayUseItemAt(relativePos, direction, stack)) {
+            if (this.emptyContents(player, level, placePos, hitResult, stack)) {
+                if (player instanceof ServerPlayer) {
+                    CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer) player, placePos, stack);
+                }
+
+                player.awardStat(Stats.ITEM_USED.get(this));
+                return InteractionResult.SUCCESS;
             }
-
-            player.awardStat(Stats.ITEM_USED.get(this));
-            return InteractionResult.SUCCESS;
-        } else {
-            return InteractionResult.FAIL;
+            else return InteractionResult.FAIL;
         }
-
-        //        var fluid = fluidSupplier.get();
-//        if (fluid == Fluids.EMPTY) return InteractionResult.FAIL;
-//
-//        var pos = hitResult.getBlockPos();
-//        var direction = hitResult.getDirection();
-//        var relativePos = pos.relative(direction);
-//
-//        var blockstate = level.getBlockState(pos);
-//        var placePos = canBlockContainFluid(level, pos, blockstate) ? pos : relativePos;
-//
-//        if (player.mayUseItemAt(relativePos, direction, player.getItemInHand(InteractionHand.MAIN_HAND))) {
-//            if(emptyContents(player, level, placePos, hitResult, stack)) {
-//                if (placeFluid(player, level, relativePos, hitResult, fluid)) {
-//                    player.awardStat(Stats.ITEM_USED.get(this));
-//                    this.playEmptySound(player, level, pos);
-//                    return InteractionResult.SUCCESS;
-//                }
-//            }
-//        }
-//        return InteractionResult.FAIL;
+        return InteractionResult.FAIL;
     }
 
-    public boolean emptyContents(@Nullable Player player, Level level, BlockPos pPos, @Nullable BlockHitResult pResult, @Nullable ItemStack container) {
+    public boolean emptyContents(@Nullable Player player, Level level, BlockPos pos,
+                                 @Nullable BlockHitResult result, @Nullable ItemStack container) {
         if (!(this.fluidSupplier.get() instanceof FlowingFluid)) {
             return false;
         } else {
-            BlockState blockstate = level.getBlockState(pPos);
-            Block block = blockstate.getBlock();
-            boolean flag = blockstate.canBeReplaced(this.fluidSupplier.get());
-            boolean flag1 = blockstate.isAir() || flag || block instanceof LiquidBlockContainer && ((LiquidBlockContainer)block).canPlaceLiquid(level, pPos, blockstate, this.fluidSupplier.get());
-            java.util.Optional<FluidStack> containedFluidStack = java.util.Optional.ofNullable(container).flatMap(FluidUtil::getFluidContained);
-            if (!flag1) {
-                return pResult != null && this.emptyContents(player, level, pResult.getBlockPos().relative(pResult.getDirection()), (BlockHitResult)null, container);
-            } else if (containedFluidStack.isPresent() && this.fluidSupplier.get().getFluidType().isVaporizedOnPlacement(level, pPos, containedFluidStack.get())) {
-                this.fluidSupplier.get().getFluidType().onVaporize(player, level, pPos, containedFluidStack.get());
+            var blockstate = level.getBlockState(pos);
+            var block = blockstate.getBlock();
+            var containedFluidStack = Optional.ofNullable(container).flatMap(FluidUtil::getFluidContained);
+            var canBeReplaced = blockstate.canBeReplaced(this.fluidSupplier.get());
+            var canPlaceLiquid = block instanceof LiquidBlockContainer liquidBlockContainer &&
+                    liquidBlockContainer.canPlaceLiquid(level, pos, blockstate, this.fluidSupplier.get());
+
+            if (!(blockstate.isAir() || canBeReplaced || canPlaceLiquid)) {
+                return result != null &&
+                        this.emptyContents(player, level, result.getBlockPos().relative(result.getDirection()), null, container);
+            } else if (containedFluidStack.isPresent() && this.fluidSupplier.get().getFluidType().isVaporizedOnPlacement(level, pos, containedFluidStack.get())) {
+                this.fluidSupplier.get().getFluidType().onVaporize(player, level, pos, containedFluidStack.get());
                 return false;
             } else if (level.dimensionType().ultraWarm() && this.fluidSupplier.get().is(FluidTags.WATER)) {
-                int i = pPos.getX();
-                int j = pPos.getY();
-                int k = pPos.getZ();
-                level.playSound(player, pPos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5F, 2.6F + (level.random.nextFloat() - level.random.nextFloat()) * 0.8F);
+                var pitch = 2.6F + (level.random.nextFloat() - level.random.nextFloat()) * 0.8F;
+                level.playSound(player, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5F, pitch);
 
                 for(int l = 0; l < 8; ++l) {
-                    level.addParticle(ParticleTypes.LARGE_SMOKE, (double)i + Math.random(), (double)j + Math.random(), (double)k + Math.random(), 0.0D, 0.0D, 0.0D);
+                    level.addParticle(ParticleTypes.LARGE_SMOKE,
+                            (double) pos.getX() + Math.random(),
+                            (double) pos.getY() + Math.random(),
+                            (double) pos.getZ() + Math.random(),
+                            0.0D, 0.0D, 0.0D);
                 }
 
                 return false;
-            } else if (block instanceof LiquidBlockContainer && ((LiquidBlockContainer)block).canPlaceLiquid(level,pPos,blockstate,fluidSupplier.get())) {
-                ((LiquidBlockContainer)block).placeLiquid(level, pPos, blockstate, ((FlowingFluid)this.fluidSupplier.get()).getSource(false));
-                this.playEmptySound(player, level, pPos);
+            } else if (block instanceof LiquidBlockContainer liquidBlockContainer &&
+                    liquidBlockContainer.canPlaceLiquid(level, pos,blockstate,fluidSupplier.get()))
+            {
+                liquidBlockContainer.placeLiquid(level, pos, blockstate, ((FlowingFluid)this.fluidSupplier.get()).getSource(false));
+                this.playEmptySound(player, level, pos);
                 return true;
             } else {
-                if (!level.isClientSide && flag && !blockstate.liquid()) {
-                    level.destroyBlock(pPos, true);
+                if (!level.isClientSide && canBeReplaced && !blockstate.liquid()) {
+                    level.destroyBlock(pos, true);
                 }
 
-                if (!level.setBlock(pPos, this.fluidSupplier.get().defaultFluidState().createLegacyBlock(), 11) && !blockstate.getFluidState().isSource()) {
+                if (!level.setBlock(pos, this.fluidSupplier.get().defaultFluidState().createLegacyBlock(), 11) && !blockstate.getFluidState().isSource()) {
                     return false;
                 } else {
-                    this.playEmptySound(player, level, pPos);
+                    this.playEmptySound(player, level, pos);
                     return true;
                 }
             }
         }
-    }
-
-    private boolean placeFluid(Player player, Level level, BlockPos pos, BlockHitResult hitResult, Fluid fluid) {
-        if (!(fluid instanceof FlowingFluid)) return false;
-
-        var state = level.getBlockState(pos);
-        var canReplace = state.canBeReplaced(fluid);
-        var isReplaceable = state.canBeReplaced();
-
-        if (level.isEmptyBlock(pos) || canReplace || isReplaceable) {
-            if (!level.isClientSide && isReplaceable && !state.liquid()) {
-                level.destroyBlock(pos, true);
-            }
-
-            if (level.setBlock(pos, fluid.defaultFluidState().createLegacyBlock(), 11) || state.getFluidState().isSource()) {
-                return true;
-            }
-        }
-        return false;
     }
 
     private ItemStack handleContainerAfterUse(Fluid targetFluid, Player player, ItemStack stack, boolean filled) {
@@ -251,12 +221,6 @@ public class FluidContainerItem extends Item {
             }
         }
         return stack;
-    }
-
-    private Fluid getTargetFluid(BlockHitResult hitResult, Level level) {
-        var pos = hitResult.getBlockPos();
-        var fluidState = level.getFluidState(pos);
-        return fluidState.getType();
     }
 
     private Item getFilledContainerForFluid(Fluid fluid) {
