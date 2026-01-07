@@ -1,9 +1,11 @@
 package com.nukateam.cgs.common.faundation.item;
 
 import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -124,26 +126,42 @@ public class FluidContainerItem extends Item {
     }
 
     private InteractionResult tryPlaceFluid(Player player, Level level, BlockHitResult hitResult, ItemStack stack) {
-        var fluid = fluidSupplier.get();
-        if (fluid == Fluids.EMPTY) return InteractionResult.FAIL;
+        var blockpos = hitResult.getBlockPos();
+        var blockpos1 = blockpos.relative(hitResult.getDirection());
 
-        var pos = hitResult.getBlockPos();
-        var direction = hitResult.getDirection();
-        var placePos = pos.relative(direction);
-
-        var blockstate = level.getBlockState(pos);
-        var blockpos2 = canBlockContainFluid(level, pos, blockstate) ? pos : placePos;
-
-        if (player.mayUseItemAt(placePos, direction, player.getItemInHand(InteractionHand.MAIN_HAND))) {
-            if(emptyContents(player, level, blockpos2, hitResult, stack)) {
-                if (placeFluid(player, level, placePos, hitResult, fluid)) {
-                    player.awardStat(Stats.ITEM_USED.get(this));
-                    this.playEmptySound(player, level, pos);
-                    return InteractionResult.SUCCESS;
-                }
+        BlockState blockstate = level.getBlockState(blockpos);
+        BlockPos blockpos2 = canBlockContainFluid(level, blockpos, blockstate) ? blockpos : blockpos1;
+        if (this.emptyContents(player, level, blockpos2, hitResult, stack)) {
+            if (player instanceof ServerPlayer) {
+                CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, blockpos2, stack);
             }
+
+            player.awardStat(Stats.ITEM_USED.get(this));
+            return InteractionResult.SUCCESS;
+        } else {
+            return InteractionResult.FAIL;
         }
-        return InteractionResult.FAIL;
+
+        //        var fluid = fluidSupplier.get();
+//        if (fluid == Fluids.EMPTY) return InteractionResult.FAIL;
+//
+//        var pos = hitResult.getBlockPos();
+//        var direction = hitResult.getDirection();
+//        var relativePos = pos.relative(direction);
+//
+//        var blockstate = level.getBlockState(pos);
+//        var placePos = canBlockContainFluid(level, pos, blockstate) ? pos : relativePos;
+//
+//        if (player.mayUseItemAt(relativePos, direction, player.getItemInHand(InteractionHand.MAIN_HAND))) {
+//            if(emptyContents(player, level, placePos, hitResult, stack)) {
+//                if (placeFluid(player, level, relativePos, hitResult, fluid)) {
+//                    player.awardStat(Stats.ITEM_USED.get(this));
+//                    this.playEmptySound(player, level, pos);
+//                    return InteractionResult.SUCCESS;
+//                }
+//            }
+//        }
+//        return InteractionResult.FAIL;
     }
 
     public boolean emptyContents(@Nullable Player player, Level level, BlockPos pPos, @Nullable BlockHitResult pResult, @Nullable ItemStack container) {
