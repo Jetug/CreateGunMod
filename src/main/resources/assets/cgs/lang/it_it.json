@@ -1,0 +1,125 @@
+{
+  "itemGroup.mod_items": "Create: Gunsmithing",
+
+  "info.cgs.fuel": "Tasto destro su un Arma con un qualsiasi combustibile per refillarla",
+
+  "slot.cgs.attachment.engine": "Motore",
+  "slot.cgs.attachment.frame": "Frame",
+  "slot.cgs.attachment.chamber": "Chamber",
+  "slot.cgs.attachment.head": "Testa",
+
+  "info.cgs.air": "Aria",
+  "info.cgs.burnable": "Combustibile",
+  "info.cgs.water": "Acqua",
+
+  "item.cgs.flintlock": "Moschetto a Pietra Focaia",
+  "item.cgs.revolver": "Revolver",
+  "item.cgs.shotgun": "Shotgun",
+  "item.cgs.nailgun": "Sparachiodi",
+  "item.cgs.gatling": "Mitrailleuse Gatling",
+  "item.cgs.blazegun": "Blaze-gun",
+  "item.cgs.launcher": "Lanciabocchi",
+  "item.cgs.hammer": "Martello Pneumatico",
+  "item.cgs.axe": "Ascia Pneumatica",
+  "item.cgs.frag_grenade": "Granata a Frammentazione",
+
+  "item.cgs.barrel": "Canna",
+  "item.cgs.barrel_sturdy": "Canna di Lamiera Rinforzata",
+
+  "item.cgs.press_form_gatling": "Matrice di pressa di bossoli per mitra",
+  "item.cgs.press_form_revolver": "Matrice di pressa di bossoli per Revolver",
+  "item.cgs.press_form_shotgun": "Matrice di pressa di bossoli per mitra",
+
+  "item.cgs.shell_gatling": "Bossolo di Mitrailleuse",
+  "item.cgs.shell_revolver": "Bossolo di Revolver",
+  "item.cgs.shell_shotgun": "Bosolo per Shotgun",
+
+  "item.cgs.round_gatling_blank": "Cartuccia a salve per Mitrailleuse",
+  "item.cgs.round_gatling": "cartuccia per Mitrailleuse",
+  "item.cgs.round_gatling_piercing": "Proiettile perforante per Mitrailleuse",
+
+  "item.cgs.round_revolver_blank": "Cartuccia a salve per Revolver",
+  "item.cgs.round_revolver": "Revolver Round",
+  "item.cgs.round_revolver_piercing": "Proiettile perforante per Revolver",
+
+  "item.cgs.round_shotgun_blank": "Cartuccia a Salve per Shotgun",
+  "item.cgs.round_shotgun": "Cartuccia per Shotgun",
+  "item.cgs.round_shotgun_flechette": "Shotgun Flechette Round",
+  "item.cgs.round_shotgun_flechette_steel": "Shotgun Steel Flechette Round",
+  "item.cgs.round_shotgun_incendiary": "Incendiary Shotgun Round",
+
+  "item.cgs.paper_cartridge": "Cartuccia di Carta",
+  "item.cgs.paper_shot": "Paper Shot",
+  "item.cgs.nail": "Chiodo",
+  "item.cgs.nail_steel": "Chiodo d'Acciaio",
+  "item.cgs.rocket": "Razzo",
+  "item.cgs.rocket_small": "Piccolo Razzo",
+  "item.cgs.spear": "Giavellotto",
+
+  "item.cgs.lead_balls": "Palla di Piombo",
+  "item.cgs.tank_empty": "Tanica",
+  "item.cgs.tank_water": "Tanica d'Acqua",
+  "item.cgs.tank_lava": "Tanica di Lava",
+
+  "item.cgs.steam_engine": "Motore a Vapore",
+  "item.cgs.scope": "Mirino",
+  "item.cgs.stock": "Calcio",
+  "item.cgs.bayonet": "Baionetta Leggera",
+  "item.cgs.big_bayonet": "Baionetta Pesante",
+
+  "item.cgs.flintlock_long_barrel": "Canna per Moschetto",
+  "item.cgs.flintlock_mortar_barrel": "Canna a Mortaio",
+  "item.cgs.blunderbuss_barrel": "Canna archibugio",
+  "item.cgs.blunderbuss_barrel_long": "Canna Archibugio lunga",
+  "item.cgs.flintlock_chambers": "Camera di Combustione",
+
+  "item.cgs.iron_sight": "Gatling: Mirino di ferro",
+  "item.cgs.gatling_drum": "Gatling: caricatore a tamburo",
+
+  "item.cgs.round_belt": "Tamburo a nastro per Revolver",
+  "item.cgs.auto_fire": "Revolver: fuoco Automatico ",
+  "item.cgs.long_barrel": "Revolver: Canna Lunga",
+
+  "item.cgs.shotgun_drum": "Shotgun: Modulo Tamburi",
+  "item.cgs.shotgun_pump": "Shotgun: Modulo Caricatore Auomatico",
+  "item.cgs.shotgun_long_barrel": "Shotgun: Modulo Long Barrels",
+  "item.cgs.shotgun_spread_barrel": "Shotgun: Modulo Canna a Dispersione",
+
+  "item.cgs.nailgun_splitter": "Sparachiodi: Canna a Dispersione",
+
+  "item.cgs.potion_tank": "Tanica per Pozioni",
+
+  "item.cgs.launcher_auto": "Lanciablocchi Automatico",
+  "item.cgs.ballistazooka": "Ballistazooka",
+  "item.cgs.launcher_hook": "Arpione Pneumatico",
+  "item.cgs.item_launcher": "Lanciatore di Oggetti",
+
+  "item.cgs.hammer_chamber": "Mazza: camera da scoppio",
+  "item.cgs.hammer_stone": "Testa In Pietra per Mazza Pneumatica",
+  "item.cgs.hammer_iron": "Testa In Ferro per Mazza Pneumatica",
+  "item.cgs.hammer_diamond": "Testa In Diamante per Mazza Pneumatica",
+  "item.cgs.hammer_netherite": "Testa In Netherite per Mazza Pneumatica",
+  "item.cgs.axe_stone": "Testa in Pietra per Ascia Pneumatica",
+  "item.cgs.axe_iron": "Testa in Ferro per Ascia Pneumatica",
+  "item.cgs.axe_diamond": "Testa in Diamante per Ascia Pneumatica",
+  "item.cgs.axe_netherite": "Testa in Netherite per Ascia Pneumatica",
+
+  "item.cgs.raw_lead": "Piombo Grezzo",
+  "item.cgs.lead_ingot": "Lingotto di Piombo",
+  "item.cgs.lead_nugget": "Pepita di Piombo",
+  "item.cgs.steel_ingot": "Lingotto d'Acciaio",
+  "item.cgs.steel_nugget": "Pepita d'Acciaio",
+  "item.cgs.steel_sheet": "Lamiera d'Acciaio",
+  "item.cgs.guano": "Guano",
+  "item.cgs.niter": "Nitrato",
+  "item.cgs.sulfur": "Zolfo",
+  "item.cgs.charcoal_dust": "Polvere di Carbone",
+
+  "block.cgs.lead_ore": "Minerale di Piombo",
+  "block.cgs.deepslate_lead_ore": "Minerale di Piombo in Ardesia profonda",
+  "block.cgs.sulfur_ore": "Minerale di Zolfo",
+  "block.cgs.raw_lead_block": "Blocco di Piombo Grezzo",
+  "block.cgs.lead_block": "Blocco di Piombo",
+
+  "block.cgs.steel_block": "Blocco d'Acciaio"
+}
