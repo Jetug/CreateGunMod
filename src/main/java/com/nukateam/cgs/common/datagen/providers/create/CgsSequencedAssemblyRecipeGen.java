@@ -176,7 +176,7 @@ public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
     });
 
     BaseRecipeProvider.GeneratedRecipe STEEL_NAIL = this.create("steel_nail", (b) -> {
-        return b.require(TagKeys.IRON_NUGGET)
+        return b.require(TagKeys.STEEL_NUGGET)
                 .transitionTo(CgsItems.STEEL_NUGGET.get())
                 .addOutput(new ItemStack(CgsAmmo.STEEL_NAIL.get(), 6), 1.0F)
                 .addStep(CuttingRecipe::new, (rb) -> rb)

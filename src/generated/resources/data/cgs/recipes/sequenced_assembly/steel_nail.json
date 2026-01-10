@@ -1,7 +1,7 @@
 {
   "type": "create:sequenced_assembly",
   "ingredient": {
-    "tag": "forge:nuggets/iron"
+    "tag": "forge:nuggets/steel"
   },
   "loops": 1,
   "results": [
