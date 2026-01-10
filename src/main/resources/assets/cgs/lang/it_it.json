@@ -4,7 +4,7 @@
   "info.cgs.fuel": "Tasto destro su un Arma con un qualsiasi combustibile per refillarla",
 
   "slot.cgs.attachment.engine": "Motore",
-  "slot.cgs.attachment.frame": "Frame",
+  "slot.cgs.attachment.frame": "Telaio",
   "slot.cgs.attachment.chamber": "Chamber",
   "slot.cgs.attachment.head": "Testa",
 
@@ -39,17 +39,17 @@
   "item.cgs.round_gatling_piercing": "Proiettile perforante per Mitrailleuse",
 
   "item.cgs.round_revolver_blank": "Cartuccia a salve per Revolver",
-  "item.cgs.round_revolver": "Revolver Round",
+  "item.cgs.round_revolver": "Cartuccia per Revolver ",
   "item.cgs.round_revolver_piercing": "Proiettile perforante per Revolver",
 
   "item.cgs.round_shotgun_blank": "Cartuccia a Salve per Shotgun",
   "item.cgs.round_shotgun": "Cartuccia per Shotgun",
-  "item.cgs.round_shotgun_flechette": "Shotgun Flechette Round",
-  "item.cgs.round_shotgun_flechette_steel": "Shotgun Steel Flechette Round",
-  "item.cgs.round_shotgun_incendiary": "Incendiary Shotgun Round",
+  "item.cgs.round_shotgun_flechette": "Proiettile a Freccietta per Shotgun",
+  "item.cgs.round_shotgun_flechette_steel": "Proiettile a Freccietta per Shotgun d'acciaio ",
+  "item.cgs.round_shotgun_incendiary": "Cartuccia Incendiara per Shotgun",
 
   "item.cgs.paper_cartridge": "Cartuccia di Carta",
-  "item.cgs.paper_shot": "Paper Shot",
+  "item.cgs.paper_shot": "Colpo di Carta",
   "item.cgs.nail": "Chiodo",
   "item.cgs.nail_steel": "Chiodo d'Acciaio",
   "item.cgs.rocket": "Razzo",
@@ -76,13 +76,13 @@
   "item.cgs.iron_sight": "Gatling: Mirino di ferro",
   "item.cgs.gatling_drum": "Gatling: caricatore a tamburo",
 
-  "item.cgs.round_belt": "Tamburo a nastro per Revolver",
+  "item.cgs.round_belt": "Tamburo a Nastro per Revolver",
   "item.cgs.auto_fire": "Revolver: fuoco Automatico ",
   "item.cgs.long_barrel": "Revolver: Canna Lunga",
 
   "item.cgs.shotgun_drum": "Shotgun: Modulo Tamburi",
   "item.cgs.shotgun_pump": "Shotgun: Modulo Caricatore Auomatico",
-  "item.cgs.shotgun_long_barrel": "Shotgun: Modulo Long Barrels",
+  "item.cgs.shotgun_long_barrel": "Shotgun: Modulo Canna Lunga",
   "item.cgs.shotgun_spread_barrel": "Shotgun: Modulo Canna a Dispersione",
 
   "item.cgs.nailgun_splitter": "Sparachiodi: Canna a Dispersione",
@@ -94,7 +94,7 @@
   "item.cgs.launcher_hook": "Arpione Pneumatico",
   "item.cgs.item_launcher": "Lanciatore di Oggetti",
 
-  "item.cgs.hammer_chamber": "Mazza: camera da scoppio",
+  "item.cgs.hammer_chamber": "Mazza: camera a scoppio",
   "item.cgs.hammer_stone": "Testa In Pietra per Mazza Pneumatica",
   "item.cgs.hammer_iron": "Testa In Ferro per Mazza Pneumatica",
   "item.cgs.hammer_diamond": "Testa In Diamante per Mazza Pneumatica",
@@ -120,6 +120,5 @@
   "block.cgs.sulfur_ore": "Minerale di Zolfo",
   "block.cgs.raw_lead_block": "Blocco di Piombo Grezzo",
   "block.cgs.lead_block": "Blocco di Piombo",
-
   "block.cgs.steel_block": "Blocco d'Acciaio"
 }
