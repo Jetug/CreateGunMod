@@ -9,6 +9,7 @@ version = "${mod_version}"
 displayName = "${mod_name}"
 authors = "${mod_authors}"
 description = '''${mod_description}'''
+credits = "Alessandra15204 - Italian localisation"
 
 [[dependencies."${mod_id}"]]
 modId = "forge"
