@@ -82,11 +82,11 @@ public class GunEventHandler {
 
     @SubscribeEvent
     public static void preReload(GunReloadEvent.Pre event) {
-        var gun = event.getStack();
+        var gun = event.getData().weapon;
         var shooter = event.getEntity();
         var data = new WeaponData(gun, shooter);
 
-        if(!event.getEntity().level().isClientSide) {
+        if(!event.getEntity().level().isClientSide && shooter instanceof Player player) {
             var fuels = WeaponModifierHelper.getAllFuel(data);
             fuels.forEach((fuel) -> {
                 var foundFuel = (IAmmoContext)AmmoContext.NONE;
@@ -94,10 +94,10 @@ public class GunEventHandler {
                     var fuelCount = FuelUtils.getFuel(gun, fuel);
                     var maxFuel = WeaponModifierHelper.getMaxFuel(fuel.getId(), data);
                     if (fuelCount < maxFuel){
-                        foundFuel = InventoryUtil.findPlayerAmmo(shooter, fuel);
+                        foundFuel = InventoryUtil.findPlayerAmmo(player, fuel);
                         if(foundFuel != AmmoContext.NONE){
                             if(fuelCount <= Math.min(0, maxFuel - fuel.getValue(foundFuel.stack()))){
-                                fillFuel(gun, shooter, foundFuel.stack());
+                                fillFuel(gun, player, foundFuel.stack());
                             }
                         }
                     }
@@ -108,7 +108,7 @@ public class GunEventHandler {
     }
     @SubscribeEvent
     public static void postReload(GunReloadEvent.Post event) {
-        var gun = event.getStack();
+        var gun = event.getData().weapon;
         var shooter = event.getEntity();
         var data = new WeaponData(gun, shooter);
 

@@ -41,7 +41,7 @@ public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
             .require(CgsAmmo.REVOLVER_ROUND_BLANK.get())
             .transitionTo(CgsAmmo.REVOLVER_ROUND_BLANK.get())
             .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagKeys.LEAD_NUGGET))
-            .addOutput(new ItemStack(CgsAmmo.REVOLVER_ROUND.get(), 8), 1.0F)
+            .addOutput(new ItemStack(CgsAmmo.REVOLVER_ROUND.get(), 1), 1.0F)
             .loops(1));
 
     BaseRecipeProvider.GeneratedRecipe REVOLVER_ROUND_PIERCING = this.create("revolver_round_piercing", (b) -> b
@@ -49,7 +49,7 @@ public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
             .transitionTo(CgsAmmo.REVOLVER_ROUND_BLANK.get())
             .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagKeys.STEEL_NUGGET))
             .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagKeys.LEAD_NUGGET))
-            .addOutput(new ItemStack(CgsAmmo.REVOLVER_ROUND_PIERCING.get(), 8), 1.0F)
+            .addOutput(new ItemStack(CgsAmmo.REVOLVER_ROUND_PIERCING.get(), 1), 1.0F)
             .loops(1));
 
     BaseRecipeProvider.GeneratedRecipe GATLING_ROUND_BLANK = this.create("gatling_round_blank", (b) -> {
@@ -78,15 +78,6 @@ public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
                 .addOutput(new ItemStack(CgsAmmo.GATLING_ROUND_PIERCING.get(), 1), 1.0F)
                 .loops(1);
     });
-
-//    BaseRecipeProvider.GeneratedRecipe SHOTGUN_SHELL = this.create("shotgun_shell", (b) -> {
-//        return b.require(TagKeys.BRASS_SHEET)
-//                .transitionTo(CgsAmmo.SHOTGUN_SHELL.get())
-//                .addOutput(new ItemStack(CgsAmmo.SHOTGUN_SHELL.get(), 4), 1.0F)
-//                .addStep(DeployerApplicationRecipe::new, (rb) ->
-//                        rb.toolNotConsumed().require(CgsItems.PRESS_FORM_SHOTGUN.get()))
-//                .loops(1);
-//    });
 
     BaseRecipeProvider.GeneratedRecipe SHOTGUN_ROUND_BLANK = this.create("shotgun_round_blank", (b) -> {
         return b.require(TagKeys.BRASS_SHEET)
