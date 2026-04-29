@@ -50,7 +50,7 @@ public class HammerAnimator extends WeaponAnimator {
             this.isSecondary = data.weaponMode == WeaponMode.SECONDARY;
         }
         if(itemStack != null &&!itemStack.isEmpty()) {
-            this.data = getGunData();
+            this.data = getWeaponData();
         }
         this.ammoCount = WeaponStateHelper.getAmmoCount(data);
         this.isShotPowered = isShotPowered();

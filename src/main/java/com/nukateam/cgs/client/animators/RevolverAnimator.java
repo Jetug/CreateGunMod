@@ -45,7 +45,7 @@ public class RevolverAnimator extends WeaponAnimator {
                 this.hasBelt = chamberAttachment.is(CgsAttachments.REVOLVER_BELT.get());
                 this.isAuto = frame.is(CgsAttachments.REVOLVER_AUTO.get());
                 this.oneHanded = barrel.isEmpty();
-                oneHanded = WeaponModifierHelper.isOneHanded(getGunData());
+                oneHanded = WeaponModifierHelper.isOneHanded(getWeaponData());
             }
         }
     }

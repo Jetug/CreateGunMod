@@ -51,7 +51,7 @@ public class LauncherAnimator extends WeaponAnimator {
         var magazineAttachment = WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getStack()).getItem();
         try {
             if (itemStack.getItem() instanceof WeaponItem) {
-                var data = getGunData();
+                var data = getWeaponData();
                 this.ammoCount = WeaponStateHelper.getAmmoCount(data);
                 this.isBallista = magazineAttachment == CgsAttachments.BALLISTAZOOKA.get();
                 this.isAutoLauncher = magazineAttachment == CgsAttachments.AUTO_LAUNCHER.get();

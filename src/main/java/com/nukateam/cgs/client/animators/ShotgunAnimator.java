@@ -67,7 +67,7 @@ public class ShotgunAnimator extends WeaponAnimator {
         if (!isGun()) return;
 
         var magazine = WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getStack());
-        var data = getGunData();
+        var data = getWeaponData();
         this.ammo = WeaponStateHelper.getAmmoCount(data);
         this.hasDrums = magazine.is(CgsAttachments.SHOTGUN_DRUM.get());
         this.hasPumps = magazine.is(CgsAttachments.SHOTGUN_PUMP.get());
@@ -112,7 +112,7 @@ public class ShotgunAnimator extends WeaponAnimator {
     @Override
     protected RawAnimation getStartReloadAnimation(AnimationState<WeaponAnimator> event) {
         if(hasPumps) {
-            var data = getGunData();
+            var data = getWeaponData();
             int time = getReloadStart(data);
             this.animationHelper.syncAnimation(event, RELOAD_PUMP_START, time);
             return RawAnimation.begin().then(RELOAD_PUMP_START, PLAY_ONCE);
@@ -122,7 +122,7 @@ public class ShotgunAnimator extends WeaponAnimator {
 
     @Override
     protected RawAnimation getDefaultReloadAnimation(AnimationState<WeaponAnimator> event) {
-        var data = getGunData();
+        var data = getWeaponData();
         var reloadTime = getReloadTime(data);
         if(hasDrums){
             this.animationHelper.syncAnimation(event, reloadTime, RELOAD_DRUM, SHOT_DRUM);
@@ -142,7 +142,7 @@ public class ShotgunAnimator extends WeaponAnimator {
     @Override
     protected RawAnimation getEndReloadAnimation(AnimationState<WeaponAnimator> event) {
         if(hasPumps) {
-            var data = getGunData();
+            var data = getWeaponData();
             int time = getReloadEnd(data);
             this.animationHelper.syncAnimation(event, time, RELOAD_PUMP_END, SHOT_PUMP);
             return RawAnimation.begin()
@@ -153,7 +153,7 @@ public class ShotgunAnimator extends WeaponAnimator {
         else return super.getEndReloadAnimation(event);
     }
 
-    protected @NotNull WeaponData getGunData() {
+    protected @NotNull WeaponData getWeaponData() {
         return new WeaponData(getStack(), getEntity());
     }
 

@@ -10,6 +10,7 @@ import com.nukateam.cgs.common.utils.GunUtils;
 import com.nukateam.example.common.registery.WeaponModifiers;
 import com.nukateam.ntgl.common.data.config.weapon.AttributeModifier;
 import com.nukateam.ntgl.common.data.config.weapon.ProjectileConfig;
+import com.nukateam.ntgl.common.data.enums.SoundType;
 import com.nukateam.ntgl.common.data.holders.*;
 import com.nukateam.ntgl.common.registry.AmmoHolders;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
@@ -194,11 +195,13 @@ public class AttachmentMods {
         }
 
         @Override
-        public ResourceLocation modifyFireSound(ResourceLocation sound, WeaponData data) {
-            if(data.weapon != null && data.weapon.getItem() == CgsWeapons.NAILGUN.get()){
+        public ResourceLocation modifySound(String name, ResourceLocation sound, WeaponData data) {
+            if(name.equals(SoundType.FIRE.getName())
+                    && data.weapon != null
+                    && data.weapon.getItem() == CgsWeapons.NAILGUN.get()) {
                 return CgsSounds.NAILGUN_FIRE_STEAM.get().getLocation();
             }
-            return IWeaponModifier.super.modifyFireSound(sound, data);
+            return IWeaponModifier.super.modifySound(name, sound, data);
         }
 
         @Override
@@ -721,8 +724,10 @@ public class AttachmentMods {
         }
 
         @Override
-        public ResourceLocation modifyFireSound(ResourceLocation sound, WeaponData data) {
-            return CgsSounds.BALLISTA_FIRE.getId();
+        public ResourceLocation modifySound(String name, ResourceLocation sound, WeaponData data) {
+            if(name.equals(SoundType.FIRE.getName()))
+                return CgsSounds.BALLISTA_FIRE.getId();
+            return sound;
         }
 
         @Override

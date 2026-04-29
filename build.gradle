@@ -1,123 +1,51 @@
-buildscript {
-    repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        maven { url = 'https://maven.parchmentmc.org' }
-        maven { url = 'https://repo.spongepowered.org/maven' }
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-        classpath 'org.parchmentmc:librarian:1.+'
-        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
-        //classpath 'org.spongepowered:mixingradle:0.7.+'
-    }
-}
-
 plugins {
-    id 'eclipse'
+    id 'java-library'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '[6.0.16,6.2)'
+    id 'net.neoforged.gradle.userdev' version '7.0.192'
 }
 
-apply plugin: 'org.parchmentmc.librarian.forgegradle'
-apply plugin: 'org.spongepowered.mixin'
-    
 version = "${minecraft_version}-${mod_version}"
-group = 'com.nukateam.cgs' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'create-gunsmithing'
+group = 'com.nukateam.cgs'
 
-// Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+base {
+    archivesName = mod_id
+}
 
-println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
-minecraft {
-    mappings channel: mappings_channel, version: mappings_version
-    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
-    runs {
-        client {
-            workingDirectory project.file('run')
+runs {
+    configureEach {
+        systemProperty 'forge.logging.markers', 'REGISTRIES'
+        systemProperty 'forge.logging.console.level', 'debug'
 
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'cgs'
+        modSource project.sourceSets.main
+    }
 
-            arg "-mixin.config=cgs.mixin.json"
+    client {
+        // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
+        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+    }
 
-            mods {
-                cgs {
-                    source sourceSets.main
-                }
-            }
-        }
+    server {
+        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        argument '--nogui'
+    }
 
-        server {
-            workingDirectory project.file('run')
+    gameTestServer {
+        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+    }
 
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'cgs'
-
-            arg "-mixin.config=cgs.mixin.json"
-
-            mods {
-                cgs {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        gameTestServer {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'cgs'
-
-            arg "-mixin.config=cgs.mixin.json"
-
-            mods {
-                cgs {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        data {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            args '--mod', 'cgs', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-
-            mods {
-                cgs {
-                    source sourceSets.main
-                }
-            }
-        }
+    data {
+        arguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
     }
 }
 
-tasks.named('processResources', ProcessResources).configure {
-    var replaceProperties = [minecraft_version       : minecraft_version,
-                             minecraft_version_range : minecraft_version_range,
-                             forge_version           : forge_version,
-                             forge_version_range     : forge_version_range,
-                             loader_version_range    : loader_version_range,
-                             mod_id                  : mod_id,
-                             mod_name                : mod_name,
-                             mod_license             : mod_license,
-                             mod_version             : mod_version,
-                             mod_authors             : mod_authors,
-                             mod_description         : mod_description,]
+minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
 
-    inputs.properties replaceProperties
-    duplicatesStrategy = DuplicatesStrategy.WARN // or DuplicatesStrategy.EXCLUDE
+sourceSets.main.resources { srcDir 'src/generated/resources' }
 
-    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
-        expand replaceProperties + [project: project]
-    }
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
 }
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
@@ -163,87 +91,78 @@ repositories {
         dirs 'lib'
     }
 
-    maven { url = "https://maven.createmod.net" } // Create, Ponder, Flywheel
-    maven { url = "https://maven.ithundxr.dev/mirror" } // Registrate
     maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" }
+    maven { url = "https://maven.createmod.net" } // Create, Ponder, Flywheel
+    maven { url = "https://maven.ithundxr.dev/snapshots" } // Registrate
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    implementation "net.neoforged:neoforge:${neo_version}"
 
-    implementation fg.deobf('com.nukateam:ntgl:1.20.1-3.0.6')
-    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${minecraft_version}:4.8.2")
-    implementation("com.eliotlash.mclib:mclib:20")
+    implementation 'com.nukateam:ntgl:1.21.1-3.1.0'
+    implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:4.8.4"
+//    implementation "com.eliotlash.mclib:mclib:20"
 
-    implementation(fg.deobf("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false })
-    implementation(fg.deobf("net.createmod.ponder:Ponder-Forge-${minecraft_version}:${ponder_version}"))
-    compileOnly(fg.deobf("dev.engine-room.flywheel:flywheel-forge-api-${minecraft_version}:${flywheel_version}"))
-    runtimeOnly(fg.deobf("dev.engine-room.flywheel:flywheel-forge-${minecraft_version}:${flywheel_version}"))
-    implementation(fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}"))
-    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.4.1"))
-    implementation("io.github.llamalad7:mixinextras-forge:0.4.1")
+    implementation("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false }
+    implementation("net.createmod.ponder:ponder-neoforge:${ponder_version}+mc${minecraft_version}")
+    compileOnly("dev.engine-room.flywheel:flywheel-neoforge-api-${minecraft_version}:${flywheel_version}")
+    runtimeOnly("dev.engine-room.flywheel:flywheel-neoforge-${minecraft_version}:${flywheel_version}")
+    implementation("com.tterrag.registrate:Registrate:${registrate_version}")
 
-    implementation fg.deobf("curse.maven:framework-549225:5180972")
-    implementation fg.deobf("curse.maven:cyanide-541676:4824162")
+    implementation "curse.maven:playeranimator-658587:7389814"
+    implementation "curse.maven:cloth-config-348521:5729127"
+    implementation "curse.maven:configured-457570:7276577"
 
-    implementation fg.deobf("curse.maven:playeranimator-658587:4587214")
-    implementation(fg.deobf("me.shedaniel.cloth:cloth-config-forge:11.1.118"))
-    implementation fg.deobf("curse.maven:configured-457570:5180900")
+    implementation "curse.maven:kotlin-for-forge-351264:7471280"
+    implementation "curse.maven:fzzy-config-1005914:7568897"
+    implementation 'einstein:subtleeffects-neoforge:1.21.1-1.14.3'
+    implementation "snownee:jade:1.21.1-NeoForge-15.10.5"
 
-    implementation fg.deobf("curse.maven:kotlin-for-forge-351264:5402061")
-    implementation fg.deobf("curse.maven:fzzy-config-1005914:7085017")
-    implementation fg.deobf('einstein:subtleeffects-forge:1.20.1-1.13.1')
-    implementation fg.deobf("snownee:jade:1.20.1-Forge-11.13.2")
-
-    compileOnly fg.deobf("mezz.jei:jei-1.20.1-forge-api:15.20.0.106")
-    compileOnly fg.deobf("mezz.jei:jei-1.20.1-common-api:15.20.0.106")
-    runtimeOnly fg.deobf("mezz.jei:jei-1.20.1-forge:15.20.0.106")
-
-    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-    testAnnotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    compileOnly "mezz.jei:jei-1.21.1-common-api:19.25.0.322"
+    compileOnly "mezz.jei:jei-1.21.1-neoforge-api:19.25.0.322"
+    localRuntime "mezz.jei:jei-1.21.1-neoforge:19.25.0.322"
 }
 
-mixin {
-    add sourceSets.main, "cgs.mixin-refmap.json"
-}
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            neo_version            : neo_version,
+            loader_version_range   : loader_version_range,
+            mod_id                 : mod_id,
+            mod_name               : mod_name,
+            mod_license            : mod_license,
+            mod_version            : mod_version,
+            mod_authors            : mod_authors,
+            mod_description        : mod_description
+    ]
+    inputs.properties replaceProperties
 
-jar {
-    manifest {
-        attributes([
-                "Specification-Title"     : "cgs",
-                "Specification-Vendor"    : "NukaTeam",
-                "Specification-Version"   : "1", // We are version 1 of ourselves
-                "Implementation-Title"    : "cgs",
-                "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "NukaTeam",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                "TweakClass"              : "org.spongepowered.asm.launch.MixinTweaker",
-                "TweakOrder"              : 0,
-                "MixinConfigs"            : "cgs.mixin.json"
-        ])
+    filesMatching(['META-INF/neoforge.mods.toml']) {
+        expand replaceProperties
     }
 }
 
-// Example configuration to allow publishing using the maven-publish plugin
-// This is the preferred method to reobfuscate your jar file
-jar.finalizedBy('reobfJar')
-// However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
-// publish.dependsOn('reobfJar')
-
 publishing {
     publications {
-        mavenJava(MavenPublication) {
-            artifact jar
+        register('mavenJava', MavenPublication) {
+            from components.java
         }
     }
     repositories {
         maven {
-            url "file://${project.projectDir}/mcmodsrepo"
+            url "file://${project.projectDir}/repo"
         }
-
     }
 }
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+}
+
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
 }
