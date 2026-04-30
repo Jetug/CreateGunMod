@@ -1,7 +1,7 @@
 package com.nukateam.cgs.client.model;
 
 import com.nukateam.ntgl.client.model.IGlowingModel;
-import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.model.GeoModel;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;

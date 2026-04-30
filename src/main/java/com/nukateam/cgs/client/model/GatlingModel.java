@@ -3,7 +3,7 @@ package com.nukateam.cgs.client.model;
 import com.nukateam.cgs.client.animators.GatlingAnimator;
 import com.nukateam.ntgl.client.model.gun.GeoWeaponModel;
 import com.nukateam.ntgl.client.model.gun.GeoWeaponModel;
-import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationState;
 
 public class GatlingModel extends GeoWeaponModel<GatlingAnimator> {
     @Override

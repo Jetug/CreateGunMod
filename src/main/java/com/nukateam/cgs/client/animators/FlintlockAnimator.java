@@ -9,7 +9,7 @@ import com.nukateam.ntgl.common.data.holders.AttachmentType;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.nukateam.ntgl.common.util.helpers.PlayerHelper;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
-import software.bernie.geckolib.core.animation.*;
+import software.bernie.geckolib.animation.*;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
@@ -18,7 +18,7 @@ import net.minecraft.world.item.ShieldItem;
 
 import static com.nukateam.ntgl.common.data.constants.Animations.RELOAD;
 import static com.nukateam.ntgl.common.data.constants.Animations.SHOT;
-import static software.bernie.geckolib.core.animation.Animation.LoopType.*;
+import static software.bernie.geckolib.animation.Animation.LoopType.*;
 
 public class FlintlockAnimator extends WeaponAnimator {
     public static final String EMPTY = "empty";

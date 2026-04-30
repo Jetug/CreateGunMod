@@ -5,8 +5,8 @@ import com.nukateam.ntgl.common.foundation.entity.ProjectileEntity;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
 
 import static software.bernie.geckolib.util.GeckoLibUtil.createInstanceCache;
 

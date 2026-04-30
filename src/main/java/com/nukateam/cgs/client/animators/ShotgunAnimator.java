@@ -10,17 +10,17 @@ import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.util.Cycler;
 import com.nukateam.ntgl.common.data.WeaponData;
-import software.bernie.geckolib.core.animation.*;
-import software.bernie.geckolib.core.animation.AnimationController.AnimationStateHandler;
+import software.bernie.geckolib.animation.*;
+import software.bernie.geckolib.animation.AnimationController.AnimationStateHandler;
 import net.minecraft.world.item.ItemDisplayContext;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
 import static com.nukateam.ntgl.common.util.util.WeaponModifierHelper.*;
-import static software.bernie.geckolib.core.animation.Animation.LoopType.LOOP;
-import static software.bernie.geckolib.core.animation.Animation.LoopType.PLAY_ONCE;
-import static software.bernie.geckolib.core.animation.RawAnimation.begin;
+import static software.bernie.geckolib.animation.Animation.LoopType.LOOP;
+import static software.bernie.geckolib.animation.Animation.LoopType.PLAY_ONCE;
+import static software.bernie.geckolib.animation.RawAnimation.begin;
 
 public class ShotgunAnimator extends WeaponAnimator {
     public static final String SHOT_DRUM = "shot_drum";

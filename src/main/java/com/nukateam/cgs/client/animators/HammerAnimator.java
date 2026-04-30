@@ -11,8 +11,8 @@ import com.nukateam.ntgl.common.data.holders.WeaponMode;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
-import software.bernie.geckolib.core.animation.AnimationState;
-import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.animation.AnimationState;
+import software.bernie.geckolib.animation.RawAnimation;
 import net.minecraft.world.item.ItemDisplayContext;
 import org.jetbrains.annotations.NotNull;
 
@@ -20,8 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.nukateam.ntgl.client.util.helpers.TransformUtils.isFirstPerson;
-import static software.bernie.geckolib.core.animation.Animation.LoopType.*;
-import static software.bernie.geckolib.core.animation.RawAnimation.begin;
+import static software.bernie.geckolib.animation.Animation.LoopType.*;
+import static software.bernie.geckolib.animation.RawAnimation.begin;
 
 public class HammerAnimator extends WeaponAnimator {
     public static final String MELEE_POWER_END = "melee_power_end";

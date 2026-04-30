@@ -10,12 +10,12 @@ import com.nukateam.ntgl.common.data.constants.Animations;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
 import com.nukateam.ntgl.common.data.WeaponData;
 import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
-import software.bernie.geckolib.core.animation.*;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
+import software.bernie.geckolib.animation.*;
 import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraftforge.event.TickEvent;
 
-import static software.bernie.geckolib.core.animation.Animation.LoopType.*;
-import static software.bernie.geckolib.core.animation.RawAnimation.begin;
+import static software.bernie.geckolib.animation.Animation.LoopType.*;
+import static software.bernie.geckolib.animation.RawAnimation.begin;
 
 public class RevolverAnimator extends WeaponAnimator {
     public static final String BELT = "belt";
@@ -34,7 +34,7 @@ public class RevolverAnimator extends WeaponAnimator {
     }
 
     @Override
-    public void tick(TickEvent event) {
+    public void tick(ClientTickEvent event) {
         super.tick(event);
         if (event.phase == TickEvent.Phase.START) {
             if (isGun()) {
