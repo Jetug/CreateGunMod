@@ -25,12 +25,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 
 import static com.nukateam.cgs.common.utils.GunUtils.fillFuel;
 import static net.minecraft.world.phys.HitResult.Type.BLOCK;
 
-@Mod.EventBusSubscriber(modid = Gunsmithing.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(modid = Gunsmithing.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class GunEventHandler {
     @SubscribeEvent
     public static void preShoot(GunFireEvent.Pre event) {

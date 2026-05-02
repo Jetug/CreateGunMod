@@ -13,14 +13,14 @@ import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static net.minecraft.world.level.block.Block.popResource;
 
-@Mod.EventBusSubscriber(modid = Gunsmithing.MOD_ID)
+@EventBusSubscriber(modid = Gunsmithing.MOD_ID)
 public class GuanoAccumulationHandler {
     private static final Map<BlockPos, Long> batTrackingMap = new HashMap<>();
     private static final int ACCUMULATION_TIME = 30 * 20;

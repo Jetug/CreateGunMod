@@ -26,3 +26,6 @@ run-data
 # Files from Forge MDK
 forge*changelog.txt
 /src/generated/resources/.cache/
+/runs/junit/junit_jvm_args.txt
+/runs/junit/junit_test_args.txt
+/runs/
