@@ -7,7 +7,6 @@ import com.simibubi.create.content.equipment.armor.BacktankItem;
 import com.simibubi.create.content.equipment.armor.BacktankUtil;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.neoforged.neoforge.common.ForgeHooks;
 
 import java.util.List;
 
@@ -61,7 +60,7 @@ public class CgsAmmoHolders {
     }
 
     private static boolean isBurnable(ItemStack ammoStack) {
-        var burnTime = ForgeHooks.getBurnTime(ammoStack, null);
+        var burnTime = ammoStack.getBurnTime(null);
         return ammoStack.getItem() != AllItems.BLAZE_CAKE.get() && burnTime > 0;
     }
 

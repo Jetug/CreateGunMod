@@ -25,6 +25,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Predicate;
 
+import static net.neoforged.neoforge.event.EventHooks.*;
 import static software.bernie.geckolib.util.GeckoLibUtil.createInstanceCache;
 
 public class BlazeProjectile extends ProjectileEntity implements ItemSupplier, AnimatedProjectile {
@@ -126,7 +127,7 @@ public class BlazeProjectile extends ProjectileEntity implements ItemSupplier, A
 
         if (!this.level().isClientSide) {
             Entity entity = this.getShooter();
-            if (!(entity instanceof Mob) || getMobGriefingEvent(this.level(), entity)) {
+            if (!(entity instanceof Mob) || canEntityGrief(this.level(), entity)) {
                 blockpos = blockpos.relative(face);
                 if (this.level().isEmptyBlock(blockpos)) {
                     this.level().setBlockAndUpdate(blockpos, SoulFireBlock.getState(this.level(), blockpos));
