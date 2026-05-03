@@ -22,7 +22,7 @@ public class CgsItemTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Gunsmithing.MOD_ID);
 
 
-    public static final DeferredHolder<CreativeModeTab> CGS = CREATIVE_MODE_TABS.register("mod_items",
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> CGS = CREATIVE_MODE_TABS.register("mod_items",
             () -> builder().icon(() -> new ItemStack(CgsAmmo.GATLING_ROUND.get()))
                     .title(Component.translatable("itemGroup.mod_items"))
                     .displayItems(CgsItemTabs::getWeaponTab)

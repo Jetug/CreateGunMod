@@ -30,7 +30,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import static com.nukateam.cgs.common.utils.GunUtils.fillFuel;
 import static net.minecraft.world.phys.HitResult.Type.BLOCK;
 
-@EventBusSubscriber(modid = Gunsmithing.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(modid = Gunsmithing.MOD_ID)
 public class GunEventHandler {
     @SubscribeEvent
     public static void preShoot(GunFireEvent.Pre event) {
@@ -44,7 +44,7 @@ public class GunEventHandler {
         }
 
         if(gun.getItem() == CgsWeapons.LAUNCHER.get() &&
-                WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, gun).getItem() == CgsAttachments.BALLISTAZOOKA.get()) {
+                WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, gunData).getItem() == CgsAttachments.BALLISTAZOOKA.get()) {
             return;
         }
 

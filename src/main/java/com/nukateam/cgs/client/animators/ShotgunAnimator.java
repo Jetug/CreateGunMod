@@ -66,7 +66,7 @@ public class ShotgunAnimator extends WeaponAnimator {
         super.tickStart();
         if (!isGun()) return;
 
-        var magazine = WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getStack());
+        var magazine = WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getWeaponData());
         var data = getWeaponData();
         this.ammo = WeaponStateHelper.getAmmoCount(data);
         this.hasDrums = magazine.is(CgsAttachments.SHOTGUN_DRUM.get());

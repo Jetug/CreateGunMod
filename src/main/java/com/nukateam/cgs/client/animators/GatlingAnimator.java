@@ -50,7 +50,7 @@ public class GatlingAnimator extends EngineAnimator {
     @Override
     protected void tickStart() {
         super.tickStart();
-        var magazine = WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getStack());
+        var magazine = WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getWeaponData());
         this.hasDrum = magazine.is(CgsAttachments.GATLING_DRUM.get());
 
         float cooldown = this.shootingHandler.getCooldown(getEntity(), this.arm);

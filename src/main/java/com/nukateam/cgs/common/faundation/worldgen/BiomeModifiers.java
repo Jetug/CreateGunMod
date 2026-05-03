@@ -32,6 +32,6 @@ public class BiomeModifiers {
     }
 
     private static ResourceKey<BiomeModifier> registerKey(String name) {
-        return ResourceKey.create(Registries.Keys.BIOME_MODIFIERS, new ResourceLocation(Gunsmithing.MOD_ID, name));
+        return ResourceKey.create(Registries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Gunsmithing.MOD_ID, name));
     }
 }

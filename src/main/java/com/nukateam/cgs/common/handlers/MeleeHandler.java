@@ -18,6 +18,7 @@ import com.simibubi.create.content.kinetics.saw.TreeCutter;
 import net.createmod.catnip.math.VecHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffects;
@@ -35,7 +36,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import org.jetbrains.annotations.NotNull;
 
-@EventBusSubscriber(modid = Gunsmithing.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(modid = Gunsmithing.MOD_ID)
 public class MeleeHandler {
     public static BreakHandler HAMMER_HANDLER = new BreakHandler(
             MeleeHandler::isToolTierSufficient,
@@ -69,12 +70,12 @@ public class MeleeHandler {
 
     private static void hitBlock(ServerPlayer player, WeaponData data, LivingEntity entity) {
         assert data.weapon != null;
-        var head = WeaponStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, data.weapon);
+        var head = WeaponStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, data);
 
         if (head.getItem() instanceof HammerHeadItem headItem && HammerItem.isPowered(data)
                 && !entity.hasEffect(MobEffects.DIG_SLOWDOWN)) {
             var reach = WeaponModifierHelper.getMeleeDistance(data);
-            var isShotPowered = !WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, data.weapon).isEmpty();
+            var isShotPowered = !WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, data).isEmpty();
             var hitResult = getBlockHitResult(player, reach);
             if (hitResult.getType() != HitResult.Type.BLOCK) return;
 
@@ -144,7 +145,7 @@ public class MeleeHandler {
 
         if(canGrief && canDistroy && handler.isToolTierSufficient(blockState, toolTier) && handler.isMineable(blockState)) {
             if(!player.isCreative()) {
-                StackUtils.damageItem(stack, 1);
+                stack.hurtAndBreak(1, (ServerLevel)player.level(), player, (i) -> {});
             }
             player.level().destroyBlock(targetPos, handler.isCanDrop(blockState), player);
         }

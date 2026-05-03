@@ -5,8 +5,10 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.nukateam.cgs.common.faundation.registry.items.CgsAttachments;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.client.util.ClientDebug;
+import com.nukateam.ntgl.common.data.WeaponData;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import software.bernie.geckolib.cache.object.GeoBone;
@@ -20,7 +22,7 @@ public class FlintlockRenderer extends BaseWeaponRenderer {
     public void renderRecursively(PoseStack poseStack, WeaponAnimator animatable, GeoBone bone, RenderType renderType,
                                   MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender,
                                   float partialTick, int packedLight, int packedOverlay,
-                                  float red, float green, float blue, float alpha) {
+                                  int color) {
         poseStack.pushPose();
         if (bone.getName().equals("scope") && hasRevolvingChambersEquiped()) {
             poseStack.translate(0, 0 , -3 / 16d);
@@ -34,23 +36,24 @@ public class FlintlockRenderer extends BaseWeaponRenderer {
         }
 
         if (bone.getName().equals("melee2")) {
-            var barrel = WeaponStateHelper.getAttachmentItem(AttachmentType.BARREL, animatable.getStack());
+            var barrel = WeaponStateHelper.getAttachmentItem(AttachmentType.BARREL, new WeaponData(animatable.getStack(), Minecraft.getInstance().player));
             if(barrel.getItem() == CgsAttachments.FLINTLOCK_LONG_BARREL.get())
                 bone.setHidden(true);
         }
         else bone.setHidden(false);
 
         super.renderRecursively(poseStack, animatable, bone, renderType, bufferSource, buffer, isReRender, partialTick,
-                packedLight, packedOverlay, red, green, blue, alpha);
+                packedLight, packedOverlay, color);
         poseStack.popPose();
     }
 
     private boolean hasRevolvingChambersEquiped() {
-        return WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, gunStack).getItem() == CgsAttachments.REVOLVING_CHAMBERS.get();
+        return WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE,
+                new WeaponData(gunStack, Minecraft.getInstance().player)).getItem() == CgsAttachments.REVOLVING_CHAMBERS.get();
     }
 
     private boolean hasBlunderbussEquiped() {
-        var barrel = WeaponStateHelper.getAttachmentItem(AttachmentType.BARREL, gunStack).getItem();
+        var barrel = WeaponStateHelper.getAttachmentItem(AttachmentType.BARREL, new WeaponData(gunStack, Minecraft.getInstance().player)).getItem();
         return barrel == CgsAttachments.BLUNDERBUSS_BARREL.get() && barrel == CgsAttachments.LONG_BLUNDERBUSS_BARREL.get();
     }
 }

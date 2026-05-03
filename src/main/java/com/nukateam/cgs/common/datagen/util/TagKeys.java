@@ -1,35 +1,19 @@
 package com.nukateam.cgs.common.datagen.util;
 
-import com.nukateam.cgs.Gunsmithing;
-import com.simibubi.create.AllTags;
-import net.minecraft.core.DefaultedRegistry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.core.registries.Registries;
-import net.neoforged.neoforge.registries.IForgeRegistry;
-
-import static com.simibubi.create.AllTags.NameSpace.FORGE;
 
 public class TagKeys {
-    private static TagKey<Block> createTag(String path) {
-        return BlockTags.create(ResourceLocation.fromNamespaceAndPath(Gunsmithing.MOD_ID, path));
-    }
-    AllTags
-    public static <T> TagKey<T> forgeTag(DefaultedRegistry<T> registry, String path) {
-        var id = FORGE.id(path);
-        return TagKey.create(registry.getRegistryKey(), id);
-    }
-
     public static TagKey<Block> forgeBlockTag(String path) {
-        return forgeTag(BuiltInRegistries.BLOCK, path);
+        return BlockTags.create(ResourceLocation.fromNamespaceAndPath("c", path));
     }
 
     public static TagKey<Item> forgeItemTag(String path) {
-        return forgeTag(BuiltInRegistries.ITEM, path);
+        return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", path));
     }
 
     //BLOCK TAGS

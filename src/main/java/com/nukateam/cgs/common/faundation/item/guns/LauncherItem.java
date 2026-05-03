@@ -3,10 +3,12 @@ package com.nukateam.cgs.common.faundation.item.guns;
 import com.nukateam.cgs.common.faundation.registry.items.CgsAttachments;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
+import com.nukateam.ntgl.common.data.WeaponData;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
 import com.nukateam.ntgl.common.util.interfaces.IWeaponModifier;
 import com.nukateam.cgs.client.animators.*;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
@@ -24,7 +26,8 @@ public class LauncherItem extends CgsGunItem {
 
     @Override
     public String getDescriptionId(ItemStack stack) {
-        var magazineAttachment = WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, stack).getItem();
+        var magazineAttachment = WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE,
+                new WeaponData(stack, Minecraft.getInstance().player)).getItem();
         if(magazineAttachment == CgsAttachments.BALLISTAZOOKA.get()){
             return "item.cgs.ballistazooka";
         }

@@ -6,9 +6,11 @@ import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.item.attachments.HammerHeadItem;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
+import com.nukateam.ntgl.common.data.WeaponData;
 import com.nukateam.ntgl.common.data.config.weapon.WeaponConfig;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.nukateam.ntgl.common.util.util.ResourceUtils;
+import net.minecraft.client.Minecraft;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.renderer.GeoRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -45,12 +47,13 @@ public class HammerHeadLayer<T extends WeaponAnimator> extends LayerBase<T> {
 
     @Nullable
     private ResourceLocation getHeadTexture(T animatable) {
-        var attachment = WeaponStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, animatable.getStack());
+        var attachment = WeaponStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD,
+                new WeaponData(animatable.getStack(), Minecraft.getInstance().player));
 
         if(!attachment.isEmpty()){
             var head = (HammerHeadItem)attachment.getItem();
             var name = "hammer_" + head.getTier().toString().toLowerCase(Locale.ROOT) + ".png";
-            return new ResourceLocation(Gunsmithing.MOD_ID, PATH + name);
+            return ResourceLocation.fromNamespaceAndPath(Gunsmithing.MOD_ID, PATH + name);
         }
         return null;
     }

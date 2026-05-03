@@ -74,6 +74,6 @@ public class FlintlockAnimator extends WeaponAnimator {
     }
 
     private boolean hasRevolvingChambersEquiped() {
-        return WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getStack()).getItem() == CgsAttachments.REVOLVING_CHAMBERS.get();
+        return WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getWeaponData()).getItem() == CgsAttachments.REVOLVING_CHAMBERS.get();
     }
 }

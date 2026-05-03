@@ -7,24 +7,20 @@ import com.nukateam.cgs.common.network.PacketHandler;
 import com.nukateam.cgs.common.ntgl.*;
 import com.nukateam.cgs.common.ntgl.CgsAmmoHolders;
 import net.minecraft.resources.ResourceLocation;
-import net.neoforged.neoforge.common.MinecraftForge;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.neoforged.neoforge.fml.loading.FMLEnvironment;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.loading.FMLEnvironment;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
-
 
 @Mod(Gunsmithing.MOD_ID)
 public class Gunsmithing {
     public static final String MOD_ID = "cgs";
     public static final Logger LOGGER = LogUtils.getLogger();
-    public static final IEventBus MOD_EVENT_BUS = FMLJavaModLoadingContext.get().getModEventBus();
 
-    public Gunsmithing() {
-        MOD_EVENT_BUS.addListener(this::commonSetup);
+    public Gunsmithing(IEventBus MOD_EVENT_BUS, ModContainer container) {
         CgsWeapons.register(MOD_EVENT_BUS);
         CgsItems.register(MOD_EVENT_BUS);
         CgsAmmo.register(MOD_EVENT_BUS);
@@ -34,20 +30,15 @@ public class Gunsmithing {
         CgsSounds.register(MOD_EVENT_BUS);
         CgsProjectiles.register(MOD_EVENT_BUS);
         CgsParticles.register(MOD_EVENT_BUS);
-        MinecraftForge.EVENT_BUS.register(this);
         CgsAmmoType.register();
         CgsAmmoHolders.register();
     }
 
     public static @NotNull ResourceLocation cgsResource(String name) {
-        return new ResourceLocation(Gunsmithing.MOD_ID, name);
+        return ResourceLocation.fromNamespaceAndPath(Gunsmithing.MOD_ID, name);
     }
 
     public static boolean isDebugging() {
         return !FMLEnvironment.production;
-    }
-
-    private void commonSetup(final FMLCommonSetupEvent event) {
-        PacketHandler.init();
     }
 }

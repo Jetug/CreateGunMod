@@ -28,7 +28,7 @@ public class LayerBase<T extends GeoAnimatable> extends GeoRenderLayer<T> {
             this.getRenderer().reRender(bakedModel, poseStack, bufferSource, animatable,
                     renderTypeNew, bufferSource.getBuffer(renderTypeNew),
                     partialTick, packedLight, OverlayTexture.NO_OVERLAY,
-                    1.0F, 1.0F, 1.0F, 1.0F);
+                    0xFFFFFFFF);
         }
         poseStack.popPose();
     }

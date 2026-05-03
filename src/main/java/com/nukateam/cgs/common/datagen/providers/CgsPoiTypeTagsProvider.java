@@ -18,6 +18,6 @@ public class CgsPoiTypeTagsProvider extends PoiTypeTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
 //        tag(PoiTypeTags.ACQUIRABLE_JOB_SITE)
-//                .addOptional(new ResourceLocation(DataGenConfig.DATA_MOD_ID, "sound_poi"));
+//                .addOptional(ResourceLocation.fromNamespaceAndPath(DataGenConfig.DATA_MOD_ID, "sound_poi"));
     }
 }

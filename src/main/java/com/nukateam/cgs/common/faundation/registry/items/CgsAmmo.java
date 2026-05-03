@@ -11,7 +11,7 @@ import net.minecraft.core.registries.Registries;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class CgsAmmo {
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEMS, Gunsmithing.MOD_ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, Gunsmithing.MOD_ID);
     @ItemModelGen(path = "ammo")
     public static final DeferredHolder<Item, Item> GATLING_SHELL = registerItem("shell_gatling");
     @ItemModelGen(path = "ammo")

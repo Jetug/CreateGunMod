@@ -2,9 +2,14 @@ package com.nukateam.cgs.common.datagen;
 
 import com.nukateam.cgs.common.datagen.providers.*;
 import com.nukateam.cgs.common.datagen.providers.create.*;
+import net.minecraft.data.loot.LootTableProvider;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+
+import java.util.Collections;
+import java.util.List;
 
 @EventBusSubscriber(modid = DataGenConfig.DATA_MOD_ID)
 public class DataGenerators {
@@ -28,6 +33,10 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), new CgsCuttingRecipeGen(packOutput, lookupProvider));
 
         generator.addProvider(event.includeServer(), CgsLootTableProvider.create(packOutput));
+        generator.addProvider(true, new LootTableProvider(packOutput, Collections.emptySet(),
+                List.of(new LootTableProvider.SubProviderEntry(CgsBlockLootTables::new, LootContextParamSets.BLOCK)), lookupProvider));
+
+
         generator.addProvider(event.includeClient(), new CgsBlockStateProvider(packOutput, fileHelper));
         CgsBlockTagGenerator blockTagGenerator = generator.addProvider(event.includeServer(),
                 new CgsBlockTagGenerator(packOutput, lookupProvider, fileHelper));

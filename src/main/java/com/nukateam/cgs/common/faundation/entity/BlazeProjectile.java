@@ -6,12 +6,14 @@ import com.nukateam.ntgl.common.data.WeaponData;
 import com.nukateam.ntgl.common.foundation.entity.ProjectileEntity;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.nukateam.ntgl.common.util.util.math.ExtendedEntityRayTraceResult;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.phys.BlockHitResult;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.AnimatableManager;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.item.ItemStack;
@@ -75,20 +77,6 @@ public class BlazeProjectile extends ProjectileEntity implements ItemSupplier, A
     }
 
     @Override
-    public void writeSpawnData(FriendlyByteBuf buffer) {
-        super.writeSpawnData(buffer);
-        buffer.writeBoolean(this.isSuperHeated);
-        buffer.writeBoolean(this.isStrong);
-    }
-
-    @Override
-    public void readSpawnData(FriendlyByteBuf buffer) {
-        super.readSpawnData(buffer);
-        this.isSuperHeated = buffer.readBoolean();
-        this.isStrong = buffer.readBoolean();
-    }
-
-    @Override
     protected void onProjectileTick() {
         if (this.level().isClientSide) {
 
@@ -113,8 +101,20 @@ public class BlazeProjectile extends ProjectileEntity implements ItemSupplier, A
     @Override
     protected void onHitEntity(ExtendedEntityRayTraceResult result) {
         super.onHitEntity(result);
-        var owner = this.getShooter();
-        this.doEnchantDamageEffects(owner, result.getEntity());
+
+        if (this.level() instanceof ServerLevel serverlevel) {
+            var target = result.getEntity();
+            var owner = this.getShooter();
+            var fireTicks = target.getRemainingFireTicks();
+            target.igniteForSeconds(5.0F);
+            var damageSource = this.damageSources().fireball(null, owner);
+
+            if (!target.hurt(damageSource, 5.0F)) {
+                target.setRemainingFireTicks(fireTicks);
+            } else {
+                EnchantmentHelper.doPostAttackEffects(serverlevel, target, damageSource);
+            }
+        }
     }
 
     @Override

@@ -34,19 +34,16 @@ public class RevolverAnimator extends WeaponAnimator {
     }
 
     @Override
-    public void tick(ClientTickEvent event) {
-        super.tick(event);
-        if (event.phase == TickEvent.Phase.START) {
-            if (isGun()) {
-                var chamberAttachment = WeaponStateHelper.getAttachmentItem(CgsAttachmentTypes.CHAMBER, getStack());
-                var frame = WeaponStateHelper.getAttachmentItem(CgsAttachmentTypes.FRAME, getStack());
-                var barrel = WeaponStateHelper.getAttachmentItem(AttachmentType.BARREL, getStack());
+    public void tick() {
+        if (isGun()) {
+            var chamberAttachment = WeaponStateHelper.getAttachmentItem(CgsAttachmentTypes.CHAMBER, getWeaponData());
+            var frame = WeaponStateHelper.getAttachmentItem(CgsAttachmentTypes.FRAME, getWeaponData());
+            var barrel = WeaponStateHelper.getAttachmentItem(AttachmentType.BARREL, getWeaponData());
 
-                this.hasBelt = chamberAttachment.is(CgsAttachments.REVOLVER_BELT.get());
-                this.isAuto = frame.is(CgsAttachments.REVOLVER_AUTO.get());
-                this.oneHanded = barrel.isEmpty();
-                oneHanded = WeaponModifierHelper.isOneHanded(getWeaponData());
-            }
+            this.hasBelt = chamberAttachment.is(CgsAttachments.REVOLVER_BELT.get());
+            this.isAuto = frame.is(CgsAttachments.REVOLVER_AUTO.get());
+            this.oneHanded = barrel.isEmpty();
+            oneHanded = WeaponModifierHelper.isOneHanded(getWeaponData());
         }
     }
 

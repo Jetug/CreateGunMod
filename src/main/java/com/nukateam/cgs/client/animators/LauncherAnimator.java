@@ -48,7 +48,7 @@ public class LauncherAnimator extends WeaponAnimator {
     @Override
     protected void tickStart() {
         super.tickStart();
-        var magazineAttachment = WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getStack()).getItem();
+        var magazineAttachment = WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getWeaponData()).getItem();
         try {
             if (itemStack.getItem() instanceof WeaponItem) {
                 var data = getWeaponData();

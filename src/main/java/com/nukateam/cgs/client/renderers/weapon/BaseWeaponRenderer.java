@@ -44,7 +44,7 @@ public class BaseWeaponRenderer extends DynamicWeaponRenderer<WeaponAnimator> {
     public void renderRecursively(PoseStack poseStack, WeaponAnimator animatable, GeoBone bone, RenderType renderType,
                                   MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender,
                                   float partialTick, int packedLight, int packedOverlay,
-                                  float red, float green, float blue, float alpha) {
+                                  int color) {
 
         if(!TransformUtils.isFirstPerson(transformType)
                 && (bone.getName().equals("muzzle_effect") || bone.getName().equals("muzzle_flash"))) {
@@ -52,7 +52,7 @@ public class BaseWeaponRenderer extends DynamicWeaponRenderer<WeaponAnimator> {
         }
 
         super.renderRecursively(poseStack, animatable, bone, renderType, bufferSource, buffer, isReRender, partialTick,
-                packedLight, packedOverlay, red, green, blue, alpha);
+                packedLight, packedOverlay, color);
     }
 
     @Override

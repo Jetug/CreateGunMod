@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +28,7 @@ public class GuanoAccumulationHandler {
     private static final double ACCUMULATION_CHANCE = 0.1;
 
     @SubscribeEvent
-    public static void onBatUpdate(LivingEvent.LivingTickEvent event) {
+    public static void onBatUpdate(EntityTickEvent.Pre event) {
         if (!(event.getEntity() instanceof Bat bat)) return;
         if (bat.level().isClientSide) return;
 

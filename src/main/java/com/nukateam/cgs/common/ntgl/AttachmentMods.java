@@ -18,6 +18,7 @@ import com.nukateam.ntgl.common.data.attachment.impl.Scope;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.nukateam.ntgl.common.util.interfaces.IWeaponModifier;
 import com.nukateam.ntgl.common.data.WeaponData;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -99,8 +100,8 @@ public class AttachmentMods {
             if(data.weapon.getItem() == CgsWeapons.GATLING.get()) {
                 value.add(AttributeModifier.Builder
                         .create()
-                        .attribute(Registries.ATTRIBUTES.getKey(Attributes.MOVEMENT_SPEED))
-                        .operation(Operation.ADDITION)
+                        .attribute(BuiltInRegistries.ATTRIBUTE.getKey(Attributes.MOVEMENT_SPEED.value()))
+                        .operation(Operation.ADD_VALUE)
                         .value(-0.1)
                         .build()
                 );
@@ -214,7 +215,7 @@ public class AttachmentMods {
 
         private boolean getGatlingOneHanded(WeaponData data){
             if(data.wielder != null && data.weapon != null) {
-                var magazineItem = WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, data.weapon).getItem();
+                var magazineItem = WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, data).getItem();
                 var drumItem = CgsAttachments.GATLING_DRUM.get();
                 var hasStrengthEffect = data.wielder.hasEffect(MobEffects.DAMAGE_BOOST);
                 return magazineItem != drumItem && FuelUtils.hasFuel(data) && hasStrengthEffect;
@@ -239,8 +240,8 @@ public class AttachmentMods {
         public ArrayList<AttributeModifier> modifyAttributeModifiers(ArrayList<AttributeModifier> value, WeaponData data) {
             value.add(AttributeModifier.Builder
                     .create()
-                    .attribute(Registries.ATTRIBUTES.getKey(Attributes.MOVEMENT_SPEED))
-                    .operation(Operation.ADDITION)
+                    .attribute(BuiltInRegistries.ATTRIBUTE.getKey(Attributes.MOVEMENT_SPEED.value()))
+                    .operation(Operation.ADD_VALUE)
                     .value(-0.1)
                     .build()
             );
@@ -273,7 +274,7 @@ public class AttachmentMods {
         public float modifyMeleeAngle(float value, WeaponData data) {
             if(data.weapon == null) return value;
 
-            var barrel = WeaponStateHelper.getAttachmentItem(AttachmentType.BARREL, data.weapon);
+            var barrel = WeaponStateHelper.getAttachmentItem(AttachmentType.BARREL, data);
             if(barrel.getItem() == CgsAttachments.FLINTLOCK_LONG_BARREL.get())
                 return 20;
             else return 120;
@@ -283,7 +284,7 @@ public class AttachmentMods {
         public float modifyMeleeDistance(float value, WeaponData data) {
             if(data.weapon == null) return value;
 
-            var barrel = WeaponStateHelper.getAttachmentItem(AttachmentType.BARREL, data.weapon);
+            var barrel = WeaponStateHelper.getAttachmentItem(AttachmentType.BARREL, data);
             if(barrel.getItem() == CgsAttachments.FLINTLOCK_LONG_BARREL.get())
                 return 5;
             else return 3;

@@ -1,27 +1,27 @@
 package com.nukateam.cgs.common.network.packets;
 
-import com.mrcrayfish.framework.api.network.MessageContext;
-import com.mrcrayfish.framework.api.network.message.PlayMessage;
 import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 
 import static com.nukateam.cgs.common.utils.GunUtils.*;
 
-public class C2SMessageFuel extends PlayMessage<C2SMessageFuel> {
+public class C2SMessageFuel {
+    public static final StreamCodec<RegistryFriendlyByteBuf, C2SMessageFuel> STREAM_CODEC = StreamCodec.of(
+            (buffer, message) -> encode(message, buffer),
+            buffer -> decode(buffer));
+
     public C2SMessageFuel() {}
 
-    @Override
-    public void encode(C2SMessageFuel message, FriendlyByteBuf buffer) {
-//        buffer.writeBoolean(message.aiming);
+    public static void encode(C2SMessageFuel message, FriendlyByteBuf buffer) {
     }
 
-    @Override
-    public C2SMessageFuel decode(FriendlyByteBuf buffer) {
+    public static C2SMessageFuel decode(FriendlyByteBuf buffer) {
         return new C2SMessageFuel();
     }
 
-    @Override
-    public void handle(C2SMessageFuel message, MessageContext supplier) {
+    public static void handle(C2SMessageFuel message, MessageContext supplier) {
         supplier.execute((() ->
         {
             var player = supplier.getPlayer();
