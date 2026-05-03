@@ -32,7 +32,6 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), new CgsEmptyingRecipeGen(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new CgsCuttingRecipeGen(packOutput, lookupProvider));
 
-        generator.addProvider(event.includeServer(), CgsLootTableProvider.create(packOutput));
         generator.addProvider(true, new LootTableProvider(packOutput, Collections.emptySet(),
                 List.of(new LootTableProvider.SubProviderEntry(CgsBlockLootTables::new, LootContextParamSets.BLOCK)), lookupProvider));
 

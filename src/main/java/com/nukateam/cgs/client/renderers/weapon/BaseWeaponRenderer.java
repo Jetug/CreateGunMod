@@ -56,10 +56,10 @@ public class BaseWeaponRenderer extends DynamicWeaponRenderer<WeaponAnimator> {
     }
 
     @Override
-    protected void renderArms(PoseStack poseStack, GeoBone bone, int packedLight, int packedOverlay) {
+    protected void renderArms(PoseStack poseStack, GeoBone bone, int packedLight, int packedOverlay, MultiBufferSource bufferSource) {
         var hasExtendoGrip = currentEntity.getOffhandItem().getItem() == AllItems.EXTENDO_GRIP.get();
         if (!hasExtendoGrip) {
-            super.renderArms(poseStack, bone, packedLight, packedOverlay);
+            super.renderArms(poseStack, bone, packedLight, packedOverlay, bufferSource);
         }
     }
 }

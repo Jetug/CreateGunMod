@@ -31,10 +31,9 @@ public class CgsAmmoHolders {
     public static final AmmoHolder BURNABLE = AmmoHolder.Builder
             .create(cgsResource("burnable"))
             .isAcceptable(CgsAmmoHolders::isBurnable)
-            .value((stack -> ForgeHooks.getBurnTime(stack, null)))
+            .value((stack -> stack.getBurnTime(null)))
             .onConsume(CgsAmmoHolders::consumeBurnable)
             .build();
-
 
     public static final AmmoHolder BLAZE_CAKE = AmmoHolder.Builder
             .create(cgsResource("blaze_cake"))

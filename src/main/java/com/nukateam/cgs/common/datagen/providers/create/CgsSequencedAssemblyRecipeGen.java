@@ -17,6 +17,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -34,7 +35,7 @@ public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
     BaseRecipeProvider.GeneratedRecipe REVOLVER_ROUND_BLANK = this.create("revolver_round_blank", (b) -> b
             .require(TagKeys.BRASS_SHEET)
             .transitionTo(CgsAmmo.REVOLVER_SHELL.get())
-            .addStep(DeployerApplicationRecipe::new, noConsumeTool(CgsItems.PRESS_FORM_REVOLVER))
+            .addStep(DeployerApplicationRecipe::new, rb -> rb.toolNotConsumed().require(CgsItems.PRESS_FORM_REVOLVER.get()))
             .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDERS))
             .addOutput(new ItemStack(CgsAmmo.REVOLVER_ROUND_BLANK.get(), 8), 1.0F)
             .loops(1));
@@ -57,7 +58,7 @@ public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
     BaseRecipeProvider.GeneratedRecipe GATLING_ROUND_BLANK = this.create("gatling_round_blank", (b) -> {
         return b.require(TagKeys.BRASS_SHEET)
                 .transitionTo(CgsAmmo.GATLING_SHELL.get())
-                .addStep(DeployerApplicationRecipe::new, noConsumeTool(CgsItems.PRESS_FORM_GATLING))
+                .addStep(DeployerApplicationRecipe::new, rb -> rb.toolNotConsumed().require(CgsItems.PRESS_FORM_GATLING.get()))
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDERS))
                 .addOutput(new ItemStack(CgsAmmo.GATLING_ROUND_BLANK.get(), 4), 1.0F)
                 .loops(1);
@@ -84,7 +85,7 @@ public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
     BaseRecipeProvider.GeneratedRecipe SHOTGUN_ROUND_BLANK = this.create("shotgun_round_blank", (b) -> {
         return b.require(TagKeys.BRASS_SHEET)
                 .transitionTo(CgsAmmo.SHOTGUN_SHELL.get())
-                .addStep(DeployerApplicationRecipe::new, noConsumeTool(CgsItems.PRESS_FORM_SHOTGUN))
+                .addStep(DeployerApplicationRecipe::new, rb -> rb.toolNotConsumed().require(CgsItems.PRESS_FORM_SHOTGUN.get()))
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Items.PAPER))
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDERS))
                 .addOutput(new ItemStack(CgsAmmo.SHOTGUN_ROUND_BLANK.get(), 4), 1.0F)
@@ -168,17 +169,11 @@ public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
                 .loops(1);
     });
 
-    BaseRecipeProvider.GeneratedRecipe STEEL_NAIL = this.create("steel_nail", (b) -> {
-        return b.require(TagKeys.STEEL_NUGGET)
-                .transitionTo(CgsItems.STEEL_NUGGET.get())
-                .addOutput(new ItemStack(CgsAmmo.STEEL_NAIL.get(), 6), 1.0F)
-                .addStep(CuttingRecipe::new, (rb) -> rb)
-                .addStep(PressingRecipe::new, (rb) -> rb)
-                .loops(1);
-    });
-
-
-    private static @NotNull UnaryOperator<ProcessingRecipeBuilder<DeployerApplicationRecipe>> noConsumeTool(DeferredHolder<Item, Item> pressFormShotgun) {
-        return (rb) -> rb.toolNotConsumed().require(pressFormShotgun.get());
-    }
+    BaseRecipeProvider.GeneratedRecipe STEEL_NAIL = this.create("steel_nail", (b) ->
+            b.require(TagKeys.STEEL_NUGGET)
+            .transitionTo(CgsItems.STEEL_NUGGET.get())
+            .addOutput(new ItemStack(CgsAmmo.STEEL_NAIL.get(), 6), 1.0F)
+            .addStep(CuttingRecipe::new, (rb) -> rb)
+            .addStep(PressingRecipe::new, (rb) -> rb)
+            .loops(1));
 }
