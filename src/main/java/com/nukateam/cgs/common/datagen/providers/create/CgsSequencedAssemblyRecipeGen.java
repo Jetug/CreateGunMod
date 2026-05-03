@@ -17,8 +17,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.UnaryOperator;
@@ -176,7 +176,7 @@ public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
     });
 
 
-    private static @NotNull UnaryOperator<ProcessingRecipeBuilder<DeployerApplicationRecipe>> noConsumeTool(RegistryObject<Item> pressFormShotgun) {
+    private static @NotNull UnaryOperator<ProcessingRecipeBuilder<DeployerApplicationRecipe>> noConsumeTool(DeferredHolder<Item> pressFormShotgun) {
         return (rb) -> rb.toolNotConsumed().require(pressFormShotgun.get());
     }
 }

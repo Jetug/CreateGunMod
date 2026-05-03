@@ -25,7 +25,7 @@ import net.minecraft.world.phys.Vec3;
 import java.util.function.Predicate;
 
 import static software.bernie.geckolib.util.GeckoLibUtil.createInstanceCache;
-import static net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent;
+import static net.neoforged.neoforge.event.ForgeEventFactory.getMobGriefingEvent;
 
 public class RocketProjectile extends MissileEntity implements AnimatedProjectile {
     protected final AnimatableInstanceCache cache = createInstanceCache(this);

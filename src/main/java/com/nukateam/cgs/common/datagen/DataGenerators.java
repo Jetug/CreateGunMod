@@ -2,11 +2,11 @@ package com.nukateam.cgs.common.datagen;
 
 import com.nukateam.cgs.common.datagen.providers.*;
 import com.nukateam.cgs.common.datagen.providers.create.*;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 
-@EventBusSubscriber(modid = DataGenConfig.DATA_MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = DataGenConfig.DATA_MOD_ID)
 public class DataGenerators {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {

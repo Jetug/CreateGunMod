@@ -15,7 +15,7 @@ import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.Set;
 
@@ -26,7 +26,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected Iterable<Block> getKnownBlocks() {
-        return CgsBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
+        return CgsBlocks.BLOCKS.getEntries().stream().map(DeferredHolder::get)::iterator;
     }
 
     @Override

@@ -12,11 +12,11 @@ import com.nukateam.ntgl.common.data.WeaponData;
 import com.nukateam.ntgl.common.util.interfaces.IWeaponModifier;
 import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.util.Lazy;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
 import java.util.function.BiFunction;
 
@@ -26,9 +26,8 @@ public class HammerItem extends CgsGunItem {
     }
 
     public static boolean isPowered(WeaponData data){
-        var tag = data.weapon.getOrCreateTag();
         var ammoPerShot = WeaponModifierHelper.getAmmoPerShot(data);
-        return tag.getBoolean("IgnoreAmmo") || WeaponStateHelper.getAmmoCount(data) >= ammoPerShot;
+        return WeaponStateHelper.isAmmoIgnored(data) || WeaponStateHelper.getAmmoCount(data) >= ammoPerShot;
     }
 
     @Override
@@ -44,7 +43,8 @@ public class HammerItem extends CgsGunItem {
 
     @Override
     public String getDescriptionId(ItemStack stack) {
-        var headAttachment = WeaponStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, stack).getItem();
+        var headAttachment = WeaponStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, new WeaponData(stack, Minecraft.getInstance().player)).getItem();
+
         if(headAttachment instanceof HammerHeadItem item && item.getHeadType() == HammerHeadItem.Type.AXE){
             return "item.cgs.axe";
         }

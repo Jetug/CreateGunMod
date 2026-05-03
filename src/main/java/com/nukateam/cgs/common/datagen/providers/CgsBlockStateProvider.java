@@ -8,12 +8,12 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.minecraft.core.registries.Registries;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class CgsBlockStateProvider extends BlockStateProvider {
     public CgsBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -30,23 +30,22 @@ public class CgsBlockStateProvider extends BlockStateProvider {
     }
 
     private void handleDataGenField(Object obj, BlockStateGen annotation) {
-        if (obj instanceof RegistryObject<?> registryObject && registryObject.get() instanceof Block) {
-            blockWithItem((RegistryObject<Block>)registryObject);
+        if (obj instanceof DeferredHolder<?, ?> registryObject && registryObject.get() instanceof Block) {
+            blockWithItem((DeferredHolder<Block, Block>)registryObject);
         }
     }
 
-    private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
-        simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));
+    private void blockWithItem(DeferredHolder<Block, Block> blockDeferredHolder) {
+        simpleBlockWithItem(blockDeferredHolder.get(), cubeAll(blockDeferredHolder.get()));
     }
 
-
-    private void simpleBlock(RegistryObject<Block> blockRegistryObject) {
-        simpleBlock(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));
+    private void simpleBlock(DeferredHolder<Block, Block> blockDeferredHolder) {
+        simpleBlock(blockDeferredHolder.get(), cubeAll(blockDeferredHolder.get()));
     }
 
-    private void layeredBlockWithItem(RegistryObject<Block> blockRegistryObject) {
-        var block = blockRegistryObject.get();
-        var blockName = blockRegistryObject.getId().getPath();
+    private void layeredBlockWithItem(DeferredHolder<Block, Block> blockDeferredHolder) {
+        var block = blockDeferredHolder.get();
+        var blockName = blockDeferredHolder.getId().getPath();
 
         var layerModels = new ModelFile[8];
         for (int i = 0; i < 7; i++) {

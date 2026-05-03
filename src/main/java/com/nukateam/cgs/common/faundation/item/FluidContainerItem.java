@@ -31,10 +31,10 @@ import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.event.ForgeEventFactory;
-import net.minecraftforge.fluids.FluidUtil;
-import net.minecraftforge.fluids.capability.wrappers.FluidBucketWrapper;
+import net.neoforged.neoforge.common.capabilities.ICapabilityProvider;
+import net.neoforged.neoforge.event.ForgeEventFactory;
+import net.neoforged.neoforge.fluids.FluidUtil;
+import net.neoforged.neoforge.fluids.capability.wrappers.FluidBucketWrapper;
 
 import javax.annotation.Nullable;
 import java.util.Optional;
@@ -234,7 +234,7 @@ public class FluidContainerItem extends BucketItem {
     }
 
     protected void playEmptySound(@Nullable Player player, LevelAccessor level, BlockPos pPos) {
-        SoundEvent soundevent = this.fluidSupplier.get().getFluidType().getSound(player, level, pPos, net.minecraftforge.common.SoundActions.BUCKET_EMPTY);
+        SoundEvent soundevent = this.fluidSupplier.get().getFluidType().getSound(player, level, pPos, net.neoforged.neoforge.common.SoundActions.BUCKET_EMPTY);
         if(soundevent == null) soundevent = this.fluidSupplier.get().is(FluidTags.LAVA) ? SoundEvents.BUCKET_EMPTY_LAVA : SoundEvents.BUCKET_EMPTY;
         level.playSound(player, pPos, soundevent, SoundSource.BLOCKS, 1.0F, 1.0F);
         level.gameEvent(player, GameEvent.FLUID_PLACE, pPos);

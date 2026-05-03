@@ -8,7 +8,7 @@ import com.simibubi.create.content.processing.recipe.HeatCondition;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.common.Tags;
+import net.neoforged.neoforge.common.Tags;
 
 public class CgsMixingRecipeGen extends MixingRecipeGen {
     public CgsMixingRecipeGen(PackOutput output) {

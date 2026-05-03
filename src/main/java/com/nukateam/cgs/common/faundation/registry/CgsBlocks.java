@@ -5,6 +5,8 @@ import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.datagen.annotations.BlockStateGen;
 import com.nukateam.cgs.common.faundation.block.GuanoPileBlock;
 import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
+import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -14,19 +16,19 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraft.core.registries.Registries;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.function.Supplier;
 
 public class CgsBlocks {
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Gunsmithing.MOD_ID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(Registries.BLOCK, Gunsmithing.MOD_ID);
 
     @BlockStateGen
-    public static final RegistryObject<Block> SULFUR_ORE = registerBlock("sulfur_ore",
-            () -> new DropExperienceBlock(Block.Properties.of()
+    public static final DeferredHolder<Block, Block> SULFUR_ORE = registerBlock("sulfur_ore",
+            () -> new DropExperienceBlock(UniformInt.of(0, 2), Block.Properties.of()
                     .sound(SoundType.NETHERRACK)
                     .mapColor(MapColor.NETHER)
                     .instrument(NoteBlockInstrument.BASEDRUM)
@@ -34,8 +36,8 @@ public class CgsBlocks {
                     .strength(0.4F)));
 
     @BlockStateGen
-    public static final RegistryObject<Block> LEAD_ORE = registerBlock("lead_ore",
-            () -> new DropExperienceBlock(Block.Properties.of()
+    public static final DeferredHolder<Block, Block> LEAD_ORE = registerBlock("lead_ore",
+            () -> new DropExperienceBlock(ConstantInt.of(0), Block.Properties.of()
                     .sound(SoundType.STONE)
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
@@ -43,8 +45,8 @@ public class CgsBlocks {
                     .strength(3.0F, 3.0F)));
 
     @BlockStateGen
-    public static final RegistryObject<Block> DEEPSLATE_LEAD_ORE = registerBlock("deepslate_lead_ore",
-            () -> new DropExperienceBlock(Block.Properties.of()
+    public static final DeferredHolder<Block, Block> DEEPSLATE_LEAD_ORE = registerBlock("deepslate_lead_ore",
+            () -> new DropExperienceBlock(ConstantInt.of(0), Block.Properties.of()
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .requiresCorrectToolForDrops()
                     .mapColor(MapColor.DEEPSLATE)
@@ -52,14 +54,14 @@ public class CgsBlocks {
                     .sound(SoundType.DEEPSLATE)));
 
     @BlockStateGen
-    public static final RegistryObject<Block> RAW_LEAD_BLOCK = registerBlock("raw_lead_block",
+    public static final DeferredHolder<Block, Block> RAW_LEAD_BLOCK = registerBlock("raw_lead_block",
             () -> new Block(Block.Properties.of()
                     .mapColor(MapColor.RAW_IRON).instrument(NoteBlockInstrument.BASEDRUM)
                     .requiresCorrectToolForDrops()
                     .strength(5.0F, 6.0F)));
 
     @BlockStateGen
-    public static final RegistryObject<Block> LEAD_BLOCK = registerBlock("lead_block",
+    public static final DeferredHolder<Block, Block> LEAD_BLOCK = registerBlock("lead_block",
             () -> new Block(Block.Properties.of()
                     .mapColor(MapColor.METAL)
                     .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
@@ -69,7 +71,7 @@ public class CgsBlocks {
 
 
     @BlockStateGen
-    public static final RegistryObject<Block> STEEL_BLOCK = registerBlock("steel_block",
+    public static final DeferredHolder<Block, Block> STEEL_BLOCK = registerBlock("steel_block",
             () -> new Block(Block.Properties.of()
                     .mapColor(MapColor.METAL)
                     .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
@@ -78,21 +80,21 @@ public class CgsBlocks {
                     .sound(SoundType.METAL)));
 
 //    @BlockStateGen
-    public static final RegistryObject<Block> GUANO_BLOCK = registerBlockWithoutItem("guano_block",
-            () -> new GuanoPileBlock(BlockBehaviour.Properties.copy(Blocks.SNOW)
+    public static final DeferredHolder<Block, Block> GUANO_BLOCK = registerBlockWithoutItem("guano_block",
+            () -> new GuanoPileBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.SNOW)
                     .strength(0.5f)
                     .mapColor(MapColor.STONE)
                     .sound(SoundType.DRIPSTONE_BLOCK)
                     .randomTicks()
                     .noOcclusion()));
 
-    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
+    private static <T extends Block> DeferredHolder<Block, T> registerBlock(String name, Supplier<T> block) {
         var toReturn = BLOCKS.register(name, block);
         CgsItems.ITEMS.register(name, () -> new BlockItem(toReturn.get(), new Item.Properties()));
         return toReturn;
     }
 
-    private static <T extends Block> RegistryObject<T> registerBlockWithoutItem(String name, Supplier<T> block) {
+    private static <T extends Block> DeferredHolder<Block, T> registerBlockWithoutItem(String name, Supplier<T> block) {
         return BLOCKS.register(name, block);
     }
 

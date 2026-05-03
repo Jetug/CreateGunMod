@@ -6,7 +6,7 @@ import software.bernie.geckolib.model.GeoModel;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.Registries;
 
 public class ProjectileModel<T extends Entity & GeoAnimatable> extends GeoModel<T> implements IGlowingModel<T> {
     @Override
@@ -37,13 +37,13 @@ public class ProjectileModel<T extends Entity & GeoAnimatable> extends GeoModel<
     }
 
     public ResourceLocation getResource(T animator, String path, String extension) {
-        var id = ForgeRegistries.ENTITY_TYPES.getKey(animator.getType());
+        var id = Registries.ENTITY_TYPES.getKey(animator.getType());
         var modId = id.getNamespace();
         var name = id.getPath();
         return ResourceLocation.tryBuild(modId, path + name + extension);
     }
 
     private String getName(T animator) {
-        return ForgeRegistries.ENTITY_TYPES.getKey(animator.getType()).getPath();
+        return Registries.ENTITY_TYPES.getKey(animator.getType()).getPath();
     }
 }

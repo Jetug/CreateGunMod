@@ -11,9 +11,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import static net.minecraft.world.item.CreativeModeTab.*;
 
@@ -22,7 +22,7 @@ public class CgsItemTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Gunsmithing.MOD_ID);
 
 
-    public static final RegistryObject<CreativeModeTab> CGS = CREATIVE_MODE_TABS.register("mod_items",
+    public static final DeferredHolder<CreativeModeTab> CGS = CREATIVE_MODE_TABS.register("mod_items",
             () -> builder().icon(() -> new ItemStack(CgsAmmo.GATLING_ROUND.get()))
                     .title(Component.translatable("itemGroup.mod_items"))
                     .displayItems(CgsItemTabs::getWeaponTab)

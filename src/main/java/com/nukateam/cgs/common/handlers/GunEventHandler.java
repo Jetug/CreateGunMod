@@ -24,7 +24,7 @@ import com.simibubi.create.content.equipment.armor.BacktankUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 
 import static com.nukateam.cgs.common.utils.GunUtils.fillFuel;

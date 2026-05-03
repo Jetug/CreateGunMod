@@ -9,7 +9,7 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -25,7 +25,7 @@ public class CgsItemTagGenerator extends ItemTagsProvider {
     }
 
 //    public static TagKey<Item> createItemTag(String path) {
-//        return ForgeRegistries.ITEMS.tags()
+//        return Registries.ITEMS.tags()
 //                .createOptionalTagKey(ResourceLocation.tryBuild("create", path), Collections.emptySet());
 //    }
 

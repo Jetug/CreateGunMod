@@ -3,8 +3,8 @@ package com.nukateam.cgs.common.datagen.util;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraft.core.registries.Registries;
+import net.neoforged.neoforge.registries.IForgeRegistry;
 
 import static com.simibubi.create.AllTags.NameSpace.FORGE;
 
@@ -15,11 +15,11 @@ public class TagKeys {
     }
 
     public static TagKey<Block> forgeBlockTag(String path) {
-        return forgeTag(ForgeRegistries.BLOCKS, path);
+        return forgeTag(Registries.BLOCKS, path);
     }
 
     public static TagKey<Item> forgeItemTag(String path) {
-        return forgeTag(ForgeRegistries.ITEMS, path);
+        return forgeTag(Registries.ITEMS, path);
     }
 
     //BLOCK TAGS

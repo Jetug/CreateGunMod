@@ -22,10 +22,10 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.IForgeRegistry;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.crafting.conditions.IConditionBuilder;
+import net.minecraft.core.registries.Registries;
+import net.neoforged.neoforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
@@ -420,10 +420,10 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
 //    }
 
     public static TagKey<Block> forgeBlockTag(String path) {
-        return forgeTag(ForgeRegistries.BLOCKS, path);
+        return forgeTag(Registries.BLOCKS, path);
     }
 
     public static TagKey<Item> forgeItemTag(String path) {
-        return forgeTag(ForgeRegistries.ITEMS, path);
+        return forgeTag(Registries.ITEMS, path);
     }
 }

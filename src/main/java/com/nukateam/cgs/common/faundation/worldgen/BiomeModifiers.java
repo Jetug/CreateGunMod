@@ -8,9 +8,9 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraftforge.common.world.BiomeModifier;
-import net.minecraftforge.common.world.ForgeBiomeModifiers;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.world.BiomeModifier;
+import net.neoforged.neoforge.common.world.ForgeBiomeModifiers;
+import net.minecraft.core.registries.Registries;
 
 public class BiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_LEAD_ORE = registerKey("add_lead_ore");
@@ -32,6 +32,6 @@ public class BiomeModifiers {
     }
 
     private static ResourceKey<BiomeModifier> registerKey(String name) {
-        return ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(Gunsmithing.MOD_ID, name));
+        return ResourceKey.create(Registries.Keys.BIOME_MODIFIERS, new ResourceLocation(Gunsmithing.MOD_ID, name));
     }
 }

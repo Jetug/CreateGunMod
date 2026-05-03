@@ -6,11 +6,11 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import java.util.HashMap;
 
 import static com.nukateam.cgs.common.datagen.DataGenConfig.dataGenClasses;
@@ -30,20 +30,20 @@ public class CgsItemModelProvider extends ItemModelProvider {
     }
 
     private void handleDataGenField(Object obj, ItemModelGen annotation) {
-        if (obj instanceof RegistryObject<?>) {
+        if (obj instanceof DeferredHolder<?, ?>) {
             switch (annotation.type()) {
-                case ITEM -> genItems((RegistryObject<Item>) obj, annotation);
-                case BLOCK -> blockModel((RegistryObject<Block>) obj);
+                case ITEM -> genItems((DeferredHolder<Item>) obj, annotation);
+                case BLOCK -> blockModel((DeferredHolder<Block>) obj);
             }
         } else if (obj instanceof HashMap<?,?>) {
-            var storage = (HashMap<?, RegistryObject<Item>>) obj;
+            var storage = (HashMap<?, DeferredHolder<Item>>) obj;
             for (var item : storage.values()){
                 genItems(item, annotation);
             }
         }
     }
 
-    private void genItems(RegistryObject<Item> item, ItemModelGen annotation) {
+    private void genItems(DeferredHolder<Item> item, ItemModelGen annotation) {
         var modelFile = getModelFile(annotation.parent().getPath());
 
         switch (annotation.parent()) {
@@ -56,25 +56,25 @@ public class CgsItemModelProvider extends ItemModelProvider {
         return getExistingFile(new ResourceLocation(path));
     }
 
-//    private void spawnEggModel(RegistryObject<Item> egg) {
+//    private void spawnEggModel(DeferredHolder<Item> egg) {
 //        withExistingParent(egg.getId().getPath(), new ResourceLocation("item"));
 //    }
 
-    private void blockModel(RegistryObject<? extends Block> block) {
+    private void blockModel(DeferredHolder<? extends Block> block) {
         var path = block.getId().getPath();
         var loc = modLoc("block/" + block.getId().getPath());
         withExistingParent(path, loc);
     }
 
-    private void blockModel(RegistryObject<? extends Block> block, String suffix) {
+    private void blockModel(DeferredHolder<? extends Block> block, String suffix) {
         withExistingParent(block.getId().getPath(), modLoc("block/" + block.getId().getPath() + "_" + suffix));
     }
 
-    private void blockItemModel(RegistryObject<?> block, RegistryObject<?> textureBlock, ModelFile modelFile) {
+    private void blockItemModel(DeferredHolder<?, ?> block, DeferredHolder<?, ?> textureBlock, ModelFile modelFile) {
         getBuilder(block.getId().getPath()).parent(modelFile).texture("layer0", "block/" + textureBlock.getId().getPath());
     }
 
-    private ItemModelBuilder itemModel(RegistryObject<?> item, ModelFile modelFile, ItemModelGen dataGen) {
+    private ItemModelBuilder itemModel(DeferredHolder<?, ?> item, ModelFile modelFile, ItemModelGen dataGen) {
         var path = item.getId().getPath();
 
         var texture = "item/";
@@ -87,15 +87,15 @@ public class CgsItemModelProvider extends ItemModelProvider {
         return getBuilder(path).parent(modelFile).texture("layer0", texture + item.getId().getPath());
     }
 
-    private ItemModelBuilder spawnEggModel(RegistryObject<?> item, ModelFile modelFile) {
+    private ItemModelBuilder spawnEggModel(DeferredHolder<?, ?> item, ModelFile modelFile) {
         return getBuilder(item.getId().getPath()).parent(modelFile);
     }
 
-    private void itemModelWithSuffix(RegistryObject<?> item, ModelFile modelFile, String suffix) {
+    private void itemModelWithSuffix(DeferredHolder<?, ?> item, ModelFile modelFile, String suffix) {
         getBuilder(item.getId().getPath() + "_" + suffix).parent(modelFile).texture("layer0", "item/" + item.getId().getPath() + "_" + suffix);
     }
 
-    private ModelFile.ExistingModelFile getModel(RegistryObject<?> item, String suffix) {
+    private ModelFile.ExistingModelFile getModel(DeferredHolder<?, ?> item, String suffix) {
         return new ModelFile.ExistingModelFile(modLoc("item/" + item.getId().getPath() + "_" + suffix), existingFileHelper);
     }
 }

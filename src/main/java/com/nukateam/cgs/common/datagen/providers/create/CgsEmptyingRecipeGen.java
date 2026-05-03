@@ -12,8 +12,8 @@ import com.simibubi.create.foundation.data.recipe.Mods;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.common.Tags;
+import net.neoforged.neoforge.common.ForgeMod;
+import net.neoforged.neoforge.common.Tags;
 
 public class CgsEmptyingRecipeGen extends EmptyingRecipeGen {
     public CgsEmptyingRecipeGen(PackOutput output) {

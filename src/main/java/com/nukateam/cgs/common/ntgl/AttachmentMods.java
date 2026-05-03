@@ -22,7 +22,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.Registries;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -99,7 +99,7 @@ public class AttachmentMods {
             if(data.weapon.getItem() == CgsWeapons.GATLING.get()) {
                 value.add(AttributeModifier.Builder
                         .create()
-                        .attribute(ForgeRegistries.ATTRIBUTES.getKey(Attributes.MOVEMENT_SPEED))
+                        .attribute(Registries.ATTRIBUTES.getKey(Attributes.MOVEMENT_SPEED))
                         .operation(Operation.ADDITION)
                         .value(-0.1)
                         .build()
@@ -239,7 +239,7 @@ public class AttachmentMods {
         public ArrayList<AttributeModifier> modifyAttributeModifiers(ArrayList<AttributeModifier> value, WeaponData data) {
             value.add(AttributeModifier.Builder
                     .create()
-                    .attribute(ForgeRegistries.ATTRIBUTES.getKey(Attributes.MOVEMENT_SPEED))
+                    .attribute(Registries.ATTRIBUTES.getKey(Attributes.MOVEMENT_SPEED))
                     .operation(Operation.ADDITION)
                     .value(-0.1)
                     .build()
