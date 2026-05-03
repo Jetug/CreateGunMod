@@ -1,6 +1,7 @@
 package com.nukateam.cgs.client.model;
 
 import com.nukateam.ntgl.client.model.IGlowingModel;
+import net.minecraft.core.registries.BuiltInRegistries;
 import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.model.GeoModel;
 import net.minecraft.client.renderer.RenderType;
@@ -37,13 +38,13 @@ public class ProjectileModel<T extends Entity & GeoAnimatable> extends GeoModel<
     }
 
     public ResourceLocation getResource(T animator, String path, String extension) {
-        var id = Registries.ENTITY_TYPES.getKey(animator.getType());
+        var id = BuiltInRegistries.ENTITY_TYPE.getKey(animator.getType());
         var modId = id.getNamespace();
         var name = id.getPath();
         return ResourceLocation.tryBuild(modId, path + name + extension);
     }
 
     private String getName(T animator) {
-        return Registries.ENTITY_TYPES.getKey(animator.getType()).getPath();
+        return BuiltInRegistries.ENTITY_TYPE.getKey(animator.getType()).getPath();
     }
 }

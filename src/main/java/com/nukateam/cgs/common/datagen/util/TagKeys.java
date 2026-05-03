@@ -1,5 +1,11 @@
 package com.nukateam.cgs.common.datagen.util;
 
+import com.nukateam.cgs.Gunsmithing;
+import com.simibubi.create.AllTags;
+import net.minecraft.core.DefaultedRegistry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -9,17 +15,21 @@ import net.neoforged.neoforge.registries.IForgeRegistry;
 import static com.simibubi.create.AllTags.NameSpace.FORGE;
 
 public class TagKeys {
-    public static <T> TagKey<T> forgeTag(IForgeRegistry<T> registry, String path) {
+    private static TagKey<Block> createTag(String path) {
+        return BlockTags.create(ResourceLocation.fromNamespaceAndPath(Gunsmithing.MOD_ID, path));
+    }
+    AllTags
+    public static <T> TagKey<T> forgeTag(DefaultedRegistry<T> registry, String path) {
         var id = FORGE.id(path);
         return TagKey.create(registry.getRegistryKey(), id);
     }
 
     public static TagKey<Block> forgeBlockTag(String path) {
-        return forgeTag(Registries.BLOCKS, path);
+        return forgeTag(BuiltInRegistries.BLOCK, path);
     }
 
     public static TagKey<Item> forgeItemTag(String path) {
-        return forgeTag(Registries.ITEMS, path);
+        return forgeTag(BuiltInRegistries.ITEM, path);
     }
 
     //BLOCK TAGS

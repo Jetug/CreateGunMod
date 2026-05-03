@@ -2,17 +2,16 @@ package com.nukateam.cgs.common.datagen.providers.create;
 
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
-import com.simibubi.create.AllTags;
-import com.simibubi.create.api.data.recipe.CrushingRecipeGen;
 import com.simibubi.create.api.data.recipe.FillingRecipeGen;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
 
+import java.util.concurrent.CompletableFuture;
+
 public class CgsFillingRecipeGen extends FillingRecipeGen {
-    public CgsFillingRecipeGen(PackOutput output) {
-        super(output, Gunsmithing.MOD_ID);
+    public CgsFillingRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, lookupProvider, Gunsmithing.MOD_ID);
     }
 
     GeneratedRecipe WATER_CONTAINER = create("water_container",

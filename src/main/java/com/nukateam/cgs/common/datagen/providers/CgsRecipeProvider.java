@@ -10,11 +10,13 @@ import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -23,24 +25,38 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraft.core.registries.Registries;
-import net.neoforged.neoforge.registries.IForgeRegistry;
+import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.level.ItemLike;
+
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 import static com.nukateam.cgs.common.datagen.util.TagKeys.*;
 
 public class CgsRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    public CgsRecipeProvider(PackOutput pOutput) {
-        super(pOutput);
+    public CgsRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider) {
+        super(output, provider);
     }
 
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> writer) {
+    protected void buildRecipes(RecipeOutput writer, HolderLookup.Provider holderLookup) {
+
         buildOreRecipes(writer,
                 CgsBlocks.LEAD_ORE.get(), CgsBlocks.DEEPSLATE_LEAD_ORE.get(),
                 CgsBlocks.LEAD_BLOCK.get(), CgsBlocks.RAW_LEAD_BLOCK.get(),
@@ -70,14 +86,14 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(writer, getId(Items.GUNPOWDER));
     }
 
-    private static void blocks(Consumer<FinishedRecipe> writer) {
+    private static void blocks(RecipeOutput writer) {
         simpleBlock(writer, CgsItems.STEEL_INGOT.get(), CgsBlocks.STEEL_BLOCK.get());
         simpleBlock(writer, CgsItems.STEEL_NUGGET.get(), CgsItems.STEEL_INGOT.get());
         fromBlock(writer, CgsBlocks.STEEL_BLOCK.get(), CgsItems.STEEL_INGOT.get());
         fromBlock(writer, CgsItems.STEEL_INGOT.get(), CgsItems.STEEL_NUGGET.get());
     }
 
-    private static void pressForms(Consumer<FinishedRecipe> writer) {
+    private static void pressForms(RecipeOutput writer) {
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.IRON_INGOT), RecipeCategory.MISC, CgsItems.PRESS_FORM_GATLING.get())
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(writer, getId(CgsItems.PRESS_FORM_GATLING.get()));
@@ -95,30 +111,30 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(writer, getId(CgsAmmo.LEAD_BALLS.get()));
     }
 
-    private static void weapons(Consumer<FinishedRecipe> writer) {
+    private static void weapons(RecipeOutput writer) {
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsWeapons.FLINTLOCK.get())
                 .pattern("   ")
                 .pattern("BAF")
                 .pattern("  L")
                 .define('B', IRON_SHEET)
                 .define('A', AllItems.ANDESITE_ALLOY.get())
-                .define('L', AllTags.AllItemTags.STRIPPED_LOGS.tag)
+                .define('L', Tags.Items.STRIPPED_LOGS)
                 .define('F', Items.FLINT_AND_STEEL)
                 .unlockedBy(getHasName(AllItems.IRON_SHEET.get()), has(AllItems.IRON_SHEET.get()))
                 .save(writer, getId(CgsWeapons.FLINTLOCK.get()));
     }
 
-    private static void ammo(Consumer<FinishedRecipe> writer) {
+    private static void ammo(RecipeOutput writer) {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, CgsAmmo.PAPER_CARTRIDGE.get(), 3)
                 .requires(TagKeys.LEAD_NUGGET)
-                .requires(Tags.Items.GUNPOWDER)
+                .requires(Tags.Items.GUNPOWDERS)
                 .requires(Items.PAPER)
                 .unlockedBy(getHasName(CgsItems.LEAD_NUGGET.get()), has(CgsItems.LEAD_NUGGET.get()))
                 .save(writer, getId(CgsAmmo.PAPER_CARTRIDGE.get()));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, CgsAmmo.PAPER_SHOT.get(), 2)
                 .requires(CgsAmmo.LEAD_BALLS.get())
-                .requires(Tags.Items.GUNPOWDER)
+                .requires(Tags.Items.GUNPOWDERS)
                 .requires(Items.PAPER)
                 .unlockedBy(getHasName(CgsItems.LEAD_NUGGET.get()), has(CgsAmmo.LEAD_BALLS.get()))
                 .save(writer, getId(CgsAmmo.PAPER_SHOT.get()));
@@ -140,7 +156,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(writer, getId(CgsAmmo.STEEL_NAIL.get()));
     }
 
-    private static void attachments(Consumer<FinishedRecipe> writer) {
+    private static void attachments(RecipeOutput writer) {
         //GENERAL
         ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, CgsAttachments.SCOPE.get(), 1)
                 .requires(BRASS_SHEET)
@@ -154,7 +170,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("WLW")
                 .pattern(" WW")
                 .define('L', BRASS_SHEET)
-                .define('W', AllTags.AllItemTags.STRIPPED_LOGS.tag)
+                .define('W', Tags.Items.STRIPPED_LOGS)
                 .unlockedBy(getHasName(CgsItems.LEAD_NUGGET.get()), has(CgsItems.LEAD_NUGGET.get()))
                 .save(writer, getId(CgsAttachments.STOCK.get()));
 
@@ -162,7 +178,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsAttachments.FLINTLOCK_LONG_BARREL.get(), 1)
                 .pattern("BB")
                 .pattern("LL")
-                .define('L', AllTags.AllItemTags.STRIPPED_LOGS.tag)
+                .define('L', Tags.Items.STRIPPED_LOGS)
                 .define('B', IRON_SHEET)
                 .unlockedBy(getHasName(CgsItems.STEEL_INGOT.get()), has(CgsItems.STEEL_INGOT.get()))
                 .save(writer, getId(CgsAttachments.FLINTLOCK_LONG_BARREL.get()));
@@ -170,7 +186,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsAttachments.BLUNDERBUSS_BARREL.get(), 1)
                 .pattern("BB")
                 .pattern("BL")
-                .define('L', AllTags.AllItemTags.STRIPPED_LOGS.tag)
+                .define('L', Tags.Items.STRIPPED_LOGS)
                 .define('B', IRON_SHEET)
                 .unlockedBy(getHasName(CgsItems.STEEL_INGOT.get()), has(CgsItems.STEEL_INGOT.get()))
                 .save(writer, getId(CgsAttachments.BLUNDERBUSS_BARREL.get()));
@@ -178,7 +194,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CgsAttachments.LONG_BLUNDERBUSS_BARREL.get(), 1)
                 .pattern("BBB")
                 .pattern("BLL")
-                .define('L', AllTags.AllItemTags.STRIPPED_LOGS.tag)
+                .define('L', Tags.Items.STRIPPED_LOGS)
                 .define('B', IRON_SHEET)
                 .unlockedBy(getHasName(CgsItems.STEEL_INGOT.get()), has(CgsItems.STEEL_INGOT.get()))
                 .save(writer, getId(CgsAttachments.LONG_BLUNDERBUSS_BARREL.get()));
@@ -197,7 +213,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("LL")
                 .pattern(" W")
                 .define('L', BRASS_SHEET)
-                .define('W', AllTags.AllItemTags.STRIPPED_LOGS.tag)
+                .define('W', Tags.Items.STRIPPED_LOGS)
                 .define('B', IRON_SHEET)
                 .unlockedBy(getHasName(AllItems.IRON_SHEET.get()), has(AllItems.IRON_SHEET.get()))
                 .save(writer, getId(CgsAttachments.REVOLVER_LONG_BARREL.get()));
@@ -208,7 +224,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("LWW")
                 .pattern("BB ")
                 .define('L', BRASS_SHEET)
-                .define('W', AllTags.AllItemTags.STRIPPED_LOGS.tag)
+                .define('W', Tags.Items.STRIPPED_LOGS)
                 .define('B', STEEL_SHEET)
                 .unlockedBy(getHasName(CgsItems.STEEL_INGOT.get()), has(CgsItems.STEEL_INGOT.get()))
                 .save(writer, getId(CgsAttachments.SHOTGUN_LONG_BARREL.get()));
@@ -250,7 +266,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("BB ")
                 .pattern("BBB")
                 .pattern("BB ")
-                .define('B', Tags.Items.STONE)
+                .define('B', Tags.Items.STONES)
                 .unlockedBy(getHasName(Blocks.IRON_BLOCK), has(Blocks.IRON_BLOCK))
                 .save(writer, getId(CgsAttachments.HAMMER_STONE.get()));
 
@@ -273,7 +289,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(writer, getId(CgsAttachments.HAMMER_DIAMOND.get()));
 
         SmithingTransformRecipeBuilder.smithing(
-                Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+                        Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
                         Ingredient.of(CgsAttachments.HAMMER_DIAMOND.get()),
                         Ingredient.of(Items.NETHERITE_INGOT),
                         RecipeCategory.COMBAT,
@@ -285,7 +301,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("BB")
                 .pattern("BB")
                 .pattern("B ")
-                .define('B', Tags.Items.STONE)
+                .define('B', Tags.Items.STONES)
                 .unlockedBy(getHasName(Blocks.IRON_BLOCK), has(Blocks.IRON_BLOCK))
                 .save(writer, getId(CgsAttachments.AXE_STONE.get()));
 
@@ -308,7 +324,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(writer, getId(CgsAttachments.AXE_DIAMOND.get()));
 
         SmithingTransformRecipeBuilder.smithing(
-                Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+                        Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
                         Ingredient.of(CgsAttachments.AXE_DIAMOND.get()),
                         Ingredient.of(Items.NETHERITE_INGOT),
                         RecipeCategory.COMBAT,
@@ -322,7 +338,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("IW ")
                 .pattern("  W")
                 .define('I', IRON_SHEET)
-                .define('W', AllTags.AllItemTags.STRIPPED_LOGS.tag)
+                .define('W', Tags.Items.STRIPPED_LOGS)
                 .unlockedBy(getHasName( AllItems.IRON_SHEET), has( AllItems.IRON_SHEET))
                 .save(writer, getId(CgsAmmo.SPEAR.get()));
 
@@ -338,7 +354,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(writer, getId(CgsWeapons.GRENADE.get()));
     }
 
-    private static void buildOreRecipes(Consumer<FinishedRecipe> writer,
+    private static void buildOreRecipes(RecipeOutput writer,
                                         ItemLike ore, ItemLike deepslateOre,
                                         ItemLike block, ItemLike rawBlock,
                                         ItemLike raw, ItemLike ingot, ItemLike nugget) {
@@ -357,14 +373,14 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
         fromBlock(writer, ingot, nugget);
     }
 
-    private static void fromBlock(Consumer<FinishedRecipe> writer, ItemLike ingredient, ItemLike result) {
+    private static void fromBlock(RecipeOutput writer, ItemLike ingredient, ItemLike result) {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, result, 9)
                 .requires(ingredient)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
                 .save(writer);
     }
 
-    private static void craft(Consumer<FinishedRecipe> writer, ItemLike ingredient, ItemLike result) {
+    private static void craft(RecipeOutput writer, ItemLike ingredient, ItemLike result) {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, result)
                 .pattern("SSS")
                 .pattern("SSS")
@@ -374,7 +390,7 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(writer,  DataGenConfig.DATA_MOD_ID + ":" + getItemName(result) + "_" + "from" + "_" + getItemName(ingredient));
     }
 
-    private static void simpleBlock(Consumer<FinishedRecipe> writer, ItemLike ingredient, ItemLike result) {
+    private static void simpleBlock(RecipeOutput writer, ItemLike ingredient, ItemLike result) {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, result)
                 .pattern("SSS")
                 .pattern("SSS")
@@ -384,46 +400,25 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(writer,  DataGenConfig.DATA_MOD_ID + ":" + getItemName(result) + "_" + "from" + "_" + getItemName(ingredient));
     }
 
-    protected static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTIme, String pGroup) {
-        oreCooking(pFinishedRecipeConsumer, RecipeSerializer.SMELTING_RECIPE, pIngredients, pCategory, pResult, pExperience, pCookingTIme, pGroup, "_from_smelting");
+    protected static void oreSmelting(RecipeOutput finishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory category, ItemLike result, float experience, int pCookingTIme, String group) {
+        oreCooking(finishedRecipeConsumer, RecipeSerializer.SMELTING_RECIPE, SmeltingRecipe::new, pIngredients, category, result, experience, pCookingTIme, group, "_from_smelting");
     }
 
-    protected static void oreBlasting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup) {
-        oreCooking(pFinishedRecipeConsumer, RecipeSerializer.BLASTING_RECIPE, pIngredients, pCategory, pResult, pExperience, pCookingTime, pGroup, "_from_blasting");
+    protected static void oreBlasting(RecipeOutput finishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory category, ItemLike result, float experience, int cookingTime, String group) {
+        oreCooking(finishedRecipeConsumer, RecipeSerializer.BLASTING_RECIPE, BlastingRecipe::new, pIngredients, category, result, experience, cookingTime, group, "_from_blasting");
     }
 
-    protected static void oreCooking(Consumer<FinishedRecipe> pFinishedRecipeConsumer, RecipeSerializer<? extends AbstractCookingRecipe> pCookingSerializer,
-                                     List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult,
-                                     float pExperience, int pCookingTime, String pGroup, String pRecipeName) {
+    protected static <T extends AbstractCookingRecipe> void oreCooking(RecipeOutput finishedRecipeConsumer,
+                                                                       RecipeSerializer<T> cookingSerializer,
+                                                                       AbstractCookingRecipe.Factory<T> factory,
+                                                                       List<ItemLike> pIngredients, RecipeCategory category, ItemLike result,
+                                                                       float experience, int cookingTime, String group, String recipeName) {
         for(var itemlike : pIngredients) {
-            SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), pCategory, pResult,
-                    pExperience, pCookingTime, pCookingSerializer)
-                    .group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike))
-                    .save(pFinishedRecipeConsumer,  DataGenConfig.DATA_MOD_ID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
+            SimpleCookingRecipeBuilder.generic(
+                    Ingredient.of(itemlike), category, result, experience, cookingTime, cookingSerializer, factory )
+                    
+                    .group(group).unlockedBy(getHasName(itemlike), has(itemlike))
+                    .save(finishedRecipeConsumer,  DataGenConfig.DATA_MOD_ID + ":" + getItemName(result) + recipeName + "_" + getItemName(itemlike));
         }
-    }
-
-    public static <T> TagKey<T> optionalTag(IForgeRegistry<T> registry, ResourceLocation id) {
-        return registry.tags().createOptionalTagKey(id, Collections.emptySet());
-    }
-
-    private static @NotNull ResourceLocation getId(ItemLike item) {
-        return new ResourceLocation(DataGenConfig.DATA_MOD_ID, getItemName(item));
-    }
-
-    public static <T> TagKey<T> forgeTag(IForgeRegistry<T> registry, String path) {
-        return optionalTag(registry, new ResourceLocation("forge", path));
-    }
-
-//    public static <T> TagKey<T> mcTag(IForgeRegistry<T> registry, String path) {
-//        return optionalTag(registry, new ResourceLocation("minecraft", path));
-//    }
-
-    public static TagKey<Block> forgeBlockTag(String path) {
-        return forgeTag(Registries.BLOCKS, path);
-    }
-
-    public static TagKey<Item> forgeItemTag(String path) {
-        return forgeTag(Registries.ITEMS, path);
     }
 }

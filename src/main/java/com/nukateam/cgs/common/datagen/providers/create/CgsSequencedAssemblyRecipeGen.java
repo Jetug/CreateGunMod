@@ -12,6 +12,7 @@ import com.simibubi.create.content.kinetics.deployer.DeployerApplicationRecipe;
 import com.simibubi.create.content.kinetics.press.PressingRecipe;
 import com.simibubi.create.content.kinetics.saw.CuttingRecipe;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -21,19 +22,20 @@ import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.function.UnaryOperator;
 
 public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
 
-    public CgsSequencedAssemblyRecipeGen(PackOutput output) {
-        super(output, Gunsmithing.MOD_ID);
+    public CgsSequencedAssemblyRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, lookupProvider, Gunsmithing.MOD_ID);
     }
 
     BaseRecipeProvider.GeneratedRecipe REVOLVER_ROUND_BLANK = this.create("revolver_round_blank", (b) -> b
             .require(TagKeys.BRASS_SHEET)
             .transitionTo(CgsAmmo.REVOLVER_SHELL.get())
             .addStep(DeployerApplicationRecipe::new, noConsumeTool(CgsItems.PRESS_FORM_REVOLVER))
-            .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
+            .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDERS))
             .addOutput(new ItemStack(CgsAmmo.REVOLVER_ROUND_BLANK.get(), 8), 1.0F)
             .loops(1));
 
@@ -56,7 +58,7 @@ public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
         return b.require(TagKeys.BRASS_SHEET)
                 .transitionTo(CgsAmmo.GATLING_SHELL.get())
                 .addStep(DeployerApplicationRecipe::new, noConsumeTool(CgsItems.PRESS_FORM_GATLING))
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDERS))
                 .addOutput(new ItemStack(CgsAmmo.GATLING_ROUND_BLANK.get(), 4), 1.0F)
                 .loops(1);
     });
@@ -84,7 +86,7 @@ public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
                 .transitionTo(CgsAmmo.SHOTGUN_SHELL.get())
                 .addStep(DeployerApplicationRecipe::new, noConsumeTool(CgsItems.PRESS_FORM_SHOTGUN))
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Items.PAPER))
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDERS))
                 .addOutput(new ItemStack(CgsAmmo.SHOTGUN_ROUND_BLANK.get(), 4), 1.0F)
                 .loops(1);
     });
@@ -143,7 +145,7 @@ public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
         return b.require(Items.PAPER)
                 .transitionTo(Items.PAPER)
                 .addOutput(new ItemStack(CgsAmmo.PAPER_CARTRIDGE.get(), 4), 1.0F)
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDERS))
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(TagKeys.LEAD_NUGGET))
                 .loops(1);
     });
@@ -152,7 +154,7 @@ public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
         return b.require(Items.PAPER)
                 .transitionTo(Items.PAPER)
                 .addOutput(new ItemStack(CgsAmmo.PAPER_SHOT.get(), 2), 1.0F)
-                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDER))
+                .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(Tags.Items.GUNPOWDERS))
                 .addStep(DeployerApplicationRecipe::new, (rb) -> rb.require(CgsAmmo.LEAD_BALLS.get()))
                 .loops(1);
     });
@@ -176,7 +178,7 @@ public class CgsSequencedAssemblyRecipeGen extends SequencedAssemblyRecipeGen {
     });
 
 
-    private static @NotNull UnaryOperator<ProcessingRecipeBuilder<DeployerApplicationRecipe>> noConsumeTool(DeferredHolder<Item> pressFormShotgun) {
+    private static @NotNull UnaryOperator<ProcessingRecipeBuilder<DeployerApplicationRecipe>> noConsumeTool(DeferredHolder<Item, Item> pressFormShotgun) {
         return (rb) -> rb.toolNotConsumed().require(pressFormShotgun.get());
     }
 }

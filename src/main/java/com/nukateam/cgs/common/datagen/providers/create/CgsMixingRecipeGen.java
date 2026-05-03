@@ -5,14 +5,17 @@ import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
 import com.simibubi.create.api.data.recipe.BaseRecipeProvider;
 import com.simibubi.create.api.data.recipe.MixingRecipeGen;
 import com.simibubi.create.content.processing.recipe.HeatCondition;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.Tags;
 
+import java.util.concurrent.CompletableFuture;
+
 public class CgsMixingRecipeGen extends MixingRecipeGen {
-    public CgsMixingRecipeGen(PackOutput output) {
-        super(output, Gunsmithing.MOD_ID);
+    public CgsMixingRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, lookupProvider, Gunsmithing.MOD_ID);
     }
 
     BaseRecipeProvider.GeneratedRecipe STEEL_INGOT = create("steel_ingot", b -> b

@@ -16,16 +16,16 @@ public class DataGenerators {
         var lookupProvider = event.getLookupProvider();
 
         generator.addProvider(event.includeClient(), new CgsItemModelProvider(packOutput, fileHelper));
-        generator.addProvider(event.includeServer(), new CgsRecipeProvider(packOutput));
-        generator.addProvider(event.includeServer(), new CgsMechanicalCraftingRecipeGen(packOutput));
-        generator.addProvider(event.includeServer(), new CgsSequencedAssemblyRecipeGen(packOutput));
-        generator.addProvider(event.includeServer(), new CgsMixingRecipeGen(packOutput));
-        generator.addProvider(event.includeServer(), new CgsPressingRecipeGen(packOutput));
-        generator.addProvider(event.includeServer(), new CgsCrushingRecipeGen(packOutput));
-        generator.addProvider(event.includeServer(), new CgsDeployingRecipeGen(packOutput));
-        generator.addProvider(event.includeServer(), new CgsFillingRecipeGen(packOutput));
-        generator.addProvider(event.includeServer(), new CgsEmptyingRecipeGen(packOutput));
-        generator.addProvider(event.includeServer(), new CgsCuttingRecipeGen(packOutput));
+        generator.addProvider(event.includeServer(), new CgsRecipeProvider(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new CgsMechanicalCraftingRecipeGen(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new CgsSequencedAssemblyRecipeGen(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new CgsMixingRecipeGen(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new CgsPressingRecipeGen(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new CgsCrushingRecipeGen(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new CgsDeployingRecipeGen(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new CgsFillingRecipeGen(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new CgsEmptyingRecipeGen(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new CgsCuttingRecipeGen(packOutput, lookupProvider));
 
         generator.addProvider(event.includeServer(), CgsLootTableProvider.create(packOutput));
         generator.addProvider(event.includeClient(), new CgsBlockStateProvider(packOutput, fileHelper));

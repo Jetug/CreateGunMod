@@ -32,18 +32,18 @@ public class CgsItemModelProvider extends ItemModelProvider {
     private void handleDataGenField(Object obj, ItemModelGen annotation) {
         if (obj instanceof DeferredHolder<?, ?>) {
             switch (annotation.type()) {
-                case ITEM -> genItems((DeferredHolder<Item>) obj, annotation);
-                case BLOCK -> blockModel((DeferredHolder<Block>) obj);
+                case ITEM -> genItems((DeferredHolder<Item, Item>) obj, annotation);
+                case BLOCK -> blockModel((DeferredHolder<Block, Block>) obj);
             }
         } else if (obj instanceof HashMap<?,?>) {
-            var storage = (HashMap<?, DeferredHolder<Item>>) obj;
+            var storage = (HashMap<?, DeferredHolder<Item, Item>>) obj;
             for (var item : storage.values()){
                 genItems(item, annotation);
             }
         }
     }
 
-    private void genItems(DeferredHolder<Item> item, ItemModelGen annotation) {
+    private void genItems(DeferredHolder<Item, Item> item, ItemModelGen annotation) {
         var modelFile = getModelFile(annotation.parent().getPath());
 
         switch (annotation.parent()) {
@@ -53,20 +53,20 @@ public class CgsItemModelProvider extends ItemModelProvider {
     }
 
     private ModelFile getModelFile(String path) {
-        return getExistingFile(new ResourceLocation(path));
+        return getExistingFile(ResourceLocation.parse(path));
     }
 
-//    private void spawnEggModel(DeferredHolder<Item> egg) {
+//    private void spawnEggModel(DeferredHolder<Item, Item> egg) {
 //        withExistingParent(egg.getId().getPath(), new ResourceLocation("item"));
 //    }
 
-    private void blockModel(DeferredHolder<? extends Block> block) {
+    private void blockModel(DeferredHolder<Block, ? extends Block> block) {
         var path = block.getId().getPath();
         var loc = modLoc("block/" + block.getId().getPath());
         withExistingParent(path, loc);
     }
 
-    private void blockModel(DeferredHolder<? extends Block> block, String suffix) {
+    private void blockModel(DeferredHolder<Block, ? extends Block> block, String suffix) {
         withExistingParent(block.getId().getPath(), modLoc("block/" + block.getId().getPath() + "_" + suffix));
     }
 

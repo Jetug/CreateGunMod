@@ -2,11 +2,14 @@ package com.nukateam.cgs.common.datagen.providers.create;
 
 import com.nukateam.cgs.Gunsmithing;
 import com.simibubi.create.api.data.recipe.CuttingRecipeGen;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 
+import java.util.concurrent.CompletableFuture;
+
 public class CgsCuttingRecipeGen extends CuttingRecipeGen {
-    public CgsCuttingRecipeGen(PackOutput output) {
-        super(output, Gunsmithing.MOD_ID);
+    public CgsCuttingRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, lookupProvider, Gunsmithing.MOD_ID);
     }
 
 //    GeneratedRecipe LEAD_BALLS = create(Ingredient.of(TagKeys.LEAD_NUGGET), b -> b

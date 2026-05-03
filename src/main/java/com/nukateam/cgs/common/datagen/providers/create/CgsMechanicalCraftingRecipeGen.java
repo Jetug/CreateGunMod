@@ -9,22 +9,26 @@ import com.simibubi.create.AllTags;
 import com.simibubi.create.api.data.recipe.BaseRecipeProvider;
 import com.simibubi.create.api.data.recipe.MechanicalCraftingRecipeGen;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.neoforged.neoforge.common.Tags;
+
+import java.util.concurrent.CompletableFuture;
 
 import static com.nukateam.cgs.common.datagen.util.TagKeys.*;
 
 
 public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen {
-	public CgsMechanicalCraftingRecipeGen(PackOutput output) {
-		super(output, Gunsmithing.MOD_ID);
+	public CgsMechanicalCraftingRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+		super(output, lookupProvider, Gunsmithing.MOD_ID);
 	}
 
 	BaseRecipeProvider.GeneratedRecipe
 		SHOTGUN = create(CgsWeapons.SHOTGUN::get).returns(1)
 			.recipe(b -> b
-					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
+					.key('W', Ingredient.of(Tags.Items.STRIPPED_LOGS))
 					.key('B', STEEL_SHEET)
 					.key('A', AllItems.ANDESITE_ALLOY.get())
 					.key('L', BRASS_SHEET)
@@ -50,7 +54,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 
 		REVOLVER = create(CgsWeapons.REVOLVER::get).returns(1)
 			.recipe(b -> b
-					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
+					.key('W', Ingredient.of(Tags.Items.STRIPPED_LOGS))
 					.key('B', STEEL_SHEET)
 					.key('A', AllItems.ANDESITE_ALLOY.get())
 					.key('C', AllBlocks.COGWHEEL.get())
@@ -64,7 +68,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 
 		NAILGUN = create(CgsWeapons.NAILGUN::get).returns(1)
 				.recipe(b -> b
-				.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
+				.key('W', Ingredient.of(Tags.Items.STRIPPED_LOGS))
 				.key('M', AllItems.PRECISION_MECHANISM.get())
 				.key('P', AllBlocks.FLUID_PIPE)
 				.key('T', AllItems.COPPER_BACKTANK)
@@ -80,7 +84,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 
 	LAUNCHER = create(CgsWeapons.LAUNCHER::get).returns(1)
 			.recipe(b -> b
-					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
+					.key('W', Ingredient.of(Tags.Items.STRIPPED_LOGS))
 					.key('A', AllItems.ANDESITE_ALLOY.get())
 					.key('L', BRASS_SHEET)
 					.key('I', STEEL_SHEET)
@@ -94,7 +98,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 
 	BLAZEGUN = create(CgsWeapons.BLAZEGUN::get).returns(1)
 			.recipe(b -> b
-					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
+					.key('W', Ingredient.of(Tags.Items.STRIPPED_LOGS))
 					.key('A', AllItems.ANDESITE_ALLOY.get())
 					.key('L', BRASS_SHEET)
 					.key('P', AllBlocks.FLUID_PIPE.get())
@@ -108,7 +112,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 
 	HAMMER = create(CgsWeapons.HAMMER::get).returns(1)
 			.recipe(b -> b
-					.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
+					.key('W', Ingredient.of(Tags.Items.STRIPPED_LOGS))
 					.key('A', AllItems.ANDESITE_ALLOY.get())
 					.key('L', BRASS_STORAGE_BLOCKS)
 					.key('P', AllBlocks.MECHANICAL_PISTON.get())
@@ -207,7 +211,7 @@ public class CgsMechanicalCraftingRecipeGen extends MechanicalCraftingRecipeGen 
 
 		BALLISTAZOOKA = create(CgsAttachments.BALLISTAZOOKA::get).returns(1)
 				.recipe(b -> b
-						.key('W', Ingredient.of(AllTags.AllItemTags.STRIPPED_LOGS.tag))
+						.key('W', Ingredient.of(Tags.Items.STRIPPED_LOGS))
 						.key('F', AllBlocks.FLYWHEEL)
 						.key('I', IRON_SHEET)
 						.key('L', BRASS_SHEET)
