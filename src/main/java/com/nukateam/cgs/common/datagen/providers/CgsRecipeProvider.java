@@ -11,6 +11,7 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
@@ -420,5 +421,9 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                     .group(group).unlockedBy(getHasName(itemlike), has(itemlike))
                     .save(finishedRecipeConsumer,  DataGenConfig.DATA_MOD_ID + ":" + getItemName(result) + recipeName + "_" + getItemName(itemlike));
         }
+    }
+
+    private static ResourceLocation getId(Item item) {
+        return BuiltInRegistries.ITEM.getKey(item);
     }
 }

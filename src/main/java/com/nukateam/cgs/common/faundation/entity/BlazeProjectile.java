@@ -24,7 +24,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Predicate;
 
 import static software.bernie.geckolib.util.GeckoLibUtil.createInstanceCache;
-import static net.neoforged.neoforge.event.ForgeEventFactory.getMobGriefingEvent;
 
 public class BlazeProjectile extends ProjectileEntity implements ItemSupplier, AnimatedProjectile {
     protected final AnimatableInstanceCache cache = createInstanceCache(this);
