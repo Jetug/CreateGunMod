@@ -12,6 +12,5 @@ public class CommonHandler {
     @SubscribeEvent
     public static void onCommonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(CgsProjectileRegistry::registerProjectiles);
-        PacketHandler.init();
     }
 }

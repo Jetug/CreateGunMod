@@ -38,7 +38,7 @@ public class InputEventHandler {
     private static void fillEngine(ItemStack gun, ItemStack fuelStack) {
         var mc = Minecraft.getInstance();
         if(canAcceptFuel(gun, fuelStack)){
-            PacketHandler.getPlayChannel().sendToServer(new C2SMessageFuel());
+            Minecraft.getInstance().getConnection().send(new C2SMessageFuel());
             mc.options.keyUse.setDown(false);
         }
     }

@@ -1,20 +1,18 @@
 package com.nukateam.cgs.common.utils;
 
-import com.nukateam.cgs.common.faundation.item.FluidContainerItem;
-import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
+import com.nukateam.cgs.common.faundation.registry.CgsComponents;
 import com.nukateam.cgs.common.handlers.GunEventHandler;
 import com.nukateam.cgs.common.ntgl.CgsAmmoHolders;
-import com.nukateam.ntgl.common.registry.AmmoHolders;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
 import com.nukateam.ntgl.common.util.util.WeaponStateHelper;
 import com.nukateam.ntgl.common.foundation.init.ModSounds;
 import com.nukateam.ntgl.common.data.WeaponData;
 import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
+import com.simibubi.create.AllDataComponents;
 import com.simibubi.create.content.equipment.armor.BacktankUtil;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.ItemStack;
 
 public class GunUtils {
@@ -81,35 +79,25 @@ public class GunUtils {
         return false;
     }
 
-    public static void consumeAir(ItemStack tank, float i) {
-        var tag = tank.getOrCreateTag();
+    public static void consumeAir(ItemStack tank, int i) {
         int maxAir = BacktankUtil.maxAir(tank);
-        float air = BacktankUtil.getAir(tank);
-        float newAir = Math.max(air - i, 0);
-        tag.putFloat(AIR, Math.min(newAir, maxAir));
-        tank.setTag(tag);
+        var air = BacktankUtil.getAir(tank);
+        var newAir = Math.max(air - i, 0);
+
+        tank.set(AllDataComponents.BACKTANK_AIR, Math.min(newAir, maxAir));
     }
 
-    public static void setAir(ItemStack tank, float newAir) {
-        var tag = tank.getOrCreateTag();
+    public static void setAir(ItemStack tank, int newAir) {
         var maxAir = BacktankUtil.maxAir(tank);
-        tag.putFloat(AIR, Math.min(newAir, maxAir));
-        tank.setTag(tag);
+        tank.set(AllDataComponents.BACKTANK_AIR, Math.min(newAir, maxAir));
     }
-
-//    public static void consumeAir(ItemStack tank, int amount) {
-//        var tankAir = BacktankUtil.getAir(tank);
-//        GunUtils.setAir(tank, Math.max(0, tankAir - amount));
-//    }
 
     public static void setCock(ItemStack weapon, int i) {
-        var tag = weapon.getOrCreateTag();
-        tag.putInt(COCK, i);
+        weapon.set(CgsComponents.COCK, i);
     }
 
     public static int getCock(ItemStack weapon) {
-        var tag = weapon.getOrCreateTag();
-        return tag.getInt(COCK);
+        return weapon.getOrDefault(CgsComponents.COCK, 0);
     }
 
     public static boolean hasAir(WeaponData gunData) {

@@ -3,7 +3,7 @@ package com.nukateam.cgs.common.faundation.worldgen;
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.registry.CgsBlocks;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -22,10 +22,9 @@ public class ConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_LEAD_ORE_KEY = registerKey("lead_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SULFUR_ORE_NETHER = registerKey("sulfur_ore");
 
-    public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
+    public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         var stoneReplaceable = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         var deepslateReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
-//        var netherrackReplaceable = new TagMatchTest(BlockTags.NETHER_CARVER_REPLACEABLES);
         var netherrackReplaceable = new BlockMatchTest(Blocks.NETHERRACK);
 
         var netherSulfurOres = List.of(OreConfiguration.target(netherrackReplaceable, CgsBlocks.SULFUR_ORE.get().defaultBlockState()));
@@ -43,7 +42,7 @@ public class ConfiguredFeatures {
     }
 
     private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(
-            BootstapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
+            BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
         context.register(key, new ConfiguredFeature<>(feature, configuration));
     }
 }

@@ -35,6 +35,7 @@ import net.minecraft.world.phys.HitResult;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import org.jetbrains.annotations.NotNull;
+import net.neoforged.neoforge.common.SimpleTier;
 
 @EventBusSubscriber(modid = Gunsmithing.MOD_ID)
 public class MeleeHandler {
@@ -153,11 +154,11 @@ public class MeleeHandler {
 
     public static boolean isToolTierSufficient(BlockState blockState, Tier toolTier) {
         if (blockState.is(BlockTags.NEEDS_DIAMOND_TOOL)) {
-            return toolTier.getLevel() >= Tiers.DIAMOND.getLevel();
+            return toolTier == Tiers.DIAMOND;
         } else if (blockState.is(BlockTags.NEEDS_IRON_TOOL)) {
-            return toolTier.getLevel() >= Tiers.IRON.getLevel();
+            return toolTier == Tiers.IRON || toolTier == Tiers.DIAMOND;
         } else if (blockState.is(BlockTags.NEEDS_STONE_TOOL)) {
-            return toolTier.getLevel() >= Tiers.STONE.getLevel();
+            return toolTier == Tiers.STONE ||toolTier == Tiers.IRON || toolTier == Tiers.DIAMOND;
         }
 
         return true;

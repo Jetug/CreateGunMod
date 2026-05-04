@@ -32,6 +32,7 @@ public class Gunsmithing {
         CgsParticles.register(MOD_EVENT_BUS);
         CgsAmmoType.register();
         CgsAmmoHolders.register();
+        CgsComponents.register(MOD_EVENT_BUS);
     }
 
     public static @NotNull ResourceLocation cgsResource(String name) {
