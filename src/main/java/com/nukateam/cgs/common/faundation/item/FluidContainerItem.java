@@ -52,7 +52,8 @@ public class FluidContainerItem extends BucketItem {
         if(this == CgsItems.LAVA_CONTAINER.get()){
             return 20000;
         }
-        return -1;
+        // The javadoc for getBurnTime has a mistake in this version, 0 should be returned and not -1
+        return 0;
     }
 
     @Override
