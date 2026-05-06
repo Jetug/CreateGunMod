@@ -1,0 +1,48 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "cgs:round_gatling_blank"
+  },
+  "results": [
+    {
+      "id": "cgs:round_gatling"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:round_gatling_blank"
+        },
+        {
+          "tag": "c:nuggets/lead"
+        }
+      ],
+      "results": [
+        {
+          "id": "cgs:round_gatling_blank"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:round_gatling_blank"
+        },
+        {
+          "tag": "c:nuggets/copper"
+        }
+      ],
+      "results": [
+        {
+          "id": "cgs:round_gatling_blank"
+        }
+      ]
+    }
+  ],
+  "transitional_item": {
+    "id": "cgs:round_gatling_blank"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "type": "create:mechanical_crafting",
+  "accept_mirrored": false,
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "create:flywheel"
+    },
+    "I": {
+      "tag": "c:plates/iron"
+    },
+    "L": {
+      "tag": "c:plates/brass"
+    },
+    "S": {
+      "item": "minecraft:string"
+    },
+    "W": {
+      "tag": "c:stripped_logs"
+    }
+  },
+  "pattern": [
+    "FIISS",
+    "WWWWL",
+    "FIISS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cgs:ballistazooka"
+  },
+  "show_notification": false
+}

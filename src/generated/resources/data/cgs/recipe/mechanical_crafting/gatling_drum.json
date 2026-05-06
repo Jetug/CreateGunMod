@@ -1,0 +1,28 @@
+{
+  "type": "create:mechanical_crafting",
+  "accept_mirrored": false,
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "C": {
+      "item": "create:large_cogwheel"
+    },
+    "L": {
+      "tag": "c:plates/brass"
+    }
+  },
+  "pattern": [
+    "  L  ",
+    " LAL ",
+    "LACAL",
+    " LAL ",
+    "  L  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "cgs:gatling_drum"
+  },
+  "show_notification": false
+}

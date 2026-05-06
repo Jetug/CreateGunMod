@@ -1,0 +1,14 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "minecraft:charcoal"
+    }
+  ],
+  "processing_time": 100,
+  "results": [
+    {
+      "id": "cgs:charcoal_dust"
+    }
+  ]
+}

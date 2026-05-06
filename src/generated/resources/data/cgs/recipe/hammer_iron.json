@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "item": "minecraft:iron_block"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "II ",
+    "IBI",
+    "II "
+  ],
+  "result": {
+    "count": 1,
+    "id": "cgs:hammer_iron"
+  }
+}

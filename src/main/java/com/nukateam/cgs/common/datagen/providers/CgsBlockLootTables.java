@@ -2,7 +2,6 @@ package com.nukateam.cgs.common.datagen.providers;
 
 import com.nukateam.cgs.common.faundation.registry.CgsBlocks;
 import com.nukateam.cgs.common.faundation.registry.items.CgsItems;
-import com.nukateam.ntgl.modules.gunpack.regestry.ModBlocks;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -29,7 +28,7 @@ public class CgsBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected Iterable<Block> getKnownBlocks() {
-        return ModBlocks.BLOCKS.getEntries().stream().map(Holder::value)::iterator;
+        return CgsBlocks.BLOCKS.getEntries().stream().map(Holder::value)::iterator;
     }
 
     @Override

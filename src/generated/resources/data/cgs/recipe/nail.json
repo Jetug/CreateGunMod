@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "N": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "pattern": [
+    "N",
+    "N",
+    "N"
+  ],
+  "result": {
+    "count": 9,
+    "id": "cgs:nail"
+  }
+}

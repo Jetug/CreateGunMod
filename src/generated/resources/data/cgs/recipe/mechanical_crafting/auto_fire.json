@@ -1,0 +1,31 @@
+{
+  "type": "create:mechanical_crafting",
+  "accept_mirrored": false,
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "C": {
+      "item": "create:cogwheel"
+    },
+    "L": {
+      "tag": "c:plates/brass"
+    },
+    "M": {
+      "item": "create:precision_mechanism"
+    },
+    "S": {
+      "item": "create:shaft"
+    }
+  },
+  "pattern": [
+    "SAMC",
+    "SLL "
+  ],
+  "result": {
+    "count": 1,
+    "id": "cgs:auto_fire"
+  },
+  "show_notification": false
+}

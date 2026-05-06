@@ -1,0 +1,49 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "tag": "c:plates/iron"
+  },
+  "results": [
+    {
+      "count": 5,
+      "id": "cgs:rocket_small"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "create:brass_sheet"
+        },
+        {
+          "item": "minecraft:tnt"
+        }
+      ],
+      "results": [
+        {
+          "id": "create:brass_sheet"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "create:brass_sheet"
+        },
+        {
+          "tag": "c:plates/brass"
+        }
+      ],
+      "results": [
+        {
+          "id": "create:brass_sheet"
+        }
+      ]
+    }
+  ],
+  "transitional_item": {
+    "id": "create:brass_sheet"
+  }
+}

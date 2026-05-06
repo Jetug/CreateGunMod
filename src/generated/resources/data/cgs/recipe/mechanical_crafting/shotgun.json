@@ -1,0 +1,29 @@
+{
+  "type": "create:mechanical_crafting",
+  "accept_mirrored": false,
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "B": {
+      "tag": "c:plates/steel"
+    },
+    "L": {
+      "tag": "c:plates/brass"
+    },
+    "W": {
+      "tag": "c:stripped_logs"
+    }
+  },
+  "pattern": [
+    "BBAL",
+    "BBAL",
+    "WW W"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cgs:shotgun"
+  },
+  "show_notification": false
+}

@@ -1,0 +1,36 @@
+{
+  "type": "create:mechanical_crafting",
+  "accept_mirrored": false,
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "B": {
+      "tag": "c:plates/steel"
+    },
+    "C": {
+      "item": "create:cogwheel"
+    },
+    "I": {
+      "tag": "c:ingots/steel"
+    },
+    "L": {
+      "tag": "c:plates/brass"
+    },
+    "P": {
+      "item": "create:precision_mechanism"
+    }
+  },
+  "pattern": [
+    "BBILLL",
+    "BBICCL",
+    "BBIPAL",
+    "BBIAAL"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cgs:gatling"
+  },
+  "show_notification": false
+}

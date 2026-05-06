@@ -1,0 +1,48 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "cgs:round_revolver_blank"
+  },
+  "results": [
+    {
+      "id": "cgs:round_revolver_piercing"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:round_revolver_blank"
+        },
+        {
+          "tag": "c:nuggets/steel"
+        }
+      ],
+      "results": [
+        {
+          "id": "cgs:round_revolver_blank"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:round_revolver_blank"
+        },
+        {
+          "tag": "c:nuggets/lead"
+        }
+      ],
+      "results": [
+        {
+          "id": "cgs:round_revolver_blank"
+        }
+      ]
+    }
+  ],
+  "transitional_item": {
+    "id": "cgs:round_revolver_blank"
+  }
+}

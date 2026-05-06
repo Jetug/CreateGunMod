@@ -1,0 +1,50 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "tag": "c:plates/brass"
+  },
+  "results": [
+    {
+      "count": 8,
+      "id": "cgs:round_revolver_blank"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:shell_revolver"
+        },
+        {
+          "item": "cgs:press_form_revolver"
+        }
+      ],
+      "keep_held_item": true,
+      "results": [
+        {
+          "id": "cgs:shell_revolver"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "cgs:shell_revolver"
+        },
+        {
+          "tag": "c:gunpowders"
+        }
+      ],
+      "results": [
+        {
+          "id": "cgs:shell_revolver"
+        }
+      ]
+    }
+  ],
+  "transitional_item": {
+    "id": "cgs:shell_revolver"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "I": {
+      "tag": "c:plates/iron"
+    },
+    "L": {
+      "tag": "c:plates/brass"
+    }
+  },
+  "pattern": [
+    "IIL"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cgs:bayonet"
+  }
+}

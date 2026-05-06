@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "B": {
+      "tag": "c:plates/steel"
+    },
+    "C": {
+      "tag": "c:plates/copper"
+    },
+    "L": {
+      "tag": "c:plates/brass"
+    }
+  },
+  "pattern": [
+    "LBL",
+    "ACC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cgs:hammer_chamber"
+  }
+}

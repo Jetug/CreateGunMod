@@ -1,0 +1,27 @@
+{
+  "type": "create:mechanical_crafting",
+  "accept_mirrored": false,
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "L": {
+      "tag": "c:plates/brass"
+    },
+    "M": {
+      "item": "create:precision_mechanism"
+    }
+  },
+  "pattern": [
+    "LMLLML",
+    "L LL L",
+    "L LL L",
+    "LALLAL"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cgs:shotgun_pump"
+  },
+  "show_notification": false
+}

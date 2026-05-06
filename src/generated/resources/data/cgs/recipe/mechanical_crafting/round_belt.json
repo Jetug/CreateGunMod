@@ -1,0 +1,25 @@
+{
+  "type": "create:mechanical_crafting",
+  "accept_mirrored": false,
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "create:brass_nugget"
+    },
+    "S": {
+      "tag": "c:plates/steel"
+    }
+  },
+  "pattern": [
+    "BB",
+    "SS",
+    "BB",
+    "SS",
+    "BB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cgs:round_belt"
+  },
+  "show_notification": false
+}

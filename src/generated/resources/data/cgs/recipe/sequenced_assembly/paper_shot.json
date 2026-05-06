@@ -1,0 +1,49 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "minecraft:paper"
+  },
+  "results": [
+    {
+      "count": 2,
+      "id": "cgs:paper_shot"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "minecraft:paper"
+        },
+        {
+          "tag": "c:gunpowders"
+        }
+      ],
+      "results": [
+        {
+          "id": "minecraft:paper"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "minecraft:paper"
+        },
+        {
+          "item": "cgs:lead_balls"
+        }
+      ],
+      "results": [
+        {
+          "id": "minecraft:paper"
+        }
+      ]
+    }
+  ],
+  "transitional_item": {
+    "id": "minecraft:paper"
+  }
+}

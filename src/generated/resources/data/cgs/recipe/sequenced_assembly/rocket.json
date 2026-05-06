@@ -1,0 +1,48 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "create:fluid_pipe"
+  },
+  "results": [
+    {
+      "id": "cgs:rocket"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "create:fluid_pipe"
+        },
+        {
+          "item": "minecraft:tnt"
+        }
+      ],
+      "results": [
+        {
+          "id": "create:fluid_pipe"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "create:fluid_pipe"
+        },
+        {
+          "tag": "c:plates/brass"
+        }
+      ],
+      "results": [
+        {
+          "id": "create:fluid_pipe"
+        }
+      ]
+    }
+  ],
+  "transitional_item": {
+    "id": "create:fluid_pipe"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "I": {
+      "tag": "c:plates/iron"
+    },
+    "W": {
+      "tag": "c:stripped_logs"
+    }
+  },
+  "pattern": [
+    "II ",
+    "IW ",
+    "  W"
+  ],
+  "result": {
+    "count": 4,
+    "id": "cgs:spear"
+  }
+}

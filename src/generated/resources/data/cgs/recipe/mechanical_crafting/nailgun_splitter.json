@@ -1,0 +1,29 @@
+{
+  "type": "create:mechanical_crafting",
+  "accept_mirrored": false,
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "create:chute"
+    },
+    "I": {
+      "tag": "c:plates/iron"
+    },
+    "M": {
+      "item": "create:precision_mechanism"
+    },
+    "P": {
+      "item": "create:fluid_pipe"
+    }
+  },
+  "pattern": [
+    "PIP ",
+    "IMIC",
+    "PIP "
+  ],
+  "result": {
+    "count": 1,
+    "id": "cgs:nailgun_splitter"
+  },
+  "show_notification": false
+}

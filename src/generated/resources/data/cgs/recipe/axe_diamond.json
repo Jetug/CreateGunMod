@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "item": "minecraft:diamond_block"
+    },
+    "I": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "pattern": [
+    "II",
+    "IB",
+    "I "
+  ],
+  "result": {
+    "count": 1,
+    "id": "cgs:axe_diamond"
+  }
+}

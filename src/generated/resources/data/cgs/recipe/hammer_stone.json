@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "tag": "c:stones"
+    }
+  },
+  "pattern": [
+    "BB ",
+    "BBB",
+    "BB "
+  ],
+  "result": {
+    "count": 1,
+    "id": "cgs:hammer_stone"
+  }
+}

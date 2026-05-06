@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "tag": "c:plates/steel"
+    },
+    "L": {
+      "tag": "c:plates/iron"
+    }
+  },
+  "pattern": [
+    "BLB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cgs:shotgun_spread_barrel"
+  }
+}

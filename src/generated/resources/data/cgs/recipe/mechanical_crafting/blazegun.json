@@ -1,0 +1,38 @@
+{
+  "type": "create:mechanical_crafting",
+  "accept_mirrored": false,
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "B": {
+      "item": "create:blaze_burner"
+    },
+    "C": {
+      "item": "create:chute"
+    },
+    "L": {
+      "tag": "c:plates/brass"
+    },
+    "P": {
+      "item": "create:fluid_pipe"
+    },
+    "T": {
+      "item": "create:fluid_tank"
+    },
+    "W": {
+      "tag": "c:stripped_logs"
+    }
+  },
+  "pattern": [
+    "  ALW ",
+    "LCCBLW",
+    " PPTW "
+  ],
+  "result": {
+    "count": 1,
+    "id": "cgs:blazegun"
+  },
+  "show_notification": false
+}
