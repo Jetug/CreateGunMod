@@ -108,9 +108,10 @@ dependencies {
     runtimeOnly("dev.engine-room.flywheel:flywheel-neoforge-${minecraft_version}:${flywheel_version}")
     implementation("com.tterrag.registrate:Registrate:${registrate_version}")
 
+//    implementation "curse.maven:framework-549225:7530361"
     implementation "curse.maven:playeranimator-658587:7389814"
     implementation "curse.maven:cloth-config-348521:5729127"
-    implementation "curse.maven:configured-457570:7276577"
+//    implementation "curse.maven:configured-457570:7276577"
 
     implementation "curse.maven:kotlin-for-forge-351264:7471280"
     implementation "curse.maven:fzzy-config-1005914:7568897"
@@ -158,6 +159,10 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+}
+
+tasks.processResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 idea {

@@ -18,7 +18,7 @@ import org.lwjgl.glfw.GLFW;
 public class InputEventHandler {
 
     @SubscribeEvent
-    public static void onMouseInput(InputEvent.MouseButton event){
+    public static void onMouseInput(InputEvent.MouseButton.Pre event){
         if(isInGame()) {
             var mc = Minecraft.getInstance();
             var player = mc.player;

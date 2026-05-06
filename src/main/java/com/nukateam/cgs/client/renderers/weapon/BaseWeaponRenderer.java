@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.client.model.gun.GeoWeaponModel;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
+import com.nukateam.ntgl.client.util.ClientDebug;
 import com.nukateam.ntgl.client.util.helpers.TransformUtils;
 import com.simibubi.create.AllItems;
 import software.bernie.geckolib.cache.object.GeoBone;
@@ -32,10 +33,13 @@ public class BaseWeaponRenderer extends DynamicWeaponRenderer<WeaponAnimator> {
                        @Nullable VertexConsumer buffer, int packedLight) {
         this.transformType = transformType;
         poseStack.pushPose();
+        poseStack.translate(ClientDebug.X / 10d / 16D, ClientDebug.Y / 10d / 16D, ClientDebug.Z / 10d / 16D);
+
         var hasExtendoGrip = entity.getOffhandItem().getItem() == AllItems.EXTENDO_GRIP.get();
         if(hasExtendoGrip && transformType == ItemDisplayContext.FIRST_PERSON_RIGHT_HAND) {
             poseStack.translate(1 / 16D, -3 / 16D, -3 / 16D);
         }
+
         super.render(entity, stack, transformType, poseStack, bufferSource, renderType, buffer, packedLight);
         poseStack.popPose();
     }
