@@ -17,6 +17,7 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.fml.loading.FMLEnvironment;
 
 import java.util.function.BiFunction;
 
@@ -43,9 +44,21 @@ public class HammerItem extends CgsGunItem {
 
     @Override
     public String getDescriptionId(ItemStack stack) {
-        var headAttachment = WeaponStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, new WeaponData(stack, Minecraft.getInstance().player)).getItem();
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            return getClientDescriptionId(stack);
+        }
+        return super.getDescriptionId(stack);
+    }
 
-        if(headAttachment instanceof HammerHeadItem item && item.getHeadType() == HammerHeadItem.Type.AXE){
+    @OnlyIn(Dist.CLIENT)
+    private String getClientDescriptionId(ItemStack stack) {
+        var headAttachment = WeaponStateHelper.getAttachmentItem(
+                CgsAttachmentTypes.HEAD,
+                new WeaponData(stack, Minecraft.getInstance().player)
+        ).getItem();
+
+        if (headAttachment instanceof HammerHeadItem item
+                && item.getHeadType() == HammerHeadItem.Type.AXE) {
             return "item.cgs.axe";
         }
 

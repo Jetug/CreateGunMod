@@ -21,8 +21,8 @@ public class BlazegunAnimator extends WeaponAnimator {
         super(transformType, renderer);
     }
     @Override
-    protected void tickStart() {
-        super.tickStart();
+    protected void tick() {
+        super.tick();
         try {
             if (itemStack.getItem() instanceof WeaponItem) {
                 this.isAuto = WeaponStateHelper.hasAttachmentEquipped(getStack(), CgsAttachmentTypes.ENGINE);

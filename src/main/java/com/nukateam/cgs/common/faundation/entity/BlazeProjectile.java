@@ -105,7 +105,7 @@ public class BlazeProjectile extends ProjectileEntity implements ItemSupplier, A
 
         if (this.level() instanceof ServerLevel serverlevel) {
             var target = result.getEntity();
-            var owner = this.getShooter();
+            var owner = this.getOwner();
             var fireTicks = target.getRemainingFireTicks();
             target.igniteForSeconds(5.0F);
             var damageSource = this.damageSources().fireball(null, owner);
@@ -126,7 +126,7 @@ public class BlazeProjectile extends ProjectileEntity implements ItemSupplier, A
         var face = blockHitResult.getDirection();
 
         if (!this.level().isClientSide) {
-            Entity entity = this.getShooter();
+            Entity entity = this.getOwner();
             if (!(entity instanceof Mob) || canEntityGrief(this.level(), entity)) {
                 blockpos = blockpos.relative(face);
                 if (this.level().isEmptyBlock(blockpos)) {

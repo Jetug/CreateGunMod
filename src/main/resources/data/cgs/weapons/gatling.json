@@ -15,7 +15,6 @@
     "recoilAngle": -2.0,
     "alwaysSpread": true,
     "spread": 1.2,
-    "movementSpeed": -0.2,
     "ammo": [
       "cgs:round_gatling",
       "cgs:round_gatling_piercing"

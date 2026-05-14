@@ -13,6 +13,7 @@ import com.nukateam.ntgl.common.util.interfaces.IWeaponModifier;
 import com.nukateam.ntgl.common.data.WeaponData;
 import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -26,6 +27,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.common.util.Lazy;
 import org.jetbrains.annotations.Nullable;
 
@@ -78,12 +80,14 @@ public class CgsGunItem extends WeaponItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag tooltipFlag) {
-        super.appendHoverText(stack, context, tooltip, tooltipFlag);
-        var gunData = new WeaponData(stack, null);
-        var fuelTypes = WeaponModifierHelper.getAllFuel(gunData);
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            super.appendHoverText(stack, context, tooltip, tooltipFlag);
+            var gunData = getWeaponData(stack);
+            var fuelTypes = WeaponModifierHelper.getAllFuel(gunData);
 
-        if(!fuelTypes.isEmpty()) {
-            tooltip.add(Component.translatable("info.cgs.fuel").withStyle(ChatFormatting.GRAY));
+            if (!fuelTypes.isEmpty()) {
+                tooltip.add(Component.translatable("info.cgs.fuel").withStyle(ChatFormatting.GRAY));
+            }
         }
     }
 

@@ -27,6 +27,10 @@ public class RevolverAnimator extends WeaponAnimator {
     protected final AnimationController<WeaponAnimator> BELT_CONTROLLER = createController("belt_controller", animateBelt())
             .triggerableAnim(BELT, begin().then(BELT, PLAY_ONCE));
 
+    public RevolverAnimator(ItemDisplayContext transformType, DynamicWeaponRenderer<WeaponAnimator> renderer) {
+        super(transformType, renderer);
+    }
+
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         super.registerControllers(controllerRegistrar);
@@ -61,10 +65,6 @@ public class RevolverAnimator extends WeaponAnimator {
         };
     }
 
-    public RevolverAnimator(ItemDisplayContext transformType, DynamicWeaponRenderer<WeaponAnimator> renderer) {
-        super(transformType, renderer);
-    }
-
     protected String getGunAnim(String name) {
         if (oneHanded && animationHelper.hasAnimation(name + Animations.ONE_HAND_SUFFIX)) {
             name = name + Animations.ONE_HAND_SUFFIX;
@@ -91,7 +91,7 @@ public class RevolverAnimator extends WeaponAnimator {
 
     @Override
     protected RawAnimation getShootingAnimation(AnimationState<WeaponAnimator> event) {
-        if(isAuto){
+         if(isAuto){
             var animation = playGunAnim("shot_auto", LOOP);
             animationHelper.syncAnimation(event, "shot_auto", rate);
             return animation;

@@ -61,7 +61,7 @@ public class CgsAttachments {
     //REVOLVER
     @ItemModelGen(path = "attachments")
     public static final DeferredHolder<Item, Item> REVOLVER_LONG_BARREL = ITEMS.register("long_barrel",
-            () -> new BarrelItem(Barrel.create(11f, AttachmentMods.LONG_BARREL), ITEM_PROPERTIES));
+            () -> new BarrelItem(Barrel.create(11f, AttachmentMods.REVOLVER_LONG_BARREL), ITEM_PROPERTIES));
 
     @ItemModelGen(path = "attachments")
     public static final DeferredHolder<Item, Item> REVOLVER_BELT = ITEMS.register("round_belt",

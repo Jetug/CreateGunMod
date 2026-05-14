@@ -50,9 +50,9 @@ public abstract class EngineAnimator extends WeaponAnimator {
     }
 
     @Override
-    protected void tickStart() {
+    protected void tick() {
         if (isGun(getStack())) {
-            super.tickStart();
+            super.tick();
             this.ticks++;
             var data = new WeaponData(getStack(), getEntity());
             this.rate = WeaponModifierHelper.getRate(data);

@@ -41,8 +41,8 @@ public class FlintlockAnimator extends WeaponAnimator {
     }
 
     @Override
-    protected void tickStart() {
-        super.tickStart();
+    protected void tick() {
+        super.tick();
         this.hasAmmo = WeaponStateHelper.hasAmmo(getWeaponData());
         this.hasMagazine = hasRevolvingChambersEquiped();
     }

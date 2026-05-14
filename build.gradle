@@ -8,7 +8,7 @@ version = "${minecraft_version}-${mod_version}"
 group = 'com.nukateam.cgs'
 
 base {
-    archivesName = mod_id
+    archivesName = "create-gunsmithing"
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
@@ -112,7 +112,7 @@ dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
 
     // for local dev
-    implementation 'com.nukateam.ntgl:ntgl:1.21.1-3.1.1'
+    implementation 'com.nukateam.ntgl:ntgl:1.21.1-3.1.5'
 //    implementation "maven.modrinth:ntgl:y0nwfLDn" // 3.1.1
     implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:4.8.4"
 
@@ -129,7 +129,7 @@ dependencies {
 
     implementation "curse.maven:kotlin-for-forge-351264:7471280"
     implementation "curse.maven:fzzy-config-1005914:7568897"
-    implementation "maven.modrinth:subtle-effects:s3Fo4cDk" // 1.21.1-1.14.3
+//    implementation "maven.modrinth:subtle-effects:s3Fo4cDk"
     implementation "maven.modrinth:jade:15.10.5+neoforge"
 
     compileOnly "mezz.jei:jei-1.21.1-common-api:19.25.0.322"
@@ -141,7 +141,6 @@ tasks.withType(ProcessResources).configureEach {
     var replaceProperties = [
             minecraft_version      : minecraft_version,
             minecraft_version_range: minecraft_version_range,
-            forge_version_range    : forge_version_range,
             neo_version            : neo_version,
             loader_version_range   : loader_version_range,
             mod_id                 : mod_id,

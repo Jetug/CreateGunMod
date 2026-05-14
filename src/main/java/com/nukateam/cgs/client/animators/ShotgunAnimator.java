@@ -62,8 +62,8 @@ public class ShotgunAnimator extends WeaponAnimator {
     }
 
     @Override
-    protected void tickStart() {
-        super.tickStart();
+    protected void tick() {
+        super.tick();
         if (!isGun()) return;
 
         var magazine = WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, getWeaponData());

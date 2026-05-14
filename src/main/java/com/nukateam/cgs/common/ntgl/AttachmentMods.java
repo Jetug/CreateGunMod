@@ -101,8 +101,8 @@ public class AttachmentMods {
                 value.add(AttributeModifier.Builder
                         .create()
                         .attribute(BuiltInRegistries.ATTRIBUTE.getKey(Attributes.MOVEMENT_SPEED.value()))
-                        .operation(Operation.ADD_VALUE)
-                        .value(-0.1)
+                        .operation(Operation.ADD_MULTIPLIED_TOTAL)
+                        .value(-0.15)
                         .build()
                 );
                 return IWeaponModifier.super.modifyAttributeModifiers(value, data);
@@ -241,18 +241,13 @@ public class AttachmentMods {
             value.add(AttributeModifier.Builder
                     .create()
                     .attribute(BuiltInRegistries.ATTRIBUTE.getKey(Attributes.MOVEMENT_SPEED.value()))
-                    .operation(Operation.ADD_VALUE)
-                    .value(-0.1)
+                    .operation(Operation.ADD_MULTIPLIED_TOTAL)
+                    .value(-0.15)
                     .build()
             );
 
             return IWeaponModifier.super.modifyAttributeModifiers(value, data);
         }
-
-//        @Override
-//        public float modifyMovementSpeed(float value, WeaponData data) {
-//            return value - 0.1f;
-//        }
     };
 
     //FLINTLOCK
@@ -389,6 +384,34 @@ public class AttachmentMods {
         public boolean modifyOneHanded(boolean value, WeaponData data) {
             return false;
         }
+
+        @Override
+        public float modifyProjectileDamage(float damage, ResourceLocation ammo, WeaponData data) {
+            return damage * 1.5f;
+        }
+
+        @Override
+        public double modifyAimDownSightSpeed(double speed, WeaponData data) {
+            return speed * 0.95;
+        }
+    };
+
+    public static final IWeaponModifier REVOLVER_LONG_BARREL = new IWeaponModifier() {
+//        @Override
+//        public GripType modifyGripType(GripType gripType, WeaponData data) {
+//            if(data.weapon != null && data.weapon.getItem() == CgsWeapons.REVOLVER.get()){
+//                if(WeaponStateHelper.hasAttachmentEquipped(data.weapon, AttachmentType.STOCK)){
+//                    return GripType.TWO_HANDED;
+//                }
+//                else return gripType;
+//            }
+//            return GripType.TWO_HANDED;
+//        }
+
+//        @Override
+//        public boolean modifyOneHanded(boolean value, WeaponData data) {
+//            return false;
+//        }
 
         @Override
         public float modifyProjectileDamage(float damage, ResourceLocation ammo, WeaponData data) {

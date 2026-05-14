@@ -42,8 +42,8 @@ public class HammerAnimator extends WeaponAnimator {
     }
 
     @Override
-    protected void tickStart() {
-        super.tickStart();
+    protected void tick() {
+        super.tick();
         var meleeTracker = ClientMeleeHandler.getTracker(getEntity(), getArm());
         if(meleeTracker != null){
             var data = meleeTracker.getData();

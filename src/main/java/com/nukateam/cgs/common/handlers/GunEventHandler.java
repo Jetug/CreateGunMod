@@ -171,7 +171,7 @@ public class GunEventHandler {
 
     @SubscribeEvent
     public static void onHit(GunProjectileHitEvent event) {
-        var shooter = event.getProjectile().getShooter();
+        var shooter = event.getProjectile().getOwner();
         if(shooter == null) return;
         var hitResult = event.getRayTrace();
         var level = shooter.level();
