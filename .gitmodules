@@ -1,0 +1,3 @@
+[submodule "NukaTeamGunLib"]
+	path = NukaTeamGunLib
+	url = https://github.com/Jetug/NukaTeamGunLib.git

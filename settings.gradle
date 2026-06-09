@@ -8,3 +8,15 @@ pluginManagement {
 plugins {
     id 'org.gradle.toolchains.foojay-resolver-convention' version '0.9.0'
 }
+
+def ntglSourceDir = file('NukaTeamGunLib')
+
+if (!ntglSourceDir.isDirectory()) {
+    throw new GradleException("NTGL source checkout not found at '${ntglSourceDir}'. Run 'git submodule update --init --recursive'.")
+}
+
+includeBuild(ntglSourceDir) {
+    dependencySubstitution {
+        substitute module('com.nukateam.ntgl:ntgl') using project(':')
+    }
+}
