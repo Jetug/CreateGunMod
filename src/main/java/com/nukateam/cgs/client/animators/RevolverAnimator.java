@@ -39,6 +39,7 @@ public class RevolverAnimator extends WeaponAnimator {
 
     @Override
     public void tick() {
+        super.tick();
         if (isGun()) {
             var chamberAttachment = WeaponStateHelper.getAttachmentItem(CgsAttachmentTypes.CHAMBER, getWeaponData());
             var frame = WeaponStateHelper.getAttachmentItem(CgsAttachmentTypes.FRAME, getWeaponData());
