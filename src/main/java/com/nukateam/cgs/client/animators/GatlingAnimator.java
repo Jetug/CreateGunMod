@@ -80,7 +80,7 @@ public class GatlingAnimator extends EngineAnimator {
             var gun = ((WeaponItem)getStack().getItem()).getConfig();
             var animation = begin();
             var hasEngine = WeaponStateHelper.hasAttachmentEquipped(getStack(), CgsAttachmentTypes.ENGINE);
-            var hasFuel = FuelUtils.hasFuel(getGunData());
+            var hasFuel = FuelUtils.hasFuel(getWeaponData());
 
             if ((hasEngine && hasFuel) || hasAnimationPlaying(MAIN_CONTROLLER, RELOAD)) {
                 return PlayState.STOP;

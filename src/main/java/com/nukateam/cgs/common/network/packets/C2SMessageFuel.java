@@ -1,13 +1,13 @@
 package com.nukateam.cgs.common.network.packets;
 
-import com.mrcrayfish.framework.api.network.MessageContext;
-import com.mrcrayfish.framework.api.network.message.PlayMessage;
 import com.nukateam.ntgl.common.util.util.WeaponModifierHelper;
 import net.minecraft.network.FriendlyByteBuf;
+import com.nukateam.ntgl.modules.network.IMessage;
+import net.minecraftforge.network.NetworkEvent;
 
 import static com.nukateam.cgs.common.utils.GunUtils.*;
 
-public class C2SMessageFuel extends PlayMessage<C2SMessageFuel> {
+public class C2SMessageFuel implements IMessage<C2SMessageFuel> {
     public C2SMessageFuel() {}
 
     @Override
@@ -20,11 +20,13 @@ public class C2SMessageFuel extends PlayMessage<C2SMessageFuel> {
         return new C2SMessageFuel();
     }
 
+
+
     @Override
-    public void handle(C2SMessageFuel message, MessageContext supplier) {
-        supplier.execute((() ->
+    public void handle(C2SMessageFuel message, NetworkEvent.Context supplier) {
+        supplier.enqueueWork((() ->
         {
-            var player = supplier.getPlayer();
+            var player = supplier.getSender();
             if (player != null && !player.isSpectator()) {
                 var mainHandItem = player.getMainHandItem();
                 var offhandItem = player.getOffhandItem();
@@ -37,6 +39,6 @@ public class C2SMessageFuel extends PlayMessage<C2SMessageFuel> {
                 }
             }
         }));
-        supplier.setHandled(true);
+        supplier.setPacketHandled(true);
     }
 }

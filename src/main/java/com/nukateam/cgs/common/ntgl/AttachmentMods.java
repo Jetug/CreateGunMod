@@ -10,6 +10,7 @@ import com.nukateam.cgs.common.utils.GunUtils;
 import com.nukateam.example.common.registery.WeaponModifiers;
 import com.nukateam.ntgl.common.data.config.weapon.AttributeModifier;
 import com.nukateam.ntgl.common.data.config.weapon.ProjectileConfig;
+import com.nukateam.ntgl.common.data.enums.SoundType;
 import com.nukateam.ntgl.common.data.holders.*;
 import com.nukateam.ntgl.common.registry.AmmoHolders;
 import com.nukateam.ntgl.common.util.util.FuelUtils;
@@ -23,10 +24,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static net.minecraft.world.entity.ai.attributes.AttributeModifier.*;
 
@@ -93,20 +91,20 @@ public class AttachmentMods {
             return IWeaponModifier.super.modifyFireDelay(chargeTime, data);
         }
 
-        @Override
-        public ArrayList<AttributeModifier> modifyAttributeModifiers(ArrayList<AttributeModifier> value, WeaponData data) {
-            if(data.weapon.getItem() == CgsWeapons.GATLING.get()) {
-                value.add(AttributeModifier.Builder
-                        .create()
-                        .attribute(ForgeRegistries.ATTRIBUTES.getKey(Attributes.MOVEMENT_SPEED))
-                        .operation(Operation.ADDITION)
-                        .value(-0.1)
-                        .build()
-                );
-                return IWeaponModifier.super.modifyAttributeModifiers(value, data);
-            }
-            return value;
-        }
+//        @Override
+//        public ArrayList<AttributeModifier> modifyAttributeModifiers(ArrayList<AttributeModifier> value, WeaponData data) {
+//            if(data.weapon.getItem() == CgsWeapons.GATLING.get()) {
+//                value.add(AttributeModifier.Builder
+//                        .create()
+//                        .attribute(ForgeRegistries.ATTRIBUTES.getKey(Attributes.MOVEMENT_SPEED))
+//                        .operation(Operation.ADDITION)
+//                        .value(-0.1)
+//                        .build()
+//                );
+//                return IWeaponModifier.super.modifyAttributeModifiers(value, data);
+//            }
+//            return value;
+//        }
 
 //        @Override
 //        public float modifyMovementSpeed(float value, WeaponData data) {
@@ -194,11 +192,11 @@ public class AttachmentMods {
         }
 
         @Override
-        public ResourceLocation modifyFireSound(ResourceLocation sound, WeaponData data) {
-            if(data.weapon != null && data.weapon.getItem() == CgsWeapons.NAILGUN.get()){
+        public ResourceLocation modifySound(String name, ResourceLocation sound, WeaponData data) {
+            if(Objects.equals(name, SoundType.FIRE.getName()) && data.weapon != null && data.weapon.getItem() == CgsWeapons.NAILGUN.get()){
                 return CgsSounds.NAILGUN_FIRE_STEAM.get().getLocation();
             }
-            return IWeaponModifier.super.modifyFireSound(sound, data);
+            return IWeaponModifier.super.modifySound(name, sound, data);
         }
 
         @Override
@@ -232,18 +230,18 @@ public class AttachmentMods {
             return spread * 2;
         }
 
-        @Override
-        public ArrayList<AttributeModifier> modifyAttributeModifiers(ArrayList<AttributeModifier> value, WeaponData data) {
-            value.add(AttributeModifier.Builder
-                    .create()
-                    .attribute(ForgeRegistries.ATTRIBUTES.getKey(Attributes.MOVEMENT_SPEED))
-                    .operation(Operation.ADDITION)
-                    .value(-0.1)
-                    .build()
-            );
-
-            return IWeaponModifier.super.modifyAttributeModifiers(value, data);
-        }
+//        @Override
+//        public ArrayList<AttributeModifier> modifyAttributeModifiers(ArrayList<AttributeModifier> value, WeaponData data) {
+//            value.add(AttributeModifier.Builder
+//                    .create()
+//                    .attribute(ForgeRegistries.ATTRIBUTES.getKey(Attributes.MOVEMENT_SPEED))
+//                    .operation(Operation.ADDITION)
+//                    .value(-0.1)
+//                    .build()
+//            );
+//
+//            return IWeaponModifier.super.modifyAttributeModifiers(value, data);
+//        }
 
 //        @Override
 //        public float modifyMovementSpeed(float value, WeaponData data) {
@@ -721,8 +719,11 @@ public class AttachmentMods {
         }
 
         @Override
-        public ResourceLocation modifyFireSound(ResourceLocation sound, WeaponData data) {
-            return CgsSounds.BALLISTA_FIRE.getId();
+        public ResourceLocation modifySound(String name, ResourceLocation sound, WeaponData data) {
+            if(Objects.equals(name, SoundType.FIRE.getName())){
+                return CgsSounds.BALLISTA_FIRE.getId();
+            }
+            return IWeaponModifier.super.modifySound(name, sound, data);
         }
 
         @Override
