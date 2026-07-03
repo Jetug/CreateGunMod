@@ -18,6 +18,9 @@
       "cgs:rocket"
     ]
   },
+  "display": {
+    "nonHandOffset": [-1.0, 8.0, 0.0]
+  },
   "modes": {
     "ntgl:secondary": {
       "general": {

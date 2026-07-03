@@ -8,8 +8,8 @@
   "display": {
     "thirdperson_righthand": {
       "translation": [
-        2.75,
-        4.75,
+        0,
+        -5.25,
         2.75
       ],
       "scale": [
@@ -20,8 +20,8 @@
     },
     "thirdperson_lefthand": {
       "translation": [
-        1.5,
-        3.5,
+        0,
+        -5.25,
         2.75
       ],
       "scale": [
@@ -33,22 +33,22 @@
     "firstperson_righthand": {
       "translation": [
         0,
-        6,
+        -1.75,
         1.25
       ]
     },
     "firstperson_lefthand": {
       "translation": [
         0,
-        6,
+        -1.75,
         1.25
       ]
     },
     "ground": {
       "translation": [
         0,
-        4.75,
-        0
+        -3.25,
+        -5
       ]
     },
     "gui": {
@@ -58,14 +58,21 @@
         177.19999999999982
       ],
       "translation": [
-        -2,
-        -1,
+        -2.5,
+        -9,
         0
       ],
       "scale": [
-        0.48047,
-        0.48047,
-        0.48047
+        0.533204375,
+        0.533204375,
+        0.533204375
+      ]
+    },
+    "head": {
+      "translation": [
+        0,
+        -9.75,
+        -5.5
       ]
     },
     "fixed": {
@@ -76,7 +83,7 @@
       ],
       "translation": [
         4,
-        0,
+        -8,
         0
       ],
       "scale": [
@@ -85,5 +92,8 @@
         0.79102
       ]
     }
+  },
+  "textures": {
+    "particle": "launcher"
   }
 }

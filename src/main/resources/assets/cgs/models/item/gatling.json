@@ -33,21 +33,21 @@
     "firstperson_righthand": {
       "translation": [
         0.25,
-        -0.5,
-        -1.25
+        -8.75,
+        0
       ]
     },
     "firstperson_lefthand": {
       "translation": [
         0.25,
-        -0.5,
-        -1.25
+        -8.75,
+        0
       ]
     },
     "ground": {
       "translation": [
         0,
-        4,
+        -1.25,
         0
       ],
       "scale": [
@@ -63,8 +63,8 @@
         149.94000000000005
       ],
       "translation": [
-        0,
-        -1.25,
+        2.5,
+        -3.5,
         0
       ],
       "scale": [
@@ -76,7 +76,7 @@
     "head": {
       "translation": [
         0,
-        1.5,
+        -12.25,
         -5
       ],
       "scale": [
@@ -92,8 +92,8 @@
         0
       ],
       "translation": [
-        0,
-        0.25,
+        -2.75,
+        -7.25,
         0
       ]
     }

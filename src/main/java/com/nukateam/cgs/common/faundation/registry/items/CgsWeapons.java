@@ -16,7 +16,7 @@ public class CgsWeapons {
     public static final RegistryObject<WeaponItem> FLINTLOCK = registerGun("flintlock", FlintlockItem::new);
     public static final RegistryObject<WeaponItem> REVOLVER = registerGun("revolver", RevolverItem::new);
     public static final RegistryObject<WeaponItem> SHOTGUN = registerGun("shotgun", ShotgunItem::new);
-    public static final RegistryObject<WeaponItem> NAILGUN = registerGun("nailgun", NailgunItem::new);
+    public static final RegistryObject<WeaponItem> NAILGUN = registerGun("nailgun", WeaponItem::new);
     public static final RegistryObject<WeaponItem> GATLING = registerGun("gatling", GatlingItem::new);
     public static final RegistryObject<WeaponItem> BLAZEGUN = registerGun("blazegun", BlazegunItem::new);
     public static final RegistryObject<WeaponItem> LAUNCHER = registerGun("launcher", LauncherItem::new);

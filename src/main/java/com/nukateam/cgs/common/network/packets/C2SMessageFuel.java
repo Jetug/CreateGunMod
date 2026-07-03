@@ -12,15 +12,12 @@ public class C2SMessageFuel implements IMessage<C2SMessageFuel> {
 
     @Override
     public void encode(C2SMessageFuel message, FriendlyByteBuf buffer) {
-//        buffer.writeBoolean(message.aiming);
     }
 
     @Override
     public C2SMessageFuel decode(FriendlyByteBuf buffer) {
         return new C2SMessageFuel();
     }
-
-
 
     @Override
     public void handle(C2SMessageFuel message, NetworkEvent.Context supplier) {
