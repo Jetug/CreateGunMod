@@ -1,8 +1,9 @@
 {
-  "type": "minecraft:smelting",
+  "type": "minecraft:blasting",
   "category": "misc",
-  "cookingtime": 200,
-  "experience": 0.1,
+  "cookingtime": 100,
+  "experience": 0.25,
+  "group": "crushed_lead",
   "ingredient": {
     "item": "create:crushed_raw_lead"
   },

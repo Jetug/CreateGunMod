@@ -46,6 +46,9 @@ public class CgsRecipeProvider extends RecipeProvider implements IConditionBuild
                 CgsBlocks.LEAD_BLOCK.get(), CgsBlocks.RAW_LEAD_BLOCK.get(),
                 CgsItems.RAW_LEAD.get(), CgsItems.LEAD_INGOT.get(), CgsItems.LEAD_NUGGET.get());
 
+        oreSmelting(writer, List.of(AllItems.CRUSHED_LEAD), RecipeCategory.MISC, CgsItems.LEAD_INGOT.get(), 0.25f, 200, "crushed_lead");
+        oreBlasting(writer, List.of(AllItems.CRUSHED_LEAD), RecipeCategory.MISC, CgsItems.LEAD_INGOT.get(), 0.25f, 100, "crushed_lead");
+
         weapons(writer);
         ammo(writer);
         attachments(writer);
