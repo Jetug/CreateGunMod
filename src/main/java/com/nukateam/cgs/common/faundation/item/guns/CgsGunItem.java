@@ -82,7 +82,7 @@ public class CgsGunItem extends WeaponItem {
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag tooltipFlag) {
         if (FMLEnvironment.dist == Dist.CLIENT) {
             super.appendHoverText(stack, context, tooltip, tooltipFlag);
-            var gunData = new WeaponData(stack, Minecraft.getInstance().player, context.registries());
+            var gunData = new WeaponData(stack, Minecraft.getInstance().player);
             var fuelTypes = WeaponModifierHelper.getAllFuel(gunData);
 
             if (!fuelTypes.isEmpty()) {
