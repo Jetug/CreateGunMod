@@ -16,7 +16,7 @@
     ]
   },
   "display": {
-    "nonHandOffset": [0.0, -7.0, 0.0]
+    "nonHandOffset": [0.0, 1.0, -1.3]
   },
   "melee": {
     "mode": "ntgl:auto",
@@ -31,7 +31,8 @@
   "modes": {
     "ntgl:secondary": {
       "general": {
-        "action": "ntgl:none"
+        "action": "ntgl:none",
+        "maxAmmo": 0
       },
       "melee": {
         "mode": "ntgl:single",

@@ -16,7 +16,6 @@ import org.lwjgl.glfw.GLFW;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT)
 public class InputEventHandler {
-
     @SubscribeEvent
     public static void onMouseInput(InputEvent.MouseButton event){
         if(isInGame()) {

@@ -27,7 +27,7 @@
         "action": "ntgl:scope"
       },
       "zoom": {
-        "offset": [ -5, 2.7, -0.5],
+        "offset": [ -3.5, 10.2, 0.5],
         "fovModifier": 0.7
       }
     },
