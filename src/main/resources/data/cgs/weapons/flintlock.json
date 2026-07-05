@@ -16,6 +16,9 @@
       "cgs:paper_cartridge"
     ]
   },
+  "display": {
+    "nonHandOffset": [0, 0.0, 5.0]
+  },
   "ammoData": {
     "cgs:paper_cartridge": {
       "ammo": {

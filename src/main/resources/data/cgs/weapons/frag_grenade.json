@@ -31,6 +31,9 @@
       }
     }
   },
+  "display": {
+    "nonHandOffset": [0, 0, 5.0]
+  },
   "sounds": {
     "throw": "cgs:gun.grenade.throw",
     "pin": "cgs:gun.grenade.pin"
