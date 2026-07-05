@@ -18,13 +18,16 @@
       "cgs:rocket"
     ]
   },
+  "display": {
+    "nonHandOffset": [-1.0, 8.0, 0.0]
+  },
   "modes": {
     "ntgl:secondary": {
       "general": {
         "action": "ntgl:scope"
       },
       "zoom": {
-        "offset": [ -5, 2.7, -0.5],
+        "offset": [ -3.5, 10.2, 0.5],
         "fovModifier": 0.7
       }
     },

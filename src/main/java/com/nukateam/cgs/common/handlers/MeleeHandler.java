@@ -60,11 +60,11 @@ public class MeleeHandler {
             var entity = event.getEntity();
 
             if (!player.isCreative()) {
-                WeaponStateHelper.consumeAmmo(data);
+                WeaponStateHelper.consumeAmmo(data.setWeaponMode(WeaponMode.PRIMARY));
             }
 
             if(event.getTargets().isEmpty()) {
-                hitBlock(player, data, entity);
+                hitBlock(player, data.setWeaponMode(WeaponMode.SECONDARY), entity);
             }
         }
     }
@@ -72,9 +72,9 @@ public class MeleeHandler {
     private static void hitBlock(ServerPlayer player, WeaponData data, LivingEntity entity) {
         assert data.weapon != null;
         var head = WeaponStateHelper.getAttachmentItem(CgsAttachmentTypes.HEAD, data);
+        var isPowered = HammerItem.isPowered(new WeaponData(data.weapon, data.wielder).setWeaponMode(WeaponMode.PRIMARY));
 
-        if (head.getItem() instanceof HammerHeadItem headItem && HammerItem.isPowered(data)
-                && !entity.hasEffect(MobEffects.DIG_SLOWDOWN)) {
+        if (head.getItem() instanceof HammerHeadItem headItem && isPowered) {
             var reach = WeaponModifierHelper.getMeleeDistance(data);
             var isShotPowered = !WeaponStateHelper.getAttachmentItem(AttachmentType.MAGAZINE, data).isEmpty();
             var hitResult = getBlockHitResult(player, reach);

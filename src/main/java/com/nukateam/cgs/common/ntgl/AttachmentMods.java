@@ -624,7 +624,17 @@ public class AttachmentMods {
     public static final IWeaponModifier RECIEVER = new IWeaponModifier() {
         @Override
         public int modifyMaxAmmo(int maxAmmo, WeaponData data) {
-            return 6;
+            if(data.weaponMode == WeaponMode.PRIMARY)
+                return 6;
+            else return maxAmmo;
+        }
+
+        @Override
+        public WeaponAction modifyWeaponAction(WeaponAction value, WeaponData data) {
+            if(data.weaponMode == WeaponMode.SECONDARY){
+                return WeaponAction.MELEE;
+            }
+            return IWeaponModifier.super.modifyWeaponAction(value, data);
         }
 
         @Override
@@ -634,8 +644,12 @@ public class AttachmentMods {
 
         @Override
         public float modifyMeleeDamage(float damage, WeaponData data) {
-            WeaponStateHelper.getAmmoCount(data);
-            return damage * 2;
+            if(data.weaponMode == WeaponMode.SECONDARY) {
+                if(WeaponStateHelper.hasAmmo(data))
+                    return damage * 2;
+                else return damage;
+            }
+            return damage;
         }
 
         @Override
