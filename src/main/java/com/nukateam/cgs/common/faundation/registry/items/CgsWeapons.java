@@ -1,4 +1,3 @@
-
 package com.nukateam.cgs.common.faundation.registry.items;
 
 import com.nukateam.cgs.Gunsmithing;

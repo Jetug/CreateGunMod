@@ -2,6 +2,7 @@ package com.nukateam.cgs.client.animators;
 
 import com.nukateam.cgs.common.faundation.registry.items.CgsAttachments;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
+import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
 import com.nukateam.ntgl.client.util.handler.ClientReloadHandler;
@@ -31,7 +32,7 @@ public class GatlingAnimator extends EngineAnimator {
             .triggerableAnim(HANDLE, begin().then(HANDLE, PLAY_ONCE))
             .triggerableAnim(VOID, begin().then(VOID, PLAY_ONCE));
 
-    public GatlingAnimator(ItemDisplayContext transformType, DynamicWeaponRenderer<WeaponAnimator> renderer) {
+    public GatlingAnimator(ItemDisplayContext transformType, DynamicGeoItemRenderer renderer) {
         super(transformType, renderer);
     }
 

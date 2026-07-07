@@ -3,6 +3,7 @@ package com.nukateam.cgs.client.animators;
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.faundation.registry.items.CgsAttachments;
 import com.nukateam.cgs.common.utils.GunUtils;
+import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
@@ -34,7 +35,7 @@ public class LauncherAnimator extends WeaponAnimator {
 
     protected final AnimationController<WeaponAnimator> MISC_CONTROLLER;
 
-    public LauncherAnimator(ItemDisplayContext transformType, DynamicWeaponRenderer<WeaponAnimator> renderer) {
+    public LauncherAnimator(ItemDisplayContext transformType, DynamicGeoItemRenderer renderer) {
         super(transformType, renderer);
         MISC_CONTROLLER = createController("misc_controller", animateMisc());
     }

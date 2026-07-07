@@ -2,6 +2,7 @@ package com.nukateam.cgs.client.animators;
 
 import com.nukateam.cgs.Gunsmithing;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
+import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
 import com.nukateam.ntgl.common.foundation.item.WeaponItem;
@@ -17,7 +18,7 @@ public class BlazegunAnimator extends WeaponAnimator {
     public static final String SHOT_AUTO = "shot_auto";
     private boolean isAuto;
 
-    public BlazegunAnimator(ItemDisplayContext transformType, DynamicWeaponRenderer<WeaponAnimator> renderer) {
+    public BlazegunAnimator(ItemDisplayContext transformType, DynamicGeoItemRenderer renderer) {
         super(transformType, renderer);
     }
     @Override

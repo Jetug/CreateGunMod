@@ -2,6 +2,7 @@ package com.nukateam.cgs.client.animators;
 
 import com.nukateam.cgs.common.faundation.registry.items.CgsAttachments;
 import com.nukateam.cgs.common.ntgl.CgsAttachmentTypes;
+import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
@@ -27,7 +28,7 @@ public class RevolverAnimator extends WeaponAnimator {
     protected final AnimationController<WeaponAnimator> BELT_CONTROLLER = createController("belt_controller", animateBelt())
             .triggerableAnim(BELT, begin().then(BELT, PLAY_ONCE));
 
-    public RevolverAnimator(ItemDisplayContext transformType, DynamicWeaponRenderer<WeaponAnimator> renderer) {
+    public RevolverAnimator(ItemDisplayContext transformType, DynamicGeoItemRenderer renderer) {
         super(transformType, renderer);
     }
 

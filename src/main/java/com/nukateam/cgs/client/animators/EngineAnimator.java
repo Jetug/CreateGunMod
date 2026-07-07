@@ -39,7 +39,7 @@ public abstract class EngineAnimator extends WeaponAnimator {
     protected int ticks = 0;
     protected int rate;
 
-    public EngineAnimator(ItemDisplayContext transformType, DynamicWeaponRenderer<WeaponAnimator> renderer) {
+    public EngineAnimator(ItemDisplayContext transformType, DynamicGeoItemRenderer renderer) {
         super(transformType, renderer);
     }
 

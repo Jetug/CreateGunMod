@@ -3,6 +3,7 @@ package com.nukateam.cgs.client.animators;
 import com.nukateam.cgs.common.faundation.registry.items.CgsAttachments;
 import com.nukateam.cgs.common.utils.GunUtils;
 import com.nukateam.example.common.util.constants.Animations;
+import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
 import com.nukateam.ntgl.common.data.holders.AttachmentType;
@@ -48,7 +49,7 @@ public class ShotgunAnimator extends WeaponAnimator {
     private boolean isAmmoEven;
     private int cockInfo;
 
-    public ShotgunAnimator(ItemDisplayContext transformType, DynamicWeaponRenderer<WeaponAnimator> renderer) {
+    public ShotgunAnimator(ItemDisplayContext transformType, DynamicGeoItemRenderer renderer) {
         super(transformType, renderer);
         COCK_CONTROLLER = createController("cock_controller", animateCock());
         FLASH_CONTROLLER = createController("flash_controller", animateFlash());

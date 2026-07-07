@@ -28,7 +28,7 @@ public class FlintlockAnimator extends WeaponAnimator {
     private boolean hasAmmo;
     private boolean hasMagazine;
 
-    public FlintlockAnimator(ItemDisplayContext transformType, DynamicWeaponRenderer<WeaponAnimator> renderer) {
+    public FlintlockAnimator(ItemDisplayContext transformType, DynamicGeoItemRenderer renderer) {
         super(transformType, renderer);
     }
 

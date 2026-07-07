@@ -6,7 +6,7 @@ import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
 import net.minecraft.world.item.ItemDisplayContext;
 
 public class NailgunAnimator extends EngineAnimator {
-    public NailgunAnimator(ItemDisplayContext transformType, DynamicWeaponRenderer<WeaponAnimator> renderer) {
+    public NailgunAnimator(ItemDisplayContext transformType, DynamicGeoItemRenderer renderer) {
         super(transformType, renderer);
     }
 }

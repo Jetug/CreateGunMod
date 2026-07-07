@@ -1,6 +1,7 @@
 package com.nukateam.cgs.client.animators;
 
 import com.nukateam.cgs.common.faundation.item.guns.HammerItem;
+import com.nukateam.geo.render.DynamicGeoItemRenderer;
 import com.nukateam.ntgl.client.animators.WeaponAnimator;
 import com.nukateam.ntgl.client.render.renderers.weapon.DynamicWeaponRenderer;
 import com.nukateam.ntgl.client.util.handler.ClientMeleeHandler;
@@ -37,7 +38,7 @@ public class HammerAnimator extends WeaponAnimator {
     private WeaponData data;
     private boolean isSecondary;
 
-    public HammerAnimator(ItemDisplayContext transformType, DynamicWeaponRenderer<WeaponAnimator> renderer) {
+    public HammerAnimator(ItemDisplayContext transformType, DynamicGeoItemRenderer renderer) {
         super(transformType, renderer);
     }
 
