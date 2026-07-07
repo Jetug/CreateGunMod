@@ -369,16 +369,16 @@ public class AttachmentMods {
 
 
     public static final IWeaponModifier LONG_BARREL = new IWeaponModifier() {
-        @Override
-        public GripType modifyGripType(GripType gripType, WeaponData data) {
-            if(data.weapon != null && data.weapon.getItem() == CgsWeapons.REVOLVER.get()){
-                if(WeaponStateHelper.hasAttachmentEquipped(data.weapon, AttachmentType.STOCK)){
-                    return GripType.TWO_HANDED;
-                }
-                else return gripType;
-            }
-            return GripType.TWO_HANDED;
-        }
+//        @Override
+//        public GripType modifyGripType(GripType gripType, WeaponData data) {
+//            if(data.weapon != null && data.weapon.getItem() == CgsWeapons.REVOLVER.get()){
+//                if(WeaponStateHelper.hasAttachmentEquipped(data.weapon, AttachmentType.STOCK)){
+//                    return GripType.TWO_HANDED;
+//                }
+//                else return gripType;
+//            }
+//            return GripType.TWO_HANDED;
+//        }
 
         @Override
         public boolean modifyOneHanded(boolean value, WeaponData data) {
@@ -469,6 +469,11 @@ public class AttachmentMods {
     };
 
     public static final IWeaponModifier STOCK = new IWeaponModifier() {
+        @Override
+        public GripType modifyGripType(GripType gripType, WeaponData data) {
+            return GripType.TWO_HANDED;
+        }
+
         @Override
         public float recoilModifier(WeaponData data) {
             return 0.1F;
