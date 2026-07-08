@@ -475,6 +475,11 @@ public class AttachmentMods {
         }
 
         @Override
+        public boolean modifyOneHanded(boolean value, WeaponData data) {
+            return false;
+        }
+
+        @Override
         public float recoilModifier(WeaponData data) {
             return 0.1F;
         }
