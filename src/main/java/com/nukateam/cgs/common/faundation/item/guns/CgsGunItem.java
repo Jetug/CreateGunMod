@@ -30,6 +30,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+import static com.nukateam.cgs.client.utils.ClientUtils.getPlayer;
+
 public class CgsGunItem extends WeaponItem {
     private final Lazy<BaseWeaponRenderer> RENDERER = Lazy.of(() -> new BaseWeaponRenderer());
 
@@ -78,7 +80,7 @@ public class CgsGunItem extends WeaponItem {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
-        var gunData = new WeaponData(stack, null);
+        var gunData = new WeaponData(stack, getPlayer());
         var fuelTypes = WeaponModifierHelper.getAllFuel(gunData);
 
         if(!fuelTypes.isEmpty()) {
