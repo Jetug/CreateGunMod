@@ -101,6 +101,8 @@ dependencies {
     runtimeOnly("dev.engine-room.flywheel:flywheel-neoforge-${minecraft_version}:${flywheel_version}")
     implementation("com.tterrag.registrate:Registrate:${registrate_version}")
 
+    runtimeOnly "curse.maven:sable-1312371:8255445"
+    runtimeOnly "curse.maven:create-aeronautics-676721:8240058"
 //    implementation "curse.maven:framework-549225:7530361"
     implementation "curse.maven:playeranimator-658587:7389814"
     implementation "curse.maven:cloth-config-348521:5729127"
