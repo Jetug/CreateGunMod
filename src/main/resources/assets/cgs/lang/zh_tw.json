@@ -1,0 +1,125 @@
+{
+  "itemGroup.mod_items": "機械動力：槍械工藝",
+
+  "info.cgs.fuel": "主手和副手分別持有耗材與武器本身，則按下右鍵即可填充",
+
+  "slot.cgs.attachment.engine": "驅動引擎",
+  "slot.cgs.attachment.frame": "槍體框架",
+  "slot.cgs.attachment.chamber": "槍械彈膛",
+  "slot.cgs.attachment.head": "錘頭改件",
+
+  "info.cgs.air": "空氣",
+  "info.cgs.burnable": "燃料",
+  "info.cgs.water": "水",
+
+  "item.cgs.flintlock": "燧發槍",
+  "item.cgs.revolver": "左輪槍",
+  "item.cgs.shotgun": "散彈槍",
+  "item.cgs.nailgun": "釘槍",
+  "item.cgs.gatling": "蓋特機槍",
+  "item.cgs.blazegun": "火焰槍",
+  "item.cgs.launcher": "發射器",
+  "item.cgs.hammer": "氣動錘",
+  "item.cgs.axe": "氣動斧",
+  "item.cgs.frag_grenade": "破片手榴彈",
+
+  "item.cgs.barrel": "槍管",
+  "item.cgs.barrel_sturdy": "加固槍管",
+
+  "item.cgs.press_form_gatling": "蓋特彈殼壓模",
+  "item.cgs.press_form_revolver": "左輪彈殼壓模",
+  "item.cgs.press_form_shotgun": "散彈彈殼壓模",
+
+  "item.cgs.shell_gatling": "蓋特機槍彈殼",
+  "item.cgs.shell_revolver": "左輪彈殼",
+  "item.cgs.shell_shotgun": "散彈彈殼",
+
+  "item.cgs.round_gatling_blank": "蓋特機槍空包彈",
+  "item.cgs.round_gatling": "蓋特機槍子彈",
+  "item.cgs.round_gatling_piercing": "蓋特機槍穿甲彈",
+
+  "item.cgs.round_revolver_blank": "左輪空包彈",
+  "item.cgs.round_revolver": "左輪子彈",
+  "item.cgs.round_revolver_piercing": "左輪穿甲彈",
+
+  "item.cgs.round_shotgun_blank": "散彈空包彈",
+  "item.cgs.round_shotgun": "散彈",
+  "item.cgs.round_shotgun_flechette": "箭形散彈",
+  "item.cgs.round_shotgun_flechette_steel": "鋼製箭形散彈",
+  "item.cgs.round_shotgun_incendiary": "燃燒散彈",
+
+  "item.cgs.paper_cartridge": "紙質彈藥",
+  "item.cgs.paper_shot": "紙包彈丸",
+  "item.cgs.nail": "釘子",
+  "item.cgs.nail_steel": "鋼釘",
+  "item.cgs.rocket": "火箭彈",
+  "item.cgs.rocket_small": "小型火箭彈",
+  "item.cgs.spear": "長矛",
+
+  "item.cgs.lead_balls": "鉛彈丸",
+  "item.cgs.tank_empty": "流體容器",
+  "item.cgs.tank_water": "水容器",
+  "item.cgs.tank_lava": "岩漿容器",
+
+  "item.cgs.steam_engine": "蒸汽引擎",
+  "item.cgs.scope": "瞄準鏡",
+  "item.cgs.stock": "槍托",
+  "item.cgs.bayonet": "燧發槍：刺刀",
+  "item.cgs.big_bayonet": "發射器：大型刺刀",
+
+  "item.cgs.flintlock_long_barrel": "燧發槍：火槍槍管",
+  "item.cgs.flintlock_mortar_barrel": "燧發槍：砲管",
+  "item.cgs.blunderbuss_barrel": "燧發槍：喇叭狀槍管",
+  "item.cgs.blunderbuss_barrel_long": "燧發槍：加長喇叭狀槍管",
+  "item.cgs.flintlock_chambers": "燧發槍：轉輪彈巢",
+
+  "item.cgs.iron_sight": "蓋特機槍：鐵製瞄具",
+  "item.cgs.gatling_drum": "蓋特機槍：彈鼓",
+
+  "item.cgs.round_belt": "左輪：彈鏈",
+  "item.cgs.auto_fire": "左輪：自動射擊",
+  "item.cgs.long_barrel": "左輪：加長槍管",
+
+  "item.cgs.shotgun_drum": "散彈槍：彈鼓",
+  "item.cgs.shotgun_pump": "散彈槍：自動裝填器",
+  "item.cgs.shotgun_long_barrel": "散彈槍：加長槍管",
+  "item.cgs.shotgun_spread_barrel": "散彈槍：擴散槍管",
+
+  "item.cgs.nailgun_splitter": "釘槍：分裂槍管",
+
+  "item.cgs.potion_tank": "藥水罐",
+
+  "item.cgs.launcher_auto": "自動發射器",
+  "item.cgs.ballistazooka": "弩砲發射器",
+  "item.cgs.launcher_hook": "氣動鉤爪",
+  "item.cgs.item_launcher": "物品發射器",
+
+  "item.cgs.hammer_chamber": "氣動錘：槍膛",
+  "item.cgs.hammer_stone": "石製錘頭",
+  "item.cgs.hammer_iron": "鐵製錘頭",
+  "item.cgs.hammer_diamond": "鑽石錘頭",
+  "item.cgs.hammer_netherite": "獄髓錘頭",
+  "item.cgs.axe_stone": "石製斧頭",
+  "item.cgs.axe_iron": "鐵製斧頭",
+  "item.cgs.axe_diamond": "鑽石斧頭",
+  "item.cgs.axe_netherite": "獄髓斧頭",
+
+  "item.cgs.raw_lead": "粗鉛",
+  "item.cgs.lead_ingot": "鉛錠",
+  "item.cgs.lead_nugget": "鉛粒",
+  "item.cgs.steel_ingot": "鋼錠",
+  "item.cgs.steel_nugget": "鋼粒",
+  "item.cgs.steel_sheet": "鋼板",
+  "item.cgs.guano": "鳥糞",
+  "item.cgs.niter": "硝石",
+  "item.cgs.sulfur": "硫磺",
+  "item.cgs.charcoal_dust": "木炭粉",
+
+  "block.cgs.lead_ore": "鉛礦石",
+  "block.cgs.deepslate_lead_ore": "深板岩鉛礦石",
+  "block.cgs.sulfur_ore": "硫磺礦石",
+  "block.cgs.raw_lead_block": "粗鉛方塊",
+  "block.cgs.lead_block": "鉛方塊",
+
+  "block.cgs.steel_block": "鋼方塊"
+}
